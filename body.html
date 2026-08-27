@@ -1,0 +1,56 @@
+<body data-subject="en">
+<header class="top">
+  <div class="top-in">
+    <div class="crest">📚</div>
+    <div>
+      <h1>Liberian Elementary Course Pack Generator</h1>
+      <p>English, French, General Science, Mathematics, Social Studies &amp; Religious &amp; Moral Education · Grades 1 to 6 · printable pupil workbooks, tests and answer keys</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="panel">
+    <h2>1 · Subject</h2>
+    <div class="subtabs" id="subjects"></div>
+
+    <h2>2 · Grade</h2>
+    <div class="row"><select id="grade">
+      <option value="1">Grade 1</option><option value="2">Grade 2</option>
+      <option value="3">Grade 3</option><option value="4">Grade 4</option>
+      <option value="5">Grade 5</option><option value="6">Grade 6</option>
+    </select></div>
+
+    <h2>3 · Units to include</h2>
+    <div id="periods"></div>
+
+    <h2>4 · Exercise types</h2>
+    <div class="mini"><button id="allon">Select all</button><button id="alloff">Clear all</button></div>
+    <div id="sheets"></div>
+
+    <h2>5 · Assessment</h2>
+    <label class="chk"><input type="checkbox" id="tests" checked><span>Period test after each unit</span></label>
+    <label class="chk"><input type="checkbox" id="exam" checked><span>Semester examinations</span></label>
+    <label class="chk"><input type="checkbox" id="keys" checked><span>Answer keys (teacher's copy)</span></label>
+
+    <h2>6 · Settings</h2>
+    <div class="row"><label for="perEx">Questions per exercise</label>
+      <input type="number" id="perEx" value="8" min="4" max="20" style="width:70px"></div>
+    <div class="row"><label for="seed">Variant seed</label>
+      <input type="number" id="seed" value="1" min="1" max="9999" style="width:70px"></div>
+    <p class="hint">Change the seed to generate a different version of the same pack — useful for Test A / Test B.</p>
+
+    <button class="btn btn-p" id="gen">⚙ Generate course pack</button>
+    <button class="btn btn-s" id="reseed">🎲 New random variant</button>
+  </aside>
+
+  <main>
+    <div class="bar" id="exportbar">
+      <span class="meta" id="meta"></span>
+      <span class="meta" style="flex:none">Pages: <b id="pageN">0</b></span>
+      <button class="b2" id="docx">⬇ Download Word (.docx)</button>
+      <button class="b1" id="print">🖨 Print / Save as PDF</button>
+    </div>
+    <div id="doc"></div>
+  </main>
+</div>

@@ -1,0 +1,901 @@
+/* Curriculum data — Republic of Liberia, Elementary French, Grades 1–6
+   Derived from "FRENCH 1-6" curriculum guide (36 topics, 6 periods per grade). */
+
+const FR_CURRICULUM = [
+/* ================= GRADE 1 ================= */
+{
+  grade:1, period:"I", sem:"One", icon:"👋",
+  fr:"Salutation & L'Alphabet", en:"Greetings & Alphabet Sounds",
+  outcomes:[
+    "Initiate the act of speaking and improve social interaction",
+    "Translate words from French to English or English to French through writing",
+    "Master reciting the sound of the alphabet in French"
+  ],
+  objectives:[
+    "Greet each other using the French language",
+    "Initiate simple conversation with others",
+    "Translate greetings from French to English",
+    "Recite the alphabet sounds in French",
+    "Differentiate the vowel from the consonant in French"
+  ],
+  note:"Expression pattern: <b>Salutation + nom</b> — e.g. <i>Bonjour monsieur Dweh.</i> French vowels are <b>A, E, I, O, U, Y</b>; every other letter is a consonant.",
+  vocab:[
+    {fr:"Bonjour", en:"Good morning / Hello", say:"bon-ZHOOR", e:"🌅"},
+    {fr:"Bonsoir", en:"Good evening", say:"bon-SWAHR", e:"🌇"},
+    {fr:"Bonne nuit", en:"Good night", say:"bun NWEE", e:"🌙"},
+    {fr:"Salut", en:"Hi / Bye (informal)", say:"sah-LU", e:"✋"},
+    {fr:"Au revoir", en:"Goodbye", say:"oh ruh-VWAHR", e:"👋"},
+    {fr:"Comment ça va ?", en:"How are you?", say:"ko-mahn sah VAH", e:"❓"},
+    {fr:"Ça va bien, merci", en:"I am fine, thank you", say:"sah vah BYAN mair-SEE", e:"🙂"},
+    {fr:"S'il vous plaît", en:"Please", say:"seel voo PLEH", e:"🙏"},
+    {fr:"Merci", en:"Thank you", say:"mair-SEE", e:"💐"},
+    {fr:"Monsieur", en:"Sir / Mr.", say:"muh-SYUH", e:"👨"},
+    {fr:"Madame", en:"Madam / Mrs.", say:"mah-DAHM", e:"👩"},
+    {fr:"Une voyelle", en:"A vowel", say:"oon vwah-YELL", e:"🅰️"},
+    {fr:"Une consonne", en:"A consonant", say:"oon kon-SUN", e:"🅱️"}
+  ],
+  extra:{title:"L'alphabet — les sons", items:[
+    "A (ah) · B (bay) · C (say) · D (day) · E (uh) · F (eff) · G (zhay)",
+    "H (ash) · I (ee) · J (zhee) · K (kah) · L (ell) · M (emm) · N (enn)",
+    "O (oh) · P (pay) · Q (koo) · R (air) · S (ess) · T (tay) · U (oo)",
+    "V (vay) · W (doo-bluh-vay) · X (eeks) · Y (ee-grek) · Z (zed)"
+  ]},
+  activities:["Dramatize a greeting dialogue","Play roles of greetings (boys vs girls)","Sing the French alphabet song","Recitation drills"],
+  materials:["Visual dialogue poster","Bonjour Afrique, Book One","Alphabet chart & flash cards"],
+  assessment:["Class participation through dialogue","Recitation","Songs","Homework"]
+},
+{
+  grade:1, period:"II", sem:"One", icon:"📅",
+  fr:"Les Jours de la Semaine", en:"The Days of the Week",
+  outcomes:["Name the days of the week in French","Tell how many days a week has in French","Translate the days both ways","Spell the days of the week in French"],
+  objectives:["Name the days of the week in French","Tell how many days there are in a week","Spell the days of the week in French"],
+  note:"Une semaine a <b>sept jours</b> — a week has seven days. Days are <b>not capitalised</b> in French. Use ordinal numbers: <i>lundi est le premier jour</i>.",
+  vocab:[
+    {fr:"lundi", en:"Monday", say:"lun-DEE", e:"1️⃣"},
+    {fr:"mardi", en:"Tuesday", say:"mar-DEE", e:"2️⃣"},
+    {fr:"mercredi", en:"Wednesday", say:"mair-kruh-DEE", e:"3️⃣"},
+    {fr:"jeudi", en:"Thursday", say:"zhuh-DEE", e:"4️⃣"},
+    {fr:"vendredi", en:"Friday", say:"vahn-druh-DEE", e:"5️⃣"},
+    {fr:"samedi", en:"Saturday", say:"sam-DEE", e:"6️⃣"},
+    {fr:"dimanche", en:"Sunday", say:"dee-MAHNSH", e:"7️⃣"},
+    {fr:"une semaine", en:"a week", say:"oon suh-MEN", e:"🗓️"},
+    {fr:"aujourd'hui", en:"today", say:"oh-zhoor-DWEE", e:"📍"},
+    {fr:"demain", en:"tomorrow", say:"duh-MAN", e:"➡️"},
+    {fr:"hier", en:"yesterday", say:"ee-YAIR", e:"⬅️"}
+  ],
+  activities:["Oral and written drills in French","Role play and dramatization","Jumping rope while naming the days","Listening to audio dialogue","Songs, poems and recitation"],
+  materials:["Days of the week poster","Scissors, poster sheets, glue","Colorful markers and pencils","Jumping rope"],
+  assessment:["Class presentation using the days (boys vs girls)","Reciting the days in French","Songs / recitation","Homework","Poems"]
+},
+{
+  grade:1, period:"III", sem:"One", icon:"🗓️",
+  fr:"Les Mois de l'Année", en:"The Months of the Year",
+  outcomes:["Name the months of the year in French","Build vocabulary skills","Translate months both ways","Build confidence pronouncing and identifying the months"],
+  objectives:["Name the months of the year in French","Tell how many months there are in one year","Spell the months of the year in French"],
+  note:"Une année a <b>douze mois</b> — a year has twelve months. Ask with ordinals: <i>Quel est le premier mois ?</i> (Which is the first month?)",
+  vocab:[
+    {fr:"janvier", en:"January", say:"zhahn-VYAY", e:"❄️"},
+    {fr:"février", en:"February", say:"fay-vree-YAY", e:"💗"},
+    {fr:"mars", en:"March", say:"MARSS", e:"🌬️"},
+    {fr:"avril", en:"April", say:"ah-VREEL", e:"🌦️"},
+    {fr:"mai", en:"May", say:"MAY", e:"🌷"},
+    {fr:"juin", en:"June", say:"ZHWAN", e:"☀️"},
+    {fr:"juillet", en:"July", say:"zhwee-YAY", e:"🏖️"},
+    {fr:"août", en:"August", say:"OOT", e:"🌾"},
+    {fr:"septembre", en:"September", say:"sep-TAHM-bruh", e:"🎒"},
+    {fr:"octobre", en:"October", say:"ok-TOH-bruh", e:"🍂"},
+    {fr:"novembre", en:"November", say:"no-VAHM-bruh", e:"🌫️"},
+    {fr:"décembre", en:"December", say:"day-SAHM-bruh", e:"🎄"}
+  ],
+  activities:["Oral and written drills","Songs and recitation","Construct interrogative sentences using ordinal numbers","Role play and dramatization","Listening to audio dialogue"],
+  materials:["Months of the year poster","Visual dialogue poster","Scissors, glue, markers"],
+  assessment:["Class presentation using the months (boys vs girls)","Reciting the months","Songs / recitation","Homework","Poems"]
+},
+{
+  grade:1, period:"IV", sem:"Two", icon:"🔢",
+  fr:"Les Nombres 1 à 10", en:"Numbers from 1 to 10",
+  outcomes:["Identify and count number names 1–10","Translate number names both ways","Match numbers to their names","Spell number names","Use objects to show position"],
+  objectives:["Count from 1 to 10 in French","Match number names to their numerals","Name the kinds of numbers (cardinal & ordinal)"],
+  note:"<b>Cardinal</b> numbers count (un, deux, trois). <b>Ordinal</b> numbers show position (premier, deuxième, troisième).",
+  vocab:[
+    {fr:"un", en:"one (1)", say:"UHN", e:"1️⃣"},
+    {fr:"deux", en:"two (2)", say:"DUH", e:"2️⃣"},
+    {fr:"trois", en:"three (3)", say:"TRWAH", e:"3️⃣"},
+    {fr:"quatre", en:"four (4)", say:"KAT-ruh", e:"4️⃣"},
+    {fr:"cinq", en:"five (5)", say:"SANK", e:"5️⃣"},
+    {fr:"six", en:"six (6)", say:"SEESS", e:"6️⃣"},
+    {fr:"sept", en:"seven (7)", say:"SET", e:"7️⃣"},
+    {fr:"huit", en:"eight (8)", say:"WEET", e:"8️⃣"},
+    {fr:"neuf", en:"nine (9)", say:"NUHF", e:"9️⃣"},
+    {fr:"dix", en:"ten (10)", say:"DEESS", e:"🔟"}
+  ],
+  extra:{title:"Les nombres ordinaux", items:[
+    "1er premier · 2e deuxième · 3e troisième · 4e quatrième · 5e cinquième",
+    "6e sixième · 7e septième · 8e huitième · 9e neuvième · 10e dixième"
+  ]},
+  activities:["Grouping shapes and counting objects in French","Sequence grouping (math activity)","Recitations and songs"],
+  materials:["Numbers chart and flash cards","Counters","Poster sheets, glue, markers"],
+  assessment:["Grouping objects, cardinal and ordinal (boys vs girls)","Illustrating objects by position","Using students to model ordinal numbers","Spelling competition","Homework"]
+},
+{
+  grade:1, period:"V", sem:"Two", icon:"🎨",
+  fr:"Les Formes et les Couleurs", en:"Shapes and Colors",
+  outcomes:["Identify shapes and colors, and make shapes","Translate words both ways in writing","Match colors and shapes"],
+  objectives:["Describe different colors and shapes in French","Compare shapes in the school environment and the community","Spell the names of shapes and colors in French"],
+  note:"Colour adjectives usually come <b>after</b> the noun: <i>un carré rouge</i> (a red square), <i>une balle jaune</i> (a yellow ball).",
+  vocab:[
+    {fr:"rouge", en:"red", say:"ROOZH", e:"🟥"},
+    {fr:"bleu", en:"blue", say:"BLUH", e:"🟦"},
+    {fr:"jaune", en:"yellow", say:"ZHOHN", e:"🟨"},
+    {fr:"vert", en:"green", say:"VAIR", e:"🟩"},
+    {fr:"noir", en:"black", say:"NWAHR", e:"⬛"},
+    {fr:"blanc", en:"white", say:"BLAHN", e:"⬜"},
+    {fr:"orange", en:"orange", say:"o-RAHNZH", e:"🟧"},
+    {fr:"le cercle", en:"the circle", say:"luh SAIR-kluh", e:"⭕"},
+    {fr:"le carré", en:"the square", say:"luh kah-RAY", e:"🔲"},
+    {fr:"le triangle", en:"the triangle", say:"luh tree-AHN-gluh", e:"🔺"},
+    {fr:"le rectangle", en:"the rectangle", say:"luh rek-TAHN-gluh", e:"▬"},
+    {fr:"l'étoile", en:"the star", say:"lay-TWAHL", e:"⭐"}
+  ],
+  activities:["Shapes and colors recognition in French","Color name and shape puzzles","Group work","Songs","Dramatize dialogue"],
+  materials:["Scissors, poster sheets, glue","Colorful markers and pencils"],
+  assessment:["Matching colors to shapes","Class participation","Songs","Homework"]
+},
+{
+  grade:1, period:"VI", sem:"Two", icon:"🧍",
+  fr:"Les Parties du Corps", en:"Parts of the Body",
+  outcomes:["Name the parts of the body in French","Translate body parts both ways","Spell the parts of the body in French"],
+  objectives:["Identify and point to parts of the body in French","Tell the use of each body part","Sing and act body-part songs in French"],
+  note:"Use <b>j'ai</b> (I have) and <b>mal</b> (pain): <i>J'ai mal à la tête</i> — I have a headache.",
+  vocab:[
+    {fr:"la tête", en:"the head", say:"lah TET", e:"🧠"},
+    {fr:"les yeux", en:"the eyes", say:"lay-ZYUH", e:"👀"},
+    {fr:"le nez", en:"the nose", say:"luh NAY", e:"👃"},
+    {fr:"la bouche", en:"the mouth", say:"lah BOOSH", e:"👄"},
+    {fr:"l'oreille", en:"the ear", say:"lo-RAY", e:"👂"},
+    {fr:"la main", en:"the hand", say:"lah MAN", e:"✋"},
+    {fr:"le bras", en:"the arm", say:"luh BRAH", e:"💪"},
+    {fr:"la jambe", en:"the leg", say:"lah ZHAHMB", e:"🦵"},
+    {fr:"le pied", en:"the foot", say:"luh PYAY", e:"🦶"},
+    {fr:"les dents", en:"the teeth", say:"lay DAHN", e:"🦷"},
+    {fr:"les cheveux", en:"the hair", say:"lay shuh-VUH", e:"💇"},
+    {fr:"le cœur", en:"the heart", say:"luh KUHR", e:"❤️"}
+  ],
+  activities:["Touch-and-name game (Jacques a dit / Simon says)","Label a body outline poster","Songs and recitations","Dramatize dialogue"],
+  materials:["Body parts poster","Chart paper and markers","Flash cards"],
+  assessment:["Pointing and naming (boys vs girls)","Labelling exercise","Songs","Homework"]
+},
+
+/* ================= GRADE 2 ================= */
+{
+  grade:2, period:"I", sem:"One", icon:"🤝",
+  fr:"Salutation II", en:"Greetings II",
+  outcomes:["Initiate the act of speaking correctly in French","Improve social interaction skills","Translate expressions both ways, oral and written","Build up intellectualism"],
+  objectives:["Greet each other using French","Initiate simple conversation in French","Translate greetings from French to English","Develop the confidence of expressing themselves","Build proper intellectual interaction in French"],
+  note:"Expression: <b>personal pronoun + s'appeler</b> — <i>Comment tu t'appelles ? — Je m'appelle Musu.</i> Conjugate <b>être</b> (to be) and <b>avoir</b> (to have).",
+  vocab:[
+    {fr:"Je m'appelle…", en:"My name is…", say:"zhuh mah-PELL", e:"🪪"},
+    {fr:"Comment tu t'appelles ?", en:"What is your name?", say:"ko-mahn tu tah-PELL", e:"❓"},
+    {fr:"Enchanté(e)", en:"Nice to meet you", say:"ahn-shahn-TAY", e:"🤝"},
+    {fr:"Mon ami", en:"My friend (m)", say:"mon-nah-MEE", e:"👦"},
+    {fr:"Mon amie", en:"My friend (f)", say:"mon-nah-MEE", e:"👧"},
+    {fr:"C'est…", en:"This is…", say:"SEH", e:"👉"},
+    {fr:"Je suis", en:"I am", say:"zhuh SWEE", e:"🙋"},
+    {fr:"Tu es", en:"You are", say:"tu AY", e:"👤"},
+    {fr:"J'ai", en:"I have", say:"ZHAY", e:"🎒"},
+    {fr:"Comment allez-vous ?", en:"How are you? (formal)", say:"ko-mahn tah-lay VOO", e:"🎩"},
+    {fr:"À bientôt", en:"See you soon", say:"ah byan-TOH", e:"⏭️"}
+  ],
+  extra:{title:"Conjugaison — être / avoir", items:[
+    "ÊTRE: je suis · tu es · il/elle est · nous sommes · vous êtes · ils/elles sont",
+    "AVOIR: j'ai · tu as · il/elle a · nous avons · vous avez · ils/elles ont",
+    "S'APPELER: je m'appelle · tu t'appelles · il/elle s'appelle"
+  ]},
+  activities:["Dramatize dialogue","Group role play of greetings","Songs and recitation"],
+  materials:["Visual dialogue poster","Bonjour Afrique, Book One","Poster sheets, glue, markers"],
+  assessment:["Class participation through dialogue (boys vs girls)","Recitation","Songs","Homework","Group presentations"]
+},
+{
+  grade:2, period:"II", sem:"One", icon:"🦁",
+  fr:"Les Animaux", en:"Animals",
+  outcomes:["Compare types of animals (domestic & wild)","Translate names of animals and their young both ways","Spell the names of animals in French"],
+  objectives:["Identify and name animals and their young ones","Discuss the usage of animal materials","Distinguish between domestic and wild animals","List the habitats (homes) of animals in French"],
+  note:"Describe animals with adjectives: <i>un chien méchant</i> (a fierce dog), <i>un petit chat</i> (a small cat). <b>Domestique</b> = domestic, <b>sauvage</b> = wild.",
+  vocab:[
+    {fr:"le chien", en:"the dog", say:"luh SHYAN", e:"🐕"},
+    {fr:"le chat", en:"the cat", say:"luh SHAH", e:"🐈"},
+    {fr:"la chèvre", en:"the goat", say:"lah SHEV-ruh", e:"🐐"},
+    {fr:"la vache", en:"the cow", say:"lah VASH", e:"🐄"},
+    {fr:"le mouton", en:"the sheep", say:"luh moo-TOHN", e:"🐑"},
+    {fr:"la poule", en:"the hen", say:"lah POOL", e:"🐔"},
+    {fr:"le lion", en:"the lion", say:"luh LYOHN", e:"🦁"},
+    {fr:"l'éléphant", en:"the elephant", say:"lay-lay-FAHN", e:"🐘"},
+    {fr:"le singe", en:"the monkey", say:"luh SANZH", e:"🐒"},
+    {fr:"le poisson", en:"the fish", say:"luh pwah-SOHN", e:"🐟"},
+    {fr:"l'oiseau", en:"the bird", say:"lwah-ZOH", e:"🐦"},
+    {fr:"le serpent", en:"the snake", say:"luh sair-PAHN", e:"🐍"}
+  ],
+  activities:["Dramatize dialogue","Play roles of animals and their habitats","Community tour","Making images of animals","Songs and recitations"],
+  materials:["Animals poster","Visual dialogue poster","Scissors, glue, markers"],
+  assessment:["Class dialogue (boys vs girls)","Group work and presentations","Acting animal movements","Homework"]
+},
+{
+  grade:2, period:"III", sem:"One", icon:"📆",
+  fr:"Calendrier", en:"Calendar",
+  outcomes:["Translate the calendar's month, day and date","Organize birthday celebrations in French on the calendar","Translate expressions both ways","Build up intellectualism"],
+  objectives:["Write the full date in French","Tell the months, days and date in French","Identify their birthday's date, month or day and write it in French"],
+  note:"Full date pattern: <b>le + number + month + year</b> — <i>C'est aujourd'hui le 12 mars 2026.</i> Say <i>le premier</i> for the 1st, then le deux, le trois…",
+  vocab:[
+    {fr:"Quelle est la date ?", en:"What is the date?", say:"kell ay lah DAHT", e:"❓"},
+    {fr:"C'est aujourd'hui…", en:"Today is…", say:"say oh-zhoor-DWEE", e:"📍"},
+    {fr:"le premier", en:"the first (1st)", say:"luh pruh-MYAY", e:"1️⃣"},
+    {fr:"Quand ?", en:"When?", say:"KAHN", e:"⏰"},
+    {fr:"Je suis né(e) le…", en:"I was born on…", say:"zhuh swee NAY luh", e:"🎂"},
+    {fr:"l'anniversaire", en:"the birthday", say:"lah-nee-vair-SAIR", e:"🎉"},
+    {fr:"le mois", en:"the month", say:"luh MWAH", e:"🗓️"},
+    {fr:"l'année", en:"the year", say:"lah-NAY", e:"📅"},
+    {fr:"le jour", en:"the day", say:"luh ZHOOR", e:"☀️"},
+    {fr:"vingt", en:"twenty (20)", say:"VAN", e:"2️⃣"},
+    {fr:"trente et un", en:"thirty-one (31)", say:"trahnt ay UHN", e:"3️⃣"}
+  ],
+  activities:["Dramatize dialogue","Play roles of months, days and dates","Graph the class birthdays (math link)","Number drills 1–31"],
+  materials:["Calendar poster","Visual dialogue poster","Poster sheets, glue, markers"],
+  assessment:["Class dialogue (boys vs girls)","Group presentations indicating national events","Homework","Recitation"]
+},
+{
+  grade:2, period:"IV", sem:"Two", icon:"🌦️",
+  fr:"Le Temps et les Saisons", en:"Weather & Seasons",
+  outcomes:["Name the seasons in French","Match the weather and seasons of other countries and Liberia","Translate words both ways"],
+  objectives:["Name the seasons of Liberia in French","Tell how many seasons we have in Liberia","Outline when each season starts and ends","Show the difference between weather in Liberia and other countries"],
+  note:"Liberia has <b>two seasons</b>: <i>la saison sèche</i> (dry season, November–April) and <i>la saison des pluies</i> (rainy season, May–October). Weather uses <b>il fait…</b>",
+  vocab:[
+    {fr:"Quel temps fait-il ?", en:"What is the weather like?", say:"kell tahn feh-TEEL", e:"❓"},
+    {fr:"Il fait chaud", en:"It is hot", say:"eel feh SHOH", e:"🥵"},
+    {fr:"Il fait froid", en:"It is cold", say:"eel feh FRWAH", e:"🥶"},
+    {fr:"Il pleut", en:"It is raining", say:"eel PLUH", e:"🌧️"},
+    {fr:"Il y a du vent", en:"It is windy", say:"eel ee ah du VAHN", e:"🌬️"},
+    {fr:"Il y a du soleil", en:"It is sunny", say:"eel ee ah du so-LAY", e:"☀️"},
+    {fr:"la saison sèche", en:"the dry season", say:"lah say-zohn SESH", e:"🏜️"},
+    {fr:"la saison des pluies", en:"the rainy season", say:"lah say-zohn day PLWEE", e:"⛈️"},
+    {fr:"le parapluie", en:"the umbrella", say:"luh pah-rah-PLWEE", e:"☂️"},
+    {fr:"le nuage", en:"the cloud", say:"luh nu-AHZH", e:"☁️"},
+    {fr:"l'orage", en:"the storm", say:"lo-RAHZH", e:"🌩️"}
+  ],
+  activities:["Dramatize dialogue","Role play","School environment tour","Songs and recitations"],
+  materials:["Weather and season posters","Maps","Scissors, glue, markers"],
+  assessment:["Unscramble words (boys vs girls)","Recitation","Songs","Homework","Group presentations"]
+},
+{
+  grade:2, period:"V", sem:"Two", icon:"👕",
+  fr:"Les Vêtements", en:"Clothing",
+  outcomes:["Name different clothes in French","Match the weather and seasons with different clothes","Translate the names of clothes both ways"],
+  objectives:["Name the various clothing in French","Explain what clothing we use for each season","Show the difference between clothes in Liberia and other countries","Spell the different clothes we use"],
+  note:"Match clothing to season: <i>le parapluie → la saison des pluies</i>; <i>le chapeau → la saison sèche</i>. Use <b>porter</b> (to wear): <i>Je porte une chemise.</i>",
+  vocab:[
+    {fr:"la chemise", en:"the shirt", say:"lah shuh-MEEZ", e:"👔"},
+    {fr:"le pantalon", en:"the trousers", say:"luh pahn-tah-LOHN", e:"👖"},
+    {fr:"la robe", en:"the dress", say:"lah ROHB", e:"👗"},
+    {fr:"la jupe", en:"the skirt", say:"lah ZHUP", e:"🩱"},
+    {fr:"les chaussures", en:"the shoes", say:"lay shoh-SOOR", e:"👞"},
+    {fr:"le chapeau", en:"the hat", say:"luh shah-POH", e:"🎩"},
+    {fr:"le tricot", en:"the sweater", say:"luh tree-KOH", e:"🧥"},
+    {fr:"les chaussettes", en:"the socks", say:"lay shoh-SET", e:"🧦"},
+    {fr:"le short", en:"the shorts", say:"luh SHORT", e:"🩳"},
+    {fr:"l'uniforme", en:"the uniform", say:"lu-nee-FORM", e:"🎽"},
+    {fr:"porter", en:"to wear", say:"por-TAY", e:"🙋"}
+  ],
+  activities:["Dramatize dialogue","Role play","Oral and written drills","Illustrating images of different clothing","Songs and recitations"],
+  materials:["Clothing posters","Books on different clothing","Text book","Scissors, glue, markers"],
+  assessment:["Making different clothing (boys vs girls)","Recitation","Songs","Homework","Group assignment and presentations"]
+},
+{
+  grade:2, period:"VI", sem:"Two", icon:"🍚",
+  fr:"La Nourriture", en:"Food / Meals",
+  outcomes:["Name common foods and meals in French","Translate food names both ways","Spell the names of foods in French"],
+  objectives:["Name the three meals of the day in French","Express hunger and thirst","Order or request food politely in French"],
+  note:"Use <b>j'ai faim</b> (I am hungry) and <b>j'ai soif</b> (I am thirsty). Meals: <i>le petit déjeuner, le déjeuner, le dîner</i>.",
+  vocab:[
+    {fr:"le riz", en:"the rice", say:"luh REE", e:"🍚"},
+    {fr:"le pain", en:"the bread", say:"luh PAN", e:"🍞"},
+    {fr:"l'eau", en:"the water", say:"LOH", e:"💧"},
+    {fr:"le poisson", en:"the fish", say:"luh pwah-SOHN", e:"🐟"},
+    {fr:"la viande", en:"the meat", say:"lah VYAHND", e:"🍖"},
+    {fr:"le lait", en:"the milk", say:"luh LEH", e:"🥛"},
+    {fr:"le petit déjeuner", en:"breakfast", say:"luh puh-tee day-zhuh-NAY", e:"🌅"},
+    {fr:"le déjeuner", en:"lunch", say:"luh day-zhuh-NAY", e:"🍽️"},
+    {fr:"le dîner", en:"dinner", say:"luh dee-NAY", e:"🌙"},
+    {fr:"J'ai faim", en:"I am hungry", say:"zhay FAN", e:"😋"},
+    {fr:"J'ai soif", en:"I am thirsty", say:"zhay SWAHF", e:"🥤"},
+    {fr:"manger", en:"to eat", say:"mahn-ZHAY", e:"🍴"}
+  ],
+  activities:["Dramatize a market or restaurant dialogue","Draw and label a Liberian meal","Songs and recitations","Group work"],
+  materials:["Food posters and flash cards","Real or model food items","Markers and chart paper"],
+  assessment:["Role-play ordering food","Recitation","Homework","Group presentations"]
+},
+
+/* ================= GRADE 3 ================= */
+{
+  grade:3, period:"I", sem:"One", icon:"🍲",
+  fr:"La Nourriture", en:"Food / Meals (Extended)",
+  outcomes:["Name a wider range of foods and drinks","Translate food expressions both ways","Spell food vocabulary correctly"],
+  objectives:["Describe a balanced meal in French","Use expressions of liking: j'aime / je n'aime pas","Discuss local Liberian dishes in French"],
+  note:"Express taste: <b>J'aime le riz</b> (I like rice) · <b>Je n'aime pas le piment</b> (I don't like pepper). Use <i>un peu de</i> for 'a little'.",
+  vocab:[
+    {fr:"la banane", en:"the banana", say:"lah bah-NAHN", e:"🍌"},
+    {fr:"le manioc", en:"the cassava", say:"luh mah-NYOK", e:"🥔"},
+    {fr:"l'huile", en:"the oil", say:"LWEEL", e:"🫒"},
+    {fr:"le piment", en:"the pepper", say:"luh pee-MAHN", e:"🌶️"},
+    {fr:"le sel", en:"the salt", say:"luh SELL", e:"🧂"},
+    {fr:"le sucre", en:"the sugar", say:"luh SU-kruh", e:"🍬"},
+    {fr:"l'œuf", en:"the egg", say:"LUHF", e:"🥚"},
+    {fr:"le poulet", en:"the chicken", say:"luh poo-LEH", e:"🍗"},
+    {fr:"la soupe", en:"the soup", say:"lah SOOP", e:"🍲"},
+    {fr:"J'aime", en:"I like", say:"ZHEM", e:"❤️"},
+    {fr:"Je n'aime pas", en:"I don't like", say:"zhuh nem PAH", e:"🚫"},
+    {fr:"boire", en:"to drink", say:"BWAHR", e:"🥤"}
+  ],
+  activities:["Class survey: qu'est-ce que tu aimes manger ?","Make a food chart with French labels","Dramatize a market scene","Songs"],
+  materials:["Food posters","Chart paper, glue, markers","Text book"],
+  assessment:["Oral survey presentation","Written translation drill","Homework","Group work"]
+},
+{
+  grade:3, period:"II", sem:"One", icon:"👨‍👩‍👧",
+  fr:"Membres de la Famille", en:"Members of the Family",
+  outcomes:["Name the members of a family in French","Translate family words both ways","Spell family vocabulary in French"],
+  objectives:["Introduce their family members in French","Draw and label a family tree","Use possessive adjectives mon / ma / mes"],
+  note:"Possessives: <b>mon</b> + masculine (mon père), <b>ma</b> + feminine (ma mère), <b>mes</b> + plural (mes frères).",
+  vocab:[
+    {fr:"le père", en:"the father", say:"luh PAIR", e:"👨"},
+    {fr:"la mère", en:"the mother", say:"lah MAIR", e:"👩"},
+    {fr:"le frère", en:"the brother", say:"luh FRAIR", e:"👦"},
+    {fr:"la sœur", en:"the sister", say:"lah SUHR", e:"👧"},
+    {fr:"le fils", en:"the son", say:"luh FEESS", e:"🧒"},
+    {fr:"la fille", en:"the daughter", say:"lah FEEY", e:"👧"},
+    {fr:"le grand-père", en:"the grandfather", say:"luh grahn-PAIR", e:"👴"},
+    {fr:"la grand-mère", en:"the grandmother", say:"lah grahn-MAIR", e:"👵"},
+    {fr:"l'oncle", en:"the uncle", say:"LOHN-kluh", e:"🧔"},
+    {fr:"la tante", en:"the aunt", say:"lah TAHNT", e:"👩‍🦰"},
+    {fr:"le cousin", en:"the cousin (m)", say:"luh koo-ZAN", e:"👦"},
+    {fr:"la famille", en:"the family", say:"lah fah-MEEY", e:"👨‍👩‍👧‍👦"}
+  ],
+  activities:["Draw and label a family tree (arbre généalogique)","Introduce your family to the class in French","Role play","Songs"],
+  materials:["Family poster","Chart paper, markers","Family photographs"],
+  assessment:["Family tree presentation","Oral introduction","Homework","Written spelling test"]
+},
+{
+  grade:3, period:"III", sem:"One", icon:"🏠",
+  fr:"La Maison", en:"The House / Home",
+  outcomes:["Name the rooms and parts of a house in French","Translate house vocabulary both ways","Spell house words correctly"],
+  objectives:["Describe their own home in French","Name the furniture found in each room","Use prepositions: dans, sur, sous"],
+  note:"Prepositions: <b>dans</b> (in), <b>sur</b> (on), <b>sous</b> (under) — <i>Le livre est sur la table.</i>",
+  vocab:[
+    {fr:"la maison", en:"the house", say:"lah may-ZOHN", e:"🏠"},
+    {fr:"la chambre", en:"the bedroom", say:"lah SHAHM-bruh", e:"🛏️"},
+    {fr:"la cuisine", en:"the kitchen", say:"lah kwee-ZEEN", e:"🍳"},
+    {fr:"le salon", en:"the living room", say:"luh sah-LOHN", e:"🛋️"},
+    {fr:"la salle de bain", en:"the bathroom", say:"lah sal duh BAN", e:"🛁"},
+    {fr:"la porte", en:"the door", say:"lah PORT", e:"🚪"},
+    {fr:"la fenêtre", en:"the window", say:"lah fuh-NET-ruh", e:"🪟"},
+    {fr:"le lit", en:"the bed", say:"luh LEE", e:"🛏️"},
+    {fr:"la table", en:"the table", say:"lah TAH-bluh", e:"🪑"},
+    {fr:"la chaise", en:"the chair", say:"lah SHEZ", e:"💺"},
+    {fr:"le toit", en:"the roof", say:"luh TWAH", e:"🏘️"},
+    {fr:"la cour", en:"the yard", say:"lah KOOR", e:"🌳"}
+  ],
+  activities:["Draw and label your house in French","Preposition game with classroom objects","Role play a home visit","Songs"],
+  materials:["House poster","Drawing paper, markers","Model furniture / classroom objects"],
+  assessment:["Labelled house drawing","Oral description of the home","Homework","Group presentation"]
+},
+{
+  grade:3, period:"IV", sem:"One", icon:"🏫",
+  fr:"L'École", en:"The School",
+  outcomes:["Name school places and people in French","Translate school vocabulary both ways","Spell school words correctly"],
+  objectives:["Describe the school environment in French","Name school staff and their roles","Talk about school subjects in French"],
+  note:"Ask and answer: <i>Où est la bibliothèque ? — Elle est là-bas.</i> (Where is the library? — It is over there.)",
+  vocab:[
+    {fr:"l'école", en:"the school", say:"lay-KOL", e:"🏫"},
+    {fr:"la classe", en:"the class / classroom", say:"lah KLAHSS", e:"🚸"},
+    {fr:"le maître", en:"the teacher (m)", say:"luh MET-ruh", e:"👨‍🏫"},
+    {fr:"la maîtresse", en:"the teacher (f)", say:"lah may-TRESS", e:"👩‍🏫"},
+    {fr:"l'élève", en:"the pupil", say:"lay-LEV", e:"🧑‍🎓"},
+    {fr:"le directeur", en:"the principal", say:"luh dee-rek-TUHR", e:"👔"},
+    {fr:"la bibliothèque", en:"the library", say:"lah bee-blee-o-TEK", e:"📚"},
+    {fr:"la cour de récréation", en:"the playground", say:"lah koor duh ray-kray-ah-SYOHN", e:"⚽"},
+    {fr:"le bureau", en:"the desk / office", say:"luh bu-ROH", e:"🗄️"},
+    {fr:"le tableau", en:"the blackboard", say:"luh tah-BLOH", e:"📋"},
+    {fr:"la leçon", en:"the lesson", say:"lah luh-SOHN", e:"📖"},
+    {fr:"la récréation", en:"the break / recess", say:"lah ray-kray-ah-SYOHN", e:"🔔"}
+  ],
+  activities:["School compound tour naming places in French","Interview the teacher in French","Draw a map of the school with French labels","Songs"],
+  materials:["School map poster","Chart paper and markers","Text book"],
+  assessment:["Labelled school map","Oral tour presentation","Homework","Written test"]
+},
+{
+  grade:3, period:"V", sem:"Two", icon:"✏️",
+  fr:"Les Objets de la Classe", en:"Classroom Objects",
+  outcomes:["Name classroom objects in French","Translate classroom vocabulary both ways","Spell the names of classroom objects"],
+  objectives:["Identify and point to classroom objects in French","Ask for an object politely","Use indefinite articles un / une"],
+  note:"<b>un</b> before masculine nouns (un livre), <b>une</b> before feminine nouns (une règle). Ask: <i>Donne-moi un crayon, s'il te plaît.</i>",
+  vocab:[
+    {fr:"le livre", en:"the book", say:"luh LEE-vruh", e:"📕"},
+    {fr:"le cahier", en:"the notebook", say:"luh kah-YAY", e:"📓"},
+    {fr:"le crayon", en:"the pencil", say:"luh kray-YOHN", e:"✏️"},
+    {fr:"le stylo", en:"the pen", say:"luh stee-LOH", e:"🖊️"},
+    {fr:"la règle", en:"the ruler", say:"lah REG-luh", e:"📏"},
+    {fr:"la gomme", en:"the eraser", say:"lah GUM", e:"🧽"},
+    {fr:"le sac", en:"the bag", say:"luh SAK", e:"🎒"},
+    {fr:"la craie", en:"the chalk", say:"lah KREH", e:"🖍️"},
+    {fr:"les ciseaux", en:"the scissors", say:"lay see-ZOH", e:"✂️"},
+    {fr:"la carte", en:"the map", say:"lah KART", e:"🗺️"},
+    {fr:"la corbeille", en:"the waste basket", say:"lah kor-BAY", e:"🗑️"},
+    {fr:"le pupitre", en:"the school desk", say:"luh pu-PEE-truh", e:"🪑"}
+  ],
+  activities:["Flash-card naming race","'Donne-moi…' request game","Label real classroom objects with French cards","Songs"],
+  materials:["Real classroom objects","Flash cards and labels","Markers and card stock"],
+  assessment:["Naming race score","Written labelling test","Homework","Class participation"]
+},
+{
+  grade:3, period:"VI", sem:"Two", icon:"3️⃣",
+  fr:"Les Nombres de 1 à 30", en:"Numbers from 1 to 30",
+  outcomes:["Count from 1 to 30 in French","Translate number names both ways","Spell numbers up to 30 in French"],
+  objectives:["Count and write numbers 1–30 in French","Do simple addition and subtraction orally in French","Use numbers for ages and dates"],
+  note:"Teens: <b>onze, douze, treize, quatorze, quinze, seize</b>, then <i>dix-sept, dix-huit, dix-neuf</i>. After 20: <i>vingt et un, vingt-deux…</i>",
+  vocab:[
+    {fr:"onze", en:"eleven (11)", say:"OHNZ", e:"1️⃣"},
+    {fr:"douze", en:"twelve (12)", say:"DOOZ", e:"1️⃣"},
+    {fr:"treize", en:"thirteen (13)", say:"TREZ", e:"1️⃣"},
+    {fr:"quatorze", en:"fourteen (14)", say:"kah-TORZ", e:"1️⃣"},
+    {fr:"quinze", en:"fifteen (15)", say:"KANZ", e:"1️⃣"},
+    {fr:"seize", en:"sixteen (16)", say:"SEZ", e:"1️⃣"},
+    {fr:"dix-sept", en:"seventeen (17)", say:"dee-SET", e:"1️⃣"},
+    {fr:"dix-huit", en:"eighteen (18)", say:"dee-ZWEET", e:"1️⃣"},
+    {fr:"dix-neuf", en:"nineteen (19)", say:"deez-NUHF", e:"1️⃣"},
+    {fr:"vingt", en:"twenty (20)", say:"VAN", e:"2️⃣"},
+    {fr:"vingt et un", en:"twenty-one (21)", say:"van-tay-UHN", e:"2️⃣"},
+    {fr:"vingt-cinq", en:"twenty-five (25)", say:"vant-SANK", e:"2️⃣"},
+    {fr:"trente", en:"thirty (30)", say:"TRAHNT", e:"3️⃣"}
+  ],
+  activities:["Counting games and skip counting in French","Oral addition drills (deux plus trois font cinq)","Number bingo","Songs"],
+  materials:["Number chart 1–30","Counters and flash cards","Bingo cards"],
+  assessment:["Counting competition (boys vs girls)","Written number dictation","Homework","Math-French integration task"]
+},
+
+/* ================= GRADE 4 ================= */
+{
+  grade:4, period:"I", sem:"One", icon:"📐",
+  fr:"Les Objets de la Classe", en:"Classroom Objects (Extended)",
+  outcomes:["Name and describe classroom objects in French","Translate descriptive phrases both ways","Spell classroom vocabulary accurately"],
+  objectives:["Describe classroom objects using colour and size","Use il y a (there is / there are)","Write simple sentences about the classroom"],
+  note:"<b>Il y a</b> = there is / there are: <i>Il y a vingt pupitres dans la classe.</i> Add adjectives: <i>un grand tableau noir</i>.",
+  vocab:[
+    {fr:"Il y a", en:"There is / there are", say:"eel ee AH", e:"👉"},
+    {fr:"grand", en:"big / tall", say:"GRAHN", e:"⬆️"},
+    {fr:"petit", en:"small", say:"puh-TEE", e:"⬇️"},
+    {fr:"nouveau", en:"new", say:"noo-VOH", e:"✨"},
+    {fr:"vieux", en:"old", say:"VYUH", e:"🕰️"},
+    {fr:"l'ardoise", en:"the slate", say:"lar-DWAHZ", e:"📋"},
+    {fr:"le dictionnaire", en:"the dictionary", say:"luh deek-syo-NAIR", e:"📔"},
+    {fr:"l'horloge", en:"the clock", say:"lor-LOZH", e:"🕐"},
+    {fr:"le drapeau", en:"the flag", say:"luh drah-POH", e:"🏳️"},
+    {fr:"l'étagère", en:"the shelf", say:"lay-tah-ZHAIR", e:"🗄️"},
+    {fr:"le taille-crayon", en:"the pencil sharpener", say:"luh tie-kray-YOHN", e:"✏️"}
+  ],
+  activities:["Describe an object; classmates guess it","Write five sentences with 'il y a'","Inventory the classroom in French","Group presentation"],
+  materials:["Classroom objects","Chart paper, markers","Dictionary"],
+  assessment:["Guessing-game participation","Written sentences","Homework","Oral description"]
+},
+{
+  grade:4, period:"II", sem:"One", icon:"4️⃣",
+  fr:"Les Nombres de 1 à 40", en:"Numbers from 1 to 40",
+  outcomes:["Count from 1 to 40 in French","Translate and spell numbers up to 40","Apply numbers in real situations"],
+  objectives:["Count and write numbers 1–40 in French","Perform simple calculations aloud in French","Use numbers for prices, ages and quantities"],
+  note:"Pattern after 30: <i>trente et un, trente-deux, trente-trois…</i> Only <b>et un</b> takes 'et' (21, 31, 41).",
+  vocab:[
+    {fr:"trente et un", en:"thirty-one (31)", say:"trahnt ay UHN", e:"3️⃣"},
+    {fr:"trente-deux", en:"thirty-two (32)", say:"trahnt-DUH", e:"3️⃣"},
+    {fr:"trente-cinq", en:"thirty-five (35)", say:"trahnt-SANK", e:"3️⃣"},
+    {fr:"trente-neuf", en:"thirty-nine (39)", say:"trahnt-NUHF", e:"3️⃣"},
+    {fr:"quarante", en:"forty (40)", say:"kah-RAHNT", e:"4️⃣"},
+    {fr:"plus", en:"plus (+)", say:"PLUSS", e:"➕"},
+    {fr:"moins", en:"minus (−)", say:"MWAN", e:"➖"},
+    {fr:"font / égale", en:"equals (=)", say:"FOHN / ay-GAL", e:"🟰"},
+    {fr:"Combien ?", en:"How many / how much?", say:"kohm-BYAN", e:"❓"},
+    {fr:"Quel âge as-tu ?", en:"How old are you?", say:"kell ahzh ah-TU", e:"🎂"},
+    {fr:"J'ai dix ans", en:"I am ten years old", say:"zhay dee-ZAHN", e:"🧒"}
+  ],
+  activities:["Oral maths chain in French","Market role play with prices","Number dictation","Bingo up to 40"],
+  materials:["Number chart 1–40","Play money","Flash cards"],
+  assessment:["Oral calculation drill","Written dictation","Market role-play assessment","Homework"]
+},
+{
+  grade:4, period:"III", sem:"One", icon:"🕐",
+  fr:"L'Heure", en:"Telling Time",
+  outcomes:["Tell the time in French","Translate time expressions both ways","Write times correctly in French"],
+  objectives:["Ask and answer what time it is","Use et quart, et demie, moins le quart","Relate time to the daily school routine"],
+  note:"<b>Quelle heure est-il ? — Il est trois heures.</b> Add: <i>et quart</i> (:15), <i>et demie</i> (:30), <i>moins le quart</i> (:45).",
+  vocab:[
+    {fr:"Quelle heure est-il ?", en:"What time is it?", say:"kell UHR ay-TEEL", e:"❓"},
+    {fr:"Il est une heure", en:"It is one o'clock", say:"eel ay tune UHR", e:"🕐"},
+    {fr:"Il est midi", en:"It is noon", say:"eel ay mee-DEE", e:"🕛"},
+    {fr:"Il est minuit", en:"It is midnight", say:"eel ay mee-NWEE", e:"🌛"},
+    {fr:"et quart", en:"quarter past", say:"ay KAR", e:"🕒"},
+    {fr:"et demie", en:"half past", say:"ay duh-MEE", e:"🕜"},
+    {fr:"moins le quart", en:"quarter to", say:"mwan luh KAR", e:"🕘"},
+    {fr:"la minute", en:"the minute", say:"lah mee-NUT", e:"⏱️"},
+    {fr:"l'heure", en:"the hour / time", say:"LUHR", e:"⏰"},
+    {fr:"du matin", en:"in the morning (a.m.)", say:"du mah-TAN", e:"🌅"},
+    {fr:"du soir", en:"in the evening (p.m.)", say:"du SWAHR", e:"🌆"}
+  ],
+  activities:["Make a paper clock and set times in French","Ask-the-time chain around the class","Write your daily routine with times","Songs"],
+  materials:["Paper clocks / real clock","Card stock, split pins","Time flash cards"],
+  assessment:["Clock-setting accuracy","Written routine timetable","Oral question-and-answer","Homework"]
+},
+{
+  grade:4, period:"IV", sem:"One", icon:"🌈",
+  fr:"Les Couleurs", en:"The Colors",
+  outcomes:["Name and describe colours in French","Translate colour expressions both ways","Apply colour agreement in writing"],
+  objectives:["Name a wide range of colours in French","Make colour adjectives agree with the noun","Describe objects and the Liberian flag by colour"],
+  note:"Agreement: <i>un livre <b>vert</b></i> → <i>une porte <b>verte</b></i>. Plural adds -s: <i>des livres verts</i>. Some, like <b>orange</b> and <b>marron</b>, never change.",
+  vocab:[
+    {fr:"gris", en:"grey", say:"GREE", e:"🩶"},
+    {fr:"marron", en:"brown", say:"mah-ROHN", e:"🟤"},
+    {fr:"violet", en:"purple", say:"vyo-LEH", e:"🟣"},
+    {fr:"rose", en:"pink", say:"ROHZ", e:"🩷"},
+    {fr:"doré", en:"golden", say:"do-RAY", e:"🟡"},
+    {fr:"clair", en:"light (shade)", say:"KLAIR", e:"🔆"},
+    {fr:"foncé", en:"dark (shade)", say:"fohn-SAY", e:"🌑"},
+    {fr:"De quelle couleur ?", en:"What colour?", say:"duh kell koo-LUHR", e:"❓"},
+    {fr:"verte", en:"green (feminine)", say:"VAIRT", e:"🟩"},
+    {fr:"blanche", en:"white (feminine)", say:"BLAHNSH", e:"⬜"},
+    {fr:"noire", en:"black (feminine)", say:"NWAHR", e:"⬛"}
+  ],
+  activities:["Colour-mixing art with French labels","Describe the Liberian flag in French","Colour hunt around the school","Agreement drill worksheet"],
+  materials:["Paints and brushes","Colour charts","Flag of Liberia"],
+  assessment:["Art work with correct French labels","Agreement worksheet","Oral description","Homework"]
+},
+{
+  grade:4, period:"V", sem:"One", icon:"🫀",
+  fr:"Les Parties du Corps — Introduction", en:"Parts of the Body (Introduction)",
+  outcomes:["Name internal and external body parts in French","Translate health expressions both ways","Spell body vocabulary correctly"],
+  objectives:["Name additional parts of the body in French","Describe pain and illness using avoir mal à","Discuss hygiene and health in French"],
+  note:"<b>avoir mal à</b> + body part: <i>J'ai mal au ventre</i> (au = à + le), <i>J'ai mal à la tête</i>, <i>J'ai mal aux dents</i>.",
+  vocab:[
+    {fr:"le ventre", en:"the stomach", say:"luh VAHN-truh", e:"🫃"},
+    {fr:"le dos", en:"the back", say:"luh DOH", e:"🔙"},
+    {fr:"l'épaule", en:"the shoulder", say:"lay-POHL", e:"💪"},
+    {fr:"le genou", en:"the knee", say:"luh zhuh-NOO", e:"🦵"},
+    {fr:"le doigt", en:"the finger", say:"luh DWAH", e:"👆"},
+    {fr:"le cou", en:"the neck", say:"luh KOO", e:"🧣"},
+    {fr:"le visage", en:"the face", say:"luh vee-ZAHZH", e:"😊"},
+    {fr:"la langue", en:"the tongue", say:"lah LAHNG", e:"👅"},
+    {fr:"le sang", en:"the blood", say:"luh SAHN", e:"🩸"},
+    {fr:"J'ai mal à…", en:"I have a pain in…", say:"zhay mal AH", e:"🤒"},
+    {fr:"Je suis malade", en:"I am sick", say:"zhuh swee mah-LAHD", e:"🤧"}
+  ],
+  activities:["Label a full body diagram in French","Doctor–patient role play","Hygiene discussion in French","Jacques a dit (Simon says)"],
+  materials:["Body diagram poster","Chart paper and markers","Toy medical kit"],
+  assessment:["Labelled diagram","Role-play assessment","Written test","Homework"]
+},
+{
+  grade:4, period:"VI", sem:"Two", icon:"✈️",
+  fr:"Le Voyage", en:"Travel",
+  outcomes:["Name means of transport in French","Translate travel expressions both ways","Spell travel vocabulary correctly"],
+  objectives:["Talk about how they travel to school and to town","Use aller (to go) with prepositions","Ask for and give simple directions in French"],
+  note:"<b>aller</b>: je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont. <i>Je vais à l'école en voiture.</i>",
+  vocab:[
+    {fr:"le voyage", en:"the journey / travel", say:"luh vwah-YAHZH", e:"🧳"},
+    {fr:"la voiture", en:"the car", say:"lah vwah-TOOR", e:"🚗"},
+    {fr:"l'avion", en:"the airplane", say:"lah-VYOHN", e:"✈️"},
+    {fr:"le bateau", en:"the boat", say:"luh bah-TOH", e:"🚤"},
+    {fr:"le bus", en:"the bus", say:"luh BUSS", e:"🚌"},
+    {fr:"la moto", en:"the motorbike", say:"lah mo-TOH", e:"🏍️"},
+    {fr:"le vélo", en:"the bicycle", say:"luh vay-LOH", e:"🚲"},
+    {fr:"à pied", en:"on foot", say:"ah PYAY", e:"🚶"},
+    {fr:"Je vais à…", en:"I am going to…", say:"zhuh vay AH", e:"➡️"},
+    {fr:"la route", en:"the road", say:"lah ROOT", e:"🛣️"},
+    {fr:"le billet", en:"the ticket", say:"luh bee-YAY", e:"🎫"},
+    {fr:"Bon voyage !", en:"Have a good trip!", say:"bohn vwah-YAHZH", e:"👋"}
+  ],
+  activities:["Class survey: comment vas-tu à l'école ?","Draw a route map with French directions","Travel agency role play","Songs"],
+  materials:["Transport pictures and posters","Map of Liberia","Chart paper and markers"],
+  assessment:["Survey graph with French labels","Role-play assessment","Written translation","Homework"]
+},
+
+/* ================= GRADE 5 ================= */
+{
+  grade:5, period:"I", sem:"One", icon:"🌳",
+  fr:"Membres de la Famille", en:"Members of the Family (Extended)",
+  outcomes:["Describe the extended family in French","Translate family descriptions both ways","Write a short paragraph about the family"],
+  objectives:["Describe family members' age, work and character","Use possessive adjectives son / sa / ses, notre, leur","Present a family tree orally in French"],
+  note:"Possessives: <b>mon/ma/mes</b> (my), <b>ton/ta/tes</b> (your), <b>son/sa/ses</b> (his/her), <b>notre/nos</b> (our), <b>votre/vos</b>, <b>leur/leurs</b>.",
+  vocab:[
+    {fr:"les parents", en:"the parents", say:"lay pah-RAHN", e:"👫"},
+    {fr:"les grands-parents", en:"the grandparents", say:"lay grahn-pah-RAHN", e:"👴👵"},
+    {fr:"le neveu", en:"the nephew", say:"luh nuh-VUH", e:"👦"},
+    {fr:"la nièce", en:"the niece", say:"lah NYESS", e:"👧"},
+    {fr:"l'époux / l'épouse", en:"the husband / wife", say:"lay-POO / lay-POOZ", e:"💑"},
+    {fr:"le beau-père", en:"the stepfather / father-in-law", say:"luh boh-PAIR", e:"👨"},
+    {fr:"l'aîné(e)", en:"the eldest", say:"lay-NAY", e:"1️⃣"},
+    {fr:"le cadet", en:"the younger one", say:"luh kah-DEH", e:"2️⃣"},
+    {fr:"Il/Elle s'appelle…", en:"His/Her name is…", say:"eel sah-PELL", e:"🪪"},
+    {fr:"Il a trente ans", en:"He is thirty years old", say:"eel ah trahnt AHN", e:"🎂"},
+    {fr:"gentil", en:"kind", say:"zhahn-TEE", e:"😊"}
+  ],
+  activities:["Present a detailed family tree in French","Write a paragraph: ma famille","Interview a classmate about their family","Group presentation"],
+  materials:["Family photographs","Chart paper and markers","Exercise books"],
+  assessment:["Written paragraph","Oral presentation of the family tree","Peer interview report","Homework"]
+},
+{
+  grade:5, period:"II", sem:"One", icon:"👷",
+  fr:"Les Professions", en:"The Professions",
+  outcomes:["Name professions in French","Translate profession names both ways","Spell profession vocabulary correctly"],
+  objectives:["Name common professions in masculine and feminine forms","State what they want to be when they grow up","Describe what each worker does"],
+  note:"No article after être with jobs: <i>Il est médecin.</i> Feminine forms: <i>un instituteur → une institutrice</i>; <i>un infirmier → une infirmière</i>.",
+  vocab:[
+    {fr:"le médecin", en:"the doctor", say:"luh mayd-SAN", e:"🩺"},
+    {fr:"l'infirmier / l'infirmière", en:"the nurse", say:"lan-feer-MYAY", e:"💉"},
+    {fr:"l'instituteur / l'institutrice", en:"the primary teacher", say:"lan-stee-tu-TUHR", e:"👩‍🏫"},
+    {fr:"l'agriculteur", en:"the farmer", say:"lah-gree-kul-TUHR", e:"🌾"},
+    {fr:"le pêcheur", en:"the fisherman", say:"luh peh-SHUHR", e:"🎣"},
+    {fr:"le commerçant", en:"the trader", say:"luh ko-mair-SAHN", e:"🏪"},
+    {fr:"le chauffeur", en:"the driver", say:"luh shoh-FUHR", e:"🚕"},
+    {fr:"le policier", en:"the police officer", say:"luh po-lee-SYAY", e:"👮"},
+    {fr:"le tailleur", en:"the tailor", say:"luh tah-YUHR", e:"🧵"},
+    {fr:"l'avocat", en:"the lawyer", say:"lah-vo-KAH", e:"⚖️"},
+    {fr:"le maçon", en:"the mason / builder", say:"luh mah-SOHN", e:"🧱"},
+    {fr:"Je veux être…", en:"I want to be…", say:"zhuh vuh ZET-ruh", e:"⭐"}
+  ],
+  activities:["Career-day dress-up and introduce yourself in French","Match the worker to the workplace","Interview a community worker","Group presentation"],
+  materials:["Profession picture cards","Props / costumes","Chart paper and markers"],
+  assessment:["Oral self-introduction as a worker","Matching worksheet","Written test","Homework"]
+},
+{
+  grade:5, period:"III", sem:"One", icon:"🧥",
+  fr:"Les Temps et Vêtements", en:"Weather & Clothing",
+  outcomes:["Link weather conditions to appropriate clothing","Translate weather and clothing expressions both ways","Write a weather report in French"],
+  objectives:["Give a short weather report in French","Justify clothing choices with parce que (because)","Compare Liberian weather with other countries"],
+  note:"Justify with <b>parce que</b>: <i>Je porte un parapluie parce qu'il pleut.</i> Weather verbs: <i>il fait, il pleut, il y a</i>.",
+  vocab:[
+    {fr:"la météo", en:"the weather forecast", say:"lah may-tay-OH", e:"📺"},
+    {fr:"parce que", en:"because", say:"pars-KUH", e:"➡️"},
+    {fr:"l'imperméable", en:"the raincoat", say:"lam-pair-may-AH-bluh", e:"🧥"},
+    {fr:"les bottes", en:"the boots", say:"lay BUT", e:"🥾"},
+    {fr:"les sandales", en:"the sandals", say:"lay sahn-DAL", e:"🩴"},
+    {fr:"les lunettes de soleil", en:"the sunglasses", say:"lay lu-net duh so-LAY", e:"🕶️"},
+    {fr:"Il fait frais", en:"It is cool", say:"eel feh FREH", e:"🍃"},
+    {fr:"Il fait beau", en:"The weather is fine", say:"eel feh BOH", e:"🌤️"},
+    {fr:"Il fait mauvais", en:"The weather is bad", say:"eel feh moh-VEH", e:"⛈️"},
+    {fr:"l'humidité", en:"the humidity", say:"lu-mee-dee-TAY", e:"💦"},
+    {fr:"la température", en:"the temperature", say:"lah tahm-pay-rah-TOOR", e:"🌡️"}
+  ],
+  activities:["Present a TV-style weather report in French","Dress-the-doll weather matching game","Keep a one-week weather diary in French","Group work"],
+  materials:["Weather symbols and charts","Clothing pictures","Thermometer"],
+  assessment:["Weather report presentation","Weather diary","Matching exercise","Homework"]
+},
+{
+  grade:5, period:"IV", sem:"Two", icon:"⚽",
+  fr:"Les Parties du Corps et les Sports", en:"Parts of the Body & Sports",
+  outcomes:["Link body parts to sporting actions in French","Translate sports vocabulary both ways","Discuss favourite sports in French"],
+  objectives:["Name common sports in French","Use jouer à and faire de correctly","Explain which body parts each sport uses"],
+  note:"<b>jouer à</b> + ball games (<i>je joue au football</i>) · <b>faire de</b> + activities (<i>je fais de la natation</i>).",
+  vocab:[
+    {fr:"le football", en:"football / soccer", say:"luh foot-BALL", e:"⚽"},
+    {fr:"le basket-ball", en:"basketball", say:"luh bas-ket-BALL", e:"🏀"},
+    {fr:"la natation", en:"swimming", say:"lah nah-tah-SYOHN", e:"🏊"},
+    {fr:"la course", en:"running / race", say:"lah KOORSS", e:"🏃"},
+    {fr:"le kickball", en:"kickball", say:"luh kik-BALL", e:"🥎"},
+    {fr:"jouer", en:"to play", say:"zhoo-AY", e:"🎮"},
+    {fr:"courir", en:"to run", say:"koo-REER", e:"🏃"},
+    {fr:"sauter", en:"to jump", say:"soh-TAY", e:"🤸"},
+    {fr:"lancer", en:"to throw", say:"lahn-SAY", e:"🤾"},
+    {fr:"le muscle", en:"the muscle", say:"luh MUSS-kluh", e:"💪"},
+    {fr:"l'équipe", en:"the team", say:"lay-KEEP", e:"👥"},
+    {fr:"le match", en:"the match", say:"luh MATCH", e:"🏆"}
+  ],
+  activities:["Sports day with French commands (cours ! saute !)","Match the sport to the body parts used","Describe your favourite sport in French","Songs and chants"],
+  materials:["Sports equipment","Sports picture cards","Whistle and field"],
+  assessment:["Following French commands correctly","Oral description of a favourite sport","Matching worksheet","Homework"]
+},
+{
+  grade:5, period:"V", sem:"Two", icon:"´",
+  fr:"Les Accents — Introduction", en:"Accents (Introduction)",
+  outcomes:["Identify the five French accent marks","Pronounce accented letters correctly","Write words with the correct accents"],
+  objectives:["Name each accent in French","Explain how each accent changes pronunciation or meaning","Write dictated words with correct accents"],
+  note:"Accents change sound and meaning: <i>ou</i> (or) vs <i>où</i> (where); <i>a</i> (has) vs <i>à</i> (to). Never omit an accent — it is part of the spelling.",
+  vocab:[
+    {fr:"l'accent aigu (é)", en:"acute accent — 'ay' sound", say:"ak-sahn tay-GU", e:"´"},
+    {fr:"l'accent grave (è, à, ù)", en:"grave accent — open 'eh'", say:"ak-sahn GRAHV", e:"`"},
+    {fr:"l'accent circonflexe (ê)", en:"circumflex — a lost letter", say:"ak-sahn seer-kohn-FLEX", e:"^"},
+    {fr:"le tréma (ë, ï)", en:"diaeresis — vowels said apart", say:"luh tray-MAH", e:"¨"},
+    {fr:"la cédille (ç)", en:"cedilla — c said as 's'", say:"lah say-DEEY", e:"¸"},
+    {fr:"école", en:"school (é)", say:"ay-KOL", e:"🏫"},
+    {fr:"très", en:"very (è)", say:"TREH", e:"❗"},
+    {fr:"fenêtre", en:"window (ê)", say:"fuh-NET-ruh", e:"🪟"},
+    {fr:"Noël", en:"Christmas (ë)", say:"no-ELL", e:"🎄"},
+    {fr:"garçon", en:"boy (ç)", say:"gar-SOHN", e:"👦"},
+    {fr:"où", en:"where (ù)", say:"OO", e:"❓"}
+  ],
+  activities:["Accent hunt in a French text","Dictation of accented words","Write the accents on a worksheet","Pronunciation drill"],
+  materials:["French reading passage","Accent chart","Exercise books"],
+  assessment:["Dictation accuracy","Accent-marking worksheet","Oral pronunciation check","Homework"]
+},
+{
+  grade:5, period:"VI", sem:"Two", icon:"🍎",
+  fr:"Des Fruits et des Légumes", en:"Fruits and Vegetables",
+  outcomes:["Name fruits and vegetables in French","Translate produce vocabulary both ways","Spell fruit and vegetable names correctly"],
+  objectives:["Distinguish fruits from vegetables in French","Use partitive articles du, de la, des","Role play buying produce at the market"],
+  note:"Partitive: <b>du</b> (masc.), <b>de la</b> (fem.), <b>des</b> (plural) — <i>Je mange des mangues et du gombo.</i>",
+  vocab:[
+    {fr:"la mangue", en:"the mango", say:"lah MAHNG", e:"🥭"},
+    {fr:"l'orange", en:"the orange", say:"lo-RAHNZH", e:"🍊"},
+    {fr:"l'ananas", en:"the pineapple", say:"lah-nah-NAH", e:"🍍"},
+    {fr:"la papaye", en:"the pawpaw / papaya", say:"lah pah-PIE", e:"🥭"},
+    {fr:"la noix de coco", en:"the coconut", say:"lah nwah duh ko-KOH", e:"🥥"},
+    {fr:"la tomate", en:"the tomato", say:"lah to-MAHT", e:"🍅"},
+    {fr:"l'oignon", en:"the onion", say:"lo-NYOHN", e:"🧅"},
+    {fr:"le gombo", en:"the okra", say:"luh gohm-BOH", e:"🫛"},
+    {fr:"la carotte", en:"the carrot", say:"lah kah-ROT", e:"🥕"},
+    {fr:"le chou", en:"the cabbage", say:"luh SHOO", e:"🥬"},
+    {fr:"le marché", en:"the market", say:"luh mar-SHAY", e:"🏪"},
+    {fr:"C'est combien ?", en:"How much is it?", say:"say kohm-BYAN", e:"💰"}
+  ],
+  activities:["Market role play with play money","Sort real produce into fruits and vegetables","Draw and label a market stall","Songs"],
+  materials:["Real or model fruits and vegetables","Play money","Chart paper and markers"],
+  assessment:["Market role-play assessment","Sorting and labelling task","Written spelling test","Homework"]
+},
+
+/* ================= GRADE 6 ================= */
+{
+  grade:6, period:"I", sem:"One", icon:"📛",
+  fr:"Les Noms", en:"Nouns",
+  outcomes:["Identify nouns in a French sentence","Classify nouns by gender and number","Use nouns correctly in writing"],
+  objectives:["Define a noun in French","Distinguish common from proper nouns","Identify masculine and feminine nouns and form plurals"],
+  note:"Most plurals add <b>-s</b>. Nouns ending in <b>-eau/-eu</b> add <b>-x</b> (<i>bateau → bateaux</i>). Nouns ending in <b>-al</b> become <b>-aux</b> (<i>animal → animaux</i>).",
+  vocab:[
+    {fr:"le nom", en:"the noun / name", say:"luh NOHN", e:"📛"},
+    {fr:"le nom commun", en:"the common noun", say:"luh nohn ko-MUHN", e:"📄"},
+    {fr:"le nom propre", en:"the proper noun", say:"luh nohn PRO-pruh", e:"🔠"},
+    {fr:"masculin", en:"masculine", say:"mas-ku-LAN", e:"♂️"},
+    {fr:"féminin", en:"feminine", say:"fay-mee-NAN", e:"♀️"},
+    {fr:"le singulier", en:"the singular", say:"luh san-gu-LYAY", e:"1️⃣"},
+    {fr:"le pluriel", en:"the plural", say:"luh plu-RYELL", e:"➕"},
+    {fr:"un animal / des animaux", en:"an animal / animals", say:"ah-nee-MAL / ah-nee-MOH", e:"🐘"},
+    {fr:"un bateau / des bateaux", en:"a boat / boats", say:"bah-TOH / bah-TOH", e:"🚤"},
+    {fr:"un journal / des journaux", en:"a newspaper / newspapers", say:"zhoor-NAL / zhoor-NOH", e:"📰"},
+    {fr:"le genre", en:"the gender", say:"luh ZHAHN-ruh", e:"⚖️"}
+  ],
+  activities:["Underline the nouns in a French passage","Sort nouns into masculine / feminine columns","Plural-formation drill","Group correction on the board"],
+  materials:["French reading passage","Chart paper and markers","Exercise books"],
+  assessment:["Noun identification exercise","Gender sorting task","Plural-formation test","Homework"]
+},
+{
+  grade:6, period:"II", sem:"One", icon:"🔤",
+  fr:"Les Articles (Définis et Indéfinis)", en:"Definite and Indefinite Articles",
+  outcomes:["Use definite and indefinite articles correctly","Explain the difference between the two types","Apply elision before a vowel"],
+  objectives:["List the definite articles le, la, l', les","List the indefinite articles un, une, des","Choose the correct article for any noun"],
+  note:"Before a vowel or silent h, <b>le/la → l'</b>: <i>l'école, l'homme</i>. Definite = a known thing; indefinite = any one thing.",
+  vocab:[
+    {fr:"le", en:"the (masculine singular)", say:"LUH", e:"♂️"},
+    {fr:"la", en:"the (feminine singular)", say:"LAH", e:"♀️"},
+    {fr:"l'", en:"the (before a vowel)", say:"L", e:"🔗"},
+    {fr:"les", en:"the (plural)", say:"LAY", e:"➕"},
+    {fr:"un", en:"a / an (masculine)", say:"UHN", e:"1️⃣"},
+    {fr:"une", en:"a / an (feminine)", say:"OON", e:"1️⃣"},
+    {fr:"des", en:"some (plural)", say:"DAY", e:"🔢"},
+    {fr:"l'article défini", en:"the definite article", say:"lar-tee-kluh day-fee-NEE", e:"📌"},
+    {fr:"l'article indéfini", en:"the indefinite article", say:"lar-tee-kluh an-day-fee-NEE", e:"❔"},
+    {fr:"l'élision", en:"elision", say:"lay-lee-ZYOHN", e:"✂️"},
+    {fr:"au / aux", en:"to the / at the (contracted)", say:"OH", e:"➡️"}
+  ],
+  activities:["Fill-in-the-article worksheet","Article relay race on the board","Rewrite a passage inserting articles","Peer correction"],
+  materials:["Worksheets","Blackboard and chalk","French text book"],
+  assessment:["Fill-in-the-blank test","Board relay performance","Written passage","Homework"]
+},
+{
+  grade:6, period:"III", sem:"One", icon:"🖌️",
+  fr:"Les Adjectifs Descriptifs", en:"Descriptive Adjectives",
+  outcomes:["Use descriptive adjectives in French","Make adjectives agree in gender and number","Describe people and things in writing"],
+  objectives:["Form the feminine and plural of adjectives","Place adjectives correctly before or after the noun","Write a descriptive paragraph in French"],
+  note:"Most adjectives follow the noun. <b>BAGS</b> adjectives go before: <i>Beauty, Age, Goodness, Size</i> — <i>une belle grande maison</i>. Feminine usually adds <b>-e</b>.",
+  vocab:[
+    {fr:"grand / grande", en:"big, tall", say:"GRAHN / GRAHND", e:"⬆️"},
+    {fr:"petit / petite", en:"small", say:"puh-TEE / puh-TEET", e:"⬇️"},
+    {fr:"beau / belle", en:"beautiful, handsome", say:"BOH / BELL", e:"✨"},
+    {fr:"bon / bonne", en:"good", say:"BOHN / BUN", e:"👍"},
+    {fr:"mauvais / mauvaise", en:"bad", say:"moh-VEH / moh-VEZ", e:"👎"},
+    {fr:"gentil / gentille", en:"kind", say:"zhahn-TEE / zhahn-TEEY", e:"😊"},
+    {fr:"heureux / heureuse", en:"happy", say:"uh-RUH / uh-RUHZ", e:"😃"},
+    {fr:"intelligent(e)", en:"intelligent", say:"an-tay-lee-ZHAHN", e:"🧠"},
+    {fr:"long / longue", en:"long", say:"LOHN / LOHNG", e:"📏"},
+    {fr:"vieux / vieille", en:"old", say:"VYUH / VYAY", e:"🕰️"},
+    {fr:"nouveau / nouvelle", en:"new", say:"noo-VOH / noo-VELL", e:"🆕"},
+    {fr:"fort / forte", en:"strong", say:"FOR / FORT", e:"💪"}
+  ],
+  activities:["Describe a classmate in French (guess who)","Agreement drill worksheet","Write a descriptive paragraph about your village","Peer editing"],
+  materials:["Picture cards of people and places","Worksheets","Exercise books"],
+  assessment:["Guess-who oral activity","Agreement worksheet","Descriptive paragraph","Homework"]
+},
+{
+  grade:6, period:"IV", sem:"Two", icon:"🍂",
+  fr:"Les Saisons", en:"The Seasons",
+  outcomes:["Name the four seasons and Liberia's two seasons","Compare seasons across countries in French","Write about seasonal activities"],
+  objectives:["Name the four European seasons in French","Contrast them with Liberia's dry and rainy seasons","Describe activities typical of each season"],
+  note:"Use <b>en</b> for three seasons (<i>en été, en automne, en hiver</i>) but <b>au</b> for spring (<i>au printemps</i>).",
+  vocab:[
+    {fr:"le printemps", en:"spring", say:"luh pran-TAHN", e:"🌸"},
+    {fr:"l'été", en:"summer", say:"lay-TAY", e:"☀️"},
+    {fr:"l'automne", en:"autumn / fall", say:"loh-TUN", e:"🍂"},
+    {fr:"l'hiver", en:"winter", say:"lee-VAIR", e:"❄️"},
+    {fr:"la saison", en:"the season", say:"lah say-ZOHN", e:"🔄"},
+    {fr:"la récolte", en:"the harvest", say:"lah ray-KOLT", e:"🌾"},
+    {fr:"la sécheresse", en:"the drought", say:"lah say-shuh-RESS", e:"🏜️"},
+    {fr:"l'inondation", en:"the flood", say:"lee-nohn-dah-SYOHN", e:"🌊"},
+    {fr:"la plantation", en:"the planting / plantation", say:"lah plahn-tah-SYOHN", e:"🌱"},
+    {fr:"en été", en:"in summer", say:"ahn-nay-TAY", e:"🌞"},
+    {fr:"au printemps", en:"in spring", say:"oh pran-TAHN", e:"🌷"}
+  ],
+  activities:["Compare Liberia's seasons with France's in a table","Seasonal activity collage with French labels","Debate: which season is best?","Group presentation"],
+  materials:["Season posters","World map","Chart paper, glue, markers"],
+  assessment:["Comparison table","Collage with correct labels","Oral debate participation","Homework"]
+},
+{
+  grade:6, period:"V", sem:"Two", icon:"❓",
+  fr:"Les Interrogatifs", en:"Interrogatives",
+  outcomes:["Ask questions in French using question words","Form questions in three different ways","Conduct an interview in French"],
+  objectives:["Name the main French question words","Form questions using intonation, est-ce que, and inversion","Interview a classmate in French"],
+  note:"Three ways to ask: <b>Tu viens ?</b> (intonation) · <b>Est-ce que tu viens ?</b> · <b>Viens-tu ?</b> (inversion).",
+  vocab:[
+    {fr:"Qui ?", en:"Who?", say:"KEE", e:"🧍"},
+    {fr:"Que / Quoi ?", en:"What?", say:"KUH / KWAH", e:"❓"},
+    {fr:"Où ?", en:"Where?", say:"OO", e:"📍"},
+    {fr:"Quand ?", en:"When?", say:"KAHN", e:"⏰"},
+    {fr:"Pourquoi ?", en:"Why?", say:"poor-KWAH", e:"🤔"},
+    {fr:"Comment ?", en:"How?", say:"ko-MAHN", e:"🔧"},
+    {fr:"Combien ?", en:"How much / how many?", say:"kohm-BYAN", e:"🔢"},
+    {fr:"Quel / Quelle ?", en:"Which / what?", say:"KELL", e:"👉"},
+    {fr:"Est-ce que…?", en:"Is it that…? (question marker)", say:"ess-KUH", e:"🔎"},
+    {fr:"Qu'est-ce que c'est ?", en:"What is it?", say:"kess-kuh SEH", e:"❔"},
+    {fr:"parce que", en:"because (answer to pourquoi)", say:"pars-KUH", e:"➡️"}
+  ],
+  activities:["Interview a classmate with seven question words","Question-formation relay","Turn statements into questions three ways","Role play a journalist"],
+  materials:["Question word chart","Worksheets","Exercise books"],
+  assessment:["Recorded/written interview","Question transformation test","Oral role play","Homework"]
+},
+{
+  grade:6, period:"VI", sem:"Two", icon:"🔧",
+  fr:"Les Verbes Auxiliaires", en:"Auxiliary Verbs",
+  outcomes:["Conjugate être and avoir in the present tense","Use auxiliaries to form the passé composé","Write sentences in the past tense"],
+  objectives:["Conjugate être and avoir fully","Explain the role of an auxiliary verb","Form the passé composé with the correct auxiliary"],
+  note:"<b>Passé composé = auxiliary (avoir/être) + past participle.</b> <i>J'ai mangé</i> (I ate) · <i>Je suis allé</i> (I went). Verbs of movement use <b>être</b>.",
+  vocab:[
+    {fr:"être", en:"to be", say:"ET-ruh", e:"🪞"},
+    {fr:"avoir", en:"to have", say:"ah-VWAHR", e:"🎁"},
+    {fr:"l'auxiliaire", en:"the auxiliary verb", say:"lok-see-LYAIR", e:"🔧"},
+    {fr:"le participe passé", en:"the past participle", say:"luh par-tee-seep pah-SAY", e:"⏮️"},
+    {fr:"le passé composé", en:"the compound past tense", say:"luh pah-say kohm-po-ZAY", e:"📜"},
+    {fr:"J'ai mangé", en:"I ate / I have eaten", say:"zhay mahn-ZHAY", e:"🍽️"},
+    {fr:"Je suis allé(e)", en:"I went", say:"zhuh swee zah-LAY", e:"🚶"},
+    {fr:"Nous avons fini", en:"We finished", say:"noo zah-vohn fee-NEE", e:"✅"},
+    {fr:"Ils sont partis", en:"They left", say:"eel sohn par-TEE", e:"👋"},
+    {fr:"Tu as vu", en:"You saw", say:"tu ah VU", e:"👀"},
+    {fr:"Elle est née", en:"She was born", say:"ell ay NAY", e:"👶"}
+  ],
+  extra:{title:"Conjugaison au présent", items:[
+    "ÊTRE: je suis · tu es · il/elle est · nous sommes · vous êtes · ils/elles sont",
+    "AVOIR: j'ai · tu as · il/elle a · nous avons · vous avez · ils/elles ont",
+    "ÊTRE verbs (movement): aller, venir, partir, arriver, entrer, sortir, monter, descendre, naître, mourir, rester, tomber"
+  ]},
+  activities:["Conjugation chorus drill","Fill in the correct auxiliary worksheet","Write five sentences about yesterday","Board race conjugation game"],
+  materials:["Conjugation charts","Worksheets","Blackboard and chalk"],
+  assessment:["Conjugation written test","Passé composé sentences","Board race performance","Homework"]
+}
+];
+
+const FR_GENERAL = {
+  intro:"The understanding of a foreign language is critical to interactions with neighboring countries and the global world, through both verbal and written communication.",
+  objectives:[
+    "Appreciate the uniqueness of another language.",
+    "Recognize the value of knowing and speaking another language."
+  ],
+  approach:"A learner-centered approach is emphasized in this curriculum, based on the firm belief that learning becomes more permanent, meaningful and exciting when learners themselves take ownership of the learning process. Instructors are urged to contrive classroom strategies that engage learners actively in the teaching and learning process."
+};
