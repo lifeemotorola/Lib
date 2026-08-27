@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>French Course Pack Generator &middot; Grades 1-6</title>
+<title>Liberia Course Pack Generator &middot; All Subjects &middot; Grades 1-6</title>
 <style>
 :root{
   --bleu:#0b3b8c; --bleu-l:#1e5fd0; --rouge:#d3242e; --ink:#12203a; --muted:#5d6b85;
@@ -84,7 +84,68 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .sp{height:10px}
 .page hr{border:none;border-top:1px solid var(--line);margin:12px 0}
 
+/* ---- welcome screen ---- */
+.welcome{min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:30px 16px 46px;background:
+  radial-gradient(1100px 500px at 15% -10%,rgba(255,255,255,.16),transparent 60%),
+  linear-gradient(160deg,#0a357f 0%,#1e5fd0 55%,#0a357f 100%)}
+.welcome::after{content:"";position:fixed;left:0;right:0;bottom:0;height:8px;
+  background:linear-gradient(90deg,var(--bleu) 33%,#fff 33% 66%,var(--rouge) 66%)}
+.wcard{background:#fff;border-radius:22px;max-width:1040px;width:100%;overflow:hidden;
+  box-shadow:0 30px 80px rgba(3,18,50,.5)}
+.whero{background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff;padding:26px 30px;position:relative}
+.whero::after{content:"";position:absolute;inset:auto 0 0 0;height:5px;
+  background:linear-gradient(90deg,var(--bleu) 33%,#fff 33% 66%,var(--rouge) 66%)}
+.whero-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.wcrest{width:56px;height:56px;font-size:30px}
+.eyebrow{margin:0 0 3px;font-size:.7rem;letter-spacing:2.4px;text-transform:uppercase;opacity:.85;font-weight:700}
+.whero h1{margin:0;font-size:1.7rem}
+.wsub{margin:4px 0 0;font-size:.95rem;opacity:.9;max-width:680px}
+.wbody{padding:24px 30px 28px}
+.wlabel{display:flex;align-items:center;gap:9px;font-size:.76rem;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--muted);margin:20px 0 12px;font-weight:700}
+.wlabel:first-child{margin-top:0}
+.wlabel span{flex:none;width:22px;height:22px;border-radius:50%;background:var(--bleu);color:#fff;
+  display:grid;place-items:center;font-size:.72rem}
+.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.scard{position:relative;border:2px solid var(--line);border-radius:14px;padding:14px 13px 12px;cursor:pointer;
+  background:#fbfdff;transition:border-color .15s,box-shadow .15s,transform .15s,background .15s}
+.scard:hover{border-color:#a9c4ef;transform:translateY(-2px)}
+.scard.on{border-color:var(--bleu);background:#eff5ff;box-shadow:0 8px 20px rgba(11,59,140,.14)}
+.scard .sic{font-size:26px;line-height:1}
+.scard .sname{font-weight:700;margin:7px 0 2px;font-size:.98rem}
+.scard .sdesc{font-size:.76rem;color:var(--muted);line-height:1.35}
+.scard.lock{cursor:not-allowed}
+.scard.lock:hover{transform:none;border-color:var(--line)}
+.badge{position:absolute;top:9px;right:9px;font-size:.6rem;font-weight:700;letter-spacing:.6px;
+  text-transform:uppercase;padding:3px 8px;border-radius:99px}
+.badge.ready{background:#e2f5e9;color:#0c7a36}
+.badge.soon{background:#fff2d2;color:#8a6100}
+.grades{display:flex;gap:9px;flex-wrap:wrap}
+.gpill{flex:1;min-width:86px;padding:10px 6px;border:2px solid var(--line);border-radius:11px;background:#fbfdff;
+  font-weight:700;font-size:.92rem;color:var(--ink);cursor:pointer;text-align:center;transition:all .15s}
+.gpill:hover{border-color:#a9c4ef}
+.gpill.on{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.wnote{min-height:20px;font-size:.8rem;color:var(--rouge);margin:12px 0 0;font-weight:600}
+.cta{width:100%;margin-top:12px;padding:14px;border:none;border-radius:13px;cursor:pointer;
+  background:linear-gradient(135deg,var(--bleu),var(--bleu-l));color:#fff;font-weight:800;font-size:1.02rem;
+  box-shadow:0 10px 26px rgba(11,59,140,.35);transition:filter .15s}
+.cta:hover{filter:brightness(1.1)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.step{background:#f4f8fe;border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:.8rem;color:#3d4a63;
+  display:flex;gap:9px;align-items:center}
+.step b{flex:none;width:22px;height:22px;border-radius:50%;background:#e0ebfd;color:var(--bleu);
+  display:grid;place-items:center;font-size:.72rem}
+.home{margin-left:auto;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;
+  padding:8px 14px;border-radius:9px;font-weight:700;font-size:.82rem;cursor:pointer}
+.home:hover{background:rgba(255,255,255,.28)}
+.chg{color:var(--bleu);font-weight:700;text-decoration:none;border-bottom:1px dotted var(--bleu)}
+.chg:hover{text-decoration:none;border-bottom-style:solid}
+@media(max-width:760px){.subjects{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}
+  .whero h1{font-size:1.35rem}.wbody{padding:20px 18px 24px}}
+
 @media print{
+  .welcome{display:none!important}
   .top,.panel,.bar{display:none!important}
   .wrap{display:block;padding:0;max-width:none}
   body{background:#fff}
@@ -96,13 +157,50 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 </style>
 </head>
 <body>
+
+<!-- ==================== WELCOME SCREEN ==================== -->
+<section id="welcome" class="welcome">
+  <div class="wcard">
+    <div class="whero">
+      <div class="whero-in">
+        <div class="crest wcrest">🇱🇷</div>
+        <div>
+          <p class="eyebrow">Liberia National Curriculum · Grades 1–6</p>
+          <h1>Course Pack Generator</h1>
+          <p class="wsub">Printable pupil workbooks, period tests, semester exams and answer keys — every subject, from one classroom tool.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wbody">
+      <h2 class="wlabel"><span>1</span> Choose a subject</h2>
+      <div class="subjects" id="subjects"></div>
+
+      <h2 class="wlabel"><span>2</span> Choose a grade</h2>
+      <div class="grades" id="grades"></div>
+
+      <p class="wnote" id="wnote"></p>
+
+      <button class="cta" id="start">✏️&ensp;Open the generator</button>
+
+      <div class="steps">
+        <div class="step"><b>1</b> Pick your subject &amp; grade</div>
+        <div class="step"><b>2</b> Select units &amp; exercise types</div>
+        <div class="step"><b>3</b> Print, save as PDF or download Word</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GENERATOR WORKSPACE ==================== -->
+<div id="workspace" hidden>
 <header class="top">
   <div class="top-in">
-    <div class="crest">🇫🇷</div>
+    <div class="crest" id="crest">🇫🇷</div>
     <div>
-      <h1>French Course Pack Generator — Grades 1 to 6</h1>
-      <p>Builds printable pupil workbooks, tests and answer keys from the Liberian National Curriculum</p>
+      <h1 id="wsTitle">French Course Pack — Grades 1 to 6</h1>
+      <p id="wsSub">Builds printable pupil workbooks, tests and answer keys from the Liberian National Curriculum</p>
     </div>
+    <button class="home" id="home" title="Back to subject selection">⌂ All subjects</button>
   </div>
 </header>
 
@@ -114,6 +212,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
       <option value="3">Grade 3</option><option value="4">Grade 4</option>
       <option value="5">Grade 5</option><option value="6">Grade 6</option>
     </select></div>
+    <p class="hint" style="margin-top:-3px">Subject: <b id="panelSubject">French</b> · <a href="#" class="chg" id="chgSub">change</a></p>
 
     <h2>2 · Units to include</h2>
     <div id="periods"></div>
@@ -148,6 +247,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
     <div id="doc"></div>
   </main>
 </div>
+</div><!-- /workspace -->
 <script>
 /* Curriculum data — Republic of Liberia, Elementary French, Grades 1–6
    Derived from "FRENCH 1-6" curriculum guide (36 topics, 6 periods per grade). */
@@ -1490,6 +1590,85 @@ const GENERAL = {
   var $ = function (s) { return document.querySelector(s); };
   var pack = null;
 
+  /* ---------------- all-subject platform ---------------- */
+  var SUBJECTS = [
+    { id:"french",  name:"French",           icon:"🇫🇷", desc:"36 curriculum units · vocabulary, dialogues, numbers & drills", ready:true },
+    { id:"english", name:"English Language", icon:"📖", desc:"Reading, grammar, spelling & composition", ready:false },
+    { id:"math",    name:"Mathematics",      icon:"🔢", desc:"Numbers, operations, measurement & problem solving", ready:false },
+    { id:"science", name:"General Science",  icon:"🔬", desc:"Observation, experiments, health & the environment", ready:false },
+    { id:"social",  name:"Social Studies",   icon:"🌍", desc:"Liberia, communities, citizenship & map skills", ready:false },
+    { id:"hpe",     name:"Health & PE",      icon:"🤸", desc:"Hygiene, nutrition, safety & physical activity", ready:false }
+  ];
+  var state = { subject:"french", grade:1 };
+  var gradePills = [];
+
+  function subjectById(id) {
+    for (var i = 0; i < SUBJECTS.length; i++) if (SUBJECTS[i].id === id) return SUBJECTS[i];
+    return SUBJECTS[0];
+  }
+  function syncGradePills() {
+    gradePills.forEach(function (p) { p.el.classList.toggle("on", p.g === state.grade); });
+  }
+  function buildWelcome() {
+    var grid = $("#subjects");
+    grid.innerHTML = "";
+    SUBJECTS.forEach(function (s) {
+      var d = document.createElement("div");
+      d.className = "scard" + (s.ready ? "" : " lock") + (s.id === state.subject ? " on" : "");
+      d.setAttribute("data-id", s.id);
+      d.innerHTML = '<span class="badge ' + (s.ready ? 'ready">Ready' : 'soon">Coming soon') + '</span>' +
+        '<div class="sic">' + s.icon + '</div><div class="sname">' + s.name + '</div>' +
+        '<div class="sdesc">' + s.desc + '</div>';
+      d.onclick = function () {
+        if (!s.ready) {
+          $("#wnote").textContent = "📚 " + s.name + " is being digitised for the platform — " +
+            subjectById(state.subject).name + " is ready now.";
+          return;
+        }
+        state.subject = s.id;
+        document.querySelectorAll(".scard").forEach(function (c) {
+          c.classList.toggle("on", c.getAttribute("data-id") === s.id);
+        });
+        $("#wnote").textContent = "";
+      };
+      grid.appendChild(d);
+    });
+
+    var g = $("#grades");
+    g.innerHTML = "";
+    [1, 2, 3, 4, 5, 6].forEach(function (n) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "gpill" + (n === state.grade ? " on" : "");
+      b.textContent = "Grade " + n;
+      b.onclick = function () {
+        state.grade = n;
+        $("#grade").value = n;
+        syncGradePills();
+      };
+      gradePills.push({ g:n, el:b });
+      g.appendChild(b);
+    });
+  }
+  function openWorkspace() {
+    var s = subjectById(state.subject);
+    $("#grade").value = state.grade;
+    $("#welcome").style.display = "none";
+    $("#workspace").hidden = false;
+    $("#crest").textContent = s.icon;
+    $("#wsTitle").textContent = s.name + " Course Pack — Grades 1 to 6";
+    $("#panelSubject").textContent = s.name;
+    refreshPeriods();
+    generate();
+    window.scrollTo(0, 0);
+  }
+  function goHome() {
+    $("#workspace").hidden = true;
+    $("#welcome").style.display = "";
+    $("#wnote").textContent = "";
+    window.scrollTo(0, 0);
+  }
+
   var DEFAULT_SHEETS = ["vocab", "match", "fr2en", "en2fr", "mcq", "missing", "scramble", "copy", "write", "oral"];
 
   function opts() {
@@ -1751,14 +1930,15 @@ const GENERAL = {
     var o = opts();
     pack = GEN.buildPack(o);
     render(pack.blocks);
-    $("#meta").textContent = pack.topics.length + " unit(s) · " +
+    $("#meta").textContent = subjectById(state.subject).name + " · " + pack.topics.length + " unit(s) · " +
       o.sheets.length + " exercise type(s) · seed " + o.seed;
     $("#exportbar").style.display = "flex";
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     buildControls();
-    $("#grade").onchange = function () { refreshPeriods(); };
+    buildWelcome();
+    $("#grade").onchange = function () { state.grade = +this.value; syncGradePills(); refreshPeriods(); };
     $("#gen").onclick = generate;
     $("#reseed").onclick = function () {
       $("#seed").value = Math.floor(Math.random() * 9999) + 1; generate();
@@ -1766,7 +1946,8 @@ const GENERAL = {
     $("#print").onclick = function () { window.print(); };
     $("#docx").onclick = function () {
       if (!pack) return;
-      download(toDocx(pack.blocks), "French_Grade" + opts().grade + "_Workbook.docx");
+      var s = subjectById(state.subject);
+      download(toDocx(pack.blocks), s.name.replace(/\s+/g, "_") + "_Grade" + $("#grade").value + "_Workbook.docx");
     };
     $("#allon").onclick = function () {
       document.querySelectorAll(".sh,.pk").forEach(function (c) { c.checked = true; });
@@ -1774,6 +1955,9 @@ const GENERAL = {
     $("#alloff").onclick = function () {
       document.querySelectorAll(".sh").forEach(function (c) { c.checked = false; });
     };
+    $("#start").onclick = openWorkspace;
+    $("#home").onclick = goHome;
+    $("#chgSub").onclick = function (e) { e.preventDefault(); goHome(); };
     generate();
   });
 })();
