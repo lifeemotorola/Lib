@@ -2260,6 +2260,1321 @@ const EN_CURRICULUM = [
   materials:["Folktale collections","Poetry anthology","Irregular verb charts","Exercise books"],
   assessment:["Written traditional story","Poem recitation","Irregular verb test","Word formation exercise"]
 }
+,
+/* ================= GRADE 7 (Junior High · Language Arts) ================= */
+{
+  grade:7, period:"I", sem:"One", icon:"✍️",
+  title:"Constructing Sentences · Introduction to Literature",
+  subtitle:"Kinds of sentences, punctuation, friendly letters, folk tales, prose and poetry",
+  outcomes:[
+    "Learners are able to construct different types of sentences, write friendly letters, read and analyze prose and poetry, as well as differentiate prose from poetry"
+  ],
+  objectives:[
+    "Construct sentences and punctuate them correctly",
+    "Write and distinguish sentences according to kinds: declarative, interrogative, exclamatory and imperative",
+    "Construct friendly letters",
+    "Discuss and narrate folk tales (traditional stories)",
+    "Read and discuss selected prose and poetry"
+  ],
+  note:"A <b>declarative</b> sentence tells something and ends with a full stop. An <b>interrogative</b> sentence asks and ends with a question mark. An <b>exclamatory</b> sentence shows strong feeling and ends with an exclamation mark. An <b>imperative</b> sentence gives a command or request and usually ends with a full stop.",
+  focus:["Effective sentences","Kinds of sentences","Punctuation","Friendly letters","Elements of literature","Folk tales","Prose and poetry"],
+  words:[
+    {w:"declarative", s:"de-clar-a-tive", d:"a sentence that makes a statement", x:"The rain fell all night is a declarative sentence."},
+    {w:"interrogative", s:"in-ter-rog-a-tive", d:"a sentence that asks a question", x:"Where is your exercise book? is interrogative."},
+    {w:"exclamatory", s:"ex-clam-a-tor-y", d:"a sentence that shows strong feeling", x:"What a beautiful morning! is exclamatory."},
+    {w:"imperative", s:"im-per-a-tive", d:"a sentence that gives a command or request", x:"Close the door quietly is imperative."},
+    {w:"punctuation", s:"punc-tu-a-tion", d:"the marks used to make writing clear", x:"Correct punctuation helps the reader."},
+    {w:"folk tale", s:"folk tale", d:"a traditional story passed down by word of mouth", x:"The folk tale of the clever hare is told in many towns."},
+    {w:"prose", s:"prose", d:"ordinary written language in sentences and paragraphs", x:"A novel is written in prose."},
+    {w:"poetry", s:"po-e-try", d:"writing arranged in lines and verses, often with rhythm", x:"Her poetry uses strong images."},
+    {w:"simile", s:"sim-i-le", d:"a comparison using like or as", x:"He is as brave as a lion is a simile."},
+    {w:"metaphor", s:"met-a-phor", d:"a direct comparison without like or as", x:"Time is a thief is a metaphor."}
+  ],
+  sight:["theme","plot","setting","character","stanza","rhyme","narrator","dialogue","salutation","closing"],
+  phonics:[
+    {p:"-ative", label:"the -ative ending in sentence types", words:["declarative","interrogative","exclamatory","imperative","narrative"]},
+    {p:"-ion", label:"nouns ending in -ion", words:["punctuation","conversation","description","narration","exclamation"]},
+    {p:"-ly", label:"adverbs formed with -ly", words:["quietly","clearly","politely","carefully","correctly"]}
+  ],
+  grammar:[
+    {q:"Add the correct end mark: Where did you put my pen___", a:"?", why:"An interrogative sentence asks a question, so it ends with a question mark."},
+    {q:"Add the correct end mark: What a wonderful harvest we had___", a:"!", why:"An exclamatory sentence shows strong feeling and ends with an exclamation mark."},
+    {q:"Add the correct end mark: Sweep the classroom before you leave___", a:".", why:"An imperative sentence gives a command and ends with a full stop."},
+    {q:"Name the kind of sentence: The market opens at six o'clock.", a:"Declarative", why:"It makes a statement."},
+    {q:"Name the kind of sentence: Please pass me the chalk.", a:"Imperative", why:"It makes a request."},
+    {q:"Correct the punctuation: my friend lives in gbarnga", a:"My friend lives in Gbarnga.", why:"Begin a sentence with a capital letter, capitalise the place name, and end with a full stop."},
+    {q:"Which part of a friendly letter comes first, the salutation or the body?", a:"The salutation", why:"A friendly letter runs: heading, salutation, body, closing, signature."},
+    {q:"Write the closing of a friendly letter to a friend.", a:"Your friend, / Yours sincerely,", why:"A friendly letter uses a warm closing followed by a comma."}
+  ],
+  pairs:[
+    {a:"declarative", b:"statement", kind:"sentence kind"},
+    {a:"interrogative", b:"question", kind:"sentence kind"},
+    {a:"exclamatory", b:"strong feeling", kind:"sentence kind"},
+    {a:"imperative", b:"command", kind:"sentence kind"},
+    {a:"prose", b:"poetry", kind:"antonym"},
+    {a:"begin", b:"commence", kind:"synonym"}
+  ],
+  passage:{
+    title:"Why the Hare Has Long Ears",
+    text:"In the old days the hare had ears no longer than a mouse's. He was proud of his cleverness and boasted that no animal in the forest could trick him. One dry season the well in the town dried up, and the animals agreed that each of them would dig in turn. The hare slipped away when his turn came and hid in the tall grass.\n\nWhen the well was finished, the hare came out and drank first, laughing at the others. The elephant said nothing. That night the animals held a meeting under the cotton tree and decided that the hare should hear every word ever spoken about him. In the morning the hare woke to find his ears stretched long and thin. From that day the hare hears everything, but no one trusts him with a secret.",
+    qs:[
+      {q:"Why did the animals agree to dig the well?", a:"Because the well in the town had dried up in the dry season and they all needed water."},
+      {q:"What did the hare do when his turn came to dig?", a:"He slipped away and hid in the tall grass instead of digging."},
+      {q:"How were the hare's ears changed, and why?", a:"They were stretched long and thin so that he would hear every word spoken about him, as a punishment for his trickery."},
+      {q:"What lesson (theme) does this folk tale teach?", a:"That laziness and trickery are punished, and that a person who cheats others loses their trust."},
+      {q:"Is this passage prose or poetry? Give one reason.", a:"Prose, because it is written in ordinary sentences and paragraphs rather than in lines and verses."}
+    ]
+  },
+  activities:[
+    "Write various kinds of sentences about given topics with proper punctuation",
+    "Write a friendly letter to an imaginary friend",
+    "Narrate and discuss a folk tale from your own community",
+    "Read and discuss selected short stories, identifying theme, plot, setting and characters",
+    "Read and discuss poetic literary terms such as simile, metaphor and rhyme"
+  ],
+  materials:["Grade 7 English pupil's book","Selected prose and poetry","Exercise books","Dictionary","Chalkboard"],
+  assessment:["Classwork","Homework","Assignments","Quizzes"]
+},
+{
+  grade:7, period:"II", sem:"One", icon:"📄",
+  title:"Paragraph Writing · Literature and Reading Comprehension",
+  subtitle:"Subject–verb agreement, kinds of paragraphs, prefixes and suffixes, elements of the short story",
+  outcomes:[
+    "Learners are able to construct sentences and paragraphs using grammar mechanics; read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Construct paragraphs using subject and verb agreement, capitalization and punctuation",
+    "Develop vocabulary in paragraph writing using prefixes and suffixes",
+    "Discuss elements of short stories: setting, theme, plot and characters",
+    "Create simple short stories"
+  ],
+  note:"A <b>paragraph</b> is a group of sentences about one main idea. The <b>topic sentence</b> states that idea; the other sentences give supporting details. In <b>subject–verb agreement</b> a singular subject takes a singular verb (the boy runs) and a plural subject takes a plural verb (the boys run).",
+  focus:["Subject–verb agreement","Kinds of paragraphs","Prefixes and suffixes","Elements of the short story","Autobiography"],
+  words:[
+    {w:"paragraph", s:"par-a-graph", d:"a group of sentences about one main idea", x:"Each paragraph begins on a new line."},
+    {w:"topic sentence", s:"top-ic sen-tence", d:"the sentence that states the main idea of a paragraph", x:"Put the topic sentence first."},
+    {w:"descriptive", s:"de-scrip-tive", d:"describing how something looks, sounds or feels", x:"She wrote a descriptive paragraph about the market."},
+    {w:"narrative", s:"nar-ra-tive", d:"telling a story of events in order", x:"His narrative paragraph told of the journey."},
+    {w:"prefix", s:"pre-fix", d:"a word part added to the front of a word", x:"The prefix un- makes unhappy."},
+    {w:"suffix", s:"suf-fix", d:"a word part added to the end of a word", x:"The suffix -ful makes helpful."},
+    {w:"setting", s:"set-ting", d:"where and when a story takes place", x:"The setting is a fishing village at dawn."},
+    {w:"plot", s:"plot", d:"the series of events in a story", x:"The plot moves from the quarrel to the reconciliation."},
+    {w:"theme", s:"theme", d:"the central message or idea of a work", x:"The theme of the story is forgiveness."},
+    {w:"autobiography", s:"au-to-bi-og-ra-phy", d:"the story of a person's life written by that person", x:"She wrote her autobiography at sixty."}
+  ],
+  sight:["character","protagonist","conflict","climax","resolution","detail","unity","coherence","draft","revise"],
+  phonics:[
+    {p:"un-", label:"the prefix un- meaning not", words:["unhappy","unable","unkind","unfair","unusual"]},
+    {p:"re-", label:"the prefix re- meaning again", words:["rewrite","return","rebuild","review","replace"]},
+    {p:"-ful / -less", label:"suffixes meaning full of / without", words:["helpful","careful","hopeless","fearless","useful"]}
+  ],
+  grammar:[
+    {q:"Choose the correct verb: The learners (was / were) writing their essays.", a:"were", why:"The subject learners is plural, so it takes the plural verb were."},
+    {q:"Choose the correct verb: Each of the girls (has / have) a pencil.", a:"has", why:"Each is singular, so the verb must be singular."},
+    {q:"Choose the correct verb: My brother and my sister (is / are) at school.", a:"are", why:"Two subjects joined by and form a plural subject."},
+    {q:"Add the prefix that means 'not' to the word 'necessary'.", a:"unnecessary", why:"The prefix un- means not."},
+    {q:"Add a suffix to 'care' to mean 'without care'.", a:"careless", why:"The suffix -less means without."},
+    {q:"Correct the capitalization: on monday we travelled to buchanan.", a:"On Monday we travelled to Buchanan.", why:"Capitalise the first word, the day of the week and the name of the city."},
+    {q:"Which sentence would make the best topic sentence for a paragraph about school life?", a:"Life at our school brings both pleasures and difficulties.", why:"A topic sentence states the main idea that the other sentences will support."},
+    {q:"Name the kind of paragraph that tells events in the order they happened.", a:"Narrative", why:"A narrative paragraph tells a story in sequence."}
+  ],
+  pairs:[
+    {a:"prefix", b:"suffix", kind:"antonym"},
+    {a:"begin", b:"start", kind:"synonym"},
+    {a:"ancient", b:"modern", kind:"antonym"},
+    {a:"biography", b:"autobiography", kind:"related pair"},
+    {a:"un-", b:"not", kind:"prefix meaning"},
+    {a:"-less", b:"without", kind:"suffix meaning"}
+  ],
+  passage:{
+    title:"Books",
+    text:"My uncle kept a wooden box beneath his bed, and in it he kept books. There were no shelves in our house and no library in our town, but there was that box. On evenings when the generator was silent and the lamp burned low, he would lift the lid and let me choose.\n\nI did not always understand what I read. Some of the pages carried words I had never heard spoken in our town. But my uncle told me that a book is a road, and that a reader who walks it long enough arrives somewhere. Years later, sitting in an examination hall in Monrovia, I understood him. Every road I had walked in that box had brought me to the desk where I now sat, and none of the walking had been wasted.",
+    qs:[
+      {q:"Where did the writer's uncle keep his books?", a:"In a wooden box beneath his bed."},
+      {q:"Why did the writer sometimes not understand what he read?", a:"Because some pages carried words he had never heard spoken in his town."},
+      {q:"What did the uncle mean when he said a book is a road?", a:"He meant that reading takes you somewhere over time, leading you to knowledge and opportunity."},
+      {q:"What is the theme of this passage?", a:"That reading, even when difficult and without good facilities, leads to learning and opportunity."},
+      {q:"Is this passage a biography or an autobiography? Give a reason.", a:"An autobiography, because the writer tells the story of his own life using the word I."}
+    ]
+  },
+  activities:[
+    "Write paragraphs using correct subject–verb agreement",
+    "Write different kinds of paragraphs: descriptive and narrative",
+    "In groups of five, discuss the challenges of school life and present findings orally and in writing",
+    "Read and analyze a selected poem, then write your own autobiography",
+    "Read prose and poetry, identify the elements of short stories, then write a simple short story of your own"
+  ],
+  materials:["Grade 7 English pupil's book","Selected poems and short stories","Exercise books","Dictionary"],
+  assessment:["Assignment","Individual work","Quizzes","Tests"]
+}
+,
+{
+  grade:7, period:"III", sem:"One", icon:"🎭",
+  title:"Sentence Writing · Verbs, Adjectives, Drama and Plays",
+  subtitle:"Action and linking verbs, kinds of adjectives, prose and poetry characteristics, writing plays",
+  outcomes:[
+    "Learners are able to construct sentences using action and linking verbs as well as adjectives, read and analyze prose and poetry, and develop skills in drama and plays"
+  ],
+  objectives:[
+    "Write sentences using action and linking verbs",
+    "Develop sentences using different kinds of adjectives, for example the predicate adjective",
+    "Identify, read and discuss prose and poetry characteristics",
+    "Write plays and dramatize them"
+  ],
+  note:"An <b>action verb</b> tells what the subject does (she writes). A <b>linking verb</b> joins the subject to a word that renames or describes it (she is a nurse; the soup is hot). Common linking verbs are: is, am, are, was, were, seem, become, appear.",
+  focus:["Action verbs","Linking verbs","Kinds of adjectives","Predicate adjective","Prose and poetry characteristics","Drama and plays"],
+  words:[
+    {w:"action verb", s:"ac-tion verb", d:"a verb that shows what the subject does", x:"In 'the goalkeeper jumped', jumped is an action verb."},
+    {w:"linking verb", s:"link-ing verb", d:"a verb that joins the subject to a word describing it", x:"In 'the water is cold', is is a linking verb."},
+    {w:"adjective", s:"ad-jec-tive", d:"a word that describes a noun or pronoun", x:"A tall palm tree stood by the road."},
+    {w:"predicate adjective", s:"pred-i-cate ad-jec-tive", d:"an adjective that follows a linking verb and describes the subject", x:"The soup is delicious."},
+    {w:"demonstrative", s:"dem-on-stra-tive", d:"pointing out which one: this, that, these, those", x:"This book is mine; those books are yours."},
+    {w:"drama", s:"dra-ma", d:"a story written to be acted on a stage", x:"Our class performed a short drama."},
+    {w:"dialogue", s:"di-a-logue", d:"the words spoken by characters in a play or story", x:"The dialogue revealed the quarrel."},
+    {w:"stage direction", s:"stage di-rec-tion", d:"an instruction in a play telling actors what to do", x:"The stage direction says he enters slowly."},
+    {w:"act", s:"act", d:"a main division of a play", x:"The play has three acts."},
+    {w:"scene", s:"scene", d:"a smaller division within an act", x:"Scene two takes place in the market."}
+  ],
+  sight:["cast","script","protagonist","antagonist","monologue","rhythm","verse","imagery","narrator","audience"],
+  phonics:[
+    {p:"-ive", label:"adjectives ending in -ive", words:["descriptive","attractive","expensive","creative","active"]},
+    {p:"-ous", label:"adjectives ending in -ous", words:["famous","dangerous","generous","nervous","curious"]},
+    {p:"-able", label:"adjectives ending in -able", words:["comfortable","reasonable","valuable","reliable","enjoyable"]}
+  ],
+  grammar:[
+    {q:"Is the verb action or linking? The farmer harvested the rice.", a:"Action verb", why:"Harvested tells what the farmer does."},
+    {q:"Is the verb action or linking? The mangoes are ripe.", a:"Linking verb", why:"Are joins the subject mangoes to the describing word ripe."},
+    {q:"Underline the predicate adjective: The night became cold.", a:"cold", why:"Cold follows the linking verb became and describes the subject night."},
+    {q:"Which kind of adjective is 'those' in 'those chairs'?", a:"Demonstrative adjective", why:"It points out which ones."},
+    {q:"Write an adjective that tells how many: ___ learners were absent.", a:"Ten (or: few, many, several)", why:"Adjectives can tell how many."},
+    {q:"Change to a linking-verb sentence: The teacher spoke kindly. (use 'is')", a:"The teacher is kind.", why:"A linking verb joins the subject to a predicate adjective."},
+    {q:"In a play script, what do we call the words the characters speak?", a:"Dialogue", why:"Dialogue is the spoken part of a script."},
+    {q:"Name one characteristic of poetry that prose does not usually have.", a:"It is written in lines and stanzas, often with rhyme and regular rhythm.", why:"Prose runs in sentences and paragraphs."}
+  ],
+  pairs:[
+    {a:"action verb", b:"linking verb", kind:"contrast"},
+    {a:"generous", b:"selfish", kind:"antonym"},
+    {a:"brave", b:"courageous", kind:"synonym"},
+    {a:"act", b:"scene", kind:"related pair"},
+    {a:"prose", b:"paragraphs", kind:"related pair"},
+    {a:"poetry", b:"stanzas", kind:"related pair"}
+  ],
+  passage:{
+    title:"The Borrowed Lamp (a short play)",
+    text:"CHARACTERS: MA TENNEH, a trader.  KOLLIE, her son.  NEIGHBOUR.\n\nSCENE ONE. A small parlour at night. A lamp burns on the table.\n\nMA TENNEH: (counting coins) Kollie, bring the lamp closer. I cannot see these figures.\nKOLLIE: (moving the lamp) Ma, the neighbour asked for it again this evening.\nMA TENNEH: And what did you tell her?\nKOLLIE: I said the lamp is ours.\nMA TENNEH: (setting down the coins) Sit down, my son. When your father died, that woman fed us for three months and asked nothing. Take her the lamp.\nKOLLIE: But then we will sit in the dark.\nMA TENNEH: (smiling) We will sit in the dark for one night. She sat in the dark for three months so that we could eat. Go.\n(KOLLIE takes the lamp and goes out. The stage darkens.)",
+    qs:[
+      {q:"Who are the characters in this play?", a:"Ma Tenneh a trader, Kollie her son, and a neighbour."},
+      {q:"Write out one stage direction from the script.", a:"Any of: (counting coins), (moving the lamp), (setting down the coins), (smiling), or (KOLLIE takes the lamp and goes out. The stage darkens.)"},
+      {q:"Why does Ma Tenneh tell Kollie to give away the lamp?", a:"Because the neighbour fed the family for three months after his father died and asked for nothing in return."},
+      {q:"What is the theme of this play?", a:"Gratitude and repaying kindness, even at a cost to yourself."},
+      {q:"How can you tell this is drama and not prose?", a:"It is set out as a script with a character list, stage directions and dialogue written to be acted."}
+    ]
+  },
+  activities:[
+    "Write sentences using linking and action verbs",
+    "In groups, generate sentences using linking and action verbs correctly",
+    "In pairs, write sentences using different kinds of adjectives such as predicate and demonstrative",
+    "Given a list of nouns, work in pairs to write adjectives describing each noun",
+    "Read and discuss prose, drama and plays and state their characteristics"
+  ],
+  materials:["Grade 7 English pupil's book","Selected plays and poems","Exercise books","Dictionary"],
+  assessment:["Assignment","Individual work","Quizzes","Tests"]
+},
+{
+  grade:7, period:"IV", sem:"Two", icon:"📚",
+  title:"Principal Parts of Verbs · Literature and Reading Comprehension",
+  subtitle:"Verb tenses, adverbs, double negatives and comparisons, dictionary and thesaurus",
+  outcomes:[
+    "Learners are able to construct sentences using the principal parts of verbs, adverbs and adjectives, read and analyze prose and poetry, and use the dictionary and thesaurus"
+  ],
+  objectives:[
+    "Write effective sentences using the principal parts of verbs",
+    "Write sentences avoiding double comparison and double negatives",
+    "Read and discuss selected short stories",
+    "Identify, read and analyze prose, and learn the use of the dictionary and thesaurus"
+  ],
+  note:"The <b>principal parts</b> of a verb are the present, the past and the past participle: walk, walked, (have) walked; go, went, (have) gone. A <b>double negative</b> uses two negative words where one is needed — 'I did not see nobody' should be 'I did not see anybody'.",
+  focus:["Principal parts of verbs","Verb tenses","Adverbs and their kinds","Double negatives","Double comparison","Dictionary and thesaurus"],
+  words:[
+    {w:"principal parts", s:"prin-ci-pal parts", d:"the present, past and past participle forms of a verb", x:"The principal parts of eat are eat, ate, eaten."},
+    {w:"participle", s:"par-ti-ci-ple", d:"a verb form used with have, has or had", x:"She has written the letter."},
+    {w:"tense", s:"tense", d:"the form of a verb that shows time", x:"Change the verb to the past tense."},
+    {w:"adverb", s:"ad-verb", d:"a word that describes a verb, adjective or another adverb", x:"He answered politely."},
+    {w:"double negative", s:"dou-ble neg-a-tive", d:"using two negative words where one is correct", x:"'I don't have nothing' is a double negative."},
+    {w:"double comparison", s:"dou-ble com-par-i-son", d:"using more or most together with -er or -est", x:"'More faster' is a double comparison and is wrong."},
+    {w:"thesaurus", s:"the-sau-rus", d:"a book of synonyms and antonyms", x:"Use a thesaurus to find another word for happy."},
+    {w:"entry word", s:"en-try word", d:"the word being defined in a dictionary", x:"The entry word is printed in bold."},
+    {w:"guide word", s:"guide word", d:"the word at the top of a dictionary page showing the first or last entry", x:"Guide words help you find a word quickly."},
+    {w:"conjugate", s:"con-ju-gate", d:"to give the forms of a verb in order", x:"Conjugate the verb to be in the present tense."}
+  ],
+  sight:["present","past","future","perfect","irregular","regular","synonym","antonym","definition","pronunciation"],
+  phonics:[
+    {p:"-en", label:"past participles ending in -en", words:["eaten","written","spoken","broken","chosen"]},
+    {p:"-ought / -aught", label:"irregular past forms", words:["bought","brought","thought","caught","taught"]},
+    {p:"-ly", label:"adverbs of manner", words:["quickly","politely","bravely","silently","neatly"]}
+  ],
+  grammar:[
+    {q:"Give the principal parts of the verb 'write'.", a:"write, wrote, (have) written", why:"Present, past and past participle."},
+    {q:"Give the principal parts of the verb 'speak'.", a:"speak, spoke, (have) spoken", why:"Speak is an irregular verb."},
+    {q:"Correct the double negative: I did not see nobody in the yard.", a:"I did not see anybody in the yard.", why:"Use only one negative word in a sentence."},
+    {q:"Correct the double comparison: This road is more smoother than that one.", a:"This road is smoother than that one.", why:"Do not use more together with the -er ending."},
+    {q:"Correct the verb: She have finished her homework.", a:"She has finished her homework.", why:"The singular subject she takes has."},
+    {q:"Underline the adverb: The child answered politely.", a:"politely", why:"It describes how the child answered."},
+    {q:"Which book would you use to find a word that means the same as 'brave'?", a:"A thesaurus", why:"A thesaurus lists synonyms and antonyms."},
+    {q:"What do the guide words at the top of a dictionary page tell you?", a:"The first and last entry words on that page.", why:"They help you find a word quickly."}
+  ],
+  pairs:[
+    {a:"eat", b:"ate", kind:"principal parts"},
+    {a:"go", b:"gone", kind:"principal parts"},
+    {a:"quickly", b:"slowly", kind:"antonym"},
+    {a:"brave", b:"bold", kind:"synonym"},
+    {a:"dictionary", b:"definitions", kind:"related pair"},
+    {a:"thesaurus", b:"synonyms", kind:"related pair"}
+  ],
+  passage:{
+    title:"The Storyteller of Zwedru",
+    text:"Old Sando had taught himself to read at the age of forty. He had bought a torn dictionary from a trader in Zwedru and had carried it in his bag for eleven years. When a word defeated him he did not skip it; he stopped, found it, and spoke it aloud until it belonged to him.\n\nThe children of the town gathered on his step in the evenings. He never told them a story the same way twice, because each week he had found new words and could not resist using them. One boy asked him why he bothered with so many words when a few would do. Sando thought for a while and said, 'A carpenter can build a stool with one tool. But a man with a full box builds a house.'",
+    qs:[
+      {q:"At what age did Sando teach himself to read?", a:"At the age of forty."},
+      {q:"What did Sando do when he met a word he did not know?", a:"He stopped, found it in his dictionary, and spoke it aloud until he knew it."},
+      {q:"Why did Sando never tell a story the same way twice?", a:"Because each week he had found new words and wanted to use them."},
+      {q:"Explain the meaning of Sando's answer about the carpenter.", a:"He meant that a large vocabulary lets you express much more, just as a full toolbox lets a carpenter build far more than a single tool would allow."},
+      {q:"Write the past and past participle of the verb 'buy' as used in the passage.", a:"bought, (had) bought"}
+    ]
+  },
+  activities:[
+    "In small groups, write sentences and conjugate verbs using the present, past and past participle",
+    "Write sentences using appropriate adverbs",
+    "Write sentences to correct double comparisons and double negatives",
+    "Read and discuss selected short stories",
+    "Read and discuss prose and its characteristics, and use the dictionary and thesaurus to define unfamiliar words"
+  ],
+  materials:["Grade 7 English pupil's book","Dictionary and thesaurus","Selected short stories","Exercise books"],
+  assessment:["Individual work","Quizzes","Tests"]
+}
+,
+{
+  grade:7, period:"V", sem:"Two", icon:"🔗",
+  title:"Phrases, Degrees of Adverbs and Adjectives · Literature",
+  subtitle:"Prepositional, adverbial and adjectival phrases, pronouns and antecedents, degrees of comparison",
+  outcomes:[
+    "Learners are able to construct paragraphs using phrases and degrees of adverbs and adjectives, pronouns and antecedents, as well as regular and irregular verbs, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Construct paragraphs using regular and irregular verbs",
+    "Write paragraphs using pronouns and their antecedents",
+    "Use prepositional, adverbial and adjectival phrases effectively in paragraph writing",
+    "Read and analyze poetry"
+  ],
+  note:"A <b>phrase</b> is a group of words without a subject and verb. A <b>prepositional phrase</b> begins with a preposition and ends with a noun or pronoun: <i>under the table</i>. An <b>antecedent</b> is the noun that a pronoun refers back to: in 'Musu lost her pen', Musu is the antecedent of her.",
+  focus:["Prepositional phrases","Adverbial phrases","Adjectival phrases","Pronouns and antecedents","Degrees of comparison","Regular and irregular verbs"],
+  words:[
+    {w:"phrase", s:"phrase", d:"a group of words without a subject and a verb", x:"In the morning is a phrase."},
+    {w:"preposition", s:"prep-o-si-tion", d:"a word showing position or relation, such as in, on, under", x:"The ball rolled under the bench."},
+    {w:"prepositional phrase", s:"prep-o-si-tion-al phrase", d:"a phrase beginning with a preposition", x:"She waited beside the road."},
+    {w:"adverbial phrase", s:"ad-verb-i-al phrase", d:"a phrase that works like an adverb", x:"He arrived after the rain stopped."},
+    {w:"adjectival phrase", s:"ad-jec-ti-val phrase", d:"a phrase that describes a noun", x:"The girl with the red bag is my sister."},
+    {w:"antecedent", s:"an-te-ced-ent", d:"the noun a pronoun refers back to", x:"In 'Kollie took his book', Kollie is the antecedent."},
+    {w:"positive degree", s:"pos-i-tive de-gree", d:"the simple form of an adjective or adverb", x:"tall"},
+    {w:"comparative", s:"com-par-a-tive", d:"the form comparing two things", x:"taller"},
+    {w:"superlative", s:"su-per-la-tive", d:"the form comparing three or more", x:"tallest"},
+    {w:"irregular verb", s:"ir-reg-u-lar verb", d:"a verb that does not add -ed in the past", x:"go became went, not goed."}
+  ],
+  sight:["between","among","beneath","toward","during","although","whose","their","whom","itself"],
+  phonics:[
+    {p:"-er", label:"comparative ending", words:["taller","faster","kinder","stronger","brighter"]},
+    {p:"-est", label:"superlative ending", words:["tallest","fastest","kindest","strongest","brightest"]},
+    {p:"pre- / inter-", label:"prefixes of position", words:["prepare","prefix","interact","international","interrupt"]}
+  ],
+  grammar:[
+    {q:"Underline the prepositional phrase: The cat slept under the wooden bench.", a:"under the wooden bench", why:"It begins with the preposition under and ends with a noun."},
+    {q:"Is the phrase adverbial or adjectival? The man in the blue shirt called me.", a:"Adjectival", why:"It describes the noun man, telling which one."},
+    {q:"Is the phrase adverbial or adjectival? We shall meet after the assembly.", a:"Adverbial", why:"It tells when we shall meet, so it modifies the verb."},
+    {q:"Name the antecedent: The pupils collected their books.", a:"pupils", why:"Their refers back to pupils."},
+    {q:"Give the comparative and superlative of 'good'.", a:"better, best", why:"Good is irregular in comparison."},
+    {q:"Give the comparative and superlative of 'careful'.", a:"more careful, most careful", why:"Longer adjectives use more and most."},
+    {q:"Correct the pronoun: Every boy must bring their own pencil.", a:"Every boy must bring his own pencil.", why:"Every boy is singular, so the pronoun must be singular."},
+    {q:"Give the past and past participle of the irregular verb 'begin'.", a:"began, (have) begun", why:"Begin changes its vowel rather than adding -ed."}
+  ],
+  pairs:[
+    {a:"tall", b:"tallest", kind:"degree of comparison"},
+    {a:"good", b:"better", kind:"irregular comparison"},
+    {a:"pronoun", b:"antecedent", kind:"related pair"},
+    {a:"begin", b:"begun", kind:"principal parts"},
+    {a:"beneath", b:"above", kind:"antonym"},
+    {a:"quick", b:"rapid", kind:"synonym"}
+  ],
+  passage:{
+    title:"The Bridge at Kakata",
+    text:"Beyond the last house of the town, a narrow bridge crossed the river at Kakata. It had been built of planks by men who were now old, and every year the water took a little more of it. The children who walked to school on the far bank knew which boards to trust.\n\nOne morning in the heavy rains, a girl named Yah stopped at the near end and would not cross. Her friends laughed at her from the middle of the bridge. But Yah had seen what they had not: a plank near the far side had lifted in the night and lay crooked against its neighbour. She called them back, and they returned, complaining. That afternoon the plank fell into the brown water and was carried away. After that, nobody laughed at Yah for looking twice.",
+    qs:[
+      {q:"Where was the bridge and what was it made of?", a:"Beyond the last house of the town at Kakata, and it was built of planks."},
+      {q:"Why would Yah not cross the bridge that morning?", a:"She had seen that a plank near the far side had lifted in the night and lay crooked."},
+      {q:"Write out one prepositional phrase from the first paragraph.", a:"Any of: beyond the last house, at Kakata, of planks, on the far bank."},
+      {q:"What is the theme of this passage?", a:"That careful observation and courage in the face of mockery can prevent disaster."},
+      {q:"Find the antecedent of 'they' in 'She called them back, and they returned'.", a:"Her friends."}
+    ]
+  },
+  activities:[
+    "Construct paragraphs using regular and irregular verbs in sentences",
+    "In groups, read passages and identify different kinds of phrases",
+    "Develop sentences using the phrases identified in the passages read",
+    "Write paragraphs using pronouns and antecedents in sentences",
+    "Read and analyze a selected poem, identifying degrees of comparison used by the poet"
+  ],
+  materials:["Grade 7 English pupil's book","Selected prose and poetry","Exercise books","Dictionary"],
+  assessment:["Project","Quizzes","Tests"]
+},
+{
+  grade:7, period:"VI", sem:"Two", icon:"🧑‍🎓",
+  title:"Sentence Patterns and Biographies · Literature",
+  subtitle:"Sentence patterns, synonyms and antonyms, writing biographies, literary terms",
+  outcomes:[
+    "Learners are able to construct effective sentences using different patterns, as well as write biographies, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Write effective sentences using different sentence patterns",
+    "Apply antonyms and synonyms in sentences",
+    "Develop and write biographies",
+    "Read and interpret literary terms in passages, such as simile, metaphor and euphemism"
+  ],
+  note:"A <b>biography</b> is the story of a person's life written by someone else; an <b>autobiography</b> is written by the person themselves. A <b>euphemism</b> is a gentle expression used in place of a harsh one — we say 'passed away' instead of 'died'.",
+  focus:["Sentence patterns","Synonyms and antonyms","Biography writing","Announcements","Literary terms","Point of view and flashback"],
+  words:[
+    {w:"biography", s:"bi-og-ra-phy", d:"the story of a person's life written by another person", x:"She read a biography of Angie Brooks."},
+    {w:"euphemism", s:"eu-phe-mism", d:"a mild expression used in place of a harsh one", x:"'He passed away' is a euphemism for 'he died'."},
+    {w:"personification", s:"per-son-i-fi-ca-tion", d:"giving human qualities to something not human", x:"The wind whispered through the palms."},
+    {w:"flashback", s:"flash-back", d:"a scene that returns to an earlier time", x:"The flashback showed his childhood."},
+    {w:"point of view", s:"point of view", d:"the position from which a story is told", x:"The story is told from the first-person point of view."},
+    {w:"synonym", s:"syn-o-nym", d:"a word with the same or nearly the same meaning", x:"Big and large are synonyms."},
+    {w:"antonym", s:"an-to-nym", d:"a word with the opposite meaning", x:"Hot and cold are antonyms."},
+    {w:"announcement", s:"an-nounce-ment", d:"a public statement giving information", x:"The principal read an announcement about the sports day."},
+    {w:"pattern", s:"pat-tern", d:"the regular arrangement of parts in a sentence", x:"Subject–verb–object is a common sentence pattern."},
+    {w:"achievement", s:"a-chieve-ment", d:"something important that a person has done", x:"Her greatest achievement was building the school."}
+  ],
+  sight:["career","legacy","influence","struggle","dedication","honour","service","reputation","memoir","tribute"],
+  phonics:[
+    {p:"-ment", label:"nouns ending in -ment", words:["achievement","announcement","government","development","agreement"]},
+    {p:"-tion", label:"nouns ending in -tion", words:["dedication","education","celebration","determination","contribution"]},
+    {p:"bio- / auto-", label:"word roots meaning life / self", words:["biography","biology","autobiography","automatic","autograph"]}
+  ],
+  grammar:[
+    {q:"Name the sentence pattern: The children sang. (S–V or S–V–O?)", a:"Subject–Verb (S–V)", why:"There is no object after the verb."},
+    {q:"Name the sentence pattern: Musu wrote a letter.", a:"Subject–Verb–Object (S–V–O)", why:"Letter receives the action of wrote."},
+    {q:"Give a synonym for 'courageous'.", a:"brave (or bold, fearless)", why:"Synonyms have the same or nearly the same meaning."},
+    {q:"Give an antonym for 'generous'.", a:"selfish (or mean, stingy)", why:"Antonyms have opposite meanings."},
+    {q:"Identify the literary term: The wind whispered through the palm trees.", a:"Personification", why:"The wind is given the human ability to whisper."},
+    {q:"Identify the literary term: He is as strong as an ox.", a:"Simile", why:"It compares using as."},
+    {q:"Rewrite using a euphemism: The old man died last night.", a:"The old man passed away last night.", why:"A euphemism softens a harsh expression."},
+    {q:"Would you use a biography or an autobiography to read a president's own account of her life?", a:"An autobiography", why:"An autobiography is written by the person themselves."}
+  ],
+  pairs:[
+    {a:"biography", b:"autobiography", kind:"contrast"},
+    {a:"courageous", b:"brave", kind:"synonym"},
+    {a:"generous", b:"selfish", kind:"antonym"},
+    {a:"passed away", b:"died", kind:"euphemism"},
+    {a:"simile", b:"like or as", kind:"related pair"},
+    {a:"metaphor", b:"direct comparison", kind:"related pair"}
+  ],
+  passage:{
+    title:"Mother to Son",
+    text:"Well, son, I'll tell you:\nLife for me ain't been no crystal stair.\nIt's had tacks in it,\nAnd splinters,\nAnd boards torn up,\nAnd places with no carpet on the floor —\nBare.\n\nBut all the time\nI'se been a-climbin' on,\nAnd reachin' landin's,\nAnd turnin' corners,\nAnd sometimes goin' in the dark\nWhere there ain't been no light.\n\nSo boy, don't you turn back.\nDon't you set down on the steps\n'Cause you finds it's kinder hard.\nDon't you fall now —\nFor I'se still goin', honey,\nI'se still climbin',\nAnd life for me ain't been no crystal stair.",
+    qs:[
+      {q:"To whom is the mother speaking in this poem?", a:"To her son."},
+      {q:"What does the mother compare her life to?", a:"To a staircase — a rough, broken one rather than a crystal stair."},
+      {q:"Name the literary device in 'Life for me ain't been no crystal stair' and explain it.", a:"It is a metaphor: her life is compared directly to a stair, without using like or as, to show it has been hard rather than smooth and beautiful."},
+      {q:"What advice does the mother give her son?", a:"Not to turn back or sit down when life is hard, but to keep climbing as she has done."},
+      {q:"How can you tell this is poetry rather than prose?", a:"It is written in short lines and stanzas with strong rhythm and repeated phrases, not in ordinary paragraphs."}
+    ]
+  },
+  activities:[
+    "In groups, develop sentences using different sentence patterns",
+    "Write correct sentences using antonyms and synonyms",
+    "Identify outstanding Liberians and write short biographies of them",
+    "Write and read announcements to the class",
+    "Read and interpret literary terms in prose and poetry: simile, metaphor, personification, point of view, flashback and euphemism"
+  ],
+  materials:["Grade 7 English pupil's book","Selected poems","Exercise books","Dictionary"],
+  assessment:["Assignment","Individual work","Quizzes","Tests"]
+}
+,
+/* ================= GRADE 8 ================= */
+{
+  grade:8, period:"I", sem:"One", icon:"🖋️",
+  title:"Composition Development · Parts of Speech and the Short Story",
+  subtitle:"Parts of speech, subject and predicate, topic sentences, elements of short stories",
+  outcomes:[
+    "Learners are able to develop effective paragraphs using grammar mechanics, demonstrate effective communication skills, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Classify and use parts of speech to develop composition sentences",
+    "Construct paragraphs using subject and predicate correctly",
+    "Develop effective composition using topic sentences",
+    "Identify and discuss the elements of short stories: setting, theme, plot and characters"
+  ],
+  note:"The eight <b>parts of speech</b> are noun, pronoun, verb, adjective, adverb, preposition, conjunction and interjection. Every sentence has a <b>subject</b> (who or what the sentence is about) and a <b>predicate</b> (what is said about the subject).",
+  focus:["Parts of speech","Subject and predicate","Topic sentences","Composition writing","Elements of the short story","Types of characters"],
+  words:[
+    {w:"composition", s:"com-po-si-tion", d:"a piece of writing developed on one subject", x:"He wrote a composition about the rainy season."},
+    {w:"noun", s:"noun", d:"a word naming a person, place, thing or idea", x:"Teacher, market and honesty are nouns."},
+    {w:"pronoun", s:"pro-noun", d:"a word used in place of a noun", x:"She, they and it are pronouns."},
+    {w:"conjunction", s:"con-junc-tion", d:"a word that joins words or groups of words", x:"And, but and because are conjunctions."},
+    {w:"interjection", s:"in-ter-jec-tion", d:"a word expressing sudden feeling", x:"Oh! Alas! Hurrah!"},
+    {w:"subject", s:"sub-ject", d:"the part of a sentence naming who or what it is about", x:"In 'the driver waited', the driver is the subject."},
+    {w:"predicate", s:"pred-i-cate", d:"the part of a sentence that tells about the subject", x:"In 'the driver waited', waited is the predicate."},
+    {w:"protagonist", s:"pro-tag-o-nist", d:"the main character in a story", x:"The protagonist struggles against poverty."},
+    {w:"antagonist", s:"an-tag-o-nist", d:"the character who opposes the main character", x:"The landlord is the antagonist."},
+    {w:"conflict", s:"con-flict", d:"the struggle at the centre of a story", x:"The conflict is between duty and desire."}
+  ],
+  sight:["climax","resolution","exposition","dynamic","static","flat","round","suspense","foreshadow","mood"],
+  phonics:[
+    {p:"-ist", label:"nouns naming a person", words:["protagonist","antagonist","novelist","journalist","scientist"]},
+    {p:"-ence / -ance", label:"abstract nouns", words:["sentence","difference","importance","appearance","evidence"]},
+    {p:"con-", label:"the prefix con- meaning with or together", words:["conflict","conjunction","conclusion","construct","connect"]}
+  ],
+  grammar:[
+    {q:"Name the part of speech of 'quickly' in: She walked quickly.", a:"Adverb", why:"It tells how she walked."},
+    {q:"Name the part of speech of 'but' in: I called, but nobody answered.", a:"Conjunction", why:"It joins two groups of words."},
+    {q:"Name the part of speech of 'Alas' in: Alas! The harvest failed.", a:"Interjection", why:"It expresses sudden feeling."},
+    {q:"Underline the simple subject: The tall boy in the blue shirt won the race.", a:"boy", why:"The simple subject is the main noun without its describing words."},
+    {q:"Underline the complete predicate: The farmers planted rice before the rains.", a:"planted rice before the rains", why:"The predicate is everything said about the subject."},
+    {q:"Supply a predicate: The new library ___", a:"opened last Monday. (any sensible predicate)", why:"A sentence needs a predicate to be complete."},
+    {q:"Write a topic sentence for a paragraph about market day.", a:"Market day in our town begins long before sunrise. (any sentence stating the main idea)", why:"A topic sentence states the main idea the paragraph will develop."},
+    {q:"Which element of a short story tells where and when it happens?", a:"The setting", why:"Setting is time and place."}
+  ],
+  pairs:[
+    {a:"protagonist", b:"antagonist", kind:"contrast"},
+    {a:"subject", b:"predicate", kind:"related pair"},
+    {a:"noun", b:"names a thing", kind:"part of speech"},
+    {a:"conjunction", b:"joins words", kind:"part of speech"},
+    {a:"conflict", b:"struggle", kind:"synonym"},
+    {a:"climax", b:"turning point", kind:"synonym"}
+  ],
+  passage:{
+    title:"The Examination Fee",
+    text:"Fatu had passed every test that year, but the examination fee stood between her and the certificate. Her mother sold pepper at the junction and counted her coins each night in a tin. By March the tin held less than half.\n\nFatu began waking at four to help at the stall before school. She said nothing about it to her teachers. One morning Mr Weah, who taught mathematics, bought pepper from a girl in a school uniform and recognised her handwriting on the paper cone she had folded. He said nothing then. At the end of that week the school announced a small fund for learners who worked to support their families, and Fatu's name was the first on the list. She never learned who had proposed it, though she wondered all her life.",
+    qs:[
+      {q:"What stood between Fatu and her certificate?", a:"The examination fee, which her mother could not fully afford."},
+      {q:"Who is the protagonist of this story?", a:"Fatu."},
+      {q:"What is the central conflict?", a:"Fatu's struggle to pay her examination fee despite her family's poverty."},
+      {q:"How did Mr Weah discover Fatu's situation?", a:"He bought pepper from a girl in school uniform and recognised her handwriting on the paper cone she had folded."},
+      {q:"State the setting and the theme of the story.", a:"The setting is a Liberian town at a market junction and a school, around March of a school year. The theme is quiet generosity and the dignity of hard work."}
+    ]
+  },
+  activities:[
+    "In groups, generate sentences using each of the parts of speech",
+    "Complete sentences by supplying the missing subjects and predicates",
+    "Read, identify and discuss the elements of a short story: setting, theme, plot and characters",
+    "Write a short story of your own and read it to the class",
+    "Develop compositions using clear topic sentences and supporting details"
+  ],
+  materials:["Grade 8 English pupil's book","Selected short stories and poems","Exercise books","Dictionary"],
+  assessment:["Assignment","Individual work","Quizzes","Tests"]
+},
+{
+  grade:8, period:"II", sem:"One", icon:"🧩",
+  title:"Paragraph Development · Objects and Figures of Speech",
+  subtitle:"Compound subjects and predicates, direct and indirect objects, figures of speech, oral communication",
+  outcomes:[
+    "Learners are able to develop skills using compound subject and compound predicate, direct and indirect objects, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Demonstrate effective paragraph writing using verb conjugation in given sentences",
+    "Develop paragraphs using compound subject and compound predicate",
+    "Differentiate and use direct and indirect objects in sentences and paragraphs",
+    "Demonstrate oral communication skills through reading short stories and poems"
+  ],
+  note:"A <b>direct object</b> receives the action of the verb (She wrote <i>a letter</i>). An <b>indirect object</b> tells to whom or for whom the action is done (She wrote <i>her aunt</i> a letter). A <b>compound subject</b> has two or more subjects joined by and or or.",
+  focus:["Compound subject and predicate","Direct and indirect objects","Verb conjugation","Figures of speech","Oral communication","Announcements and interviews"],
+  words:[
+    {w:"compound subject", s:"com-pound sub-ject", d:"two or more subjects sharing the same verb", x:"Musu and Kollie walked to school."},
+    {w:"compound predicate", s:"com-pound pred-i-cate", d:"two or more verbs sharing the same subject", x:"She washed and ironed the uniform."},
+    {w:"direct object", s:"di-rect ob-ject", d:"the word that receives the action of the verb", x:"He kicked the ball."},
+    {w:"indirect object", s:"in-di-rect ob-ject", d:"the word telling to whom or for whom the action is done", x:"He gave his sister the ball."},
+    {w:"hyperbole", s:"hy-per-bo-le", d:"a deliberate exaggeration for effect", x:"I have told you a thousand times."},
+    {w:"onomatopoeia", s:"on-o-mat-o-poe-ia", d:"a word that imitates a sound", x:"The bees buzzed and the door creaked."},
+    {w:"irony", s:"i-ro-ny", d:"saying the opposite of what is meant, or an unexpected outcome", x:"It is ironic that the fire station burned down."},
+    {w:"alliteration", s:"al-lit-er-a-tion", d:"the repetition of the first consonant sound", x:"Peter picked a peck of peppers."},
+    {w:"conjugation", s:"con-ju-ga-tion", d:"the forms of a verb across the tenses", x:"Write the conjugation of to go."},
+    {w:"interview", s:"in-ter-view", d:"a meeting in which one person questions another", x:"They role-played a radio interview."}
+  ],
+  sight:["exaggerate","imitate","dialogue","script","advocacy","abstinence","announce","audience","fluent","expression"],
+  phonics:[
+    {p:"hyper-", label:"the prefix hyper- meaning over or beyond", words:["hyperbole","hyperactive","hypertension","hyperlink","hypermarket"]},
+    {p:"-ic", label:"adjectives ending in -ic", words:["ironic","poetic","dramatic","heroic","realistic"]},
+    {p:"onomatopoeic sounds", label:"sound words", words:["buzz","crash","hiss","splash","creak"]}
+  ],
+  grammar:[
+    {q:"Underline the compound subject: Fatu and her brother sell pepper.", a:"Fatu and her brother", why:"Two subjects share the verb sell."},
+    {q:"Underline the compound predicate: The child washed and dried the plates.", a:"washed and dried the plates", why:"Two verbs share the subject child."},
+    {q:"Name the direct object: The teacher marked the scripts.", a:"scripts", why:"Scripts receives the action of marked."},
+    {q:"Name the indirect object: Mother bought the twins new shoes.", a:"twins", why:"It tells for whom the shoes were bought."},
+    {q:"Identify the figure of speech: The thunder grumbled all night.", a:"Personification", why:"Thunder is given the human action of grumbling."},
+    {q:"Identify the figure of speech: I have told you a million times.", a:"Hyperbole", why:"It is a deliberate exaggeration."},
+    {q:"Identify the figure of speech: The snake hissed in the grass.", a:"Onomatopoeia", why:"Hissed imitates the sound."},
+    {q:"Conjugate 'to eat' in the present, past and future for 'he'.", a:"he eats, he ate, he will eat", why:"Conjugation shows the verb across tenses."}
+  ],
+  pairs:[
+    {a:"direct object", b:"indirect object", kind:"contrast"},
+    {a:"hyperbole", b:"exaggeration", kind:"related pair"},
+    {a:"onomatopoeia", b:"sound word", kind:"related pair"},
+    {a:"irony", b:"opposite meaning", kind:"related pair"},
+    {a:"compound", b:"single", kind:"antonym"},
+    {a:"buzz", b:"hum", kind:"synonym"}
+  ],
+  passage:{
+    title:"The Radio in the Barber Shop",
+    text:"The old radio in Sekou's barber shop had one working knob and a voice like a man speaking through a blanket. It crackled, it hissed, it groaned at the news. Customers came as much for the radio as for the haircut, and arguments rose over it like smoke.\n\nOne afternoon the radio finally died. Sekou set down his clippers, and the shop went quiet for the first time in eleven years. Then Old Flomo, who had never once spoken during a broadcast, began to tell the others what had happened in the county the year the bridge was built. He talked for an hour. When he finished, a young man said it was better than the radio. Sekou never replaced it. He hung it on the wall, silent, above the mirror, and the talking has not stopped since.",
+    qs:[
+      {q:"Why did customers come to Sekou's shop?", a:"As much for the radio as for the haircut."},
+      {q:"Write out two examples of onomatopoeia from the passage.", a:"Any two of: crackled, hissed, groaned."},
+      {q:"Find one simile in the passage.", a:"'a voice like a man speaking through a blanket' or 'arguments rose over it like smoke'."},
+      {q:"What happened after the radio died?", a:"Old Flomo began telling stories about the county, and the customers found his talk better than the radio, so it was never replaced."},
+      {q:"What is the theme of this passage?", a:"That human conversation and shared storytelling are more valuable than machines."}
+    ]
+  },
+  activities:[
+    "Write effective paragraphs using correct verb tenses",
+    "Work individually to write sentences and paragraphs using compound subjects and predicates, and direct and indirect objects",
+    "Given topics, develop topic sentences and compose paragraphs with supporting details",
+    "In pairs, prepare and write announcements of an event, then write a script of an interview and role play it",
+    "Identify figures of speech in passages and develop advocacy messages on healthy choices"
+  ],
+  materials:["Grade 8 English pupil's book","Selected passages and poems","Exercise books","Dictionary"],
+  assessment:["Assignment","Individual work","Quizzes","Tests"]
+}
+,
+{
+  grade:8, period:"III", sem:"One", icon:"📐",
+  title:"Developing Effective Sentence Structure · Elements of Poetry",
+  subtitle:"Predicate nominative and adjective, who and whom, appositives, reports and notices",
+  outcomes:[
+    "Learners are able to construct effective sentences, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Construct effective sentences using predicate nominative and predicate adjective",
+    "Demonstrate the use of the pronouns 'who' and 'whom' in sentences",
+    "Construct sentences using regular and irregular verbs",
+    "Identify and use appositives and appositive phrases in sentences",
+    "Develop reports, notices and plan outlines",
+    "Discuss the characteristics of poetry"
+  ],
+  note:"A <b>predicate nominative</b> is a noun after a linking verb that renames the subject (My father is a <i>teacher</i>). A <b>predicate adjective</b> describes the subject (The soup is <i>hot</i>). An <b>appositive</b> is a noun placed beside another to explain it: Musu, <i>our head girl</i>, spoke first.",
+  focus:["Predicate nominative","Predicate adjective","Who and whom","Appositives","Reports and notices","Elements of poetry"],
+  words:[
+    {w:"predicate nominative", s:"pred-i-cate nom-i-na-tive", d:"a noun after a linking verb that renames the subject", x:"Kollie is the captain."},
+    {w:"appositive", s:"ap-pos-i-tive", d:"a noun placed beside another to explain it", x:"My aunt, a nurse, works nights."},
+    {w:"notice", s:"no-tice", d:"a short written announcement displayed for the public", x:"A notice about the meeting was posted."},
+    {w:"report", s:"re-port", d:"an organised written account of something studied", x:"They wrote a report on the book."},
+    {w:"outline", s:"out-line", d:"a plan showing the main points in order", x:"Make an outline before you write."},
+    {w:"mood", s:"mood", d:"the feeling a piece of writing creates in the reader", x:"The mood of the poem is hopeful."},
+    {w:"stanza", s:"stan-za", d:"a group of lines in a poem", x:"The poem has four stanzas."},
+    {w:"figurative language", s:"fig-ur-a-tive lan-guage", d:"language that means more than the literal words", x:"Poets use figurative language."},
+    {w:"symbolism", s:"sym-bol-ism", d:"using an object to stand for an idea", x:"The broken chain is a symbol of freedom."},
+    {w:"imagery", s:"im-a-ger-y", d:"words that create pictures for the senses", x:"The imagery of dust and heat fills the poem."}
+  ],
+  sight:["whom","whose","whoever","nominative","objective","preceding","furthermore","therefore","however","moreover"],
+  phonics:[
+    {p:"-ism", label:"nouns naming a practice or idea", words:["symbolism","criticism","realism","optimism","journalism"]},
+    {p:"-ary / -ory", label:"endings in nouns and adjectives", words:["summary","necessary","memory","category","introductory"]},
+    {p:"ap- / ad-", label:"prefixes meaning to or toward", words:["appositive","approach","adjective","adverb","advance"]}
+  ],
+  grammar:[
+    {q:"Underline the predicate nominative: My elder sister is a midwife.", a:"midwife", why:"It follows the linking verb is and renames the subject."},
+    {q:"Underline the predicate adjective: The classroom was noisy.", a:"noisy", why:"It follows the linking verb was and describes the subject."},
+    {q:"Choose who or whom: ___ wrote this letter?", a:"Who", why:"Who is the subject of the verb wrote."},
+    {q:"Choose who or whom: To ___ did you give the key?", a:"whom", why:"Whom is the object of the preposition to."},
+    {q:"Underline the appositive: Mr Doe, our head teacher, opened the meeting.", a:"our head teacher", why:"It renames and explains Mr Doe."},
+    {q:"Punctuate correctly: My friend Yah a good singer led the choir.", a:"My friend Yah, a good singer, led the choir.", why:"An appositive phrase is set off by commas."},
+    {q:"Give the past and past participle of the irregular verb 'choose'.", a:"chose, (have) chosen", why:"Choose is irregular."},
+    {q:"What are the first two things a notice must tell the reader?", a:"What the event or matter is, and when and where it takes place.", why:"A notice must be brief, clear and complete."}
+  ],
+  pairs:[
+    {a:"who", b:"subject", kind:"related pair"},
+    {a:"whom", b:"object", kind:"related pair"},
+    {a:"predicate nominative", b:"renames subject", kind:"related pair"},
+    {a:"predicate adjective", b:"describes subject", kind:"related pair"},
+    {a:"choose", b:"chosen", kind:"principal parts"},
+    {a:"mood", b:"feeling", kind:"synonym"}
+  ],
+  passage:{
+    title:"The Liberian Dream",
+    text:"I dreamed a country wide as morning,\nWhere the road to Lofa carried buses, not soldiers,\nWhere the rice grew taller than the rumours,\nAnd the river remembered no bodies.\n\nI dreamed a school with a roof on it,\nAnd a girl in the third row, hand raised,\nAsking the question nobody had dared to ask,\nAnd a teacher who knew the answer.\n\nI dreamed we stopped asking whose father was whose,\nAnd asked instead what we would build by Friday.\nThe dream cost nothing.\nThe building is the price.",
+    qs:[
+      {q:"What does the poet dream about the road to Lofa?", a:"That it would carry buses rather than soldiers — that is, peace rather than war."},
+      {q:"Identify one example of imagery in the second stanza.", a:"'a school with a roof on it' or 'a girl in the third row, hand raised'."},
+      {q:"What is meant by 'the rice grew taller than the rumours'?", a:"That real food and prosperity would matter more than gossip and fear; it is a figurative comparison of growth against rumour."},
+      {q:"Explain the last two lines: 'The dream cost nothing. The building is the price.'", a:"Imagining a better country is easy and free, but actually making it happen demands real work and sacrifice."},
+      {q:"What is the mood of this poem?", a:"Hopeful but sober — longing for peace and progress while admitting the hard work required."}
+    ]
+  },
+  activities:[
+    "In groups, write sentences and identify predicate nominatives and predicate adjectives, then present them",
+    "In groups, write sentences using the pronouns 'who' and 'whom' and present to the class",
+    "In pairs, formulate sentences using appositives and appositive phrases",
+    "In three groups, outline how to prepare a report and a notice",
+    "In groups of four, read a book and write a report; then read a poem and identify the poet, setting, mood and message"
+  ],
+  materials:["Grade 8 English pupil's book","Selected poems","Exercise books","Dictionary"],
+  assessment:["Individual work","Quizzes","Homework","Test"]
+},
+{
+  grade:8, period:"IV", sem:"Two", icon:"🎬",
+  title:"Composition · Verbals, Pronouns and Dramatization",
+  subtitle:"Gerunds, participles and infinitives, pronouns and antecedents, using the dictionary, drama",
+  outcomes:[
+    "Learners are able to develop effective composition on given topics, and read, identify and interpret poetic elements"
+  ],
+  objectives:[
+    "Develop a composition using verbals and verbal phrases",
+    "Demonstrate the use of pronouns and antecedents in sentences, as well as synonyms and antonyms",
+    "Develop composition on issues such as social norms, peer influence and decision making",
+    "Identify entry words, guide words and the origin of words using a dictionary",
+    "Dramatize a Liberian or African play"
+  ],
+  note:"A <b>verbal</b> is a verb form used as another part of speech. A <b>gerund</b> ends in -ing and works as a noun (<i>Swimming</i> is healthy). A <b>participle</b> works as an adjective (the <i>running</i> water). An <b>infinitive</b> is 'to' plus a verb (She wants <i>to learn</i>).",
+  focus:["Gerunds","Participles","Infinitives","Pronouns and antecedents","Dictionary skills","Dramatization"],
+  words:[
+    {w:"verbal", s:"ver-bal", d:"a verb form used as a noun, adjective or adverb", x:"Gerunds, participles and infinitives are verbals."},
+    {w:"gerund", s:"ger-und", d:"an -ing verb form used as a noun", x:"Reading widens the mind."},
+    {w:"participle", s:"par-ti-ci-ple", d:"a verb form used as an adjective", x:"The broken chair was removed."},
+    {w:"infinitive", s:"in-fin-i-tive", d:"the word to plus a verb", x:"He hopes to travel."},
+    {w:"antecedent", s:"an-te-ced-ent", d:"the noun a pronoun refers back to", x:"The girls took their seats."},
+    {w:"entry word", s:"en-try word", d:"the word defined in a dictionary", x:"Find the entry word in bold."},
+    {w:"guide word", s:"guide word", d:"the word at the top of a dictionary page", x:"Guide words show the range of that page."},
+    {w:"etymology", s:"et-y-mol-o-gy", d:"the origin and history of a word", x:"The etymology of school is Greek."},
+    {w:"dramatize", s:"dram-a-tize", d:"to act out a story or scene", x:"They dramatized the folk tale."},
+    {w:"peer influence", s:"peer in-flu-ence", d:"the effect of friends of your own age on your choices", x:"Peer influence can be positive or negative."}
+  ],
+  sight:["norm","decision","consequence","resist","persuade","conscience","integrity","judgment","priority","responsible"],
+  phonics:[
+    {p:"-ing", label:"gerund and participle ending", words:["reading","swimming","running","writing","building"]},
+    {p:"-ed", label:"past participles used as adjectives", words:["broken","finished","worried","excited","frightened"]},
+    {p:"-ology", label:"the study of", words:["etymology","biology","geology","psychology","technology"]}
+  ],
+  grammar:[
+    {q:"Name the verbal and its use: Swimming is good exercise.", a:"Swimming — a gerund used as the subject (a noun)", why:"An -ing form used as a noun is a gerund."},
+    {q:"Name the verbal and its use: The frightened child ran home.", a:"frightened — a participle used as an adjective", why:"It describes the noun child."},
+    {q:"Name the verbal and its use: She wants to become a doctor.", a:"to become — an infinitive", why:"To plus a verb forms an infinitive."},
+    {q:"Correct the pronoun: Neither of the boys brought their book.", a:"Neither of the boys brought his book.", why:"Neither is singular."},
+    {q:"Name the antecedent: The council announced its decision.", a:"council", why:"Its refers back to council."},
+    {q:"Give a synonym and an antonym for 'wise'.", a:"Synonym: sensible. Antonym: foolish.", why:"Synonyms match in meaning; antonyms oppose."},
+    {q:"On a dictionary page with guide words 'market' and 'mask', would you find 'marrow'?", a:"Yes", why:"Marrow falls alphabetically between market and mask."},
+    {q:"What does the etymology of a word tell you?", a:"Where the word came from and how it developed.", why:"Etymology is word origin."}
+  ],
+  pairs:[
+    {a:"gerund", b:"noun", kind:"verbal use"},
+    {a:"participle", b:"adjective", kind:"verbal use"},
+    {a:"infinitive", b:"to + verb", kind:"verbal use"},
+    {a:"wise", b:"foolish", kind:"antonym"},
+    {a:"resist", b:"withstand", kind:"synonym"},
+    {a:"entry word", b:"guide word", kind:"related pair"}
+  ],
+  passage:{
+    title:"The Choice at the Junction",
+    text:"They were four, and the fifth was Sumo. Standing at the junction after school, the four had decided that the shop with the open side window was an invitation. Sumo listened while they explained how simple it would be, and how nobody watched that window after five.\n\nHe thought of his mother's face and of the certificate he had not yet earned. Then he said he was going home. They laughed at him and called him a small boy, and the laughing followed him down the road for a hundred metres. It was the longest hundred metres he had ever walked.\n\nTwo weeks later three of the four were known to the police, and the fourth had stopped coming to school. Sumo said nothing about it to anyone. He had learned that the hardest word in the language is a short one, and that you sometimes have to say it while people are laughing.",
+    qs:[
+      {q:"What did the four boys plan to do?", a:"To break into a shop through an open side window that nobody watched after five."},
+      {q:"What made Sumo refuse?", a:"He thought of his mother and of the certificate he had not yet earned."},
+      {q:"What is 'the hardest word in the language' referred to at the end?", a:"The word 'no'."},
+      {q:"Identify one gerund or infinitive used in the passage and state its kind.", a:"'to earn'/'to say' are infinitives; 'laughing' in 'the laughing followed him' is a gerund used as a noun."},
+      {q:"What is the theme of this passage?", a:"Resisting negative peer influence and the courage required to make the right decision alone."}
+    ]
+  },
+  activities:[
+    "In groups, write sentences using demonstrative pronouns and their antecedents",
+    "Individually write sentences containing gerund, participle and infinitive phrases",
+    "In groups, discuss the use of the dictionary and identify entry words, guide words and word origins",
+    "Write compositions on issues such as social norms, peer influence and decision making",
+    "Develop strategies to curb conflict and violence among young people, and dramatize a Liberian or African play"
+  ],
+  materials:["Grade 8 English pupil's book","Dictionary","Selected African plays","Exercise books"],
+  assessment:["Assignment","Quizzes","Tests"]
+}
+,
+{
+  grade:8, period:"V", sem:"Two", icon:"✒️",
+  title:"Composition · Clauses, Punctuation and Speech Writing",
+  subtitle:"Dependent and independent clauses, apostrophe, quotations, colon and semicolon, letters of application",
+  outcomes:[
+    "Learners are able to write sentences effectively using clauses as well as grammar mechanics, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Develop composition using degrees of adjectives and adverbs of comparison",
+    "Identify and use independent and dependent clauses in sentences",
+    "Apply punctuation marks correctly in sentences and paragraphs",
+    "Write letters of application",
+    "Write and present short speeches in class",
+    "Read and discuss selected African novels and poetry"
+  ],
+  note:"An <b>independent clause</b> has a subject and verb and can stand alone as a sentence. A <b>dependent (subordinate) clause</b> has a subject and verb but cannot stand alone: <i>Because the rain fell</i>… A <b>semicolon</b> joins two closely related independent clauses; a <b>colon</b> introduces a list or explanation.",
+  focus:["Independent and dependent clauses","Apostrophe","Quotation marks","Semicolon and colon","Letters of application","Speech writing","Allegory, alliteration and symbolism"],
+  words:[
+    {w:"clause", s:"clause", d:"a group of words containing a subject and a verb", x:"When the bell rang is a clause."},
+    {w:"independent clause", s:"in-de-pend-ent clause", d:"a clause that can stand alone as a sentence", x:"The bell rang."},
+    {w:"dependent clause", s:"de-pend-ent clause", d:"a clause that cannot stand alone", x:"When the bell rang…"},
+    {w:"subordinate", s:"sub-or-di-nate", d:"depending on something else; another word for dependent", x:"Although he tried is a subordinate clause."},
+    {w:"apostrophe", s:"a-pos-tro-phe", d:"the mark used for possession and contractions", x:"That is Musu's book; it isn't mine."},
+    {w:"semicolon", s:"sem-i-co-lon", d:"the mark joining two closely related independent clauses", x:"The rain stopped; the children ran out."},
+    {w:"colon", s:"co-lon", d:"the mark introducing a list or explanation", x:"Bring these: a pen, a ruler and a book."},
+    {w:"allegory", s:"al-le-go-ry", d:"a story in which characters and events stand for deeper meanings", x:"The fable is an allegory about greed."},
+    {w:"alliteration", s:"al-lit-er-a-tion", d:"repetition of the first consonant sound in nearby words", x:"Wild winds whipped the water."},
+    {w:"application", s:"ap-pli-ca-tion", d:"a formal written request, especially for a job or place", x:"He posted his application on Monday."}
+  ],
+  sight:["although","unless","whereas","since","while","therefore","sincerely","faithfully","applicant","vacancy"],
+  phonics:[
+    {p:"sub-", label:"the prefix sub- meaning under", words:["subordinate","subject","submit","subtract","substandard"]},
+    {p:"-ary", label:"nouns and adjectives ending in -ary", words:["necessary","secretary","summary","ordinary","library"]},
+    {p:"alliterative sounds", label:"repeated first sounds", words:["wild","winds","whipped","water","waves"]}
+  ],
+  grammar:[
+    {q:"Is this clause independent or dependent? Because the road was flooded.", a:"Dependent", why:"It cannot stand alone as a sentence."},
+    {q:"Is this clause independent or dependent? The road was flooded.", a:"Independent", why:"It is a complete thought."},
+    {q:"Join with a semicolon: The rain stopped. The children ran outside.", a:"The rain stopped; the children ran outside.", why:"A semicolon joins two closely related independent clauses."},
+    {q:"Add the apostrophe: The girls uniforms were clean. (uniforms of several girls)", a:"The girls' uniforms were clean.", why:"For a plural noun ending in s, add only the apostrophe."},
+    {q:"Punctuate with quotation marks: I will come tomorrow said Fatu.", a:"\"I will come tomorrow,\" said Fatu.", why:"Direct speech goes inside quotation marks, with a comma before the closing mark."},
+    {q:"Insert a colon: You will need three things a pen, a ruler and paper.", a:"You will need three things: a pen, a ruler and paper.", why:"A colon introduces a list."},
+    {q:"Which closing suits a formal letter of application beginning 'Dear Sir'?", a:"Yours faithfully,", why:"Dear Sir pairs with Yours faithfully; a named person pairs with Yours sincerely."},
+    {q:"Identify the device: The soft south wind sighed in the seaside grass.", a:"Alliteration", why:"The s sound is repeated in nearby words."}
+  ],
+  pairs:[
+    {a:"independent clause", b:"dependent clause", kind:"contrast"},
+    {a:"semicolon", b:"joins clauses", kind:"punctuation use"},
+    {a:"colon", b:"introduces a list", kind:"punctuation use"},
+    {a:"Dear Sir", b:"Yours faithfully", kind:"letter pair"},
+    {a:"allegory", b:"hidden meaning", kind:"related pair"},
+    {a:"although", b:"even though", kind:"synonym"}
+  ],
+  passage:{
+    title:"Africa's Plea",
+    text:"I am not you —\nbut you will not\ngive me a chance,\nwill not let me be me.\n\nIf I were you —\nbut you know\nI am not you,\nyet you will not\nlet me be me.\n\nYou meddle, interfere\nin my affairs\nas if they were yours\nand you were me.\n\nYou are unfair, unwise,\nfoolish to think\nthat I can be you,\ntalk, act\nand think like you.\n\nGod made me me.\nHe made you you.\nFor God's sake\nLet me be me.",
+    qs:[
+      {q:"What is the speaker asking for throughout the poem?", a:"To be allowed to be himself — to be respected as different rather than forced to imitate the listener."},
+      {q:"Who might 'you' represent in this poem?", a:"The coloniser or outside powers who interfere in Africa's affairs."},
+      {q:"Which line is repeated, and what effect does the repetition create?", a:"'Let me be me' is repeated, creating insistence and emphasising the plea for identity and freedom."},
+      {q:"What is the tone of the fourth stanza?", a:"Accusing and frustrated — the speaker calls the listener unfair, unwise and foolish."},
+      {q:"Explain the theme of the poem in one sentence.", a:"That every people has the right to its own identity and self-determination, free from outside interference."}
+    ]
+  },
+  activities:[
+    "Develop composition using dependent and independent clauses",
+    "In groups, write sentences and identify and discuss independent and subordinate clauses",
+    "Write and punctuate sentences using the apostrophe, quotation marks, semicolon and colon correctly",
+    "Write a letter of application and a short speech, then present the speech in class",
+    "In groups, discuss the elements of poetry — allegory, alliteration and symbolism — in selected African novels and poems"
+  ],
+  materials:["Grade 8 English pupil's book","Selected African novels and poems","Exercise books","Dictionary"],
+  assessment:["Assignment","Quizzes","Tests"]
+},
+{
+  grade:8, period:"VI", sem:"Two", icon:"⚖️",
+  title:"Composition · Voice, Conjunctions, Research and Debate",
+  subtitle:"Active and passive voice, conjunctions and interjections, using the library, debating",
+  outcomes:[
+    "Learners will be able to conduct research, analyze and form opinions to debate a given topic, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Write paragraphs using verbs, conjunctions and interjections",
+    "Read, discuss and analyze selected Liberian prose and African novels",
+    "Conduct research, analyze and form opinions on topics for debates",
+    "Read and analyze prose and poetry"
+  ],
+  note:"In the <b>active voice</b> the subject does the action (The council <i>built</i> the road). In the <b>passive voice</b> the subject receives the action (The road <i>was built</i> by the council). Use the active voice for direct, forceful writing.",
+  focus:["Active and passive voice","Conjunctions","Interjections","Using the library","Research and debate","Liberian poetry"],
+  words:[
+    {w:"active voice", s:"ac-tive voice", d:"the form in which the subject does the action", x:"The girl wrote the letter."},
+    {w:"passive voice", s:"pas-sive voice", d:"the form in which the subject receives the action", x:"The letter was written by the girl."},
+    {w:"coordinating conjunction", s:"co-or-di-na-ting con-junc-tion", d:"a joining word linking equal parts: and, but, or, so", x:"He called, but nobody came."},
+    {w:"subordinating conjunction", s:"sub-or-di-na-ting con-junc-tion", d:"a word introducing a dependent clause: because, although, when", x:"Although it rained, we walked."},
+    {w:"interjection", s:"in-ter-jec-tion", d:"a word expressing sudden feeling", x:"Hurrah! We have won."},
+    {w:"research", s:"re-search", d:"careful study to find facts", x:"They did research in the library."},
+    {w:"debate", s:"de-bate", d:"a formal argument between two sides", x:"The debate was on school uniforms."},
+    {w:"evidence", s:"ev-i-dence", d:"facts that support an opinion", x:"Give evidence for your claim."},
+    {w:"rebuttal", s:"re-but-tal", d:"a reply that answers the other side's argument", x:"Her rebuttal was convincing."},
+    {w:"catalogue", s:"cat-a-logue", d:"a list showing where books are kept in a library", x:"Check the catalogue for the title."}
+  ],
+  sight:["proposition","opposition","motion","argument","source","reference","summary","conclusion","persuade","refute"],
+  phonics:[
+    {p:"-tion in argument words", label:"nouns of debate", words:["proposition","opposition","information","conclusion","persuasion"]},
+    {p:"re-", label:"the prefix re- meaning back or again", words:["research","rebuttal","refute","review","reference"]},
+    {p:"-ive", label:"adjectives ending in -ive", words:["active","passive","persuasive","informative","effective"]}
+  ],
+  grammar:[
+    {q:"Change to the passive voice: The head teacher opened the library.", a:"The library was opened by the head teacher.", why:"The object becomes the subject in the passive voice."},
+    {q:"Change to the active voice: The rice was planted by the farmers.", a:"The farmers planted the rice.", why:"The doer becomes the subject in the active voice."},
+    {q:"Name the kind of conjunction in: We waited because the bus was late.", a:"Subordinating conjunction", why:"Because introduces a dependent clause."},
+    {q:"Name the kind of conjunction in: She was tired but she finished.", a:"Coordinating conjunction", why:"But joins two independent clauses."},
+    {q:"Identify the interjection: Alas! The crop has failed.", a:"Alas", why:"It expresses sudden feeling and is followed by an exclamation mark."},
+    {q:"Join with a suitable conjunction: It was late. We continued working.", a:"Although it was late, we continued working. (or: It was late, but we continued working.)", why:"The conjunction shows the relationship between the ideas."},
+    {q:"In a debate, what is a rebuttal?", a:"A reply that answers and disproves the other side's argument.", why:"Rebuttal responds directly to an opposing point."},
+    {q:"Where in the library would you look first to find whether a book is held?", a:"In the catalogue.", why:"The catalogue lists and locates the holdings."}
+  ],
+  pairs:[
+    {a:"active voice", b:"passive voice", kind:"contrast"},
+    {a:"and", b:"coordinating", kind:"conjunction type"},
+    {a:"because", b:"subordinating", kind:"conjunction type"},
+    {a:"argument", b:"rebuttal", kind:"related pair"},
+    {a:"persuade", b:"convince", kind:"synonym"},
+    {a:"proposition", b:"opposition", kind:"antonym"}
+  ],
+  passage:{
+    title:"What Is Life",
+    text:"Life is the market at first light,\nthe seller counting change she does not have,\nthe buyer counting reasons not to buy,\nand both of them still standing there at noon.\n\nLife is the boy who walks eleven miles\nto sit an examination in a borrowed shirt,\nand the old man who waits at the gate\nto ask him how it went.\n\nDo not tell me life is long.\nTell me it is wide —\nwide enough for the seller and the buyer,\nthe boy, the shirt, the old man, and the gate.",
+    qs:[
+      {q:"What two pictures of life does the first stanza give?", a:"A seller counting change she does not have and a buyer counting reasons not to buy, both still standing at noon."},
+      {q:"What does the boy in the second stanza do?", a:"He walks eleven miles to sit an examination in a borrowed shirt."},
+      {q:"Explain the contrast the poet draws between 'long' and 'wide'.", a:"The poet says life's value lies not in its length but in its breadth — the number of people, struggles and connections it holds."},
+      {q:"Identify one example of imagery in the poem.", a:"Any of: 'the market at first light', 'a borrowed shirt', 'the old man who waits at the gate'."},
+      {q:"What is the central theme of the poem?", a:"That the meaning of life is found in ordinary people, their perseverance and their connections to one another."}
+    ]
+  },
+  activities:[
+    "In groups, write paragraphs using conjunctions and interjections",
+    "Rewrite sentences and paragraphs changing between the active and passive voice",
+    "In groups, conduct research on given topics and form opinions for class debates",
+    "Read and analyze selected Liberian poems",
+    "Organize a debate on a topic of importance to your school and community, with proposition, opposition and rebuttal"
+  ],
+  materials:["Grade 8 English pupil's book","Selected Liberian poems","Library reference materials","Exercise books"],
+  assessment:["Individual work","Quizzes","Tests"]
+}
+,
+/* ================= GRADE 9 ================= */
+{
+  grade:9, period:"I", sem:"One", icon:"🪶",
+  title:"Composition · Order, Punctuation and Figurative Language",
+  subtitle:"Chronological order and order of importance, capitalization, transitive and intransitive verbs, figurative language",
+  outcomes:[
+    "Learners will be able to conduct research, analyze data, and present findings orally and through written work"
+  ],
+  objectives:[
+    "Write sentences and paragraphs using punctuation marks correctly",
+    "Develop composition using vocabulary, including antonyms and synonyms",
+    "Read a passage, identify and interpret the figures of speech",
+    "Read and analyze prose and poetry",
+    "Write poetry utilizing figurative language"
+  ],
+  note:"A <b>transitive verb</b> takes a direct object (She <i>wrote</i> a letter). An <b>intransitive verb</b> does not (The baby <i>slept</i>). Arrange a composition in <b>chronological order</b> (by time) or in <b>order of importance</b> (strongest point first or last).",
+  focus:["Chronological order","Order of importance","Capitalization and punctuation","Transitive and intransitive verbs","Vocabulary development","Figurative language"],
+  words:[
+    {w:"chronological", s:"chron-o-log-i-cal", d:"arranged in the order in which events happened", x:"Tell the story in chronological order."},
+    {w:"transitive verb", s:"tran-si-tive verb", d:"a verb that takes a direct object", x:"She carried the basket."},
+    {w:"intransitive verb", s:"in-tran-si-tive verb", d:"a verb that takes no direct object", x:"The child slept."},
+    {w:"allegory", s:"al-le-go-ry", d:"a story whose characters and events carry a deeper meaning", x:"Animal Farm is an allegory."},
+    {w:"symbolism", s:"sym-bol-ism", d:"using an object to represent an idea", x:"The dove is a symbol of peace."},
+    {w:"extended metaphor", s:"ex-tend-ed met-a-phor", d:"a metaphor developed over several lines", x:"The poem sustains an extended metaphor of a journey."},
+    {w:"euphemism", s:"eu-phe-mism", d:"a mild expression replacing a harsh one", x:"'Let go' is a euphemism for dismissed."},
+    {w:"transition", s:"tran-si-tion", d:"a word or phrase linking ideas", x:"However, meanwhile and therefore are transitions."},
+    {w:"coherence", s:"co-her-ence", d:"the smooth logical flow of a piece of writing", x:"Transitions give a composition coherence."},
+    {w:"vivid", s:"viv-id", d:"producing a clear, strong picture in the mind", x:"Her description of the storm was vivid."}
+  ],
+  sight:["furthermore","consequently","nevertheless","meanwhile","subsequently","initially","ultimately","whereas","hence","thus"],
+  phonics:[
+    {p:"chron-", label:"the root meaning time", words:["chronological","chronicle","chronic","synchronize","chronology"]},
+    {p:"trans-", label:"the prefix trans- meaning across", words:["transitive","transition","transport","translate","transfer"]},
+    {p:"-ence", label:"abstract nouns ending in -ence", words:["coherence","evidence","sequence","preference","difference"]}
+  ],
+  grammar:[
+    {q:"Is the verb transitive or intransitive? The mason built a wall.", a:"Transitive", why:"Wall is the direct object of built."},
+    {q:"Is the verb transitive or intransitive? The old man laughed.", a:"Intransitive", why:"There is no direct object."},
+    {q:"Correct the capitalization: last december we visited the st. john river.", a:"Last December we visited the St. John River.", why:"Capitalise the first word, the month and the proper name."},
+    {q:"Punctuate: however the meeting was postponed until friday", a:"However, the meeting was postponed until Friday.", why:"A transition word at the start is followed by a comma."},
+    {q:"Give a stronger synonym for 'walked slowly'.", a:"trudged (or plodded, shuffled)", why:"Precise verbs make writing vivid."},
+    {q:"Identify the figure of speech: The examination was a mountain he had to climb.", a:"Metaphor (an extended metaphor if continued)", why:"The examination is compared directly to a mountain."},
+    {q:"Identify the figure of speech: The village is sleeping under the moon.", a:"Personification", why:"The village is given the human action of sleeping."},
+    {q:"Which order would suit a composition about how to prepare cassava leaf?", a:"Chronological order", why:"The steps must be told in the order they are done."}
+  ],
+  pairs:[
+    {a:"transitive", b:"intransitive", kind:"contrast"},
+    {a:"chronological", b:"by time", kind:"related pair"},
+    {a:"allegory", b:"deeper meaning", kind:"related pair"},
+    {a:"symbolism", b:"stands for an idea", kind:"related pair"},
+    {a:"vivid", b:"dull", kind:"antonym"},
+    {a:"however", b:"nevertheless", kind:"synonym"}
+  ],
+  passage:{
+    title:"If",
+    text:"If you can keep your head when all about you\nAre losing theirs and blaming it on you;\nIf you can trust yourself when all men doubt you,\nBut make allowance for their doubting too;\n\nIf you can wait and not be tired by waiting,\nOr being lied about, don't deal in lies,\nOr being hated, don't give way to hating,\nAnd yet don't look too good, nor talk too wise;\n\nIf you can dream — and not make dreams your master;\nIf you can think — and not make thoughts your aim;\nIf you can meet with Triumph and Disaster\nAnd treat those two impostors just the same;\n\nIf you can fill the unforgiving minute\nWith sixty seconds' worth of distance run,\nYours is the Earth and everything that's in it,\nAnd — which is more — you'll be a Man, my son!",
+    qs:[
+      {q:"What does the poet mean by 'keep your head'?", a:"Stay calm and think clearly in a crisis, when others are panicking."},
+      {q:"Identify the figure of speech in 'meet with Triumph and Disaster / And treat those two impostors just the same'.", a:"Personification — Triumph and Disaster are given human form and called impostors."},
+      {q:"Why does the poet call Triumph and Disaster 'impostors'?", a:"Because neither success nor failure is as permanent or as true as it seems; both mislead you about your real worth."},
+      {q:"Explain 'the unforgiving minute'.", a:"Time never returns once it passes, so every minute must be filled with worthwhile effort."},
+      {q:"State the central theme of the poem.", a:"That maturity and true strength come from self-control, patience, humility and perseverance in both good and bad fortune."}
+    ]
+  },
+  activities:[
+    "In groups, conduct research, analyze data and present the findings orally and in writing",
+    "In groups, write essays on given topics using chronological order and order of importance",
+    "In groups, discover synonyms and antonyms as content vocabulary to avoid repetition of words",
+    "Create poems that include figurative language",
+    "Read and analyze a selected poem to determine its central theme and make connections to your own life"
+  ],
+  materials:["Grade 9 English pupil's book","Selected poems","Dictionary and thesaurus","Exercise books"],
+  assessment:["Assignment","Quizzes","Test","Individual work"]
+},
+{
+  grade:9, period:"II", sem:"One", icon:"👤",
+  title:"Composition · Biography and Autobiography",
+  subtitle:"Differentiating biography and autobiography, research writing, literary devices and shades of meaning",
+  outcomes:[
+    "Learners are able to conduct research on the differences between biography and autobiography and present findings orally and in written work, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Demonstrate the differences between biography and autobiography",
+    "Write autobiographies",
+    "Research and write biographies of renowned personalities",
+    "Read and analyze prose and poetry"
+  ],
+  note:"A <b>biography</b> is written about a person by someone else and uses <i>he</i> or <i>she</i>. An <b>autobiography</b> is written by the person about themselves and uses <i>I</i>. <b>Explicit</b> meaning is stated openly; <b>implicit</b> meaning is suggested and must be inferred.",
+  focus:["Biography","Autobiography","Research skills","Literary devices","Explicit and implicit meaning","Point of view"],
+  words:[
+    {w:"biography", s:"bi-og-ra-phy", d:"an account of a person's life written by another", x:"He read a biography of Angie Brooks."},
+    {w:"autobiography", s:"au-to-bi-og-ra-phy", d:"an account of a person's life written by that person", x:"Her autobiography opens in Harper."},
+    {w:"memoir", s:"mem-oir", d:"a personal account of part of a life", x:"His memoir covers the war years."},
+    {w:"explicit", s:"ex-plic-it", d:"stated clearly and openly", x:"The rule is explicit."},
+    {w:"implicit", s:"im-plic-it", d:"suggested rather than stated", x:"Her disapproval was implicit in her silence."},
+    {w:"infer", s:"in-fer", d:"to work out a meaning from evidence", x:"We infer from his tone that he is angry."},
+    {w:"chronicle", s:"chron-i-cle", d:"a record of events in order of time", x:"The book chronicles her early years."},
+    {w:"renowned", s:"re-nowned", d:"famous and respected", x:"A renowned Liberian educator."},
+    {w:"perspective", s:"per-spec-tive", d:"the position from which something is seen or told", x:"The story is told from the child's perspective."},
+    {w:"legacy", s:"leg-a-cy", d:"what a person leaves behind for others", x:"Her legacy is the school she founded."}
+  ],
+  sight:["ancestry","upbringing","milestone","testimony","archive","interview","chronology","tribute","posthumous","eminent"],
+  phonics:[
+    {p:"auto-", label:"the prefix auto- meaning self", words:["autobiography","automatic","autograph","autonomy","automobile"]},
+    {p:"-graphy", label:"the root meaning writing", words:["biography","geography","photography","calligraphy","bibliography"]},
+    {p:"-ent / -ant", label:"adjective endings", words:["eminent","prominent","significant","relevant","persistent"]}
+  ],
+  grammar:[
+    {q:"Biography or autobiography? 'I was born in Harper in 1954.'", a:"Autobiography", why:"The writer uses I about their own life."},
+    {q:"Biography or autobiography? 'She was born in Harper in 1954.'", a:"Biography", why:"Another person is writing about her."},
+    {q:"Which point of view does an autobiography use?", a:"First person (I, me, my)", why:"The subject tells their own story."},
+    {q:"Explicit or implicit? 'The office closes at four o'clock.'", a:"Explicit", why:"The information is stated openly."},
+    {q:"Explicit or implicit? He glanced at his watch three times while she spoke.", a:"Implicit", why:"His impatience is suggested, not stated."},
+    {q:"Rewrite in the third person: I walked to Kakata that morning.", a:"He (or She) walked to Kakata that morning.", why:"Third person uses he, she or they."},
+    {q:"Name two sources you would use to research a biography.", a:"Interviews with people who knew the person, and library or archive records such as newspapers and books.", why:"Biography requires evidence from reliable sources."},
+    {q:"Give a synonym for 'renowned'.", a:"famous (or eminent, distinguished)", why:"Synonyms match in meaning."}
+  ],
+  pairs:[
+    {a:"biography", b:"autobiography", kind:"contrast"},
+    {a:"explicit", b:"implicit", kind:"antonym"},
+    {a:"renowned", b:"eminent", kind:"synonym"},
+    {a:"first person", b:"I", kind:"point of view"},
+    {a:"third person", b:"she", kind:"point of view"},
+    {a:"legacy", b:"inheritance", kind:"synonym"}
+  ],
+  passage:{
+    title:"Bats",
+    text:"At evening, sitting on this terrace,\nWhen the sun from the west, beyond Pisa, beyond the mountains of Carrara\nDeparts, and the world is taken by surprise …\n\nWhen the tired flower of Florence is in gloom beneath the glowing\nBtown hills surrounding …\n\nWhen under the arches of the Ponte Vecchio\nA green light enters against stream, flush from the west,\nAgainst the current of obscure Arno …\n\nLook up, and you see things flying\nBetween the day and the night;\nSwallows with spools of dark thread sewing the shadows together.\n\nA circle swoop, and a quick parabola under the bridge arches\nWhere light pushes through;\nA sudden turning upon itself of a thing in the air.\nA dip to the water.\n\nAnd you think:\n'The swallows are flying so late!'\n\nSwallows?\n\nDark air-life looping\nYet missing the pure loop …\nBats!",
+    qs:[
+      {q:"Where is the speaker sitting, and at what time of day?", a:"On a terrace in Italy, at evening as the sun departs."},
+      {q:"What does the speaker first think the flying creatures are?", a:"Swallows."},
+      {q:"Identify the metaphor in 'Swallows with spools of dark thread sewing the shadows together'.", a:"The birds' flight paths are compared to thread being sewn, as if they are stitching the darkness together."},
+      {q:"How does the mood change when the speaker realises they are bats?", a:"It shifts from calm, beautiful observation to surprise and distaste, signalled by the abrupt single word 'Bats!'"},
+      {q:"What is implicit, rather than explicit, about the speaker's feelings towards bats?", a:"The poem does not state that he dislikes them, but the broken lines, the exclamation and the phrase 'missing the pure loop' imply revulsion."}
+    ]
+  },
+  activities:[
+    "In groups, conduct research and find the differences between biography and autobiography",
+    "In groups, research various personalities, write their biographies and present the findings",
+    "Write your own autobiography covering your early years and your hopes",
+    "In groups, read and analyze prose and poetry to discover literary devices such as theme and symbolism",
+    "Identify shades of meaning — explicit and implicit — in a work you have read"
+  ],
+  materials:["Grade 9 English pupil's book","Selected prose and poetry","Library reference materials","Exercise books"],
+  assessment:["Assignment","Quizzes","Test"]
+}
+,
+{
+  grade:9, period:"III", sem:"One", icon:"✉️",
+  title:"Composition Development · Letters, Inquiries and Opinions",
+  subtitle:"Business, friendly and application letters, inquiries and orders, expressing and defending opinions",
+  outcomes:[
+    "Learners will be able to write business and friendly letters, applications, inquiries, place orders and requests, read, discuss and analyze prose and poetry, and formulate and express opinions on given topics with supporting details and evidence"
+  ],
+  objectives:[
+    "Compose various kinds of letters, and write inquiries, requests and orders",
+    "Read and analyze prose and poetry",
+    "Express and defend opinions",
+    "Discuss the characteristics of prose"
+  ],
+  note:"A <b>business letter</b> has six parts: heading, inside address, salutation, body, complimentary close and signature. A <b>friendly letter</b> omits the inside address and uses a warm salutation. Begin 'Dear Sir/Madam' with 'Yours faithfully'; begin with a name and use 'Yours sincerely'.",
+  focus:["Business letters","Friendly letters","Letters of application","Inquiries and orders","Characteristics of prose","Expressing and defending opinions"],
+  words:[
+    {w:"inside address", s:"in-side ad-dress", d:"the receiver's address written in a business letter", x:"The inside address goes below the heading."},
+    {w:"salutation", s:"sal-u-ta-tion", d:"the greeting that opens a letter", x:"Dear Madam is a formal salutation."},
+    {w:"complimentary close", s:"com-pli-men-ta-ry close", d:"the polite ending before the signature", x:"Yours faithfully is a complimentary close."},
+    {w:"inquiry", s:"in-quir-y", d:"a letter asking for information", x:"She wrote an inquiry about the fees."},
+    {w:"requisition", s:"req-ui-si-tion", d:"a formal written request for supplies", x:"The school sent a requisition for desks."},
+    {w:"order", s:"or-der", d:"a written instruction to supply goods", x:"They placed an order for fifty books."},
+    {w:"opinion", s:"o-pin-ion", d:"a view or judgment not necessarily based on fact", x:"State your opinion clearly."},
+    {w:"justify", s:"jus-ti-fy", d:"to give good reasons for something", x:"Justify your answer with evidence."},
+    {w:"credible", s:"cred-i-ble", d:"believable and worthy of trust", x:"Use credible sources."},
+    {w:"concise", s:"con-cise", d:"brief but complete", x:"A business letter should be concise."}
+  ],
+  sight:["enclosure","reference","regarding","acknowledge","furnish","pursuant","kindly","hereby","attached","respectfully"],
+  phonics:[
+    {p:"-ary in letter words", label:"formal vocabulary", words:["complimentary","secretary","necessary","preliminary","voluntary"]},
+    {p:"in- / en-", label:"prefixes meaning in or into", words:["inquiry","enclose","include","enrol","insert"]},
+    {p:"-ible / -able", label:"adjective endings", words:["credible","possible","reliable","acceptable","responsible"]}
+  ],
+  grammar:[
+    {q:"Name the six parts of a business letter in order.", a:"Heading, inside address, salutation, body, complimentary close, signature", why:"This is the standard order of a business letter."},
+    {q:"Which complimentary close goes with 'Dear Sir'?", a:"Yours faithfully", why:"An unnamed recipient takes Yours faithfully."},
+    {q:"Which complimentary close goes with 'Dear Mr Doe'?", a:"Yours sincerely", why:"A named recipient takes Yours sincerely."},
+    {q:"Which part does a friendly letter NOT usually include?", a:"The inside address", why:"Friendly letters are informal and omit it."},
+    {q:"Rewrite concisely: I am writing this letter in order to make an inquiry about the cost of the textbooks.", a:"I am writing to inquire about the cost of the textbooks.", why:"Business writing should be concise."},
+    {q:"Fact or opinion? Monrovia is the capital of Liberia.", a:"Fact", why:"It can be verified."},
+    {q:"Fact or opinion? Monrovia is the most beautiful city in West Africa.", a:"Opinion", why:"It is a personal judgment."},
+    {q:"Give one way to support an opinion in a debate.", a:"Provide evidence from a credible source, such as statistics, an example or an expert statement.", why:"Opinions must be justified with evidence."}
+  ],
+  pairs:[
+    {a:"Dear Sir", b:"Yours faithfully", kind:"letter pair"},
+    {a:"Dear Mr Doe", b:"Yours sincerely", kind:"letter pair"},
+    {a:"fact", b:"opinion", kind:"contrast"},
+    {a:"inquiry", b:"request for information", kind:"related pair"},
+    {a:"concise", b:"wordy", kind:"antonym"},
+    {a:"credible", b:"trustworthy", kind:"synonym"}
+  ],
+  passage:{
+    title:"A Government Driver on His Retirement",
+    text:"For thirty years I drove them,\nministers and their brief cases,\nthrough the potholes of this republic,\nmy hands steady on a wheel that was never mine.\n\nI learned the language of back seats:\nthe cough that means turn around,\nthe silence that means drive faster,\nthe laughter that means somebody has lost a contract.\n\nThey gave me a certificate on Friday\nand a handshake that lasted four seconds.\nOn Monday a younger man will hold my wheel,\nand the potholes will not notice.\n\nBut I have carried this country's business\nin the back of a car for thirty years,\nand not one of them ever asked me\nwhat I thought of the road.",
+    qs:[
+      {q:"What was the speaker's occupation, and for how long?", a:"He was a government driver for thirty years."},
+      {q:"What does the speaker mean by 'the language of back seats'?", a:"He learned to read his passengers' unspoken signals — coughs, silences and laughter — and what each one meant."},
+      {q:"What is the tone of the third stanza?", a:"Bitter and disillusioned — the certificate and the brief handshake seem a poor reward for thirty years."},
+      {q:"Explain the significance of the last two lines.", a:"They show that although he carried the country's officials and witnessed everything, his own opinion was never sought — he was treated as invisible."},
+      {q:"Identify one example of symbolism in the poem.", a:"The road and its potholes symbolise the condition and neglect of the country; the wheel 'that was never mine' symbolises his lack of power."}
+    ]
+  },
+  activities:[
+    "In groups, compose business letters, friendly letters and letters of application",
+    "Write letters of inquiry, requests and orders for goods",
+    "In groups, research given topics, form opinions and defend them with supporting details",
+    "In groups, read poems, analyze them and determine the central theme and literary devices",
+    "Discuss and list the characteristics of prose, comparing them with those of poetry"
+  ],
+  materials:["Grade 9 English pupil's book","Selected prose and poetry","Sample letters","Exercise books"],
+  assessment:["Assignment","Quizzes","Tests"]
+},
+{
+  grade:9, period:"IV", sem:"Two", icon:"📰",
+  title:"Composition Development · Kinds of Writing and the Library",
+  subtitle:"Descriptive, expository, persuasive, informative and argumentative writing, library skills",
+  outcomes:[
+    "Learners will be able to compose various kinds of articles — descriptive, persuasive, argumentative, informative — demonstrate the use of the library, and read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Compose various kinds of writings",
+    "Demonstrate skills in the use of the library",
+    "Discuss the characteristics of prose and poetry"
+  ],
+  note:"<b>Descriptive</b> writing paints a picture. <b>Expository</b> writing explains. <b>Persuasive</b> writing urges the reader to agree or act. <b>Informative</b> writing gives facts. <b>Argumentative</b> writing states a claim and defends it with evidence against opposing views.",
+  focus:["Descriptive writing","Expository writing","Persuasive writing","Informative writing","Argumentative writing","Library arrangement and reference materials"],
+  words:[
+    {w:"descriptive", s:"de-scrip-tive", d:"writing that pictures a person, place or thing", x:"A descriptive essay about the beach."},
+    {w:"expository", s:"ex-pos-i-to-ry", d:"writing that explains or informs", x:"An expository essay on how rice is grown."},
+    {w:"persuasive", s:"per-sua-sive", d:"writing that urges the reader to agree or act", x:"A persuasive essay on road safety."},
+    {w:"argumentative", s:"ar-gu-men-ta-tive", d:"writing that defends a claim with evidence", x:"An argumentative essay on school fees."},
+    {w:"thesis statement", s:"the-sis state-ment", d:"the sentence stating the main claim of an essay", x:"Put the thesis statement at the end of the introduction."},
+    {w:"reference material", s:"ref-er-ence ma-te-ri-al", d:"books used for looking up facts, not for borrowing", x:"Encyclopaedias are reference materials."},
+    {w:"encyclopaedia", s:"en-cy-clo-pae-di-a", d:"a work giving information on many subjects", x:"Check the encyclopaedia for the date."},
+    {w:"atlas", s:"at-las", d:"a book of maps", x:"Find the county in the atlas."},
+    {w:"almanac", s:"al-ma-nac", d:"a yearly book of facts and statistics", x:"The almanac lists the rainfall."},
+    {w:"citation", s:"ci-ta-tion", d:"a note showing where information came from", x:"Give a citation for every source."}
+  ],
+  sight:["classify","evaluate","analyse","summarise","paraphrase","plagiarism","index","glossary","appendix","bibliography"],
+  phonics:[
+    {p:"ex-", label:"the prefix ex- meaning out", words:["expository","explain","express","export","extract"]},
+    {p:"-ory", label:"adjectives ending in -ory", words:["expository","introductory","satisfactory","compulsory","obligatory"]},
+    {p:"-ive in writing types", label:"kinds of writing", words:["descriptive","persuasive","argumentative","informative","narrative"]}
+  ],
+  grammar:[
+    {q:"Which kind of writing would you use to explain how a bicycle works?", a:"Expository", why:"Expository writing explains."},
+    {q:"Which kind of writing would you use to convince the council to repair a road?", a:"Persuasive (or argumentative)", why:"It urges the reader to act."},
+    {q:"Which kind of writing would you use to picture your grandmother's kitchen?", a:"Descriptive", why:"It creates a picture for the senses."},
+    {q:"Where in an essay does the thesis statement usually appear?", a:"At the end of the introduction.", why:"It states the claim the essay will defend."},
+    {q:"Which reference book would give you the population of each county?", a:"An almanac (or encyclopaedia)", why:"Almanacs collect yearly facts and statistics."},
+    {q:"Which reference book would show you where Nimba County lies?", a:"An atlas", why:"An atlas is a book of maps."},
+    {q:"What is plagiarism?", a:"Using another person's words or ideas as your own without acknowledging the source.", why:"Sources must always be cited."},
+    {q:"Where in a book would you look to find on which page a topic appears?", a:"The index", why:"The index lists topics alphabetically with page numbers."}
+  ],
+  pairs:[
+    {a:"descriptive", b:"pictures", kind:"writing type"},
+    {a:"expository", b:"explains", kind:"writing type"},
+    {a:"persuasive", b:"convinces", kind:"writing type"},
+    {a:"atlas", b:"maps", kind:"reference pair"},
+    {a:"index", b:"page numbers", kind:"reference pair"},
+    {a:"citation", b:"plagiarism", kind:"contrast"}
+  ],
+  passage:{
+    title:"Black Woman",
+    text:"Naked woman, black woman\nClothed with your colour which is life, with your form which is beauty!\nIn your shadow I have grown up; the gentleness of your hands was laid over my eyes.\nAnd now, high up on the sun-baked pass, at the heart of summer, at the heart of noon,\nI come upon you, my Promised Land,\nAnd your beauty strikes me to the heart like the flash of an eagle.\n\nNaked woman, dark woman\nFirm-fleshed ripe fruit, sombre raptures of black wine, mouth making lyrical my mouth\nSavannah stretching to clear horizons, savannah shuddering beneath the East Wind's eager caresses\nCarved tom-tom, taut tom-tom, muttering under the Conqueror's fingers\nYour solemn contralto voice is the spiritual song of the Beloved.",
+    qs:[
+      {q:"To whom or what is the poem addressed?", a:"To the black woman, who also stands for Africa itself."},
+      {q:"Identify the simile in the first stanza.", a:"'your beauty strikes me to the heart like the flash of an eagle'."},
+      {q:"What does the poet compare the woman to in the second stanza?", a:"To ripe fruit, black wine, the savannah and a carved tom-tom drum."},
+      {q:"What is meant by 'my Promised Land'?", a:"The woman, and by extension Africa, is the poet's homeland and destination — something longed for and finally reached."},
+      {q:"Explain how the poem uses symbolism.", a:"The woman symbolises Africa: her colour, form, voice and the savannah imagery represent the beauty, dignity and cultural richness of the continent."}
+    ]
+  },
+  activities:[
+    "In groups, research a topic of community importance and write about it using each of the various kinds of writing",
+    "In groups, research and report on how to get information from the library",
+    "Practise using reference materials: encyclopaedia, atlas, almanac and index",
+    "In groups, create poems and read other works, analyzing them to determine central theme and literary devices",
+    "Develop various kinds of paragraphs and identify the thesis statement in each"
+  ],
+  materials:["Grade 9 English pupil's book","Library reference materials","Selected prose and poetry","Exercise books"],
+  assessment:["Assignment","Project","Individual work","Group work"]
+}
+,
+{
+  grade:9, period:"V", sem:"Two", icon:"🎪",
+  title:"Composition · Clauses, Character Study and Genres of Literature",
+  subtitle:"Dependent and independent clauses, comparing characters, genres of drama, dramatizing a short story",
+  outcomes:[
+    "Learners are able to formulate sentences applying dependent and independent clauses, compare and contrast characters, distinguish literary devices and differentiate genres of literature"
+  ],
+  objectives:[
+    "Develop sentences using dependent and independent clauses",
+    "Compare and contrast characters, distinguish literary devices and differentiate genres in literature",
+    "Differentiate genres in literature as pertaining to drama",
+    "Dramatize a short story"
+  ],
+  note:"The three great <b>genres</b> of literature are prose, poetry and drama. Within drama, a <b>tragedy</b> ends in misfortune for the main character, a <b>comedy</b> ends happily, and a <b>satire</b> uses humour and ridicule to expose folly or vice.",
+  focus:["Dependent and independent clauses","Comparing and contrasting characters","Genres of literature","Tragedy, comedy and satire","Dramatizing a short story"],
+  words:[
+    {w:"genre", s:"gen-re", d:"a type or category of literature", x:"Prose, poetry and drama are genres."},
+    {w:"tragedy", s:"trag-e-dy", d:"a serious play ending in misfortune for the main character", x:"The play is a tragedy."},
+    {w:"comedy", s:"com-e-dy", d:"a play that is amusing and ends happily", x:"The comedy delighted the audience."},
+    {w:"satire", s:"sat-ire", d:"writing that ridicules folly or vice to correct it", x:"The satire mocked corrupt officials."},
+    {w:"characterization", s:"char-ac-ter-i-za-tion", d:"the way a writer reveals a character", x:"Characterization is shown through action and speech."},
+    {w:"foil", s:"foil", d:"a character who contrasts with another to highlight qualities", x:"The quiet brother is a foil to the boastful one."},
+    {w:"dynamic character", s:"dy-nam-ic char-ac-ter", d:"a character who changes during the story", x:"He is a dynamic character; grief changes him."},
+    {w:"static character", s:"stat-ic char-ac-ter", d:"a character who does not change", x:"The landlord is a static character."},
+    {w:"soliloquy", s:"so-lil-o-quy", d:"a speech in which a character alone reveals their thoughts", x:"His soliloquy shows his doubt."},
+    {w:"denouement", s:"de-noue-ment", d:"the final part where matters are settled", x:"The denouement explains everything."}
+  ],
+  sight:["contrast","compare","motive","tension","climax","resolve","portray","reveal","conflict","irony"],
+  phonics:[
+    {p:"-edy", label:"kinds of drama", words:["tragedy","comedy","remedy","parody","melody"]},
+    {p:"dyn- / stat-", label:"roots meaning power and standing", words:["dynamic","dynamo","static","station","stationary"]},
+    {p:"-ization", label:"nouns of process", words:["characterization","organization","realization","civilization","dramatization"]}
+  ],
+  grammar:[
+    {q:"Underline the dependent clause: Although the rain fell, the match continued.", a:"Although the rain fell", why:"It cannot stand alone as a sentence."},
+    {q:"Underline the independent clause: When the bell rang, the pupils stood up.", a:"the pupils stood up", why:"It is a complete thought."},
+    {q:"Combine into one sentence with a dependent clause: The road was muddy. We walked to school.", a:"Although the road was muddy, we walked to school.", why:"A subordinating conjunction creates the dependent clause."},
+    {q:"Which genre is a poem written in stanzas with rhyme?", a:"Poetry", why:"Poetry is arranged in lines and stanzas."},
+    {q:"Which kind of drama ends in the downfall of the main character?", a:"Tragedy", why:"A tragedy ends in misfortune."},
+    {q:"Which kind of drama uses ridicule to expose corruption?", a:"Satire", why:"Satire mocks folly and vice to correct it."},
+    {q:"Dynamic or static? A character who begins selfish and ends generous.", a:"Dynamic", why:"The character changes during the story."},
+    {q:"What is a soliloquy?", a:"A speech in which a character, alone on stage, reveals their inner thoughts to the audience.", why:"It lets the audience hear a character's private mind."}
+  ],
+  pairs:[
+    {a:"tragedy", b:"comedy", kind:"contrast"},
+    {a:"dynamic character", b:"static character", kind:"contrast"},
+    {a:"satire", b:"ridicule", kind:"related pair"},
+    {a:"prose", b:"poetry", kind:"genre pair"},
+    {a:"soliloquy", b:"alone on stage", kind:"related pair"},
+    {a:"foil", b:"contrast character", kind:"related pair"}
+  ],
+  passage:{
+    title:"Two Brothers at the Gate",
+    text:"Saah spoke first at every meeting, and always last as well. He wore his father's watch and told the story of how he had once turned back a thief at the storehouse — a story that grew a little each year. The elders liked him; he was easy to listen to.\n\nJalla, the younger, said almost nothing. When the storehouse roof began to sag in the second rainy season, it was Jalla who noticed and Jalla who climbed. He mentioned it to nobody. When Saah described the repair at the next meeting, he used the word 'we', and Jalla did not correct him.\n\nThe famine came in the third year. The elders turned to Saah, who spoke for an hour and proposed a delegation to the county. Then an old woman at the back asked a single question: 'Who checked the store?' There was a silence. Jalla stood, took out a small notebook, and read the figures aloud — every bag, counted every month for three years. The delegation was never sent. The town ate.",
+    qs:[
+      {q:"How does the writer characterize Saah in the first paragraph?", a:"As a talkative, self-promoting man who enjoys attention, wears his father's watch and exaggerates a story about turning back a thief."},
+      {q:"Compare and contrast the two brothers.", a:"Saah is loud, boastful and takes credit for others' work; Jalla is quiet, observant and acts without seeking recognition. Both serve the town, but one through words and one through deeds."},
+      {q:"Which brother is a foil to the other, and how?", a:"Jalla is a foil to Saah — his silence and quiet competence highlight Saah's boastfulness and emptiness."},
+      {q:"What is the turning point of the story?", a:"When the old woman asks 'Who checked the store?' and Jalla reads out three years of counted figures."},
+      {q:"State the theme of the passage.", a:"That quiet, consistent work is worth more than confident talk, and that true service often goes unannounced."}
+    ]
+  },
+  activities:[
+    "In groups, develop composition using dependent and independent clauses",
+    "In groups, read and dramatize a short story",
+    "Analyze a play and determine whether it is a comedy, a satire or a tragedy",
+    "Compare and contrast two characters from a story you have read, using a table of similarities and differences",
+    "Discuss figures of speech in passages and incorporate them into your own speech and writing"
+  ],
+  materials:["Grade 9 English pupil's book","Selected African drama","Exercise books","Dictionary"],
+  assessment:["Assignment","Project composition","Quizzes","Tests"]
+},
+{
+  grade:9, period:"VI", sem:"Two", icon:"🏛️",
+  title:"Composition · Parts of Speech, Kinds of Writing and Points of View",
+  subtitle:"Review of parts of speech, articles and letters, developing and defending a point of view, literary devices",
+  outcomes:[
+    "Learners are able to formulate composition using the parts of speech, kinds of writings, as well as read and analyze prose and poetry"
+  ],
+  objectives:[
+    "Write sentences and paragraphs using the parts of speech",
+    "Compose articles, letters and other pieces using the various kinds of writings and grammar mechanics",
+    "Develop and defend a point of view in composition",
+    "Read selected African drama",
+    "Read and analyze prose and poetry"
+  ],
+  note:"To <b>defend a point of view</b>, state your claim clearly, give at least three reasons supported by evidence, answer the strongest objection against you, and close by restating your position. This is the structure of both an argumentative essay and a debate speech.",
+  focus:["Review of parts of speech","Articles and letters","Grammar mechanics","Developing a point of view","African drama","Literary devices"],
+  words:[
+    {w:"article (writing)", s:"ar-ti-cle", d:"a piece of writing for a newspaper or magazine", x:"She wrote an article on school sports."},
+    {w:"claim", s:"claim", d:"the position an argument sets out to prove", x:"State your claim in one sentence."},
+    {w:"counterargument", s:"coun-ter-ar-gu-ment", d:"the opposing point of view", x:"Answer the counterargument fairly."},
+    {w:"concession", s:"con-ces-sion", d:"admitting part of the other side's point", x:"A concession makes an argument stronger."},
+    {w:"grammar mechanics", s:"gram-mar me-chan-ics", d:"spelling, punctuation and capitalization in writing", x:"Check your grammar mechanics before submitting."},
+    {w:"coherent", s:"co-her-ent", d:"clear and logically connected", x:"A coherent essay is easy to follow."},
+    {w:"emphasis", s:"em-pha-sis", d:"special importance given to a word or idea", x:"Place the emphasis on your strongest point."},
+    {w:"objective", s:"ob-jec-tive", d:"based on facts, not personal feelings", x:"A news report should be objective."},
+    {w:"subjective", s:"sub-jec-tive", d:"based on personal feelings or opinions", x:"A review is subjective."},
+    {w:"conclusion", s:"con-clu-sion", d:"the closing part that sums up an argument", x:"The conclusion restates the claim."}
+  ],
+  sight:["moreover","consequently","accordingly","notwithstanding","albeit","henceforth","thereby","insofar","whereby","conversely"],
+  phonics:[
+    {p:"counter-", label:"the prefix counter- meaning against", words:["counterargument","counteract","counterpart","counterfeit","counterattack"]},
+    {p:"-sion", label:"nouns ending in -sion", words:["conclusion","concession","decision","persuasion","expression"]},
+    {p:"ob- / sub-", label:"prefixes meaning toward and under", words:["objective","obstacle","subjective","substance","subtract"]}
+  ],
+  grammar:[
+    {q:"Name the part of speech of 'beneath' in: The key lay beneath the mat.", a:"Preposition", why:"It shows the position of the key."},
+    {q:"Name the part of speech of 'swiftly' in: The canoe moved swiftly.", a:"Adverb", why:"It tells how the canoe moved."},
+    {q:"Name the part of speech of 'honesty' in: Honesty is rewarded.", a:"Noun", why:"It names an idea and is the subject."},
+    {q:"Objective or subjective? The rainfall in July was 480 millimetres.", a:"Objective", why:"It is a measurable fact."},
+    {q:"Objective or subjective? July is the most unpleasant month.", a:"Subjective", why:"It expresses a personal feeling."},
+    {q:"Write a concession for the claim 'School uniforms should be compulsory'.", a:"It is true that uniforms are an added cost for poor families, but…", why:"A concession admits a fair point before answering it."},
+    {q:"Correct the mechanics: their are three reasons why we should act now", a:"There are three reasons why we should act now.", why:"Their/there confusion, capital letter and full stop."},
+    {q:"What should the conclusion of an argumentative essay do?", a:"Restate the claim and sum up the main reasons, without introducing new evidence.", why:"The conclusion closes the argument."}
+  ],
+  pairs:[
+    {a:"objective", b:"subjective", kind:"contrast"},
+    {a:"claim", b:"counterargument", kind:"contrast"},
+    {a:"concession", b:"admitting a point", kind:"related pair"},
+    {a:"coherent", b:"confused", kind:"antonym"},
+    {a:"conclusion", b:"summary", kind:"synonym"},
+    {a:"article", b:"newspaper", kind:"related pair"}
+  ],
+  passage:{
+    title:"Octopus at Ducor",
+    text:"The hotel sits above the city like a skull\nwith the windows knocked out,\neight arms of broken corridor\nreaching down into the harbour light.\n\nOnce there were tourists here,\nand a piano, and ice in the glasses.\nNow the goats climb the marble\nand the sea keeps its old appointment with the rocks.\n\nMy father worked in that building\nand wore a jacket to do it.\nHe says the lifts had mirrors\nand the mirrors had no cracks.\n\nI climb up sometimes at evening\nto watch Monrovia switch on her few lights,\nand I think: a city is not a building.\nA city is the people who keep climbing to look.",
+    qs:[
+      {q:"What building is described in the poem?", a:"The Ducor Hotel, standing ruined above Monrovia."},
+      {q:"Identify the simile in the first stanza and explain it.", a:"'sits above the city like a skull / with the windows knocked out' — the empty hotel is compared to a skull, suggesting death, ruin and empty eye sockets."},
+      {q:"Why is the poem titled 'Octopus'?", a:"Because the ruined hotel's corridors are described as 'eight arms' reaching down towards the harbour, like an octopus."},
+      {q:"What contrast does the poet draw between the past and the present?", a:"The past had tourists, a piano, ice in the glasses and uncracked mirrors; the present has goats climbing the marble and a ruin."},
+      {q:"Explain the point of view expressed in the final two lines.", a:"The poet argues that a city's true identity lies in its people and their persistence, not in its buildings, however grand they once were."}
+    ]
+  },
+  activities:[
+    "In groups, develop compositions on important social topics using the parts of speech correctly",
+    "Compose an article, a letter and a report, applying correct grammar mechanics in each",
+    "Develop and defend a point of view in writing, including a concession and an answer to the counterargument",
+    "In groups, create poems and short stories and discuss the different genres",
+    "Develop a short drama and act it out for the class"
+  ],
+  materials:["Grade 9 English pupil's book","Selected African drama and poetry","Exercise books","Dictionary"],
+  assessment:["Assignment","Seatwork","Quizzes","Test"]
+}
 ];
 
 const EN_GENERAL = {

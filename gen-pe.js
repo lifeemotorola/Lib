@@ -1,6 +1,6 @@
-/* Social Studies exercise generation engine.
+/* Physical Education exercise generation engine.
    Emits the SAME block model as the English, French, Science and Maths engines,
-   so the shared renderer and .docx exporter are reused. Registered on window.GEN_SS. */
+   so the shared renderer and .docx exporter are reused. Registered on window.GEN_PE. */
 (function (root) {
   "use strict";
 
@@ -30,7 +30,7 @@
   function wsTerms(t) {
     return {
       blocks: [
-        { k: "h3", t: "A · Key Terms — Social Studies Vocabulary" },
+        { k: "h3", t: "A · Key Terms — Physical Education Vocabulary" },
         { k: "instr", t: "Read each term after your teacher. Copy the term, its meaning and the example into your Social Studies notebook." },
         { k: "table", head: ["Key term", "What it means", "Example"],
           rows: t.terms.map(function (v) { return [v.t, v.d, v.x]; }) }
@@ -148,18 +148,19 @@
     };
   }
 
-  /* H · Map work / locate and explain */
-  function wsMap(t) {
-    var d = t.mapwork;
+  /* H · Compare and contrast */
+  function wsCompare(t) {
+    var d = t.compare;
     if (!d || !d.items || !d.items.length) return null;
     return {
       blocks: [
-        { k: "h3", t: "H · Map Work and Chart — " + d.title },
-        { k: "instr", t: d.caption },
-        { k: "table", head: ["Place / part / date", "What it is, where it is, or why it matters"],
+        { k: "h3", t: "H · Compare and Contrast — " + d.title },
+        { k: "instr", t: d.caption + " Answer in full, accurate sentences." },
+        { k: "table", head: ["Point of comparison", "What it means / what it involves"],
           rows: d.items.map(function (p) { return [p.p, ""]; }) },
-        { k: "p", t: "Drawing space — draw and label the map or chart below:" },
-        { k: "lines", n: 8 }
+        { k: "space" },
+        { k: "p", t: "Write one sentence saying what you learned from comparing these:" },
+        { k: "lines", n: 3 }
       ],
       key: d.items.map(function (p, i) { return (i + 1) + ". " + p.p + " — " + p.f; })
     };
@@ -171,8 +172,8 @@
     if (!c || !c.questions || !c.questions.length) return null;
     return {
       blocks: [
-        { k: "h3", t: "I · Case Study — " + c.title },
-        { k: "instr", t: "Read the passage carefully, then answer the questions in complete sentences." },
+        { k: "h3", t: "I · Story and Reflection — " + c.title },
+        { k: "instr", t: "Read the story carefully, then answer the questions in complete sentences." },
         { k: "p", t: c.text },
         { k: "space" },
         { k: "num", items: c.questions.map(function (q) { return q.q + "\n" + dots(52); }) }
@@ -187,7 +188,7 @@
     if (!sel.length) return null;
     return {
       blocks: [
-        { k: "h3", t: "J · Think and Apply" },
+        { k: "h3", t: "J · Think and Apply — Physical Education" },
         { k: "instr", t: "Think carefully and answer in full sentences. Give a reason for each answer." },
         { k: "num", items: sel.map(function (v) { return v.q + "\n" + dots(52) + "\n" + dots(52); }) }
       ],
@@ -202,7 +203,7 @@
     return {
       blocks: [
         { k: "h3", t: "K · Enquiry Project — " + p.title },
-        { k: "instr", t: p.brief + " Work carefully and be polite to everybody you speak with." },
+        { k: "instr", t: p.brief + " Work carefully and safely, and be polite to everybody you work with or speak to." },
         { k: "p", t: "STEPS TO FOLLOW:" },
         { k: "num", items: p.steps },
         { k: "space" },
@@ -215,23 +216,25 @@
     };
   }
 
-  /* L · Civic journal */
+  /* L · P.E. journal */
   function wsJournal(t) {
     return {
       blocks: [
-        { k: "h3", t: "L · My Social Studies Journal" },
-        { k: "instr", t: "Complete this page in your own words. Neat drawings earn marks." },
+        { k: "h3", t: "L · My Physical Education Journal" },
+        { k: "instr", t: "Complete this page in your own words. Be honest — this page is about your own growth." },
         { k: "p", t: "1. Today's topic: " + t.title },
         { k: "p", t: "2. Three new words I learned and what they mean:" },
         { k: "lines", n: 3 },
-        { k: "p", t: "3. One thing I found out about my own community or country:" },
+        { k: "p", t: "3. One thing from this unit that I want to remember:" },
         { k: "lines", n: 2 },
-        { k: "p", t: "4. Draw and label a map, chart or picture from this unit:" },
-        { k: "lines", n: 8 },
-        { k: "p", t: "5. One way I can be a better citizen because of this unit:" },
-        { k: "lines", n: 2 }
+        { k: "p", t: "4. One skill or exercise I practised, and how well I did it:" },
+        { k: "lines", n: 3 },
+        { k: "p", t: "5. One thing I will do differently at home or at school because of this unit:" },
+        { k: "lines", n: 3 },
+        { k: "p", t: "6. My fitness or health goal for the coming week:" },
+        { k: "lines", n: 3 }
       ],
-      key: ["Open response. Award marks for correct use of key terms, an accurate fact about Liberia, and a neat labelled drawing."]
+      key: ["Open response. Award marks for correct use of key terms, an accurate account of the skill or exercise practised, honest self-assessment, and one specific, realistic personal health or fitness goal."]
     };
   }
 
@@ -241,8 +244,8 @@
     if (!sel.length) return null;
     return {
       blocks: [
-        { k: "h3", t: "M · Class Debate and Discussion" },
-        { k: "instr", t: "Work in mixed groups. Choose ONE question. Half the group argues FOR and half argues AGAINST. Write your points before you speak." },
+        { k: "h3", t: "M · Class Discussion and Debate" },
+        { k: "instr", t: "Work in mixed groups. Choose ONE question. Half the group argues FOR and half AGAINST. Rule: before you argue against the other side, you must first state their view so fairly that they agree you have stated it correctly. Attack the argument, never the person." },
         { k: "num", items: sel.map(function (v) { return v.q; }) },
         { k: "space" },
         { k: "p", t: "OUR POINTS — FOR:" },
@@ -279,12 +282,12 @@
     short:    { label: "Short answer questions",      fn: wsShort },
     mcq:      { label: "Multiple choice",             fn: wsMcq },
     sort:     { label: "Classification & sorting",    fn: wsSort },
-    map:      { label: "Map work & charts",           fn: function (t) { return wsMap(t); } },
-    casestudy:{ label: "Case study comprehension",    fn: function (t) { return wsCase(t); } },
-    apply:    { label: "Think and apply",             fn: wsApply },
+    compare:  { label: "Compare & contrast",          fn: function (t) { return wsCompare(t); } },
+    casestudy:{ label: "Story & reflection",          fn: function (t) { return wsCase(t); } },
+    apply:    { label: "Applied reasoning",             fn: wsApply },
     project:  { label: "Enquiry project",             fn: function (t) { return wsProject(t); } },
-    debate:   { label: "Class debate",                fn: wsDebate },
-    journal:  { label: "Social Studies journal",      fn: function (t) { return wsJournal(t); } },
+    debate:   { label: "Class discussion & debate",   fn: wsDebate },
+    journal:  { label: "P.E. journal",               fn: function (t) { return wsJournal(t); } },
     spelling: { label: "Vocabulary & spelling test",  fn: wsSpelling }
   };
 
@@ -342,12 +345,12 @@
       (t.facts || []).forEach(function (v) { fpool.push(v); });
       (t.tf || []).forEach(function (v) { tfpool.push(v); });
       (t.apply || []).forEach(function (v) { apool.push(v); });
-      if (t.mapwork) mpool.push(t.mapwork);
+      if (t.compare) mpool.push(t.compare);
       if (t.casestudy) cpool.push(t.casestudy);
     });
     var g = topics[0].grade, blocks = [], key = [], q = 0, each = 2, n = 10;
 
-    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " SOCIAL STUDIES", per: "exam" });
+    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " PHYSICAL EDUCATION", per: "exam" });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"],
       rows: [["", "Grade " + g, "", "     / " + (n * 4 * each + 10)]] });
     blocks.push({ k: "p", t: "Topics covered: " + topics.map(function (t) { return t.title; }).join(" · ") });
@@ -362,7 +365,7 @@
     }
 
     var a = pick(tpool, n, r);
-    sec("SECTION A — Social Studies vocabulary", "Write the meaning of each term.",
+    sec("SECTION A — Physical Education vocabulary", "Write the meaning of each term.",
       a.map(function (v) { return v.t + "  " + dots(26); }), a.map(function (v) { return v.d; }));
 
     var b = pick(tpool, n, r), bi = [], bk = [];
@@ -389,10 +392,10 @@
 
     /* Section E — map work and civic reasoning */
     var mp = pick(mpool, 1, r)[0];
-    blocks.push({ k: "h3", t: "SECTION E — Map work and civic reasoning   (10 marks)" });
+    blocks.push({ k: "h3", t: "SECTION E — Compare, contrast and moral reasoning   (10 marks)" });
     if (mp) {
-      blocks.push({ k: "instr", t: "1. Draw and label: " + mp.title + ". Beside each label, state what it is or why it matters. (6 marks)" });
-      blocks.push({ k: "lines", n: 8 });
+      blocks.push({ k: "instr", t: "1. Complete the comparison: " + mp.title + ". For each point below, state clearly what it means or what it involves. (6 marks)" });
+      blocks.push({ k: "table", head: ["Point of comparison", "Your answer"], rows: mp.items.map(function (p) { return [p.p, ""]; }) });
       key.push("Section E (1) — " + mp.title + ": " + mp.items.map(function (p) { return p.p + " = " + p.f; }).join("; "));
     }
     var ap = pick(apool, 2, r);
@@ -408,15 +411,15 @@
   /* ---------------- pack builder ---------------- */
   function buildPack(opts) {
     var r = rng(opts.seed || 1);
-    var topics = SS_CURRICULUM.filter(function (t) {
+    var topics = PE_CURRICULUM.filter(function (t) {
       return t.grade === opts.grade && (!opts.topics || opts.topics.indexOf(t.period) >= 0);
     });
     var doc = [], keys = [], toc = [];
 
     doc.push.apply(doc, PACK_COVER(opts, {
-      title: "SOCIAL STUDIES — GRADE " + opts.grade,
+      title: "PHYSICAL EDUCATION — GRADE " + opts.grade,
       sub: "Pupil Workbook & Assessment Pack",
-      line: "Elementary Social Studies · Liberian National Curriculum"
+      line: "Elementary Physical Education · Liberian National Curriculum"
     }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.title); });
@@ -428,11 +431,12 @@
     doc.push({ k: "bul", items: [
       "Read the key terms first and copy them into your notebook.",
       "Answer every question in complete sentences unless you are told otherwise.",
-      "For map work, use a ruler and colour your maps neatly. Always add a key.",
-      "For enquiry projects, be polite to everyone you interview and thank them.",
-      "Listen to the views of others in debates, even when you disagree."
+      "For every practical activity, warm up first and follow your teacher's safety instructions exactly.",
+      "Never attempt a stunt or a new exercise unless your teacher is watching and a mat is in place.",
+      "For enquiry projects, be polite to everyone you work with or interview, and thank them.",
+      "Encourage every classmate. Never mock any pupil for their size, speed, build or ability."
     ] });
-    doc.push({ k: "p", t: "Inclusive and differentiated learning is emphasised: work individually or in small mixed groups according to ability, gender, learning style and age.", i: true });
+    doc.push({ k: "p", t: "A learner-centered approach is emphasised. Inclusive and differentiated learning is used throughout: work individually or in small mixed groups according to gender, learning abilities and styles.", i: true });
     doc.push({ k: "pagebreak" });
 
     topics.forEach(function (t, i) {
@@ -490,5 +494,5 @@
     return { blocks: doc, topics: topics };
   }
 
-  root.GEN_SS = { buildPack: buildPack, SHEETS: SHEETS };
+  root.GEN_PE = { buildPack: buildPack, SHEETS: SHEETS };
 })(window);

@@ -1,0 +1,1290 @@
+/* Curriculum data — Republic of Liberia, Junior High SOCIAL STUDIES, Grades 7–9
+   Derived from the "Social Studies 7-9" curriculum guide (38 pp.), 6 periods per grade.
+
+   Same unit shape as the elementary SS_CURRICULUM so GEN_SS renders it unchanged:
+     terms[] {t,d,x} · facts[] {q,a} · tf[] {s,a,why} · apply[] {q,a}
+     · sort {title,groups} · mapwork {title,caption,items} · casestudy
+     · project · activities[] · materials[] · assessment[]
+
+   Per the project rule, the "Digital Research Links" listed throughout the
+   source guide (skwirk.com, saylor.org, allison.com, brainpop.com,
+   socialstudiesforkids.com, primarygames.com, pbskids.org, learninggames.com,
+   braveintheattempt.com, dictionary.com, khanacademy.com) are deliberately
+   omitted: the pack must stay fully offline.
+*/
+
+const SS_CURRICULUM_79 = [
+
+/* ================================ GRADE 7 ================================ */
+{
+  grade:7, period:"I", sem:"One", icon:"🌍",
+  title:"The Earth and the Solar System",
+  subtitle:"Unit I: The solar system, the movements of the earth and their effects",
+  outcomes:["Demonstrate knowledge of the position of the earth in the solar system and explain the effects of its movements"],
+  objectives:["Discuss the solar system","Determine the position of the earth in the solar system","Describe the size and movement of the earth and heavenly bodies","Analyse the evidence that the earth is spherical","Explain rotation, revolution and time zones","Describe eclipses of the sun and moon","Locate the equator"],
+  note:"The <b>solar system</b> is the sun together with the eight planets and other bodies that move round it. The earth is the <b>third planet</b> from the sun. <b>Rotation</b> is the spin of the earth on its axis once in 24 hours, causing day and night; <b>revolution</b> is its journey round the sun once in 365¼ days, causing the seasons.",
+  focus:["The solar system and its members","The planets in order from the sun","Natural and artificial satellites","Shape and size of the earth","The earth's axis and the equator","Rotation, revolution and time zones","Eclipses of the sun and moon"],
+  terms:[
+    {t:"solar system", d:"the sun and all the bodies that move round it", x:"The earth belongs to the solar system."},
+    {t:"planet", d:"a large body that orbits a star such as the sun", x:"Mars is a planet."},
+    {t:"orbit", d:"the path a body follows round another", x:"The earth's orbit takes one year."},
+    {t:"satellite", d:"a body that moves round a planet", x:"The moon is a satellite of the earth."},
+    {t:"natural satellite", d:"a satellite not made by people", x:"The moon is a natural satellite."},
+    {t:"artificial satellite", d:"a man-made object placed in orbit", x:"Artificial satellites carry signals."},
+    {t:"axis", d:"the imaginary line through the poles about which the earth spins", x:"The earth tilts on its axis."},
+    {t:"rotation", d:"the spinning of the earth on its axis", x:"Rotation causes day and night."},
+    {t:"revolution", d:"the movement of the earth round the sun", x:"Revolution takes 365¼ days."},
+    {t:"equator", d:"the imaginary line round the middle of the earth", x:"Liberia lies near the equator."},
+    {t:"time zone", d:"a region of the earth using the same standard time", x:"The world has 24 time zones."},
+    {t:"eclipse", d:"the blocking of light from one heavenly body by another", x:"An eclipse darkens the sun."},
+    {t:"solar eclipse", d:"when the moon comes between the sun and the earth", x:"A solar eclipse happens by day."},
+    {t:"lunar eclipse", d:"when the earth comes between the sun and the moon", x:"A lunar eclipse darkens the moon."}
+  ],
+  facts:[
+    {q:"What is the solar system?", a:"The sun together with the planets, satellites and other bodies that move round it."},
+    {q:"Name the planets in order from the sun.", a:"Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune."},
+    {q:"Which position does the earth occupy from the sun?", a:"The third position."},
+    {q:"What is the difference between rotation and revolution?", a:"Rotation is the spin of the earth on its axis in 24 hours; revolution is its movement round the sun in 365¼ days."},
+    {q:"What does rotation cause?", a:"Day and night, and the apparent rising and setting of the sun."},
+    {q:"State two proofs that the earth is spherical.", a:"A ship's mast is seen first as it approaches over the horizon, and photographs from space show a round earth."},
+    {q:"What is the equator?", a:"The imaginary line drawn round the middle of the earth, dividing it into the northern and southern hemispheres."},
+    {q:"When does a solar eclipse occur?", a:"When the moon passes between the sun and the earth and blocks the sun's light."}
+  ],
+  tf:[
+    {s:"The earth is the third planet from the sun.", a:"true", why:"The order is Mercury, Venus, then Earth."},
+    {s:"Rotation of the earth causes the seasons.", a:"false", why:"Rotation causes day and night; it is revolution together with the tilt of the axis that causes the seasons."},
+    {s:"The moon is a natural satellite of the earth.", a:"true", why:"It moves round the earth and was not made by people."},
+    {s:"The equator divides the earth into eastern and western hemispheres.", a:"false", why:"The equator divides it into northern and southern hemispheres; the prime meridian divides east from west."},
+    {s:"A lunar eclipse occurs when the earth passes between the sun and the moon.", a:"true", why:"The earth's shadow then falls on the moon."},
+    {s:"The earth completes one revolution in 24 hours.", a:"false", why:"One revolution takes about 365¼ days; 24 hours is one rotation."}
+  ],
+  sort:{ title:"The solar system", groups:[
+    {name:"Inner planets", items:["Mercury","Venus","Earth","Mars"]},
+    {name:"Outer planets", items:["Jupiter","Saturn","Uranus","Neptune"]},
+    {name:"Effects of rotation", items:["Day and night","Sunrise and sunset","Time zones","Apparent movement of the sun"]},
+    {name:"Effects of revolution", items:["The seasons","Varying length of day","The calendar year","Changing position of the sun"]}
+  ]},
+  mapwork:{ title:"Movements of the earth and their effects", caption:"Complete the chart showing each movement and what it produces.", items:[
+    {p:"Rotation", f:"the earth spins on its axis once in 24 hours, giving day and night"},
+    {p:"Revolution", f:"the earth travels round the sun once in 365¼ days, giving the year and the seasons"},
+    {p:"Tilt of the axis", f:"the earth leans at about 23½°, which is why the seasons change"},
+    {p:"Equator", f:"the 0° line of latitude; places near it, like Liberia, are hot all year"},
+    {p:"Time zones", f:"the earth is divided into 24 zones, one for each hour of rotation"},
+    {p:"Eclipse", f:"one body blocks the light reaching another, darkening the sun or the moon"}
+  ]},
+  casestudy:{ title:"Why Monrovia and London keep different times",
+    text:"Musu telephoned her uncle in London at eight o'clock in the morning from Monrovia. Her uncle answered sleepily and told her it was still very early where he was. Musu was puzzled, because she had waited until the sun was well up before she called. Her teacher later explained that the earth turns on its axis from west to east, so the sun does not rise everywhere at the same moment. The world has been divided into twenty-four time zones, one for each hour of the earth's daily turn.",
+    questions:[
+      {q:"Why was it a different time in London?", a:"Because the earth rotates, so the sun reaches different places at different moments, and the two cities lie in different time zones."},
+      {q:"Which movement of the earth causes this difference?", a:"Rotation — the spin of the earth on its axis once every 24 hours."},
+      {q:"How many time zones does the world have, and why that number?", a:"Twenty-four, because the earth takes 24 hours to complete one rotation."},
+      {q:"If it is morning in Monrovia, what part of the earth is in darkness?", a:"The side of the earth turned away from the sun at that moment."}
+    ]},
+  project:{ title:"Model of the solar system",
+    brief:"Build and explain a model showing the position of the earth among the planets.",
+    steps:["Collect materials such as card, clay, seeds or bottle tops for the sun and planets.","Arrange the eight planets in their correct order from the sun.","Label each planet and mark the earth clearly.","Show which planets have satellites.","Present the model and explain rotation and revolution to the class."],
+    criteria:["Correct order of the eight planets","Earth clearly identified in third position","Satellites shown","Neat labelling","Clear oral explanation of the two movements"]},
+  activities:["Name the objects that make up the solar system","Draw the solar system with the planets in order","Distinguish natural from artificial satellites","Demonstrate rotation and revolution with a globe and lamp"],
+  materials:["Globe and atlas","World map","Solar system chart","Torch or lamp for demonstration"],
+  assessment:["Quiz on the solar system","Solar system model project","Diagram of the earth's movements","Class participation"]
+},
+{
+  grade:7, period:"II", sem:"One", icon:"🏔️",
+  title:"Relief, Topography and Geographical Features",
+  subtitle:"Unit II: Vegetation, mountains, rivers and the features of the earth",
+  outcomes:["Identify the features that make up the topography of the earth and explain their importance"],
+  objectives:["Identify the features that make up the topography of the earth","Explain the formation of mountains and mountain chains","Discuss the location and uses of major rivers, lakes, seas and oceans","Describe the vegetation belts including the Sahara, swamp and Guinea high forest","Discuss the importance of islands and capes","Name the mountains of Liberia","Discuss river pollution and its control"],
+  note:"<b>Topography</b> means the shape and surface features of the land — its mountains, valleys, plains and rivers. <b>Relief</b> describes how the height of the land varies. Liberia's landscape rises from a low <b>coastal plain</b>, through rolling hills, to the <b>northern highlands</b> where Mount Wuteve and the Nimba range stand.",
+  focus:["Vegetation belts: Sahara, swamp, Guinea high forest","Topography of Liberia","Mountains of Liberia","Major rivers, lakes, seas and oceans","Importance of rivers","Islands and capes","River pollution"],
+  terms:[
+    {t:"topography", d:"the shape and surface features of the land", x:"The topography is hilly."},
+    {t:"relief", d:"the differences in height of the land surface", x:"A relief map shows highland and lowland."},
+    {t:"vegetation", d:"the plant life covering an area", x:"Forest is the natural vegetation."},
+    {t:"savanna", d:"grassland with scattered trees", x:"Savanna lies north of the forest."},
+    {t:"mangrove swamp", d:"salty coastal wetland with trees rooted in mud", x:"Mangrove swamps protect the coast."},
+    {t:"plateau", d:"a raised area of fairly level land", x:"The plateau rises inland."},
+    {t:"coastal plain", d:"low flat land beside the sea", x:"Monrovia lies on the coastal plain."},
+    {t:"tributary", d:"a smaller river flowing into a larger one", x:"The stream is a tributary."},
+    {t:"estuary", d:"the wide mouth of a river where it meets the sea", x:"Boats anchor in the estuary."},
+    {t:"cape", d:"a piece of land jutting out into the sea", x:"Cape Mount is on the coast."},
+    {t:"island", d:"land completely surrounded by water", x:"Providence Island is in the river."},
+    {t:"erosion", d:"the wearing away of soil and rock by water or wind", x:"Erosion damages farmland."},
+    {t:"pollution", d:"the spoiling of air, water or land by waste", x:"River pollution kills fish."},
+    {t:"hydroelectricity", d:"electricity generated from flowing water", x:"The dam produces hydroelectricity."}
+  ],
+  facts:[
+    {q:"What is topography?", a:"The shape and surface features of the land, such as mountains, valleys, plains and rivers."},
+    {q:"Name the three main vegetation belts studied.", a:"The Sahara (desert), the swamp and the Guinea high forest."},
+    {q:"Name two mountains of Liberia.", a:"Mount Wuteve and the Nimba range (also the Bong and Bomi ranges)."},
+    {q:"Name three major rivers of Liberia.", a:"The St. Paul, the St. John and the Cavalla (also the Lofa and Mano)."},
+    {q:"State three uses of a river.", a:"Transportation, irrigation of farms and the generation of hydroelectricity; rivers also supply water and fish."},
+    {q:"What is a cape?", a:"A piece of land that juts out into the sea."},
+    {q:"Which ocean borders Liberia?", a:"The Atlantic Ocean."},
+    {q:"Give two causes of river pollution.", a:"Dumping of household and market waste into rivers, and waste discharged from mining and industry."}
+  ],
+  tf:[
+    {s:"Liberia is bordered by the Atlantic Ocean.", a:"true", why:"The Atlantic forms Liberia's entire southern and western coastline."},
+    {s:"A tributary is a river that flows out of a lake into the sea.", a:"false", why:"A tributary is a smaller river that flows INTO a larger river."},
+    {s:"Mangrove swamps are found along the coast.", a:"true", why:"They grow in salty tidal water where rivers meet the sea."},
+    {s:"River pollution has no effect on human health.", a:"false", why:"Polluted water spreads diseases such as cholera and typhoid and kills the fish people eat."},
+    {s:"The Guinea high forest receives heavy rainfall.", a:"true", why:"Dense tropical forest grows only where rainfall is high throughout much of the year."}
+  ],
+  sort:{ title:"Features of the earth", groups:[
+    {name:"Highland features", items:["Mountain","Plateau","Hill","Ridge"]},
+    {name:"Water features", items:["River","Lake","Ocean","Estuary"]},
+    {name:"Rivers of Liberia", items:["St. Paul","St. John","Cavalla","Lofa"]},
+    {name:"Causes of river pollution", items:["Dumping refuse","Mining waste","Washing in streams","Open defecation"]}
+  ]},
+  mapwork:{ title:"Physical features of Liberia", caption:"Locate each feature and state its importance.", items:[
+    {p:"Coastal plain", f:"low flat land along the Atlantic where most towns and ports are found"},
+    {p:"Rolling hills", f:"the belt of higher land inland from the coast, used for farming"},
+    {p:"Northern highlands", f:"the highest land, including Mount Wuteve and the Nimba range"},
+    {p:"St. Paul River", f:"provides water, transport and hydroelectric power at Mount Coffee"},
+    {p:"Cavalla River", f:"forms part of the eastern boundary with Côte d'Ivoire"},
+    {p:"Cape Mount", f:"a headland jutting into the Atlantic, a landmark for ships"},
+    {p:"Lake Piso", f:"a coastal lagoon used for fishing and a habitat for wildlife"}
+  ]},
+  casestudy:{ title:"The stream at Gbarnga",
+    text:"For many years the people of a town near Gbarnga drew drinking water from a clear stream. Then a market grew up on the bank, and traders began throwing spoiled food, plastic and other refuse into the water. Within two years the fish had gone and children who drank from the stream fell sick with diarrhoea. The town council called a meeting. They agreed to dig a rubbish pit away from the water, to fine anyone who dumped in the stream, and to plant trees along the bank to hold the soil. After a year the water began to run clear again.",
+    questions:[
+      {q:"What caused the stream to become polluted?", a:"Traders at the new market threw spoiled food, plastic and refuse directly into the water."},
+      {q:"State two effects of the pollution.", a:"The fish died and children who drank the water suffered from diarrhoea."},
+      {q:"What three measures did the town council take?", a:"They dug a rubbish pit away from the water, fined those who dumped in the stream, and planted trees along the bank."},
+      {q:"Why were trees planted along the bank?", a:"Their roots hold the soil and reduce erosion, so less silt and waste washes into the stream."}
+    ]},
+  project:{ title:"Relief map of your county",
+    brief:"Make a simple relief map showing the physical features around your school.",
+    steps:["Find out which rivers, hills and forests lie near your community.","Draw an outline map of the area.","Use colours or shading to show highland, lowland and water.","Mark and name at least four features.","Write one sentence on the importance of each feature."],
+    criteria:["Accurate outline","At least four features named","Clear key or colour code","Correct use of the terms relief and topography","Sensible statement of importance"]},
+  activities:["Visit a forest or savanna area and describe what is seen","Study relief, physical and vegetation maps of Liberia","Research the importance of rivers for electricity, transport and irrigation","Discuss the causes and control of river pollution"],
+  materials:["Relief and physical maps of Liberia","Globe and atlases","World map","Pictures showing waste disposal"],
+  assessment:["Map work exercise","Quiz on physical features","Relief map project","Group discussion report"]
+},
+{
+  grade:7, period:"III", sem:"One", icon:"👨‍👩‍👧",
+  title:"The Family in Liberia",
+  subtitle:"Unit III: Family types, division of labour, relationships and family health",
+  outcomes:["Distinguish the types of family, analyse the rights and responsibilities of members, and discuss family health"],
+  objectives:["Distinguish the various family types: nuclear, extended and single parent","Analyse the rights and responsibilities of family members","Discuss the division of labour and gender equality in the home","Distinguish healthy from unhealthy relationships","Discuss family health including HIV/AIDS and STI prevention","Discuss the effects of drug and alcohol abuse on the family"],
+  note:"A <b>nuclear family</b> is parents and their children; an <b>extended family</b> adds grandparents, uncles, aunts and cousins; a <b>single-parent family</b> has one parent raising the children. Every member has both <b>rights</b> and <b>responsibilities</b>. Household work should be shared fairly between boys and girls — this is <b>gender equality</b>.",
+  focus:["Structure of the Liberian family","Nuclear, extended and single-parent families","Division of labour and gender equality","Healthy and unhealthy relationships","Family health: HIV/AIDS and STIs","Drug and alcohol abuse","Rights and responsibilities in the family"],
+  terms:[
+    {t:"family", d:"a group of people related by blood, marriage or adoption", x:"The family lives together."},
+    {t:"nuclear family", d:"a family of parents and their children only", x:"They are a nuclear family of five."},
+    {t:"extended family", d:"a family including grandparents, uncles, aunts and cousins", x:"The extended family gathered."},
+    {t:"single-parent family", d:"a family in which one parent raises the children", x:"She heads a single-parent family."},
+    {t:"division of labour", d:"the sharing out of work among members", x:"Division of labour eases the work."},
+    {t:"gender equality", d:"treating boys and girls with equal rights and opportunities", x:"Gender equality means chores are shared."},
+    {t:"responsibility", d:"a duty a person is expected to carry out", x:"Fetching water is his responsibility."},
+    {t:"right", d:"something a person is justly entitled to", x:"Every child has a right to education."},
+    {t:"healthy relationship", d:"one built on respect, trust and honesty", x:"A healthy relationship has no violence."},
+    {t:"unhealthy relationship", d:"one marked by disrespect, fear or abuse", x:"An unhealthy relationship harms both."},
+    {t:"HIV", d:"the virus that weakens the body's defence system", x:"HIV is preventable."},
+    {t:"STI", d:"an infection passed on through sexual contact", x:"STIs should be treated early."},
+    {t:"substance abuse", d:"the harmful use of drugs or alcohol", x:"Substance abuse breaks up families."},
+    {t:"mortality", d:"the number of deaths in a population", x:"Infant mortality has fallen."}
+  ],
+  facts:[
+    {q:"Name the three types of family studied.", a:"The nuclear family, the extended family and the single-parent family."},
+    {q:"What is a nuclear family?", a:"A family made up of parents and their children only."},
+    {q:"State two responsibilities of parents in a family.", a:"Providing food, shelter and clothing, and seeing that the children are educated and cared for."},
+    {q:"State two responsibilities of children in a family.", a:"Obeying and respecting parents, and helping with household chores."},
+    {q:"What is meant by gender equality in the home?", a:"That boys and girls are given equal rights, opportunities and a fair share of household work."},
+    {q:"Give two features of a healthy relationship.", a:"Mutual respect and honest communication, with no violence or fear."},
+    {q:"State two ways of preventing HIV and STIs.", a:"Abstinence from sexual activity and avoiding shared sharp instruments such as blades and needles."},
+    {q:"Give two effects of alcohol abuse on a family.", a:"It wastes the family's money and causes quarrels, violence and neglect of children."}
+  ],
+  tf:[
+    {s:"An extended family includes grandparents, uncles and aunts.", a:"true", why:"It goes beyond the parents and children to include other relatives."},
+    {s:"Only girls should do household chores.", a:"false", why:"Work should be shared fairly between boys and girls; that is gender equality."},
+    {s:"HIV can be spread by sharing a plate of food.", a:"false", why:"HIV is not spread by ordinary social contact such as sharing food or shaking hands."},
+    {s:"A single-parent family is one in which one parent raises the children.", a:"true", why:"That is the definition of a single-parent family."},
+    {s:"A relationship in which one partner is afraid of the other is healthy.", a:"false", why:"Fear shows disrespect and possible abuse, which are marks of an unhealthy relationship."}
+  ],
+  sort:{ title:"The family", groups:[
+    {name:"Nuclear family members", items:["Father","Mother","Son","Daughter"]},
+    {name:"Extended family members", items:["Grandmother","Uncle","Aunt","Cousin"]},
+    {name:"Signs of a healthy relationship", items:["Respect","Trust","Honest talk","Shared decisions"]},
+    {name:"Signs of an unhealthy relationship", items:["Violence","Constant fear","Insults","Control of money"]}
+  ]},
+  mapwork:{ title:"Roles and responsibilities in the family", caption:"Complete the chart of family members and their duties.", items:[
+    {p:"Father", f:"provides for the family, protects it and shares in decisions and care"},
+    {p:"Mother", f:"provides for and cares for the family and shares in decisions and income"},
+    {p:"Children", f:"obey and respect parents, attend school and help with chores"},
+    {p:"Grandparents", f:"give advice, pass on custom and history, and help care for children"},
+    {p:"Elder siblings", f:"help look after younger children and assist with household work"},
+    {p:"The whole family", f:"protects the health of all members and supports each other in difficulty"}
+  ]},
+  casestudy:{ title:"Sharing the work at home",
+    text:"In the Kollie household, Musu woke at five each morning to sweep the yard, fetch water and cook before walking to school, while her brother Sekou slept until six and left with his books. Musu was often late and her grades began to fall. Her teacher visited the home and spoke with the parents about the school's attendance policy. After discussion, the family drew up a roster: Sekou now fetches water and sweeps on three mornings, and Musu on the other three. Both children now reach school on time, and Musu's grades have improved.",
+    questions:[
+      {q:"Why were Musu's grades falling?", a:"She was doing all the morning chores alone, arriving late and having little time or energy for school work."},
+      {q:"What principle was not being followed in the home at first?", a:"Gender equality — the household work was not shared fairly between the boy and the girl."},
+      {q:"How was the problem solved?", a:"The family drew up a roster so that both children took turns at the morning chores."},
+      {q:"Why is a fair division of labour important in a family?", a:"It gives every member time for school and rest, prevents resentment, and teaches both boys and girls to be responsible."}
+    ]},
+  project:{ title:"My family tree and duties chart",
+    brief:"Draw your family and set out the duties of each member.",
+    steps:["Draw a family tree showing the members of your household.","State whether it is nuclear, extended or single parent.","List the duties each member performs.","Suggest one change that would make the sharing of work fairer.","Present your chart to the class."],
+    criteria:["Family type correctly identified","Members clearly shown","Duties listed for each member","A sensible suggestion for fairer sharing","Neat presentation"]},
+  activities:["Draw the three family types","State the role of each member of your family","Role play healthy and unhealthy relationships","Discuss the effects of HIV/AIDS on teenagers and adults"],
+  materials:["Chart showing family types","Posters on HIV/AIDS and STI care","Political map of Liberia","Resource persons from the community"],
+  assessment:["Family tree project","Quiz on family types","Role play assessment","Class participation"]
+},
+{
+  grade:7, period:"IV", sem:"Two", icon:"🌾",
+  title:"Economic Activities and Traditional Agriculture",
+  subtitle:"Unit IV: Occupations, commerce and the farming systems of Liberia",
+  outcomes:["Analyse the occupations and economic activities of Liberian families and show tolerance of cultural diversity"],
+  objectives:["Differentiate the types of occupation such as farming, fishing, hunting, weaving, tailoring and masonry","Analyse the system of commerce in Liberia including trade and barter","Analyse the traditional farming methods used among the tribes","Discuss the crops grown in Liberia and the localities associated with them","Distinguish commercial from traditional farming","Discuss logging and mining as economic activities"],
+  note:"An <b>occupation</b> is the work a person does to earn a living. <b>Traditional (subsistence) farming</b> grows food mainly for the family, while <b>commercial farming</b> grows crops such as rubber and oil palm mainly for sale. <b>Barter</b> is the direct exchange of goods for goods without using money.",
+  focus:["Types of occupation","Commercial farming: rubber, oil palm, cocoa, coffee","Traditional farming: rice, cassava, yam, sweet potato","Traditional and modern fishing and hunting","Weaving, tailoring, logging and mining","Trade and barter"],
+  terms:[
+    {t:"occupation", d:"the work a person does to earn a living", x:"Farming is his occupation."},
+    {t:"subsistence farming", d:"farming mainly to feed one's own family", x:"Subsistence farming feeds the household."},
+    {t:"commercial farming", d:"farming mainly to sell the produce", x:"Rubber is grown by commercial farming."},
+    {t:"cash crop", d:"a crop grown chiefly for sale", x:"Cocoa is a cash crop."},
+    {t:"food crop", d:"a crop grown chiefly to be eaten", x:"Rice is Liberia's main food crop."},
+    {t:"shifting cultivation", d:"clearing land, farming it, then moving on to let it rest", x:"Shifting cultivation restores fertility."},
+    {t:"barter", d:"exchanging goods directly for other goods", x:"They barter fish for rice."},
+    {t:"commerce", d:"the buying and selling of goods", x:"Commerce takes place in the market."},
+    {t:"plantation", d:"a large estate growing one main crop", x:"The rubber plantation employs many."},
+    {t:"artisan", d:"a skilled worker who makes things by hand", x:"The weaver is an artisan."},
+    {t:"logging", d:"the cutting of trees for timber", x:"Logging provides timber for export."},
+    {t:"migration", d:"the movement of people from one place to settle in another", x:"Work causes migration to towns."}
+  ],
+  facts:[
+    {q:"What is an occupation?", a:"The work a person does regularly to earn a living."},
+    {q:"Name four occupations found in Liberia.", a:"Farming, fishing, hunting, weaving, tailoring, masonry and mining (any four)."},
+    {q:"State two differences between subsistence and commercial farming.", a:"Subsistence farming produces mainly for the family on small plots; commercial farming produces mainly for sale on large plantations."},
+    {q:"Name four commercial crops of Liberia.", a:"Rubber, oil palm, cocoa and coffee."},
+    {q:"Name four traditional food crops of Liberia.", a:"Rice, cassava, yam or eddoes, and sweet potatoes."},
+    {q:"What is barter?", a:"The direct exchange of one kind of goods for another without using money."},
+    {q:"State one advantage and one disadvantage of barter.", a:"It needs no money, but both people must want exactly what the other has to offer."},
+    {q:"Name two minerals mined in Liberia.", a:"Iron ore and gold (also diamonds)."}
+  ],
+  tf:[
+    {s:"Rubber is Liberia's leading commercial crop.", a:"true", why:"Rubber is grown on large plantations mainly for export."},
+    {s:"Subsistence farmers grow crops mainly to sell abroad.", a:"false", why:"Subsistence farmers grow mainly to feed their own families; selling abroad is commercial farming."},
+    {s:"Barter requires the use of money.", a:"false", why:"Barter is the direct exchange of goods for goods, without money."},
+    {s:"Rice is the staple food crop of Liberia.", a:"true", why:"It is the crop most widely grown and eaten across the country."},
+    {s:"Logging and mining are economic activities.", a:"true", why:"Both produce goods and income and provide employment."}
+  ],
+  sort:{ title:"Economic activities of Liberia", groups:[
+    {name:"Commercial crops", items:["Rubber","Oil palm","Cocoa","Coffee"]},
+    {name:"Traditional food crops", items:["Rice","Cassava","Yam","Sweet potato"]},
+    {name:"Craft occupations", items:["Weaving","Tailoring","Masonry","Carving"]},
+    {name:"Extractive activities", items:["Logging","Iron ore mining","Gold mining","Fishing"]}
+  ]},
+  mapwork:{ title:"Occupations and where they are found", caption:"Match each activity with its typical location and importance.", items:[
+    {p:"Rubber growing", f:"large plantations such as those in Margibi and Bong; earns export income"},
+    {p:"Rice farming", f:"upland and swamp farms across the counties; the main food supply"},
+    {p:"Sea fishing", f:"along the Atlantic coast at Monrovia, Buchanan and Harper; supplies protein"},
+    {p:"Iron ore mining", f:"Nimba and Bong ranges; a major source of export earnings"},
+    {p:"Logging", f:"the high forest of the interior; supplies timber for building and export"},
+    {p:"Market trading", f:"towns and city markets; distributes food and goods to consumers"}
+  ]},
+  casestudy:{ title:"Two farmers in Bong County",
+    text:"Old man Flomo farms two acres. He clears a patch of bush, burns the stumps, plants rice and cassava, and after three harvests moves to a new patch so the old land can rest. He sells only what his family does not eat. His neighbour, Mr. Kollie, has planted twenty acres of oil palm. He hires eight workers, uses fertilizer, and sells the whole crop to a processing company in Monrovia. In a bad year Flomo still eats, because his food is in his own barn. In a bad year Kollie earns little, but in a good year he earns far more than Flomo ever will.",
+    questions:[
+      {q:"Which farmer practises subsistence farming, and how do you know?", a:"Old man Flomo, because he grows mainly to feed his family and sells only the surplus."},
+      {q:"Which farming method does Flomo use when he moves to a new patch?", a:"Shifting cultivation, which lets the old land rest and recover its fertility."},
+      {q:"State one advantage of Mr. Kollie's system.", a:"It earns much more money in a good year and creates employment for eight workers."},
+      {q:"State one advantage of Flomo's system.", a:"His family still has food in a bad year, because his harvest is stored rather than sold."}
+    ]},
+  project:{ title:"Survey of occupations in my community",
+    brief:"Find out how families in your community earn their living.",
+    steps:["Interview ten households about their main occupation.","Record each answer in a table.","Group the occupations into farming, fishing, trading, crafts and others.","Draw a bar chart of your findings.","Say which occupation is commonest and suggest why."],
+    criteria:["Ten households surveyed","Results recorded in a clear table","Occupations correctly grouped","Accurate bar chart","Reasoned conclusion"]},
+  activities:["Visit a plantation and relate its activities to location and employment","Describe companies in your county engaged in commercial farming","Visit a farm and observe the methods used","Compare barter with buying and selling for money"],
+  materials:["Pictures of farms, plantations and markets","Samples of local crops","Map of Liberia showing crop areas","Resource persons from the community"],
+  assessment:["Occupation survey project","Quiz on farming systems","Field visit report","Class discussion"]
+},
+{
+  grade:7, period:"V", sem:"Two", icon:"💍",
+  title:"The Marriage Systems in Liberia",
+  subtitle:"Unit V: Kinds of marriage, customs, courtship and the influence of the media",
+  outcomes:["Recognize the types of marriage in Liberia, appreciate their values and explain the influence of the media"],
+  objectives:["Explain the rules governing marriage in Liberia","Examine the process of courtship","Explain what is meant by taboos in Liberian society","Analyse the difference between traditional and statutory marriages","Evaluate the impact of in-law relationships on marriage","Discuss the positive and negative influence of the mass media on relationships"],
+  note:"<b>Monogamy</b> is marriage to one partner at a time; <b>polygamy</b> is marriage to more than one. A <b>traditional (customary) marriage</b> follows the custom of the people and involves both families, while a <b>statutory marriage</b> is performed under the law of the state and registered. Marriage in Liberia is governed by rules on <b>age, consent and commitment</b>.",
+  focus:["Kinds of marriage: monogamous, polygamous, common law","Traditional and statutory marriage customs","Courtship and choice of partner","Age at marriage and consent","Commitment and parenting responsibilities","Taboos in Liberian society","Media influence on relationships"],
+  terms:[
+    {t:"marriage", d:"the recognised union of two people as partners", x:"Their marriage was celebrated."},
+    {t:"monogamy", d:"marriage to one partner at a time", x:"Monogamy is common in the cities."},
+    {t:"polygamy", d:"marriage to more than one partner at the same time", x:"Polygamy is practised in some areas."},
+    {t:"customary marriage", d:"marriage performed according to the custom of the people", x:"A customary marriage joins two families."},
+    {t:"statutory marriage", d:"marriage performed and registered under state law", x:"A statutory marriage is recorded by the state."},
+    {t:"common law marriage", d:"a union where partners live together without a formal ceremony", x:"Common law unions are recognised in practice."},
+    {t:"courtship", d:"the period before marriage when partners get to know each other", x:"Courtship precedes marriage."},
+    {t:"dowry", d:"a gift given to the bride's family in a customary marriage", x:"The dowry sealed the agreement."},
+    {t:"taboo", d:"an act forbidden by custom or belief", x:"It is a taboo in that town."},
+    {t:"consent", d:"free agreement to something", x:"Marriage requires the consent of both."},
+    {t:"in-laws", d:"the relatives of one's husband or wife", x:"He visits his in-laws often."},
+    {t:"mass media", d:"the means of reaching many people, such as radio and television", x:"Mass media shapes opinions."}
+  ],
+  facts:[
+    {q:"Name the kinds of marriage practised in Liberia.", a:"Monogamous, polygamous and common law marriages."},
+    {q:"State two differences between customary and statutory marriage.", a:"Customary marriage follows the people's custom and involves both families; statutory marriage is performed under state law and is officially registered."},
+    {q:"What is courtship?", a:"The period before marriage during which the partners come to know each other."},
+    {q:"What is a taboo?", a:"An act that is forbidden by the custom or belief of a people."},
+    {q:"Give two responsibilities of married partners.", a:"Caring for and respecting each other, and providing for and raising their children."},
+    {q:"State one positive and one negative influence of mass media on young people.", a:"It can spread useful health and education information, but it can also promote harmful images of sex and violence."},
+    {q:"Why should young people not marry too early?", a:"They are not physically, emotionally or financially ready, and early marriage usually ends their schooling."}
+  ],
+  tf:[
+    {s:"Monogamy means marriage to more than one partner at a time.", a:"false", why:"Monogamy is marriage to ONE partner; marriage to more than one is polygamy."},
+    {s:"A statutory marriage is registered under the law of the state.", a:"true", why:"It is performed and recorded according to state law."},
+    {s:"Consent of both partners is required for a valid marriage.", a:"true", why:"Marriage must be entered into freely by both parties."},
+    {s:"Early marriage helps a girl complete her education.", a:"false", why:"Early marriage usually forces a girl to leave school and exposes her to health risks."},
+    {s:"The mass media has only positive effects on young people.", a:"false", why:"It can inform and educate, but it can also promote harmful behaviour and false images."}
+  ],
+  sort:{ title:"Marriage in Liberia", groups:[
+    {name:"Kinds of marriage", items:["Monogamous","Polygamous","Common law","Customary"]},
+    {name:"Requirements for marriage", items:["Consent of both","Lawful age","Commitment","Family agreement"]},
+    {name:"Positive media influence", items:["Health information","Educational programmes","News and civic awareness","Skills programmes"]},
+    {name:"Negative media influence", items:["Harmful sexual images","Glorifying violence","False images of wealth","Promoting early relationships"]}
+  ]},
+  mapwork:{ title:"Traditional and statutory marriage compared", caption:"Complete the chart of features and how each system works.", items:[
+    {p:"Who performs it", f:"customary: elders and the two families; statutory: an authorised officer of the state"},
+    {p:"Record kept", f:"customary: remembered by the families and community; statutory: an official certificate"},
+    {p:"Role of the families", f:"customary: central, with negotiation and dowry; statutory: supportive but not required"},
+    {p:"Legal standing", f:"both are recognised in Liberia, but statutory marriage is easier to prove in court"},
+    {p:"Age requirement", f:"the law sets a minimum age; marrying below it is unlawful and harmful"},
+    {p:"Responsibilities created", f:"both create duties of care, support and parenting for the couple"}
+  ]},
+  casestudy:{ title:"Hawa's choice",
+    text:"Hawa was sixteen and in the eighth grade when a trader of thirty asked her family for her hand. He offered a generous dowry, and Hawa's uncle urged the family to accept, saying the money would help her younger brothers. Hawa's mother objected. She pointed out that Hawa wanted to become a nurse, that the law sets a minimum age for marriage, and that girls who marry young often suffer in childbirth. The family called a meeting with a community health worker, who explained the risks. In the end the family refused the offer, and Hawa stayed in school.",
+    questions:[
+      {q:"Why did Hawa's uncle want the family to accept the offer?", a:"Because the dowry money would help support her younger brothers."},
+      {q:"Give two reasons Hawa's mother gave against the marriage.", a:"Hawa wanted to train as a nurse, and girls who marry young often suffer complications in childbirth; the law also sets a minimum age."},
+      {q:"Who helped the family understand the health risks?", a:"A community health worker invited to the family meeting."},
+      {q:"Why is consent important in marriage?", a:"Marriage creates lifelong duties, so both partners must enter it freely and be old enough to understand what they are agreeing to."}
+    ]},
+  project:{ title:"Marriage customs in my community",
+    brief:"Record how marriage is conducted in your community and compare it with statutory marriage.",
+    steps:["Interview an elder about the steps of a customary marriage.","Write down the stages in order.","Find out what the law requires for a statutory marriage.","Draw a table comparing the two.","State one value of marriage that both systems share."],
+    criteria:["An elder genuinely interviewed","Stages recorded in order","Statutory requirements correctly stated","Clear comparison table","A reasoned shared value identified"]},
+  activities:["Discuss the rules governing marriage in Liberia","Compare traditional and statutory marriage","Debate the influence of the media on young people","Discuss the responsibilities of parenting"],
+  materials:["Charts on marriage types","Resource persons from the community","Newspapers and radio programme guides","Copies of relevant local regulations"],
+  assessment:["Comparison table exercise","Quiz on marriage systems","Class debate","Community interview report"]
+},
+{
+  grade:7, period:"VI", sem:"Two", icon:"📜",
+  title:"History of Liberia before 1847",
+  subtitle:"Unit VI: Ethnic distribution, religions, early kingdoms and sources of history",
+  outcomes:["Analyse the sources of Liberian history and develop a sense of patriotism and nationalism"],
+  objectives:["Analyse the ethnic and linguistic distribution of the people of Liberia","Discuss the religions of the people of Liberia","Discuss the history of Liberia before 1822","Explain the various sources of Liberian history","Describe the migration of the different groups into Liberia","Discuss the early kingdoms and cultures"],
+  note:"Liberia's sixteen ethnic groups fall into three language families: <b>Mande</b>, <b>Kru</b> and <b>Mel (West Atlantic)</b>. Historians learn about the past from <b>oral tradition</b> (stories passed down by word of mouth), <b>written records</b>, <b>archaeology</b> (the study of remains) and <b>archival materials</b>. Each source has strengths and weaknesses, so they are used together.",
+  focus:["Ethnic and linguistic distribution","The three language families","Migration of the groups into Liberia","Religions of the people","Early kingdoms and cultures","Sources of Liberian history","Liberia before 1822"],
+  terms:[
+    {t:"ethnic group", d:"a people sharing a common language, custom and origin", x:"The Kpelle are an ethnic group."},
+    {t:"linguistic group", d:"peoples grouped by the family of language they speak", x:"Mande is a linguistic group."},
+    {t:"migration", d:"the movement of a people to settle in a new area", x:"Migration brought them south."},
+    {t:"oral tradition", d:"history passed on by word of mouth", x:"Oral tradition preserved the story."},
+    {t:"archaeology", d:"the study of the past through physical remains", x:"Archaeology uncovers old tools."},
+    {t:"archives", d:"a collection of preserved historical documents", x:"The archives hold old records."},
+    {t:"artefact", d:"an object made by people in the past", x:"The pot is an artefact."},
+    {t:"indigenous", d:"originating in and native to a place", x:"The indigenous people farmed the land."},
+    {t:"kingdom", d:"a territory ruled by a king or queen", x:"An early kingdom flourished there."},
+    {t:"patriotism", d:"love of and devotion to one's country", x:"Patriotism unites the nation."},
+    {t:"traditional religion", d:"the indigenous religious belief of a people", x:"Traditional religion honours ancestors."},
+    {t:"griot", d:"a traditional storyteller who keeps the history of a people", x:"The griot recited the lineage."}
+  ],
+  facts:[
+    {q:"How many ethnic groups are there in Liberia?", a:"Sixteen."},
+    {q:"Name the three language families of Liberia.", a:"Mande, Kru and Mel (West Atlantic)."},
+    {q:"Name two ethnic groups in the Mande family.", a:"The Kpelle and the Vai (also Mano, Gio, Loma, Mandingo)."},
+    {q:"Name two ethnic groups in the Kru family.", a:"The Bassa and the Grebo (also Kru, Krahn, Dey)."},
+    {q:"Name the main religions practised in Liberia.", a:"Christianity, Islam and traditional African religion."},
+    {q:"Name four sources of Liberian history.", a:"Oral tradition, written records, archaeology and archival materials."},
+    {q:"State one strength and one weakness of oral tradition.", a:"It preserves the history of peoples who left no writing, but details can change as the story is passed from person to person."},
+    {q:"What is the Vai script noted for?", a:"It is an indigenous writing system developed by the Vai people of Liberia."}
+  ],
+  tf:[
+    {s:"Liberia has sixteen ethnic groups.", a:"true", why:"The sixteen groups fall into the Mande, Kru and Mel language families."},
+    {s:"Oral tradition is a source of history.", a:"true", why:"Knowledge of the past passed down by word of mouth is a recognised historical source."},
+    {s:"Archaeology studies documents kept in archives.", a:"false", why:"Archaeology studies physical remains such as tools and pottery; archives hold written documents."},
+    {s:"No people lived in Liberia before 1822.", a:"false", why:"Indigenous peoples had lived, farmed and formed kingdoms in the area for many centuries."},
+    {s:"The Vai people developed their own script.", a:"true", why:"The Vai script is an indigenous Liberian writing system."}
+  ],
+  sort:{ title:"Peoples and sources of history", groups:[
+    {name:"Mande group", items:["Kpelle","Vai","Loma","Mandingo"]},
+    {name:"Kru group", items:["Bassa","Grebo","Kru","Krahn"]},
+    {name:"Mel group", items:["Gola","Kissi"]},
+    {name:"Sources of history", items:["Oral tradition","Written records","Archaeology","Archives"]}
+  ]},
+  mapwork:{ title:"Sources of Liberian history", caption:"State what each source provides and one limitation.", items:[
+    {p:"Oral tradition", f:"stories, songs and genealogies from elders; may change slightly with each retelling"},
+    {p:"Written records", f:"letters, treaties and reports; only cover periods and peoples who wrote or were written about"},
+    {p:"Archaeology", f:"tools, pottery and settlement remains; shows how people lived but rarely gives names or dates"},
+    {p:"Archival materials", f:"official documents preserved by government; may reflect only the official viewpoint"},
+    {p:"Artefacts and masks", f:"reveal beliefs, craft skill and trade contacts of a people"},
+    {p:"Language study", f:"comparing languages shows how peoples are related and how they migrated"}
+  ]},
+  casestudy:{ title:"The elder and the archaeologist",
+    text:"In a town in Grand Cape Mount, an old woman told visiting students that her people had come from the north long ago, driven by war, and had settled where the rivers met. Some students doubted her, saying there was no book to prove it. The next year a team digging near the river found pottery and iron tools of a style known from the north, buried in layers that were several centuries old. The teacher explained that the elder's oral tradition and the archaeologist's evidence supported each other, and that neither alone would have told the whole story.",
+    questions:[
+      {q:"What source of history did the old woman represent?", a:"Oral tradition — history passed down by word of mouth."},
+      {q:"What source did the digging team represent?", a:"Archaeology — the study of the past through physical remains."},
+      {q:"How did the two sources support each other?", a:"The pottery and tools were of a northern style and several centuries old, which matched the elder's account of migration from the north."},
+      {q:"Why do historians prefer to use more than one source?", a:"Each source has weaknesses, so using several together makes the account more reliable and complete."}
+    ]},
+  project:{ title:"Collecting local history",
+    brief:"Record a piece of the history of your own community from an elder.",
+    steps:["Choose an elder known for knowledge of the community's past.","Prepare five questions about how the community began.","Record the answers carefully in writing.","Note any place, object or ruin mentioned that could be evidence.","Present the account and say which source of history you used."],
+    criteria:["Five sensible questions prepared","An elder genuinely interviewed","Answers recorded accurately","Possible physical evidence identified","Correct naming of the source used"]},
+  activities:["Discuss tribal groupings and their languages","Classify ethnic groups by language family","Trace the migration of each group into Liberia","Research the early kingdoms and their impact"],
+  materials:["Ethnic and linguistic map of Liberia","Pictures of artefacts and masks","Atlas of Liberia","Resource persons and elders"],
+  assessment:["Local history project","Quiz on ethnic groups","Sources of history exercise","Class presentation"]
+},
+
+/* ================================ GRADE 8 ================================ */
+{
+  grade:8, period:"I", sem:"One", icon:"🗺️",
+  title:"Geographical Location of Liberia",
+  subtitle:"Unit I: Position, boundaries, physical features and political subdivisions",
+  outcomes:["Draw the map of Liberia and describe its physical features, natural resources and political subdivisions"],
+  objectives:["Locate Liberia on the map of West Africa and name its boundaries and neighbours","Describe the geographical regions of Liberia","Describe the physical features and natural resources of Liberia","Draw the political and physical maps of Liberia and label the subdivisions","Identify the manufacturing and mining industries of Liberia"],
+  note:"Liberia lies on the <b>west coast of Africa</b>, bounded by <b>Sierra Leone</b> to the north-west, <b>Guinea</b> to the north, <b>Côte d'Ivoire</b> to the east and the <b>Atlantic Ocean</b> to the south and west. The country is divided into <b>fifteen counties</b>, and its capital is <b>Monrovia</b>.",
+  focus:["Location of Liberia in West Africa","Boundaries and neighbouring countries","Geographical regions of Liberia","Physical features","Natural resources","The fifteen counties","Manufacturing and mining industries"],
+  terms:[
+    {t:"location", d:"the position of a place on the earth's surface", x:"Liberia's location is on the west coast."},
+    {t:"boundary", d:"a line separating one country or area from another", x:"The river forms a boundary."},
+    {t:"latitude", d:"distance north or south of the equator", x:"Liberia lies at about 6° north."},
+    {t:"longitude", d:"distance east or west of the prime meridian", x:"Longitude is measured in degrees."},
+    {t:"county", d:"a political subdivision of Liberia", x:"Nimba is a county."},
+    {t:"capital", d:"the city where the government is seated", x:"Monrovia is the capital."},
+    {t:"natural resource", d:"something useful supplied by nature", x:"Iron ore is a natural resource."},
+    {t:"physical feature", d:"a natural feature of the land such as a hill or river", x:"Mountains are physical features."},
+    {t:"hinterland", d:"the inland area behind the coast", x:"The hinterland is less settled."},
+    {t:"industry", d:"the making of goods, especially in factories", x:"Cement making is an industry."},
+    {t:"manufacturing", d:"the making of finished goods from raw materials", x:"Manufacturing adds value."},
+    {t:"port", d:"a harbour where ships load and unload", x:"The Freeport of Monrovia is busy."}
+  ],
+  facts:[
+    {q:"On which continent and coast is Liberia found?", a:"In Africa, on the west coast of the continent."},
+    {q:"Name the three countries bordering Liberia.", a:"Sierra Leone to the north-west, Guinea to the north and Côte d'Ivoire to the east."},
+    {q:"Which ocean borders Liberia?", a:"The Atlantic Ocean, to the south and west."},
+    {q:"How many counties has Liberia, and what is its capital?", a:"Fifteen counties; the capital is Monrovia."},
+    {q:"Name the three geographical regions of Liberia.", a:"The coastal plain, the belt of rolling hills, and the northern highlands or plateau."},
+    {q:"Name four natural resources of Liberia.", a:"Iron ore, gold, diamonds and timber (also rubber, water and fish)."},
+    {q:"Name two counties and their capitals.", a:"Nimba with Sanniquellie, and Bong with Gbarnga (accept other correct pairs)."},
+    {q:"Name the chief port of Liberia.", a:"The Freeport of Monrovia."}
+  ],
+  tf:[
+    {s:"Liberia is bordered by Guinea to the north.", a:"true", why:"Guinea lies along Liberia's northern boundary."},
+    {s:"Liberia has fifteen counties.", a:"true", why:"The country is divided into fifteen political subdivisions called counties."},
+    {s:"Liberia is a landlocked country.", a:"false", why:"It has a long Atlantic coastline, so it is not landlocked."},
+    {s:"Mali borders Liberia.", a:"false", why:"Liberia's only neighbours are Sierra Leone, Guinea and Côte d'Ivoire."},
+    {s:"The coastal plain is the lowest of Liberia's regions.", a:"true", why:"It lies along the sea and rises inland towards the hills and highlands."}
+  ],
+  sort:{ title:"Liberia's geography", groups:[
+    {name:"Neighbouring countries", items:["Sierra Leone","Guinea","Côte d'Ivoire"]},
+    {name:"Geographical regions", items:["Coastal plain","Rolling hills","Northern highlands","Plateau"]},
+    {name:"Mineral resources", items:["Iron ore","Gold","Diamond","Bauxite"]},
+    {name:"Counties of Liberia", items:["Montserrado","Nimba","Bong","Grand Bassa"]}
+  ]},
+  mapwork:{ title:"Map of Liberia", caption:"Locate each item on the map and state its significance.", items:[
+    {p:"Monrovia", f:"the capital city and seat of government, on the Atlantic coast in Montserrado County"},
+    {p:"Sierra Leone border", f:"Liberia's north-western boundary, partly formed by the Mano River"},
+    {p:"Guinea border", f:"the northern boundary, running through the highland region"},
+    {p:"Côte d'Ivoire border", f:"the eastern boundary, partly formed by the Cavalla River"},
+    {p:"Atlantic Ocean", f:"the southern and western boundary; provides fishing and sea trade"},
+    {p:"Nimba range", f:"highland in the north-east containing large deposits of iron ore"},
+    {p:"Freeport of Monrovia", f:"the country's principal harbour for imports and exports"}
+  ]},
+  casestudy:{ title:"Why the port matters",
+    text:"Nearly everything sold in the shops of Gbarnga has passed through the Freeport of Monrovia. Rice from abroad, cement, fuel and school books all arrive by ship, are cleared at the port and then travel inland by road. In the other direction, iron ore from Nimba and rubber from Margibi travel down to the coast for export. When heavy rains damaged the main road one year, goods in the interior became scarce and prices rose sharply, while exporters could not move their produce to the ship on time.",
+    questions:[
+      {q:"Why is the Freeport of Monrovia important to a town far inland like Gbarnga?", a:"Almost all imported goods enter through the port and travel inland by road, so inland towns depend on it for supplies."},
+      {q:"Name two exports that pass through the port.", a:"Iron ore from Nimba and rubber from Margibi."},
+      {q:"What happened when the main road was damaged?", a:"Goods became scarce inland and prices rose, and exporters could not get produce to the ships on time."},
+      {q:"What does this show about the link between location and development?", a:"A country's ports and roads determine how easily goods move, so location and transport strongly affect trade and prices."}
+    ]},
+  project:{ title:"Map of Liberia with its subdivisions",
+    brief:"Draw and label an accurate map of Liberia.",
+    steps:["Draw the outline of Liberia.","Mark and name the three neighbouring countries and the Atlantic Ocean.","Mark and name at least eight counties.","Show Monrovia and two other major towns.","Add a key showing at least three natural resources and where they are found."],
+    criteria:["Recognisable outline","Neighbours correctly placed","At least eight counties named","Capital and towns marked","Clear key with resources located"]},
+  activities:["Locate Liberia and West Africa on the map of Africa","Name Liberia's neighbours and boundaries","Draw the political and physical maps of Liberia","Identify manufacturing and mining industries"],
+  materials:["Political and physical maps of Liberia","Map of West Africa and Africa","Atlas and globe","Drawing materials"],
+  assessment:["Map drawing exercise","Quiz on boundaries and counties","Resource location test","Class participation"]
+},
+{
+  grade:8, period:"II", sem:"One", icon:"🌦️",
+  title:"Weather and Climate of Liberia",
+  subtitle:"Unit II: Elements of weather, rainfall, and the effects of climate on life",
+  outcomes:["Analyse weather conditions and differentiate weather from climate"],
+  objectives:["Differentiate weather from climate","Prepare a simple weather chart showing average rainfall","State the factors that influence the climate of Liberia","Describe the elements of weather","Explain relief and convectional rainfall","Analyse the effects of weather on food production","Discuss the effects of climate change on human activities"],
+  note:"<b>Weather</b> is the condition of the atmosphere at a place at a particular time; <b>climate</b> is the average weather of that place over many years. Liberia has a <b>tropical climate</b> with two seasons: a long <b>rainy season</b> from May to October and a <b>dry season</b> from November to April, when the dusty <b>harmattan</b> blows.",
+  focus:["Weather and climate distinguished","Elements of weather","Apparent movement of the sun","Rainfall: relief and convectional","Factors influencing Liberia's climate","Effects of weather on food production","Climate change"],
+  terms:[
+    {t:"weather", d:"the state of the atmosphere at a place at a given time", x:"Today's weather is cloudy."},
+    {t:"climate", d:"the average weather of a place over many years", x:"Liberia has a tropical climate."},
+    {t:"temperature", d:"the degree of hotness or coldness of the air", x:"Temperature is measured in degrees."},
+    {t:"humidity", d:"the amount of water vapour in the air", x:"Humidity is high before rain."},
+    {t:"precipitation", d:"water falling from the sky as rain, dew or hail", x:"Rain is the main precipitation here."},
+    {t:"relief rainfall", d:"rain formed when moist air is forced to rise over high land", x:"Relief rainfall falls on the hills."},
+    {t:"convectional rainfall", d:"rain formed when heated air rises, cools and condenses", x:"Convectional rainfall comes in the afternoon."},
+    {t:"harmattan", d:"a dry dusty wind blowing from the Sahara in the dry season", x:"The harmattan makes the air hazy."},
+    {t:"rain gauge", d:"an instrument for measuring rainfall", x:"The rain gauge showed 40 mm."},
+    {t:"thermometer", d:"an instrument for measuring temperature", x:"Read the thermometer at noon."},
+    {t:"climate change", d:"a long-term change in the pattern of climate", x:"Climate change alters the seasons."},
+    {t:"drought", d:"a long period with little or no rain", x:"Drought reduces the harvest."}
+  ],
+  facts:[
+    {q:"State the difference between weather and climate.", a:"Weather is the state of the atmosphere at a place at a given time; climate is its average condition over many years."},
+    {q:"Name four elements of weather.", a:"Temperature, rainfall, humidity, wind and sunshine (any four)."},
+    {q:"Name Liberia's two seasons and their months.", a:"The rainy season from about May to October and the dry season from about November to April."},
+    {q:"What kind of climate does Liberia have?", a:"A tropical climate, hot and wet, because it lies near the equator."},
+    {q:"Explain how relief rainfall is formed.", a:"Moist air from the sea is forced to rise over high land, cools, condenses and falls as rain."},
+    {q:"Name two factors that influence the climate of Liberia.", a:"Nearness to the equator and nearness to the sea (also the direction of prevailing winds and altitude)."},
+    {q:"Give two effects of weather on food production.", a:"Enough rain at the right time gives a good harvest, while drought or floods destroy crops and reduce food supply."},
+    {q:"What is the harmattan?", a:"A dry, dusty wind that blows from the Sahara across West Africa during the dry season."}
+  ],
+  tf:[
+    {s:"Weather and climate mean the same thing.", a:"false", why:"Weather is the condition at a particular moment; climate is the average over many years."},
+    {s:"Liberia has a tropical climate.", a:"true", why:"It lies near the equator and is hot with heavy rainfall."},
+    {s:"The harmattan blows during the rainy season.", a:"false", why:"The harmattan is a dry dusty wind that blows in the dry season."},
+    {s:"Convectional rainfall is caused by heated air rising and condensing.", a:"true", why:"Strong heating makes air rise, cool and condense into rain."},
+    {s:"Climate change has no effect on farming.", a:"false", why:"It shifts the timing and amount of rain, causing failed harvests, floods and drought."}
+  ],
+  sort:{ title:"Weather and climate", groups:[
+    {name:"Elements of weather", items:["Temperature","Rainfall","Humidity","Wind"]},
+    {name:"Weather instruments", items:["Thermometer","Rain gauge","Wind vane","Barometer"]},
+    {name:"Rainy season features", items:["Heavy rain","High humidity","Cloudy skies","Flooded roads"]},
+    {name:"Dry season features", items:["Harmattan wind","Dusty air","Little rain","Bush fires"]}
+  ]},
+  mapwork:{ title:"Weather chart", caption:"Complete the chart of weather elements and how each is measured.", items:[
+    {p:"Temperature", f:"the hotness of the air, measured with a thermometer in degrees Celsius"},
+    {p:"Rainfall", f:"the depth of rain that falls, measured with a rain gauge in millimetres"},
+    {p:"Wind direction", f:"the direction the wind blows from, shown by a wind vane"},
+    {p:"Humidity", f:"the water vapour in the air, high before rain and low in the harmattan"},
+    {p:"Cloud cover", f:"the proportion of sky covered by cloud, estimated by observation"},
+    {p:"Sunshine", f:"the hours of sunlight received, which affects drying and crop growth"}
+  ]},
+  casestudy:{ title:"The late rains",
+    text:"Farmers in a district usually plant their upland rice in early May when the first heavy rains arrive. One year the rains did not come until the middle of June. Some farmers had already planted, and their seed rotted in the dry ground or was eaten by birds. Others waited, planted late, and their crop was still in the field when the heavy rains of September flattened it. The harvest that year was less than half the usual amount, and rice prices in the local market nearly doubled.",
+    questions:[
+      {q:"What went wrong with the weather that year?", a:"The rains arrived about six weeks late, disturbing the normal planting time."},
+      {q:"Why did the farmers who planted early lose their seed?", a:"The ground stayed dry, so the seed rotted or was eaten by birds instead of germinating."},
+      {q:"Why did those who planted late also suffer?", a:"Their crop was still in the field when the heavy September rains came and flattened it."},
+      {q:"What does this show about the link between climate and food supply?", a:"Farming depends on rain coming at the expected time; a change in the pattern reduces the harvest and raises food prices."}
+    ]},
+  project:{ title:"Two-week weather record",
+    brief:"Observe and record the weather at your school for two weeks.",
+    steps:["Each day at the same hour, record temperature, cloud cover, wind and whether rain fell.","Measure rainfall with a simple gauge made from a straight-sided tin.","Enter the results in a table.","Draw a bar chart of daily rainfall.","Write three sentences describing the pattern you observed."],
+    criteria:["Records kept daily for two weeks","All four elements recorded","Neat table","Accurate bar chart","Sensible description of the pattern"]},
+  activities:["Differentiate weather from climate with local examples","Discuss the elements of the weather","Observe and report changes in the weather","Discuss the factors that cause rainfall"],
+  materials:["Thermometer and rain gauge","Weather charts","Wind vane","Recording sheets"],
+  assessment:["Weather record project","Quiz on weather and climate","Chart interpretation exercise","Group report"]
+},
+{
+  grade:8, period:"III", sem:"One", icon:"🐄",
+  title:"Agriculture and Animal Husbandry",
+  subtitle:"Unit III: Farming methods, factors of production, the rubber industry and livestock",
+  outcomes:["Distinguish farming methods and the factors influencing agricultural production, and value farming as an occupation"],
+  objectives:["Analyse the factors that influence farming methods and crop and animal production","Discuss the contributions of the rubber industry to Liberia","List the major crops cultivated in Liberia's agro-industry","Evaluate animal husbandry practices in our farming system","Distinguish aquaculture from animal husbandry","Determine the socio-cultural issues affecting gender in agriculture"],
+  note:"<b>Animal husbandry</b> is the care and breeding of livestock such as goats, sheep, cattle and poultry, while <b>aquaculture</b> is the rearing of fish in ponds. Agricultural output depends on <b>soil condition, rainfall, farm implements, fertilizers and labour</b>. Rubber has long been Liberia's leading agricultural export.",
+  focus:["Subsistence and commercial farming methods","Factors influencing agricultural production","The rubber industry of Liberia","Major crops: cash, food and commercial","Animal husbandry practices","Aquaculture","Gender issues in agriculture"],
+  terms:[
+    {t:"animal husbandry", d:"the care, feeding and breeding of farm animals", x:"Animal husbandry supplies meat and milk."},
+    {t:"aquaculture", d:"the rearing of fish in ponds or tanks", x:"Aquaculture provides fish all year."},
+    {t:"livestock", d:"farm animals kept for use or profit", x:"Goats and cattle are livestock."},
+    {t:"poultry", d:"domestic birds such as chickens and ducks", x:"Poultry gives eggs and meat."},
+    {t:"subsistence farming", d:"farming mainly to feed the household", x:"Subsistence farming uses small plots."},
+    {t:"commercial farming", d:"farming mainly for sale", x:"Commercial farming needs capital."},
+    {t:"tapping", d:"cutting the bark of a rubber tree to collect latex", x:"Tapping begins early in the morning."},
+    {t:"latex", d:"the milky liquid drawn from the rubber tree", x:"Latex is processed into rubber."},
+    {t:"fertilizer", d:"a substance added to the soil to supply nutrients", x:"Fertilizer improves yield."},
+    {t:"erosion", d:"the washing or blowing away of topsoil", x:"Erosion reduces soil fertility."},
+    {t:"drought", d:"a long spell of dry weather", x:"Drought withers the crops."},
+    {t:"agro-industry", d:"industry based on processing farm produce", x:"Palm oil milling is an agro-industry."}
+  ],
+  facts:[
+    {q:"Name the two main farming methods practised in Liberia.", a:"Subsistence farming and commercial farming."},
+    {q:"Name four factors that influence agricultural production.", a:"Soil condition, rainfall or drought, farm implements, fertilizers and available labour (any four)."},
+    {q:"What is animal husbandry?", a:"The care, feeding and breeding of farm animals such as goats, sheep, cattle and poultry."},
+    {q:"State the difference between animal husbandry and aquaculture.", a:"Animal husbandry rears land animals; aquaculture rears fish in ponds or tanks."},
+    {q:"Name three contributions of the rubber industry to Liberia.", a:"It earns foreign exchange through export, provides employment, and supports roads, schools and clinics in plantation areas."},
+    {q:"What is latex and how is it obtained?", a:"The milky liquid from the rubber tree, obtained by tapping — cutting the bark so the latex flows into a cup."},
+    {q:"Name three livestock kept in Liberia.", a:"Goats, sheep and cattle (also pigs and poultry)."},
+    {q:"Give one socio-cultural issue affecting women in agriculture.", a:"Women often do much of the farm labour but have less access to land ownership, credit and improved tools."}
+  ],
+  tf:[
+    {s:"Aquaculture is the rearing of fish.", a:"true", why:"It is fish farming in ponds or tanks, as distinct from rearing land animals."},
+    {s:"Rubber is obtained by cutting down the tree.", a:"false", why:"Rubber is obtained by tapping — cutting the bark so latex flows out while the tree keeps growing."},
+    {s:"Erosion improves soil fertility.", a:"false", why:"Erosion carries away the fertile topsoil and reduces fertility."},
+    {s:"Poultry keeping is part of animal husbandry.", a:"true", why:"Poultry are farm animals kept for eggs and meat."},
+    {s:"Women contribute a large share of farm labour in Liberia.", a:"true", why:"Women carry out much of the planting, weeding, harvesting and processing work."}
+  ],
+  sort:{ title:"Agriculture in Liberia", groups:[
+    {name:"Cash crops", items:["Rubber","Cocoa","Coffee","Oil palm"]},
+    {name:"Food crops", items:["Rice","Cassava","Plantain","Vegetables"]},
+    {name:"Livestock", items:["Goat","Sheep","Cattle","Poultry"]},
+    {name:"Factors affecting production", items:["Soil condition","Rainfall","Farm tools","Fertilizer"]}
+  ]},
+  mapwork:{ title:"Farming systems compared", caption:"Complete the chart comparing the two farming systems.", items:[
+    {p:"Size of farm", f:"subsistence: small plots; commercial: large plantations"},
+    {p:"Purpose", f:"subsistence: mainly to feed the family; commercial: mainly for sale and export"},
+    {p:"Tools used", f:"subsistence: hoe and cutlass; commercial: machinery and processing plant"},
+    {p:"Labour", f:"subsistence: family members; commercial: hired workers"},
+    {p:"Main crops", f:"subsistence: rice, cassava, vegetables; commercial: rubber, oil palm, cocoa"},
+    {p:"Risk", f:"subsistence: food secure but low income; commercial: higher income but exposed to world prices"}
+  ]},
+  casestudy:{ title:"The fish pond at the school",
+    text:"An agriculture teacher helped his pupils dig a pond behind the school and stocked it with tilapia fingerlings. The pupils fed the fish with rice bran and kitchen waste, kept records of growth, and after six months harvested enough fish to feed the boarding students for several weeks and to sell a surplus. With the money they bought more fingerlings and a second pond was dug. Parents who saw the results began to dig ponds of their own, and the community now has a steady supply of fish even in the rainy season when sea fishing is difficult.",
+    questions:[
+      {q:"What farming practice did the school introduce?", a:"Aquaculture — the rearing of fish in a pond."},
+      {q:"How did the pupils feed the fish?", a:"With rice bran and kitchen waste."},
+      {q:"State two benefits the school gained.", a:"Fish to feed the boarding students, and money from the surplus to buy more fingerlings and dig a second pond."},
+      {q:"Why is aquaculture valuable in the rainy season?", a:"Sea fishing is difficult in rough weather, so pond fish provide a steady supply of protein all year."}
+    ]},
+  project:{ title:"Small livestock or garden project",
+    brief:"Keep a record of a small farming venture at school or home.",
+    steps:["Choose a small venture: a vegetable bed, poultry, or a fish pond.","Record what was planted or stocked, and the date.","Note the inputs used: seed, feed, water, fertilizer.","Record growth or production every week for six weeks.","Report the output and say what factors helped or hindered it."],
+    criteria:["A genuine venture undertaken","Inputs recorded","Six weeks of records kept","Output stated","Factors affecting production identified"]},
+  activities:["Analyse the factors that influence farming methods","Discuss the contributions of the rubber industry","List the major crops of Liberia's agro-industry","Compare animal husbandry with aquaculture"],
+  materials:["Pictures of farms and plantations","Samples of crops and seeds","Charts on livestock","Resource persons from the agriculture office"],
+  assessment:["Livestock or garden project","Quiz on farming methods","Report on the rubber industry","Class discussion"]
+},
+{
+  grade:8, period:"IV", sem:"Two", icon:"⛏️",
+  title:"Natural and Mineral Resources",
+  subtitle:"Unit IV: Mineral, forest and water resources and their contribution to the economy",
+  outcomes:["Differentiate the natural resources of Liberia and state their contribution to the economy"],
+  objectives:["Determine the location of Liberia's natural resources using the physical map","Differentiate the natural resources of Liberia","Describe renewable and non-renewable resources","Identify the contribution of natural resources to economic development","Discuss the responsible use and conservation of resources"],
+  note:"A <b>renewable resource</b> can replace itself if used carefully — forests, fish and water. A <b>non-renewable resource</b> exists in a fixed amount and cannot be replaced once used — iron ore, gold and diamonds. This is why minerals must be used wisely and the income invested in things that last.",
+  focus:["Mineral resources: iron ore, gold, diamond","Forest resources: timber and wildlife","Water resources: fish, hydroelectricity, offshore oil","Renewable and non-renewable resources","Contribution of resources to the economy","Conservation of resources"],
+  terms:[
+    {t:"natural resource", d:"a useful material supplied by nature", x:"Timber is a natural resource."},
+    {t:"renewable resource", d:"a resource that can replace itself if well managed", x:"Forests are renewable."},
+    {t:"non-renewable resource", d:"a resource that cannot be replaced once used", x:"Iron ore is non-renewable."},
+    {t:"mineral", d:"a solid substance obtained by mining", x:"Gold is a mineral."},
+    {t:"iron ore", d:"rock from which iron is extracted", x:"Iron ore is mined at Nimba."},
+    {t:"timber", d:"wood cut for building and furniture", x:"Timber is exported."},
+    {t:"wildlife", d:"the wild animals of an area", x:"Wildlife lives in the forest."},
+    {t:"hydroelectricity", d:"electricity generated from falling water", x:"Mount Coffee produces hydroelectricity."},
+    {t:"conservation", d:"protecting and using resources wisely", x:"Conservation protects the forest."},
+    {t:"deforestation", d:"the clearing away of forest", x:"Deforestation causes erosion."},
+    {t:"export", d:"goods sold to another country", x:"Iron ore is a major export."},
+    {t:"revenue", d:"the income received by the government", x:"Mining provides revenue."}
+  ],
+  facts:[
+    {q:"Name four mineral resources of Liberia.", a:"Iron ore, gold, diamonds and bauxite."},
+    {q:"State the difference between renewable and non-renewable resources.", a:"Renewable resources can replace themselves if well managed; non-renewable resources exist in a fixed amount and cannot be replaced once used."},
+    {q:"Give two examples of each type of resource.", a:"Renewable: forests and fish. Non-renewable: iron ore and gold."},
+    {q:"Name three forest resources of Liberia.", a:"Timber, wildlife and medicinal plants."},
+    {q:"Name three water resources of Liberia.", a:"Fish, hydroelectric power and offshore oil (also sand)."},
+    {q:"State three contributions of natural resources to Liberia's economy.", a:"They earn foreign exchange through export, provide employment, and give the government revenue for schools and roads."},
+    {q:"Where is iron ore mainly mined in Liberia?", a:"In the Nimba and Bong ranges."},
+    {q:"Give two ways of conserving Liberia's forests.", a:"Replanting trees after felling and creating protected forest reserves; also controlling illegal logging."}
+  ],
+  tf:[
+    {s:"Iron ore is a renewable resource.", a:"false", why:"Once mined it cannot be replaced, so it is non-renewable."},
+    {s:"Forests can be renewed if trees are replanted.", a:"true", why:"With careful management and replanting, a forest can regrow, so it is renewable."},
+    {s:"Hydroelectricity is generated from falling water.", a:"true", why:"Moving water turns turbines that generate electricity."},
+    {s:"Mining brings only benefits and no problems.", a:"false", why:"Mining also causes land damage, water pollution and displacement of communities."},
+    {s:"Liberia has offshore oil prospects.", a:"true", why:"Exploration has taken place in Liberia's Atlantic waters."}
+  ],
+  sort:{ title:"Resources of Liberia", groups:[
+    {name:"Non-renewable", items:["Iron ore","Gold","Diamond","Crude oil"]},
+    {name:"Renewable", items:["Timber","Fish","Water","Wildlife"]},
+    {name:"Uses of resources", items:["Export earnings","Employment","Government revenue","Raw materials"]},
+    {name:"Conservation measures", items:["Replanting trees","Forest reserves","Controlling pollution","Regulating mining"]}
+  ]},
+  mapwork:{ title:"Where Liberia's resources are found", caption:"Locate each resource and state its economic value.", items:[
+    {p:"Iron ore — Nimba and Bong", f:"mined for export; a leading source of foreign exchange and employment"},
+    {p:"Gold — Lofa and Gbarpolu", f:"mined both by companies and by small-scale miners"},
+    {p:"Diamonds — Lofa and Nimba", f:"a high-value export that requires careful regulation"},
+    {p:"Timber — the interior high forest", f:"used for building and furniture and exported as logs"},
+    {p:"Fish — the Atlantic coast and rivers", f:"a major source of protein and of income for coastal families"},
+    {p:"Hydroelectric power — St. Paul River", f:"the Mount Coffee plant supplies electricity to Monrovia"}
+  ]},
+  casestudy:{ title:"The town that lost its forest",
+    text:"A logging company was given a licence near a small town. At first the town welcomed it: young men found work, and the company graded the road. Within four years, however, the nearest forest was gone. Streams that had run all year began to dry up in January, the soil on the slopes washed into the river when it rained, and the women had to walk much further for firewood and medicinal plants. When the company moved on, the jobs went with it. The town council has now started a replanting scheme and set aside a protected patch of forest.",
+    questions:[
+      {q:"State two benefits the town gained at first.", a:"Employment for young men and an improved graded road."},
+      {q:"State three problems that followed the loss of the forest.", a:"Streams dried up in the dry season, soil eroded into the river, and women had to walk further for firewood and medicinal plants."},
+      {q:"Why did the benefits not last?", a:"Timber in that place was used up and the company moved on, taking the jobs with it — the benefit was short-term."},
+      {q:"What are the townspeople now doing, and why is it wise?", a:"Replanting and protecting a patch of forest, because forests are renewable only if they are managed and allowed to regrow."}
+    ]},
+  project:{ title:"Resource map and report",
+    brief:"Map the natural resources of Liberia and assess their importance.",
+    steps:["Draw an outline map of Liberia.","Mark at least six resources in their correct locations.","Classify each as renewable or non-renewable in a key.","Choose one resource and research its contribution to the economy.","Write a short report and suggest one conservation measure."],
+    criteria:["Six resources correctly located","Correct renewable classification","Clear key","A researched contribution described","A sensible conservation measure proposed"]},
+  activities:["Use the physical map to locate natural resources","Differentiate renewable from non-renewable resources","Discuss the contribution of resources to development","Debate the benefits and problems of mining"],
+  materials:["Physical map of Liberia","Samples or pictures of minerals","Charts on forest and water resources","Resource persons"],
+  assessment:["Resource map project","Quiz on resource types","Case study analysis","Class debate"]
+},
+{
+  grade:8, period:"V", sem:"Two", icon:"🏘️",
+  title:"Population and Settlement",
+  subtitle:"Unit V: Population growth, density, migration and human settlement",
+  outcomes:["Analyse how population growth affects national development and explain patterns of settlement"],
+  objectives:["Analyse the population growth and pattern of Liberia","Explain population density, growth and distribution","Differentiate the factors that affect migration and settlement","Explain the relationship between population growth and national development","Classify urban and rural settlements","Discuss the problems associated with rural to urban migration","Discuss birth rate and its implications"],
+  note:"<b>Population density</b> is the number of people living in a square kilometre. <b>Migration</b> is the movement of people to settle elsewhere: people are <b>pushed</b> from rural areas by lack of jobs and services, and <b>pulled</b> to towns by the hope of work and schooling. Rapid <b>urbanisation</b> strains housing, water and sanitation.",
+  focus:["Population growth and pattern","Population density and distribution","Birth rate and its implications","Rural and urban settlement","Factors affecting migration","Problems of rural to urban migration","Population and national development"],
+  terms:[
+    {t:"population", d:"the total number of people living in an area", x:"The population is rising."},
+    {t:"census", d:"an official count of the population", x:"A census is taken every ten years."},
+    {t:"population density", d:"the number of people per square kilometre", x:"Montserrado has a high density."},
+    {t:"population growth", d:"the increase in the number of people over time", x:"Population growth needs planning."},
+    {t:"birth rate", d:"the number of births per thousand people each year", x:"A high birth rate speeds growth."},
+    {t:"death rate", d:"the number of deaths per thousand people each year", x:"The death rate has fallen."},
+    {t:"infant mortality", d:"the death of children under one year of age", x:"Infant mortality is falling."},
+    {t:"migration", d:"the movement of people to settle in a new place", x:"Migration fills the cities."},
+    {t:"push factor", d:"a condition that drives people away from an area", x:"Lack of jobs is a push factor."},
+    {t:"pull factor", d:"a condition that attracts people to an area", x:"Schools are a pull factor."},
+    {t:"urban settlement", d:"a town or city where many people live closely together", x:"Monrovia is an urban settlement."},
+    {t:"rural settlement", d:"a village or countryside area with fewer people", x:"Farming families live in rural settlements."},
+    {t:"urbanisation", d:"the growth of towns as people move in", x:"Urbanisation strains services."},
+    {t:"slum", d:"a crowded settlement with poor housing and services", x:"Slums lack proper sanitation."}
+  ],
+  facts:[
+    {q:"What is population density?", a:"The number of people living in each square kilometre of an area."},
+    {q:"What is a census?", a:"An official count of all the people in a country, usually taken at regular intervals."},
+    {q:"Name two push factors driving people from rural areas.", a:"Lack of employment and poor schools, health care and roads."},
+    {q:"Name two pull factors attracting people to towns.", a:"The hope of work and better wages, and access to schools, hospitals and electricity."},
+    {q:"Name three problems caused by rapid rural to urban migration.", a:"Overcrowding and slums, unemployment in the towns, and pressure on water, sanitation and schools."},
+    {q:"State the difference between urban and rural settlement.", a:"Urban settlements are towns and cities with many people, businesses and services; rural settlements are villages with fewer people, mainly farming."},
+    {q:"How does a high birth rate affect national development?", a:"It means more schools, clinics and jobs must be provided, which strains resources unless the economy grows just as fast."},
+    {q:"Which county of Liberia is the most densely populated?", a:"Montserrado, because Monrovia the capital is located there."}
+  ],
+  tf:[
+    {s:"Population density is the total number of people in a country.", a:"false", why:"Density is the number of people per square kilometre, not the total number."},
+    {s:"Lack of jobs in a village is a push factor.", a:"true", why:"It drives people to leave in search of work elsewhere."},
+    {s:"Rapid urban growth can lead to slums.", a:"true", why:"When people arrive faster than housing and services can be provided, crowded poor settlements appear."},
+    {s:"Montserrado County has the lowest population density in Liberia.", a:"false", why:"It has the highest, because the capital Monrovia is there."},
+    {s:"A census helps government to plan schools and clinics.", a:"true", why:"Knowing how many people live where allows services to be planned where they are needed."}
+  ],
+  sort:{ title:"Population and settlement", groups:[
+    {name:"Push factors", items:["No jobs in the village","Poor schools","Lack of clinics","Bad roads"]},
+    {name:"Pull factors", items:["Work in town","Better schools","Hospitals","Electricity"]},
+    {name:"Urban features", items:["Many people","Factories and shops","Paved roads","Crowded housing"]},
+    {name:"Problems of urban growth", items:["Slums","Unemployment","Poor sanitation","Traffic congestion"]}
+  ]},
+  mapwork:{ title:"Population and settlement chart", caption:"Complete the chart of terms and what each measures or means.", items:[
+    {p:"Population density", f:"people per square kilometre; shows how crowded an area is"},
+    {p:"Population distribution", f:"how people are spread over the country; heaviest along the coast"},
+    {p:"Birth rate", f:"births per thousand people per year; a main driver of population growth"},
+    {p:"Infant mortality", f:"deaths of children under one year; an indicator of health services"},
+    {p:"Rural to urban migration", f:"movement from villages to towns in search of work and services"},
+    {p:"Urbanisation", f:"the growth of towns, which strains housing, water and sanitation"}
+  ]},
+  casestudy:{ title:"Moses goes to Monrovia",
+    text:"Moses finished the ninth grade in his village but there was no senior high school nearby and no paid work except farming. He travelled to Monrovia to stay with a cousin. He found the city crowded: eight people shared two rooms, water had to be bought by the bucket, and the only work he could get was pushing a wheelbarrow in the market. He earns a little more than he did at home, but he pays rent, transport and food, and saves almost nothing. His younger sister is now asking to join him.",
+    questions:[
+      {q:"State the push factors that made Moses leave his village.", a:"There was no senior high school nearby and no paid work apart from farming."},
+      {q:"State the pull factor that attracted him to Monrovia.", a:"The expectation of work and better opportunities in the city."},
+      {q:"Give two problems he met in the city.", a:"Overcrowded housing with eight people in two rooms, and having to buy water by the bucket; work was also poorly paid."},
+      {q:"Suggest one measure that would reduce this kind of migration.", a:"Providing senior high schools, clinics and employment in rural areas so young people need not leave."}
+    ]},
+  project:{ title:"Settlement survey",
+    brief:"Compare your own settlement with another type.",
+    steps:["Decide whether your community is urban or rural and give three reasons.","List the services available: school, clinic, market, water, electricity.","Interview three people who have moved into or out of the community and record why.","Classify their reasons as push or pull factors.","Suggest two improvements that would help people stay."],
+    criteria:["Settlement type correctly justified","Services listed","Three genuine interviews","Correct push/pull classification","Two practical improvements suggested"]},
+  activities:["Analyse Liberia's population growth and pattern","Discuss factors affecting migration","Classify urban and rural settlements","Debate the problems of urban growth"],
+  materials:["Population data and charts","Map of Liberia showing population distribution","Graph paper","Census summaries"],
+  assessment:["Settlement survey project","Quiz on population terms","Graph interpretation","Class debate"]
+},
+{
+  grade:8, period:"VI", sem:"Two", icon:"🏛️",
+  title:"Government",
+  subtitle:"Unit VI: Forms of government, the three branches, local government and the courts",
+  outcomes:["Differentiate forms of government and explain the functions of its branches and institutions"],
+  objectives:["Differentiate the various forms of government","Discuss the branches and functions of the Liberian government","Examine the functions of municipal government","Describe the Liberian court system","Analyse the roles of pressure groups in Liberia","Distinguish the functions of public officials"],
+  note:"Liberia is a <b>republic</b> with a <b>democratic</b> government elected by the people. Power is divided among three branches: the <b>Executive</b> makes policy and carries out the law, the <b>Legislature</b> makes the law, and the <b>Judiciary</b> interprets the law. This <b>separation of powers</b> stops any one branch becoming too strong.",
+  focus:["Forms of government: democracy, republic, monarchy, autocracy","The three branches of the Liberian government","Separation of powers","Municipal and local government","The Liberian court system","Pressure groups","Duties of public officials"],
+  terms:[
+    {t:"government", d:"the body that makes and enforces the laws of a state", x:"The government serves the people."},
+    {t:"democracy", d:"government by the people through elected representatives", x:"In a democracy people vote."},
+    {t:"republic", d:"a state in which the head is an elected president", x:"Liberia is a republic."},
+    {t:"monarchy", d:"government headed by a king or queen", x:"A monarchy is headed by a king."},
+    {t:"autocracy", d:"government in which one person holds total power", x:"Autocracy allows no opposition."},
+    {t:"totalitarianism", d:"a system where the state controls all aspects of life", x:"Totalitarianism suppresses freedom."},
+    {t:"executive", d:"the branch that carries out the laws", x:"The President heads the executive."},
+    {t:"legislature", d:"the branch that makes the laws", x:"The Legislature passes bills."},
+    {t:"judiciary", d:"the branch that interprets the laws", x:"The judiciary settles disputes."},
+    {t:"separation of powers", d:"dividing power among the branches of government", x:"Separation of powers prevents abuse."},
+    {t:"municipal government", d:"the government of a city or town", x:"Municipal government cleans the city."},
+    {t:"pressure group", d:"an organised group seeking to influence government policy", x:"A pressure group campaigned for reform."},
+    {t:"revenue", d:"money received by government, mainly from taxes", x:"Revenue funds public services."},
+    {t:"constitution", d:"the fundamental law setting out how a country is governed", x:"The Constitution is supreme."}
+  ],
+  facts:[
+    {q:"What form of government does Liberia have?", a:"A democratic republic, headed by an elected President."},
+    {q:"Name the three branches of the Liberian government.", a:"The Executive, the Legislature and the Judiciary."},
+    {q:"State the main function of each branch.", a:"The Executive carries out the laws, the Legislature makes the laws, and the Judiciary interprets the laws."},
+    {q:"Who heads the Executive branch of Liberia?", a:"The President."},
+    {q:"Name the two houses of the Liberian Legislature.", a:"The Senate and the House of Representatives."},
+    {q:"Name three courts in the Liberian court system.", a:"The Supreme Court, the Circuit Court and the Magisterial Court (also Justice of the Peace and Juvenile Court)."},
+    {q:"Name two functions of municipal government.", a:"Keeping the city clean and maintaining local markets and roads; it also collects local revenue."},
+    {q:"What is a pressure group and give one example of its work.", a:"An organised group that tries to influence government policy, for example a teachers' union campaigning for better school conditions."},
+    {q:"Why is the separation of powers important?", a:"It prevents any one branch from becoming too powerful and protects the rights of citizens."}
+  ],
+  tf:[
+    {s:"Liberia is a monarchy.", a:"false", why:"Liberia is a republic headed by an elected President, not a king or queen."},
+    {s:"The Legislature makes the laws.", a:"true", why:"Law-making is the function of the Senate and House of Representatives."},
+    {s:"The Supreme Court is the highest court in Liberia.", a:"true", why:"It is the final court of appeal in the judicial system."},
+    {s:"In an autocracy power is shared among many elected people.", a:"false", why:"In an autocracy one person holds total power; sharing power among elected representatives is democracy."},
+    {s:"Pressure groups are part of the government.", a:"false", why:"They are outside government and seek to influence its decisions."}
+  ],
+  sort:{ title:"Government", groups:[
+    {name:"Forms of government", items:["Democracy","Republic","Monarchy","Autocracy"]},
+    {name:"Branches of government", items:["Executive","Legislature","Judiciary"]},
+    {name:"Courts of Liberia", items:["Supreme Court","Circuit Court","Magisterial Court","Juvenile Court"]},
+    {name:"Functions of municipal government", items:["City sanitation","Market management","Local roads","Collecting local fees"]}
+  ]},
+  mapwork:{ title:"Branches of the Liberian government", caption:"Complete the chart of each branch, who leads it and what it does.", items:[
+    {p:"Executive", f:"headed by the President; carries out the laws and runs the ministries"},
+    {p:"Legislature", f:"the Senate and House of Representatives; makes the laws and approves the budget"},
+    {p:"Judiciary", f:"headed by the Supreme Court; interprets the laws and settles disputes"},
+    {p:"Separation of powers", f:"each branch checks the others so that none becomes too powerful"},
+    {p:"Municipal government", f:"mayors and city councils manage sanitation, markets and local roads"},
+    {p:"The Constitution", f:"the supreme law that sets out the powers and limits of all branches"}
+  ]},
+  casestudy:{ title:"A bill becomes a law",
+    text:"Parents in several counties complained that school fees were being charged in public primary schools although the law said primary education should be free. A citizens' group collected signatures and met their representatives. A member of the House introduced a bill to make the rule clear and to provide a grant to schools instead of fees. The House debated and passed the bill, the Senate agreed with a small change, and the President signed it. When one county continued to charge fees, a parent took the matter to court, and the court ruled that the new law must be obeyed.",
+    questions:[
+      {q:"Which branch of government made the new law?", a:"The Legislature — the House of Representatives and the Senate."},
+      {q:"What part did the President play?", a:"As head of the Executive, the President signed the bill so that it became law."},
+      {q:"Which branch settled the dispute when a county disobeyed?", a:"The Judiciary — the court ruled that the law must be obeyed."},
+      {q:"What role did the citizens' group play, and what is such a group called?", a:"It collected signatures and lobbied representatives to change policy; such a group is a pressure group."}
+    ]},
+  project:{ title:"How my local government works",
+    brief:"Find out how government touches your community.",
+    steps:["Identify your city or district authority and name its head.","List three services it provides.","Find out one source of its revenue.","Interview a citizen about one service they think should improve.","Write a short report and suggest how a citizen can raise the issue lawfully."],
+    criteria:["Authority and head correctly named","Three services listed","A revenue source identified","A genuine interview conducted","A lawful means of raising the issue described"]},
+  activities:["Research and compare forms of government","Chart the three branches and their functions","Study the structure of the Liberian court system","Discuss the role of pressure groups"],
+  materials:["Chart of the branches of government","Copy of the Liberian Constitution","Newspapers reporting government action","Resource persons from local government"],
+  assessment:["Government chart exercise","Quiz on forms of government","Local government report","Class discussion"]
+},
+
+/* ================================ GRADE 9 ================================ */
+{
+  grade:9, period:"I", sem:"One", icon:"🌍",
+  title:"Location, Topography and Climate of West Africa",
+  subtitle:"Unit I: The regional geography of West Africa and the factors shaping its climate",
+  outcomes:["Describe the topography and climatic conditions of West African states and explain weather using instruments"],
+  objectives:["Discuss the regional geography of West Africa including its topography","Interpret the political and relief maps of West Africa","Determine the factors that influence the weather and climate of the region","Compare the topography and climate of pairs of West African countries","Explain how meteorological instruments are used"],
+  note:"West Africa stretches from the <b>Sahara Desert</b> in the north to the <b>Atlantic Ocean</b> in the south. Its climate belts run in bands: the wet <b>equatorial forest</b> along the coast, the <b>savanna</b> in the middle, the dry <b>Sahel</b>, and the <b>desert</b> in the far north. Rainfall generally <b>decreases as you move north</b>, away from the sea.",
+  focus:["Regional geography of West Africa","Political and relief maps","Topography of the region","Climate belts from coast to desert","Factors influencing weather and climate","Meteorological instruments"],
+  terms:[
+    {t:"region", d:"a large area with features in common", x:"West Africa is a region."},
+    {t:"relief map", d:"a map showing the height and shape of the land", x:"The relief map shows highlands."},
+    {t:"Sahel", d:"the dry belt between the Sahara and the savanna", x:"The Sahel receives little rain."},
+    {t:"savanna", d:"tropical grassland with scattered trees", x:"Cattle graze on the savanna."},
+    {t:"equatorial forest", d:"dense forest in the hot wet zone near the equator", x:"Equatorial forest covers the coast."},
+    {t:"desert", d:"a very dry area with little vegetation", x:"The Sahara is a desert."},
+    {t:"altitude", d:"the height of land above sea level", x:"Altitude lowers temperature."},
+    {t:"prevailing wind", d:"the wind that blows most often in an area", x:"The south-west monsoon is a prevailing wind."},
+    {t:"monsoon", d:"a seasonal wind bringing heavy rain", x:"The monsoon brings the wet season."},
+    {t:"barometer", d:"an instrument for measuring air pressure", x:"The barometer fell before the storm."},
+    {t:"anemometer", d:"an instrument for measuring wind speed", x:"The anemometer spins in the wind."},
+    {t:"meteorology", d:"the study of the weather", x:"Meteorology helps forecast rain."}
+  ],
+  facts:[
+    {q:"Where is West Africa located?", a:"In the western part of the African continent, between the Sahara Desert in the north and the Atlantic Ocean in the south and west."},
+    {q:"Name the climate belts of West Africa from the coast northwards.", a:"Equatorial forest, savanna, Sahel and desert."},
+    {q:"How does rainfall change as one moves north in West Africa?", a:"It decreases steadily, from very heavy on the coast to almost none in the Sahara."},
+    {q:"Name four factors that influence the climate of West Africa.", a:"Nearness to the equator, distance from the sea, altitude and the prevailing winds."},
+    {q:"Which wind brings the rainy season to West Africa?", a:"The moist south-west monsoon blowing in from the Atlantic."},
+    {q:"Which wind brings the dry season?", a:"The dry, dusty harmattan blowing from the Sahara in the north-east."},
+    {q:"Name three instruments used to measure the weather.", a:"The thermometer, the rain gauge and the barometer (also the anemometer and wind vane)."},
+    {q:"Name two highland areas of West Africa.", a:"The Fouta Djallon in Guinea and the Jos Plateau in Nigeria (also the Nimba range)."}
+  ],
+  tf:[
+    {s:"Rainfall in West Africa decreases as one moves north.", a:"true", why:"The moist Atlantic winds weaken inland, so the north is dry and the coast is wet."},
+    {s:"The harmattan brings heavy rain to West Africa.", a:"false", why:"The harmattan is a dry dusty wind; rain comes with the south-west monsoon."},
+    {s:"The Sahel lies between the Sahara and the savanna.", a:"true", why:"It is the transitional dry belt separating desert from grassland."},
+    {s:"Altitude has no effect on temperature.", a:"false", why:"Temperature falls as altitude increases, so highlands are cooler."},
+    {s:"A barometer measures air pressure.", a:"true", why:"Changes in air pressure help forecast approaching weather."}
+  ],
+  sort:{ title:"West Africa's geography", groups:[
+    {name:"Climate belts", items:["Equatorial forest","Savanna","Sahel","Desert"]},
+    {name:"Weather instruments", items:["Thermometer","Rain gauge","Barometer","Anemometer"]},
+    {name:"Factors affecting climate", items:["Latitude","Distance from the sea","Altitude","Prevailing winds"]},
+    {name:"Highlands of West Africa", items:["Fouta Djallon","Jos Plateau","Nimba range","Atakora range"]}
+  ]},
+  mapwork:{ title:"Climate belts of West Africa", caption:"Describe each belt and where it is found.", items:[
+    {p:"Equatorial forest", f:"along the southern coast; hot, very wet, dense forest — Liberia, Ghana, Nigeria's south"},
+    {p:"Savanna", f:"inland from the forest; grassland with a marked wet and dry season, good for cattle and grain"},
+    {p:"Sahel", f:"a dry belt south of the desert; short rains, thorn scrub, vulnerable to drought"},
+    {p:"Desert", f:"the Sahara in the far north; almost no rain, very hot days and cold nights"},
+    {p:"South-west monsoon", f:"moist wind from the Atlantic bringing the rainy season"},
+    {p:"Harmattan", f:"dry dusty wind from the Sahara bringing the dry season and hazy skies"}
+  ]},
+  casestudy:{ title:"Two farmers, two climates",
+    text:"Kofi farms near the coast in Ghana, where rain falls for much of the year and the forest is dense. He grows cocoa and plantain, and his main worry is fungus in the damp air. Amadou farms in northern Mali, in the Sahel, where the rain falls in a short season of about three months. He grows millet and keeps cattle, and his main worry is that the rains will fail entirely. In a year when the monsoon is weak, Kofi's crop is only a little smaller, but Amadou may lose his harvest and be forced to sell animals to buy food.",
+    questions:[
+      {q:"In which climate belt does each farmer live?", a:"Kofi lives in the equatorial forest belt; Amadou lives in the Sahel."},
+      {q:"Why do they grow different crops?", a:"Cocoa and plantain need heavy year-round rain, while millet is drought-resistant and suits a short rainy season."},
+      {q:"Why is a weak monsoon far more serious for Amadou?", a:"His rainfall is already marginal, so a small reduction can mean total crop failure, while Kofi still receives enough rain."},
+      {q:"What does this show about rainfall in West Africa?", a:"Rainfall decreases from the coast northwards, and this shapes what people can grow and how secure their food supply is."}
+    ]},
+  project:{ title:"Climate comparison of two West African countries",
+    brief:"Compare the climate of a coastal and an inland West African country.",
+    steps:["Choose one coastal country and one Sahel country.","Find their rainfall pattern and the length of their rainy season.","Draw a simple bar chart comparing the two.","Note the main crops grown in each.","Explain how climate accounts for the difference."],
+    criteria:["Two suitable countries chosen","Rainfall patterns correctly described","Clear comparative chart","Crops correctly matched to climate","A reasoned explanation of the difference"]},
+  activities:["Use maps to discuss the topography of West Africa","List and discuss factors influencing weather and climate","Compare the topography of pairs of countries","Demonstrate the use of weather instruments"],
+  materials:["Political and relief maps of West Africa","Atlas and globe","Weather instruments","Climate charts"],
+  assessment:["Map interpretation exercise","Quiz on climate belts","Climate comparison project","Class discussion"]
+},
+{
+  grade:9, period:"II", sem:"One", icon:"🌴",
+  title:"Agriculture and Mineral Resources of West Africa",
+  subtitle:"Unit II: Forest products, farming, minerals and industry in the region",
+  outcomes:["Locate the forest zones and industries of West Africa and evaluate the factors favouring agriculture and mining"],
+  objectives:["Locate the major areas noted for agriculture, mining, forestry, fishing and industry","Evaluate the geographical factors that favour agriculture in West Africa","Identify the major mineral resources of West Africa","Discuss how agriculture and minerals contribute to the development of the region","Identify the major forest products and industries"],
+  note:"West Africa's wealth rests on <b>agriculture</b> and <b>minerals</b>. The forest belt produces <b>cocoa, coffee, oil palm and rubber</b>; the savanna produces <b>groundnuts, millet, sorghum and cotton</b>. Major minerals include <b>gold, iron ore, bauxite, diamonds and petroleum</b>. Depending on only one or two exports leaves a country vulnerable when world prices fall.",
+  focus:["Forest products and major industries","Geographical factors favouring agriculture","Major crops of the forest and savanna belts","Major minerals of West Africa","Contribution of agriculture and minerals to development","Problems of dependence on few exports"],
+  terms:[
+    {t:"cash crop", d:"a crop grown mainly for sale and export", x:"Cocoa is a leading cash crop."},
+    {t:"groundnut", d:"a leguminous crop grown widely in the savanna", x:"Senegal exports groundnuts."},
+    {t:"cotton", d:"a fibre crop grown in the drier savanna", x:"Cotton is grown in Mali."},
+    {t:"bauxite", d:"the ore from which aluminium is made", x:"Guinea has large bauxite deposits."},
+    {t:"petroleum", d:"crude oil obtained from the ground", x:"Nigeria exports petroleum."},
+    {t:"irrigation", d:"the artificial supply of water to crops", x:"Irrigation extends the growing season."},
+    {t:"plantation", d:"a large estate growing one main crop for sale", x:"Rubber grows on plantations."},
+    {t:"processing", d:"turning raw produce into a finished product", x:"Processing adds value to cocoa."},
+    {t:"export earnings", d:"money a country receives from selling goods abroad", x:"Export earnings fund development."},
+    {t:"diversification", d:"widening the range of products a country depends on", x:"Diversification reduces risk."},
+    {t:"timber", d:"wood cut from forest trees", x:"Timber is a forest product."},
+    {t:"fishing industry", d:"the catching and selling of fish", x:"The fishing industry employs many."}
+  ],
+  facts:[
+    {q:"Name four major cash crops of West Africa.", a:"Cocoa, coffee, oil palm and groundnuts (also cotton and rubber)."},
+    {q:"Which country is the world's leading producer of cocoa?", a:"Côte d'Ivoire."},
+    {q:"Name four major minerals of West Africa.", a:"Gold, iron ore, bauxite and petroleum (also diamonds and manganese)."},
+    {q:"Which West African country is the largest producer of petroleum?", a:"Nigeria."},
+    {q:"Which country has the largest bauxite deposits in the region?", a:"Guinea."},
+    {q:"Name four geographical factors that favour agriculture in West Africa.", a:"Fertile soils, adequate rainfall, high temperatures throughout the year and available land and labour."},
+    {q:"Name three forest products of West Africa.", a:"Timber, rubber and palm produce (also medicinal plants)."},
+    {q:"State two ways agriculture and minerals contribute to development.", a:"They earn foreign exchange for imports and development projects, and they provide employment and government revenue."},
+    {q:"Give one problem of depending on a single export crop or mineral.", a:"If the world price falls, the country's income collapses and it cannot fund its budget."}
+  ],
+  tf:[
+    {s:"Côte d'Ivoire is a leading producer of cocoa.", a:"true", why:"It is the world's largest cocoa producer."},
+    {s:"Groundnuts are grown mainly in the forest belt.", a:"false", why:"Groundnuts grow best in the drier savanna, as in Senegal, Mali and northern Nigeria."},
+    {s:"Nigeria is a major producer of petroleum.", a:"true", why:"Petroleum from the Niger Delta is Nigeria's chief export."},
+    {s:"Processing cocoa into chocolate locally would reduce a country's income.", a:"false", why:"Processing adds value, so the country earns more than by exporting raw beans."},
+    {s:"Depending on one export makes an economy stable.", a:"false", why:"It makes the economy vulnerable, because a fall in that one world price cuts national income sharply."}
+  ],
+  sort:{ title:"Resources of West Africa", groups:[
+    {name:"Forest belt crops", items:["Cocoa","Oil palm","Rubber","Coffee"]},
+    {name:"Savanna crops", items:["Groundnuts","Millet","Sorghum","Cotton"]},
+    {name:"Minerals", items:["Gold","Bauxite","Iron ore","Petroleum"]},
+    {name:"Factors favouring farming", items:["Fertile soil","Adequate rainfall","High temperature","Available labour"]}
+  ]},
+  mapwork:{ title:"Where West Africa's resources are found", caption:"Match each resource with its main producing area and value.", items:[
+    {p:"Cocoa — Côte d'Ivoire and Ghana", f:"the world's leading producing area; a major source of export earnings"},
+    {p:"Petroleum — Nigeria", f:"crude oil from the Niger Delta, the country's chief export"},
+    {p:"Bauxite — Guinea", f:"among the world's largest reserves, used to make aluminium"},
+    {p:"Iron ore — Liberia and Mauritania", f:"mined for export to steel-making countries"},
+    {p:"Groundnuts — Senegal and Mali", f:"the leading savanna cash crop, also processed into oil"},
+    {p:"Timber — Liberia, Ghana, Côte d'Ivoire", f:"cut from the high forest for building and export"}
+  ]},
+  casestudy:{ title:"When the price of cocoa fell",
+    text:"A country in the forest belt earned most of its foreign exchange from cocoa. For several years the world price was high, and the government built roads and hospitals. Then a very good harvest worldwide pushed the price down by a third. Export earnings fell sharply, the government could not pay for the projects it had begun, and farmers who had borrowed money to expand their farms could not repay. A neighbouring country that also grew cocoa but exported gold and processed some of its beans into cocoa butter was less badly affected.",
+    questions:[
+      {q:"Why did the country's export earnings fall?", a:"The world price of cocoa dropped by a third, so the same harvest earned much less money."},
+      {q:"Why was the neighbouring country less affected?", a:"It did not depend on cocoa alone — it also exported gold and processed some beans locally into cocoa butter."},
+      {q:"What is the name for widening the range of products a country depends on?", a:"Diversification."},
+      {q:"State one lasting lesson for a country that depends on one export.", a:"It should diversify its crops and minerals and process raw materials locally, so a fall in one world price does not ruin the whole economy."}
+    ]},
+  project:{ title:"Resource map of West Africa",
+    brief:"Map and assess the resources of the region.",
+    steps:["Draw an outline map of West Africa.","Mark at least six countries.","Show the main crop and the main mineral of each with symbols.","Add a key explaining the symbols.","Choose one resource and write a paragraph on its contribution to development."],
+    criteria:["Six countries correctly placed","Crops and minerals correctly matched","Clear key","Neat presentation","A reasoned paragraph on contribution"]},
+  activities:["Identify the major forest resources of West Africa","Discuss factors favouring agriculture and mining","Visit a nearby farm and record what is learned","Discuss the contribution of minerals to development"],
+  materials:["Maps of West Africa showing resources","Samples or pictures of crops and minerals","Atlas","Trade statistics"],
+  assessment:["Resource map project","Quiz on crops and minerals","Case study analysis","Group presentation"]
+},
+{
+  grade:9, period:"III", sem:"One", icon:"👥",
+  title:"Peoples and Ethnic Groups of West Africa",
+  subtitle:"Unit III: Lifestyles, occupations, trade, communication and family life",
+  outcomes:["Describe the socio-economic and cultural similarities and differences among the peoples of West Africa"],
+  objectives:["Distinguish the lifestyles and occupations of the people of West Africa","Discuss the common problems associated with trade and communication","Analyse the economic and political activities of the people","Describe the family life cycle and the roles within it","Discuss HIV/AIDS and how people living with HIV can live positively","Accept gender differences and develop positive lifestyles"],
+  note:"West Africa holds hundreds of <b>ethnic groups</b> speaking many languages, yet they share much: extended family life, respect for elders, market trading and rich traditions of music and story. The <b>family life cycle</b> moves through childhood, adolescence, adulthood, marriage, parenthood and old age, with different roles at each stage.",
+  focus:["Peoples and ethnic groups of West Africa","Lifestyles and occupations","Trade and its common problems","Communication in the region","Economic and political activities","HIV/AIDS and positive living","The family life cycle"],
+  terms:[
+    {t:"ethnic group", d:"a people sharing language, custom and origin", x:"The Yoruba are an ethnic group."},
+    {t:"culture", d:"the whole way of life of a people", x:"Culture includes food and dress."},
+    {t:"lifestyle", d:"the way a group of people live day to day", x:"Rural lifestyles differ from urban ones."},
+    {t:"lingua franca", d:"a common language used between groups", x:"Hausa is a lingua franca in the north."},
+    {t:"trade", d:"the buying and selling of goods", x:"Cross-border trade is common."},
+    {t:"tariff", d:"a tax on goods crossing a border", x:"Tariffs raise the price of imports."},
+    {t:"communication", d:"the passing of information between people", x:"Poor roads hinder communication."},
+    {t:"ECOWAS", d:"the Economic Community of West African States", x:"ECOWAS promotes regional trade."},
+    {t:"family life cycle", d:"the stages a family passes through over time", x:"Marriage is one stage of the cycle."},
+    {t:"adolescence", d:"the stage of change between childhood and adulthood", x:"Adolescence brings new responsibilities."},
+    {t:"stigma", d:"unfair disapproval directed at a person or group", x:"Stigma discourages people from testing."},
+    {t:"positive living", d:"staying healthy and active while living with HIV", x:"Positive living includes taking medicine."}
+  ],
+  facts:[
+    {q:"Name four large ethnic groups of West Africa.", a:"The Hausa, Yoruba, Igbo and Mandingo (also Fulani, Akan and Wolof)."},
+    {q:"Name three occupations common among the peoples of West Africa.", a:"Farming, fishing and trading (also herding and craft work)."},
+    {q:"What does ECOWAS stand for and what is its purpose?", a:"The Economic Community of West African States; it promotes trade, free movement and cooperation among member states."},
+    {q:"Name three problems associated with trade in West Africa.", a:"Poor roads and transport, many different currencies, and delays and tariffs at borders."},
+    {q:"Name three problems of communication in the region.", a:"Many different languages, poor road and telephone networks, and low access to electricity and internet."},
+    {q:"Name the stages of the family life cycle.", a:"Childhood, adolescence, adulthood, marriage, parenthood and old age."},
+    {q:"What is meant by positive living for a person with HIV?", a:"Taking prescribed medicine, eating well, avoiding infection and remaining an active member of the community."},
+    {q:"Give one way to reduce stigma against people living with HIV.", a:"Teaching the community the true facts about how HIV is and is not transmitted."}
+  ],
+  tf:[
+    {s:"West Africa has only a few ethnic groups.", a:"false", why:"The region contains hundreds of ethnic groups speaking many different languages."},
+    {s:"ECOWAS was formed to promote cooperation among West African states.", a:"true", why:"It promotes trade, free movement and economic cooperation in the region."},
+    {s:"A person living with HIV cannot lead a productive life.", a:"false", why:"With treatment and care, people living with HIV can be healthy and fully productive."},
+    {s:"Many different currencies make regional trade harder.", a:"true", why:"Traders must change money repeatedly, adding cost and difficulty."},
+    {s:"Respect for elders is a value shared widely across West Africa.", a:"true", why:"It is a common cultural feature across the region's many peoples."}
+  ],
+  sort:{ title:"Peoples of West Africa", groups:[
+    {name:"Ethnic groups", items:["Hausa","Yoruba","Igbo","Mandingo"]},
+    {name:"Common occupations", items:["Farming","Fishing","Trading","Herding"]},
+    {name:"Problems of trade", items:["Poor roads","Many currencies","Border delays","Tariffs"]},
+    {name:"Stages of the family life cycle", items:["Childhood","Adolescence","Marriage","Old age"]}
+  ]},
+  mapwork:{ title:"The family life cycle", caption:"State the main role or task at each stage.", items:[
+    {p:"Childhood", f:"learning, playing and beginning school; cared for by parents"},
+    {p:"Adolescence", f:"rapid physical and emotional change; learning responsibility and making choices"},
+    {p:"Young adulthood", f:"completing education or training and beginning work"},
+    {p:"Marriage", f:"forming a new family unit with shared duties and commitment"},
+    {p:"Parenthood", f:"providing for, protecting and guiding children"},
+    {p:"Old age", f:"advising the family, passing on custom and history, being cared for in turn"}
+  ]},
+  casestudy:{ title:"Fatu crosses the border",
+    text:"Fatu buys palm oil in Liberia and sells it in a market across the border in Guinea. The journey is only sixty kilometres, but the road is bad and takes half a day. At the border she must change Liberian dollars into Guinean francs, losing a little each time, and she pays a fee before her goods are allowed through. She speaks Mandingo, which helps because it is understood on both sides. Fatu says that if the road were paved and the paperwork simpler, she could make the journey twice as often and employ her nephew.",
+    questions:[
+      {q:"Name three problems Fatu faces in her trade.", a:"A bad road that makes the journey slow, having to change currency and lose value, and paying fees and paperwork at the border."},
+      {q:"What helps her to trade across the border?", a:"She speaks Mandingo, which is understood on both sides, acting as a common language."},
+      {q:"What would be the benefit if these problems were solved?", a:"She could travel twice as often, earn more, and create a job for her nephew."},
+      {q:"Which regional organisation works to reduce such barriers?", a:"ECOWAS, which promotes trade and free movement among West African states."}
+    ]},
+  project:{ title:"Ethnic groups and shared values",
+    brief:"Compare an ethnic group of Liberia with one from another West African country.",
+    steps:["Choose one Liberian ethnic group and one from elsewhere in West Africa.","Find out their main occupation, food, dress and one custom.","Draw a table comparing them.","Identify two things the two groups share.","Write a sentence on why shared values matter for regional cooperation."],
+    criteria:["Two groups properly chosen","Four features described for each","Clear comparison table","Two genuine shared values identified","A reasoned closing statement"]},
+  activities:["Identify and list the ethnic groups of the region","Describe the lifestyles of the peoples of West Africa","Discuss problems of trade and communication","Discuss positive living and reducing stigma"],
+  materials:["Map of West Africa showing peoples","Pictures of dress, food and festivals","Charts on the family life cycle","Health education materials"],
+  assessment:["Comparison project","Quiz on peoples and occupations","Case study analysis","Class presentation"]
+},
+{
+  grade:9, period:"IV", sem:"One", icon:"🗺️",
+  title:"The Sixteen Countries of West Africa",
+  subtitle:"Unit IV: Boundaries, landforms, resources and population of the member states",
+  outcomes:["Identify boundaries, describe landforms and analyse the resources and problems of each West African country"],
+  objectives:["Identify the locations and boundaries of West African countries on the map","Describe the landforms: mountains, rivers and lakes, and their importance","Analyse the importance of the natural resources found in West Africa","Use physical and relief maps to describe vegetation and land use","Interpret the pattern of population distribution"],
+  note:"West Africa consists of <b>sixteen countries</b>. Nigeria is by far the most <b>populous</b>; Niger and Mali are among the <b>largest in area</b> but are mostly desert. The great <b>River Niger</b> rises in the Fouta Djallon of Guinea and flows through Mali, Niger and Nigeria to the Atlantic, supporting farming, fishing and transport along its course.",
+  focus:["The sixteen countries and their capitals","Boundaries and locations","Major landforms: rivers, mountains, lakes","Natural resources by country","Vegetation and land use","Population distribution patterns"],
+  terms:[
+    {t:"landlocked", d:"having no coastline", x:"Mali and Niger are landlocked."},
+    {t:"coastal state", d:"a country with a sea boundary", x:"Liberia is a coastal state."},
+    {t:"capital city", d:"the city where a country's government sits", x:"Abuja is Nigeria's capital."},
+    {t:"River Niger", d:"the longest river in West Africa", x:"The Niger flows through four countries."},
+    {t:"Lake Chad", d:"a large lake in the north-east of the region", x:"Lake Chad has been shrinking."},
+    {t:"Fouta Djallon", d:"a highland in Guinea where great rivers rise", x:"The Fouta Djallon is a water tower."},
+    {t:"population distribution", d:"how people are spread over an area", x:"Distribution is uneven."},
+    {t:"densely populated", d:"having many people per square kilometre", x:"Southern Nigeria is densely populated."},
+    {t:"sparsely populated", d:"having few people per square kilometre", x:"The Sahara is sparsely populated."},
+    {t:"land use", d:"how land is employed, for farming, forest or building", x:"Land use varies with rainfall."},
+    {t:"boundary", d:"the line dividing two countries", x:"A river forms the boundary."},
+    {t:"delta", d:"the fan of land where a river divides before the sea", x:"The Niger Delta holds oil."}
+  ],
+  facts:[
+    {q:"How many countries make up West Africa?", a:"Sixteen."},
+    {q:"Name the four landlocked countries of West Africa.", a:"Mali, Niger, Burkina Faso and (in the wider region) Chad — the principal landlocked states are Mali, Niger and Burkina Faso."},
+    {q:"Which is the most populous country in West Africa?", a:"Nigeria."},
+    {q:"Name the longest river in West Africa and three countries it passes through.", a:"The River Niger; it flows through Guinea, Mali, Niger and Nigeria."},
+    {q:"Name the capitals of Ghana, Senegal and Nigeria.", a:"Accra, Dakar and Abuja."},
+    {q:"Where in West Africa is population most dense?", a:"Along the southern coast and in southern Nigeria, where rainfall, farming and trade are best."},
+    {q:"Where is population most sparse, and why?", a:"In the far north, in the Sahara and Sahel, because there is too little rain to support many people."},
+    {q:"Which country is completely surrounded by another West African country?", a:"The Gambia, which is almost entirely enclosed by Senegal."}
+  ],
+  tf:[
+    {s:"Nigeria is the most populous country in West Africa.", a:"true", why:"It has by far the largest population of any country in the region."},
+    {s:"Mali has a long Atlantic coastline.", a:"false", why:"Mali is landlocked and has no coastline at all."},
+    {s:"The River Niger rises in the Fouta Djallon highlands of Guinea.", a:"true", why:"The highlands are the source of the Niger and other great rivers."},
+    {s:"The Sahara region is densely populated.", a:"false", why:"It is very sparsely populated because of extreme dryness."},
+    {s:"The Gambia is almost surrounded by Senegal.", a:"true", why:"It is a narrow state along the Gambia River, enclosed by Senegal on nearly all sides."}
+  ],
+  sort:{ title:"Countries of West Africa", groups:[
+    {name:"Coastal countries", items:["Liberia","Ghana","Nigeria","Senegal"]},
+    {name:"Landlocked countries", items:["Mali","Niger","Burkina Faso"]},
+    {name:"Capital cities", items:["Accra","Dakar","Abuja","Monrovia"]},
+    {name:"Major rivers", items:["Niger","Senegal","Volta","Gambia"]}
+  ]},
+  mapwork:{ title:"Countries and capitals of West Africa", caption:"Match each country with its capital and one main resource.", items:[
+    {p:"Nigeria — Abuja", f:"the most populous state; petroleum from the Niger Delta"},
+    {p:"Ghana — Accra", f:"cocoa and gold; the Volta River provides hydroelectric power"},
+    {p:"Senegal — Dakar", f:"groundnuts and fishing; a major Atlantic port"},
+    {p:"Liberia — Monrovia", f:"iron ore, rubber and timber; the Freeport serves the interior"},
+    {p:"Mali — Bamako", f:"landlocked; gold and cotton, with the Niger crossing the country"},
+    {p:"Guinea — Conakry", f:"bauxite in great quantity; the Fouta Djallon is the source of major rivers"},
+    {p:"Côte d'Ivoire — Yamoussoukro", f:"the world's leading cocoa producer"}
+  ]},
+  casestudy:{ title:"Why Niamey depends on its neighbours",
+    text:"Niger is a large country but four fifths of it is desert, and it has no coastline. Goods imported into Niger must land at a port in Benin, Togo or Ghana and then travel more than a thousand kilometres by road. This adds greatly to the price of fuel, cement and machinery. When political trouble closed one border for several months, prices in Niamey rose sharply. Niger's government has long argued for better regional roads and agreements guaranteeing free transit for landlocked members of ECOWAS.",
+    questions:[
+      {q:"Why must Niger's imports pass through other countries?", a:"Niger is landlocked, so it has no seaport of its own and must use ports in neighbouring coastal states."},
+      {q:"How does this affect prices in Niamey?", a:"Goods must travel over a thousand kilometres by road, adding transport costs that raise prices."},
+      {q:"What happened when a border was closed?", a:"Supplies were disrupted and prices in Niamey rose sharply."},
+      {q:"Why do landlocked countries press for regional agreements?", a:"They depend on their neighbours for access to the sea, so guaranteed free transit and good roads are vital to their trade."}
+    ]},
+  project:{ title:"Country study",
+    brief:"Prepare a profile of one West African country.",
+    steps:["Choose one of the sixteen countries, other than Liberia.","Find its capital, neighbours and whether it is coastal or landlocked.","Describe one major landform and one major resource.","Note whether its population is concentrated or spread out, and why.","Present a one-page illustrated profile."],
+    criteria:["Correct capital and neighbours","Coastal or landlocked correctly stated","A landform and a resource described","Population pattern explained","Neat illustrated presentation"]},
+  activities:["Use maps to identify boundaries of member countries","Describe landforms and their importance","Analyse the resources of each country","Interpret population distribution maps"],
+  materials:["Political and physical maps of West Africa","Atlas and globe","Population distribution maps","Country data sheets"],
+  assessment:["Country study project","Map location test","Quiz on capitals and resources","Class presentation"]
+},
+{
+  grade:9, period:"V", sem:"Two", icon:"🏺",
+  title:"The History and Myth about West Africa",
+  subtitle:"Unit V: Disproving the myth that Africa had no history; Nok culture and heritage",
+  outcomes:["Analyse the history of West Africa and disprove the European myth that Africa had no history"],
+  objectives:["Discuss the history of West Africa and analyse the colonial myth that Africa had no history","Describe the pre-history of Africa including the Stone Age","Explain the importance of the Nok culture","Describe the cultural heritage of West Africa","Distinguish the major tribes and linguistic distribution","Evaluate the geographical zones of West Africa"],
+  note:"European colonial writers once claimed Africa had <b>no history</b> because its peoples had left few written records. This is a <b>myth</b>. Africa's past is recorded in <b>oral tradition</b>, <b>archaeology</b>, <b>art</b> and <b>the accounts of travellers</b>. The <b>Nok culture</b> of Nigeria, famous for its terracotta sculptures and early iron working, proves advanced civilisation existed in West Africa long before European contact.",
+  focus:["The European myth that Africa had no history","Evidence disproving the myth","Pre-history and the Stone Age","The Nok culture and its importance","Cultural heritage of West Africa","Major tribes and linguistic distribution","Geographical zones"],
+  terms:[
+    {t:"myth", d:"a widely held but false belief", x:"It is a myth that Africa had no history."},
+    {t:"pre-history", d:"the period before written records", x:"Pre-history is studied through remains."},
+    {t:"Stone Age", d:"the early period when tools were made of stone", x:"Stone Age tools have been found."},
+    {t:"Nok culture", d:"an early Nigerian civilisation known for terracotta art and iron working", x:"Nok culture dates back over two thousand years."},
+    {t:"terracotta", d:"baked clay used for sculpture", x:"Nok terracotta heads are famous."},
+    {t:"iron smelting", d:"extracting iron from ore by heating", x:"Iron smelting changed farming and warfare."},
+    {t:"heritage", d:"the traditions and achievements passed down from the past", x:"Music is part of our heritage."},
+    {t:"civilisation", d:"an advanced and organised society", x:"Early civilisations rose in West Africa."},
+    {t:"colonialism", d:"rule of one country by another", x:"Colonialism reshaped Africa's borders."},
+    {t:"eurocentric", d:"seeing the world only from a European viewpoint", x:"The claim was a eurocentric view."},
+    {t:"artefact", d:"an object made by people in the past", x:"The artefact proved early skill."},
+    {t:"griot", d:"a West African keeper of oral history", x:"The griot recited generations of kings."}
+  ],
+  facts:[
+    {q:"What was the European myth about African history?", a:"That Africa had no history because its peoples had left few written records."},
+    {q:"Give three kinds of evidence that disprove this myth.", a:"Oral tradition kept by griots, archaeological remains such as Nok terracotta and iron tools, and the written accounts of Arab and other travellers."},
+    {q:"What is the Nok culture and why is it important?", a:"An early civilisation in what is now Nigeria, famous for terracotta sculpture and iron smelting; it proves advanced technology and art existed in West Africa over two thousand years ago."},
+    {q:"What is pre-history?", a:"The period of the past before written records were kept."},
+    {q:"Why is iron smelting important in West African history?", a:"Iron tools improved farming and weapons, allowing larger populations, stronger states and expanded trade."},
+    {q:"Name three elements of West Africa's cultural heritage.", a:"Music and drumming, sculpture and craft, and oral literature such as proverbs and folk tales."},
+    {q:"Who were the griots?", a:"Traditional keepers of oral history who memorised and recited the genealogy and history of a people."},
+    {q:"Name the geographical zones of West Africa.", a:"The forest zone, the savanna zone, the Sahel and the desert."}
+  ],
+  tf:[
+    {s:"Africa had no history before Europeans arrived.", a:"false", why:"This is a myth; African history is preserved in oral tradition, archaeology, art and travellers' accounts."},
+    {s:"The Nok culture is known for terracotta sculpture.", a:"true", why:"Its baked clay heads and figures are its most famous remains."},
+    {s:"Oral tradition cannot be used as historical evidence.", a:"false", why:"It is a recognised source, especially when supported by archaeology and other records."},
+    {s:"Iron smelting was practised in West Africa in ancient times.", a:"true", why:"The Nok and other early societies smelted iron long before European contact."},
+    {s:"Written records are the only valid source of history.", a:"false", why:"Archaeology, oral tradition and art are also valid and often the only sources for early periods."}
+  ],
+  sort:{ title:"History and heritage", groups:[
+    {name:"Sources of African history", items:["Oral tradition","Archaeology","Travellers' accounts","Art and artefacts"]},
+    {name:"Nok culture features", items:["Terracotta sculpture","Iron smelting","Farming settlements","Skilled pottery"]},
+    {name:"Cultural heritage", items:["Drumming and dance","Proverbs and folk tales","Mask carving","Weaving"]},
+    {name:"Geographical zones", items:["Forest","Savanna","Sahel","Desert"]}
+  ]},
+  mapwork:{ title:"Evidence against the myth", caption:"State what each kind of evidence shows about Africa's past.", items:[
+    {p:"Nok terracotta", f:"skilled sculpture over two thousand years old, showing advanced art and organised society"},
+    {p:"Iron smelting sites", f:"early mastery of metal technology, which improved farming and supported larger states"},
+    {p:"Oral tradition and griots", f:"detailed genealogies and histories preserved accurately across generations"},
+    {p:"Arab travellers' accounts", f:"written descriptions of wealthy, well-governed West African cities and trade"},
+    {p:"Ruins and settlement remains", f:"evidence of large planned towns and long-distance trade"},
+    {p:"Indigenous scripts", f:"writing systems such as the Vai script show literacy developed locally as well"}
+  ]},
+  casestudy:{ title:"The heads in the tin mine",
+    text:"In the 1920s, tin miners on the Jos Plateau in Nigeria began turning up small heads of baked clay. At first they were treated as curiosities. Later study showed they were made by a people who lived in the area more than two thousand years ago, who farmed, smelted iron and produced sculpture of remarkable skill. The discovery was awkward for those who had claimed Africa had no history and no civilisation before Europeans came. Today the Nok terracottas are recognised as some of the oldest sculpture in Africa.",
+    questions:[
+      {q:"Where and how were the Nok terracottas found?", a:"On the Jos Plateau in Nigeria, turned up by tin miners in the 1920s."},
+      {q:"What did later study reveal about the people who made them?", a:"They lived over two thousand years ago and farmed, smelted iron and produced highly skilled sculpture."},
+      {q:"Why was the discovery 'awkward' for some writers?", a:"It disproved their claim that Africa had no history or civilisation before Europeans arrived."},
+      {q:"What does this case show about the value of archaeology?", a:"Archaeology can recover the history of peoples who left no written records and correct false beliefs about the past."}
+    ]},
+  project:{ title:"Disproving the myth",
+    brief:"Build an evidence file showing that West Africa has a long history.",
+    steps:["State the myth in one sentence.","Collect four pieces of evidence against it, from different kinds of source.","For each, explain briefly what it proves.","Include at least one example from Liberia.","Write a concluding paragraph in your own words."],
+    criteria:["Myth clearly stated","Four different kinds of evidence","Each explained correctly","A Liberian example included","A reasoned conclusion"]},
+  activities:["Discuss and analyse the myth that Africa had no history","Research and describe the Nok culture","Distinguish major tribes and their languages","Evaluate the geographical zones of West Africa"],
+  materials:["Pictures of Nok terracotta and artefacts","Maps of West African peoples","Historical texts and readings","Resource persons and elders"],
+  assessment:["Evidence file project","Quiz on Nok culture","Essay on the myth","Class debate"]
+},
+{
+  grade:9, period:"VI", sem:"Two", icon:"👑",
+  title:"Early West African States",
+  subtitle:"Unit VI: Ghana, Mali, Songhai and Kanem-Bornu — origins, achievements, rise and fall",
+  outcomes:["Establish reasons for the rise of empires by analysing their origins and achievements and evaluating their decline"],
+  objectives:["Analyse the origin of the early states of West Africa","Discuss the achievements of these early states","Evaluate the factors that led to the rise and fall of each state","Compare and contrast the early West African states","Describe the administration of each empire"],
+  note:"The great empires of the western Sudan — <b>Ghana, Mali, Songhai and Kanem-Bornu</b> — all grew rich by controlling the <b>trans-Saharan trade</b>, exchanging <b>gold</b> from the south for <b>salt</b> from the desert. Each rose through strong rulers, trade and military power, and each fell through weak succession, rebellion by subject peoples and outside invasion.",
+  focus:["Origins of the early states","The trans-Saharan trade in gold and salt","The Ghana Empire","The Mali Empire and Mansa Musa","The Songhai Empire","The Kanem-Bornu Empire","Factors in the rise and fall of empires"],
+  terms:[
+    {t:"empire", d:"a group of territories ruled by one supreme authority", x:"Mali was a large empire."},
+    {t:"trans-Saharan trade", d:"trade carried across the Sahara Desert by caravan", x:"Trans-Saharan trade brought salt south."},
+    {t:"caravan", d:"a group of traders travelling together, often with camels", x:"The caravan crossed the desert."},
+    {t:"Mansa", d:"the title of the emperor of Mali", x:"Mansa Musa ruled Mali."},
+    {t:"Timbuktu", d:"a famous centre of trade and learning in Mali", x:"Scholars gathered at Timbuktu."},
+    {t:"Sankore", d:"the celebrated university and mosque of Timbuktu", x:"Sankore attracted scholars."},
+    {t:"tribute", d:"payment made by a subject people to a ruler", x:"Provinces paid tribute to the king."},
+    {t:"succession", d:"the passing of power from one ruler to the next", x:"Disputed succession weakened the state."},
+    {t:"decline", d:"a gradual loss of power and importance", x:"The empire went into decline."},
+    {t:"Askia", d:"the title of the rulers of Songhai", x:"Askia Muhammad reformed Songhai."},
+    {t:"Sonni Ali", d:"the warrior king who founded Songhai's greatness", x:"Sonni Ali captured Timbuktu."},
+    {t:"Kanem-Bornu", d:"the empire around Lake Chad", x:"Kanem-Bornu lasted many centuries."}
+  ],
+  facts:[
+    {q:"Name the four early West African states studied.", a:"The Ghana Empire, the Mali Empire, the Songhai Empire and the Kanem-Bornu Empire."},
+    {q:"What was the main basis of the wealth of these empires?", a:"Control of the trans-Saharan trade, especially the exchange of gold from the south for salt from the desert."},
+    {q:"Why was Ghana called 'the land of gold'?", a:"It controlled the trade routes carrying gold from the south to the desert and beyond."},
+    {q:"Who was the most famous ruler of Mali and why is he remembered?", a:"Mansa Musa, remembered for his wealth, his pilgrimage to Mecca and for making Timbuktu a centre of learning."},
+    {q:"Name two achievements of the Mali Empire.", a:"The University of Sankore at Timbuktu as a centre of scholarship, and a well-organised administration with justice and safe trade routes."},
+    {q:"Who were the two greatest rulers of Songhai?", a:"Sonni Ali, who built the empire by conquest, and Askia Muhammad, who organised its administration."},
+    {q:"Where was the Kanem-Bornu Empire situated?", a:"Around Lake Chad, in the east of the region."},
+    {q:"Name three factors that led to the rise of these empires.", a:"Control of trade routes, strong and able rulers, and powerful armies (also abundant gold and iron)."},
+    {q:"Name three factors that led to their fall.", a:"Disputes over succession and weak rulers, rebellion by subject peoples, and invasion from outside — the Moroccan invasion destroyed Songhai."}
+  ],
+  tf:[
+    {s:"The early West African empires grew rich mainly from trans-Saharan trade.", a:"true", why:"They taxed and controlled the exchange of gold for salt across the desert."},
+    {s:"Timbuktu was a centre of trade and learning.", a:"true", why:"It housed the University of Sankore and attracted scholars from far away."},
+    {s:"Mansa Musa was a ruler of the Songhai Empire.", a:"false", why:"Mansa Musa ruled the Mali Empire; Songhai's great rulers were Sonni Ali and Askia Muhammad."},
+    {s:"Songhai was destroyed by a Moroccan invasion.", a:"true", why:"Moroccan forces with firearms defeated Songhai at the end of the sixteenth century."},
+    {s:"Kanem-Bornu was located near the Atlantic coast.", a:"false", why:"It was situated around Lake Chad, far inland in the east of the region."},
+    {s:"Disputed succession weakened these empires.", a:"true", why:"Quarrels over who should rule divided the state and invited rebellion and invasion."}
+  ],
+  sort:{ title:"The early West African states", groups:[
+    {name:"The four empires", items:["Ghana","Mali","Songhai","Kanem-Bornu"]},
+    {name:"Famous rulers", items:["Mansa Musa","Sonni Ali","Askia Muhammad","Sundiata"]},
+    {name:"Causes of rise", items:["Control of trade","Strong rulers","Powerful armies","Gold and iron"]},
+    {name:"Causes of fall", items:["Weak succession","Rebellion of provinces","Outside invasion","Loss of trade routes"]}
+  ]},
+  mapwork:{ title:"Comparing the four empires", caption:"Complete the chart of each empire, its centre and its chief achievement.", items:[
+    {p:"Ghana Empire", f:"the earliest; centred in the upper Niger and Senegal region; famed as the land of gold"},
+    {p:"Mali Empire", f:"succeeded Ghana; Timbuktu and Sankore made it a centre of learning under Mansa Musa"},
+    {p:"Songhai Empire", f:"the largest; built by Sonni Ali and organised by Askia Muhammad; fell to Moroccan invasion"},
+    {p:"Kanem-Bornu Empire", f:"around Lake Chad; among the longest lasting states, controlling eastern trade routes"},
+    {p:"Trans-Saharan trade", f:"the gold-for-salt caravan trade that made all four empires wealthy"},
+    {p:"Common causes of decline", f:"disputed succession, rebellion by subject peoples, and invasion from outside"}
+  ]},
+  casestudy:{ title:"The pilgrimage of Mansa Musa",
+    text:"In 1324 Mansa Musa, emperor of Mali, set out to Mecca with a vast company of followers and camels laden with gold. Passing through Cairo, he gave away and spent so much gold that its value in the city was said to have fallen for years afterwards. News of his wealth reached Europe, and Mali began to appear on European maps. On his return he brought back scholars and architects, and the university at Timbuktu grew into a famous centre of learning where students studied law, mathematics and astronomy.",
+    questions:[
+      {q:"Who was Mansa Musa and which empire did he rule?", a:"He was the emperor of the Mali Empire."},
+      {q:"What effect did his spending have in Cairo?", a:"So much gold entered the city that its value there fell for years afterwards."},
+      {q:"What did he bring back from his journey?", a:"Scholars and architects, who helped develop Timbuktu as a centre of learning."},
+      {q:"What does this account tell us about Mali?", a:"That it was extremely wealthy, well organised enough to mount such a journey, and valued scholarship — further evidence against the myth that Africa had no civilisation."}
+    ]},
+  project:{ title:"Empire comparison chart",
+    brief:"Compare the four early West African states.",
+    steps:["Draw a table with the four empires as columns.","For each, record its location, period, greatest ruler and chief achievement.","Record one cause of its rise and one of its fall.","Identify one factor common to all four.","Write a paragraph explaining why that common factor mattered."],
+    criteria:["All four empires covered","Rulers and achievements correct","Rise and fall causes given","A genuine common factor identified","A reasoned explanatory paragraph"]},
+  activities:["Research and analyse the origin of the early states","Discuss the achievements of each empire","Evaluate the strengths and weaknesses of each","Compare and contrast the four states"],
+  materials:["Historical maps of the western Sudan","Pictures of Timbuktu and Sankore","Texts on West African empires","Timeline charts"],
+  assessment:["Empire comparison chart","Quiz on rulers and achievements","Essay on rise and fall","Class presentation"]
+}
+
+];
+
+/* Merge the Junior High units into the single Social Studies curriculum,
+   exactly as English, General Science and Mathematics do: one subject,
+   extra grades. */
+if (typeof SS_CURRICULUM !== "undefined") {
+  SS_CURRICULUM.push.apply(SS_CURRICULUM, SS_CURRICULUM_79);
+}

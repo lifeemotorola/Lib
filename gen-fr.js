@@ -230,7 +230,7 @@
     var each = 2;
     var nPer = Math.max(4, Math.round((marksTarget || 40) / (each * 4)));
 
-    blocks.push({ k: "h2", t: "PERIOD TEST — Grade " + t.grade + ", Period " + t.period });
+    blocks.push({ k: "h2", t: "PERIOD TEST — Grade " + t.grade + ", Period " + t.period, per: t.period });
     blocks.push({ k: "p", t: "Topic: " + t.fr + " (" + t.en + ")   ·   Semester " + t.sem });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"], rows: [["", "Grade " + t.grade, "", "     / " + (nPer * 4 * each)]] });
     blocks.push({ k: "instr", t: "Answer ALL questions. Write clearly. Each question carries " + each + " marks." });
@@ -281,7 +281,7 @@
     var g = topics[0].grade;
     var blocks = [], key = [], q = 0, each = 2, n = 10;
 
-    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " FRENCH" });
+    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " FRENCH", per: "exam" });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"], rows: [["", "Grade " + g, "", "     / " + (n * 4 * each)]] });
     blocks.push({ k: "p", t: "Topics covered: " + topics.map(function (t) { return t.fr; }).join(" · ") });
     blocks.push({ k: "instr", t: "Time: 1 hour. Answer ALL questions. Each question carries " + each + " marks." });
@@ -348,12 +348,11 @@
     var doc = [], keys = [], toc = [];
 
     /* ---- cover ---- */
-    doc.push({ k: "h1", t: "FRENCH — GRADE " + opts.grade });
-    doc.push({ k: "h2", t: "Pupil Workbook & Assessment Pack" });
-    doc.push({ k: "p", t: "Elementary French · Liberian National Curriculum", i: true });
-    doc.push({ k: "space" });
-    doc.push({ k: "table", head: ["Pupil's name", "School", "Class", "Year"], rows: [["", "", "Grade " + opts.grade, ""]] });
-    doc.push({ k: "space" });
+    doc.push.apply(doc, PACK_COVER(opts, {
+      title: "FRENCH — GRADE " + opts.grade,
+      sub: "Pupil Workbook & Assessment Pack",
+      line: "Elementary French · Liberian National Curriculum"
+    }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) {
       toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.fr + " (" + t.en + ")");
@@ -367,10 +366,9 @@
 
     /* ---- units ---- */
     topics.forEach(function (t, i) {
-      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.fr });
+      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.fr, per: t.period });
       doc.push({ k: "p", t: t.en + "   ·   Period " + t.period + "   ·   Semester " + t.sem });
-      doc.push({ k: "instr", t: "What you will learn: " + t.objectives.slice(0, 3).join("; ") + "." });
-      doc.push({ k: "p", t: "Remember: " + t.note.replace(/<[^>]+>/g, "") });
+      doc.push.apply(doc, UNIT_NOTES(t, i + 1));
       if (t.extra) {
         doc.push({ k: "h3", t: t.extra.title });
         doc.push({ k: "bul", items: t.extra.items });
@@ -410,8 +408,9 @@
 
     /* ---- keys ---- */
     if (opts.keys && keys.length) {
-      doc.push({ k: "h1", t: "ANSWER KEYS — TEACHER'S COPY" });
+      doc.push({ k: "h1", t: "ANSWER KEYS — TEACHER'S COPY", per: "keys" });
       doc.push({ k: "p", t: "Detach or keep separately. Not for pupils.", i: true });
+      doc.push({ k: "instr", t: "Each answer is given with the reason or method behind it. When you mark, do not only tick or cross — point the learner to the step in the explanation that they missed." });
       keys.forEach(function (kk) {
         doc.push({ k: "h2", t: kk.title });
         kk.sections.forEach(function (s) {

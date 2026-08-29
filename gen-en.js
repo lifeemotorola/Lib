@@ -71,7 +71,7 @@
         { k: "p", t: "WORD BOX:   " + bank.join("  ·  ") },
         { k: "num", items: items }
       ],
-      key: sel.map(function (v, i) { return (i + 1) + ". " + v.w; })
+      key: sel.map(function (v, i) { return (i + 1) + ". " + v.w + "  — " + v.d; })
     };
   }
 
@@ -79,8 +79,10 @@
   function wsPhonics(t, n, r) {
     if (!t.phonics || !t.phonics.length) return null;
     var blocks = [
-      { k: "h3", t: "D · Phonics and Word Building" },
-      { k: "instr", t: "Say each sound aloud. Then write two more words of your own for each pattern." }
+      { k: "h3", t: t.grade >= 7 ? "D · Word Study — Roots, Prefixes and Patterns" : "D · Phonics and Word Building" },
+      { k: "instr", t: t.grade >= 7
+        ? "Study each pattern and its examples. Then write two more words of your own that use the same pattern."
+        : "Say each sound aloud. Then write two more words of your own for each pattern." }
     ];
     var rows = t.phonics.map(function (p) {
       return [p.p + "  (" + p.label + ")", p.words.slice(0, 5).join(", "), "", ""];
@@ -193,7 +195,9 @@
     var sel = pick(t.words, n, r);
     var blocks = [
       { k: "h3", t: "J · Spelling and Dictation" },
-      { k: "instr", t: "PUPIL: read each word aloud and copy it twice. TEACHER: then dictate the words for the pupil to write from memory." },
+      { k: "instr", t: t.grade >= 7
+        ? "Study the spelling and syllable division of each word, then write it twice. Your teacher will dictate the words for you to write from memory."
+        : "PUPIL: read each word aloud and copy it twice. TEACHER: then dictate the words for the pupil to write from memory." },
       { k: "table", head: ["Word", "Syllables", "Copy 1", "Copy 2"],
         rows: sel.map(function (v) { return [v.w, v.s, "", ""]; }) },
       { k: "space" },
@@ -210,6 +214,7 @@
 
   /* K · Handwriting */
   function wsCopy(t, n, r) {
+    if (t.grade >= 7) return null;   /* handwriting drill is an elementary sheet only */
     var sel = pick(t.words, n, r);
     return {
       blocks: [
@@ -238,7 +243,7 @@
   /* ---------------- period test ---------------- */
   function periodTest(t, r) {
     var blocks = [], key = [], q = 0, each = 2, n = 5;
-    blocks.push({ k: "h2", t: "PERIOD TEST — Grade " + t.grade + ", Period " + t.period });
+    blocks.push({ k: "h2", t: "PERIOD TEST — Grade " + t.grade + ", Period " + t.period, per: t.period });
     blocks.push({ k: "p", t: "Topic: " + t.title + "   ·   Semester " + t.sem });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"],
       rows: [["", "Grade " + t.grade, "", "     / " + (n * 4 * each)]] });
@@ -287,7 +292,7 @@
     });
     var g = topics[0].grade, blocks = [], key = [], q = 0, each = 2, n = 10;
 
-    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " ENGLISH" });
+    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " ENGLISH", per: "exam" });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"],
       rows: [["", "Grade " + g, "", "     / " + (n * 4 * each)]] });
     blocks.push({ k: "p", t: "Topics covered: " + topics.map(function (t) { return t.title; }).join(" · ") });
@@ -350,12 +355,11 @@
     });
     var doc = [], keys = [], toc = [];
 
-    doc.push({ k: "h1", t: "ENGLISH — GRADE " + opts.grade });
-    doc.push({ k: "h2", t: "Pupil Workbook & Assessment Pack" });
-    doc.push({ k: "p", t: "Elementary English · Liberian National Curriculum", i: true });
-    doc.push({ k: "space" });
-    doc.push({ k: "table", head: ["Pupil's name", "School", "Class", "Year"], rows: [["", "", "Grade " + opts.grade, ""]] });
-    doc.push({ k: "space" });
+    doc.push.apply(doc, PACK_COVER(opts, {
+      title: (opts.grade >= 7 ? "ENGLISH — LANGUAGE ARTS — GRADE " : "ENGLISH — GRADE ") + opts.grade,
+      sub: "Pupil Workbook & Assessment Pack",
+      line: (opts.grade >= 7 ? "Junior High English — Language Arts" : "Elementary English") + " · Liberian National Curriculum"
+    }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.title); });
     if (opts.tests) toc.push("Period tests — one after each unit");
@@ -366,13 +370,9 @@
     doc.push({ k: "pagebreak" });
 
     topics.forEach(function (t, i) {
-      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.title });
+      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.title, per: t.period });
       doc.push({ k: "p", t: t.subtitle + "   ·   Period " + t.period + "   ·   Semester " + t.sem });
-      doc.push({ k: "instr", t: "What you will learn: " + t.objectives.slice(0, 3).join("; ") + "." });
-      doc.push({ k: "p", t: "Remember: " + t.note.replace(/<[^>]+>/g, "") });
-      if (t.focus && t.focus.length) {
-        doc.push({ k: "p", t: "Skills focus: " + t.focus.join(" · ") });
-      }
+      doc.push.apply(doc, UNIT_NOTES(t, i + 1));
       doc.push({ k: "space" });
 
       var ukey = [];
@@ -409,8 +409,9 @@
     }
 
     if (opts.keys && keys.length) {
-      doc.push({ k: "h1", t: "ANSWER KEYS — TEACHER'S COPY" });
+      doc.push({ k: "h1", t: "ANSWER KEYS — TEACHER'S COPY", per: "keys" });
       doc.push({ k: "p", t: "Detach or keep separately. Not for pupils.", i: true });
+      doc.push({ k: "instr", t: "Each answer is given with the reason or method behind it. When you mark, do not only tick or cross — point the learner to the step in the explanation that they missed." });
       keys.forEach(function (kk) {
         doc.push({ k: "h2", t: kk.title });
         kk.sections.forEach(function (s) {

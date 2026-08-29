@@ -618,6 +618,111 @@
   };
 
   /* build n items from a list of drill specs */
+  /* Method reminders shown in the answer key so a marker can explain the
+     step a learner missed, not merely tick or cross the result. */
+  var METHOD = {
+    count_on:"Add the step size each time to continue the pattern.",
+    count_back:"Subtract the step size each time to continue the pattern backwards.",
+    numword:"Say the number aloud, then write the tens word before the ones word.",
+    place_value:"Count the columns from the right: ones, tens, hundreds, thousands.",
+    expanded:"Write each digit multiplied by its place value, joined by plus signs.",
+    ordinal:"Ordinals give position: first, second, third, fourth.",
+    compare:"Compare the leftmost digits first; the larger digit means the larger number.",
+    order_nums:"Line the numbers up by place value, then order from the largest place.",
+    between:"The number that comes between is one more than the first and one less than the second.",
+    even_odd:"A number is even if its last digit is 0, 2, 4, 6 or 8; otherwise it is odd.",
+    round_num:"Look at the digit to the right of the rounding place: 5 or more rounds up, less than 5 rounds down.",
+    add:"Add the ones first, then carry into the tens if the total is ten or more.",
+    add_col:"Line up the digits by place value and add each column from the right.",
+    sub:"Subtract the ones first; if the top digit is smaller, regroup from the next column.",
+    sub_col:"Line up by place value and subtract each column from the right, regrouping when needed.",
+    missing_addend:"Subtract the known part from the total to find the missing part.",
+    mul:"Multiplication is repeated addition; recall the times table for these factors.",
+    mul_big:"Multiply by the ones digit, then by the tens digit, then add the two partial products.",
+    mul_tens:"Multiply the non-zero digits, then write back the zeros.",
+    div:"Ask how many times the divisor fits into the dividend.",
+    div_big:"Use long division: divide, multiply, subtract, bring down, and repeat.",
+    div_rem:"Divide as far as you can; what is left over is the remainder.",
+    div_zero_quot:"Remember to write a zero in the quotient when the divisor does not fit.",
+    number_family:"The same three numbers make two addition and two subtraction sentences.",
+    open_sentence:"Work backwards using the inverse operation to find the missing number.",
+    order_ops:"Work in order: brackets, then multiply and divide, then add and subtract.",
+    property_fill:"Apply the number property: commutative, associative, distributive or identity.",
+    factors:"A factor divides the number exactly, leaving no remainder.",
+    multiples:"Multiples are found by multiplying the number by 1, 2, 3 and so on.",
+    gcf:"List the factors of both numbers and choose the largest one they share.",
+    lcm_q:"List the multiples of each number and choose the smallest one they share.",
+    prime_check:"A prime number has exactly two different factors: 1 and itself.",
+    prime_factor:"Divide repeatedly by the smallest prime that fits until you reach 1.",
+    divisibility:"Apply the divisibility rule for that number.",
+    square_num:"A square number is the result of multiplying a number by itself.",
+    square_root:"Ask which number multiplied by itself gives this value.",
+    cube_num:"A cube number is the result of multiplying a number by itself three times.",
+    frac_name:"The bottom number counts the equal parts; the top counts how many are taken.",
+    frac_equiv:"Multiply or divide the numerator and denominator by the same number.",
+    frac_simplify:"Divide the numerator and denominator by their greatest common factor.",
+    frac_compare:"Give both fractions the same denominator, then compare the numerators.",
+    frac_add_like:"With the same denominator, add the numerators and keep the denominator.",
+    frac_sub_like:"With the same denominator, subtract the numerators and keep the denominator.",
+    frac_add_unlike:"Find the lowest common denominator first, then add the numerators.",
+    frac_sub_unlike:"Find the lowest common denominator first, then subtract the numerators.",
+    frac_mul:"Multiply numerator by numerator and denominator by denominator, then simplify.",
+    frac_mul_whole:"Write the whole number over 1, then multiply across.",
+    frac_div:"Invert the second fraction and multiply.",
+    mixed_add:"Add the whole numbers and the fractions separately, then regroup if needed.",
+    part_of_set:"Divide the set by the denominator, then multiply by the numerator.",
+    frac_to_dec:"Divide the numerator by the denominator.",
+    dec_to_frac:"Write the digits over 10, 100 or 1000 according to the number of decimal places, then simplify.",
+    dec_add:"Line up the decimal points before adding.",
+    dec_sub:"Line up the decimal points before subtracting.",
+    dec_mul:"Multiply as whole numbers, then count the total decimal places in both factors.",
+    dec_div:"Move the decimal point in the divisor to make it whole, and move it the same number of places in the dividend.",
+    dec_round:"Look at the digit after the rounding place: 5 or more rounds up.",
+    dec_compare:"Compare place by place from the left, adding zeros so both have the same length.",
+    percent_of:"Change the percentage to a fraction over 100, then multiply.",
+    percent_frac:"Write the percentage over 100 and simplify.",
+    percent_dec:"Divide the percentage by 100, moving the decimal point two places left.",
+    ratio_simplify:"Divide both parts of the ratio by their greatest common factor.",
+    ratio_share:"Add the ratio parts to find the total shares, divide, then multiply for each share.",
+    proportion:"Cross-multiply and solve for the unknown.",
+    rate:"Divide to find the amount for one unit, then multiply.",
+    money_add:"Line up the decimal points and add as with decimals.",
+    money_change:"Subtract the cost from the amount given.",
+    perimeter_rect:"Perimeter is the distance all the way round: add all the sides.",
+    area_rect:"Area of a rectangle equals length times width.",
+    area_square:"Area of a square equals side times side.",
+    area_tri:"Area of a triangle equals half the base times the height.",
+    area_para:"Area of a parallelogram equals base times height.",
+    area_circle:"Area of a circle equals pi times the radius squared.",
+    circumference:"Circumference equals pi times the diameter.",
+    volume_cube:"Volume of a cube equals side times side times side.",
+    volume_prism:"Volume of a prism equals length times width times height.",
+    shape_sides:"Count the straight sides of the shape.",
+    name_shape:"Identify the shape by its number of sides and angles.",
+    angle_type:"An angle less than 90 degrees is acute, exactly 90 is right, more than 90 is obtuse.",
+    angle_missing:"Angles on a straight line add to 180 degrees; angles at a point add to 360.",
+    triangle_angle:"The three angles of a triangle add up to 180 degrees.",
+    tell_time:"The short hand gives the hour and the long hand gives the minutes.",
+    elapsed_time:"Count on from the start time to the finish time.",
+    convert_time:"There are 60 seconds in a minute, 60 minutes in an hour and 24 hours in a day.",
+    convert_metric:"Multiply or divide by 10, 100 or 1000 depending on the units.",
+    convert_customary:"Use the conversion fact for those two units.",
+    temperature:"Read the scale carefully and note whether it rises or falls.",
+    mean:"Add all the values, then divide by how many values there are.",
+    median:"Arrange the values in order and take the middle one.",
+    mode:"The mode is the value that appears most often.",
+    range_stat:"Subtract the smallest value from the largest.",
+    read_graph:"Read across from the bar or point to the scale.",
+    set_count:"Count the distinct members of the set.",
+    set_union:"The union contains every member of either set, listed once.",
+    set_inter:"The intersection contains only the members found in both sets.",
+    subsets_count:"The number of subsets is 2 raised to the power of the number of members.",
+    base10_to5:"Divide repeatedly by 5 and read the remainders upwards.",
+    base5_to10:"Multiply each digit by its power of 5 and add the results.",
+    base5_add:"Add each column; carry to the next column whenever the total reaches 5."
+  };
+  function methodOf(it) { return (it && it.id && METHOD[it.id]) ? METHOD[it.id] : ""; }
+
   function drillItems(specs, n, r) {
     var out = [], i = 0, guard = 0, seen = {};
     while (out.length < n && guard < n * 30) {
@@ -628,6 +733,7 @@
       var it = g(r, sp.p || {});
       if (seen[it.q]) continue;
       seen[it.q] = 1;
+      it.id = sp.id;                     /* remember which drill family produced it */
       out.push(it);
     }
     return out;
@@ -691,7 +797,7 @@
         { k: "instr", t: "Work each one out in your exercise book. Show all your working, then write the answer." },
         { k: "num", items: items.map(function (x) { return x.q + "   " + dots(14); }) }
       ],
-      key: items.map(function (x, i) { return (i + 1) + ". " + x.a; })
+      key: items.map(function (x, i) { var m = methodOf(x); return (i + 1) + ". " + x.a + (m ? "   — " + m : ""); })
     };
   }
 
@@ -706,7 +812,7 @@
         { k: "instr", t: "These questions are mixed. Read each one carefully before you begin." },
         { k: "num", items: items.map(function (x) { return x.q + "   " + dots(14); }) }
       ],
-      key: items.map(function (x, i) { return (i + 1) + ". " + x.a; })
+      key: items.map(function (x, i) { var m = methodOf(x); return (i + 1) + ". " + x.a + (m ? "   — " + m : ""); })
     };
   }
 
@@ -767,7 +873,7 @@
       b.push({ k: "p", t: (i + 1) + ".  " + x.q });
       b.push({ k: "lines", n: 3 });
     });
-    return { blocks: b, key: items.map(function (x, i) { return (i + 1) + ". " + x.a; }) };
+    return { blocks: b, key: items.map(function (x, i) { var m = methodOf(x); return (i + 1) + ". " + x.a + (m ? "   — " + m : ""); }) };
   }
 
   /* I · Fill in the blanks from the vocabulary */
@@ -821,7 +927,7 @@
         { k: "instr", t: "Your teacher will time you. Work quickly and write only the answer. Time allowed: 5 minutes." },
         { k: "table", head: ["Question", "Answer", "Question", "Answer"], rows: rows }
       ],
-      key: items.map(function (x, i2) { return (i2 + 1) + ". " + x.a; })
+      key: items.map(function (x, i2) { var m = methodOf(x); return (i2 + 1) + ". " + x.a + (m ? "   — " + m : ""); })
     };
   }
 
@@ -861,7 +967,7 @@
   /* ---------------- period test ---------------- */
   function periodTest(t, r) {
     var blocks = [], key = [], q = 0, each = 2, n = 5;
-    blocks.push({ k: "h2", t: "PERIOD TEST — Grade " + t.grade + ", Period " + t.period });
+    blocks.push({ k: "h2", t: "PERIOD TEST — Grade " + t.grade + ", Period " + t.period, per: t.period });
     blocks.push({ k: "p", t: "Topic: " + t.title + "   ·   Semester " + t.sem });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"],
       rows: [["", "Grade " + t.grade, "", "     / " + (n * 4 * each)]] });
@@ -911,7 +1017,7 @@
     });
     var g = topics[0].grade, blocks = [], key = [], q = 0, each = 2, n = 10;
 
-    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " MATHEMATICS" });
+    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " MATHEMATICS", per: "exam" });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"],
       rows: [["", "Grade " + g, "", "     / " + (n * 3 * each + 10 + 10)]] });
     blocks.push({ k: "p", t: "Topics covered: " + topics.map(function (t) { return t.title; }).join(" · ") });
@@ -984,12 +1090,11 @@
     });
     var doc = [], keys = [], toc = [];
 
-    doc.push({ k: "h1", t: "MATHEMATICS — GRADE " + opts.grade });
-    doc.push({ k: "h2", t: "Pupil Workbook & Assessment Pack" });
-    doc.push({ k: "p", t: "Elementary Mathematics · Liberian National Curriculum", i: true });
-    doc.push({ k: "space" });
-    doc.push({ k: "table", head: ["Pupil's name", "School", "Class", "Year"], rows: [["", "", "Grade " + opts.grade, ""]] });
-    doc.push({ k: "space" });
+    doc.push.apply(doc, PACK_COVER(opts, {
+      title: "MATHEMATICS — GRADE " + opts.grade,
+      sub: "Pupil Workbook & Assessment Pack",
+      line: "Elementary Mathematics · Liberian National Curriculum"
+    }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.title); });
     if (opts.tests) toc.push("Period tests — one after each unit");
@@ -1008,11 +1113,9 @@
     doc.push({ k: "pagebreak" });
 
     topics.forEach(function (t, i) {
-      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.title });
+      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.title, per: t.period });
       doc.push({ k: "p", t: t.subtitle + "   ·   Period " + t.period + "   ·   Semester " + t.sem });
-      doc.push({ k: "instr", t: "What you will learn: " + t.objectives.slice(0, 3).join("; ") + "." });
-      doc.push({ k: "p", t: "Remember: " + t.note.replace(/<[^>]+>/g, "") });
-      if (t.focus && t.focus.length) doc.push({ k: "p", t: "Content focus: " + t.focus.join(" · ") });
+      doc.push.apply(doc, UNIT_NOTES(t, i + 1));
       doc.push({ k: "space" });
 
       var ukey = [];
@@ -1049,8 +1152,9 @@
     }
 
     if (opts.keys && keys.length) {
-      doc.push({ k: "h1", t: "ANSWER KEYS — TEACHER'S COPY" });
+      doc.push({ k: "h1", t: "ANSWER KEYS — TEACHER'S COPY", per: "keys" });
       doc.push({ k: "p", t: "Detach or keep separately. Not for pupils.", i: true });
+      doc.push({ k: "instr", t: "Each answer is given with the reason or method behind it. When you mark, do not only tick or cross — point the learner to the step in the explanation that they missed." });
       keys.forEach(function (kk) {
         doc.push({ k: "h2", t: kk.title });
         kk.sections.forEach(function (s) {
@@ -1063,5 +1167,8 @@
     return { blocks: doc, topics: topics };
   }
 
-  root.GEN_MA = { buildPack: buildPack, SHEETS: SHEETS, DRILLS: DRILLS };
+  /* DRILLS and METHOD are exported so the Junior High pack (data-ma79.js) can
+     register additional generators and their explanations without editing this
+     engine. METHOD supplies the "why" appended to every answer key line. */
+  root.GEN_MA = { buildPack: buildPack, SHEETS: SHEETS, DRILLS: DRILLS, METHOD: METHOD };
 })(window);

@@ -4,41 +4,76 @@
     <div class="crest">📚</div>
     <div>
       <h1>Liberian Elementary Course Pack Generator</h1>
-      <p>English, French, General Science, Mathematics, Social Studies &amp; Religious &amp; Moral Education · Grades 1 to 6 · printable pupil workbooks, tests and answer keys</p>
+      <p>English (Grades 1&ndash;9), French, General Science, Mathematics, Social Studies, Religious &amp; Moral Education and Physical Education · printable pupil workbooks, tests and answer keys</p>
     </div>
   </div>
 </header>
 
 <div class="wrap">
-  <aside class="panel">
-    <h2>1 · Subject</h2>
+  <button class="panel-toggle" id="panelToggle" aria-expanded="false" aria-controls="panel">
+    <span>&#9881; Course pack settings</span><span class="caret">&#9662;</span>
+  </button>
+
+  <aside class="panel" id="panel">
+    <h2>1 · Session</h2>
+    <div class="sesstabs" id="session">
+      <button class="sess on" data-m="student"><span class="fl">&#127891;</span>Student</button>
+      <button class="sess" data-m="teacher"><span class="fl">&#129489;&#8205;&#127979;</span>Teacher</button>
+    </div>
+    <p class="hint" id="sessNote"></p>
+
+    <h2>2 · Subject</h2>
     <div class="subtabs" id="subjects"></div>
 
-    <h2>2 · Grade</h2>
-    <div class="row"><select id="grade">
-      <option value="1">Grade 1</option><option value="2">Grade 2</option>
-      <option value="3">Grade 3</option><option value="4">Grade 4</option>
-      <option value="5">Grade 5</option><option value="6">Grade 6</option>
-    </select></div>
+    <h2>3 · Cover page</h2>
+    <label class="chk"><input type="checkbox" id="cvOn" checked><span>Include a cover page</span></label>
+    <div id="cvBox">
+      <div class="row"><label for="cvCrest">Crest</label>
+        <input type="text" id="cvCrest" value="&#128218;" maxlength="4" style="width:56px;text-align:center"></div>
+      <input type="text" id="cvSchool" placeholder="School name">
+      <input type="text" id="cvMotto" placeholder="School motto (optional)">
+      <input type="text" id="cvPupil" placeholder="Pupil's name">
+      <input type="text" id="cvTeacher" placeholder="Teacher's name">
+      <input type="text" id="cvClass" placeholder="Class (e.g. Grade 4B)">
+      <div class="row2">
+        <input type="text" id="cvTerm" placeholder="Term">
+        <input type="text" id="cvYear" placeholder="Year">
+      </div>
+      <input type="text" id="cvNote" placeholder="Footnote on the cover (optional)">
+      <label class="chk"><input type="checkbox" id="cvBreak" checked><span>Cover on its own page</span></label>
+      <p class="hint">Leave a field blank to print a ruled space the pupil can fill in by hand. The cover flows through to the on-screen pack, the printed PDF and the Word file.</p>
+    </div>
 
-    <h2>3 · Units to include</h2>
+    <h2>4 · Grade</h2>
+    <div class="row"><select id="grade"></select></div>
+    <p class="hint" id="jhNote" style="display:none"></p>
+
+    <h2>5 · Units to include</h2>
     <div id="periods"></div>
 
-    <h2>4 · Exercise types</h2>
+    <h2>6 · Exercise types</h2>
     <div class="mini"><button id="allon">Select all</button><button id="alloff">Clear all</button></div>
     <div id="sheets"></div>
 
-    <h2>5 · Assessment</h2>
+    <h2>7 · Explanations</h2>
+    <label class="chk"><input type="checkbox" id="notes" checked><span>Study notes page at the start of each unit</span></label>
+    <p class="hint">Adds an explanation page to every unit: what the unit is about, the key ideas in a table, worked examples, the mistakes learners most often make, and how to work through the unit. Answer keys always give the reason or method behind each answer.</p>
+
+    <h2>8 · Assessment</h2>
     <label class="chk"><input type="checkbox" id="tests" checked><span>Period test after each unit</span></label>
     <label class="chk"><input type="checkbox" id="exam" checked><span>Semester examinations</span></label>
-    <label class="chk"><input type="checkbox" id="keys" checked><span>Answer keys (teacher's copy)</span></label>
+    <label class="chk" id="keysRow"><input type="checkbox" id="keys" checked><span>Answer keys (teacher's copy)</span></label>
 
-    <h2>6 · Settings</h2>
+    <h2>9 · Settings</h2>
+    <p class="hint">How many questions each exercise sheet should contain, and which variant of the pack to generate.</p>
     <div class="row"><label for="perEx">Questions per exercise</label>
       <input type="number" id="perEx" value="8" min="4" max="20" style="width:70px"></div>
     <div class="row"><label for="seed">Variant seed</label>
       <input type="number" id="seed" value="1" min="1" max="9999" style="width:70px"></div>
-    <p class="hint">Change the seed to generate a different version of the same pack — useful for Test A / Test B.</p>
+    <div class="row"><label for="fsz">Body text size (pt)</label>
+      <input type="number" id="fsz" value="12" min="8" max="20" step="0.5" style="width:70px"></div>
+    <p class="hint">Sets the body text size on every sheet — on screen, in print and in the Word file. Headings, tables and instruction boxes scale with it automatically. The default is 12pt; larger sizes suit lower grades but fit less on each sheet, so the page count will rise.</p>
+    <p class="hint">Change the seed to generate a different version of the same pack — useful for Test A / Test B. The same seed always produces exactly the same pack, so a student copy and a teacher copy printed with the same seed will match question for question.</p>
 
     <button class="btn btn-p" id="gen">⚙ Generate course pack</button>
     <button class="btn btn-s" id="reseed">🎲 New random variant</button>

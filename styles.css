@@ -1,4 +1,4 @@
-:root{
+:root{ --fs:12pt;
   --bleu:#0b3b8c; --bleu-l:#1e5fd0; --rouge:#d3242e; --ink:#12203a; --muted:#5d6b85;
   --line:#dde5f2; --bg:#e9eef7; --gold:#e0a318; --shadow:0 6px 22px rgba(11,59,140,.10);
 }
@@ -58,7 +58,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 /* exact A4 sheet: 210mm x 297mm, 14pt body text */
 .page{background:#fff;border:1px solid var(--line);border-radius:0;box-shadow:var(--shadow);
   width:210mm;min-height:297mm;height:297mm;padding:14mm 15mm 12mm;margin:0 auto 22px;
-  font-size:14pt;line-height:1.42;color:#111;display:flex;flex-direction:column;overflow:hidden}
+  font-size:var(--fs);line-height:1.42;color:#111;display:flex;flex-direction:column;overflow:hidden}
 .page.flow{height:auto;min-height:297mm;overflow:visible}
 .page.measure{position:absolute;left:-99999px;top:0;visibility:hidden;box-shadow:none;margin:0;
   height:297mm;display:flex;flex-direction:column}
@@ -72,16 +72,16 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .pfoot{border-top:1px solid var(--bleu-l);padding-top:5px;margin-top:12px}
 .pfoot span:first-child,.phead span:last-child{white-space:nowrap;overflow:hidden;text-overflow:clip}
 .pfoot span:last-child{white-space:nowrap;font-weight:700;color:var(--bleu)}
-.page h1{font-size:20pt;color:var(--bleu);border-bottom:2px solid var(--bleu);padding-bottom:6px;margin:18px 0 10px}
-.page h2{font-size:17pt;color:var(--bleu-l);margin:16px 0 8px}
-.page h3{font-size:15pt;margin:15px 0 7px;color:#12203a}
+.page h1{font-size:1.43em;color:var(--bleu);border-bottom:2px solid var(--bleu);padding-bottom:6px;margin:18px 0 10px}
+.page h2{font-size:1.21em;color:var(--bleu-l);margin:16px 0 8px}
+.page h3{font-size:1.07em;margin:15px 0 7px;color:#12203a}
 .page p{margin:6px 0}
 .page p.it{font-style:italic;color:#555}
 .page .instr{background:#f2f6fc;border-left:3px solid var(--bleu-l);padding:7px 11px;
-  font-style:italic;color:#3d4a63;font-size:13pt;border-radius:0 6px 6px 0}
+  font-style:italic;color:#3d4a63;font-size:.93em;border-radius:0 6px 6px 0}
 .page ol,.page ul{margin:7px 0 7px 22px;padding:0}
 .page li{margin:5px 0}
-.page table{width:100%;border-collapse:collapse;margin:9px 0;font-size:13pt}
+.page table{width:100%;border-collapse:collapse;margin:9px 0;font-size:.93em}
 .page th,.page td{border:1px solid #9ab3d9;padding:5px 8px;text-align:left;vertical-align:top}
 .page th{background:#dce6f5;font-weight:700}
 .page td:first-child{font-weight:600}
@@ -97,7 +97,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
   .wrap{display:block;padding:0;max-width:none}
   body{background:#fff}
   .page{box-shadow:none;border:none;border-radius:0;margin:0;padding:14mm 15mm 12mm;
-    width:210mm;height:297mm;min-height:297mm;font-size:14pt;
+    width:210mm;height:297mm;min-height:297mm;font-size:var(--fs);
     page-break-after:always;display:flex;flex-direction:column;overflow:hidden}
   .page:last-child{page-break-after:auto}
   .phead,.pfoot{display:flex!important;font-size:9pt}
@@ -143,3 +143,184 @@ body[data-subject="rm"]{--bleu:#8a5a00;--bleu-l:#b8860b;--rouge:#0b6b3a}
 body[data-subject="rm"] .top{background:linear-gradient(135deg,#8a5a00,#b8860b)}
 body[data-subject="rm"] .page th{background:#f7ebd0}
 body[data-subject="rm"] .page th,body[data-subject="rm"] .page td{border-color:#d8bb77}
+
+/* Physical Education theme */
+body[data-subject="pe"]{--bleu:#1f7a3d;--bleu-l:#2e9e55;--rouge:#8a5a00}
+body[data-subject="pe"] .top{background:linear-gradient(135deg,#1f7a3d,#2e9e55)}
+body[data-subject="pe"] .page th{background:#def2e4}
+body[data-subject="pe"] .page th,body[data-subject="pe"] .page td{border-color:#8ccaa2}
+
+/* cover page controls */
+#cvBox input[type=text]{width:100%;box-sizing:border-box;margin:0 0 6px;padding:6px 8px;
+  border:1px solid #c9d3e2;border-radius:6px;font:inherit;font-size:.85rem}
+#cvBox .row2{display:flex;gap:6px}
+#cvBox .row2 input{width:50%}
+#cvBox .row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+#cvBox .row input[type=text]{margin:0}
+
+/* centred cover text on the printed sheet */
+.page .ctr{text-align:center}
+.page h1.ctr{border-bottom:0}
+.page p.cbig{text-align:center;font-weight:700;font-size:1.35em;margin:.2em 0}
+
+/* session switch (student / teacher) */
+.sesstabs{display:flex;gap:6px;margin-bottom:6px}
+.sesstabs .sess{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:9px 6px;border:1px solid #c9d3e2;background:#fff;border-radius:8px;
+  font:inherit;font-size:.85rem;font-weight:600;color:#44546a;cursor:pointer}
+.sesstabs .sess .fl{font-size:1.05rem}
+.sesstabs .sess.on{background:var(--bleu);border-color:var(--bleu);color:#fff}
+body[data-mode="teacher"] .top{filter:saturate(1.15)}
+body[data-mode="teacher"] .page .phead{font-weight:700}
+
+/* on-screen help under each exercise type */
+.shhelp{display:block;font-style:normal;font-size:.72rem;line-height:1.35;
+  color:var(--muted);margin-top:2px}
+#sheets .chk{align-items:flex-start;margin-bottom:7px}
+
+/* study-notes pages inside the sheet */
+.page .instr{border-left:3px solid var(--bleu-l);padding-left:8px}
+
+/* ============================================================
+   RESPONSIVE LAYER
+   The A4 sheet must stay exactly 210x297mm for print and Word.
+   So on narrow screens the preview is SCALED (transform), never
+   resized: the paper geometry is untouched, only its display.
+   ============================================================ */
+
+:root{ --ps:1; }                     /* preview scale, set by app.js */
+
+/* the sheet is scaled about its top edge; the negative margin removes
+   the empty space the transform would otherwise leave behind */
+#doc .page{
+  transform:scale(var(--ps));
+  transform-origin:top center;
+  margin-bottom:calc(22px - 297mm * (1 - var(--ps)));
+}
+/* A transform only scales the painted result: each .page keeps a 794px layout
+   box, which would push the page wider than a phone viewport. Grid/flex items
+   default to min-width:auto and refuse to shrink below that content, so the
+   preview column is explicitly allowed to shrink and clip the overhang.
+   overflow-x:clip (not hidden) leaves the vertical axis visible, so the sheets
+   still scroll normally and no scroll container is introduced. */
+main{ min-width:0; }
+#doc{ min-width:0; overflow-x:clip; overflow-y:visible; }
+
+/* ---------- large desktop / smart TV ---------- */
+@media (min-width:1700px){
+  .wrap,.top-in{max-width:1640px}
+  .wrap{grid-template-columns:360px 1fr;gap:26px}
+  .panel{padding:20px}
+  .panel h2{font-size:.78rem}
+  .chk,.row label{font-size:.95rem}
+  .shhelp{font-size:.8rem}
+  .top h1{font-size:1.6rem}
+  .top p{font-size:.95rem}
+}
+
+/* 10-foot UI: TVs and very large panels. Bigger type, bolder focus. */
+@media (min-width:2200px){
+  html{font-size:20px}
+  .wrap,.top-in{max-width:2000px}
+  .wrap{grid-template-columns:420px 1fr}
+  .crest{width:60px;height:60px;font-size:32px}
+  .btn{padding:15px;font-size:1.05rem}
+  .bar button{padding:13px 22px;font-size:1rem}
+}
+
+/* keyboard / TV-remote navigation must always show where focus is */
+a:focus-visible,button:focus-visible,select:focus-visible,
+input:focus-visible,label:focus-visible{
+  outline:3px solid var(--gold);
+  outline-offset:2px;
+  border-radius:8px;
+}
+
+/* ---------- laptop ---------- */
+@media (max-width:1280px){
+  .wrap{grid-template-columns:290px 1fr;gap:16px;padding:14px 14px 50px}
+}
+
+/* ---------- tablet: panel stops being a sidebar ---------- */
+@media (max-width:980px){
+  .wrap{grid-template-columns:1fr;padding:12px 12px 44px;gap:14px}
+  .top{padding:14px 14px}
+  .top h1{font-size:1.15rem}
+  .top p{font-size:.78rem}
+  .panel{max-height:none}
+  /* the export bar follows the reader down the page */
+  .bar{position:sticky;top:0;z-index:30}
+}
+
+/* ---------- collapsible panel (tablet + phone) ---------- */
+.panel-toggle{display:none}
+@media (max-width:980px){
+  .panel-toggle{
+    grid-column:1/-1;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    width:100%;padding:13px 15px;margin-bottom:10px;
+    border:1px solid var(--line);border-radius:12px;background:#fff;
+    box-shadow:var(--shadow);font-weight:700;font-size:.95rem;
+    color:var(--bleu);cursor:pointer;
+  }
+  .panel-toggle .caret{transition:transform .18s}
+  body.panel-open .panel-toggle .caret{transform:rotate(180deg)}
+  .panel{display:none}
+  body.panel-open .panel{display:block;grid-column:1/-1}
+}
+
+/* ---------- smartphone ---------- */
+@media (max-width:640px){
+  .wrap{padding:10px 8px 40px}
+  .top{padding:12px 12px}
+  .top-in{gap:10px}
+  .top h1{font-size:1rem;line-height:1.25}
+  .top p{font-size:.72rem}
+  .crest{width:38px;height:38px;font-size:20px}
+  .panel{padding:13px;border-radius:13px}
+  .subtabs{grid-template-columns:1fr 1fr;gap:6px}
+  .subtab{padding:12px 6px;font-size:.82rem}
+  .bar{padding:9px 10px;gap:8px;border-radius:11px}
+  .bar .meta{flex:1 1 100%;order:3;font-size:.76rem}
+  .bar button{flex:1;padding:12px 10px;font-size:.84rem}
+  #doc{margin:0 -8px}          /* let the scaled sheet use the full width */
+}
+
+/* very small handsets */
+@media (max-width:380px){
+  .subtabs{grid-template-columns:1fr}
+  .sesstabs{flex-direction:column}
+  .top p{display:none}
+}
+
+/* ---------- touch devices: finger-sized targets ---------- */
+@media (hover:none) and (pointer:coarse){
+  .chk{padding:9px 6px;font-size:.9rem}
+  .chk input{width:20px;height:20px;margin-top:1px}
+  .mini button{padding:10px 6px;font-size:.8rem}
+  select,input[type=number],#cvBox input[type=text]{padding:11px 10px;font-size:16px}
+  .subtab,.sesstabs .sess{min-height:48px}
+  .btn{padding:14px}
+}
+
+/* ---------- landscape phone: reclaim vertical space ---------- */
+@media (max-height:520px) and (orientation:landscape){
+  .top{padding:8px 12px}
+  .top h1{font-size:.95rem}
+  .top p{display:none}
+  .wrap{padding-top:8px}
+}
+
+/* ---------- print: undo every screen-only transform ---------- */
+@media print{
+  :root{ --ps:1 !important; }
+  #doc{overflow:visible;margin:0}
+  #doc .page{transform:none !important;margin:0 auto !important}
+  .panel-toggle{display:none !important}
+  .panel{display:none !important}
+}
+
+/* users who prefer less motion */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
