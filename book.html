@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Print Sequence Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+            background: linear-gradient(90deg, #e94560, #0f3460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #e94560;
+        }
+
+        input::placeholder {
+            color: #666;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-generate {
+            background: linear-gradient(135deg, #e94560, #c23152);
+            color: #fff;
+            flex: 1;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-clear {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn-clear:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-copy {
+            background: rgba(15, 52, 96, 0.8);
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+
+        .btn-copy:hover {
+            background: rgba(15, 52, 96, 1);
+        }
+
+        .btn-copy.copied {
+            background: #27ae60;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .sequence-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .sequence-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .sequence-title {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sequence-title .icon {
+            font-size: 20px;
+        }
+
+        .pass-label {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .pass-1 {
+            background: rgba(233, 69, 96, 0.2);
+            color: #e94560;
+        }
+
+        .pass-2 {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+
+        .sequence-numbers {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.8;
+            word-break: break-all;
+            color: #eee;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            user-select: all;
+        }
+
+        .page-count {
+            text-align: right;
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(15, 52, 96, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .summary h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .summary-item {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .summary-item .number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+        .summary-item .label {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+
+        .instructions {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .instructions h3 {
+            color: #ffc107;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            font-size: 13px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .book-list {
+            margin-top: 30px;
+        }
+
+        .book-list h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #e94560;
+        }
+
+        .book-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .book-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .book-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .book-pages {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-small {
+            padding: 6px 14px;
+            font-size: 12px;
+            border-radius: 8px;
+        }
+
+        .btn-view {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+
+        .btn-delete {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+
+        .separator-select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .separator-select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .no-books {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .sequence-numbers {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 Book Print Sequence Generator</h1>
+        <p class="subtitle">Generate odd/even page sequences for duplex printing</p>
+
+        <div class="input-group">
+            <div class="input-wrapper">
+                <label for="bookName">Book Name (optional)</label>
+                <input type="text" id="bookName" placeholder="e.g. My Book Title">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-wrapper">
+                <label for="pageCount">Total Number of Pages *</label>
+                <input type="number" id="pageCount" placeholder="e.g. 120" min="1" max="99999">
+            </div>
+            <div class="input-wrapper">
+                <label for="separator">Separator</label>
+                <select class="separator-select" id="separator">
+                    <option value=", ">Comma (1, 3, 5)</option>
+                    <option value=" ">Space (1 3 5)</option>
+                    <option value="-">Dash (1-3-5)</option>
+                    <option value="\n">New Line</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-generate" onclick="generateSequence()">⚡ Generate Sequence</button>
+            <button class="btn-clear" onclick="clearAll()">✕ Clear</button>
+        </div>
+
+        <div class="results" id="results">
+            <div class="summary" id="summary"></div>
+
+            <div class="sequence-card">
+                <div class="sequence-header">
+                    <div class="sequence-title">
+                        <span class="icon">📄</span> Front Side (Odd Pages)
+                    </div>
+                    <div>
+                        <span class="pass-label pass-1">PASS 1</span>
+                        <button class="btn-copy" onclick="copySequence('odd')">📋 Copy</button>
+                    </div>
+                </div>
+                <div class="sequence-numbers" id="oddSequence"></div>
+                <div class="page-count" id="oddCount"></div>
+            </div>
+
+            <div class="sequence-card">
+                <div class="sequence-header">
+                    <div class="sequence-title">
+                        <span class="icon">📄</span> Back Side (Even Pages)
+                    </div>
+                    <div>
+                        <span class="pass-label pass-2">PASS 2</span>
+                        <button class="btn-copy" onclick="copySequence('even')">📋 Copy</button>
+                    </div>
+                </div>
+                <div class="sequence-numbers" id="evenSequence"></div>
+                <div class="page-count" id="evenCount"></div>
+            </div>
+
+            <div class="instructions">
+                <h3>🖨️ How to Print</h3>
+                <ol>
+                    <li><strong>Pass 1:</strong> Copy the <strong>odd pages</strong> sequence and paste it into your printer's page range. Print.</li>
+                    <li><strong>Flip:</strong> Take the printed pages and flip/reinsert them into the printer tray.</li>
+                    <li><strong>Pass 2:</strong> Copy the <strong>even pages</strong> sequence and paste it into your printer's page range. Print.</li>
+                    <li>Your double-sided book is ready! 🎉</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Saved Books List -->
+        <div class="book-list" id="bookList">
+            <h2>📚 Saved Books</h2>
+            <div id="bookListItems"></div>
+        </div>
+    </div>
+
+    <script>
+        let savedBooks = JSON.parse(localStorage.getItem('printBooks') || '[]');
+
+        function generateSequence(pages = null, name = null, noSave = false) {
+            const pageCount = pages || parseInt(document.getElementById('pageCount').value);
+            const bookName = name || document.getElementById('bookName').value.trim();
+            const separatorValue = document.getElementById('separator').value;
+            const separator = separatorValue === '\\n' ? '\n' : separatorValue;
+
+            if (!pageCount || pageCount < 1) {
+                alert('Please enter a valid number of pages (minimum 1).');
+                return;
+            }
+
+            const oddPages = [];
+            const evenPages = [];
+
+            for (let i = 1; i <= pageCount; i++) {
+                if (i % 2 !== 0) {
+                    oddPages.push(i);
+                } else {
+                    evenPages.push(i);
+                }
+            }
+
+            const oddString = oddPages.join(separator);
+            const evenString = evenPages.join(separator);
+
+            // Display results
+            document.getElementById('oddSequence').textContent = oddString;
+            document.getElementById('evenSequence').textContent = evenString;
+            document.getElementById('oddCount').textContent = `${oddPages.length} pages`;
+            document.getElementById('evenCount').textContent = `${evenPages.length} pages`;
+
+            // Summary
+            const sheetsNeeded = Math.ceil(pageCount / 2);
+            document.getElementById('summary').innerHTML = `
+                <h3>📊 Summary${bookName ? ': ' + bookName : ''}</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="number">${pageCount}</div>
+                        <div class="label">Total Pages</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="number">${oddPages.length}</div>
+                        <div class="label">Odd (Front)</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="number">${evenPages.length}</div>
+                        <div class="label">Even (Back)</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="number">${sheetsNeeded}</div>
+                        <div class="label">Sheets Needed</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('results').classList.add('show');
+
+            // Save to list if not already viewing
+            if (!noSave && bookName) {
+                const existing = savedBooks.findIndex(b => b.name === bookName);
+                const bookData = { name: bookName, pages: pageCount, date: new Date().toLocaleDateString() };
+                if (existing >= 0) {
+                    savedBooks[existing] = bookData;
+                } else {
+                    savedBooks.push(bookData);
+                }
+                localStorage.setItem('printBooks', JSON.stringify(savedBooks));
+                renderBookList();
+            }
+        }
+
+        function copySequence(type) {
+            const el = document.getElementById(type === 'odd' ? 'oddSequence' : 'evenSequence');
+            const text = el.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const buttons = document.querySelectorAll('.btn-copy');
+                const btn = type === 'odd' ? buttons[0] : buttons[1];
+                btn.textContent = '✅ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '📋 Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Sequence copied!');
+            });
+        }
+
+        function clearAll() {
+            document.getElementById('pageCount').value = '';
+            document.getElementById('bookName').value = '';
+            document.getElementById('results').classList.remove('show');
+        }
+
+        function renderBookList() {
+            const container = document.getElementById('bookListItems');
+            if (savedBooks.length === 0) {
+                container.innerHTML = '<div class="no-books">No saved books yet. Add a book name and generate to save.</div>';
+                return;
+            }
+
+            container.innerHTML = savedBooks.map((book, index) => `
+                <div class="book-item">
+                    <div class="book-info">
+                        <div class="book-name">📖 ${book.name}</div>
+                        <div class="book-pages">${book.pages} pages · ${book.date}</div>
+                    </div>
+                    <div class="book-actions">
+                        <button class="btn-small btn-view" onclick="viewBook(${index})">View</button>
+                        <button class="btn-small btn-delete" onclick="deleteBook(${index})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function viewBook(index) {
+            const book = savedBooks[index];
+            document.getElementById('bookName').value = book.name;
+            document.getElementById('pageCount').value = book.pages;
+            generateSequence(book.pages, book.name, true);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function deleteBook(index) {
+            if (confirm(`Delete "${savedBooks[index].name}"?`)) {
+                savedBooks.splice(index, 1);
+                localStorage.setItem('printBooks', JSON.stringify(savedBooks));
+                renderBookList();
+            }
+        }
+
+        // Handle Enter key
+        document.getElementById('pageCount').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') generateSequence();
+        });
+
+        // Initial render
+        renderBookList();
+    </script>
+</body>
+</html>
