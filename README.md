@@ -84,7 +84,7 @@ same tool lives in `book.html`.
 | English (`en`) | 1–9 | 6 | 54 |
 | French (`fr`) | 1–9 | 6 | 54 |
 | General Science (`sc`) | 1–9 | 6 | 54 |
-| Mathematics (`ma`) | 1–9 | 6 | 54 |
+| Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
 | Social Studies (`ss`) | 1–9 | 6 | 54 |
 | Religious & Moral Education (`rm`) | 1–9 | 6 | 54 |
 | Physical Education (`pe`) | 1–9 | 6 | 54 |
@@ -95,9 +95,9 @@ same tool lives in `book.html`.
 | English Grammar (`eg`) | 10–12 | 6 | 18 |
 | Geography (`gg`) | 10–12 | 6 | 18 |
 
-> **Known limitation:** Grades 10–12 are currently only covered by Biology,
-> Chemistry, Physics, Economics, English Grammar and Geography; the elementary
-> and junior-high subjects stop at Grade 9.
+> **Known limitation:** Grades 10–12 are covered by Mathematics and by
+> Biology, Chemistry, Physics, Economics, English Grammar and Geography; the
+> other elementary and junior-high subjects stop at Grade 9.
 
 ## Project layout
 
@@ -118,7 +118,11 @@ same tool lives in `book.html`.
 ### How the content is organized
 
 - Each `data-*.js` file declares one curriculum array; Junior High content
-  comes from a `*79.js` file that is merged in (`FR_CURRICULUM.push(...)`).
+  comes from a `*79.js` file that is merged in (`FR_CURRICULUM.push(...)`),
+  and Senior High Mathematics from `data-ma-sh.js`
+  (`MA_CURRICULUM.push.apply(MA_CURRICULUM, MA_CURRICULUM_SH)`). The Senior
+  High generators live in `gen-ma-sh.js`, which adds its `_sh` drills and
+  methods to the shared `GEN_MA` object.
 - Every unit looks roughly like
   `{grade, period, sem, icon, title, subtitle, outcomes, objectives, note,
   focus, terms[], worked[], drills[], word[], challenge[], activities[]}`

@@ -9,13 +9,13 @@ cd "$(dirname "$0")"
   echo '<meta charset="utf-8">'
   echo '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
   echo '<meta name="color-scheme" content="light">'
-  echo '<title>Liberian Course Pack Generator &middot; English, French, General Science, Mathematics, Social Studies, Religious &amp; Moral Education &amp; Physical Education</title>'
+  echo '<title>Liberian Course Pack Generator &middot; English, French, General Science, Mathematics, Social Studies, Religious &amp; Moral Education, Physical Education, Biology, Chemistry, Physics, Economics, English Grammar &amp; Geography</title>'
   echo '<style>'
   cat styles.css
   echo '</style>'
   echo '</head>'
   cat body.html
-  for f in data-en.js data-fr.js data-fr79.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-gg.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ss.js gen-rm.js gen-pe.js app.js; do
+  for f in data-en.js data-fr.js data-fr79.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-gg.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js app.js; do
     echo '<script>'
     cat "$f"
     echo '</script>'
