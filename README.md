@@ -4,8 +4,8 @@ An **offline, single-file web app** that generates printable course packs for th
 Liberian National Curriculum: pupil workbooks, period tests, semester
 examinations and teacher's answer keys — in **English, French, General
 Science, Mathematics, Social Studies, Religious & Moral Education, Physical
-Education, Biology, Chemistry and Economics**, Grades 1–12, all
-A4-exact on screen, in print and in Word.
+Education, Biology, Chemistry, Economics, English Grammar and Geography**,
+Grades 1–12, all A4-exact on screen, in print and in Word.
 
 Everything runs from one HTML file with **no server and no internet**
 (`index.html`, about 3.5 MB). It has no dependencies at runtime — the
@@ -14,7 +14,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **10 subjects** with real curriculum content (6 units per grade per subject)
+- **12 subjects** with real curriculum content (6 units per grade per subject)
 - **Student / Teacher modes** — the teacher copy adds full answer keys with
   reasons and methods; keys never leak into a student pack
 - **10+ exercise types per subject** (vocabulary, matching, cloze, true/false,
@@ -52,7 +52,7 @@ bash build.sh
 | Control | What it does |
 |---|---|
 | **Session** | `Student` or `Teacher`. Teacher adds the answer-key pack contents. |
-| **Subject** | One of the 10 subjects; Biology/Chemistry/Economics reuse the Science/Social Studies engines. |
+| **Subject** | One of the 12 subjects; Biology/Chemistry reuse the Science engine, and Economics/Geography reuse the Social Studies engine. |
 | **Level / Grade** | Education band (Elementary, Junior High, Senior High) and grade; a subject only shows the bands it covers. |
 | **Units to include** | Select the curriculum periods per grade. |
 | **Exercise types** | Which worksheets each unit gets. |
@@ -91,9 +91,12 @@ same tool lives in `book.html`.
 | Biology (`bi`) | 10–12 | 6 | 18 |
 | Chemistry (`ch`) | 10–12 | 6 | 18 |
 | Economics (`ec`) | 10–12 | 6 | 18 |
+| English Grammar (`eg`) | 10–12 | 6 | 18 |
+| Geography (`gg`) | 10–12 | 6 | 18 |
 
 > **Known limitation:** Grades 10–12 are currently only covered by Biology,
-> Chemistry and Economics; the other subjects stop at Grade 9.
+> Chemistry, Economics, English Grammar and Geography; the elementary and
+> junior-high subjects stop at Grade 9.
 
 ## Project layout
 
@@ -104,7 +107,7 @@ same tool lives in `book.html`.
 | `styles.css` | All styling, including A4 sheet geometry and `@media print` rules. |
 | `app.js` | The platform: subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence. |
 | `data-*.js` | Curriculum content per subject (`data-en.js`, `data-ma79.js` = Junior High part, `data-bi.js`, ...). |
-| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch` use `gen-sc.js`). |
+| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html`. |

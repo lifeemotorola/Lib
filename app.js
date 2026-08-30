@@ -93,6 +93,14 @@
       defaults: ["words", "match", "cloze", "grammar", "pairs", "mcq", "passage", "write", "spelling", "phonics"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "English_Grammar_Grade" + g + "_Workbook.docx"; }
+    },
+    gg: {
+      label: "Geography", flag: "\uD83D\uDDFA\uFE0F", accent: "#1f6b4f",
+      curriculum: function () { return GG_CURRICULUM; },
+      engine: function () { return GEN_SS; },
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "worked", "sort", "map", "casestudy", "project", "apply"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Geography_Grade" + g + "_Workbook.docx"; }
     }
   };
 
@@ -638,7 +646,7 @@
 
     /* Grades outside the elementary band come from their own curriculum guide,
        so name the subject as that guide actually titles it. */
-    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ec: "Economics", eg: "English Grammar" };
+    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ec: "Economics", eg: "English Grammar", gg: "Geography" };
     var jh = $("#jhNote");
     if (jh) {
       if (curBand === "el") {
@@ -1260,7 +1268,8 @@
         bi: { h1: "0F5132", h2: "1A7A4C", fill: "D9EFE2" },
         ch: { h1: "7A1F5C", h2: "A6357E", fill: "F5DEEC" },
         ec: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" },
-        eg: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" }
+        eg: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" },
+        gg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" }
       };
       var theme = THEMES[cur] || THEMES.en;
       var fn = S().file(opts().grade).replace(/\.docx$/, (isTeacher() ? "_Teacher_Copy" : "_Student") + ".docx");

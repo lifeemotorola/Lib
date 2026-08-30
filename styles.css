@@ -191,6 +191,11 @@ body[data-subject="pe"] .top{background:linear-gradient(135deg,#1f7a3d,#2e9e55)}
 body[data-subject="pe"] .page th{background:#def2e4}
 body[data-subject="pe"] .page th,body[data-subject="pe"] .page td{border-color:#8ccaa2}
 
+body[data-subject="gg"]{--bleu:#1f6b4f;--bleu-l:#2e8b6a;--rouge:#8a5a00}
+body[data-subject="gg"] .top{background:linear-gradient(135deg,#1f6b4f,#2e8b6a)}
+body[data-subject="gg"] .page th{background:#dcf0e7}
+body[data-subject="gg"] .page th,body[data-subject="gg"] .page td{border-color:#8fc7ab}
+
 /* cover page controls */
 #cvBox input[type=text]{width:100%;box-sizing:border-box;margin:0 0 6px;padding:6px 8px;
   border:1px solid #c9d3e2;border-radius:6px;font:inherit;font-size:.85rem}

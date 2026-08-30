@@ -1,8 +1,17 @@
 /* Social Studies exercise generation engine.
    Emits the SAME block model as the English, French, Science and Maths engines,
-   so the shared renderer and .docx exporter are reused. Registered on window.GEN_SS. */
+   so the shared renderer and .docx exporter are reused. Registered on window.GEN_SS.
+   Social Studies (grades 1-9) uses this engine directly; Economics (ec) and
+   Geography (gg, grades 10-12) supply their own curriculum and reuse it, passing
+   their own display name so worksheets/exams carry the correct subject title. */
 (function (root) {
   "use strict";
+
+  /* The display name of the subject currently being rendered. Social Studies is
+     the default; subjects that reuse this engine (Economics, Geography) set it
+     via opts.subjectLine in buildPack so no worksheet ever reads "Social Studies"
+     inside another subject's pack. */
+  var SUBJ = "Social Studies";
 
   function rng(seed) {
     var a = seed >>> 0;
@@ -30,8 +39,8 @@
   function wsTerms(t) {
     return {
       blocks: [
-        { k: "h3", t: "A · Key Terms — Social Studies Vocabulary" },
-        { k: "instr", t: "Read each term after your teacher. Copy the term, its meaning and the example into your Social Studies notebook." },
+        { k: "h3", t: "A · Key Terms — " + SUBJ + " Vocabulary" },
+        { k: "instr", t: "Read each term after your teacher. Copy the term, its meaning and the example into your " + SUBJ + " notebook." },
         { k: "table", head: ["Key term", "What it means", "Example"],
           rows: t.terms.map(function (v) { return [v.t, v.d, v.x]; }) }
       ], key: []
@@ -239,7 +248,7 @@
   function wsJournal(t) {
     return {
       blocks: [
-        { k: "h3", t: "L · My Social Studies Journal" },
+        { k: "h3", t: "L · My " + SUBJ + " Journal" },
         { k: "instr", t: "Complete this page in your own words. Neat drawings earn marks." },
         { k: "p", t: "1. Today's topic: " + t.title },
         { k: "p", t: "2. Three new words I learned and what they mean:" },
@@ -368,7 +377,7 @@
     });
     var g = topics[0].grade, blocks = [], key = [], q = 0, each = 2, n = 10;
 
-    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " SOCIAL STUDIES", per: "exam" });
+    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " " + SUBJ.toUpperCase(), per: "exam" });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"],
       rows: [["", "Grade " + g, "", "     / " + (n * 4 * each + 10)]] });
     blocks.push({ k: "p", t: "Topics covered: " + topics.map(function (t) { return t.title; }).join(" · ") });
@@ -383,7 +392,7 @@
     }
 
     var a = pick(tpool, n, r);
-    sec("SECTION A — Social Studies vocabulary", "Write the meaning of each term.",
+    sec("SECTION A — " + SUBJ + " vocabulary", "Write the meaning of each term.",
       a.map(function (v) { return v.t + "  " + dots(26); }), a.map(function (v) { return v.d; }));
 
     var b = pick(tpool, n, r), bi = [], bk = [];
@@ -429,6 +438,9 @@
   /* ---------------- pack builder ---------------- */
   function buildPack(opts) {
     var r = rng(opts.seed || 1);
+    /* Subjects that reuse this engine (Economics, Geography) pass their own
+       display name; default to Social Studies. */
+    SUBJ = opts.subjectLine || "Social Studies";
     /* the caller may supply its own curriculum (Economics reuses this engine);
        fall back to Social Studies when none is given */
     var SRC = opts.curriculum || SS_CURRICULUM;
