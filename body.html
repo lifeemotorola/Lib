@@ -181,8 +181,87 @@
       <span class="meta" id="meta"></span>
       <span class="pill" id="pagePill">Pages: <b id="pageN">0</b></span>
       <button class="b2" id="docx">&#11015; Word (.docx)</button>
+      <button class="b2" id="dup">&#128214; Duplex print</button>
       <button class="b1" id="print">&#128424; Print / PDF</button>
     </div>
     <div id="doc"></div>
   </main>
+</div>
+
+<!-- ============ DUPLEX PRINT HELPER ============ -->
+<div class="bookmask" id="bookMask" hidden>
+  <div class="bookmodal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+    <div class="book-head">
+      <h2 id="bookTitle"><span>&#128214;</span> Book print sequence</h2>
+      <button type="button" class="book-x" id="bkClose" aria-label="Close">&#10005;</button>
+    </div>
+    <p class="book-sub">Odd / even page sequences for duplex printing on a printer that prints one side at a time.</p>
+
+    <div class="book-body" id="bookTool">
+      <div class="book-row">
+        <span class="book-f">
+          <label for="bookName">Book name (optional)</label>
+          <input type="text" id="bookName" placeholder="e.g. English Grade 5 workbook">
+        </span>
+        <span class="book-f">
+          <label for="pageCount">Total pages *</label>
+          <input type="number" id="pageCount" min="1" max="99999" placeholder="e.g. 64">
+        </span>
+        <span class="book-f">
+          <label for="separator">Separator</label>
+          <select id="separator">
+            <option value=", ">Comma (1, 3, 5)</option>
+            <option value=" ">Space (1 3 5)</option>
+            <option value="-">Dash (1-3-5)</option>
+            <option value="\n">New line</option>
+          </select>
+        </span>
+      </div>
+
+      <div class="book-actions">
+        <button type="button" class="b1" id="bkGen">&#9889; Generate sequence</button>
+        <button type="button" class="b2" id="bkClear">&#10005; Clear</button>
+      </div>
+      <p class="book-hint" id="bookHint"></p>
+
+      <div class="results" id="results">
+        <div class="summary" id="summary"></div>
+
+        <div class="sequence-card">
+          <div class="sequence-header">
+            <span class="sequence-title"><span>&#128196;</span> Front side (odd pages)
+              <span class="pass pass-1">PASS 1</span></span>
+            <button type="button" class="bk-copy" id="bkCopyOdd">&#128203; Copy</button>
+          </div>
+          <div class="sequence-numbers" id="oddSequence"></div>
+          <div class="page-count" id="oddCount"></div>
+        </div>
+
+        <div class="sequence-card">
+          <div class="sequence-header">
+            <span class="sequence-title"><span>&#128196;</span> Back side (even pages)
+              <span class="pass pass-2">PASS 2</span></span>
+            <button type="button" class="bk-copy" id="bkCopyEven">&#128203; Copy</button>
+          </div>
+          <div class="sequence-numbers" id="evenSequence"></div>
+          <div class="page-count" id="evenCount"></div>
+        </div>
+
+        <div class="instructions">
+          <h3>&#128424; How to print</h3>
+          <ol>
+            <li><b>Pass 1:</b> copy the <b>odd pages</b> sequence into your printer's page range. Print.</li>
+            <li><b>Flip:</b> take the printed pages and flip/reinsert them into the printer tray.</li>
+            <li><b>Pass 2:</b> copy the <b>even pages</b> sequence into your printer's page range. Print.</li>
+            <li>Your double-sided book is ready!</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="book-list">
+        <h3>&#128218; Saved books</h3>
+        <div id="bookListItems"></div>
+      </div>
+    </div>
+  </div>
 </div>

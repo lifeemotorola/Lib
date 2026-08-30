@@ -249,6 +249,17 @@
             margin-top: 4px;
         }
 
+        .hint-msg {
+            display: none;
+            color: #ff6b81;
+            font-size: 13px;
+            margin: -10px 0 18px;
+        }
+
+        .hint-msg.show {
+            display: block;
+        }
+
         .instructions {
             background: rgba(255, 193, 7, 0.1);
             border: 1px solid rgba(255, 193, 7, 0.2);
@@ -397,9 +408,10 @@
         </div>
 
         <div class="btn-group">
-            <button class="btn-generate" onclick="generateSequence()">⚡ Generate Sequence</button>
-            <button class="btn-clear" onclick="clearAll()">✕ Clear</button>
+            <button class="btn-generate" id="bkGen">⚡ Generate Sequence</button>
+            <button class="btn-clear" id="bkClear">✕ Clear</button>
         </div>
+        <p class="hint-msg" id="bookHint"></p>
 
         <div class="results" id="results">
             <div class="summary" id="summary"></div>
@@ -411,7 +423,7 @@
                     </div>
                     <div>
                         <span class="pass-label pass-1">PASS 1</span>
-                        <button class="btn-copy" onclick="copySequence('odd')">📋 Copy</button>
+                        <button class="btn-copy" id="bkCopyOdd">📋 Copy</button>
                     </div>
                 </div>
                 <div class="sequence-numbers" id="oddSequence"></div>
@@ -425,7 +437,7 @@
                     </div>
                     <div>
                         <span class="pass-label pass-2">PASS 2</span>
-                        <button class="btn-copy" onclick="copySequence('even')">📋 Copy</button>
+                        <button class="btn-copy" id="bkCopyEven">📋 Copy</button>
                     </div>
                 </div>
                 <div class="sequence-numbers" id="evenSequence"></div>
@@ -450,155 +462,10 @@
         </div>
     </div>
 
+    <script src="book.js"></script>
     <script>
-        let savedBooks = JSON.parse(localStorage.getItem('printBooks') || '[]');
-
-        function generateSequence(pages = null, name = null, noSave = false) {
-            const pageCount = pages || parseInt(document.getElementById('pageCount').value);
-            const bookName = name || document.getElementById('bookName').value.trim();
-            const separatorValue = document.getElementById('separator').value;
-            const separator = separatorValue === '\\n' ? '\n' : separatorValue;
-
-            if (!pageCount || pageCount < 1) {
-                alert('Please enter a valid number of pages (minimum 1).');
-                return;
-            }
-
-            const oddPages = [];
-            const evenPages = [];
-
-            for (let i = 1; i <= pageCount; i++) {
-                if (i % 2 !== 0) {
-                    oddPages.push(i);
-                } else {
-                    evenPages.push(i);
-                }
-            }
-
-            const oddString = oddPages.join(separator);
-            const evenString = evenPages.join(separator);
-
-            // Display results
-            document.getElementById('oddSequence').textContent = oddString;
-            document.getElementById('evenSequence').textContent = evenString;
-            document.getElementById('oddCount').textContent = `${oddPages.length} pages`;
-            document.getElementById('evenCount').textContent = `${evenPages.length} pages`;
-
-            // Summary
-            const sheetsNeeded = Math.ceil(pageCount / 2);
-            document.getElementById('summary').innerHTML = `
-                <h3>📊 Summary${bookName ? ': ' + bookName : ''}</h3>
-                <div class="summary-grid">
-                    <div class="summary-item">
-                        <div class="number">${pageCount}</div>
-                        <div class="label">Total Pages</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="number">${oddPages.length}</div>
-                        <div class="label">Odd (Front)</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="number">${evenPages.length}</div>
-                        <div class="label">Even (Back)</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="number">${sheetsNeeded}</div>
-                        <div class="label">Sheets Needed</div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('results').classList.add('show');
-
-            // Save to list if not already viewing
-            if (!noSave && bookName) {
-                const existing = savedBooks.findIndex(b => b.name === bookName);
-                const bookData = { name: bookName, pages: pageCount, date: new Date().toLocaleDateString() };
-                if (existing >= 0) {
-                    savedBooks[existing] = bookData;
-                } else {
-                    savedBooks.push(bookData);
-                }
-                localStorage.setItem('printBooks', JSON.stringify(savedBooks));
-                renderBookList();
-            }
-        }
-
-        function copySequence(type) {
-            const el = document.getElementById(type === 'odd' ? 'oddSequence' : 'evenSequence');
-            const text = el.textContent;
-
-            navigator.clipboard.writeText(text).then(() => {
-                const buttons = document.querySelectorAll('.btn-copy');
-                const btn = type === 'odd' ? buttons[0] : buttons[1];
-                btn.textContent = '✅ Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.textContent = '📋 Copy';
-                    btn.classList.remove('copied');
-                }, 2000);
-            }).catch(() => {
-                // Fallback
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                alert('Sequence copied!');
-            });
-        }
-
-        function clearAll() {
-            document.getElementById('pageCount').value = '';
-            document.getElementById('bookName').value = '';
-            document.getElementById('results').classList.remove('show');
-        }
-
-        function renderBookList() {
-            const container = document.getElementById('bookListItems');
-            if (savedBooks.length === 0) {
-                container.innerHTML = '<div class="no-books">No saved books yet. Add a book name and generate to save.</div>';
-                return;
-            }
-
-            container.innerHTML = savedBooks.map((book, index) => `
-                <div class="book-item">
-                    <div class="book-info">
-                        <div class="book-name">📖 ${book.name}</div>
-                        <div class="book-pages">${book.pages} pages · ${book.date}</div>
-                    </div>
-                    <div class="book-actions">
-                        <button class="btn-small btn-view" onclick="viewBook(${index})">View</button>
-                        <button class="btn-small btn-delete" onclick="deleteBook(${index})">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function viewBook(index) {
-            const book = savedBooks[index];
-            document.getElementById('bookName').value = book.name;
-            document.getElementById('pageCount').value = book.pages;
-            generateSequence(book.pages, book.name, true);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function deleteBook(index) {
-            if (confirm(`Delete "${savedBooks[index].name}"?`)) {
-                savedBooks.splice(index, 1);
-                localStorage.setItem('printBooks', JSON.stringify(savedBooks));
-                renderBookList();
-            }
-        }
-
-        // Handle Enter key
-        document.getElementById('pageCount').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') generateSequence();
-        });
-
-        // Initial render
-        renderBookList();
+        // Shared with the built-in tool in index.html (see book.js).
+        BOOK_TOOL.init(document);
     </script>
 </body>
 </html>
