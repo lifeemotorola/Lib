@@ -1091,9 +1091,10 @@
     var doc = [], keys = [], toc = [];
 
     doc.push.apply(doc, PACK_COVER(opts, {
-      title: "MATHEMATICS — GRADE " + opts.grade,
+      title: (opts.subjectName || "MATHEMATICS") + " — GRADE " + opts.grade,
       sub: "Pupil Workbook & Assessment Pack",
-      line: "Elementary Mathematics · Liberian National Curriculum"
+      line: (opts.bandName || "Elementary") + " " + (opts.subjectLine || "Mathematics") +
+            " · Liberian National Curriculum"
     }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.title); });
