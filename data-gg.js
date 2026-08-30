@@ -1625,4 +1625,937 @@ var GG_CURRICULUM = [
     {t:"cross-section", d:"a side view showing relief along a line", x:"Draw a cross-section from the contours."},
     {t:"vertical exaggeration", d:"the factor by which the vertical scale exceeds the horizontal", x:"Vertical exaggeration makes relief visible."},
     {t:"traverse", d:"a survey line of measured legs and bearings", x:"A closed traverse returns to its start."},
-    {t:"profile", d:"the outline of the ground surface along a line", x:"A profile
+    {t:"profile", d:"the outline of the ground surface along a line", x:"A profile shows the relief between two points."}
+  ],
+  facts:[
+    {q:"List the five steps of a geographic investigation.", a:"State the question or hypothesis; collect data (primary or secondary); present the data; analyse it; and draw a conclusion."},
+    {q:"Distinguish primary data from secondary data, with an example of each.", a:"Primary data is collected first hand by the investigator, e.g. a questionnaire or field count. Secondary data is gathered by others and published, e.g. census figures or a government report."},
+    {q:"State the purpose of each of the dot map and the choropleth map.", a:"A dot map shows the distribution of a feature, each dot standing for a fixed quantity. A choropleth map shades areas by value or density, darker shading meaning a higher figure."},
+    {q:"What is an isopleth? Give two examples.", a:"A line joining points of equal value. Contours (equal height) and isobars (equal pressure) are isopleths."},
+    {q:"Which statistical diagram is best for showing proportions of a total, and which for change over time?", a:"A pie chart (or divided bar) shows proportions of a total; a line graph shows change over time."},
+    {q:"How is the scale of a map converted when a map is enlarged or reduced?", a:"Multiply or divide distances by the linear factor. If a map is enlarged twice, distances double and the scale denominator halves; area changes by the square of the linear factor."},
+    {q:"State the information a statistical map must always carry.", a:"A title, a key or legend, the scale, the north arrow, and the source and date of the data."},
+    {q:"Why must a sample be representative of the whole population studied?", a:"So that the findings from the small group can safely be applied to the larger group; a biased sample gives a false conclusion."},
+    {q:"State three methods of collecting primary data in the field.", a:"Direct observation and counting, the questionnaire or interview, and measurement with instruments such as a tape, compass or rain gauge."}
+  ],
+  tf:[
+    {s:"A choropleth map shades areas according to density or value.", a:"true", why:"Deeper shading represents a higher figure, such as population density."},
+    {s:"Each dot on a dot map represents one person only.", a:"false", why:"Each dot represents a fixed chosen quantity, such as 1 000 people, which is stated in the key."},
+    {s:"Secondary data is collected first hand by the investigator.", a:"false", why:"Secondary data is gathered by others and published; first-hand data is primary."},
+    {s:"Contours are isopleths.", a:"true", why:"A contour joins all points of equal height above sea level."},
+    {s:"When a map is enlarged to twice its length, its area doubles.", a:"false", why:"Area changes by the square of the linear factor, so doubling length makes area four times."},
+    {s:"A histogram has bars that touch one another.", a:"true", why:"It shows continuous grouped data, so the bars meet across the class boundaries."},
+    {s:"A flow map uses arrows to show movement and its volume.", a:"true", why:"The width or number of arrows shows the volume of trade, traffic or migration."}
+  ],
+  sort:{ title:"Sort these maps, diagrams and data types", groups:[
+    {name:"Statistical maps", items:["dot map","choropleth","isopleth map","flow map"]},
+    {name:"Statistical diagrams", items:["bar graph","line graph","pie chart","histogram","divided bar"]},
+    {name:"Primary data", items:["questionnaire","field count","compass bearing","rain gauge reading"]},
+    {name:"Secondary data", items:["census figures","government report","published atlas","textbook table"]}
+  ]},
+  mapwork:{ title:"Statistical map of Liberia", caption:"Complete the table by stating how each map or diagram shows its data, and when each is used.", items:[
+    {p:"Dot map", f:"Each dot equals a fixed quantity; best for showing distribution, such as population or farms"},
+    {p:"Choropleth map", f:"Counties shaded by density; darker means higher, such as people per square kilometre"},
+    {p:"Isopleth map", f:"Lines of equal value; used for rainfall, pressure or height"},
+    {p:"Flow map", f:"Arrows show movement and width shows volume, such as trade or migration routes"},
+    {p:"Proportional symbols", f:"Circles or squares sized by quantity, such as town populations"},
+    {p:"Pie chart", f:"A circle split into sectors showing the shares of a total, such as land use"},
+    {p:"Bar graph", f:"Bars compare separate quantities, such as production by county"},
+    {p:"Line graph", f:"A line traces change through time, such as monthly rainfall"}
+  ]},
+  casestudy:{ title:"The market survey that was believed",
+    text:"Two class groups set out to advise a women's gardening co-operative on which vegetable to grow more of for the Monrovia market. The first group asked twenty shoppers, all of them at one supermarket entrance on a single Saturday morning. They reported that lettuce was far the most wanted vegetable and the co-operative planted a large plot.\n\nThe second group drew a map of the city and divided it into six areas. Over two weeks they interviewed a fixed number of shoppers in each area, at markets, street stalls and supermarkets, on both weekdays and Saturdays. They also recorded the prices and the amounts sold by three stallholders for a month. Their figures showed that peppers and bitter balls sold steadily every day, while lettuce sold mainly at weekends and spoiled quickly when unsold.\n\nThe co-operative followed the second report. It planted a steady area of peppers and bitter balls and a small weekend plot of lettuce, and its waste fell sharply. The first group's twenty shoppers had all been weekend supermarket customers, so their answers described only one kind of buyer. The lesson the geography teacher drew was that a sample must represent the whole market, and that a conclusion rests on the way the data was collected.",
+    questions:[
+      {q:"Why did the first group's survey give a misleading answer?", a:"It sampled only twenty shoppers at one supermarket on a Saturday, so it represented only weekend supermarket buyers, not the whole market."},
+      {q:"Give two ways the second group made its sample representative.", a:"It divided the city into six areas and interviewed a fixed number in each; and it worked across markets, stalls and supermarkets on both weekdays and Saturdays over two weeks."},
+      {q:"Was the stallholders' sales record primary or secondary data? Explain.", a:"Primary data, because the group recorded the prices and amounts sold itself, first hand, over the month."},
+      {q:"Which step of the enquiry sequence did the first group carry out poorly?", a:"Data collection — its sampling method was biased, so the later analysis and conclusion were unsound."},
+      {q:"Why was the second group's recommendation safer for the co-operative?", a:"It matched crops to steady daily demand (peppers, bitter balls) and kept only a small plot of the perishable weekend crop, lowering waste and risk."},
+      {q:"State one way each group could have presented its findings clearly.", a:"With bar graphs or pie charts of quantities sold, and a choropleth or dot map showing demand across the six city areas."}
+    ]},
+  project:{ title:"A small geographic investigation",
+    brief:"Carry out a simple enquiry of your own from question to conclusion.",
+    steps:[
+      "Choose a question with a geographical answer, such as where most water sellers stand, or which road is busiest at noon.",
+      "State the answer you expect (your hypothesis) before collecting data.",
+      "Decide your sample so that it fairly represents the whole, then collect primary data by count, measurement or questionnaire.",
+      "Present the findings on a map and a suitable diagram, each with a title, key, scale and north arrow.",
+      "Analyse the figures, state whether your hypothesis was supported, and write your conclusion."
+    ],
+    criteria:["A clear question and hypothesis","A representative sample","Primary data accurately collected","A map and a diagram correctly presented","A conclusion based on the evidence"]},
+  worked:[
+    {q:"A map at 1:50 000 is reduced so that distances become half. What is the new scale?", steps:["Linear factor = 1/2","Scale denominator doubles: 50 000 \\u00d7 2"], a:"1:100 000"},
+    {q:"On a 1:50 000 map two villages are 8 cm apart. Find the ground distance.", steps:["8 \\u00d7 50 000 = 400 000 cm","\\u00f7 100 000 to km"], a:"4 km"},
+    {q:"A farm measures 4 cm by 3 cm on a 1:50 000 map. Find its ground area in km^2.", steps:["Ground: 4\\u00d750 000 = 2 km; 3\\u00d750 000 = 1.5 km","Area = 2 \\u00d7 1.5"], a:"3 km^2"},
+    {q:"A map is enlarged to twice its length. By what factor does its area increase?", steps:["Area factor = linear factor squared","2 \\u00d7 2"], a:"4 times"},
+    {q:"A line 6.4 cm on a 1:25 000 map represents what ground distance in metres?", steps:["6.4 \\u00d7 25 000 = 160 000 cm","\\u00f7 100 to metres"], a:"1 600 m (1.6 km)"},
+    {q:"Contours of 200 m and 350 m lie 1 000 m apart on the ground. Find the gradient as a ratio.", steps:["Rise = 350 \\u2212 200 = 150 m","150 : 1 000 simplifies to 1 : 6.67"], a:"About 1 in 6.7"},
+    {q:"A bearing is read as 045 degrees true. What compass direction is this?", steps:["0 degrees = north, 90 degrees = east","045 lies halfway"], a:"North-east"},
+    {q:"A pie chart represents 360 students. A sector of 60 degrees stands for how many students?", steps:["60/360 of the total","(60 \\u00f7 360) \\u00d7 360"], a:"60 students"}
+  ],
+  apply:[
+    {q:"Why is a dot map unsuitable for showing population density per county?", a:"A dot map shows distribution, not density per area. Counties of different size could hold the same number of dots yet have very different densities; a choropleth map, shaded by people per square kilometre, shows density directly."},
+    {q:"Explain why every statistical map needs a key, a scale and a north arrow.", a:"The key tells the reader what each symbol, dot or shade means; the scale allows real distances and areas to be measured; the north arrow fixes orientation. Without them the map cannot be read or compared."},
+    {q:"A student concludes that a road is dangerous after watching it for ten minutes at lunchtime. Why is this conclusion weak?", a:"The sample is too short and covers only one time of day. Traffic and risk vary by hour and day, so a fair study needs counts at several times and on several days."},
+    {q:"When choosing between a bar graph and a pie chart to compare the exports of five counties, which would you use and why?", a:"A bar graph, because the five counties are separate categories and bars compare their quantities directly. A pie chart is reserved for the parts of a single whole, such as one county's exports by type."},
+    {q:"Why do geographers state the source and date on every statistical map?", a:"Data changes over time and may be gathered by different methods. The source and date let the reader judge reliability and tell whether the map is current enough for the decision being made."}
+  ],
+  activities:[
+    "Design and carry out a small group enquiry using a questionnaire, and present the results",
+    "Construct dot, choropleth and flow maps from Liberian data supplied by the teacher",
+    "Draw bar graphs, line graphs, pie charts and divided bars from the same data set and compare them",
+    "Practise enlarging and reducing a map and converting its scale",
+    "Draw a cross-section from a contoured map and calculate vertical exaggeration",
+    "Measure gradient and convert bearings to compass directions on an Ordnance-type map"
+  ],
+  materials:[
+    "Primary text: General Geography in Diagrams (Pearson)",
+    "Abegunde et al., Senior Secondary Geography Books 1 and 2",
+    "Topographic maps at 1:50 000 and 1:25 000",
+    "Plain paper, graph paper, ruler, protractor and compass",
+    "Liberian census and county statistics; WASSCE Q & A Papers 1 and 2"
+  ],
+  assessment:["Oral questions","Enquiry report","Map and diagram exercises","Quiz","Written test"]
+},
+
+/* ================================ GRADE 12 ================================ */
+{
+  grade:12, period:"I", sem:"One", icon:"\uD83D\uDCD0",
+  title:"Map Work, Surveying and Practical Geography",
+  subtitle:"Map interpretation, scale and distance, bearings, relief and cross-sections, and field survey methods",
+  outcomes:[
+    "Learners are able to interpret topographical maps and read features from contours and conventional signs",
+    "Learners are able to carry out simple chain and prismatic-compass surveys and plot the results to scale"
+  ],
+  objectives:[
+    "Convert scale from one form to another and calculate ground distance and area",
+    "Measure and express gradient, vertical exaggeration and intervisibility",
+    "Convert between whole-circle bearings, quadrant bearings and compass directions",
+    "Identify relief features from contours and draw accurate cross-sections",
+    "Carry out chain survey and compass traversing, recording bearings and distances",
+    "Use conventional signs and symbols and draw a labelled field sketch"
+  ],
+  note:"A <b>map scale</b> may be given as a statement, a ratio or a line scale; on a 1:50&nbsp;000 map one centimetre represents 500 metres on the ground. A <b>bearing</b> is the angle measured clockwise from north: a <b>whole-circle bearing</b> runs 0&ndash;360&deg;, while a <b>quadrant bearing</b> is measured from north or south toward east or west. Contours show <b>relief</b>: close contours mean a steep slope, spaced contours a gentle one; a cross-section gives the side view along a chosen line.",
+  focus:[
+    "Scale conversion: statement, ratio and linear scale; distance and area",
+    "Direction: true, magnetic and grid north; whole-circle and quadrant bearings",
+    "Relief and contour interpretation: ridges, valleys, spurs, saddles and cliffs",
+    "Cross-sections, vertical exaggeration and intervisibility",
+    "Gradient: rise over run, expressed as a ratio or angle",
+    "Chain survey: baseline, offsets, tie lines and the surveyor's field book",
+    "Prismatic-compass traversing: fore- and back-bearings, closing a traverse",
+    "Conventional signs, symbols and field sketches"
+  ],
+  terms:[
+    {t:"scale", d:"the relationship between distance on a map and distance on the ground", x:"A scale of 1:50 000 means 1 cm represents 500 m."},
+    {t:"linear scale", d:"a printed line divided into ground-distance units", x:"Use the linear scale to read distance directly."},
+    {t:"bearing", d:"an angle measured clockwise from north to a line", x:"A bearing of 090 degrees points due east."},
+    {t:"whole-circle bearing", d:"a bearing measured from 0 to 360 degrees clockwise", x:"South has a whole-circle bearing of 180 degrees."},
+    {t:"quadrant bearing", d:"a bearing measured from north or south toward east or west", x:"N45 degrees E is a quadrant bearing."},
+    {t:"fore-bearing", d:"the bearing taken in the direction of survey", x:"Record the fore-bearing from A to B."},
+    {t:"back-bearing", d:"the bearing from the far point back to the start", x:"A back-bearing differs from the fore-bearing by 180 degrees."},
+    {t:"contour", d:"a line joining points of equal height above sea level", x:"Contours show the shape of the land."},
+    {t:"relief", d:"the differences in height and shape of the land surface", x:"Hills and valleys make up the relief."},
+    {t:"gradient", d:"the steepness of a slope, rise compared with horizontal distance", x:"The road climbs with a gradient of 1 in 10."},
+    {t:"vertical exaggeration", d:"the amount by which a cross-section's vertical scale exceeds its horizontal scale", x:"A vertical exaggeration of 2 makes slopes look twice as steep."},
+    {t:"cross-section", d:"a drawing showing the relief along a chosen line", x:"Draw a cross-section between the two hilltops."},
+    {t:"intervisibility", d:"whether two points can see each other over intervening ground", x:"A ridge between two points blocks intervisibility."},
+    {t:"chain survey", d:"a survey using a measured baseline and perpendicular offsets", x:"Chain survey suits a small level plot."},
+    {t:"offset", d:"a short measured distance at right angles from the baseline to a feature", x:"Record each offset with its chainage."},
+    {t:"traverse", d:"a series of connected survey lines with measured lengths and bearings", x:"A closed traverse returns to its starting point."},
+    {t:"field book", d:"the surveyor's record of measurements, sketches and notes", x:"Enter every reading in the field book at once."},
+    {t:"conventional sign", d:"an agreed symbol used on maps to stand for a feature", x:"A blue line is the conventional sign for a river."},
+    {t:"field sketch", d:"a labelled drawing of the landscape made in the field", x:"Annotate the field sketch with landforms and land use."},
+    {t:"bench mark", d:"a fixed point whose height above sea level is known", x:"Heights are levelled from a bench mark."}
+  ],
+  facts:[
+    {q:"On a map of 1:25 000, what ground distance does 1 cm represent?", a:"25 000 cm = 250 metres."},
+    {q:"State the three ways a map scale may be expressed.", a:"As a statement (one centimetre to the kilometre), as a ratio or representative fraction (such as 1:50 000), and as a printed linear scale line."},
+    {q:"Give the whole-circle bearings for north, east, south and west.", a:"North 000 degrees, east 090 degrees, south 180 degrees, west 270 degrees."},
+    {q:"How do you convert a fore-bearing to a back-bearing?", a:"Add 180 degrees if the fore-bearing is less than 180, or subtract 180 if it is greater."},
+    {q:"What do closely spaced contours indicate, and what do widely spaced contours indicate?", a:"Closely spaced contours indicate a steep slope; widely spaced contours indicate a gentle slope."},
+    {q:"Name four relief features identifiable from contours.", a:"A hill or peak, a ridge, a valley (V-shape pointing upstream), a spur, a saddle or col, and a cliff or escarpment."},
+    {q:"How is gradient calculated?", a:"Gradient equals vertical rise divided by horizontal distance, expressed as 1 in so many, e.g. a rise of 50 m over 500 m is 1 in 10."},
+    {q:"List the main instruments used in a simple chain survey.", a:"A measuring tape or chain, ranging poles, arrows or pegs, and a field book and pencil; a prismatic compass is added for a compass traverse."},
+    {q:"Why is a closed traverse checked for closing error?", a:"Because errors in bearings or distances make the final leg fail to return to the starting point; the gap (closing error) shows the size of the mistake before adjustment."}
+  ],
+  tf:[
+    {s:"On a 1:50 000 map, 4 cm represents 2 km on the ground.", a:"true", why:"4 \\u00d7 50 000 cm = 200 000 cm = 2 km."},
+    {s:"A bearing of 180 degrees points due east.", a:"false", why:"180 degrees points due south; east is 090 degrees."},
+    {s:"A back-bearing is found by adding or subtracting 180 degrees.", a:"true", why:"The reverse direction differs by exactly half a turn."},
+    {s:"Contours that are close together show a gentle slope.", a:"false", why:"Close contours show a steep slope; spaced contours show a gentle one."},
+    {s:"A cross-section shows the relief as seen from directly above.", a:"false", why:"It shows a side view along a line; the view from above is the plan or map."},
+    {s:"An offset is measured at right angles from the baseline.", a:"true", why:"Offsets locate features perpendicular to the chain line."},
+    {s:"A closed traverse should end at its starting point.", a:"true", why:"Any gap is closing error from measurement mistakes."}
+  ],
+  sort:{ title:"Sort these survey and map elements", groups:[
+    {name:"Scales and measurement", items:["linear scale","representative fraction","gradient","vertical exaggeration"]},
+    {name:"Direction", items:["fore-bearing","back-bearing","whole-circle bearing","quadrant bearing","true north"]},
+    {name:"Relief features", items:["ridge","valley","spur","saddle","escarpment"]},
+    {name:"Survey records", items:["field book","offset","chainage","field sketch","bench mark"]}
+  ]},
+  mapwork:{ title:"Interpreting a topographical map", caption:"Complete the table by stating how each feature is recognised on the map.", items:[
+    {p:"Steep slope", f:"Contours drawn close together"},
+    {p:"Gentle slope", f:"Contours widely and evenly spaced"},
+    {p:"River valley", f:"Contours form a V whose point faces upstream, with the river along the valley floor"},
+    {p:"Hilltop or peak", f:"Closed contours rising inward, often with a spot height or trig point"},
+    {p:"Saddle or col", f:"A low gap between two higher areas, with contours rising on two sides and falling on the other two"},
+    {p:"Cliff or escarpment", f:"Contours merge or run very close together along a line"},
+    {p:"Settlement", f:"Clustered buildings along a road or river, shown by the conventional signs"},
+    {p:"North point", f:"The arrow showing true north from which bearings are measured"}
+  ]},
+  casestudy:{ title:"The survey of the school farm",
+    text:"A geography class was asked to map the school farm, a level rectangle of about two hectares holding a poultry shed, a well, a stand of banana trees and the boundary with a neighbouring plot. The class split into two teams.\n\nThe first team measured a single long side with a tape and paced the rest of the distances, sketching the features where they guessed them to be. When they plotted their map, the well fell outside the boundary and the poultry shed overlapped the bananas; the angles were wrong because no one had taken a bearing.\n\nThe second team set out a straight baseline between two ranging poles along the firmest edge, and measured it twice with the tape. From points recorded by chainage along this line they dropped perpendicular offsets to the well, the shed corners and the banana clump, measuring each offset and noting it in a field book. They checked each corner with a prismatic compass, recording fore- and back-bearings, and closed the traverse back on the start. Their plot, drawn to scale that evening, placed every feature inside the boundary with a small closing error of well under a metre, which they adjusted. The school used their map to plan a new fence.\n\nThe teacher's conclusion was that pacing and guessing may show what a place looks like, but a measured baseline, perpendicular offsets and checked bearings are what turn a sketch into a map.",
+    questions:[
+      {q:"State two mistakes made by the first team.", a:"They paced distances instead of measuring them, and they took no bearings, so distances and angles were both wrong."},
+      {q:"Why did the second team measure the baseline twice?", a:"To check the tape reading and remove gross error before offsets were taken from it, since every other measurement depends on the baseline."},
+      {q:"What is an offset, and how was it used here?", a:"A short measured distance at right angles from the baseline to a feature. Offsets from recorded chainages fixed the position of the well, shed corners and banana clump."},
+      {q:"Explain the purpose of the back-bearings.", a:"Back-bearings check the fore-bearings; each should differ by 180 degrees, revealing compass or reading errors before plotting."},
+      {q:"What was the closing error, and why was it acceptable?", a:"The small gap by which the traverse failed to return exactly to the start. It was under a metre on a two-hectare survey, small enough to adjust."},
+      {q:"Why is a field book preferable to notes written later from memory?", a:"Readings are recorded on the spot before they are forgotten or confused, and the sketch keeps their relationships clear."}
+    ]},
+  project:{ title:"Chain and compass survey of a small plot",
+    brief:"Survey and plot a real piece of ground near the school to a stated scale.",
+    steps:[
+      "Choose a level plot with clear boundaries and lay out a straight baseline between two ranging poles.",
+      "Measure the baseline twice with a tape and record the length as a check.",
+      "At measured chainages, take perpendicular offsets to each boundary and feature, entering them in a field book.",
+      "Take fore- and back-bearings along the boundary lines with a prismatic compass.",
+      "Plot the survey to scale, add a title, scale, north arrow and key, and state the closing error."
+    ],
+    criteria:["Baseline measured and checked","Offsets recorded with chainages","Bearings taken and checked","Map drawn correctly to scale","Title, scale, north arrow and key present"]},
+  worked:[
+    {q:"On a 1:25 000 map a road is 12 cm long. Find its ground length in km.", steps:["12 \\u00d7 25 000 = 300 000 cm","\\u00f7 100 000"], a:"3 km"},
+    {q:"Convert a fore-bearing of 065 degrees to its back-bearing.", steps:["065 is below 180, so add 180","065 + 180"], a:"245 degrees"},
+    {q:"Two points differ in height by 120 m and are 600 m apart horizontally. Find the gradient.", steps:["Rise : run = 120 : 600","Divide both by 120"], a:"1 in 5"},
+    {q:"A vertical scale of 1 cm to 50 m is used against a horizontal scale of 1 cm to 250 m. Find the vertical exaggeration.", steps:["VE = vertical scale \\u00f7 horizontal scale","250 \\u00f7 50"], a:"5 times"},
+    {q:"A lake is 5 cm by 4 cm on a 1:50 000 map. Find its approximate ground area.", steps:["5 cm = 2.5 km; 4 cm = 2 km","2.5 \\u00d7 2"], a:"5 km^2"},
+    {q:"Express the quadrant bearing S30 degrees W as a whole-circle bearing.", steps:["South = 180; 30 toward west adds 30","180 + 30"], a:"210 degrees"},
+    {q:"A bearing is 315 degrees. Give its eight-point compass direction.", steps:["270 = west, 360/000 = north","315 lies halfway"], a:"North-west"},
+    {q:"From a 1:10 000 plan, 1 cm equals how many metres on the ground?", steps:["10 000 cm","\\u00f7 100"], a:"100 m"}
+  ],
+  apply:[
+    {q:"Why is a large-scale map (such as 1:10 000) better than a small-scale map (such as 1:1 000 000) for planning a farm fence?", a:"A large-scale map shows a small area in detail, so individual buildings, trees and boundaries are visible and distances are precise. A small-scale map shows a wide area but cannot show the detail a fence line needs."},
+    {q:"Explain how a cross-section helps decide whether two villages can see each other for a radio mast.", a:"The section shows the ground profile along the line between them. If a hill or ridge rises above the sight line, the points are not intervisible and a taller mast or a relay is needed."},
+    {q:"Why must offsets be perpendicular to the baseline?", a:"The plot positions each feature by its chainage along the line and its perpendicular distance from it. A sloping offset gives a wrong distance and therefore a wrong position on the map."},
+    {q:"A surveyor finds a closing error of 20 metres on a 200-metre traverse. Should the map be accepted? Explain.", a:"No. An error of one-tenth of the traverse length is far too large; it signals a serious mistake in a bearing or tape reading. The work should be re-checked, not merely adjusted."},
+    {q:"Why do maps use conventional signs rather than pictures of each feature?", a:"Pictures vary with the artist and clutter the map. Agreed conventional signs are compact, standard and instantly read by anyone, leaving the map clear at any scale."}
+  ],
+  activities:[
+    "Measure the school compound by chain survey and plot it to scale",
+    "Practise taking fore- and back-bearings with a prismatic compass around a closed traverse",
+    "Convert scale from ratio to statement and linear scale, and calculate distance and area",
+    "Draw cross-sections from contoured maps and compute vertical exaggeration",
+    "Identify relief features and judge intervisibility on topographical sheets",
+    "Draw and annotate field sketches of the local landscape"
+  ],
+  materials:[
+    "Primary text: Practical Geography for Senior Secondary Schools",
+    "Topographical maps at 1:50 000 and 1:25 000",
+    "Measuring tapes, ranging poles, pegs and arrows",
+    "Prismatic compasses, clinometers and protractors",
+    "Graph paper, drawing sets and field notebooks; WASSCE Q & A Paper 1"
+  ],
+  assessment:["Field survey exercise","Map interpretation test","Scale and bearing drills","Cross-section drawing","Written examination"]
+},
+
+{
+  grade:12, period:"II", sem:"One", icon:"\uD83D\uDC65",
+  title:"Population Geography",
+  subtitle:"World and Liberian population, distribution and density, migration, population structure and census",
+  outcomes:[
+    "Learners are able to account for the distribution, density and movement of population and interpret population data",
+    "Learners are able to explain the causes and consequences of population change in Liberia and the world"
+  ],
+  objectives:[
+    "Describe the size, distribution and density of the world's and Liberia's population",
+    "Explain the factors that influence population distribution",
+    "Distinguish birth rate, death rate, natural increase and growth rate",
+    "Interpret population pyramids and the stages of the demographic transition",
+    "Explain the causes, types and effects of migration, including rural-urban migration",
+    "Describe the importance and conduct of a population census"
+  ],
+  note:"<b>Population distribution</b> is how people are spread across an area; <b>population density</b> is the average number of people per square kilometre. Population grows by <b>natural increase</b> (births minus deaths) and by <b>net migration</b> (immigrants minus emigrants). A <b>population pyramid</b> shows the numbers by age and sex: a broad-based pyramid signals high birth and death rates and rapid growth. <b>Monrovia</b> holds a large share of Liberia's population because of its port, jobs and services, drawing young migrants from the counties.",
+  focus:[
+    "World population: size, growth over time and the major concentrations",
+    "Population of Liberia: size, distribution and density by county",
+    "Factors affecting distribution: relief, climate, water, soil, resources and history",
+    "Birth rate, death rate, natural increase and growth rate",
+    "Population pyramids and the demographic transition model",
+    "Migration: types, causes (push and pull) and effects on origin and destination",
+    "Urbanisation and rural-urban migration in Liberia",
+    "The census: purpose, methods, problems and uses"
+  ],
+  terms:[
+    {t:"population", d:"the total number of people living in an area", x:"Liberia's population is counted in a census."},
+    {t:"population distribution", d:"the way people are spread across an area", x:"Population distribution in Liberia favours the coast."},
+    {t:"population density", d:"the average number of people per unit area", x:"Density is found by dividing people by square kilometres."},
+    {t:"birth rate", d:"live births per 1 000 people in a year", x:"A high birth rate broadens the base of the pyramid."},
+    {t:"death rate", d:"deaths per 1 000 people in a year", x:"Better health care lowers the death rate."},
+    {t:"natural increase", d:"birth rate minus death rate", x:"Natural increase is the main source of population growth."},
+    {t:"growth rate", d:"the annual percentage change in population", x:"The growth rate includes migration as well as natural increase."},
+    {t:"life expectancy", d:"the average number of years a person can expect to live", x:"Life expectancy rises as health improves."},
+    {t:"dependency ratio", d:"the ratio of dependants (young and old) to working-age people", x:"Many children raise the dependency ratio."},
+    {t:"population pyramid", d:"a bar chart of population by age group and sex", x:"A wide base means many young people."},
+    {t:"demographic transition", d:"the shift from high birth and death rates to low ones as a country develops", x:"Development moves a country through the demographic transition."},
+    {t:"migration", d:"the movement of people to settle, permanently or for a period", x:"Migration changes the population of both areas."},
+    {t:"emigrant", d:"a person who leaves a country to settle elsewhere", x:"Emigrants leave their home county for the city."},
+    {t:"immigrant", d:"a person who arrives to settle in a country or area", x:"Monrovia receives many immigrants from the counties."},
+    {t:"rural-urban migration", d:"the movement of people from countryside to towns", x:"Rural-urban migration swells Monrovia's population."},
+    {t:"push factor", d:"a condition that drives people away from an area", x:"Lack of jobs is a push factor."},
+    {t:"pull factor", d:"an attraction that draws people to an area", x:"Schols and hospitals are pull factors of cities."},
+    {t:"urbanisation", d:"the rising share of a population living in towns", x:"Urbanisation follows the growth of industry."},
+    {t:"census", d:"the official counting of a population and its characteristics", x:"A census is usually held every ten years."},
+    {t:"overpopulation", d:"when an area's people exceed the resources that can support them well", x:"Overpopulation strains schools and farmland."}
+  ],
+  facts:[
+    {q:"Define population density and state how it is calculated.", a:"The average number of people per unit area. It is calculated by dividing total population by total area, usually people per square kilometre."},
+    {q:"State four factors that encourage a high population density.", a:"Fertile soil and reliable water; a favourable climate; flat or gently rolling relief; and jobs from industry, mining, trade or administration in towns."},
+    {q:"Distinguish natural increase from overall population growth.", a:"Natural increase is births minus deaths. Overall growth is natural increase plus net migration (immigrants minus emigrants)."},
+    {q:"Give three push factors and three pull factors in rural-urban migration.", a:"Push: lack of jobs and schools, poor services and limited farmland. Pull: employment, better schools and hospitals, and the excitement and opportunities of city life."},
+    {q:"Describe the shape of a population pyramid for a country with rapid growth.", a:"It has a very broad base (many children) and narrows quickly upward, showing high birth rates, high death rates and few old people."},
+    {q:"Name the four main stages of the demographic transition.", a:"High stationary (high birth and death rates); early expanding (death rate falls); late expanding (birth rate falls); and low stationary (both low and stable)."},
+    {q:"State three effects of rural-urban migration on the countryside.", a:"It leaves fewer young workers, so farms lose labour and the elderly and children remain; remittances sent home can raise incomes; and services may decline as population falls."},
+    {q:"State three effects of rapid urban growth on a city like Monrovia.", a:"Pressure on housing leading to slums, strain on water and electricity, traffic congestion, unemployment and informal trading, alongside a larger labour force and market."},
+    {q:"Why is a population census important to government?", a:"It provides the figures for planning schools, clinics and roads, for dividing revenue and representation, and for measuring birth rates, death rates and migration."},
+    {q:"Give three problems that make a census difficult in Liberia.", a:"Remote and roadless areas, a mobile or displaced population, shortage of trained enumerators and funds, and the need to reach people in the rainy season."}
+  ],
+  tf:[
+    {s:"Population density measures how people are spread over an area.", a:"false", why:"Distribution describes the spread; density is the average number per unit area."},
+    {s:"Natural increase equals birth rate minus death rate.", a:"true", why:"Excess of births over deaths is natural increase."},
+    {s:"A broad-based population pyramid indicates rapid population growth.", a:"true", why:"A wide base means many children being born each year."},
+    {s:"Better medical care mainly causes the birth rate to fall first.", a:"false", why:"It causes the death rate (especially infant deaths) to fall first; the birth rate falls later."},
+    {s:"Lack of jobs in the countryside is a pull factor.", a:"false", why:"It drives people away, so it is a push factor; city jobs are the pull."},
+    {s:"A census counts people and records their age, sex and occupation.", a:"true", why:"These characteristics are needed for planning."},
+    {s:"Emigrants leave a country while immigrants arrive.", a:"true", why:"Emigration is departure; immigration is arrival."}
+  ],
+  sort:{ title:"Sort these population terms and factors", groups:[
+    {name:"Measures of population", items:["birth rate","death rate","growth rate","life expectancy","dependency ratio"]},
+    {name:"Push factors", items:["unemployment","poor schools","land shortage","conflict"]},
+    {name:"Pull factors", items:["jobs","universities","hospitals","entertainment"]},
+    {name:"Effects on a growing city", items:["slum housing","traffic congestion","informal trade","larger labour force"]}
+  ]},
+  mapwork:{ title:"Mapping Liberia's population", caption:"Complete the table by stating the distribution pattern and one reason for it.", items:[
+    {p:"Greater Monrovia (Montserrado)", f:"By far the densest concentration; the capital, port and main industries attract migrants"},
+    {p:"Coastal counties", f:"Moderate density; fishing, trade, ports and roads support larger towns"},
+    {p:"Inland counties (Lofa, Nimba)", f:"Denser in fertile farming and mining areas such as Lofa's agriculture and Nimba's iron ore"},
+    {p:"Forest interior (Sinoe, River Cess, Gbarpolu)", f:"Sparse; dense forest, poor roads and few towns limit settlement"},
+    {p:"Mining belts", f:"Localised clusters around iron ore and gold workings"},
+    {p:"Border trading towns", f:"Smaller concentrations where cross-border trade gathers people"}
+  ]},
+  casestudy:{ title:"Two brothers, two paths",
+    text:"Two brothers grew up in a farming town in Lofa County. The older brother stayed. He inherited his father's upland rice and cassava fields, married, and raised his children in the town. In good years the harvest fed the family and a surplus was sold; in bad years, when rains were late, money was short and the nearest clinic was a long walk. The younger brother left for Monrovia at nineteen. He first sold cold water and phone credit on the street, then found work loading lorries at a warehouse, and after some years rented a room in a crowded yard and learned to repair generators.\n\nEach month the younger brother sent money home. It paid his nieces' school fees and, one year, bought the older brother a small milling machine so rice could be hulled locally and sold at a better price. Yet when the younger brother visited, he spoke of the city's cost: high rent, the risk of illness without steady work, and traffic that swallowed hours. The older brother's town, meanwhile, had fewer and fewer young men left to clear and work the farms, and some houses stood empty.\n\nThe family's story is the county's in miniature: the young and ambitious move to the city for jobs and services and send remittances home, while the countryside loses labour and the city gains people faster than it can house and employ them.",
+    questions:[
+      {q:"Identify one push factor and one pull factor in the younger brother's move.", a:"Push: limited jobs and the distant clinic in the farming town. Pull: the jobs, income and opportunities available in Monrovia."},
+      {q:"What were the remittances, and how did they help the home town?", a:"Money sent back each month. It paid school fees and bought a milling machine that let rice be hulled locally and sold for a better price."},
+      {q:"State one effect of migration on the countryside shown in the story.", a:"The loss of young men, leaving fewer people to clear and work the farms and some houses empty."},
+      {q:"State two difficulties the younger brother faced in Monrovia.", a:"High rent and the risk of illness without steady work, and long hours lost to traffic congestion."},
+      {q:"How did the milling machine change the local economy?", a:"It added value locally — rice could be hulled in the town instead of being sold raw — raising the price farmers received."},
+      {q:"Explain whether migration benefited the family overall.", a:"It gave the family city income and remittances that funded education and equipment, but it also divided the family and depleted farm labour; the benefits came with real costs."}
+    ]},
+  project:{ title:"A migration and population enquiry",
+    brief:"Investigate migration in your own community and present the findings.",
+    steps:[
+      "Survey households to find how many adults were born elsewhere and where they came from.",
+      "Ask the reasons for moving and record them as push or pull factors.",
+      "Estimate which age groups move most and where the young people go.",
+      "Find out whether money is sent home and what it is spent on.",
+      "Present the results with a bar graph of reasons and a flow map of movements, and write a conclusion."
+    ],
+    criteria:["Households surveyed and recorded","Reasons classified as push or pull","Age and destination patterns identified","Remittances and their use documented","Graph and flow map correctly presented"]},
+  worked:[
+    {q:"A county has 400 000 people and 8 000 km^2. Find its population density.", steps:["400 000 \\u00f7 8 000"], a:"50 people per km^2"},
+    {q:"A population of 1 000 000 has 35 000 births in a year. Find the birth rate per 1 000.", steps:["35 000 \\u00f7 1 000 000 \\u00d7 1 000"], a:"35 per 1 000"},
+    {q:"Birth rate is 40 per 1 000 and death rate 12 per 1 000. Find the rate of natural increase.", steps:["40 \\u2212 12"], a:"28 per 1 000 (2.8%)"},
+    {q:"A town of 200 000 grows at 3% a year. How many people are added in the first year?", steps:["3% of 200 000 = 0.03 \\u00d7 200 000"], a:"6 000 people"},
+    {q:"50 000 people leave a district while 20 000 arrive. Find the net migration.", steps:["20 000 \\u2212 50 000"], a:"\\u221230 000 (a net loss)"},
+    {q:"Of 600 000 people, 360 000 are aged 15-64 and the rest are dependants. Find the dependency ratio.", steps:["Dependants = 240 000","240 000 : 360 000 simplifies to 2:3"], a:"2 dependants per 3 workers (about 67 per 100)"},
+    {q:"A pyramid shows 45% of people under 15. In a population of 2 000 000, how many is that?", steps:["0.45 \\u00d7 2 000 000"], a:"900 000"},
+    {q:"A city grows from 500 000 to 800 000 in 10 years. Find the total percentage increase.", steps:["Increase = 300 000","(300 000 \\u00f7 500 000) \\u00d7 100"], a:"60% over 10 years"}
+  ],
+  apply:[
+    {q:"Why do governments want to know the population of every county rather than only the national total?", a:"National totals hide where people live. Schools, clinics, roads and revenue must be allocated to places according to their actual numbers and age structure, which only area-level census data reveals."},
+    {q:"Explain why a country with very high birth rates faces a heavy burden even though its population is young.", a:"Many children mean high spending on schools, clinics and food for people who are not yet working. The dependency ratio is high, so each working adult supports many dependants, slowing saving and development."},
+    {q:"How could a county reduce the loss of its young people to Monrovia?", a:"By creating local jobs through processing farm produce and small industries, improving roads and electricity, and providing good secondary schools and clinics, so the pull of the city is matched by opportunities at home."},
+    {q:"Why is the death rate the first to fall as a country develops?", a:"Development brings clean water, vaccines, basic medicine and better food, which quickly reduce deaths — especially among infants — while family size and birth rates take a generation to adjust."},
+    {q:"Suggest one advantage and one danger of rapid urbanisation for Liberia.", a:"Advantage: cities concentrate workers, markets and services, supporting industry and trade. Danger: if growth outruns housing, water and jobs, slums, congestion, unemployment and poor sanitation spread."}
+  ],
+  activities:[
+    "Draw and compare population pyramids for Liberia and a developed country",
+    "Map the distribution and density of Liberia's population by county",
+    "Graph birth and death rates through the demographic transition",
+    "Interview families about migration and chart the reasons as push and pull factors",
+    "Calculate density, birth rate, death rate and natural increase from given data",
+    "Debate the benefits and problems of rural-urban migration"
+  ],
+  materials:[
+    "Primary text: Human and Regional Geography for Senior Secondary Schools",
+    "Abegunde et al., Senior Secondary Geography Book 2",
+    "Liberia census reports and county population tables",
+    "Population pyramids and world population charts",
+    "Graph paper and calculators; WASSCE Q & A Papers 1 and 2"
+  ],
+  assessment:["Data-response exercises","Map and pyramid work","Enquiry report","Quiz","Written test"]
+},
+
+{
+  grade:12, period:"III", sem:"One", icon:"\uD83C\uDFD8\uFE0F",
+  title:"Settlement Geography",
+  subtitle:"Rural and urban settlements, site and situation, urban land use, urbanisation and central place functions",
+  outcomes:[
+    "Learners are able to explain the location, growth and internal structure of settlements",
+    "Learners are able to compare rural and urban settlements and account for urban problems and planning"
+  ],
+  objectives:[
+    "Distinguish rural from urban settlements and classify settlements by size and function",
+    "Explain site and situation and the factors that lead a settlement to grow",
+    "Describe the pattern of urban land use and the functions of town zones",
+    "Outline the functions of settlements: market, administrative, port, mining, educational",
+    "Explain the causes and problems of rapid urban growth and the need for planning",
+    "Describe rural settlement patterns: dispersed, nucleated and linear"
+  ],
+  note:"A <b>settlement</b> is a place where people live. Its <b>site</b> is the actual ground it stands on — flat land, water supply, dry ground, a river crossing — while its <b>situation</b> is its position relative to other places: routes, a harbour, farmland or trade. Towns grow where routes meet or goods are trans-shipped. Within a town, land is arranged in zones: the <b>central business district</b> at the core where shops and offices compete for central land, industry near transport, and housing spreading outward. Rural settlements are <b>nucleated</b> (clustered), <b>dispersed</b> (scattered farms) or <b>linear</b> (strung along a road or river).",
+  focus:[
+    "Rural and urban settlements; classification by size and function",
+    "Site and situation: wet-point, dry-point, defence, bridging and route centres",
+    "Rural settlement patterns: nucleated, dispersed and linear",
+    "Urban land use: central business district, industrial, residential and open zones",
+    "Functions of settlements: port, market, administrative, mining, educational, religious",
+    "The rank-size and central-place ideas; goods and threshold populations",
+    "Urbanisation, urban problems and their causes",
+    "Town planning and the provision of services"
+  ],
+  terms:[
+    {t:"settlement", d:"a place where people establish homes and live", x:"Monrovia is Liberia's largest settlement."},
+    {t:"rural settlement", d:"a settlement in the countryside, mainly farming", x:"A village is a rural settlement."},
+    {t:"urban settlement", d:"a town or city where most people work outside farming", x:"Urban settlements provide many services."},
+    {t:"site", d:"the physical characteristics of the ground a settlement stands on", x:"A reliable water supply is a good site factor."},
+    {t:"situation", d:"a settlement's position relative to other places and routes", x:"A situation at a river crossing encouraged trade."},
+    {t:"nucleated settlement", d:"a settlement with buildings clustered together", x:"Villages around a market are nucleated."},
+    {t:"dispersed settlement", d:"scattered isolated farms and homesteads", x:"Dispersed farms are common on rich upland soils."},
+    {t:"linear settlement", d:"a settlement strung in a line along a road or river", x:"Houses along a single road form a linear settlement."},
+    {t:"function", d:"the main activity or purpose of a settlement", x:"Buchanan's function includes its port."},
+    {t:"central business district", d:"the central zone of a town where shops and offices concentrate", x:"Land values are highest in the central business district."},
+    {t:"land use", d:"the way land is occupied, e.g. housing, industry or farming", x:"A land-use map colours each zone differently."},
+    {t:"urbanisation", d:"the growth of towns and the share of people living in them", x:"Urbanisation rises as industry grows."},
+    {t:"slum", d:"a crowded area of poor housing lacking basic services", x:"Slums often grow on unplanned city edges."},
+    {t:"urban sprawl", d:"the uncontrolled outward spread of a town", x:"Sprawl swallows farmland around the city."},
+    {t:"infrastructure", d:"the basic services such as roads, water and electricity", x:"Industry needs sound infrastructure."},
+    {t:"central place", d:"a settlement that provides goods and services to the area around it", x:"A county town is a central place."},
+    {t:"threshold population", d:"the minimum number of people needed to support a service", x:"A hospital needs a larger threshold than a kiosk."},
+    {t:"range of a good", d:"the distance people will travel to obtain a good or service", x:"The range of a market is greater than that of a shop."},
+    {t:"town planning", d:"the deliberate arrangement of land use, roads and services", x:"Planning separates homes from polluting industry."},
+    {t:"green belt", d:"protected open land around a town to limit sprawl", x:"A green belt keeps farmland beside the city."}
+  ],
+  facts:[
+    {q:"Distinguish site from situation.", a:"Site is the physical character of the actual ground (water, relief, soil, defence); situation is the position relative to surrounding places, routes and resources."},
+    {q:"Name the three main rural settlement patterns.", a:"Nucleated (clustered), dispersed (scattered isolated farms) and linear (along a road, river or coast)."},
+    {q:"State four factors of a good settlement site.", a:"Reliable water supply; flat or gently sloping well-drained land; fertile surrounding soil; and a defensible position or a crossing, bridge or route focus."},
+    {q:"List five functions a settlement may have.", a:"Market and trade, administration, port or transport, mining or industry, education, religion or defence — many towns combine several."},
+    {q:"Describe the typical land-use zones of a town from centre outward.", a:"The central business district at the core; then older industry and warehouses near routes; then residential areas of varying density, with open land and newer suburbs on the edge."},
+    {q:"Why is land most expensive in the central business district?", a:"Because accessibility is greatest there, so shops and offices that profit from centrality compete and bid the highest for the limited land."},
+    {q:"Explain the idea of a threshold population.", a:"Every service needs a minimum number of customers to be viable. A kiosk needs a small threshold, while a hospital or department store needs a large one and is found only in bigger centres."},
+    {q:"Give four problems of rapid urban growth.", a:"Shortage of housing and growth of slums; inadequate water, electricity and sanitation; traffic congestion and unemployment; and pollution and loss of surrounding farmland."},
+    {q:"State four aims of town planning.", a:"To zone industry away from homes; lay out roads and drainage; reserve land for water, markets, schools and clinics; and limit sprawl onto farmland."},
+    {q:"Why do linear settlements develop along roads and rivers?", a:"Because the road or river gives transport, water and trade at every point along it, so houses and farms extend in a line rather than clustering."}
+  ],
+  tf:[
+    {s:"Site refers to a settlement's position relative to other towns.", a:"false", why:"That is situation; site is the physical ground the settlement stands on."},
+    {s:"A nucleated settlement has its buildings clustered together.", a:"true", why:"Houses group around a centre such as a market, well or church."},
+    {s:"Land values are usually highest at the edge of a town.", a:"false", why:"They are highest in the central business district, where access is greatest."},
+    {s:"A hospital needs a larger threshold population than a small shop.", a:"true", why:"A hospital serves far more people and needs many customers to be viable."},
+    {s:"Linear settlements commonly grow along roads and rivers.", a:"true", why:"Transport and water encourage building in a line."},
+    {s:"Town planning aims to mix heavy industry closely with housing.", a:"false", why:"Planning zones industry away from homes to reduce noise, smoke and danger."},
+    {s:"Urban sprawl can take over good farmland around a city.", a:"true", why:"Uncontrolled outward building covers surrounding agricultural land."}
+  ],
+  sort:{ title:"Sort these settlement features", groups:[
+    {name:"Site factors", items:["water supply","flat dry land","fertile soil","defence"]},
+    {name:"Situation factors", items:["route centre","river crossing","near a harbour","trade crossroads"]},
+    {name:"Rural patterns", items:["nucleated village","dispersed farms","linear roadside houses"]},
+    {name:"Urban zones", items:["central business district","industrial zone","residential suburbs","open land"]}
+  ]},
+  mapwork:{ title:"Zones and growth of a town", caption:"Complete the table by stating where each zone lies and why.", items:[
+    {p:"Central business district", f:"At the centre where main roads meet; maximum access, so shops and offices bid highest for land"},
+    {p:"Older industrial zone", f:"Beside railways, the port or main roads, for moving raw materials and goods"},
+    {p:"High-density housing", f:"Near the centre and places of work, where land is costly and plots are small"},
+    {p:"Low-density suburbs", f:"On the edge where land is cheaper, with larger plots and open space"},
+    {p:"Markets and lorry parks", f:"At accessible nodes, often near the central business district and terminals"},
+    {p:"Water and waste land", f:"Low-lying or riverside ground often left to informal settlement and industry"},
+    {p:"Direction of growth", f:"Along the main roads outward, where transport and land are available"}
+  ]},
+  casestudy:{ title:"Why Bopolu grew where it did",
+    text:"Bopolu, the county seat of Gbarpolu, sits on raised ground in the inland west of Liberia. Long before it was an administrative town it was a meeting point: paths from the farming country around converged on a high, well-drained place that held a reliable spring and could be defended. Its situation, more than its site, made it — it stood at the junction of trade routes linking the interior to the coastal towns, where kola, rubber and farm produce changed hands.\n\nWhen county administration was established, the town gained a court, a district office and later schools and a clinic. These functions drew people from the surrounding villages: farmers came on market days, traders settled to serve them, and young people came for schooling and government work. The threshold population of each new service was reached in turn, so a kiosk grew to a shop, a weekly market to a daily one, and a dispensary to a hospital referral point.\n\nYet the town's growth has been held back by its roads. In the rainy season the road to the coast is slow and sometimes cut, so goods and people move with difficulty and outside investment hesitates. The lesson is that a strong site and a central situation can found a town, but its continued growth depends on the routes and services that bind it to the wider economy.",
+    questions:[
+      {q:"Identify two site factors that favoured Bopolu.", a:"Raised, well-drained ground and a reliable spring, together with a defensible position."},
+      {q:"Identify the situation factor that most encouraged its growth.", a:"Its position at the junction of trade routes linking the interior with the coastal towns."},
+      {q:"Which functions were added when it became a county seat?", a:"Administration — a court and district office — followed by schools and a clinic."},
+      {q:"Explain the threshold idea using the kiosk-to-shop example.", a:"As the town's population grew, enough customers existed for larger services, so a kiosk became a shop and the market grew from weekly to daily."},
+      {q:"What factor has held the town back, and why?", a:"Poor roads, especially in the rainy season, which slow the movement of goods and people and discourage outside investment."},
+      {q:"Suggest one measure that would most help the town to grow.", a:"Improving the all-season road to the coast, which would speed trade, lower costs and connect the town more firmly to markets."}
+    ]},
+  project:{ title:"A settlement study of your local town",
+    brief:"Survey and explain the site, situation and land use of a nearby settlement.",
+    steps:[
+      "Identify the settlement and describe its site: relief, drainage and water supply.",
+      "Describe its situation relative to roads, rivers, farms and other towns.",
+      "Classify its pattern (nucleated, dispersed or linear) and its main functions.",
+      "Map the land-use zones: shops, industry, housing, markets and open space.",
+      "Interview residents about the town's growth and problems, then write up findings with a sketch map."
+    ],
+    criteria:["Site clearly described","Situation related to routes and places","Pattern and functions identified","Land-use zones mapped","Growth and problems reported with evidence"]},
+  worked:[
+    {q:"A town covers 6 km by 4 km. Find its approximate area.", steps:["6 \\u00d7 4"], a:"24 km^2"},
+    {q:"A service needs 5 000 customers and the area has 200 people per km^2. What area (in km^2) supports it?", steps:["5 000 \\u00f7 200"], a:"25 km^2"},
+    {q:"A city grows from 300 000 to 450 000. Find the percentage increase.", steps:["Increase = 150 000","(150 000 \\u00f7 300 000) \\u00d7 100"], a:"50%"},
+    {q:"If the central business district occupies 8% of a 50 km^2 city, find its area.", steps:["0.08 \\u00d7 50"], a:"4 km^2"},
+    {q:"A market draws customers from 12 villages averaging 800 people each. Estimate its population base.", steps:["12 \\u00d7 800"], a:"9 600 people"},
+    {q:"A town adds 2 km^2 of housing each year. How much land is built on in 15 years?", steps:["2 \\u00d7 15"], a:"30 km^2"},
+    {q:"Residential land is 60% of a 40 km^2 town. Find the residential area.", steps:["0.60 \\u00d7 40"], a:"24 km^2"},
+    {q:"A shop serves people within 5 km. Using an area of pi r^2, estimate the served area.", steps:["3.14 \\u00d7 5^2 = 3.14 \\u00d7 25"], a:"About 78.5 km^2"}
+  ],
+  apply:[
+    {q:"Why did many of Liberia's largest towns grow on the coast?", a:"The coast offered harbours and landing points for trade with the outside world, and situation on the sea routes linked them to world markets. Ports such as Monrovia and Buchanan became gateways for exports and imports, attracting administration, industry and people."},
+    {q:"Explain why a village market and a city department store need different threshold populations.", a:"The market sells everyday goods that people travel a short distance for, so a small surrounding population supports it. The department store offers expensive, rarely bought goods and needs a large catchment, so it locates only where many people can reach it."},
+    {q:"How can town planning reduce the problems caused by rapid urban growth?", a:"By laying out planned plots and roads before slums form, zoning industry away from homes, reserving land for water, drainage, markets, schools and clinics, and protecting a green belt so the city does not swallow farmland."},
+    {q:"Why do shops and offices outbid housing for central land?", a:"Central land gives the greatest access to customers and workers, and commerce gains more profit from that access than housing does, so businesses can pay higher rents and occupy the core while housing spreads outward."},
+    {q:"A mining town grows fast while the mine is open but suffers when the ore runs out. Explain this risk.", a:"The town depends on a single function. When mining ends, jobs vanish and people leave, shrinking the population and the services that relied on it. Diversifying into farming, trade or processing would make it more resilient."}
+  ],
+  activities:[
+    "Map the land-use zones of the nearest town on a base sketch",
+    "Survey a village and classify its site, situation and settlement pattern",
+    "Compare the functions of Monrovia, a county town and a village",
+    "Plot a town's growth over time from maps or interviews",
+    "Debate the best ways to manage urban growth in Liberia",
+    "Rank local services by the threshold population each needs"
+  ],
+  materials:[
+    "Primary text: Human and Regional Geography for Senior Secondary Schools",
+    "Town plans and maps of Monrovia and county towns",
+    "Land-use survey sheets and sketch maps",
+    "Pictures of rural and urban settlements",
+    "Graph paper; WASSCE Q & A Papers 1 and 2"
+  ],
+  assessment:["Field settlement study","Land-use map","Data-response questions","Debate","Written test"]
+},
+
+{
+  grade:12, period:"IV", sem:"Two", icon:"\uD83C\uDF31",
+  title:"Economic Geography: Agriculture",
+  subtitle:"Types of farming, factors affecting agriculture, crops and livestock, and agricultural problems and improvement",
+  outcomes:[
+    "Learners are able to classify agricultural systems and account for the distribution of crops and livestock",
+    "Learners are able to evaluate the problems of Liberian agriculture and propose improvements"
+  ],
+  objectives:[
+    "Distinguish subsistence from commercial and arable, pastoral and mixed farming",
+    "Describe the physical and economic factors that influence agriculture",
+    "Account for the distribution of major food and cash crops in Liberia and the world",
+    "Explain plantation agriculture and the role of cooperatives and processing",
+    "Outline the problems of farming in Liberia and ways to raise production",
+    "Interpret agricultural statistics and land-use data"
+  ],
+  note:"<b>Agriculture</b> is the cultivation of crops and rearing of animals. <b>Subsistence farming</b> produces mainly for the family, using simple tools and family labour; <b>commercial farming</b> produces for sale, with larger inputs and often a single crop. Liberia's main cash crops are <b>rubber, oil palm, cocoa and coffee</b>, grown partly on plantations, while <b>rice and cassava</b> are the leading food crops. Output is limited by the use of hand tools, limited fertilisers and improved seed, poor rural roads, post-harvest loss and reliance on rainfall. Raising production depends on improved varieties, processing to add value, organised marketing and better roads and credit.",
+  focus:[
+    "Types of agriculture: subsistence, commercial, plantation, mixed, pastoral",
+    "Physical factors: climate, soil, relief and water",
+    "Economic factors: capital, labour, transport, market and land tenure",
+    "Food crops of Liberia: rice, cassava, yams, vegetables",
+    "Cash and export crops: rubber, oil palm, cocoa, coffee, sugarcane",
+    "Plantation agriculture: organisation, labour and processing",
+    "Livestock and fishing; the role of cooperatives",
+    "Agricultural problems and improvement: tools, seeds, credit, roads, storage"
+  ],
+  terms:[
+    {t:"agriculture", d:"the cultivation of crops and rearing of animals", x:"Agriculture feeds the nation and earns exports."},
+    {t:"subsistence farming", d:"farming mainly to feed the farmer's family", x:"Most upland rice is grown by subsistence farmers."},
+    {t:"commercial farming", d:"farming mainly to produce for sale", x:"Rubber estates are commercial farms."},
+    {t:"plantation", d:"a large estate growing one cash crop with paid labour", x:"A rubber plantation covers thousands of hectares."},
+    {t:"arable farming", d:"the growing of crops on ploughed or cultivated land", x:"Rice and cassava are arable products."},
+    {t:"pastoral farming", d:"the rearing of grazing animals", x:"Pastoral herds are common in drier regions."},
+    {t:"mixed farming", d:"growing crops and rearing animals on the same farm", x:"Mixed farming spreads the farmer's risk."},
+    {t:"cash crop", d:"a crop grown mainly for sale, often for export", x:"Rubber is Liberia's leading cash crop."},
+    {t:"food crop", d:"a crop grown mainly to feed people", x:"Cassava is an important food crop."},
+    {t:"livestock", d:"animals kept on a farm, such as cattle, goats and poultry", x:"Livestock supplies meat, milk and eggs."},
+    {t:"shifting cultivation", d:"clearing a plot, farming it briefly and moving on as fertility falls", x:"Bush fallowing is a form of shifting cultivation."},
+    {t:"bush fallow", d:"leaving cleared land to regenerate under bush for some years", x:"Bush fallow restores soil fertility."},
+    {t:"irrigation", d:"supplying water to crops by artificial means", x:"Irrigation allows farming in the dry season."},
+    {t:"fertility", d:"the ability of soil to support crop growth", x:"Manure and fallow maintain soil fertility."},
+    {t:"cooperative", d:"an association of farmers who work and market together", x:"A cooperative can buy a shared mill."},
+    {t:"value addition", d:"processing produce before sale to increase its worth", x:"Milling rice or pressing palm oil adds value."},
+    {t:"post-harvest loss", d:"produce spoiled or lost after harvesting", x:"Drying and storage cut post-harvest loss."},
+    {t:"extension worker", d:"an officer who teaches farmers improved methods", x:"Extension workers demonstrate new varieties."},
+    {t:"land tenure", d:"the system by which land is owned and held", x:"Customary tenure governs most rural land."},
+    {t:"growing season", d:"the period when temperature and rainfall allow crops to grow", x:"The rainy season is Liberia's main growing season."}
+  ],
+  facts:[
+    {q:"State the main difference between subsistence and commercial farming.", a:"Subsistence farming produces mainly for the farmer's family with simple tools and small holdings; commercial farming produces mainly for the market, often on a large scale with paid labour and modern inputs."},
+    {q:"List four physical factors that influence agriculture.", a:"Climate (rainfall and temperature), soil type and fertility, relief or slope, and the availability of water."},
+    {q:"List four economic factors that influence agriculture.", a:"Capital or credit, the supply and cost of labour, transport to market, the size and price of the market, and the system of land tenure."},
+    {q:"Name Liberia's four principal export cash crops.", a:"Rubber, oil palm, cocoa and coffee (with sugarcane also grown commercially)."},
+    {q:"Name Liberia's leading staple food crops.", a:"Rice (upland and lowland) and cassava, together with yams, eddoes, plantains and vegetables."},
+    {q:"Give three features of plantation agriculture.", a:"A single crop grown over a large area; heavy capital investment and paid, often organised labour; and on-site processing such as a rubber-processing factory or palm-oil mill."},
+    {q:"State four problems facing Liberian smallholder farmers.", a:"Reliance on hand tools and limited machinery; lack of improved seeds, fertiliser and credit; poor rural roads and distance to market; and heavy post-harvest loss through poor storage and processing."},
+    {q:"How does shifting cultivation (bush fallow) maintain fertility, and when does it fail?", a:"The fallow years under bush restore fertility naturally. It fails when population pressure shortens the fallow, so the soil does not recover and yields fall."},
+    {q:"Give four ways to increase agricultural production in Liberia.", a:"Supply improved seeds and fertiliser on credit; provide irrigation and small machinery; build all-season roads and storage; add value by local processing; and strengthen cooperatives and extension services."},
+    {q:"Why is adding value to crops important to farmers?", a:"Processing raw produce into oil, milled rice or dried cocoa raises its price, creates local jobs and reduces the cost and loss of transporting bulky or perishable raw produce."}
+  ],
+  tf:[
+    {s:"Subsistence farming produces mainly for the market.", a:"false", why:"It produces mainly for the family; commercial farming produces for sale."},
+    {s:"Rubber is Liberia's leading export cash crop.", a:"true", why:"Rubber plantations have long dominated agricultural exports."},
+    {s:"Bush fallow restores soil fertility naturally.", a:"true", why:"Years under regenerating bush rebuild nutrients before the plot is farmed again."},
+    {s:"Poor rural roads have little effect on farming.", a:"false", why:"Bad roads delay and raise the cost of moving produce, causing spoilage and lower farm-gate prices."},
+    {s:"Processing crops before sale is a form of value addition.", a:"true", why:"Milled rice or pressed oil sells for more than the raw produce."},
+    {s:"Plantation farms usually grow many different crops together.", a:"false", why:"A plantation specialises in a single crop over a large area."},
+    {s:"Cooperatives help small farmers market their produce.", a:"true", why:"By acting together farmers can buy, process and sell at better prices."}
+  ],
+  sort:{ title:"Sort these crops, systems and problems", groups:[
+    {name:"Food crops", items:["rice","cassava","yams","plantains","vegetables"]},
+    {name:"Cash crops", items:["rubber","oil palm","cocoa","coffee","sugarcane"]},
+    {name:"Farming systems", items:["subsistence","commercial","plantation","mixed","pastoral"]},
+    {name:"Improvements", items:["improved seed","fertiliser","irrigation","storage","cooperatives","all-season roads"]}
+  ]},
+  mapwork:{ title:"Crops and farming regions of Liberia", caption:"Complete the table by stating where each crop is grown and one condition it needs.", items:[
+    {p:"Rubber", f:"Widely grown, especially Margibi and central counties; needs well-drained lateritic soils and steady rainfall"},
+    {p:"Oil palm", f:"Coastal and south-eastern counties; needs high rainfall, warmth and humid lowlands"},
+    {p:"Cocoa", f:"Inland, especially Lofa and Nimba; needs shade, reliable rain and well-drained upland soil"},
+    {p:"Coffee", f:"Upland counties such as Lofa; tolerates slightly cooler, higher ground"},
+    {p:"Upland rice", f:"Grown countrywide on cleared upland soils; the national staple"},
+    {p:"Cassava", f:"Grown on most soils nationwide; drought-tolerant and grown through much of the year"},
+    {p:"Lowland / swamp rice", f:"Valley bottoms and inland swamps; uses retained moisture for higher yields"}
+  ]},
+  casestudy:{ title:"The cocoa farmers of Lofa who joined together",
+    text:"Cocoa grows well in the inland climate of Lofa, where the shade, rainfall and well-drained upland soils suit the tree. For years, however, farmers there sold wet, poorly fermented beans to travelling buyers who set the price. Because the beans were not properly dried and fermented, they fetched a low grade; because each farmer sold alone, he had no power to refuse a low offer, and much of the crop spoiled in the rains before it reached a buyer.\n\nA group of villages formed a cooperative. They built a shared fermentary and drying floor, so beans could be processed to the grade exporters wanted. The cooperative bought sealed sacks and arranged one lorry to carry the combined crop to market, cutting transport cost per bag. Selling together, they negotiated with two exporters instead of taking the first offer, and the better grade earned a premium price. Part of the shared profit paid for improved seedlings and an extension officer's visits, and part was set aside as credit against the next season.\n\nWithin a few years members' incomes rose and young men who had planned to leave for Monrovia stayed to tend new farms. The farmers had changed little about the trees or the climate; what they changed was the processing, the transport and the marketing — the parts of farming that come after the harvest.",
+    questions:[
+      {q:"What physical conditions make Lofa suitable for cocoa?", a:"Shade, reliable rainfall and well-drained upland soils in the inland climate."},
+      {q:"Why did the farmers' beans fetch a low price at first?", a:"They were wet and poorly fermented, so they graded low, and farmers sold individually with no bargaining power."},
+      {q:"List three things the cooperative did.", a:"Built a shared fermentary and drying floor; bought sacks and arranged one lorry for the combined crop; and sold together to negotiate with exporters."},
+      {q:"How did proper processing raise the price?", a:"Well-fermented, dried beans reached the grade exporters wanted, earning a premium rather than the low grade for wet beans."},
+      {q:"What did the cooperative spend its shared profit on?", a:"Improved seedlings, extension visits and a credit fund for the next season."},
+      {q:"Explain why the story shows that marketing matters as much as growing.", a:"The trees and climate were unchanged; better processing, transport and joint selling cut loss and cost, raised the grade and price, and kept young people in farming."}
+    ]},
+  project:{ title:"A farming system survey",
+    brief:"Investigate the crops, methods and problems of farmers in your area.",
+    steps:[
+      "Identify the main food and cash crops grown and where they are sold.",
+      "Record the tools, labour and sources of water the farmers use.",
+      "Ask about fertilisers, seeds, credit and extension advice.",
+      "Find out how produce is transported and stored, and what losses occur.",
+      "Present findings with a crop map, a bar chart of yields or prices, and recommendations."
+    ],
+    criteria:["Crops and markets identified","Inputs and labour recorded","Credit and extension use documented","Transport, storage and loss assessed","Crop map and recommendations presented"]},
+  worked:[
+    {q:"A farm yields 2 tonnes of rice per hectare over 15 hectares. Find total production.", steps:["2 \\u00d7 15"], a:"30 tonnes"},
+    {q:"Improved seed raises yield from 2 to 3.2 tonnes per hectare. Find the percentage increase.", steps:["Increase = 1.2","(1.2 \\u00f7 2) \\u00d7 100"], a:"60%"},
+    {q:"A farmer sells 80 bags at US$25 each. Find the total income.", steps:["80 \\u00d7 25"], a:"US$2 000"},
+    {q:"Raw cocoa sells at US$1.20 per kg; dried graded cocoa at US$2.10. Find the extra per kg.", steps:["2.10 \\u2212 1.20"], a:"US$0.90 per kg"},
+    {q:"25% of a 4-tonne harvest is lost to poor storage. How much is lost?", steps:["0.25 \\u00d7 4 tonnes"], a:"1 tonne"},
+    {q:"A cooperative ships 300 bags in one lorry at US$3 per bag instead of US$5. Find the saving.", steps:["Saving = (5 \\u2212 3) \\u00d7 300"], a:"US$600"},
+    {q:"A 20-hectare plantation employs 1 worker per 4 hectares. How many workers?", steps:["20 \\u00f7 4"], a:"5 workers"},
+    {q:"Cassava bought at US$0.30 per kg is processed into gari worth US$0.90. Find the value added.", steps:["0.90 \\u2212 0.30"], a:"US$0.60 per kg"}
+  ],
+  apply:[
+    {q:"Why does rubber suit plantation agriculture more than cassava does?", a:"Rubber is a tree crop needing a large area, heavy capital, organised labour and a processing factory before the latex can be sold, so it favours estates. Cassava is a short-season food staple easily grown by smallholders for home use and local sale."},
+    {q:"Explain how all-season roads could change farming in a remote county.", a:"They let produce reach market quickly without rain spoiling it, lowering transport cost and post-harvest loss. Farmers gain higher and steadier prices, can grow more for sale, and inputs such as fertiliser and seed become cheaper to bring in."},
+    {q:"Why is it risky for a country to depend on a single export crop such as rubber?", a:"World prices swing with demand, and disease or bad weather can hit one crop hard. A fall in price or a failed harvest then damages the whole national income; diversifying crops spreads the risk."},
+    {q:"How can irrigation raise food security in Liberia?", a:"Reliance on rainfall limits farming mainly to the wet season. Irrigation allows a dry-season crop, smoothing supply through the year, raising total output and reducing the risk of hunger before the harvest."},
+    {q:"Why might a young farmer stay in the countryside rather than migrate, if processing is introduced locally?", a:"Local processing creates paying jobs — milling, pressing, drying and trading — and raises farm incomes, so the countryside offers the cash income that previously could only be sought in the city."}
+  ],
+  activities:[
+    "Map the distribution of food and cash crops across Liberia's counties",
+    "Survey local farms and record crops, tools, inputs and problems",
+    "Compare subsistence and plantation farming using photographs or visits",
+    "Calculate yields, incomes and losses from supplied farm data",
+    "Debate the value of large plantations against smallholder cooperatives",
+    "Draw a flow chart of a crop from farm through processing to export"
+  ],
+  materials:[
+    "Primary text: Economic and Human Geography for West Africa",
+    "Maps of Liberian agriculture and crop distribution",
+    "Farm data sets and price tables",
+    "Pictures of plantations, cooperatives and processing mills",
+    "Graph paper and calculators; WASSCE Q & A Papers 1 and 2"
+  ],
+  assessment:["Farm survey report","Crop map","Data-response calculations","Debate","Written test"]
+},
+
+{
+  grade:12, period:"V", sem:"Two", icon:"\uD83C\uDFED\uFE0F",
+  title:"Industry, Transport, Trade and Development",
+  subtitle:"Manufacturing and energy, transport networks, national and international trade, and regional economic integration",
+  outcomes:[
+    "Learners are able to account for the location of industry and the pattern of trade and transport",
+    "Learners are able to assess Liberia's resources, trade and development prospects"
+  ],
+  objectives:[
+    "Classify industries and explain the factors of industrial location",
+    "Describe sources of energy and their importance to development",
+    "Compare the means of transport and their suitability for different goods",
+    "Explain imports, exports, balance of trade and the role of ports",
+    "Describe regional economic groupings such as ECOWAS and their benefits",
+    "Assess Liberia's resources, trade partners and development challenges"
+  ],
+  note:"<b>Industry</b> is classified as primary (extracting), secondary (manufacturing) and tertiary (services). Factories locate where raw materials, power, labour, market and transport favour them: heavy, bulky or perishable materials are processed near their source. <b>Transport</b> moves people and goods — water is cheapest for heavy bulk cargo, road is most flexible door to door, rail suits steady heavy loads over land, and air is fastest and costliest. <b>Trade</b> is exports sold abroad against imports bought in; the <b>balance of trade</b> is the value of exports minus imports. Liberia exports iron ore, rubber and other primary products and imports manufactured goods, fuel and rice. <b>ECOWAS</b> promotes free movement and trade among West African states.",
+  focus:[
+    "Industrial classification: primary, secondary and tertiary",
+    "Factors of industrial location and their weighting",
+    "Energy sources: hydroelectric, thermal, solar and biomass; importance of power",
+    "Transport: road, rail, water and air — advantages and limits",
+    "Ports and their role in import and export trade",
+    "Trade: exports, imports, balance of trade and terms of trade",
+    "Liberia's trading partners and the composition of its trade",
+    "ECOWAS and regional integration; development and its indicators"
+  ],
+  terms:[
+    {t:"primary industry", d:"industry that extracts or harvests natural products", x:"Mining and logging are primary industries."},
+    {t:"secondary industry", d:"industry that processes or manufactures goods", x:"A soap factory is secondary industry."},
+    {t:"tertiary industry", d:"industry that provides a service", x:"Banking and transport are tertiary."},
+    {t:"manufacturing", d:"making goods from raw materials by hand or machine", x:"Manufacturing adds value to raw materials."},
+    {t:"industrial location", d:"the siting of a factory according to chosen factors", x:"Raw materials guide industrial location."},
+    {t:"energy", d:"the power needed to work machines and provide services", x:"Reliable energy drives industry."},
+    {t:"hydroelectric power", d:"electricity generated from falling water", x:"Dams provide hydroelectric power."},
+    {t:"thermal power", d:"electricity generated by burning fuel such as oil or gas", x:"Generators provide thermal power."},
+    {t:"transport", d:"the movement of people and goods from place to place", x:"Transport links producers to markets."},
+    {t:"bulk cargo", d:"heavy, unpacked goods carried in large quantity", x:"Iron ore and fuel are bulk cargo."},
+    {t:"port", d:"a harbour where ships load and unload goods", x:"The Freeport of Monrovia is Liberia's main port."},
+    {t:"export", d:"a good or service sold to another country", x:"Rubber is a major export."},
+    {t:"import", d:"a good or service bought from another country", x:"Liberia imports much of its fuel."},
+    {t:"balance of trade", d:"the value of exports minus the value of imports", x:"More imports than exports gives a trade deficit."},
+    {t:"trade deficit", d:"when imports are worth more than exports", x:"A trade deficit sends money abroad."},
+    {t:"terms of trade", d:"the ratio of export prices to import prices", x:"Favourable terms of trade mean exports buy more imports."},
+    {t:"free trade", d:"trade between countries without tariffs or quotas", x:"ECOWAS encourages free trade in the region."},
+    {t:"tariff", d:"a tax placed on imported or exported goods", x:"A tariff raises the price of imports."},
+    {t:"ECOWAS", d:"the Economic Community of West African States, a regional grouping", x:"ECOWAS permits free movement of people and goods."},
+    {t:"development", d:"the improvement of living standards and the economy", x:"Development is measured by income, health and education."}
+  ],
+  facts:[
+    {q:"Give one example each of primary, secondary and tertiary industry.", a:"Primary: mining iron ore or farming; secondary: manufacturing cement or soap; tertiary: banking, transport or teaching."},
+    {q:"List five factors that influence the location of industry.", a:"Nearness to raw materials; power supply; labour; the market; and transport — with water, capital and government policy also important."},
+    {q:"State the main advantage and disadvantage of water transport.", a:"Advantage: it is the cheapest means for heavy, bulky cargo in large quantity. Disadvantage: it is slow and limited to navigable waterways and ports."},
+    {q:"State the main advantage and disadvantage of air transport.", a:"Advantage: it is the fastest and best for perishable or urgent, high-value goods. Disadvantage: it is the most expensive and unsuitable for heavy bulk cargo."},
+    {q:"Distinguish a balance of trade surplus from a deficit.", a:"A surplus occurs when exports earn more than imports cost; a deficit occurs when imports cost more than exports earn."},
+    {q:"Name Liberia's major exports.", a:"Iron ore, rubber, gold, diamonds, timber and palm oil, with other primary products."},
+    {q:"Name Liberia's major imports.", a:"Machinery and transport equipment, fuels and lubricants, rice and other foodstuffs, and manufactured consumer goods."},
+    {q:"Give three benefits of ECOWAS to member states.", a:"Free movement of people and goods across borders; a larger common market of many millions of people; and regional cooperation on roads, energy, security and trade."},
+    {q:"Why is reliable electricity important to industrial development?", a:"Machinery, refrigeration and processing depend on steady power; without it firms must buy costly generators, raising their expenses and discouraging investment."},
+    {q:"Give three indicators used to measure development.", a:"Income per person (such as GDP per capita), life expectancy and health, and levels of education and literacy."}
+  ],
+  tf:[
+    {s:"Mining is a secondary industry.", a:"false", why:"Mining extracts natural products, so it is primary; manufacturing is secondary."},
+    {s:"Water transport is the cheapest for heavy bulk cargo.", a:"true", why:"Ships carry very large loads at low cost per tonne."},
+    {s:"Air transport is the cheapest way to move goods.", a:"false", why:"It is the fastest but the most expensive, and suits light, urgent cargo."},
+    {s:"When imports exceed exports in value, there is a trade deficit.", a:"true", why:"A deficit means more money goes out for imports than comes in from exports."},
+    {s:"Hydroelectric power is generated by burning oil.", a:"false", why:"It is generated from the force of falling water; burning fuel gives thermal power."},
+    {s:"ECOWAS promotes free movement of people and goods in West Africa.", a:"true", why:"It is a regional community working toward integration and common trade."},
+    {s:"Bulky perishable raw materials should be processed near their source.", a:"true", why:"This cuts transport cost and spoilage, as in sawmilling or fruit canning."}
+  ],
+  sort:{ title:"Sort these industries, goods and transport", groups:[
+    {name:"Primary industry", items:["iron mining","rubber tapping","fishing","logging"]},
+    {name:"Secondary industry", items:["cement making","soap manufacture","oil milling","furniture making"]},
+    {name:"Tertiary industry", items:["banking","teaching","transport","tourism"]},
+    {name:"Best by water transport", items:["iron ore","fuel","cement","timber"]}
+  ]},
+  mapwork:{ title:"Liberia's trade and transport network", caption:"Complete the table by stating the role or importance of each.", items:[
+    {p:"Freeport of Monrovia", f:"The main gateway for imports and exports, handling ships, fuel and container cargo"},
+    {p:"Port of Buchanan", f:"Serves the iron-ore and freight trade and the central coast"},
+    {p:"Iron-ore railway (Yekepa–Buchanan)", f:"Carries heavy ore from the Nimba mines to the port for export"},
+    {p:"Monrovia–Ganta highway", f:"A key road spine linking the capital to the interior and cross-border trade"},
+    {p:"Robertsport and coastal landing sites", f:"Support fishing and small coastal trade"},
+    {p:"Cross-border routes to Guinea, Sierra Leone and Cote d'Ivoire", f:"Carry regional trade under ECOWAS movement rules"},
+    {p:"Hydroelectric sites (Mt. Coffee, St. Paul)", f:"Provide grid electricity from river dams to industry and towns"}
+  ]},
+  casestudy:{ title:"Why the iron ore goes by rail to Buchanan",
+    text:"Liberia's iron ore is mined in the Nimba range in the north-east, far from the sea. The ore is heavy and low in value per tonne compared with its weight, so transport is the deciding cost. When the mines were developed, the company did not send the ore by road. A lorry carries a small load at high cost per tonne and tears up roads under constant heavy use; over hundreds of kilometres the freight would consume the profit.\n\nInstead, a railway was built straight from the mines at Yekepa to the port of Buchanan. A train carries thousands of tonnes in one journey at a small cost per tonne, moving steadily regardless of rain, and delivers the ore directly to a purpose-built port where it is stockpiled and loaded onto bulk carriers for export. The same corridor later served inward freight for the mines — fuel, machinery and cement.\n\nThe arrangement follows a clear geographic rule: a heavy, bulky, low-value material moves by the cheapest bulk transport over a fixed route, which means rail on land and a dedicated port at the coast. The railway and the port exist because of the mine, and the mine is viable because of them. By contrast, light, high-value goods such as medicine and electronics move by road or air, where speed and flexibility matter more than the lowest cost per tonne.",
+    questions:[
+      {q:"Why is transport the deciding cost for iron ore?", a:"The ore is heavy and of low value per tonne, so freight over a long distance can take most of the profit if it is not cheap."},
+      {q:"Give two reasons ore is not sent by road lorry.", a:"Lorries carry small loads at high cost per tonne, and constant heavy use damages the roads, especially in the rains."},
+      {q:"State two advantages the railway offers.", a:"It moves thousands of tonnes at low cost per tonne and runs steadily regardless of rain, directly to the port."},
+      {q:"Why was a dedicated port needed at Buchanan?", a:"To stockpile and load bulk carriers for export and to handle inward fuel, machinery and cement for the mines."},
+      {q:"Which rule of transport choice does the case illustrate?", a:"Heavy, bulky, low-value goods use the cheapest bulk means — rail on land, ship by water — while light urgent goods favour road or air."},
+      {q:"Explain how the railway and port depend on each other.", a:"The mine needs the rail and port to export cheaply, while the rail and port exist to serve the mine's freight."}
+    ]},
+  project:{ title:"Industry, trade and transport enquiry",
+    brief:"Investigate a local industry, the goods it moves and the routes it uses.",
+    steps:[
+      "Identify a manufacturing, mining or processing business and classify its industry.",
+      "Record its raw materials, energy source and main markets.",
+      "Trace how its product reaches buyers and which means of transport is used.",
+      "List the imported and locally made inputs it relies on.",
+      "Present findings with a flow-line map from source to market and a short report on location factors."
+    ],
+    criteria:["Industry classified correctly","Inputs and energy recorded","Transport route traced","Imports and local inputs identified","Flow-line map and report completed"]},
+  worked:[
+    {q:"Exports earn US$240 million and imports cost US$360 million. Find the balance of trade.", steps:["240 \\u2212 360"], a:"\\u2212US$120 million (a deficit)"},
+    {q:"A train carries 6 000 tonnes at US$4 per tonne. Find the freight cost.", steps:["6 000 \\u00d7 4"], a:"US$24 000"},
+    {q:"Road haulage costs US$12 per tonne for the same ore. Find the extra cost over rail.", steps:["12 \\u2212 4 = 8 per tonne","8 \\u00d7 6 000"], a:"US$48 000 more"},
+    {q:"Liberia imports 300 000 tonnes of rice at US$400 per tonne. Find the total cost.", steps:["300 000 \\u00d7 400"], a:"US$120 million"},
+    {q:"A factory adds US$150 of value per tonne over 8 000 tonnes. Find value added.", steps:["150 \\u00d7 8 000"], a:"US$1.2 million"},
+    {q:"Exports rise from US$200 m to US$260 m. Find the percentage increase.", steps:["Increase = 60","(60 \\u00f7 200) \\u00d7 100"], a:"30%"},
+    {q:"A port handles 45 ships a month. How many ships in a year?", steps:["45 \\u00d7 12"], a:"540 ships"},
+    {q:"If 12% of a country's US$500 m export earnings come from gold, find that amount.", steps:["0.12 \\u00d7 500"], a:"US$60 million"}
+  ],
+  apply:[
+    {q:"Why does Liberia import large quantities of rice despite being an agricultural country?", a:"Urban demand and population growth exceed what smallholder, rain-fed farming produces, and post-harvest loss and limited irrigation keep domestic supply short, so the gap is filled by imported rice."},
+    {q:"Explain why a trade deficit in primary products can persist for a developing country.", a:"Primary products such as ore and rubber earn low and fluctuating prices, while imported manufactured goods, fuel and food are costly and essential. Export earnings often fail to cover import bills, leaving a deficit until local industry and processing expand."},
+    {q:"How could membership of ECOWAS help Liberian farmers and traders?", a:"It opens a large neighbouring market with reduced tariffs and freer movement, allowing crops and goods to be sold across borders more easily, and it supports shared roads and energy links that lower trade costs."},
+    {q:"Why is adding manufacturing capacity seen as a step toward development?", a:"Manufacturing creates skilled jobs and steady incomes, adds value to exports instead of selling cheap raw materials, and reduces dependence on costly imports — raising living standards and retaining wealth in the country."},
+    {q:"Argue whether Liberia should develop hydroelectric or thermal power first.", a:"Hydro suits Liberia's abundant rivers: it has no fuel cost, no air pollution and long-term low running cost, though it needs high capital and may flood land. Thermal power can be installed quickly but depends on costly imported fuel; a staged mix — quick thermal now, hydro for the long term — is often favoured."}
+  ],
+  activities:[
+    "Map Liberia's ports, railways and major roads and describe their roles",
+    "Construct a pie chart of Liberia's exports and imports from supplied data",
+    "Calculate balance of trade, freight costs and value added from data sets",
+    "Classify local businesses into primary, secondary and tertiary industry",
+    "Debate the benefits of ECOWAS free trade for Liberia",
+    "Trace the journey of an export from its source through the port abroad"
+  ],
+  materials:[
+    "Primary text: Economic Geography of West Africa",
+    "Maps of Liberian transport, industry and trade routes",
+    "Trade statistics and export-import tables",
+    "Pictures of ports, mines, factories and power stations",
+    "Calculators and graph paper; WASSCE Q & A Papers 1 and 2"
+  ],
+  assessment:["Data-response test","Trade and transport map","Enquiry report","Debate","Written examination"]
+},
+
+{
+  grade:12, period:"VI", sem:"Two", icon:"\u267B\uFE0F",
+  title:"Environmental Management and Regional Geography",
+  subtitle:"Ecosystems and resources, environmental hazards, conservation, and the geography of Liberia, West Africa and Africa",
+  outcomes:[
+    "Learners are able to explain environmental problems and the principles of sustainable management",
+    "Learners are able to describe and compare the regions of Liberia, West Africa and Africa"
+  ],
+  objectives:[
+    "Describe ecosystems, especially the tropical rainforest, and their value",
+    "Explain environmental problems: deforestation, soil erosion, pollution and climate change",
+    "Describe natural hazards and human responses to them",
+    "Explain conservation and the sustainable use of resources",
+    "Describe the physical and human regions of Liberia and their characteristics",
+    "Locate and compare the major countries, features and resources of West Africa and Africa"
+  ],
+  note:"The natural <b>environment</b> provides resources — forests, soils, water, minerals and a stable climate — but these can be damaged. <b>Deforestation</b> for farming, logging and fuelwood removes the forest cover that holds soil and rainfall, leading to <b>soil erosion</b>, loss of species and changed runoff. <b>Sustainable development</b> uses resources to meet present needs without destroying them for the future, through conservation, replanting, pollution control and protected areas. Liberia lies in the <b>tropical rainforest and coastal belt</b>, with inland hills and plateaus; it shares the Mano River Union region with Guinea and Sierra Leone and belongs to West Africa and the wider African continent.",
+  focus:[
+    "Ecosystems and the tropical rainforest: structure and value",
+    "Deforestation: causes and consequences",
+    "Soil erosion, desertification and land degradation",
+    "Pollution of water, air and land; waste in growing towns",
+    "Climate change and natural hazards: floods, storms and coastal erosion",
+    "Conservation and sustainable resource management; protected areas",
+    "The regions and resources of Liberia: coast, interior hills, plateaus",
+    "West Africa and Africa: countries, features, climates and resources"
+  ],
+  terms:[
+    {t:"environment", d:"the natural surroundings in which people live", x:"We depend on the environment for resources."},
+    {t:"ecosystem", d:"a community of living things and their physical surroundings", x:"A forest is a complex ecosystem."},
+    {t:"tropical rainforest", d:"dense evergreen forest where rainfall is high and year-round", x:"Liberia holds much of West Africa's remaining rainforest."},
+    {t:"biodiversity", d:"the variety of living species in an area", x:"Rainforests have high biodiversity."},
+    {t:"deforestation", d:"the clearing or destruction of forest", x:"Logging and farming cause deforestation."},
+    {t:"soil erosion", d:"the removal of topsoil by water or wind", x:"Removing trees speeds up soil erosion."},
+    {t:"desertification", d:"the spread of desert-like conditions as land degrades", x:"Overgrazing can lead to desertification."},
+    {t:"pollution", d:"harmful substances released into air, water or land", x:"Waste and fuels cause pollution."},
+    {t:"climate change", d:"long-term shift in global weather and temperatures", x:"Climate change is linked to greenhouse gases."},
+    {t:"natural hazard", d:"a natural event that threatens people and property", x:"Floods and storms are natural hazards."},
+    {t:"coastal erosion", d:"the wearing away of the coastline by the sea", x:"Coastal erosion threatens seaside towns."},
+    {t:"conservation", d:"protecting and carefully managing natural resources", x:"Conservation protects the forest for the future."},
+    {t:"sustainable development", d:"meeting present needs without harming future generations", x:"Sustainable development keeps resources renewable."},
+    {t:"renewable resource", d:"a resource that can be replaced as it is used", x:"Water and timber are renewable resources."},
+    {t:"non-renewable resource", d:"a finite resource that cannot be replaced once used", x:"Iron ore is a non-renewable resource."},
+    {t:"protected area", d:"land set aside for wildlife and forest conservation", x:"National parks are protected areas."},
+    {t:"reforestation", d:"replanting trees where forest was cleared", x:"Reforestation restores cover on bare hills."},
+    {t:"watershed", d:"the area drained by a river and its tributaries", x:"Protecting a watershed safeguards water supply."},
+    {t:"Mano River Union", d:"the regional union of Liberia, Sierra Leone and Guinea (with Cote d'Ivoire)", x:"The Mano River Union promotes regional cooperation."},
+    {t:"plateau", d:"an area of fairly level high ground", x:"Inland Liberia rises to rolling plateaus."}
+  ],
+  facts:[
+    {q:"State three values of the tropical rainforest.", a:"It supplies timber and forest products, holds soil and regulates runoff and rainfall, stores carbon, and is home to a great diversity of plants and animals."},
+    {q:"Give four causes of deforestation in Liberia.", a:"Logging for timber, clearing for agriculture and shifting cultivation, collection of fuelwood and charcoal, and expansion of settlements and mining."},
+    {q:"State three consequences of deforestation.", a:"Soil erosion and loss of fertility, reduced and more erratic rainfall and runoff, destruction of wildlife habitat, and greater flooding and siltation of rivers."},
+    {q:"Distinguish renewable from non-renewable resources, with examples.", a:"Renewable resources can be replenished as used, such as water, forests and solar energy; non-renewable resources are finite once used, such as iron ore, gold and petroleum."},
+    {q:"List three forms of pollution affecting growing Liberian towns.", a:"Water pollution from waste and poor sanitation, land pollution from uncollected refuse, and air pollution from generators, vehicle exhausts and burning."},
+    {q:"Give three examples of natural hazards in Liberia.", a:"Seasonal flooding in the rains, coastal erosion along the shoreline, wind storms, and occasional river and urban flood damage."},
+    {q:"State four principles of sustainable resource management.", a:"Use renewable resources no faster than they recover; replant forests (reforestation); control pollution and waste; and set aside protected areas while involving local communities."},
+    {q:"Describe the main physical regions of Liberia.", a:"A low coastal belt of plains and mangroves; inland rolling hills and ridges; and higher plateaus and the Guinea-highland fringe in the north, with major rivers flowing south-west to the sea."},
+    {q:"Name the countries that share a border with Liberia.", a:"Sierra Leone to the west, Guinea to the north and north-east, and Cote d'Ivoire to the east; the Atlantic Ocean lies to the south."},
+    {q:"State two aims of the Mano River Union and ECOWAS.", a:"To promote regional trade and free movement, and to cooperate on shared resources, roads, energy and security among neighbouring West African states."}
+  ],
+  tf:[
+    {s:"The tropical rainforest has low biodiversity.", a:"false", why:"It is among the richest ecosystems on earth in variety of species."},
+    {s:"Removing trees increases the risk of soil erosion.", a:"true", why:"Roots and leaf cover no longer bind and shield the soil, so rain washes it away."},
+    {s:"Iron ore is a renewable resource.", a:"false", why:"Minerals are finite and cannot be replaced once mined, so they are non-renewable."},
+    {s:"Sustainable development meets present needs without harming the future.", a:"true", why:"It keeps resources and the environment usable for coming generations."},
+    {s:"Coastal erosion can threaten seaside settlements.", a:"true", why:"The sea wears back the shore, endangering buildings and roads."},
+    {s:"Reforestation means clearing more forest for farms.", a:"false", why:"It means replanting trees to restore forest that was cleared."},
+    {s:"Liberia is bordered by Sierra Leone, Guinea and Cote d'Ivoire.", a:"true", why:"These three states surround Liberia on land, with the Atlantic to the south."}
+  ],
+  sort:{ title:"Sort these resources, problems and solutions", groups:[
+    {name:"Renewable resources", items:["water","timber","solar energy","fish"]},
+    {name:"Non-renewable resources", items:["iron ore","gold","diamonds","petroleum"]},
+    {name:"Environmental problems", items:["deforestation","soil erosion","pollution","coastal erosion","flooding"]},
+    {name:"Conservation measures", items:["reforestation","protected areas","pollution control","controlled logging"]}
+  ]},
+  mapwork:{ title:"The regions and neighbours of Liberia", caption:"Complete the table by locating each feature and stating its importance.", items:[
+    {p:"Atlantic coast", f:"The southern boundary; holds the ports, fishing grounds and the coastal plain"},
+    {p:"Sierra Leone", f:"Border to the west; a Mano River Union partner and trade neighbour"},
+    {p:"Guinea", f:"Border to the north and north-east; source region of several rivers and a trade partner"},
+    {p:"Cote d'Ivoire", f:"Border to the east; shares the forest belt and cross-border trade"},
+    {p:"Inland hills and plateaus", f:"The interior; mining, upland farming and the sources of major rivers"},
+    {p:"Mano, Lofa, St. Paul, St. John and Cestos rivers", f:"Drain south-west to the sea; provide water, fish, transport routes and hydroelectric potential"},
+    {p:"Remaining rainforest belt", f:"South-east and interior; high biodiversity and timber, needing conservation"}
+  ]},
+  casestudy:{ title:"The hillside that lost its trees",
+    text:"A farming community on an inland slope grew upland rice and cassava. Above the village a forested ridge held the springs that fed the stream supplying water, and the roots of the trees bound the soil. Over a number of years, as the village grew and a logging road opened, the ridge was progressively cleared: loggers took the largest trees, farmers extended their fields up the slope, and women cut the remaining growth for fuelwood and charcoal for the market town.\n\nAt first the change seemed profitable. Timber brought cash, new fields gave larger harvests and charcoal sold well. But the next heavy rains behaved differently. With no roots to hold it and no leaf cover to soften the fall, the topsoil washed down the slope into the stream. The springs shrank in the dry season, and after a severe storm the swollen river carried silt and debris, flooded the lower farms and left sand over the rice fields. Fish catches fell as the river clouded, and the village water supply became unreliable.\n\nThe community, advised by an agriculture officer, then acted. They set the steepest ridge as a protected woodlot where no felling was allowed, planted fast-growing trees on the bare upper slope, and kept contour lines of grass across their fields to check runoff. Within several years the springs steadied, the stream cleared and the flooding lessened. The village had learned that the trees were not idle timber: they were the working cover that held the soil and stored the water.",
+    questions:[
+      {q:"Give three activities that cleared the ridge.", a:"Commercial logging, the extension of farms up the slope, and cutting growth for fuelwood and charcoal."},
+      {q:"What were the immediate benefits of clearing the forest?", a:"Cash from timber, larger harvests from new fields and income from selling charcoal."},
+      {q:"Explain how clearing led to soil erosion.", a:"Without roots to bind the soil or leaf cover to soften the rain, the topsoil washed down the slope into the stream."},
+      {q:"State three consequences suffered by the village.", a:"Shrinking dry-season springs, a flooded river that silted up farms, and falling fish catches and unreliable water supply."},
+      {q:"What conservation measures did the community take?", a:"They set the steep ridge as a protected woodlot, replanted trees on the bare slope, and laid grass contour lines across the fields to check runoff."},
+      {q:"What does the story teach about the value of trees?", a:"Trees actively hold the soil, regulate springs and streams and reduce flooding, so their removal has costs that appear later, after the short-term gains."}
+    ]},
+  project:{ title:"An environmental study of the local area",
+    brief:"Investigate an environmental problem near you and propose a sustainable solution.",
+    steps:[
+      "Identify a local issue such as erosion, deforestation, flooding, waste or polluted water.",
+      "Observe and record its extent, causes and effects on people and farming.",
+      "Interview residents about how it has changed over time.",
+      "Identify which resources are renewable or non-renewable in the area.",
+      "Propose a practical conservation measure and present it with a map, photographs or sketches."
+    ],
+    criteria:["Problem clearly identified","Causes and effects recorded","Change over time documented","Resources classified","A practical, sustainable proposal presented"]},
+  worked:[
+    {q:"A forest of 5 000 hectares loses 8% a year. How much is lost in year one?", steps:["0.08 \\u00d7 5 000"], a:"400 hectares"},
+    {q:"If erosion removes 2 cm of topsoil from 30 hectares, how much soil area is affected?", steps:["Given area affected"], a:"30 hectares (2 cm depth lost)"},
+    {q:"A reforestation scheme plants 1 200 trees per hectare over 25 hectares. Find the total.", steps:["1 200 \\u00d7 25"], a:"30 000 trees"},
+    {q:"A flood destroys 15% of a 600-tonne harvest. How much is lost?", steps:["0.15 \\u00d7 600"], a:"90 tonnes"},
+    {q:"A mine extracts 2 million tonnes of ore a year for 30 years. Find total extraction.", steps:["2 \\u00d7 30"], a:"60 million tonnes (non-renewable)"},
+    {q:"Protected areas cover 12% of a country of 96 000 km^2. Find the protected area.", steps:["0.12 \\u00d7 96 000"], a:"11 520 km^2"},
+    {q:"A town produces 40 tonnes of waste a day. How much in a 30-day month?", steps:["40 \\u00d7 30"], a:"1 200 tonnes"},
+    {q:"Reforestation reduces dry-season river loss by 35% of a 200-litre shortfall. How much is recovered?", steps:["0.35 \\u00d7 200"], a:"70 litres per unit"}
+  ],
+  apply:[
+    {q:"Why is it short-sighted to sell all a country's timber without replanting?", a:"Timber is renewable only if the forest is given time and replanting to recover. Clearing it outright gives a one-time profit but causes erosion, lost springs, reduced rainfall and extinct species, and destroys the chance of future harvests."},
+    {q:"Explain how protecting the forest on a watershed safeguards a town's water.", a:"Forest soil and roots act like a sponge: they absorb rain, release it steadily into springs and rivers and filter sediment. Intact forest gives a reliable, clean, year-round supply; clearing brings floods, silt and dry-season shortage."},
+    {q:"Why must non-renewable minerals be used with planning rather than mined as fast as possible?", a:"Once extracted they are gone forever, so rapid mining exhausts the national endowment quickly. Planned extraction spreads the benefit over time, earns steady revenue, and allows income to be invested in renewable assets and development before the ore ends."},
+    {q:"How can rural communities reduce the damage from fuelwood gathering?", a:"By planting fast-growing woodlots for fuel, using efficient stoves that burn less wood, making charcoal from managed regrowth and protecting the steepest watersheds, so daily fuel needs do not strip the protective forest."},
+    {q:"Why is regional cooperation important for managing Liberia's rivers and forests?", a:"Rivers and forests cross borders: the health of shared watersheds and the movement of wildlife and trade do not stop at a boundary. Agreements with Guinea, Sierra Leone and Cote d'Ivoire allow joint management of water, transport, energy and conservation."}
+  ],
+  activities:[
+    "Map the physical regions, rivers and neighbours of Liberia",
+    "Survey a local environmental problem and propose a conservation plan",
+    "Map the countries and major features of West Africa and Africa",
+    "Classify local resources as renewable or non-renewable",
+    "Calculate rates of deforestation, reforestation and protected area from data",
+    "Debate the balance between logging for income and forest conservation"
+  ],
+  materials:[
+    "Primary text: Regional Geography of West Africa and Africa",
+    "Maps of Liberia, West Africa and Africa: physical, political and resources",
+    "Environmental photographs and case-study material",
+    "Conservation and resource data sets",
+    "Graph paper and calculators; WASSCE Q & A Papers 1 and 2"
+  ],
+  assessment:["Environmental field study","Regional map work","Data-response questions","Debate","Final written examination"]
+}
+
+];

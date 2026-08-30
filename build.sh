@@ -15,7 +15,7 @@ cd "$(dirname "$0")"
   echo '</style>'
   echo '</head>'
   cat body.html
-  for f in data-en.js data-fr.js data-fr79.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ec.js data-eg.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ss.js gen-rm.js gen-pe.js app.js; do
+  for f in data-en.js data-fr.js data-fr79.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ec.js data-eg.js data-gg.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ss.js gen-rm.js gen-pe.js app.js; do
     echo '<script>'
     cat "$f"
     echo '</script>'
