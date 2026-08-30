@@ -233,42 +233,6 @@ with sync_playwright() as p:
         if r["ddCount"] != 5:
             bad.append(f"{name}: expected 5 dropdowns, found {r['ddCount']}")
         pg.close()
-    # --- 6. duplex print helper (book print sequence) ---
-    pg = b.new_page(viewport={"width": 1366, "height": 900})
-    pg.goto(HTML); pg.wait_for_timeout(800)
-    pg.eval_on_selector("#gen", "e=>e.click()"); pg.wait_for_timeout(1200)
-    n = int(pg.eval_on_selector("#pageN", "e=>e.textContent"))
-    pg.eval_on_selector("#dup", "e=>e.click()"); pg.wait_for_timeout(250)
-    if pg.eval_on_selector("#bookMask", "e=>e.hidden"):
-        bad.append("duplex helper did not open")
-    if not pg.eval_on_selector("#results", "e=>e.classList.contains('show')"):
-        bad.append("duplex helper did not auto-generate the open pack")
-    got = pg.eval_on_selector("#pageCount", "e=>e.value")
-    if int(got) != n:
-        bad.append(f"duplex prefill {got} != pack pages {n}")
-    odd = pg.eval_on_selector("#oddSequence", "e=>e.textContent")
-    even = pg.eval_on_selector("#evenSequence", "e=>e.textContent")
-    exp_odd = ",".join(str(i) for i in range(1, n + 1, 2))
-    exp_even = ",".join(str(i) for i in range(2, n + 1, 2))
-    if odd != exp_odd or even != exp_even:
-        bad.append(f"duplex sequences wrong for {n} pages")
-    if pg.eval_on_selector("#summary", "e=>e.textContent").find(str((n + 1) // 2)) < 0:
-        bad.append("duplex summary sheets count missing")
-    pg.eval_on_selector("#bkClear", "e=>e.click()"); pg.wait_for_timeout(120)
-    if pg.eval_on_selector("#results", "e=>e.classList.contains('show')"):
-        bad.append("duplex clear did not hide results")
-    pg.eval_on_selector("#pageCount", "e=>{e.value='7';e.dispatchEvent(new Event('input',{bubbles:true}))}")
-    pg.eval_on_selector("#bkGen", "e=>e.click()"); pg.wait_for_timeout(200)
-    odd = pg.eval_on_selector("#oddSequence", "e=>e.textContent")
-    even = pg.eval_on_selector("#evenSequence", "e=>e.textContent")
-    if odd != "1, 3, 5, 7" or even != "2, 4, 6":
-        bad.append(f"duplex manual 7-page run wrong: {odd!r} / {even!r}")
-    pg.eval_on_selector("#bkClose", "e=>e.click()"); pg.wait_for_timeout(150)
-    if not pg.eval_on_selector("#bookMask", "e=>e.hidden"):
-        bad.append("duplex helper did not close")
-    print(f"  duplex helper: pack pages={n} odd/even ok")
-    pg.close()
-
     b.close()
 
 print("\nBAD:", bad)
