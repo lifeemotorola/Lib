@@ -77,6 +77,14 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Chemistry_Grade" + g + "_Workbook.docx"; }
     },
+    ph: {
+      label: "Physics", flag: "\u269B\uFE0F", accent: "#1f4aa8",
+      curriculum: function () { return PH_CURRICULUM; },
+      engine: function () { return GEN_SC; },
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "worked", "apply"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Physics_Grade" + g + "_Workbook.docx"; }
+    },
     ec: {
       label: "Economics", flag: "\uD83D\uDCB9", accent: "#1f5f7a",
       curriculum: function () { return EC_CURRICULUM; },
@@ -646,7 +654,7 @@
 
     /* Grades outside the elementary band come from their own curriculum guide,
        so name the subject as that guide actually titles it. */
-    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ec: "Economics", eg: "English Grammar", gg: "Geography" };
+    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography" };
     var jh = $("#jhNote");
     if (jh) {
       if (curBand === "el") {
@@ -1267,6 +1275,7 @@
         pe: { h1: "1F7A3D", h2: "2E9E55", fill: "DEF2E4" },
         bi: { h1: "0F5132", h2: "1A7A4C", fill: "D9EFE2" },
         ch: { h1: "7A1F5C", h2: "A6357E", fill: "F5DEEC" },
+        ph: { h1: "1F4AA8", h2: "3B6FD0", fill: "DCE6F7" },
         ec: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" },
         eg: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" },
         gg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" }
