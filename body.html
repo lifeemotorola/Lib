@@ -2,9 +2,10 @@
 <header class="top">
   <div class="top-in">
     <div class="crest">📚</div>
-    <div>
-      <h1>Liberian Elementary Course Pack Generator</h1>
-      <p>English (Grades 1&ndash;9), French, General Science, Mathematics, Social Studies, Religious &amp; Moral Education and Physical Education · printable pupil workbooks, tests and answer keys</p>
+    <div class="top-txt">
+      <h1>Liberian National Curriculum &middot; Course Pack Generator</h1>
+      <p>English &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Economics<br>
+         <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; works offline</span></p>
     </div>
   </div>
 </header>
@@ -15,76 +16,172 @@
   </button>
 
   <aside class="panel" id="panel">
-    <h2>1 · Session</h2>
-    <div class="sesstabs" id="session">
-      <button class="sess on" data-m="student"><span class="fl">&#127891;</span>Student</button>
-      <button class="sess" data-m="teacher"><span class="fl">&#129489;&#8205;&#127979;</span>Teacher</button>
+
+    <!-- ============ ALWAYS VISIBLE: the three choices made every time ============ -->
+    <div class="panel-scroll">
+
+      <section class="grp grp-key">
+        <div class="grp-lab">Session</div>
+        <div class="sesstabs" id="session">
+          <button class="sess on" data-m="student"><span class="fl">&#127891;</span>Student</button>
+          <button class="sess" data-m="teacher"><span class="fl">&#129489;&#8205;&#127979;</span>Teacher</button>
+        </div>
+        <p class="hint" id="sessNote"></p>
+      </section>
+
+      <section class="grp grp-key">
+        <div class="grp-lab">Subject</div>
+        <div class="subtabs" id="subjects"></div>
+      </section>
+
+      <section class="grp grp-key" id="bandwrap" style="display:none">
+        <div class="grp-lab">Level</div>
+        <div class="bandtabs" id="bands"></div>
+      </section>
+
+      <section class="grp grp-key">
+        <div class="grp-lab">Grade</div>
+        <div class="row row-sel"><select id="grade" aria-label="Grade"></select></div>
+        <p class="hint" id="jhNote" style="display:none"></p>
+      </section>
+
+      <!-- ============ COLLAPSIBLE SECTIONS ============ -->
+
+      <details class="dd" id="ddUnits">
+        <summary>
+          <span class="dd-ic">&#128220;</span>
+          <span class="dd-t">Units to include</span>
+          <span class="dd-n" id="nUnits"></span>
+          <span class="dd-c">&#9662;</span>
+        </summary>
+        <div class="dd-b">
+          <div class="mini"><button type="button" id="pkAll">Select all</button><button type="button" id="pkNone">Clear all</button></div>
+          <div id="periods"></div>
+        </div>
+      </details>
+
+      <details class="dd" id="ddSheets">
+        <summary>
+          <span class="dd-ic">&#9997;</span>
+          <span class="dd-t">Exercise types</span>
+          <span class="dd-n" id="nSheets"></span>
+          <span class="dd-c">&#9662;</span>
+        </summary>
+        <div class="dd-b">
+          <div class="mini"><button type="button" id="allon">Select all</button><button type="button" id="alloff">Clear all</button></div>
+          <div id="sheets"></div>
+        </div>
+      </details>
+
+      <details class="dd" id="ddParts">
+        <summary>
+          <span class="dd-ic">&#128203;</span>
+          <span class="dd-t">Pack contents</span>
+          <span class="dd-n" id="nParts"></span>
+          <span class="dd-c">&#9662;</span>
+        </summary>
+        <div class="dd-b">
+          <label class="chk"><input type="checkbox" id="notes" checked><span>Study notes page at the start of each unit
+            <em class="shhelp">What the unit is about, the key ideas, worked examples and common mistakes.</em></span></label>
+          <label class="chk"><input type="checkbox" id="tests" checked><span>Period test after each unit</span></label>
+          <label class="chk"><input type="checkbox" id="exam" checked><span>Semester examinations</span></label>
+          <label class="chk" id="keysRow"><input type="checkbox" id="keys" checked><span>Answer keys <em class="shhelp">Teacher's copy only. Every answer carries its reason or method.</em></span></label>
+        </div>
+      </details>
+
+      <details class="dd" id="ddCover">
+        <summary>
+          <span class="dd-ic">&#127912;</span>
+          <span class="dd-t">Customization</span>
+          <span class="dd-n" id="nCover"></span>
+          <span class="dd-c">&#9662;</span>
+        </summary>
+        <div class="dd-b">
+          <label class="chk"><input type="checkbox" id="cvOn" checked><span>Include a cover page</span></label>
+          <div id="cvBox">
+
+            <div class="cvsec">Cover template</div>
+            <div class="tplgrid" id="tplGrid"></div>
+            <p class="hint" id="tplHint"></p>
+
+            <div class="cvsec">Your school</div>
+            <input type="text" id="cvSchool" placeholder="School name">
+            <input type="text" id="cvMotto" placeholder="School motto (optional)">
+            <p class="hint">The school name is saved on this device and reused on every cover you generate.</p>
+
+            <div class="cvsec">Logo &amp; background</div>
+            <div class="upgrid">
+              <div class="upcell">
+                <div class="upprev" id="upLogoPrev"><span>No logo</span></div>
+                <label class="upbtn">Upload logo<input type="file" id="upLogo" accept="image/*"></label>
+                <button type="button" class="uprem" id="rmLogo">Remove</button>
+              </div>
+              <div class="upcell">
+                <div class="upprev bgp" id="upBgPrev"><span>No background</span></div>
+                <label class="upbtn">Upload background<input type="file" id="upBg" accept="image/*"></label>
+                <button type="button" class="uprem" id="rmBg">Remove</button>
+              </div>
+            </div>
+            <p class="hint" id="upMsg"></p>
+            <div class="row" id="fadeRow" style="display:none">
+              <label for="cvFade">Background fade</label>
+              <input type="range" id="cvFade" min="0" max="95" step="5" value="78">
+              <b id="fadeVal" class="fadeval">78%</b>
+            </div>
+            <div class="row"><label for="cvCrest">Emoji crest (used when no logo)</label>
+              <input type="text" id="cvCrest" value="&#128218;" maxlength="4" class="crest-in"></div>
+            <p class="hint">Images are stored inside this page, so the pack still works offline. PNG keeps a transparent logo; the background is faded so the text stays readable.</p>
+
+            <div class="cvsec">This pack</div>
+            <input type="text" id="cvClass" placeholder="Class (blank = Grade from above)">
+            <input type="text" id="cvPupil" placeholder="Pupil's name (student copy)">
+            <input type="text" id="cvTeacher" placeholder="Teacher's name">
+            <div class="row2">
+              <input type="text" id="cvTerm" placeholder="Term">
+              <input type="text" id="cvYear" placeholder="Year">
+            </div>
+            <input type="text" id="cvNote" placeholder="Note shown on the cover (optional)">
+            <label class="chk" style="display:none"><input type="checkbox" id="cvBreak" checked><span>Cover on its own page</span></label>
+            <p class="hint"><b>Subject</b> and <b>Class</b> are printed on every cover automatically. Leave any other field blank to print a ruled space to fill in by hand.</p>
+            <div class="mini"><button type="button" id="cvSave">Save school details</button><button type="button" id="cvClear">Clear</button></div>
+          </div>
+        </div>
+      </details>
+
+      <details class="dd" id="ddFmt">
+        <summary>
+          <span class="dd-ic">&#127912;</span>
+          <span class="dd-t">Format &amp; text size</span>
+          <span class="dd-n" id="nFmt"></span>
+          <span class="dd-c">&#9662;</span>
+        </summary>
+        <div class="dd-b">
+          <div class="row"><label for="fsz">Body text size (pt)</label>
+            <input type="number" id="fsz" value="12" min="8" max="20" step="0.5"></div>
+          <p class="hint">Applies on screen, in print and in Word. Headings and tables scale with it. Larger sizes suit lower grades but fit less on a sheet, so the page count rises.</p>
+          <div class="row"><label for="perEx">Questions per exercise</label>
+            <input type="number" id="perEx" value="8" min="4" max="20"></div>
+          <div class="row"><label for="seed">Variant seed</label>
+            <input type="number" id="seed" value="1" min="1" max="9999"></div>
+          <p class="hint">Change the seed for a different version of the same pack &mdash; useful for Test A / Test B. The same seed always gives exactly the same pack, so a student copy and a teacher copy match question for question.</p>
+        </div>
+      </details>
+
+    </div><!-- /panel-scroll -->
+
+    <!-- ============ STICKY ACTION BAR: always reachable ============ -->
+    <div class="panel-act">
+      <button class="btn btn-p" id="gen">&#9881; Generate course pack</button>
+      <button class="btn btn-s" id="reseed">&#127922; New random variant</button>
     </div>
-    <p class="hint" id="sessNote"></p>
-
-    <h2>2 · Subject</h2>
-    <div class="subtabs" id="subjects"></div>
-
-    <h2>3 · Cover page</h2>
-    <label class="chk"><input type="checkbox" id="cvOn" checked><span>Include a cover page</span></label>
-    <div id="cvBox">
-      <div class="row"><label for="cvCrest">Crest</label>
-        <input type="text" id="cvCrest" value="&#128218;" maxlength="4" style="width:56px;text-align:center"></div>
-      <input type="text" id="cvSchool" placeholder="School name">
-      <input type="text" id="cvMotto" placeholder="School motto (optional)">
-      <input type="text" id="cvPupil" placeholder="Pupil's name">
-      <input type="text" id="cvTeacher" placeholder="Teacher's name">
-      <input type="text" id="cvClass" placeholder="Class (e.g. Grade 4B)">
-      <div class="row2">
-        <input type="text" id="cvTerm" placeholder="Term">
-        <input type="text" id="cvYear" placeholder="Year">
-      </div>
-      <input type="text" id="cvNote" placeholder="Footnote on the cover (optional)">
-      <label class="chk"><input type="checkbox" id="cvBreak" checked><span>Cover on its own page</span></label>
-      <p class="hint">Leave a field blank to print a ruled space the pupil can fill in by hand. The cover flows through to the on-screen pack, the printed PDF and the Word file.</p>
-    </div>
-
-    <h2>4 · Grade</h2>
-    <div class="row"><select id="grade"></select></div>
-    <p class="hint" id="jhNote" style="display:none"></p>
-
-    <h2>5 · Units to include</h2>
-    <div id="periods"></div>
-
-    <h2>6 · Exercise types</h2>
-    <div class="mini"><button id="allon">Select all</button><button id="alloff">Clear all</button></div>
-    <div id="sheets"></div>
-
-    <h2>7 · Explanations</h2>
-    <label class="chk"><input type="checkbox" id="notes" checked><span>Study notes page at the start of each unit</span></label>
-    <p class="hint">Adds an explanation page to every unit: what the unit is about, the key ideas in a table, worked examples, the mistakes learners most often make, and how to work through the unit. Answer keys always give the reason or method behind each answer.</p>
-
-    <h2>8 · Assessment</h2>
-    <label class="chk"><input type="checkbox" id="tests" checked><span>Period test after each unit</span></label>
-    <label class="chk"><input type="checkbox" id="exam" checked><span>Semester examinations</span></label>
-    <label class="chk" id="keysRow"><input type="checkbox" id="keys" checked><span>Answer keys (teacher's copy)</span></label>
-
-    <h2>9 · Settings</h2>
-    <p class="hint">How many questions each exercise sheet should contain, and which variant of the pack to generate.</p>
-    <div class="row"><label for="perEx">Questions per exercise</label>
-      <input type="number" id="perEx" value="8" min="4" max="20" style="width:70px"></div>
-    <div class="row"><label for="seed">Variant seed</label>
-      <input type="number" id="seed" value="1" min="1" max="9999" style="width:70px"></div>
-    <div class="row"><label for="fsz">Body text size (pt)</label>
-      <input type="number" id="fsz" value="12" min="8" max="20" step="0.5" style="width:70px"></div>
-    <p class="hint">Sets the body text size on every sheet — on screen, in print and in the Word file. Headings, tables and instruction boxes scale with it automatically. The default is 12pt; larger sizes suit lower grades but fit less on each sheet, so the page count will rise.</p>
-    <p class="hint">Change the seed to generate a different version of the same pack — useful for Test A / Test B. The same seed always produces exactly the same pack, so a student copy and a teacher copy printed with the same seed will match question for question.</p>
-
-    <button class="btn btn-p" id="gen">⚙ Generate course pack</button>
-    <button class="btn btn-s" id="reseed">🎲 New random variant</button>
   </aside>
 
   <main>
     <div class="bar" id="exportbar">
       <span class="meta" id="meta"></span>
-      <span class="meta" style="flex:none">Pages: <b id="pageN">0</b></span>
-      <button class="b2" id="docx">⬇ Download Word (.docx)</button>
-      <button class="b1" id="print">🖨 Print / Save as PDF</button>
+      <span class="pill" id="pagePill">Pages: <b id="pageN">0</b></span>
+      <button class="b2" id="docx">&#11015; Word (.docx)</button>
+      <button class="b1" id="print">&#128424; Print / PDF</button>
     </div>
     <div id="doc"></div>
   </main>

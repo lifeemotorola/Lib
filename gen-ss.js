@@ -181,6 +181,26 @@
     };
   }
 
+  /* Worked calculations — only rendered for units that supply t.worked.
+     Each entry is {q, steps:[], a}. Subjects without calculations simply omit
+     the field and the sheet is skipped. */
+  function wsWorked(t, n, r) {
+    var w = t.worked;
+    if (!w || !w.length) return null;
+    var sel = pick(w, Math.min(n, w.length), r);
+    var blocks = [
+      { k: "h3", t: "L \u00b7 Calculations and Data \u2014 show all your working" },
+      { k: "instr", t: "Set out each answer step by step. Show the formula you use, substitute the values, and give the final answer with its correct unit." }
+    ];
+    var key = [];
+    sel.forEach(function (x, i) {
+      blocks.push({ k: "p", t: (i + 1) + ". " + x.q });
+      blocks.push({ k: "lines", n: 4 });
+      key.push((i + 1) + ". " + x.a + "   [" + x.steps.join(" \u2192 ") + "]");
+    });
+    return { blocks: blocks, key: key };
+  }
+
   /* J · Apply it — civic reasoning */
   function wsApply(t, n, r) {
     var sel = pick(t.apply, n, r);
@@ -285,7 +305,8 @@
     project:  { label: "Enquiry project",             fn: function (t) { return wsProject(t); } },
     debate:   { label: "Class debate",                fn: wsDebate },
     journal:  { label: "Social Studies journal",      fn: function (t) { return wsJournal(t); } },
-    spelling: { label: "Vocabulary & spelling test",  fn: wsSpelling }
+    spelling: { label: "Vocabulary & spelling test",  fn: wsSpelling },
+    worked:   { label: "Calculations & data",         fn: function (t, n, r) { return wsWorked(t, n, r); } }
   };
 
   /* ---------------- period test ---------------- */
@@ -408,15 +429,19 @@
   /* ---------------- pack builder ---------------- */
   function buildPack(opts) {
     var r = rng(opts.seed || 1);
-    var topics = SS_CURRICULUM.filter(function (t) {
+    /* the caller may supply its own curriculum (Economics reuses this engine);
+       fall back to Social Studies when none is given */
+    var SRC = opts.curriculum || SS_CURRICULUM;
+    var topics = SRC.filter(function (t) {
       return t.grade === opts.grade && (!opts.topics || opts.topics.indexOf(t.period) >= 0);
     });
     var doc = [], keys = [], toc = [];
 
     doc.push.apply(doc, PACK_COVER(opts, {
-      title: "SOCIAL STUDIES — GRADE " + opts.grade,
+      title: (opts.subjectName || "SOCIAL STUDIES") + " — GRADE " + opts.grade,
       sub: "Pupil Workbook & Assessment Pack",
-      line: "Elementary Social Studies · Liberian National Curriculum"
+      line: (opts.bandName || "Elementary") + " " + (opts.subjectLine || "Social Studies") +
+            " · Liberian National Curriculum"
     }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.title); });

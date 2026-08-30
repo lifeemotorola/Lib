@@ -10,8 +10,10 @@ button,select,input{font-family:inherit}
 .top::after{content:"";position:absolute;inset:auto 0 0 0;height:5px;
   background:linear-gradient(90deg,var(--bleu) 33%,#fff 33% 66%,var(--rouge) 66%)}
 .top-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.top h1{margin:0;font-size:1.35rem}
-.top p{margin:1px 0 0;font-size:.83rem;opacity:.88}
+.top h1{margin:0;font-size:1.35rem;line-height:1.25}
+.top p{margin:3px 0 0;font-size:.83rem;opacity:.9}
+.top-txt{min-width:0}
+.top-sub{display:inline-block;margin-top:2px;font-size:.78rem;opacity:.8}
 .crest{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.16);
   display:grid;place-items:center;font-size:24px;border:1px solid rgba(255,255,255,.28)}
 
@@ -20,11 +22,47 @@ button,select,input{font-family:inherit}
 
 /* ---- control panel ---- */
 .panel{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);
-  padding:16px;position:sticky;top:14px;max-height:calc(100vh - 30px);overflow:auto}
-@media(max-width:980px){.panel{position:static;max-height:none}}
+  padding:0;position:sticky;top:14px;max-height:calc(100vh - 30px);
+  display:flex;flex-direction:column;overflow:hidden}
+.panel-scroll{overflow:auto;padding:14px 14px 4px;flex:1;min-height:0}
+@media(max-width:980px){
+  .panel{position:static;max-height:none;overflow:visible;display:block}
+  .panel-scroll{overflow:visible;max-height:none;padding:14px 14px 0}
+}
 .panel h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);
   margin:16px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .panel h2:first-child{margin-top:0}
+
+/* ---- the three always-visible choices ---- */
+.grp{margin-bottom:12px}
+.grp-lab{font-size:.68rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);
+  font-weight:700;margin-bottom:6px}
+.grp-key+.grp-key{margin-top:12px}
+.row-sel{margin-bottom:0}
+
+/* ---- collapsible dropdown sections ---- */
+.dd{border:1px solid var(--line);border-radius:11px;margin-bottom:8px;background:#fcfdff;overflow:hidden}
+.dd[open]{background:#fff;border-color:#c9dbf6;box-shadow:0 2px 10px rgba(11,59,140,.06)}
+.dd>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
+  padding:10px 11px;font-size:.86rem;font-weight:600;color:var(--ink);user-select:none}
+.dd>summary::-webkit-details-marker{display:none}
+.dd>summary:hover{background:#f3f7ff}
+.dd[open]>summary{border-bottom:1px solid var(--line)}
+.dd-ic{font-size:1rem;flex:none;line-height:1}
+.dd-t{flex:1;min-width:0}
+.dd-n{font-size:.7rem;font-weight:700;color:var(--bleu);background:#e8f0ff;
+  border-radius:20px;padding:2px 8px;flex:none;white-space:nowrap;
+  max-width:46%;overflow:hidden;text-overflow:ellipsis}
+.dd-c{flex:none;color:var(--muted);font-size:.8rem;transition:transform .18s}
+.dd[open]>summary .dd-c{transform:rotate(180deg)}
+.dd-b{padding:10px 11px 12px}
+.dd-b .hint:first-child{margin-top:0}
+
+/* ---- sticky action bar inside the panel ---- */
+.panel-act{flex:none;padding:11px 14px 13px;border-top:1px solid var(--line);
+  background:linear-gradient(#fff,#f7faff)}
+.panel-act .btn:first-child{margin-top:0}
+@media(max-width:980px){.panel-act{position:static}}
 .row{display:flex;gap:8px;align-items:center;margin-bottom:9px}
 .row label{font-size:.86rem;flex:1}
 select,input[type=number]{padding:7px 9px;border:1px solid var(--line);border-radius:9px;
@@ -49,6 +87,9 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .bar{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);
   padding:10px 14px;margin-bottom:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .bar .meta{font-size:.83rem;color:var(--muted);flex:1}
+.bar .pill{flex:none;font-size:.78rem;color:var(--bleu);background:#eaf1ff;
+  border:1px solid #d3e2fb;border-radius:20px;padding:4px 11px;font-weight:600}
+.bar .pill b{font-weight:800}
 .bar button{padding:9px 16px;border:none;border-radius:9px;font-weight:700;font-size:.86rem;cursor:pointer}
 .b1{background:var(--bleu);color:#fff}
 .b2{background:var(--gold);color:#3b2c00}
@@ -114,10 +155,10 @@ body[data-subject="en"] .top::after{
 body[data-subject="en"] .page th{background:#dcf0e4}
 body[data-subject="en"] .page th,body[data-subject="en"] .page td{border-color:#9ad0b0}
 
-.subtabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
-.subtab{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 8px;
+.subtabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:2px}
+.subtab{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 7px;
   border:1px solid var(--line);background:#f7faff;color:var(--muted);font-weight:700;
-  font-size:.92rem;border-radius:11px;cursor:pointer;transition:.15s}
+  font-size:.84rem;line-height:1.2;border-radius:10px;cursor:pointer;transition:.15s;min-height:44px}
 .subtab:hover{background:#eef4ff;color:var(--ink)}
 .subtab.on{background:var(--bleu);color:#fff;border-color:var(--bleu);box-shadow:0 3px 10px rgba(0,0,0,.13)}
 .subtab .fl{font-size:1.15rem}
@@ -157,6 +198,10 @@ body[data-subject="pe"] .page th,body[data-subject="pe"] .page td{border-color:#
 #cvBox .row2 input{width:50%}
 #cvBox .row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 #cvBox .row input[type=text]{margin:0}
+.crest-in{width:58px!important;text-align:center;flex:none}
+/* number inputs in the panel sit right-aligned at a readable width */
+.dd-b .row input[type=number]{width:82px;flex:none}
+#periods .chk,#ddParts .chk{align-items:flex-start;margin-bottom:2px}
 
 /* centred cover text on the printed sheet */
 .page .ctr{text-align:center}
@@ -164,6 +209,14 @@ body[data-subject="pe"] .page th,body[data-subject="pe"] .page td{border-color:#
 .page p.cbig{text-align:center;font-weight:700;font-size:1.35em;margin:.2em 0}
 
 /* session switch (student / teacher) */
+/* level (band) selector */
+.bandtabs{display:flex;gap:6px}
+.bandtabs .bandtab{flex:1;padding:8px 6px;border:1px solid var(--line);background:#f7faff;
+  color:var(--muted);font-weight:700;font-size:.8rem;border-radius:9px;cursor:pointer;
+  transition:.15s;min-height:40px}
+.bandtabs .bandtab:hover{background:#eef4ff;color:var(--ink)}
+.bandtabs .bandtab.on{background:var(--bleu);color:#fff;border-color:var(--bleu)}
+
 .sesstabs{display:flex;gap:6px;margin-bottom:6px}
 .sesstabs .sess{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
   padding:9px 6px;border:1px solid #c9d3e2;background:#fff;border-radius:8px;
@@ -190,13 +243,25 @@ body[data-mode="teacher"] .page .phead{font-weight:700}
 
 :root{ --ps:1; }                     /* preview scale, set by app.js */
 
-/* the sheet is scaled about its top edge; the negative margin removes
-   the empty space the transform would otherwise leave behind */
+/* The sheet is scaled from its top-LEFT corner, not its centre.
+   The layout box stays a fixed 794px wide and can be wider than the preview
+   column. With a `top center` origin the box's centre already sits right of
+   the column's centre, so the shrunken sheet inherited that offset and hung
+   past the right edge -- the preview looked half hidden. Scaling from the left
+   keeps the painted sheet inside the column at every width. */
 #doc .page{
   transform:scale(var(--ps));
-  transform-origin:top center;
+  transform-origin:top left;
   margin-bottom:calc(22px - 297mm * (1 - var(--ps)));
 }
+/* Centring the painted sheet.
+   `margin:0 auto` on .page centres its 794px LAYOUT box. That is correct
+   whenever the column is wide enough to hold a full-size sheet, and in that
+   case --ps is 1 so the painted result matches the box exactly.
+   When the column is narrower the auto margins collapse, the box overflows to
+   the right, and scaling from the top-left leaves the painted sheet flush with
+   the column's left edge -- which is where we want it. No extra offset is
+   needed in either case; the earlier `top center` origin was the whole bug. */
 /* A transform only scales the painted result: each .page keeps a 794px layout
    box, which would push the page wider than a phone viewport. Grid/flex items
    default to min-width:auto and refuse to shrink below that content, so the
@@ -210,8 +275,10 @@ main{ min-width:0; }
 @media (min-width:1700px){
   .wrap,.top-in{max-width:1640px}
   .wrap{grid-template-columns:360px 1fr;gap:26px}
-  .panel{padding:20px}
-  .panel h2{font-size:.78rem}
+  .panel-scroll{padding:18px 18px 4px}
+  .panel-act{padding:13px 18px 15px}
+  .panel h2,.grp-lab{font-size:.78rem}
+  .dd>summary{font-size:.95rem;padding:12px 13px}
   .chk,.row label{font-size:.95rem}
   .shhelp{font-size:.8rem}
   .top h1{font-size:1.6rem}
@@ -226,6 +293,8 @@ main{ min-width:0; }
   .crest{width:60px;height:60px;font-size:32px}
   .btn{padding:15px;font-size:1.05rem}
   .bar button{padding:13px 22px;font-size:1rem}
+  .dd>summary{padding:15px 16px;font-size:1.05rem}
+  .dd-n{font-size:.82rem}
 }
 
 /* keyboard / TV-remote navigation must always show where focus is */
@@ -277,7 +346,10 @@ input:focus-visible,label:focus-visible{
   .top h1{font-size:1rem;line-height:1.25}
   .top p{font-size:.72rem}
   .crest{width:38px;height:38px;font-size:20px}
-  .panel{padding:13px;border-radius:13px}
+  .panel{border-radius:13px}
+  .panel-scroll{padding:12px 12px 0}
+  .panel-act{padding:10px 12px 12px}
+  .dd>summary{padding:12px 11px}
   .subtabs{grid-template-columns:1fr 1fr;gap:6px}
   .subtab{padding:12px 6px;font-size:.82rem}
   .bar{padding:9px 10px;gap:8px;border-radius:11px}
@@ -287,10 +359,11 @@ input:focus-visible,label:focus-visible{
 }
 
 /* very small handsets */
-@media (max-width:380px){
+@media (max-width:340px){
   .subtabs{grid-template-columns:1fr}
   .sesstabs{flex-direction:column}
-  .top p{display:none}
+  .top-sub{display:none}
+  .dd-n{display:none}
 }
 
 /* ---------- touch devices: finger-sized targets ---------- */
@@ -299,7 +372,8 @@ input:focus-visible,label:focus-visible{
   .chk input{width:20px;height:20px;margin-top:1px}
   .mini button{padding:10px 6px;font-size:.8rem}
   select,input[type=number],#cvBox input[type=text]{padding:11px 10px;font-size:16px}
-  .subtab,.sesstabs .sess{min-height:48px}
+  .subtab,.sesstabs .sess,.bandtabs .bandtab{min-height:48px}
+  .dd>summary{min-height:48px}
   .btn{padding:14px}
 }
 
@@ -324,3 +398,153 @@ input:focus-visible,label:focus-visible{
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;animation:none !important}
 }
+
+/* ============================================================
+   DESIGNED COVER PAGES
+   A `covart` block fills a whole A4 sheet. Five templates share
+   one structure and differ only by CSS custom properties, so the
+   layout is proven once. All artwork is inline CSS/SVG so the
+   pack stays fully offline.
+   ============================================================ */
+.cvart{
+  --cv-ink:#1b2a52; --cv-accent:#5a9367; --cv-bg:#fdf6e9;
+  --cv-band:#1b2a52; --cv-warm:#e8a33d; --cv-soft:#eaf1f8;
+  position:relative; width:100%; height:100%;
+  background:var(--cv-bg); color:var(--cv-ink);
+  display:flex; flex-direction:column; align-items:center;
+  padding:12mm 11mm; box-sizing:border-box; overflow:hidden;
+  font-family:"Segoe UI",system-ui,Arial,sans-serif;
+}
+/* outer colour band + inner hairline, as in the reference */
+.cvart::before{content:"";position:absolute;inset:0;border:7mm solid var(--cv-band);pointer-events:none}
+.cvart::after{content:"";position:absolute;inset:9mm;border:1.1px solid var(--cv-band);
+  border-radius:2px;pointer-events:none;opacity:.75}
+.cvart>*{position:relative;z-index:2}
+
+/* decorative corner leaves / dots, drawn with CSS only */
+.cv-leaf{position:absolute;z-index:1;opacity:.85}
+.cv-leaf svg{display:block}
+.cv-lt{top:11mm;left:11mm}
+.cv-rb{bottom:11mm;right:10mm;transform:rotate(180deg);opacity:.45}
+.cv-dots{position:absolute;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm}
+.cv-dots i{width:2mm;height:2mm;border-radius:50%;background:var(--cv-accent);opacity:.5;display:block}
+.cv-dtr{top:26mm;right:16mm}
+
+/* title block */
+.cv-school{font-size:5.6mm;font-weight:800;letter-spacing:.4mm;text-align:center;
+  text-transform:uppercase;margin:0 0 1mm;color:var(--cv-ink);opacity:.9;line-height:1.2}
+.cv-motto{font-size:3.7mm;font-style:italic;text-align:center;margin:0;opacity:.72}
+.cv-emblem{font-size:17mm;line-height:1;margin:3mm 0 2mm;filter:saturate(1.05)}
+.cv-t1{font-size:21mm;line-height:.92;font-weight:900;letter-spacing:.4mm;
+  text-transform:uppercase;text-align:center;margin:0;color:var(--cv-ink);
+  max-width:100%;overflow-wrap:break-word}
+.cv-t1.long{font-size:14mm}
+.cv-t1.xlong{font-size:10.5mm}
+.cv-t2{font-size:11mm;line-height:1.02;font-weight:800;letter-spacing:.3mm;
+  text-transform:uppercase;text-align:center;margin:3mm 0 0;color:var(--cv-accent)}
+.cv-head{width:100%;display:flex;flex-direction:column;align-items:center;margin-top:1mm}
+.cv-rule{display:flex;align-items:center;gap:3mm;margin:6mm 0 1mm;width:74%}
+.cv-rule span{flex:1;height:1.4px;background:var(--cv-ink);opacity:.8}
+.cv-rule b{font-size:7mm;line-height:1}
+.cv-sub{font-size:4.1mm;text-align:center;margin:1mm 0 0;opacity:.78;font-style:italic}
+
+/* the fill-in panel */
+.cv-panel{width:90%;margin:14mm 0 0;border:1.4px solid var(--cv-accent);border-radius:5mm;
+  padding:8mm 8mm;background:rgba(255,255,255,.55)}
+.cv-panel.dash{border-style:dashed}
+/* pencil strip anchoring the lower area, echoing the desk in the reference */
+.cv-strip{width:90%;margin:12mm 0 0;display:flex;gap:2.5mm;align-items:flex-end;justify-content:center;opacity:.9}
+.cv-strip i{display:block;width:5mm;border-radius:1mm 1mm 0 0}
+.cv-row{display:flex;align-items:flex-end;gap:4mm;margin:0 0 8.5mm}
+.cv-row:last-child{margin-bottom:0}
+.cv-ico{width:9mm;height:9mm;flex:none;border-radius:1.8mm;display:grid;place-items:center;
+  font-size:5mm;line-height:1;background:var(--cv-soft)}
+.cv-lab{font-size:4.6mm;font-weight:800;letter-spacing:.35mm;text-transform:uppercase;
+  white-space:nowrap;padding-bottom:.6mm}
+.cv-val{flex:1;min-width:0;border-bottom:1.3px solid var(--cv-ink);min-height:7mm;
+  font-size:4.7mm;padding:0 1mm 1mm;font-weight:600;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cv-val:empty::after{content:"";display:inline-block}
+
+/* footer strip */
+.cv-foot{margin-top:auto;width:100%;display:flex;align-items:flex-end;
+  justify-content:space-between;gap:4mm}
+.cv-note{font-size:3.6mm;line-height:1.45;background:#fdf0c8;border-radius:1.5mm;
+  padding:3mm 4mm;max-width:52%;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.cv-note b{display:block;font-size:3.9mm;margin-bottom:.6mm}
+.cv-org{font-size:3.5mm;text-align:right;opacity:.85;line-height:1.5;max-width:44%;
+  position:relative;z-index:3;background:var(--cv-bg);padding-left:2mm}
+
+/* ---- template variants ---- */
+.cv-classic { --cv-ink:#1b2a52; --cv-accent:#5a9367; --cv-bg:#fdf6e9; --cv-band:#1b2a52; --cv-soft:#e9eff8; }
+.cv-liberia { --cv-ink:#0d2c6b; --cv-accent:#c8102e; --cv-bg:#fbfaf6; --cv-band:#0d2c6b; --cv-soft:#e6ecf7; }
+.cv-forest  { --cv-ink:#12403a; --cv-accent:#2f8f6d; --cv-bg:#f2f9f4; --cv-band:#12403a; --cv-soft:#dff0e6; }
+.cv-sunrise { --cv-ink:#6b3410; --cv-accent:#d98324; --cv-bg:#fff7ec; --cv-band:#b35c1e; --cv-soft:#fbe6cd; }
+.cv-plain   { --cv-ink:#1f2937; --cv-accent:#4b5563; --cv-bg:#ffffff; --cv-band:#1f2937; --cv-soft:#eef1f4; }
+.cv-plain::before{border-width:4mm}
+.cv-plain .cv-leaf,.cv-plain .cv-dots,.cv-plain .cv-note,.cv-plain .cv-strip{display:none}
+.cv-plain .cv-emblem{font-size:11mm}
+
+/* the cover sheet suppresses the running header and footer bands */
+.page.coverpage{padding:0}
+.page.coverpage .phead,.page.coverpage .pfoot{display:none}
+.page.coverpage .pbody{height:100%;margin:0;padding:0}
+
+@media print{
+  .cvart{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* ---- customization session ---- */
+.cvsec{font-size:.68rem;text-transform:uppercase;letter-spacing:1.1px;font-weight:800;
+  color:var(--muted);margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.cvsec:first-child{margin-top:0}
+.tplgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:4px}
+.tplbtn{border:1.5px solid var(--line);border-radius:9px;background:#fff;cursor:pointer;
+  padding:0;overflow:hidden;transition:.15s;display:block;text-align:center}
+.tplbtn:hover{border-color:#9dbcf0}
+.tplbtn.on{border-color:var(--bleu);box-shadow:0 0 0 2px rgba(11,59,140,.16)}
+.tplsw{height:38px;display:block;position:relative}
+.tplsw i{position:absolute;left:5px;right:5px;top:6px;height:4px;border-radius:2px;display:block}
+.tplsw u{position:absolute;left:9px;right:9px;top:15px;height:14px;border-radius:2px;
+  border:1px dashed rgba(0,0,0,.28);display:block}
+.tplbtn span{display:block;font-size:.66rem;font-weight:700;padding:3px 2px 5px;color:var(--ink);line-height:1.2}
+@media (min-width:1700px){ .tplbtn span{font-size:.76rem} .tplsw{height:46px} }
+
+/* ---- uploaded background photo and logo ---- */
+.cv-bg{position:absolute;inset:7mm;z-index:0;background-size:cover;background-position:center;
+  background-repeat:no-repeat}
+.cv-veil{position:absolute;inset:7mm;z-index:0;background:var(--cv-bg)}
+/* the border band is painted above the photo so the frame stays crisp */
+.cvart.hasbg::before{z-index:3}
+.cvart.hasbg::after{z-index:3}
+.cvart.hasbg .cv-leaf,.cvart.hasbg .cv-dots{opacity:.5}
+.cvart.hasbg .cv-panel{background:rgba(255,255,255,.86);backdrop-filter:saturate(1.1)}
+.cvart.hasbg .cv-org{background:transparent}
+.cv-logo{margin:3mm 0 2mm;display:grid;place-items:center}
+.cv-logo img{max-height:26mm;max-width:62mm;width:auto;height:auto;display:block;
+  object-fit:contain}
+.cv-plain .cv-logo img{max-height:20mm}
+@media print{
+  .cv-bg,.cv-veil,.cv-logo img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* ---- image upload controls ---- */
+.upgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:4px}
+.upcell{display:flex;flex-direction:column;gap:5px}
+.upprev{height:56px;border:1.5px dashed var(--line);border-radius:9px;background:#f8fbff;
+  display:grid;place-items:center;overflow:hidden;position:relative}
+.upprev span{font-size:.68rem;color:var(--muted);text-align:center;padding:0 4px}
+.upprev img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.upprev.bgp img{width:100%;height:100%;object-fit:cover}
+.upprev.has{border-style:solid;border-color:#bcd3fb;background:#fff}
+.upbtn{display:block;text-align:center;font-size:.72rem;font-weight:700;cursor:pointer;
+  padding:7px 4px;border:1px solid var(--line);border-radius:8px;background:#f5f9ff;color:var(--bleu)}
+.upbtn:hover{background:#e8f0ff}
+.upbtn input{display:none}
+.uprem{font-size:.68rem;padding:5px;border:1px solid var(--line);border-radius:7px;
+  background:#fff;color:var(--muted);cursor:pointer}
+.uprem:hover{background:#fdf0f0;color:var(--rouge);border-color:#f3c9c9}
+.fadeval{font-size:.75rem;color:var(--bleu);min-width:40px;text-align:right;flex:none}
+#cvFade{flex:1;min-width:0;accent-color:var(--bleu)}
+#fadeRow label{flex:none;white-space:nowrap;font-size:.8rem}
+#fadeRow{gap:9px}
