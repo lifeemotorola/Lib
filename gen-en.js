@@ -350,15 +350,22 @@
   /* ---------------- pack builder ---------------- */
   function buildPack(opts) {
     var r = rng(opts.seed || 1);
-    var topics = EN_CURRICULUM.filter(function (t) {
+    /* the caller may supply its own curriculum (English Grammar reuses this
+       engine); fall back to English when none is given */
+    var SRC = opts.curriculum || EN_CURRICULUM;
+    var topics = SRC.filter(function (t) {
       return t.grade === opts.grade && (!opts.topics || opts.topics.indexOf(t.period) >= 0);
     });
     var doc = [], keys = [], toc = [];
 
     doc.push.apply(doc, PACK_COVER(opts, {
-      title: (opts.grade >= 7 ? "ENGLISH — LANGUAGE ARTS — GRADE " : "ENGLISH — GRADE ") + opts.grade,
+      title: (opts.subjectName ||
+              (opts.grade >= 7 ? "ENGLISH — LANGUAGE ARTS" : "ENGLISH")) + " — GRADE " + opts.grade,
       sub: "Pupil Workbook & Assessment Pack",
-      line: (opts.grade >= 7 ? "Junior High English — Language Arts" : "Elementary English") + " · Liberian National Curriculum"
+      line: (opts.subjectLine
+              ? (opts.bandName || "") + " " + opts.subjectLine
+              : (opts.grade >= 7 ? "Junior High English — Language Arts" : "Elementary English")) +
+            " · Liberian National Curriculum"
     }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.title); });

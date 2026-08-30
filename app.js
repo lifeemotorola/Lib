@@ -84,6 +84,15 @@
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "worked", "sort", "map", "casestudy", "apply"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Economics_Grade" + g + "_Workbook.docx"; }
+    },
+    eg: {
+      label: "English Grammar", flag: "\u270D\uFE0F", accent: "#7a4a12",
+      curriculum: function () { return EG_CURRICULUM; },
+      engine: function () { return GEN_EN; },
+      packName: "English Grammar",
+      defaults: ["words", "match", "cloze", "grammar", "pairs", "mcq", "passage", "write", "spelling", "phonics"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "English_Grammar_Grade" + g + "_Workbook.docx"; }
     }
   };
 
@@ -629,7 +638,7 @@
 
     /* Grades outside the elementary band come from their own curriculum guide,
        so name the subject as that guide actually titles it. */
-    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ec: "Economics" };
+    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ec: "Economics", eg: "English Grammar" };
     var jh = $("#jhNote");
     if (jh) {
       if (curBand === "el") {
@@ -1238,38 +1247,6 @@
     $("#gen").onclick = function () { generate(); collapseIfNarrow(); };
     $("#reseed").onclick = function () { $("#seed").value = Math.floor(Math.random() * 9999) + 1; generate(); };
     $("#print").onclick = function () { window.print(); };
-
-    /* ---- duplex print helper (book print sequence) ---- */
-    var bmask = $("#bookMask"), btool = null;
-    if (window.BOOK_TOOL && $("#bookTool")) btool = window.BOOK_TOOL.init($("#bookTool"));
-    function openBookTool() {
-      if (!bmask) return;
-      var n = parseInt(($("#pageN") || {}).textContent, 10) || 0;
-      var nm = n > 0 ? S().label + " Grade " + opts().grade + " workbook" : "";
-      if (btool) btool.open(n, nm);
-      bmask.hidden = false;
-      document.body.classList.add("book-open");
-      var pc = $("#pageCount");
-      if (pc && pc.focus) { pc.focus(); if (pc.select) pc.select(); }
-    }
-    function closeBookTool() {
-      if (!bmask) return;
-      bmask.hidden = true;
-      document.body.classList.remove("book-open");
-    }
-    var dupBtn = $("#dup");
-    if (dupBtn && bmask) {
-      dupBtn.onclick = openBookTool;
-      var bx = $("#bkClose");
-      if (bx) bx.onclick = closeBookTool;
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && !bmask.hidden) closeBookTool();
-      });
-      bmask.addEventListener("mousedown", function (e) {
-        if (e.target === bmask) closeBookTool();
-      });
-    }
-
     $("#docx").onclick = function () {
       if (!pack) return;
       var THEMES = {
@@ -1282,7 +1259,8 @@
         pe: { h1: "1F7A3D", h2: "2E9E55", fill: "DEF2E4" },
         bi: { h1: "0F5132", h2: "1A7A4C", fill: "D9EFE2" },
         ch: { h1: "7A1F5C", h2: "A6357E", fill: "F5DEEC" },
-        ec: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" }
+        ec: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" },
+        eg: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" }
       };
       var theme = THEMES[cur] || THEMES.en;
       var fn = S().file(opts().grade).replace(/\.docx$/, (isTeacher() ? "_Teacher_Copy" : "_Student") + ".docx");
