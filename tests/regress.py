@@ -4,7 +4,7 @@ survives /tmp being cleared."""
 from playwright.sync_api import sync_playwright
 import pathlib
 URL=pathlib.Path('/home/user/platform/index.html').as_uri()
-SUBS=['en','fr','sc','ma','ss','rm','pe','bi','ch','ec','eg','gg']
+SUBS=['en','fr','sc','ma','ss','rm','pe','bi','ch','ph','ec','eg','gg']
 DEV=[("Smart TV 4K",3840,2160),("Desktop 1440p",2560,1440),("Laptop 1366",1366,768),
      ("iPad portrait",768,1024),("Tablet small",600,960),("iPhone SE",375,667),
      ("Small handset",320,568)]

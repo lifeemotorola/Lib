@@ -326,7 +326,8 @@
   }
 
   /* ---------------- semester exam ---------------- */
-  function semesterExam(topics, sem, r) {
+  function semesterExam(topics, sem, r, opts) {
+    opts = opts || {};
     var tpool = [], fpool = [], tfpool = [], apool = [], dpool = [];
     topics.forEach(function (t) {
       (t.terms || []).forEach(function (v) { tpool.push(v); });
@@ -337,7 +338,7 @@
     });
     var g = topics[0].grade, blocks = [], key = [], q = 0, each = 2, n = 10;
 
-    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " GENERAL SCIENCE", per: "exam" });
+    blocks.push({ k: "h2", t: "SEMESTER " + sem.toUpperCase() + " EXAMINATION — GRADE " + g + " " + (opts.subjectName || "GENERAL SCIENCE"), per: "exam" });
     blocks.push({ k: "table", head: ["Name", "Class", "Date", "Score"],
       rows: [["", "Grade " + g, "", "     / " + (n * 4 * each + 10)]] });
     blocks.push({ k: "p", t: "Topics covered: " + topics.map(function (t) { return t.title; }).join(" · ") });
@@ -460,7 +461,7 @@
       ["One", "Two"].forEach(function (sem) {
         var st = topics.filter(function (t) { return t.sem === sem; });
         if (!st.length) return;
-        var ex = semesterExam(st, sem, r);
+        var ex = semesterExam(st, sem, r, opts);
         doc = doc.concat(ex.blocks);
         doc.push({ k: "pagebreak" });
         keys.push({ title: "Semester " + sem + " Examination (" + ex.marks + " marks)",
