@@ -4,7 +4,7 @@ survives /tmp being cleared."""
 from playwright.sync_api import sync_playwright
 import pathlib
 URL=pathlib.Path('/home/user/platform/index.html').as_uri()
-SUBS=['en','fr','sc','ma','ss','rm','pe']
+SUBS=['en','fr','sc','ma','ss','rm','pe','bi','ch','ec']
 DEV=[("Smart TV 4K",3840,2160),("Desktop 1440p",2560,1440),("Laptop 1366",1366,768),
      ("iPad portrait",768,1024),("Tablet small",600,960),("iPhone SE",375,667),
      ("Small handset",320,568)]
@@ -21,8 +21,18 @@ with sync_playwright() as p:
         pg.eval_on_selector(f".sess[data-m='{sess}']","e=>e.click()"); pg.wait_for_timeout(150)
         for s in SUBS:
             pg.eval_on_selector(f".subtab[data-s='{s}']","e=>e.click()"); pg.wait_for_timeout(250)
-            grades=pg.eval_on_selector_all("#grade option","o=>o.map(x=>x.value)")
-            for g in grades:
+            # a subject may span several bands; the grade list shows one band at
+            # a time, so walk every band tab that is offered
+            bands=pg.eval_on_selector_all(".bandtab","e=>e.map(x=>x.dataset.b)") or [None]
+            grades=[]
+            for bnd in bands:
+                if bnd:
+                    pg.eval_on_selector(f".bandtab[data-b='{bnd}']","e=>e.click()"); pg.wait_for_timeout(250)
+                for gv in pg.eval_on_selector_all("#grade option","o=>o.map(x=>x.value)"):
+                    grades.append((bnd,gv))
+            for bnd,g in grades:
+                if bnd:
+                    pg.eval_on_selector(f".bandtab[data-b='{bnd}']","e=>e.click()"); pg.wait_for_timeout(200)
                 pg.eval_on_selector("#grade",f"e=>{{e.value='{g}';e.dispatchEvent(new Event('change',{{bubbles:true}}));}}")
                 pg.wait_for_timeout(200)
                 pg.eval_on_selector("#gen","e=>e.click()"); pg.wait_for_timeout(900)
