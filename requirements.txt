@@ -1,0 +1,4 @@
+# UI / layout regression tests (tests/ui.py, tests/regress.py).
+# Install with:  python3 -m pip install -r requirements.txt
+# then fetch the Chromium browser:  python3 -m playwright install chromium
+playwright>=1.40
