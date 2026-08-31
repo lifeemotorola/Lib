@@ -181,7 +181,39 @@ const SUBJECTS = [
             { grade: 9, period: "III",
               facts: ["Eid al-Fitr", "Eid al-Adha", "Christmas", "Easter"] },
             { grade: 9, period: "VI",
-              facts: ["Chastity", "immorality", "temple of the Holy Spirit"] }] }
+              facts: ["Chastity", "immorality", "temple of the Holy Spirit"] }] },
+  { name: "Physical Education", global: "PE_CURRICULUM",
+    files: ["data-pe.js", "data-pe79.js"],   /* 7-9 file appends its units into PE_CURRICULUM */
+    grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */
+    spots: [{ grade: 1, period: "I",
+              facts: ["Beanbag Basket Relay", "five (5) feet", "One point"] },
+            { grade: 1, period: "V",
+              facts: ["squat position", "base of the neck and the top of the shoulders", "Charades"] },
+            { grade: 3, period: "VI",
+              facts: ["Rice, fufu, sugar cane, yam", "Tetherball", "Nutrition"] },
+            { grade: 4, period: "IV",
+              facts: ["one foot in contact with the ground", "Cooper 12-Minute Run", "Squirrel and Nut"] },
+            { grade: 6, period: "IV",
+              facts: ["30-minute run", "two feet (2') high above the floor", "Self esteem"] },
+            { grade: 7, period: "II",
+              facts: ["Ethyl alcohol", "20% of the alcohol is absorbed directly into the bloodstream from the stomach", "blood alcohol level"] },
+            { grade: 8, period: "III",
+              facts: ["making blood cells", "Ball-and-socket joint", "flexion"] },
+            { grade: 9, period: "V",
+              facts: ["below the waist", "backhand service drill", "drop shot"] }] },
+  { name: "Biology", global: "BI_CURRICULUM",
+    files: ["data-bi.js"],
+    grades: { from: 10, to: 12 },   /* Senior High band: every unit from Grade 10 to Grade 12 must carry study[] */
+    spots: [{ grade: 10, period: "VI",
+              facts: ["C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + heat energy", "hypogeal", "Delonix"] },
+            { grade: 11, period: "III",
+              facts: ["gross primary productivity", "net primary productivity", "loamy soil"] },
+            { grade: 11, period: "V",
+              facts: ["Punnett square", "crossing over", "fossil records"] },
+            { grade: 12, period: "V",
+              facts: ["resting potential", "action potential", "refractory period", "myelin sheath"] },
+            { grade: 12, period: "VI",
+              facts: ["0.002 mm diameter", "chlorination", "sewage disposal"] }] }
 ];
 
 let grandTotal = 0;

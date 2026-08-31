@@ -1,6 +1,12 @@
 /* Physical Education, Grades 1-6 — Liberian National Curriculum.
    36 units (6 grades x 6 periods). Practical PE: the body, fitness, screening,
-   games, stunts, first aid, health education and track & field. */
+   games, stunts, first aid, health education and track & field.
+
+   Every unit carries a `study[]` block list — the course text of the guide
+   ("Physical Education 1-6", 72 pp.), rendered verbatim on the Study Notes
+   page (see data-pe79.js for the Junior High half of the same subject).
+   `**bold**` marks the key terms; table cells take no markup because the
+   renderer escapes them. */
 const PE_CURRICULUM = [
 
 /* ============================ GRADE 1 ============================ */
@@ -17,6 +23,28 @@ const PE_CURRICULUM = [
     "Take part in sporting activities and list the different parts of a game"
   ],
   note: "Physical Education is the study of the body in motion. It keeps the body strong and healthy, helps us think clearly and teaches us to play fairly with others.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Physical Education (guide pp. 2-3) ---- */
+    {k:"h3", t:"What Physical Education Is"},
+    {k:"p", t:"**Physical Education** is the study of the body in motion. It plays a crucial role in the development and physical well-being of learners. The maintenance of the body through **physical fitness**, **health**, **flexibility** and **endurance** promotes sound reasoning and growth."},
+    {k:"p", t:"**Health** means being well in the body and the mind. When we take part in P.E. we learn healthy conditions: clean habits, good food, exercise and rest. We also build **motor skills** — the movements of running, jumping, throwing and catching that every game needs."},
+    {k:"rule"},
+    {k:"h3", t:"Sport — Track and Field"},
+    {k:"p", t:"A **sport** is a game with rules that people play or compete in. In **track and field** the events are running races, jumping and throwing. Every sport has two things a player must learn:"},
+    {k:"bul", items:["**Skills** — the special movements of the sport, such as sprinting, jumping or throwing correctly","**Rules** — what players may and may not do, so that play is fair and safe for everyone"]},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"In Grade One we play two kinds of games:"},
+    {k:"bul", items:["**Classroom games** — quiet games we can play inside the classroom, even on a rainy day","**Manipulative games** — games in which we handle objects such as beanbags, balls and ropes"]},
+    {k:"rule"},
+    {k:"h3", t:"The Different Parts of a Game"},
+    {k:"p", t:"Every game is made of parts. When you can name the parts of a game, you can learn any new game quickly:"},
+    {k:"num", items:["**The players** — the people taking part, in teams or as individuals","**The rules** — what is fair and what is not allowed","**The playing area** — the field, court or classroom space marked out for the game","**The equipment** — the things used to play, such as a ball, a beanbag or a whistle","**The score** — how points are counted to see which side has won"]},
+    {k:"rule"},
+    {k:"h3", t:"Two Games to Learn"},
+    {k:"p", t:"**Beanbag Basket Relay.** Arrange learners in rows facing the baskets. Draw a line across the front of the rows. On the sound of a whistle, the first learner attempts to throw a beanbag into the basket. **One point** is awarded for each basket."},
+    {k:"p", t:"**Shuttle Run.** Learners form two groups with objects opposite each line, **five (5) feet** apart. On the sound of a whistle, the first two learners run ahead of the line, faster between the objects, to the end — up to the last person."}
+  ],
   focus: ["Definition of Physical Education and health", "Sport: track and field, skills and rules", "Games: classroom games and manipulative games", "The different parts of a game"],
   terms: [
     { t: "physical education", d: "learning about the body and how to move and play well", x: "In physical education we exercise and play games." },
@@ -120,6 +148,26 @@ const PE_CURRICULUM = [
     "List ways we can care for body parts"
   ],
   note: "Our body is a wonderful machine. Each part has work to do. When we exercise, many parts work together — and when we keep the body clean, it stays healthy.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Human Body (guide pp. 5-6) ---- */
+    {k:"h3", t:"Parts of the Body"},
+    {k:"p", t:"The **human body** is made of many parts, and each part has a name and a job. The **head** holds the brain, the eyes, the ears, the nose and the mouth. The **trunk** holds the chest and the stomach. The **limbs** are the arms and the legs, ending in the hands and the feet."},
+    {k:"p", t:"We must **name** the parts of the body and **care** for them: wash the skin, clean the teeth, keep the hair tidy and cover wounds. Caring for the body is part of **personal hygiene**."},
+    {k:"rule"},
+    {k:"h3", t:"Body Types"},
+    {k:"p", t:"Bodies grow in different shapes. Learners identify various body parts and link them to body-building exercises, and learn the three common **body types**:"},
+    {k:"bul", items:["**Ectomorph** — the slim, lean body type","**Endomorph** — the soft, round body type","**Mesomorph** — the strong, muscular body type"]},
+    {k:"rule"},
+    {k:"h3", t:"Motor Skills and the Body's Role in Exercise"},
+    {k:"p", t:"**Motor skills** are the movements our muscles learn — running, jumping, throwing, catching and kicking. In every **exercise**, a part of the body does the work: the legs run and jump, the arms throw, and the heart beats faster to feed the muscles. Know what part the body plays in each exercise."},
+    {k:"rule"},
+    {k:"h3", t:"Personal Hygiene"},
+    {k:"p", t:"**Personal hygiene** means keeping the body clean so that germs cannot make us sick. Ways we can care for our body parts:"},
+    {k:"num", items:["Bathe the whole body with soap and clean water every day","Wash the hands before eating and after using the toilet","Brush the teeth morning and evening","Keep the fingernails short and clean","Wear clean clothes and clean sports wear"]},
+    {k:"rule"},
+    {k:"h3", t:"Activities and Games"},
+    {k:"bul", items:["**Jumping Jack** — jump to open the legs while clapping the hands overhead, then jump back to attention","**Football (game)** — take part in a class football game and show the body parts at work","**Skill drill** — practise one sport movement again and again until it is smooth","**Fox and Rabbit** — a chasing game: the fox chases, the rabbit dodges and runs"]}
+  ],
   focus: ["Body parts", "Motor skills", "The body's role in exercises", "Football game", "Personal hygiene", "Care for the body"],
   terms: [
     { t: "body part", d: "one section of the body, such as an arm or a leg", x: "The leg is the body part we use to run." },
@@ -220,6 +268,28 @@ const PE_CURRICULUM = [
     "Take part in exercises and games"
   ],
   note: "Physical fitness means the body is strong enough to do daily work and play without getting too tired. We build fitness by exercising regularly.",
+  study:[
+    /* ---- course text: Semester One, Period III — Physical Fitness (guide pp. 7-8) ---- */
+    {k:"h3", t:"What Physical Fitness Is"},
+    {k:"p", t:"**Physical fitness** is the ability of the body to do work and play without getting too tired, and to meet the demands of the day with energy left over. A fit body is strong, bends easily, and keeps going."},
+    {k:"rule"},
+    {k:"h3", t:"The Importance of Physical Fitness"},
+    {k:"bul", items:["It makes the **heart and muscles strong** so we can work and play longer","It builds **motor skills** — running, jumping, bending and throwing","It keeps the body **healthy** and helps us fight sickness","It makes us feel happy and helps us learn in class"]},
+    {k:"rule"},
+    {k:"h3", t:"Exercises that Build Fitness"},
+    {k:"p", t:"We take part in exercises and games to develop motor skills. Two exercises from the guide:"},
+    {k:"p", t:"**Toes Touch** — the learner bends forward until he touches his toes with the fingers, while the legs remain straight. This stretches the back and the legs."},
+    {k:"p", t:"**Balloon Hit** — every player has a balloon. Each learner keeps his balloon in the air by hitting it with his best hand. Later add the other hand, the elbows; hit and turn around; hit and touch the floor, until he reaches the distance required."},
+    {k:"rule"},
+    {k:"h3", t:"The Four Kinds of Games"},
+    {k:"table", head:["Kind of game","What it means","Example"], rows:[
+      ["Classroom game","A quiet game played indoors at the desk or in a small space","Balloon Hit"],
+      ["Loco-motor game","A game of travelling movements — running, hopping, dodging","American Hopscotch"],
+      ["Manipulative game","A game played by handling objects such as balls and beanbags","Ball games"],
+      ["Cooperative game","A game in which players work together instead of against each other","Group relay tasks"]
+    ]},
+    {k:"p", t:"Other guide games for this period: **Automobiles** (drivers move and park on command), **American Hopscotch** (hop through the marked squares), and the **Air Planes** game (arms wide, banking and gliding to the leader's signals)."}
+  ],
   focus: ["Definition of physical fitness", "Its importance", "Exercise", "Classroom, loco-motor, manipulative and cooperative games"],
   terms: [
     { t: "physical fitness", d: "being strong and healthy enough to work and play without tiring quickly", x: "Physical fitness helps you run without getting tired." },
@@ -319,6 +389,25 @@ const PE_CURRICULUM = [
     "Demonstrate exercises and games"
   ],
   note: "Screening means checking the body to see how fit and healthy it is. The teacher may measure height and weight, or count how many times you can do an exercise. Screening is not a competition — it shows where each pupil can improve.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Physical Fitness Screening (guide pp. 9-10) ---- */
+    {k:"h3", t:"What Fitness Screening Is"},
+    {k:"p", t:"**Physical fitness screening** means checking the body with simple tests to see **how fit** a learner is — before training begins, and again later to see the improvement. Screening tells the teacher what each learner can do and what each learner must practise."},
+    {k:"p", t:"Talking about fitness screening means being able to name the check, show how it is done, and say what it measures."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Screening"},
+    {k:"p", t:"The guide lists various types of screening the teacher may use:"},
+    {k:"bul", items:["**Body checks** — height, weight and body build","**Strength checks** — simple push or sit-up tasks","**Endurance checks** — how long the learner can keep moving","**Flexibility checks** — how far the body can bend and stretch"]},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — Jogging in Place"},
+    {k:"p", t:"**Jogging in Place** — learners stand erect. On a whistle, they jog in place as if they are running, but without moving any distance. The knees lift, the arms swing, and the heart beats faster. Stop when the whistle sounds again."},
+    {k:"rule"},
+    {k:"h3", t:"The Four Games of this Period"},
+    {k:"p", t:"**Beanbag Pile (classroom game).** Learners are seated in a single line formation with beanbags placed in a pile in front of the first learner in each line. On the signal **'GO'**, the first player takes a bag and passes it to the second player. The remaining beanbags are passed back one at a time. The last learner lays the first beanbag on the floor; each succeeding bag must be placed on top of the other, with only the first beanbag touching the floor. The stack must stand without any assistance from the stacker; if it falls, it must be re-stacked. **The first team to pile the bags correctly and call out the total number of beanbags wins the relay.**"},
+    {k:"p", t:"**Back Pass The Beanbag (loco-motor game).** The beanbag passes backwards down the line from player to player; the last player runs to the front and the passing begins again."},
+    {k:"p", t:"**Ball Pass (manipulative game).** Players pass a ball around or along the group quickly and cleanly — no throws, no drops."},
+    {k:"p", t:"**Blind Flight (cooperative game).** One player is guided by the voices of the team, so the group must cooperate to keep the 'blind' player safe."}
+  ],
   focus: ["Definition of physical fitness screening", "Types of screening", "Exercise: jogging in place", "Beanbag Pile, Back Pass the Beanbag, Ball Pass and Blind Flight games"],
   terms: [
     { t: "screening", d: "checking the body to see how fit and healthy it is", x: "The teacher did a screening of the whole class." },
@@ -419,6 +508,22 @@ const PE_CURRICULUM = [
     "Demonstrate physical fitness activities"
   ],
   note: "A stunt is a controlled body movement such as a roll. Stunts and tumbling build strength, balance and confidence — but they must always be done on a mat, with the teacher watching.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Stunts and Manipulative Skills (guide pp. 11-12) ---- */
+    {k:"h3", t:"Individual and Partner Activities"},
+    {k:"p", t:"Physical fitness activities can be done **alone (individual)** or **with a partner**. Individual activities — such as rope jumping by yourself — build personal skill. Partner activities — throwing a beanbag to each other, long-jumping in turns — teach cooperation, timing and fair turns."},
+    {k:"p", t:"The three activity sets of this period, each done individually and with a partner:"},
+    {k:"num", items:["**Beanbag activity** — toss, catch and carry the beanbag, alone and passing to a partner","**Rope jumping activity** — jump a turning rope alone; take turns and jump in pairs with a partner","**Long-jump activity** — run, take off and land with both feet; partners measure and compare jumps"]},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Jumping Jack** — learners stand in a vertical line facing the leader. On a whistle, they jump up and down with the hands clapping overhead and the legs opening while in the air."},
+    {k:"p", t:"**Charades** — divide the class into five or six smaller groups. A captain is elected from each group. The word or object chosen by a group should have syllables, to make it easier to act out. One group acts out its charade in front of the class; the captain asks the class to guess the syllable or the complete word. If the word is not guessed within a certain time, the captain tells the class and the next group has its turn."},
+    {k:"p", t:"**Chain Tag** — when a player is tagged he joins hands with the tagger, and the growing chain chases the free players together. **Barnyard** — players are named for barnyard animals and dash across on the farmer's call."},
+    {k:"rule"},
+    {k:"h3", t:"Stunts and Tumbling — the Forward Roll"},
+    {k:"num", items:["Begin in a **squat position**, with the head up, the arms extended forward slightly, and the fingers pointed straight ahead.","**Push off from the toes**, raise the seat, and tuck the chin to the chest.","Continue the forward movement, **landing on the base of the neck and the top of the shoulders**.","Push off with the hands and continue the forward motion to a **crouching and standing position**."]},
+    {k:"p", t:"Other stunts to try after the basic roll is safe: **Forward Roll to Jump Tuck**, **Consecutive Rolls**, **Reach Over Roll**, **Dive Forward Roll**, and **Forward Roll to One-Leg Stand**."}
+  ],
   focus: ["Beanbag activity", "Rope jumping activity", "Long jump activity", "Games", "Stunts and tumbling: the forward roll and its variations"],
   terms: [
     { t: "stunt", d: "a controlled body movement such as a roll or balance", x: "The forward roll is a simple stunt." },
@@ -519,6 +624,29 @@ const PE_CURRICULUM = [
     "Demonstrate various games"
   ],
   note: "First aid is the first help given to someone who is hurt, before a nurse or doctor arrives. Children should always call an adult first — but knowing the simple steps can help a friend.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — First Aid (guide pp. 13-14) ---- */
+    {k:"h3", t:"The Principles of First Aid"},
+    {k:"p", t:"**First aid** is the first help given to an injured or sick person **before** the nurse or doctor arrives. The principles of first aid: **act quickly but stay calm**, **keep the injured person safe**, and **get help** from an adult at once."},
+    {k:"rule"},
+    {k:"h3", t:"Safety Rules"},
+    {k:"p", t:"Safety rules prevent accidents before they happen. List them and keep them:"},
+    {k:"bul", items:["Play only in the marked playing area, away from stones, holes and traffic","Warm up before running and cool down after","Wear flat shoes and take off sharp objects such as pins and broken jewellery","Obey the whistle and the teacher at once","Never push, trip or hold another player","Report every injury — even a small one — to the teacher"]},
+    {k:"rule"},
+    {k:"h3", t:"First Aid Skills — the RICE Method"},
+    {k:"p", t:"For sprains and bruises on the sports field, apply the **RICE method**:"},
+    {k:"table", head:["Letter","Word","What to do"], rows:[
+      ["R","Rest","Stop the activity and rest the injured part — no more running on it"],
+      ["I","Ice","Put ice or a cold wet cloth on the injury to stop swelling and pain"],
+      ["C","Compression","Wrap the part firmly (not too tight) with a bandage or cloth"],
+      ["E","Elevation","Raise the injured part above the level of the heart"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Games for this Period"},
+    {k:"p", t:"**Clappers (classroom game).** Arrange groups into small circles around the classroom. The first player in each group claps the number of syllables in her first name, pauses for two seconds, then claps the number again. She continues this action, and any other player with the same number of syllables in his name joins in. Allow each group to clap five times, then move to the next player and repeat the game. Repeat for surnames, and finally for a combination of first and last names."},
+    {k:"p", t:"**Crazy Circle (loco-motor game, outdoor).** Players run, stop and change direction around the circle on the leader's wild signals. **Bat Ball (manipulative game, outdoor).** A ball is batted with the open hand and fielded by the other side — control the ball, do not throw it wildly."},
+    {k:"p", t:"In groups, learners demonstrate first aid application using the RICE method, and discuss the principles, the safety rules and what to do during an emergency."}
+  ],
   focus: ["Principles of first aid", "Safety rules", "First aid skills", "The RICE method", "Clappers, Crazy Circle and Bat Ball games"],
   terms: [
     { t: "first aid", d: "the first help given to an injured or sick person", x: "She gave first aid before the nurse came." },
@@ -613,6 +741,24 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical education, explain its importance, and participate in games and sporting activities."],
   objectives: ["Discuss Physical Education and its history", "Explain the importance of physical education", "Participate in games and sporting activities"],
   note: "People have exercised and competed for thousands of years. The ancient Greeks held the first Olympic Games. Today P.E. is taught in schools all over the world because a healthy body helps a person learn and work well.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Physical Education (guide pp. 15-16) ---- */
+    {k:"h3", t:"Physical Education, Its History and Importance"},
+    {k:"p", t:"**Physical Education** is the study of the body in motion; it develops learners physically and mentally. From its early history, P.E. grew from simple games and military drill into the school subject that teaches **fitness, skills, fair play and health**. Its importance: it builds a strong body, trains the mind to make quick, honest decisions, and teaches learners to cooperate."},
+    {k:"rule"},
+    {k:"h3", t:"Health and Personal Hygiene"},
+    {k:"p", t:"**General health** is the well-being of the whole body — strength, cleanliness, good food and rest. **Personal hygiene** is the daily care we give our own body: bathing, clean clothes, clean teeth and clean hands. Healthy, clean learners miss fewer school days and play better."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise (Flexibility) — the Trunk Twist"},
+    {k:"p", t:"**Trunk Twist** — start in a sitting position with the right leg extended and the left leg bent and crossed over the right leg. The left hand rests on the floor, and the right arm rests on the side of the left leg. Simultaneously push against the leg with the right arm and turn the trunk as far as possible toward the left side. **Reverse the positions and repeat the exercise.**"},
+    {k:"rule"},
+    {k:"h3", t:"Sporting Activities (Track & Field) — the Long Jump"},
+    {k:"p", t:"**Long Jump** — the learner begins several yards back from the take-off board, runs forward, and places his take-off foot on the board. As soon as he leaves the board, he brings his rear leg and both arms forward and upward. His heels contact the ground, and he immediately thrusts both arms back, forcing his body well forward."},
+    {k:"rule"},
+    {k:"h3", t:"Minor Games"},
+    {k:"p", t:"**Crambo (classroom game).** One child chosen to be 'IT' starts the game by saying, *'I am thinking of something (inside or outside the room) that rhymes with rain.'* The other players ask, *'Is it a rain?' 'Is it a drain?'* and so on. The child who guesses correctly becomes 'IT'."},
+    {k:"p", t:"**Crows and Cranes (loco-motor game)** — two lines face each other; when 'crows' or 'cranes' is called, that side chases the other to its goal line. **Battle Ball (manipulative game)** — two teams battle to force the ball across the opponents' line."}
+  ],
   focus: ["Definition of Physical Education", "History of Physical Education", "Importance of Physical Education", "Exercise and sport", "Classroom, loco-motor and manipulative games"],
   terms: [
     { t: "physical education", d: "learning about the body and how to move, exercise and play well", x: "Physical education is on our timetable twice a week." },
@@ -706,6 +852,26 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to identify parts of the body, explain their roles, demonstrate motor skills, and describe how boys and girls grow and change."],
   objectives: ["Identify different parts of the body", "Explain the role of the body parts", "Demonstrate motor skills through sport", "Describe how the body grows and changes"],
   note: "Every person's body grows and changes as they get older. Growing is normal and healthy. Keeping the body clean, eating good food and exercising helps the body grow well.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Human Body (guide pp. 17-18) ---- */
+    {k:"h3", t:"Exploring the Body Parts"},
+    {k:"p", t:"We **explore the body parts** — we list them, draw them and show the **role** each one plays. The legs run, the arms throw, the eyes watch the ball, the ears hear the whistle. Every part has work to do in play and in life."},
+    {k:"p", t:"Remember the three **body types** from Grade One — the slim **ectomorph**, the round **endomorph** and the muscular **mesomorph** — and link body parts to the exercises that build them."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Motor Skills"},
+    {k:"bul", items:["**Loco-motor skills** — movements that carry the body from place to place: running, hopping, jumping, dodging","**Manipulative skills** — movements that control objects: throwing, catching, kicking, dribbling","**Stability skills** — balancing and twisting the body in one place"]},
+    {k:"rule"},
+    {k:"h3", t:"Sexuality Education — Characteristics of Boys and Girls"},
+    {k:"p", t:"Boys are different from girls by their **body parts**, the **clothes they wear** and their **behaviour**. The body parts of the boy are the **penis** and **scrotum**, and of the girl the **breast** and **vagina**. These parts are private: they must be covered, kept clean, and never touched by others without permission. In pairs, learners show the characteristics of a boy or a girl and write a report."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Hat Race (classroom game).** All players stand in the aisles with a ruler in their right hand. The first has a hat, which he places on his ruler. On the signal **'GO'** he passes the hat over his right shoulder to the next player, who takes the hat with his ruler and passes it over his right shoulder to the next player, and so on."},
+    {k:"p", t:"**Do As I Do (loco-motor game)** — the leader performs a movement and everyone must copy it exactly. **Beanbag Basket (manipulative game)** — throw beanbags into the basket for points, as in the beanbag basket relay of Grade One."},
+    {k:"rule"},
+    {k:"h3", t:"Stunts and Tumbling — the Tip Over"},
+    {k:"p", t:"**Tip Over** — begin in a squat position with hands on the mat and knees between the arms. Lean forward, raise the seat, look back through the legs; then place the top of the shoulders on the mat and roll over to a sitting position."},
+    {k:"p", t:"Then practise: **Back Roller**, **Forward Roll**, **Consecutive Roll** and **Forward Roll to One-Leg Stand**."}
+  ],
   focus: ["Exploration of body parts", "Body types", "Roles of body parts", "Types of motor skills", "Growth and change", "Games and gymnastics"],
   terms: [
     { t: "body type", d: "the general shape and build of a person's body", x: "People have different body types." },
@@ -800,6 +966,20 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical fitness screening, demonstrate various types of screening, and take part in games."],
   objectives: ["Discuss physical fitness screening", "Demonstrate various types of screening", "Take part in exercises and games"],
   note: "In screening we measure the body and count what it can do. Everyone's numbers are different. The important number is not the biggest one — it is whether your own number is better than last time.",
+  study:[
+    /* ---- course text: Semester One, Period III — Physical Fitness Screening (guide pp. 19-20) ---- */
+    {k:"h3", t:"Physical Fitness — Body Screening"},
+    {k:"p", t:"**Body screening** is the simple health and fitness check the class does at the start of the season. Screening shows each learner's fitness level: it tells the teacher who needs gentle work and who is ready for harder exercise. Discuss what screening is, then demonstrate the types."},
+    {k:"p", t:"Types of screening to demonstrate:"},
+    {k:"bul", items:["**Height and weight** — measured with the measurement scales and a metre rule","**Ability checks** — simple strength and endurance tasks","**Result records** — the teacher writes the results in the assessment forms and repeats the tests later in the year"]},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — Sit-Ups"},
+    {k:"p", t:"**Sit-Ups** — learners sit on the floor with hands locked behind the head. On a whistle, learners lie on their backs and return to the normal sitting position, on several counts. Sit-ups build the muscles of the stomach (the abdominal muscles)."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Human Checkers (classroom game).** Place seven chairs in a row. Three girls sit on the three chairs at one end and three boys sit at the other end. The object is to move the girls to the boys' chairs and the boys to the girls' chairs **in fifteen moves**. Only one move can be made at a time. Moves are made by sliding into an open chair or by 'jumping' over one person. Players cannot move backward. For example, girl number three moves to the spare chair; on the second move, boy number four jumps girl number three, who is now in the spare position — and so on."},
+    {k:"p", t:"**Find Your Letter** — players hunt for the letter or card that matches their own when it is called. **Bombardment** — teams throw soft balls at the targets or players on the other side, who dodge; a hit player is out until the next round."}
+  ],
   focus: ["Definition of physical fitness screening", "Body screening: height and weight", "Exercises: sit-ups and squat thrust", "Games"],
   terms: [
     { t: "screening", d: "checking the body to see how fit and healthy it is", x: "Screening is done at the start of the term." },
@@ -893,6 +1073,29 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to define first aid, list safety rules, and apply the skills of first aid treatment."],
   objectives: ["Define first aid", "List safety rules", "Apply the skills in first aid treatment", "Demonstrate games"],
   note: "First aid means acting calmly, quickly and correctly. For a child the first rule never changes: call an adult. The second is: do no further harm.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — First Aid / Personal Hygiene (guide pp. 21) ---- */
+    {k:"h3", t:"Personal Hygiene — Caring for the Body"},
+    {k:"p", t:"**Personal hygiene** is the daily care we give our body to keep it clean and healthy. The guide asks three things: name the **body parts to care for most**, list the **ways to care for body parts**, and explain **why caring for them matters**."},
+    {k:"table", head:["Body part to care for most","How to care for it","Why it matters"], rows:[
+      ["Skin","Bathe with soap and clean water; dry well","Clean skin stops germs and skin infection"],
+      ["Teeth and mouth","Brush morning and evening","Prevents tooth decay and mouth disease"],
+      ["Hands and nails","Wash before eating; keep nails short and clean","Stops germs reaching the food we eat"],
+      ["Hair","Wash and comb it regularly","Keeps lice and dandruff away"],
+      ["Feet","Wash and dry between the toes; wear clean shoes","Prevents sores, especially after sports"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"First Aid Reminder"},
+    {k:"p", t:"Cleanliness is also **first aid**: wash every cut or graze with clean water and soap, cover it with a clean dressing, and **tell an adult**. A clean wound heals quickly; a dirty wound can become infected."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Knots (classroom game).** Learners begin standing together in a small circle with their hands at their sides. On a whistle, all learners move their hands forward and grasp other learners' hands. Players who are standing next to each other cannot hold hands. When everyone is holding hands, the group — **without letting go** — begins to undo itself and return to the original circle formation."},
+    {k:"p", t:"**Fragile Rock (loco-motor game)** — players move like fragile rocks: careful balancing and slow, controlled motion so nothing is 'broken'. **Borden Ball (manipulative game)** — pass and move with the ball across the opponents' goal line to score."},
+    {k:"rule"},
+    {k:"h3", t:"Stunts and Tumbling"},
+    {k:"p", t:"**Bear Dance** — squat on the left foot and extend the right leg forward, with the arms extended from the sides. Simultaneously jump forward, draw the left leg back, and extend the right leg forward (then change feet)."},
+    {k:"p", t:"Animal walks to follow: **Camel Walk** (hands and feet on the floor, hips high, moving slowly like a camel), **Elephant Walk** (bent forward, arms hanging and swinging like a trunk) and **Gorilla Walk** (deep crouch, knuckles touching the ground, swaying from side to side)."}
+  ],
   focus: ["Definition of first aid", "Safety rules", "First aid skills and their application", "Simple injuries: cuts, bruises, nosebleeds and burns", "Games"],
   terms: [
     { t: "first aid", d: "the immediate temporary care given to a person who is hurt or suddenly sick", x: "First aid is given before the nurse arrives." },
@@ -987,6 +1190,21 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to define physical fitness, discuss its importance, and demonstrate exercises and sport activities."],
   objectives: ["Define physical fitness", "Discuss the importance of fitness", "Identify kinds of fitness activities", "Demonstrate exercises and sport activities"],
   note: "There are different kinds of fitness activity: some build strength, some build endurance, some build flexibility, and some build speed. A fit body needs all four.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Physical Fitness (guide pp. 22-23) ---- */
+    {k:"h3", t:"Physical Fitness and its Measurement"},
+    {k:"p", t:"**Physical fitness** is the ability of the body to work and play with energy. We can **measure** part of it: **measure the height** against a wall chart or metre rule, and **weigh** the body on a measurement scale. Height and weight written down at the start and end of term show how the body is growing."},
+    {k:"rule"},
+    {k:"h3", t:"Assessment of Physical Fitness (Boys and Girls)"},
+    {k:"p", t:"The teacher assesses the fitness of the learners — **boys and girls alike** — with simple checks, and writes the results on the assessment forms. Everyone takes part; fitness is for every learner, not only for the best players."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — Bicycling"},
+    {k:"p", t:"**Bicycling** — learners lie on the back on the floor with the legs extended upward and the buttocks balanced on the hands. On a whistle, learners flex and extend the legs alternately, like one riding a bicycle. Keep the pedalling smooth and steady until the whistle sounds again."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Mirror Mirror (classroom game).** Arrange the class into pairs with the players facing each other. Number the players one and two. On a whistle, player one begins to perform a movement — such as winking, moving a finger, or hopping on one foot. Player two must copy the actions of player one until the teacher calls **'CHANGE.'** When this occurs, the players exchange roles. When the teacher calls **'new mirror,'** everyone must find a new partner and the game continues."},
+    {k:"p", t:"**Geometrical Shapes (loco-motor game)** — learners run, and on the call of a shape (circle, line, square) they group themselves to form that shape. **Bounce Netball (manipulative game)** — the ball is bounced and caught between players as it moves toward the goal; bounce passes only, no running with the ball."}
+  ],
   focus: ["Definition of physical fitness", "Importance of physical fitness", "Kinds of fitness activities", "Exercises", "Games and stunts and tumbling"],
   terms: [
     { t: "physical fitness", d: "the ability of the body to work and play well without tiring quickly", x: "Regular exercise builds physical fitness." },
@@ -1080,6 +1298,22 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to explain the heart muscle, describe how exercise affects it, and demonstrate exercises and games."],
   objectives: ["Explain what the heart muscle is", "Describe how exercise strengthens the heart", "Demonstrate exercises that work the heart", "Take part in games"],
   note: "The heart is a muscle, and like every other muscle it grows stronger when it is worked. Exercise that makes the heart beat faster for several minutes is the exercise that makes it strong.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Physical Fitness and the Heart Muscle (guide pp. 24-25) ---- */
+    {k:"h3", t:"Identifying the Heart Muscle"},
+    {k:"p", t:"The **heart** is a strong **muscle** found in the chest, between the two lungs, a little to the left. It is about the size of your own fist. It works day and night without resting — even when you sleep, your heart keeps beating."},
+    {k:"rule"},
+    {k:"h3", t:"The Three Main Functions of the Heart Muscle"},
+    {k:"num", items:["**It pumps blood** around the whole body, to every part — the brain, the arms, the legs.","**It carries oxygen and food** (in the blood) to feed the muscles and organs so they can work.","**It collects the wastes** (like carbon dioxide) from the body parts so they can be removed."]},
+    {k:"p", t:"During exercise the muscles need more oxygen and food, so the heart pumps **faster and harder**. This is why our heartbeat rises when we run — and why regular exercise makes the heart muscle stronger."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — the Frog Dance"},
+    {k:"p", t:"**Frog Dance** — learners squat with hands on hips. On a whistle, learners jump all around, from one distance to another, like frogs. Feel the heartbeat before and after the dance: the difference shows the heart answering the muscles' call."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**My Ship Is Loaded (classroom game).** One child starts by saying *'my ship is loaded with cars'* (or any cargo he wishes). The player who receives the ball repeats what the first child said and adds a new item as he rolls the ball to another player — he would say, *'my ship is loaded with cars and hats.'* Each player in turn adds a new item. When a child fails to repeat all the cargo, the ball is given to the player on his right, who starts a new game."},
+    {k:"p", t:"**Hot Spot (loco-motor game)** — players run and dodge to avoid the 'hot spot' marked on the ground. **Boundary Ball (manipulative game)** — teams roll or pass the ball across the opponents' boundary line to score, defending their own line as they attack."}
+  ],
   focus: ["The heart muscle", "Pulse and heartbeat", "Exercise and the heart", "Games and activities"],
   terms: [
     { t: "heart", d: "the muscle that pumps blood around the body", x: "The heart never stops working." },
@@ -1174,6 +1408,26 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical education, explain general health, and participate in sporting activities."],
   objectives: ["Discuss Physical Education", "Explain general health", "Participate in sporting activities", "Demonstrate games and stunts"],
   note: "Health means more than not being sick. A healthy person is well in body, well in mind, and able to live and work with others. Physical education helps with all three.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Physical Education (guide pp. 26-28) ---- */
+    {k:"h3", t:"Definitions — Physical Education and Health"},
+    {k:"p", t:"**Physical Education** is the study of the body in motion; it plays a crucial role in the development and physical well-being of learners. **Health** is the state of being well in body and mind — strong, clean and free from sickness."},
+    {k:"p", t:"From its **history**, P.E. grew out of games, dances and military training into a school subject. Its **importance**: it keeps the body fit, teaches fair play and teamwork, sharpens the mind, and fills leisure time with healthy activity."},
+    {k:"rule"},
+    {k:"h3", t:"Personal Hygiene — Care of the Body"},
+    {k:"p", t:"**Personal hygiene** means caring for our own body every day. State its meaning, list the parts of the body we care for — skin, hair, teeth, hands, feet and clothing — and explain how to care for each of them. Good personal hygiene can affect your health: it keeps germs away and makes you fit for games and school work."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — the Squat Thrust"},
+    {k:"p", t:"**Squat Thrust** — learners squat with hands placed on the floor. On a whistle, each balances on his hands and stretches his body backward, then squats again, alternately. Strong shoulders and a quick spring are built by repeating this exercise."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Poorhouse (classroom game).** Learners get into a semicircle formation: partners sit on chairs placed in a horseshoe pattern, and two chairs representing the 'Poorhouse' are placed at the open end. Each couple has a number and must keep their hands joined throughout the game. The game begins with the couple in the poorhouse calling out two numbers, such as two and six. The couples whose numbers are called must change places; during the changeover, the poorhouse couple attempt to reach the vacated chairs first."},
+    {k:"bul", items:["**King (loco-motor game)** — the 'king' calls movements and the players obey only the king's true commands","**Butterflies (manipulative game)** — players flutter, dodge and exchange places on the call, never being caught without a spot","**Clock (cooperative game)** — the whole class cooperates to form the numbers of a clock with their bodies","**Deck Tennis (individual and partner game)** — throw and catch a ring or 'deck' across a line; it must not touch the ground"]},
+    {k:"rule"},
+    {k:"h3", t:"Stunts and Tumbling — the Log Roll"},
+    {k:"p", t:"**Log Roll** — lie on the back with arms extended over the head and the hands locked together. Keep the body in a straight line and roll to the left side for a minute and back to the original position. The first to reach the original spot wins a point."},
+    {k:"p", t:"Then practise: **Side Roll**, **Forward Roll** and **Look Back Through the Legs**."}
+  ],
   focus: ["Definition, history and importance of Physical Education", "General health", "Exercise", "Games: classroom, loco-motor and manipulative", "Stunts and tumbling"],
   terms: [
     { t: "physical education", d: "the study and practice of the body in movement, exercise and sport", x: "Physical education develops the whole person." },
@@ -1267,6 +1521,19 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to define physical fitness, discuss its importance, and demonstrate exercises and sport activities."],
   objectives: ["Define physical fitness", "Discuss the importance of fitness", "Identify kinds of fitness activities", "Demonstrate exercises and games"],
   note: "Fitness is built the same way a wall is built: one block at a time, regularly. Nobody becomes fit in a day, and nobody stays fit without working at it.",
+  study:[
+    /* ---- course text: Semester One, Period II — Physical Fitness (guide pp. 29) ---- */
+    {k:"h3", t:"Physical Fitness and How We Measure It"},
+    {k:"p", t:"**Physical fitness** is the ability of the body to do its daily work and play without too much fatigue. Part of fitness can be measured directly: **measure the height** with a metre rule, and **weigh the body** on the measurement scales. Recording both, term by term, shows how each learner is growing."},
+    {k:"rule"},
+    {k:"h3", t:"Developing Interest in Physical Fitness"},
+    {k:"p", t:"The teacher assesses the physical fitness of the students — **boys and girls** — and every learner is helped to develop an **interest** in fitness activities: choosing a favourite game, setting a small goal, and watching his or her own records improve across the year."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Puzzled Words (classroom game).** Organize the class into groups of five to eight learners. The teacher gives each group a pile of letters that, after reshuffling, will form a word. On a whistle from the teacher, each group tries to put its word together. **The first team to assemble its word wins the game.**"},
+    {k:"p", t:"**Loose Caboose (loco-motor game).** Players form 'trains' in pairs; one player — the loose caboose — has no train and tries to hook onto the back of any train, making its front player the new loose caboose."},
+    {k:"p", t:"**California Kickball (manipulative game).** Played like kickball: the pitcher rolls the ball, the kicker kicks it and runs the bases, and the fielders make the out by throwing to the base before the runner arrives."}
+  ],
   focus: ["Definition of physical fitness", "Importance of physical fitness", "Kinds of fitness activities", "Exercises", "Games and stunts"],
   terms: [
     { t: "physical fitness", d: "the ability of the body to carry out daily work and play without undue tiredness", x: "Physical fitness lets you finish the day with energy left." },
@@ -1360,6 +1627,19 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical screening, demonstrate various types of screening, and take part in games."],
   objectives: ["Discuss physical screening", "Demonstrate various types of screening", "Record results correctly", "Take part in exercises and games"],
   note: "A screening result is only useful if the test is done the same way every time. Same method, same instrument, same effort — then the numbers can be trusted.",
+  study:[
+    /* ---- course text: Semester One, Period III — Physical Fitness Screening (guide pp. 30-31) ---- */
+    {k:"h3", t:"The Importance of Body Screening"},
+    {k:"p", t:"**Physical fitness screening** checks how fit the body is — its strength, endurance and flexibility. The **importance of body screening** is that it gives every learner a starting point: before a season of training, the teacher screens the class, records the results, and uses them to plan exercises that no one is left out of and no one is injured by."},
+    {k:"p", t:"Discuss the history and importance of physical fitness screening, then demonstrate the screening types, the exercises and the games."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — Sit-Ups"},
+    {k:"p", t:"**Sit-Ups** — learners sit with legs folded and hands locked behind the head. On a whistle, each lies on his back and comes back to the same position, alternately. Count the repetitions in a set time and record them — this is itself a screening of stomach-muscle strength."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Beatball Softball (softball game).** Play according to regular softball rules. Learners get the ball and throw it to the first baseman, who must touch the base with the ball in his hand, then throw from first to second, second to third, and third to home. **If the ball gets home ahead of the runner, he is out; if the runner beats the ball home, he scores a run for his team.** After three outs, the teams exchange places."},
+    {k:"bul", items:["**Bound Ball (volleyball game)** — pass the volleyball over the line; a team that lets the ball be grounded loses the point","**Call Ball (manipulative game)** — the thrower tosses the ball up and calls a player's name; that player must catch it before it bounces away and become the next thrower","**Alley Soccer (soccer game)** — soccer played in a narrow alley, which teaches close dribbling and quick passing"]}
+  ],
   focus: ["Definition of physical fitness screening", "Body screening", "Exercises: trunk twist and bicycling", "Games and stunts"],
   terms: [
     { t: "screening", d: "checking the body to find its level of fitness and health", x: "The screening takes place twice a year." },
@@ -1453,6 +1733,25 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to state the meaning of HIV and AIDS, identify ways HIV is spread and not spread, explain how HIV attacks the immune system and its effects on the family, and demonstrate balance activities and minor games."],
   objectives: ["State the meaning of the acronyms HIV and AIDS", "Identify ways in which HIV is spread", "Identify ways in which HIV is not spread", "Explain how HIV attacks the immune system", "Explain the effects of HIV and AIDS on the family", "Demonstrate balance activities and minor games"],
   note: "People living with HIV are our neighbours, classmates and family. They should be treated with kindness and respect. You cannot get HIV from sharing a desk, a plate, a hug or a game.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — HIV and AIDS / Exercises (guide pp. 32-33) ---- */
+    {k:"h3", t:"The Meaning of HIV and AIDS"},
+    {k:"p", t:"**HIV** stands for **Human Immunodeficiency Virus** — the virus that attacks the body's defence system. **AIDS** stands for **Acquired Immune Deficiency Syndrome** — the group of illnesses that come when the body's defences have been destroyed by HIV."},
+    {k:"rule"},
+    {k:"h3", t:"How HIV Attacks the Immune System"},
+    {k:"p", t:"The **immune system** is the army of the body — white blood cells that fight germs. HIV enters these soldier cells, multiplies inside them and destroys them. With fewer and fewer defenders, the body can no longer fight ordinary sicknesses, and the person becomes ill with AIDS."},
+    {k:"rule"},
+    {k:"h3", t:"How HIV is Spread — and How It is NOT Spread"},
+    {k:"bul", items:["**Spread**: through unprotected sexual contact with an infected person; through infected blood (transfusions, sharing of sharp instruments or needles); and from an infected mother to her baby during pregnancy, birth or breastfeeding","**NOT spread**: by hugging, shaking hands, sharing food or cups, playing together, mosquito bites, or using the same toilet or classroom"]},
+    {k:"rule"},
+    {k:"h3", t:"Prevention and the Effects on the Family"},
+    {k:"p", t:"**Prevention**: abstain from sexual activity, never share needles, razor blades or other sharp instruments, and make sure blood is screened before transfusion. **Effects on the family**: sickness and death of parents and breadwinners, children left as orphans, and money spent on treatment instead of food and school fees. Persons with HIV need our love and care, not rejection."},
+    {k:"rule"},
+    {k:"h3", t:"Balance Activities"},
+    {k:"p", t:"**Spine Hand Stand (Rear Support)** — the learner starts in a sitting position and gradually raises the seat off the mat until the body forms a straight line; he remains in that position for the time required by the teacher."},
+    {k:"p", t:"**The Bridge** — the learner sits on the floor; on a signal he lies on his back and attempts to lift the body, balancing on the palms of the hands and the soles of the feet until the body is in an arch, like a bridge. He remains in that position for the time required by the teacher."},
+    {k:"p", t:"Stunts and tumbling and games for the period: **Double Wheelbarrow**, **Without Hands**, and **Two Square** — the square court game in which the ball must bounce once in another player's square."}
+  ],
   focus: ["Definition of HIV and AIDS", "Causes and effects", "Preventive methods", "Effects on the family", "Balance activities and pyramid building", "Stunts and tumbling; loco-motor and manipulative games"],
   terms: [
     { t: "HIV", d: "Human Immunodeficiency Virus, the virus that attacks the body's defence system", x: "HIV weakens the immune system." },
@@ -1546,6 +1845,25 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to state the meaning of the acronym STIs, explain the effects of sexually transmitted infections on the body, and state that abstinence is the best method of preventing infections."],
   objectives: ["State the meaning of the acronym STIs", "Explain the effects of sexually transmitted infections on the body", "State that abstinence is the best method of preventing these infections"],
   note: "This topic is about protecting your health. The clear message for pupils of this age is abstinence — waiting — which protects the body completely. Always take your questions to a parent, guardian, teacher or health worker.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Sexually Transmitted Infections (guide pp. 34-35) ---- */
+    {k:"h3", t:"The Meaning of STIs"},
+    {k:"p", t:"**STI** stands for **Sexually Transmitted Infection** — infections passed from one person to another mainly through sexual contact. Common examples are **gonorrhoea**, **syphilis** and **chlamydia**; HIV (studied in Period IV) is also sexually transmitted."},
+    {k:"rule"},
+    {k:"h3", t:"Causes and Effects"},
+    {k:"p", t:"Many STIs are **infections caused by bacteria** — and because bacteria cause them, most of them **can be treated and cured** at the hospital or clinic if the person goes early. The **effects** on the body, when an STI is not treated: pain, sores, discharge, damage to the reproductive organs, infertility (no children later), and greater danger of catching HIV."},
+    {k:"rule"},
+    {k:"h3", t:"Treatment and Prevention"},
+    {k:"p", t:"**Treatment**: any sign — sore, rash, pain or unusual discharge — must be reported at once to a health worker; both partners must be treated, and medicines must be finished completely."},
+    {k:"p", t:"**Prevention**: **abstinence** — not having sex — is the **best method of preventing** these infections, especially for young people. Faithfulness to one uninfected partner and correct medical advice protect adults who are married."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — Group Jump Rope"},
+    {k:"p", t:"**Group Jump Rope** — two learners hold the rope at the ends and begin to turn it. A selected number of learners attempt to enter in a group. Anyone who stops the rope takes one end of the rope to allow another learner to join the others."},
+    {k:"rule"},
+    {k:"h3", t:"Stunts and Tumbling — the Eskimo Roll"},
+    {k:"p", t:"**Eskimo Roll** — one partner lies on his back and the other partner stands, facing forward and near his partner's head. The partner on the floor grasps his partner's ankles and raises his own legs in order to allow his partner to grasp each leg above the ankles. The top partner leans forward, places the (other) partner's feet on the floor, and then performs a forward roll. The lower partner follows, and both continue performing a series of forward rolls."},
+    {k:"p", t:"Also practise the **Forward Drop** and the **Forearm Stand**."}
+  ],
   focus: ["Definition and meaning of STIs", "Causes and effects", "Infections caused by bacteria", "Treatment", "Preventive method: abstinence"],
   terms: [
     { t: "STI", d: "Sexually Transmitted Infection, an infection passed through sexual contact", x: "STIs can be prevented." },
@@ -1640,6 +1958,26 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to label parts of the body, describe body types, explain the roles of the body parts, and demonstrate motor skills."],
   objectives: ["Label different parts of the body", "Describe the three body types", "Explain the role of the body parts", "Demonstrate motor skills through sport"],
   note: "People are built differently. Scientists describe three general body types — the slim ectomorph, the muscular mesomorph and the heavier endomorph. Most people are a mixture. No type is better than another.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — The Human Body; Nutrition and Diet (guide pp. 36-37) ---- */
+    {k:"h3", t:"Body Parts, Body Types and Motor Skills"},
+    {k:"p", t:"**Label** the different parts of the body and state the **role** of each: legs for running, arms for throwing, eyes for tracking the ball. Remember the **body types** — ectomorph, endomorph and mesomorph — and outline the **types of motor skills**: loco-motor (travelling), manipulative (handling objects) and stability (balancing)."},
+    {k:"rule"},
+    {k:"h3", t:"Nutrition, Diet and Nutrients"},
+    {k:"p", t:"**Nutrition** means eating the food the body needs to grow, develop and work properly. **Diet** is the food and drink that we take into the body every day. **Nutrients** are the rich substances found in foods that your body needs most."},
+    {k:"p", t:"**Water** is needed by the body for digestion and to remove wastes. **Food** is needed because it repairs body cells, gives energy, and protects against diseases. A child who eats only one kind of food suffers **deficiency** — the shortage of a needed nutrient."},
+    {k:"rule"},
+    {k:"h3", t:"The Three Groups of Food"},
+    {k:"table", head:["Food group","What it does for the body","Examples"], rows:[
+      ["Body-building foods","Build and repair the muscles and other body cells","Meat, fish, eggs"],
+      ["Energy-giving foods","Give the body fuel to work, run and play","Rice, fufu, sugar cane, yam"],
+      ["Protective foods","Protect the body against diseases","Pineapple, oranges, plum"]
+    ]},
+    {k:"p", t:"For Physical Education activities, choose **nutritious food**: a meal with one food from each group, and clean water — not sweets and fizzy drinks before a game."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"bul", items:["**Tetherball (individual and partner game)** — hit the ball on its rope around the pole in one direction while your opponent tries to wind it the other way","**Flag or Touch Football** — football in which a runner is 'tackled' by touching him or pulling his flag, never by knocking him down","**Football End Ball** — pass the ball up the field and score by getting it to your free player behind the opponents' end line"]}
+  ],
   focus: ["Exploration of body parts", "Body types: ectomorph, mesomorph and endomorph", "Roles of the body parts", "Types of motor skills", "Games and gymnastics"],
   terms: [
     { t: "ectomorph", d: "a slim, lightly built body type", x: "An ectomorph is often a good long-distance runner." },
@@ -1734,6 +2072,24 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical education, explain general health, and participate in sporting activities."],
   objectives: ["Discuss Physical Education", "Explain general health", "Participate in sporting activities", "Demonstrate flexibility exercises, games and stunts"],
   note: "Physical education is not simply games. It is a planned programme that develops the body, teaches health and safety, and builds character through sport.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Physical Education (guide pp. 38-39) ---- */
+    {k:"h3", t:"Definitions — Physical Education, Its History and Importance"},
+    {k:"p", t:"**Physical Education** is the study of the body in motion; it plays a crucial role in the development and physical well-being of learners. Its **history** stretches from the games and military drills of long ago to the modern school subject. Its **importance**: the maintenance of the body through physical fitness, health, flexibility and endurance promotes sound reasoning and growth."},
+    {k:"p", t:"**Health**, in general, is complete well-being — a body that is fit, clean and properly fed, and a mind that is calm and alert. Exercise protects health; health makes exercise possible."},
+    {k:"rule"},
+    {k:"h3", t:"Exercises — Strength and Flexibility (Stretches)"},
+    {k:"p", t:"**Bench Press** — learners lie on a bench face up with feet flat on the floor. Start with the arms extended and the weight over the chest, grasping the bar at approximately shoulder width. Under control, lower the weight to the chest; then push the weight back to the starting position. Repeat for the time required by the teacher."},
+    {k:"bul", items:["**Standing / Seated Press** — press the weight from the shoulders to full arm-stretch overhead, standing or seated, then lower it under control","**Upright Rowing** — stand tall, hold the bar with both hands close together, and pull it up to the chin with the elbows high, then lower slowly","**Deltoid Raises** — with a small weight in each hand, raise the arms straight out to the sides to shoulder height and lower them slowly — this builds the deltoid muscles of the shoulder"]},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Traffic Lights (loco-motor game).** Learners find their own space. The teacher signals: **RED means JOG; YELLOW means WALK; GREEN means RUN; BLUE means LIE ON STOMACH; and BLACK means JUMP IN PLACE.** On a whistle, all children begin to move according to the teacher's signals."},
+    {k:"p", t:"**Tug-of-War** — two teams pull opposite ends of a rope; each side tries to drag the middle mark of the rope past its own line. **Twister (manipulative game)** — hands and feet are placed on coloured spots as the caller names them, twisting the body without falling."},
+    {k:"rule"},
+    {k:"h3", t:"Stunts and Tumbling"},
+    {k:"p", t:"**Wheel Stunt** — learners stand three per group. The center learner stands with legs apart and arms extended sideward. The outside learners place their feet near the center learner's foot, grasp hands, then lean outward for the time required by the teacher."},
+    {k:"p", t:"**Walking Down the Wall** — facing away, walk the hands down the wall from a standing lean until the body arches; hold, then walk the hands back up."}
+  ],
   focus: ["Definition, history and importance of Physical Education", "Health", "Exercise: flexibility and stretches", "Loco-motor, manipulative and cooperative games", "Stunts and tumbling"],
   terms: [
     { t: "physical education", d: "planned education through physical activity, developing the body, health and character", x: "Physical education appears on every school timetable." },
@@ -1827,6 +2183,22 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to identify the cardiovascular system, discuss its functions, and demonstrate exercises relating to the system."],
   objectives: ["Define physical fitness", "Discuss the importance of fitness", "Identify the cardiovascular system and its functions", "Demonstrate exercises and sport activities"],
   note: "The cardiovascular system is the heart and the blood vessels together. It delivers oxygen and food to every cell and carries waste away. Exercise makes this whole system work better.",
+  study:[
+    /* ---- course text: Semester One, Period II — Physical Fitness and the Cardiovascular System (guide pp. 40-41) ---- */
+    {k:"h3", t:"Physical Fitness and its Importance"},
+    {k:"p", t:"**Physical fitness** is the ability of the body to carry out daily tasks with vigour and without undue fatigue. Its **importance**: it strengthens the heart and muscles, controls body weight, improves posture, and sharpens concentration for school work."},
+    {k:"p", t:"The **cardiovascular system** is made of the heart, the blood and the blood vessels. Its **functions**: the heart pumps blood through the vessels to carry oxygen and food to every cell, and to carry away carbon dioxide and wastes. Exercises that make the heart beat faster — running, jumping, skipping — train this system."},
+    {k:"rule"},
+    {k:"h3", t:"Kinds of Fitness Activities — Jumping Exercises"},
+    {k:"p", t:"**Calf Jump** — the learner stands with feet shoulder-width apart and hands on hips; the knees bend slightly, and using mainly the **calf muscles**, he jumps rapidly in place for 10 repetitions."},
+    {k:"bul", items:["**Calf-Jump Spins** — the same calf jump with a half or full turn in the air","**One-Leg Calf Jump** — calf jumps performed on one foot, then the other","**Individual Rope Skipping** — hold one handle in each hand with the rope behind you; swing the rope over your head and jump over it when it reaches your feet; continue swinging and jumping"]},
+    {k:"rule"},
+    {k:"h3", t:"Game — Give and Take (Cooperative)"},
+    {k:"p", t:"**Give and Take** — learners squat in a circle, each holding an object in the right hand. On a signal, all pass the objects to the next person on the right. Continue the exercise until everyone receives his own object back — 10 repetitions make a game. It teaches rhythm, attention and cooperation."},
+    {k:"rule"},
+    {k:"h3", t:"Stunts and Tumbling"},
+    {k:"p", t:"**Hand Stand (Head Stand)** — with hands and head forming a tripod on the mat, raise the legs until the body is straight and balanced; come down with control. **Frog Stand** — squat with the hands flat on the mat, rest the knees on the elbows, lean forward and lift the feet off the floor, balancing on the hands like a frog."}
+  ],
   focus: ["Definition of physical fitness", "Importance of physical fitness", "The cardiovascular system", "Kinds of fitness activities: jumping exercises", "Cooperative games and stunts"],
   terms: [
     { t: "cardiovascular system", d: "the heart and blood vessels, which move blood around the body", x: "Running strengthens the cardiovascular system." },
@@ -1920,6 +2292,30 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to define first aid, list types of wounds, and apply the skills of first aid treatment."],
   objectives: ["Define First Aid", "List types of wounds", "Apply the skills in First Aid treatment", "Respond correctly to common emergencies"],
   note: "There are five types of wound: abrasion, incision, laceration, puncture and avulsion. For all of them, the four steps are the same: stop the bleeding, protect the wound, treat for shock, and seek medical care.",
+  study:[
+    /* ---- course text: Semester One, Period III — First Aid and Safety (guide pp. 42-43) ---- */
+    {k:"h3", t:"Definition of First Aid"},
+    {k:"p", t:"**First aid** is the immediate, temporary care given to a person who has been injured or is suddenly ill, before full medical help arrives. In an emergency, your first decision should be **whether to move the victim or not**; move a victim only when it is necessary to save life — for example, an accident victim from a car, from water, or from a smoky room."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Wounds"},
+    {k:"table", head:["Wound","What it is"], rows:[
+      ["Abrasion","Scrapes against the skin"],
+      ["Incision","A cut made in the body during surgery"],
+      ["Laceration","A jagged, tearing wound of the flesh"],
+      ["Puncture","A deep narrow wound made by a pointed object such as a nail or thorn"],
+      ["Avulsion","A wound in which tissue is torn away or partly torn off"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Treatment — the Four Steps"},
+    {k:"num", items:["**Stop the bleeding** — press on the wound with a clean cloth or bandage.","**Protect the wound from contamination and infection** — clean it and cover it with a sterile dressing.","**Treat the victim for shock** — lay the victim down, keep him warm and reassure him.","**Seek medical care immediately** — get the victim to a clinic or hospital without delay."]},
+    {k:"rule"},
+    {k:"h3", t:"Common Emergencies"},
+    {k:"bul", items:["**Fire** — get out and raise the alarm; never hide; crawl low under smoke","**Flood** — move to high ground; never play in flood water","**Burns** — cool the burn with clean, cool running water and cover it with a clean dressing"]},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Who's Leading? (classroom game).** A learner is chosen to be 'IT'; he stands outside the circle with his hands over his eyes. The teacher then selects a player in the circle to be the 'leader'. The leader starts any motion he chooses — blinking his eyes, waving his arms over his head — and the circle copies. 'IT' opens his eyes and tries to guess who the leader is. As the game progresses, the leader slyly switches to other movements while 'IT' tries to find him. Allow two or three guesses, then change the leader and 'IT'."},
+    {k:"p", t:"**Steal the Bacon (loco-motor game)** — two teams with matching numbers face each other across a centre 'bacon'; when a number is called, both players race to seize the bacon and carry it home without being tagged. **Boundary Ball (manipulative game)** — pass or roll the ball over the opponents' boundary line to score."}
+  ],
   focus: ["Definition of First Aid", "First aid skills and their application", "Types of wounds", "Treatment", "Common emergencies: fire, flood and burns", "Games"],
   terms: [
     { t: "first aid", d: "the immediate temporary care given to an injured or suddenly sick person", x: "First aid can save a life before help arrives." },
@@ -2014,6 +2410,22 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical screening and demonstrate various types of screening and sport activities."],
   objectives: ["Discuss physical screening", "Demonstrate various types of screening", "Record and interpret results", "Take part in sport activities and games"],
   note: "Field tests such as the one-mile walk and the Cooper 12-minute run measure cardiovascular endurance. They need only a measured course and a stopwatch, so any school can use them.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Physical Fitness Screening (guide pp. 44-45) ---- */
+    {k:"h3", t:"Physical Fitness Screening and Its Three Tests"},
+    {k:"p", t:"**Physical fitness screening** is the testing of the body to find its fitness level — especially **cardiorespiratory endurance**, the power of the heart and lungs to keep working. Three screening tests appear in the guide:"},
+    {k:"rule"},
+    {k:"h3", t:"The One-Mile Walk Test"},
+    {k:"p", t:"**1-Mile Walk Test** — learners begin with warm-up exercises, such as simple stretches and walking in place. Later, walk a mile as fast as you can. **You must always have one foot in contact with the ground** — if both feet leave the ground at any time during the movement, you are running. Time the walk and record it."},
+    {k:"rule"},
+    {k:"h3", t:"The Cooper 12-Minute Run and the 6-Mile Bicycle Test"},
+    {k:"bul", items:["**Cooper 12-Minute Run** — run (or run and walk) for exactly twelve minutes and measure the distance covered; the farther you go, the better your endurance","**6-Mile Bicycle Test** — ride six miles in the best time you can, pacing yourself evenly; the faster the time, the fitter the rider"]},
+    {k:"p", t:"Screen first, train afterwards, then screen again at the end of term: the change in your time or distance is your **progress**."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Squirrel and Nut (classroom game).** Learners sit at their desks with the head resting on one arm; the other arm is held to the side with the hand in an open position. One child, chosen to be the 'squirrel', carries a word card and moves quietly around the room. When the squirrel drops the 'nut' into the hand of a player, that person jumps up, correctly pronounces the word on the card, then tries to tag the squirrel before the squirrel can reach his own seat."},
+    {k:"p", t:"**Mouse Trap (loco-motor game)** — join hands in a circle to make the 'trap'; the mice run in and out, and when the leader calls 'SNAP!' the trap closes and the caught mice join the circle. **Elastic Rope (manipulative game)** — two players hold a loop of elastic rope with their ankles while others jump it in patterns of ever-rising height."}
+  ],
   focus: ["Definition of physical fitness screening", "Body screening: 1-mile walk test, Cooper 12-minute run, 6-mile bicycle test", "Classroom, loco-motor and manipulative games"],
   terms: [
     { t: "field test", d: "a fitness test done outdoors with simple equipment", x: "The Cooper run is a field test." },
@@ -2107,6 +2519,25 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to identify the purposes for and follow activities, rules, procedures and etiquette, and appreciate differences in others."],
   objectives: ["Use feedback to improve motor skills and movement patterns", "Show constructive competition, initiative and leadership", "Identify positive feelings from regular participation in physical activity", "Identify the benefits of social interaction", "Develop teamwork with pupils of varying skill and fitness levels", "Develop sport skills"],
   note: "In sport, how you behave matters as much as how you play. Feedback, fair competition, leadership and respect for those who are different from you are all part of a good player.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Personal and Social Behaviour and Values (guide pp. 46-47) ---- */
+    {k:"h3", t:"Feedback"},
+    {k:"p", t:"**Feedback** is information about how you performed. Use **limited feedback to improve motor skills and movement patterns** in controlled settings. It comes from the **teacher** — who corrects your technique — and from your **peers** — who watch and tell you what they saw."},
+    {k:"rule"},
+    {k:"h3", t:"Personal and Social Behaviours"},
+    {k:"bul", items:["**Responsibility** — doing your part without being reminded","**Best effort** — trying as hard as you can, even when you are losing","**Compassion** — caring about how teammates and opponents feel","**Initiative** — seeing what needs to be done and doing it","**Leadership** — guiding a group fairly and by example","**Constructive competition** — competing hard while respecting rules, officials and opponents"]},
+    {k:"rule"},
+    {k:"h3", t:"Regular Participation and Social Benefits"},
+    {k:"p", t:"Identify the **positive feelings** that come with regular participation in physical activities — enjoyment, confidence, calmness and a sense of belonging. The **social benefits of participation** include new friends, practice in teamwork with students of **varying skills and fitness levels**, and learning to win and lose with grace."},
+    {k:"rule"},
+    {k:"h3", t:"Individual Differences"},
+    {k:"p", t:"**Appreciate differences in others**: learners differ in size, speed, strength and skill, and a team needs them all. Learn the difference between a **real body image** — seeing your body as it truly is, with respect — and a **false body image** — a twisted idea, from teasing or boasting, that your body is worth less than another's."},
+    {k:"rule"},
+    {k:"h3", t:"Basketball Skills"},
+    {k:"p", t:"Basketball has a **history** (invented as an indoor team game), **rules** (no running with the ball, no contact fouls) and **skills** — dribbling, passing and shooting."},
+    {k:"p", t:"**Dribbling Skill** — arrange at least ten (10) chairs in a line at ten-foot intervals from the starting line. A ball is placed on the starting line with each learner standing behind it, both hands resting on his knees. On a whistle, he picks up the ball and dribbles around the chairs in a zigzag pattern to the end and back to the original position. The first person to reach back wins a point."},
+    {k:"p", t:"**Shooting** — draw a line at a 45-degree angle, 30 feet from the basket. Each learner attempts at least ten (10) lay-up shots: he must begin dribbling from the 30-foot line and attempt a basket when he reaches it. Award **five (5) points** for each successful basket. Other shooting tests: the **free throw**, the **one-hand shot** and the **two-hands shot**."}
+  ],
   focus: ["Feedback from teacher and peers", "Personal and social behaviours: responsibility, best effort, compassion, initiative, leadership, constructive competition", "Regular participation and social benefits", "Individual differences and body image", "Basketball: history, rules and skills"],
   terms: [
     { t: "feedback", d: "information about your performance that helps you improve", x: "The coach gave useful feedback on my shooting." },
@@ -2201,6 +2632,23 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to label body parts, demonstrate motor skills, explain the roles of the body parts and the effects of food deficiency, and state the meaning of nutrition and nutrients and the importance of a balanced diet."],
   objectives: ["Label different parts of the body", "Demonstrate motor skills through sports", "Explain the role of the body parts", "State the meaning of nutrition and nutrients", "Explain the effects of food deficiency", "Explain the importance of eating a balanced diet"],
   note: "Nutrition is the study of how food feeds the body. Nutrients are the useful substances in food. A balanced diet contains all three food groups in the right amounts — the body cannot be trained into health on poor food.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — The Human Body; Nutrition and the Balanced Diet (guide pp. 48-49) ---- */
+    {k:"h3", t:"Body Parts and Motor Skills — Revision"},
+    {k:"p", t:"**Label** the different parts of the body, explain the **role** of each part in movement, recall the **body types** (ectomorph, endomorph, mesomorph), and demonstrate the **types of motor skills** through sports — loco-motor, manipulative and stability skills."},
+    {k:"rule"},
+    {k:"h3", t:"Nutrition and Nutrients"},
+    {k:"p", t:"**Nutrition** means eating the food the body needs to grow, develop and work properly; **nutrients** are the rich substances in foods that the body needs most. Divide the class into two groups: one states the meaning of nutrition, the other the meaning of nutrients; then list the three **food groups** — body-building (meat, fish, eggs), energy-giving (rice, fufu, sugar cane, yam) and protective (pineapple, oranges, plum) — with the nutrients found in each and the function of the food we eat."},
+    {k:"rule"},
+    {k:"h3", t:"Food Deficiency and the Balanced Diet"},
+    {k:"p", t:"**Food deficiency** is the lack of a needed nutrient; its **effects on the body** include stunted growth, weakness, poor sight, bleeding gums and falling sick often. The answer is a **balanced diet** — a daily diet containing foods from all three groups with clean water. The importance of eating a balanced diet: it builds the body, fuels it and protects it all at once."},
+    {k:"rule"},
+    {k:"h3", t:"Games (Manipulative)"},
+    {k:"bul", items:["**Keep Away** — two or three players pass the ball among themselves while one in the middle tries to intercept","**Long Ball** — two teams pass and run to carry the ball over the far goal line","**Four Square** — play in a four-square court; the ball must bounce once in another player's square and be returned before a second bounce","**Dribble Tag** — everyone dribbles while 'IT' tags; a player who loses control is caught"]},
+    {k:"rule"},
+    {k:"h3", t:"Gymnastic Activities"},
+    {k:"bul", items:["**Rabbit Jump** — squat with hands forward on the mat, then spring feet-first like a rabbit","**Reach-Over Roll** — a forward roll begun by reaching far over one shoulder","**Puppy Dog Walk** — on all fours, walk with the head up, knees off the ground","**Teddy Bear Stand** — tuck into a ball and balance briefly on the seat like a seated teddy bear"]}
+  ],
   focus: ["Exploration of body parts, body types, roles and motor skills", "Nutrition and nutrients", "Food deficiency", "Balanced diet", "Manipulative games and gymnastic activities"],
   terms: [
     { t: "nutrition", d: "the way the body takes in and uses food to grow and stay well", x: "Good nutrition supports growth and fitness." },
@@ -2297,6 +2745,29 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical education and participate in games and sporting activities."],
   objectives: ["Discuss Physical Education, its history and importance", "Name the peoples who contributed to modern physical education", "Perform deltoid raise exercises", "Participate in volleyball and other games"],
   note: "Modern physical education draws on many traditions: the Greeks who built gymnasia and the Olympics, the Romans who trained for the army, and later European and American educators who brought P.E. into schools.",
+  study:[
+    /* ---- course text: Semester One, Period I — Physical Education, Sport and Exercise (guide pp. 50-52) ---- */
+    {k:"h3", t:"Contributors to Modern Physical Education"},
+    {k:"p", t:"**Physical Education** is the study of the body in motion. Its **history** was shaped by several peoples who contributed to what we practise today:"},
+    {k:"table", head:["Contributors","What they gave physical education"], rows:[
+      ["The Greeks","The Olympic Games and the ideal of a trained body serving a trained mind"],
+      ["The Romans","Military drill, marching and public games in the arenas"],
+      ["The Americans","Organized school and college sports such as basketball and volleyball"],
+      ["The Europeans","Gymnastics systems, school P.E. programmes and modern games like football"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — Deltoid Raises"},
+    {k:"p", t:"**Deltoid raises** develop your **deltoids**, the roundish muscles that form the shape of your shoulders. The deltoid has three parts to work — **anterior (front)**, **lateral (side)** and **posterior (back)**."},
+    {k:"p", t:"**Anterior Deltoid** — learners stand with arms at their sides and elbows extended, holding a dumbbell in each hand. With palms down and arms straight, raise your right arm until it is level with your shoulder in front of you. Lower the weight to the starting position and repeat the exercise using your left arm. The **lateral raise** lifts the arm out to the side; the **posterior raise** works the back of the shoulder."},
+    {k:"rule"},
+    {k:"h3", t:"Sport — Volleyball"},
+    {k:"p", t:"Volleyball has a **history** (invented as a gentle indoor game), **rules** (a team may touch the ball at most three times before returning it over the net), **court dimensions** (a rectangle divided by a high net) and **skills and techniques** — chief among them the service:"},
+    {k:"p", t:"**Underhand Service** — for a right-hand player, put your left foot slightly in front of the right foot. The weight is on the rear foot and the body is bent forward slightly. The ball is held in the palm of the left hand in a ready position in front of the right knee. The right arm is extended backward and upward; as the right arm swings down and forward, a small step is taken as the weight shifts to the front foot. **The ball is hit with the heel of the right hand or the side of the fist. Immediately before the hand contacts the ball, the ball is released out of the left hand.**"},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"**Rattlesnake and Bumblebee (classroom game).** Learners are seated at desks; take two small objects and two equal teams. One player is chosen from each team and sent out of the room. While the two players are out, team players hide the two articles (team A hides for team B and vice versa). The two learners return and begin looking for their articles. Members of either team 'buzz' or 'hiss' according to how close each player is to his object. Repeat with two new 'finders'. **One point is awarded to the learner, and his team, who finds the object first.**"},
+    {k:"p", t:"**Open the Window (loco-motor game)** — the circle opens a 'window' gap for the runner to dash through before it closes. **Trick the Guard (manipulative game)** — pass the object among the team to trick the guard and slip it past him to score."}
+  ],
   focus: ["Definition, history and importance of Physical Education", "Contributors: Greeks, Romans, Americans, Europeans", "Exercise: anterior, lateral and posterior deltoid raises", "Volleyball: history, rules and court dimensions", "Classroom, loco-motor and manipulative games"],
   terms: [
     { t: "gymnasium", d: "a place built for exercise and training", x: "The Greeks trained in a gymnasium." },
@@ -2390,6 +2861,20 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical screening and demonstrate exercise, sport and various types of screening."],
   objectives: ["Discuss physical screening", "Demonstrate the Cooper 12-minute run", "Perform flexibility and endurance exercises", "Take part in track and field events"],
   note: "Track and field is the oldest organised sport. It divides into track events, races run on the track, and field events, the jumping and throwing contests held on the field.",
+  study:[
+    /* ---- course text: Semester One, Period II — Physical Fitness Screening (guide pp. 53) ---- */
+    {k:"h3", t:"Screening — the Cooper 12-Minute Run"},
+    {k:"p", t:"**Physical fitness screening** tests the body's condition before training. **Body screening** this term centres on the **Cooper 12-Minute Run**: run (and walk when you must) for exactly twelve minutes, and measure the distance you cover. The farther you run in twelve minutes, the greater your **endurance** — the heart-lung staying power all sports depend on."},
+    {k:"rule"},
+    {k:"h3", t:"Exercises — Flexibility and Endurance"},
+    {k:"p", t:"Two fitness qualities are exercised this period. **Flexibility** is the ability of the joints and muscles to bend and stretch through their full range. **Endurance** is the ability to keep working for a long time without exhaustion."},
+    {k:"p", t:"**Sit-Ups** — learners sit on the floor with legs folded, lie on the floor facing upward with hands held behind the head. On the count of two, learners rise up with hands still held behind the head until the face touches the knees, then lie back. Repeat on counts; record the repetitions as part of screening."},
+    {k:"rule"},
+    {k:"h3", t:"Sport — Track and Field"},
+    {k:"p", t:"Athletics divides into two families of events:"},
+    {k:"bul", items:["**Track events** — the races run on the track: sprints such as the 100 m, middle- and long-distance runs, hurdling and the relays","**Field events** — the jumps and throws on the field: long jump, high jump, shot put, discus and javelin"]},
+    {k:"p", t:"**The (100m) Run** — learners line up horizontally. On a count, they run as fast as they can to the hundred-metre distance. Sprinters wear spikes (track shoes) for grip on the track."}
+  ],
   focus: ["Definition of physical fitness", "Body screening: Cooper 12-minute run", "Exercises: flexibility and endurance", "Track and field: track events and field events"],
   terms: [
     { t: "track event", d: "a running or walking race held on the track", x: "The 100 metres is a track event." },
@@ -2483,6 +2968,30 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to define first aid, identify the priorities in responding to an emergency, list safety rules, and differentiate between the types of wounds and their treatment."],
   objectives: ["Define First Aid", "Identify the priorities in responding to an emergency", "List safety rules", "Differentiate between the types of wounds and know the first aid treatment for each", "Describe the treatment of poisoning and common emergencies"],
   note: "In any emergency there is an order of priorities: rescue promptly, check breathing, control severe bleeding, and give first aid for poisoning. Doing them in the wrong order costs lives.",
+  study:[
+    /* ---- course text: Semester One, Period III — First Aid and Safety (guide pp. 54-55) ---- */
+    {k:"h3", t:"First Aid and the Priorities in an Emergency"},
+    {k:"p", t:"**First aid** is the immediate, temporary care of an injured or suddenly ill person before medical help arrives. The first decision in an emergency is **whether to move the victim or not — only do it when necessary**. The priorities in responding, in order:"},
+    {k:"num", items:["**Rescue promptly** — move a victim immediately from a water incident, from a room containing smoke, or from a car that might catch fire.","**Check breathing** — ensure the victim has an open airway, that is, by giving mouth-to-mouth artificial respiration where breathing has stopped.","**Control severe bleeding** — apply direct pressure with the palm of the hand (or an ice block) over the wound in order to stop the bleeding.","**Give first aid for poisoning** — identify the poison and rush the victim to medical care."]},
+    {k:"rule"},
+    {k:"h3", t:"Types of Wounds"},
+    {k:"bul", items:["**Abrasion** — a scrape that rubs the skin's surface","**Incision** — a clean cut, as made in surgery","**Laceration** — a jagged tear of the flesh","**Puncture** — a deep, narrow wound from a pointed object","**Avulsion** — tissue torn away or hanging by a flap"]},
+    {k:"rule"},
+    {k:"h3", t:"Administering First Aid — the Four Steps for Wounds"},
+    {k:"num", items:["**Stop the bleeding immediately**","**Protect the wound from contamination and infection**","**Treat the victim for shock**","**Seek medical care immediately**"]},
+    {k:"rule"},
+    {k:"h3", t:"Poisonings"},
+    {k:"bul", items:["**By swallowing** — poisons taken through the mouth: keep the container, note what was swallowed, and get medical help at once","**Animal bite** — from a snake or a mad dog: keep the victim still, wash the bite, and rush the victim to the hospital"]},
+    {k:"rule"},
+    {k:"h3", t:"Common Emergencies"},
+    {k:"table", head:["Emergency","First aid"], rows:[
+      ["Nosebleeds","Sit the victim up, lean the head forward, and pinch the soft part of the nose"],
+      ["Bee stings","Remove the sting, wash the spot, and apply a cold compress"],
+      ["Sprains","Rest the joint and apply ice — the RICE method"],
+      ["Strains","Rest the overstretched muscle and apply a cold pack"],
+      ["Burns","Cool under clean running water; never apply oil; cover with a clean dressing"]
+    ]}
+  ],
   focus: ["Definition of first aid", "Priorities in an emergency", "Types of wounds", "Administering first aid: the four steps", "Poisonings", "Common emergencies: nosebleeds, bee stings, sprains, strains and burns"],
   terms: [
     { t: "priority", d: "the thing that must be done first", x: "Breathing is the first priority after rescue." },
@@ -2578,6 +3087,22 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to identify the person with the highest peak power output, discuss basic speed and power exercises, develop speed and power, and demonstrate various kinds of games and exercises."],
   objectives: ["Define sprinting and identify kinds of sprints", "Identify the person with the highest peak power output", "Discuss basic speed and power exercises", "Develop speed and power", "Demonstrate games, speed and power exercises"],
   note: "Speed is how fast you can move. Power is strength applied quickly. A sprinter needs both: strong legs and the ability to use that strength in a fraction of a second.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Basic Speed and Power Exercises (guide pp. 56-57) ---- */
+    {k:"h3", t:"Sprinting and the Kinds of Sprints"},
+    {k:"p", t:"**Sprinting** is running at full speed over a short distance. **Speed** covers the ground quickly; **power** adds force to the speed. The person whose body releases the most force in the shortest time has the highest **peak power output**."},
+    {k:"bul", items:["**Sprint Starts, Running** — the crouch start from the marks","**Sprint Starts, Swimming** — the dive or push-off start used in the pool","**Short Sprints** — repeated bursts of 30-60 metres at full effort","**Downhill Sprinting** — sprinting down a gentle slope to teach the legs faster turnover"]},
+    {k:"rule"},
+    {k:"h3", t:"Sprint Starts, Running — How to Get in Position"},
+    {k:"num", items:["**'On your marks'** — kneel down with feet staggered 10-14 inches apart, the front foot placed about 20 inches from the starting line. (Right-handed people start with their left foot forward.)","**'Set'** — raise your back and hips. Your front leg bends about 90 degrees, and your rear leg bends about 120 degrees. Your back is flat, and your hips are slightly higher than your shoulders. You touch the ground with your fingertips, which raises your shoulders as high as possible — do not put too much weight on your fingertips.","**'GO'** — raise your shoulder so that you can direct force with your front driving leg through the length of your body. Move with the fastest speed you have to reach the required distance. First to reach the line wins."]},
+    {k:"rule"},
+    {k:"h3", t:"Peak Power Training"},
+    {k:"p", t:"**Stationary bicycle training (ergometer)** — set the frictional resistance on the bicycle. Warm up by pedalling at an easy pace for 2 minutes. Then ride as fast as you can for 1 minute, and count the pedal revolutions — the count measures your peak power output."},
+    {k:"p", t:"**Peak power weight training** — lifting moderate weights with fast, controlled movements builds the explosive strength of the legs and shoulders. **Medicine ball exercises** — throwing, catching and sweeping the heavy medicine ball (play catch with yourself or a partner) develop whole-body power."},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"p", t:"Play **catch with yourself/partner** using the medicine ball, and **Mouse and Cheese (loco-motor game)** — the mice may leave their holes only to snatch the 'cheese' and dart back before the cat tags them; speed and timing decide who eats."}
+  ],
   focus: ["Definition of sprinting and kinds of sprints", "Peak power: stationary bicycle training", "Peak power weight training", "Medicine ball exercises", "Loco-motor games"],
   terms: [
     { t: "sprint", d: "a run at maximum speed over a short distance", x: "The 100m is the classic sprint." },
@@ -2671,6 +3196,19 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss the flexibility component of physical education and demonstrate flexibility exercises."],
   objectives: ["Define flexibility", "Discuss flexibility as a component of fitness", "Demonstrate whole body stretches", "Demonstrate lower body, trunk and back stretches"],
   note: "Flexibility is the forgotten component of fitness. It prevents injury, improves posture and allows every other kind of training to be done properly. Stretch slowly, hold the position, and never bounce.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Fitness Component: Flexibility (guide pp. 58-59) ---- */
+    {k:"h3", t:"What Flexibility Is"},
+    {k:"p", t:"**Flexibility** is the fitness component that lets the joints and muscles move through their full range — bending, twisting and reaching without strain. Good flexibility prevents injuries in sport, improves posture, and makes every other exercise easier. It is trained by **stretching** — slowly extending a muscle and holding the position."},
+    {k:"rule"},
+    {k:"h3", t:"Whole Body Stretches"},
+    {k:"p", t:"**Good-Morning Stretch** — stand with feet shoulder-width apart, and reach up over your head with your arms extended fully. Try to extend your arms as much as possible — first one arm, then the other, then both arms. **Hold each stretch for at least 1 minute. Continue with 3 repetitions.**"},
+    {k:"p", t:"**Good-Morning Stretch with Toes Touch** — stand with feet shoulder-width apart and reach up over your head with your arms extended fully — first one arm, then the other, then both arms. Then flex your knees slightly, bend over at the waist, and reach toward your toes. Reach down until you feel the stretch in your **hamstring muscles** (the backs of the thighs). Hold the stretch for 1 minute. Continue with 3 repetitions."},
+    {k:"rule"},
+    {k:"h3", t:"Lower Body, Trunk and Back Stretches"},
+    {k:"p", t:"**Supine Alternate Hamstring Stretch** — lie on your back with both legs straight. Grasp the back of your right thigh and bring the knee to the chest — this segment is sometimes called the **knee-to-chest exercise**. Pull on your thigh until you feel a stretch in your lower back; hold the stretch for 1-2 minutes. Then extend your knee so that you feel a stretch in the back of your right hamstring muscles (the supine hamstring stretch). Hold the stretch, and return to the starting position. Repeat with the left leg."},
+    {k:"p", t:"Rules of safe stretching: warm up first, move **slowly**, stretch to the point of gentle tension — **never bounce and never force a stretch into pain** — and hold each position for the time stated."}
+  ],
   focus: ["Definition of flexibility", "Whole body stretches", "Lower body stretches", "Trunk and back stretches"],
   terms: [
     { t: "flexibility", d: "the range of movement possible at a joint", x: "Flexibility is a component of physical fitness." },
@@ -2765,6 +3303,30 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to describe the different parts of the human body, explain the roles of body parts in exercise, develop motor skills, list commonly abused drugs and alcohol, and explain ways to prevent abuse in society."],
   objectives: ["Describe different parts of the body and the three body types", "Develop motor skills", "Explain the effects of alcohol and drug abuse on health", "List some commonly abused drugs", "State ways of preventing alcohol and drug abuse"],
   note: "Drugs and alcohol damage exactly the systems that exercise builds: the heart, the lungs, the muscles and the brain. Refusing them is not weakness; it is protecting everything you have trained for.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — The Human Body and its Relationship to Drugs and Exercise (guide pp. 60-61) ---- */
+    {k:"h3", t:"Body Parts, Body Types and Motor Skills"},
+    {k:"p", t:"Describe the different parts of the body and explain the **role** each part plays in exercise — legs run and jump, arms throw and pull, the heart pumps. Recall the three **body types (physiques)**: **mesomorph (thick, muscular)**, **ectomorph (slim)** and **endomorph (fat, round)**. Every physique benefits from exercise."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — Jump Rope"},
+    {k:"p", t:"**Jump Rope** — learners form a horizontal or vertical line with two persons holding a rope at both ends. On a whistle, the rope is turned, and each learner jumps in and continues to jump when the rope drops under his or her feet. The learner whose legs stop the rope from turning takes the position of one of those turning the rope. The activity is completed when all learners have entered and turned the rope."},
+    {k:"rule"},
+    {k:"h3", t:"Sexuality Education — Substance Abuse"},
+    {k:"p", t:"**Substance abuse** is the harmful use of drugs or alcohol. It damages the body we train, so an athlete must know the substances and refuse them."},
+    {k:"table", head:["Commonly abused drugs","Commonly abused alcohol"], rows:[
+      ["Marijuana (grass)","Cane juice"],
+      ["Opium","Gin"],
+      ["Cigarette","Rum"],
+      ["Tobacco","Beer and wine"],
+      ["Snuff","—"],
+      ["Cola nuts","—"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Causes, Effects and Prevention"},
+    {k:"p", t:"**Causes** — the commonest cause among the young is **peer pressure**: friends who push you to drink or smoke 'to belong'. The **effects** of drugs and alcohol on the health of human beings in the family include a damaged liver, heart and brain; addiction (the body cannot stop); drunken violence and poverty; and ruined education and sport."},
+    {k:"p", t:"**Preventive methods:**"},
+    {k:"bul", items:["**Avoid taking in harmful drugs and alcohol** — say a clear NO the first time","**Avoid friends that will lead you to abuse alcohol and drugs** — choose friends who respect your 'no'","Keep busy with sports, study and useful work","Report sellers of drugs to adults and the authorities"]}
+  ],
   focus: ["Exploration of body parts and body types: mesomorph, ectomorph, endomorph", "Exercise: jump rope", "Substance abuse", "Commonly abused drugs and alcohol", "Prevention"],
   terms: [
     { t: "mesomorph", d: "a thick, muscular body type", x: "A mesomorph builds muscle readily." },
@@ -2860,6 +3422,23 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to discuss physical education, explain general health and exercise components, participate in sporting activities, and demonstrate games and gymnastic activities."],
   objectives: ["Discuss Physical Education, its history and importance", "Explain general health and exercise components", "Participate in sporting activities", "Demonstrate games and gymnastic activities"],
   note: "By Grade Six a pupil should be able not only to take part but to explain: what fitness is made of, why each component matters, and how to train it. This is where P.E. becomes a subject you can reason about.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Physical Education (guide pp. 62-63) ---- */
+    {k:"h3", t:"Physical Education, Health and Exercise Components"},
+    {k:"p", t:"**Physical Education** is the study of the body in motion — its **history** runs from Greek gymnasia and Roman drill to today's school programme. Its **importance** is this: the maintenance of the body through physical fitness, health, flexibility and endurance promotes sound reasoning and growth. **Health** is general well-being — bodily, mental and social — and exercise is one of its chief components."},
+    {k:"rule"},
+    {k:"h3", t:"Sport (Track & Field) — the 800 m Race"},
+    {k:"p", t:"Track and field demands **skills** (the techniques of running, jumping and throwing) and **rules** (lane discipline, fair starts, correct distances)."},
+    {k:"p", t:"**The 800 m Race** — learners get on their marks (a line drawn before them); on the sound of a whistle, they run as fast as they can around a standardised track on a football field, twice. Pace yourself: a fast start, a steady middle, and a finishing kick."},
+    {k:"rule"},
+    {k:"h3", t:"Exercises"},
+    {k:"p", t:"**Jump Rope (two-foot basic)** — the learner pulls the rope over and jumps over it, and takes a second rebound jump as the rope passes backward and upward."},
+    {k:"p", t:"**Jumping Jack** — the learner stands erect; on a whistle he jumps with hands clapping over head while the legs are wide open in the air, and returns to attention on the next count."},
+    {k:"rule"},
+    {k:"h3", t:"Gymnastic Activities"},
+    {k:"p", t:"**Mule Kick** — begin in a semi-crouched position, with hands shoulder-width apart, knees bent, and feet together. In a simultaneous movement, shift the weight over the hands, and vigorously thrust the legs upward and backward."},
+    {k:"p", t:"**Cartwheel** — begin with the back straight, the arms extended sideward, and the legs approximately shoulder-width apart. Bend toward the left, placing the left hand, then the right, on the mat, and at the same time raising the side of the body — the legs pass over head in a wheel, and you land facing the direction you came from."}
+  ],
   focus: ["Definition, history and importance of Physical Education", "Health", "Sport: track and field and its rules", "Exercises: jump rope, jumping jack, mule kick and cartwheel", "The 800m race"],
   terms: [
     { t: "exercise component", d: "one of the parts that make up total fitness", x: "Strength is an exercise component." },
@@ -2954,6 +3533,22 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to describe the different parts of the body and body types, develop motor skills, demonstrate gymnastic activities, state the meaning of puberty and sexuality, describe physical changes during puberty, and define and identify the root causes of gender-based violence."],
   objectives: ["Explore body parts and body types", "Demonstrate gymnastics: forward and backward roll", "State the meaning of puberty and sexuality", "Describe physical changes during puberty in boys and girls", "Define gender-based violence and identify its root causes"],
   note: "Puberty is the time of life when a young person begins to look like an adult. It happens to everyone, at different times, and it is entirely normal. Gender-based violence is never normal and never acceptable; it can be reported and it can be stopped.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Human Body and Gymnastics (guide pp. 64-65) ---- */
+    {k:"h3", t:"Body Parts and Body Types (Physique)"},
+    {k:"p", t:"Describe the different parts of the body and develop **motor skills** through them. Recall the three body types (physique): **ectomorph** (slim), **mesomorph** (muscular) and **endomorph** (round). In pairs and groups, discuss the parts, draw them, and name the motor skills each one serves."},
+    {k:"rule"},
+    {k:"h3", t:"Gymnastics (Sport) — the Forward and Backward Roll"},
+    {k:"p", t:"**Forward and 'Backward Roll'** — a mat is placed on the floor. On a whistle, the learner bends and curves the body until the hands rest on the floor, then pushes the entire body forward to roll on the back and come up facing the same direction. The backward roll reverses the movement: sit back, roll over the shoulders with the chin tucked, and arrive on the feet."},
+    {k:"rule"},
+    {k:"h3", t:"Human Growth and Development — Puberty"},
+    {k:"p", t:"**Puberty** is the time in life when a learner begins to look like an adult and becomes physically able to reproduce. **Sex** means male and female; **sexuality** means the expression of who we are as human beings."},
+    {k:"p", t:"Physical changes during puberty: in boys the voice deepens, hair grows on the face and body, and the **hormone testosterone** causes the changes; in girls the breasts develop, hips widen, menstruation begins, and the **hormone estrogen** causes the changes. **Menstruation (the menstrual cycle)** is the monthly flow that shows a girl's body is maturing — it is natural, healthy, and nothing to be ashamed of; during it a girl keeps clean, changes her pads, and may take part in gentle exercise."},
+    {k:"rule"},
+    {k:"h3", t:"The Reproductive System and Gender-Based Violence"},
+    {k:"p", t:"The **male and female reproductive systems** are the body parts by which life is begun — respect for one's own body and for other people's bodies protects them."},
+    {k:"p", t:"**Gender-based violence (GBV)** is harm done to a person because he is a boy or because she is a girl — beating, forced marriage, rape, and harmful traditional practices. Its **root causes** include ignorance, the abuse of power, and harmful customs. Divide into groups to discuss the root causes; brainstorm **harmful traditional practices**; define GBV, list its forms, and summarize: violence against any person is wrong, and every case must be reported to a trusted adult or the authorities."}
+  ],
   focus: ["Exploration of body parts and body types (physique)", "Gymnastics: forward and backward roll", "Human growth and development: puberty", "Gender-based violence and harmful traditional practices"],
   terms: [
     { t: "puberty", d: "the time in life when a young person begins to look like an adult", x: "Puberty happens at different ages for different people." },
@@ -3049,6 +3644,30 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to define first aid, apply the priorities of emergency care, and demonstrate correct first aid procedures."],
   objectives: ["Define first aid and emergency care", "Apply the priorities: rescue promptly, check breathing, control severe bleeding", "Demonstrate correct procedures", "List safety rules and common emergencies"],
   note: "First aid, or emergency care, is the immediate temporary care given to a person who has become sick or been injured. The rule for the responder is three words: calmly, quickly, correctly.",
+  study:[
+    /* ---- course text: Semester One, Period III — First Aid and Safety (guide pp. 66-67) ---- */
+    {k:"h3", t:"Definition of First Aid"},
+    {k:"p", t:"**First aid** — or an emergency care — is the **immediate, temporary care given to a person who has become sick or who has been injured**. In administering first aid, the learner must act **calmly, quickly and correctly**."},
+    {k:"rule"},
+    {k:"h3", t:"The Priorities in an Emergency"},
+    {k:"num", items:["**Rescue promptly** — move the victim when it is necessary to save life, for example from water, or from a room containing carbon monoxide, smoke or toxic fumes.","**Check breathing** — where breathing has stopped, give the victim mouth-to-mouth artificial respiration.","**Control severe bleeding** — apply direct pressure with the palm of your hand over the wound; if possible, elevate the body part so that it is above the level of the victim's heart; keep the victim still — do not let him or her get up or walk around.","**Send someone for a medical practitioner** at once."]},
+    {k:"rule"},
+    {k:"h3", t:"Types of Wounds and Their Treatment"},
+    {k:"p", t:"Differentiate the five wounds — **abrasion** (a scrape), **incision** (a clean cut), **laceration** (a jagged tear), **puncture** (a deep stab from a pointed object) and **avulsion** (tissue torn away) — and know the first-aid treatment for each one."},
+    {k:"p", t:"First aid for wounds — the four steps in applying first aid: **1. stop the bleeding immediately; 2. protect the wound from contamination and infection; 3. treat the victim for shock; 4. seek medical care immediately.**"},
+    {k:"rule"},
+    {k:"h3", t:"Poisonings"},
+    {k:"bul", items:["**By swallowing** — keep the container as evidence, note what and how much was swallowed, do not make the victim vomit unless the health worker says so, and rush the victim to the hospital","**Animal bite** — wash the bite with soap and plenty of water, keep the bitten part still and low, and get the victim to medical care at once"]},
+    {k:"rule"},
+    {k:"h3", t:"Common Emergencies — Proper Techniques"},
+    {k:"table", head:["Emergency","Proper first-aid technique"], rows:[
+      ["Nosebleeds","Sit down, lean forward, and pinch the soft part of the nose for about ten minutes; breathe through the mouth"],
+      ["Bee stings","Scrape the sting away, wash the spot, and apply a cold compress"],
+      ["Sprains","Rest the joint; apply ice; compress gently; elevate (RICE)"],
+      ["Strains","Rest the muscle, apply cold packs, and stretch it gently only after the pain eases"],
+      ["Burns","Cool with clean running water for several minutes; cover with a clean loose dressing; never break blisters or apply grease"]
+    ]}
+  ],
   focus: ["Definition of first aid and emergency care", "Rescue promptly", "Check breathing and artificial respiration", "Control severe bleeding and elevation", "Common emergencies and safety rules"],
   terms: [
     { t: "emergency care", d: "immediate temporary care given to a sick or injured person", x: "First aid is also called emergency care." },
@@ -3142,6 +3761,25 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to develop motor skills, improve their body while playing games, and show ideas to others to develop skills in various physical activities."],
   objectives: ["Develop motor skills", "Improve the body while playing games", "Explain the physical, social and mental benefits of activity", "Demonstrate the fitness components", "Show ideas to others to develop skills"],
   note: "The benefits of physical activity fall into three groups: physical, meaning health, fitness and performance; social, meaning friends, cooperation and teamwork; and mental, meaning feeling good, relief from stress, and self-esteem.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Benefits of Physical Activity (guide pp. 68-69) ---- */
+    {k:"h3", t:"Why Bother? — The Three Kinds of Benefits"},
+    {k:"table", head:["Physical benefits","Social benefits (human interaction)","Mental benefits"], rows:[
+      ["Health — a stronger heart, cleaner lungs, fewer sick days","Friends — sport gives you mates who share your goals","Feel good — activity lifts the spirit"],
+      ["Fitness — strength, speed, flexibility and endurance","Cooperation — learning to work with others toward one aim","Stress relief — play drains away worry and anger"],
+      ["Performance — better skills in every game you play","Teamwork — trusting others and being trusted in return","Self esteem — the quiet pride of a body you have trained"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Exercises — the Fitness Components at Work"},
+    {k:"bul", items:["**Agility** — learners run between objects placed before them, as quickly as possible, changing direction sharply at each one","**Balance** — learners walk on a 30-yard-long bar that is two feet (2') high above the floor, without stepping off","**Endurance** — learners do the 30-minute run around a football field at a steady pace"]},
+    {k:"rule"},
+    {k:"h3", t:"Gymnastic Stunts"},
+    {k:"p", t:"**Frog Jump** — begin in a squat position with hands on the floor. Jump forward and land on the hands followed by the toes touching the floor. Gradually increase the height and the distance ahead of you."},
+    {k:"p", t:"**Crab Walk** — learners start by sitting on the floor with hands stretched behind and legs folded. On a whistle, learners move forward on the hands and the legs until they reach the distance required."},
+    {k:"rule"},
+    {k:"h3", t:"Sport (Track & Field) — the Standing Long Jump"},
+    {k:"p", t:"**Standing Long Jump** — the learner stands with his toes just behind the starting line, his feet comfortably spread, his knees bent and his trunk well forward. After several swings with the arms, he swings his arms vigorously and extends his legs. As soon as his feet leave the floor, he begins to flex his knees, keeping his arms forward; he finally lands with his feet parallel and his trunk and arms extended forward. Measure from the line to the back of the nearer foot."}
+  ],
   focus: ["Physical benefits: health, fitness, performance", "Social benefits: friends, cooperation, teamwork", "Mental benefits: feeling good, stress relief, self-esteem", "The eight fitness components", "Gymnastic stunts and track and field"],
   terms: [
     { t: "benefit", d: "a good result or advantage gained", x: "Exercise has physical, social and mental benefits." },
@@ -3238,6 +3876,21 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to develop jumping skills effectively and demonstrate the various kinds of jumps."],
   objectives: ["Develop jumping skills", "Demonstrate the various kinds of jumps", "Identify track and field events and their rules", "Take part in relay races and games"],
   note: "Track and field divides into two families. Field events, which are the high jump, the triple jump, the long jump and the throws; and track events, which are the sprints, the middle and long distances, the hurdles and the relays.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Track and Field (guide pp. 70-71) ---- */
+    {k:"h3", t:"The Two Families of Events"},
+    {k:"p", t:"**Track and field** divides into two families. **Field events** this period: the **high jump** — run in, take off from one foot, arch over the bar and land on the back without knocking the bar down — and the **triple jump** — a hop on one foot, a step onto the other foot, and a jump with both feet into the pit, measured to the nearest break in the sand. **Track events** this period: the **relay race**."},
+    {k:"rule"},
+    {k:"h3", t:"The Relay Race"},
+    {k:"p", t:"Four runners make a relay team, each running one leg and passing a **baton**. The receiver starts inside the takeover zone as his teammate arrives; the baton must pass from hand to hand **inside the zone** — a pass outside the zone, or a dropped baton lost beyond recovery, costs the race. Practise the handover at jogging speed first, then at full speed; the receiver looks ahead and trusts the call."},
+    {k:"rule"},
+    {k:"h3", t:"Exercises and Stunts for Jumping"},
+    {k:"p", t:"**Forward and 'Backward Roll'** — a mat is placed on the floor. On a whistle, the learner bends and curves the body until the hands rest on the floor and pushes the entire body forward to roll on the back, facing the same direction."},
+    {k:"bul", items:["**Frog Jump** — squat with hands on the floor; jump forward, landing on the hands followed by the toes, and gradually increase height and distance","**Crab Walk** — sit with hands stretched behind and legs folded; on a whistle, move forward on hands and legs","**Standing Long Jump** — swing the arms, extend the legs, flex the knees in flight, and land with feet parallel and trunk and arms forward"]},
+    {k:"rule"},
+    {k:"h3", t:"Games"},
+    {k:"bul", items:["**Fox and Rabbit (classroom game)** — the rabbit eludes the hunting fox with quick dodges; a caught rabbit becomes the fox","**Beanbag Basket Relay (classroom game)** — throw beanbags into the basket in relay turns; one point per basket","**Squirrel in the Forest (loco-motor game)** — squirrels nest in threes; on 'hunter!' each squirrel must find a new nest while the odd squirrel out takes a new turn","**Shuttle Run (manipulative game)** — run out, fetch an object, run back, and hand it to the next runner"]}
+  ],
   focus: ["Field events: high jump and triple jump", "Track events: the relay race", "Exercise components", "Gymnastic stunts", "Rules of track and field", "Classroom, loco-motor and manipulative games"],
   terms: [
     { t: "high jump", d: "a field event jumping over a raised bar", x: "The high jump needs a good approach and take-off." },
@@ -3331,6 +3984,25 @@ const PE_CURRICULUM = [
   outcomes: ["Learners are able to explain total fitness of the body, plan a personal fitness programme, and demonstrate the components of fitness."],
   objectives: ["Explain the total fitness of the body", "Identify the components of fitness and how each is trained", "Plan a personal fitness programme", "Demonstrate fitness activities and assess progress"],
   note: "This is the last unit of primary physical education. Its purpose is simple: that you leave able to keep yourself fit for the rest of your life, without a coach, without a gym and without money.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Fitness of the Body (guide pp. 72) ---- */
+    {k:"h3", t:"Health-Related and Skill-Related Fitness"},
+    {k:"p", t:"**Fitness of the body** has two families of components. **Health-related fitness** keeps the body working well: **cardiovascular endurance, muscular strength, muscular endurance, flexibility and body composition** (the balance of muscle and fat). **Skill-related fitness** wins games: **speed, agility, balance, coordination, reaction time and power**. Improve in various kinds of physical education components: develop motor skills and coordinate your body during exercises, and demonstrate different kinds of physical activities."},
+    {k:"rule"},
+    {k:"h3", t:"The Importance of Movement"},
+    {k:"p", t:"The body was made to move. Regular movement keeps the heart strong, the joints free and the weight healthy; it teaches coordination of the eye, hand and foot; and it builds habits that protect health long after school days end. A fit learner plays better, learns better and lives better."},
+    {k:"rule"},
+    {k:"h3", t:"Exercise Component — Agility"},
+    {k:"p", t:"**Agility** is the fitness component that lets you change direction quickly with control. Train it by running between markers, dodging and cutting sharply — as in the shuttle runs and chasing games of this stage."},
+    {k:"rule"},
+    {k:"h3", t:"Gymnastic Activities — Stunts and Tumbling"},
+    {k:"p", t:"**Leg Wrestling** — learners lie side by side on their backs, facing opposite directions. On a whistle, both raise their inside legs so that their knees are crossed. From this position, each partner tries to force his opponent's leg down to the mat."},
+    {k:"p", t:"**Wicket Walk** — bend forward and grasp the legs just above the ankles, and walk without letting go, taking short quick steps."},
+    {k:"p", t:"**Marathon Race** — the long steady run that ends the year: pace yourself from the first step, breathe evenly, and finish what you start."},
+    {k:"rule"},
+    {k:"h3", t:"Sport (Track & Field) — Skills and Rules Recalled"},
+    {k:"p", t:"Recall the **skills** — sprinting form, baton exchange, the long jump and standing long jump — and the **rules**: fair starts, lane discipline, legal take-offs and correct measurement. Track and field rewards the athlete who honours both."}
+  ],
   focus: ["Total fitness of the body", "The components of fitness and their training", "Planning a personal programme", "Lifelong physical activity", "Assessment of progress"],
   terms: [
     { t: "total fitness", d: "the condition in which all components of fitness are developed together", x: "Total fitness is the aim of physical education." },

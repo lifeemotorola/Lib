@@ -2,6 +2,10 @@
    Derived from the "Biology 10-12" senior high curriculum guide (47 pp.),
    6 periods per grade, 18 units.
 
+   Every unit carries a `study[]` block list — the course text of the guide,
+   rendered verbatim on the Study Notes page. `**bold**` marks the key terms;
+   table cells take no markup because the renderer escapes them.
+
    Uses the same unit shape as SC_CURRICULUM so GEN_SC renders it unchanged:
      grade · period · sem · icon · title · subtitle · outcomes[] · objectives[]
      · note · focus[] · terms[]{t,d,x} · facts[]{q,a} · tf[]{s,a,why}
@@ -39,6 +43,32 @@ var BI_CURRICULUM = [
     "Explain the movement of substances across the cell membrane"
   ],
   note:"<b>Biology</b> is the study of living things. Its two major branches are <b>zoology</b> (animals) and <b>botany</b> (plants). All living things share seven characteristics — <b>nutrition, respiration, excretion, irritability, movement, growth and reproduction</b>. The <b>cell</b> is the basic unit of life; substances cross its membrane by <b>diffusion, osmosis and active transport</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Biology; The Cell (guide pp. 3-4) ---- */
+    {k:"h3", t:"Biology and its Branches"},
+    {k:"p", t:"**Biology** is the scientific study of living things. Its **major branches are zoology** (the study of animals) **and botany** (the study of plants) — along with other branches such as microbiology, genetics, ecology, and those that relate to STIs: **microbiology, parasitology, virology and bacteriology**. Draw a concept map to illustrate the branches of biology and their sub-branches."},
+    {k:"rule"},
+    {k:"h3", t:"Major Contributors to the Development of Biology"},
+    {k:"table", head:["Scientist","Major contribution"], rows:[
+      ["Aristotle","The Greek naturalist who first classified living things and studied their structure"],
+      ["Linnaeus","Devised the binomial system of naming and classifying organisms"],
+      ["Pasteur","Disproved spontaneous generation and developed pasteurization and vaccines"],
+      ["Koch","Linked specific germs to specific diseases"],
+      ["Mendel","Established the laws of inheritance from his experiments with peas"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Characteristics that Distinguish Living from Non-living Things"},
+    {k:"p", t:"Living things share seven characteristics: **nutrition, respiration, excretion, irritability, movement, growth and reproduction**. **Euglena** is an organism bordered between animals and plants: like an animal it moves with a flagellum and takes in food; like a plant it carries chloroplasts and photosynthesizes — a reminder that the border between the kingdoms is not a wall."},
+    {k:"rule"},
+    {k:"h3", t:"The Biological Tool — the Light Microscope"},
+    {k:"p", t:"The **compound light microscope** makes the cell visible: draw and label it — eyepiece, body tube, objective lenses, stage, clips, diaphragm, mirror or lamp, and the focusing knobs — and outline the function of each part. Use it to observe the **onion epidermal cell** and **cheek cells**, and identify the common laboratory materials and apparatus with their uses."},
+    {k:"rule"},
+    {k:"h3", t:"The Cell and the Cell Theory"},
+    {k:"p", t:"The **cell** is the basic unit of life, the building block from which every living organism is made. **Prokaryotic cells** (bacteria) have no true membrane-bound nucleus; **eukaryotic cells** (plants and animals) have a true nucleus with membrane-bound organelles; **akaryotic** forms (viruses) have no cellular structure at all. Relate the structures and composition of the cell to their functions: the nucleus controls, mitochondria respire, ribosomes build protein, the membrane admits and excludes. Compare the plant and animal cell — the plant cell alone has a cellulose **cell wall**, **chloroplasts** and a large central **vacuole** — and compare the basic functions of **tissues** (similar cells together), **organs** (tissues combined) and **systems** (organs cooperating). Homework: draw the animal and plant cells and label their parts."},
+    {k:"rule"},
+    {k:"h3", t:"Movement of Substances Across the Cell Membrane"},
+    {k:"bul", items:["**Diffusion** — particles move from a region of high concentration to one of low concentration","**Osmosis** — the diffusion of water across a selectively permeable membrane","**Facilitated diffusion** — diffusion helped through the membrane by carrier proteins","**Active transport** — substances pumped against the gradient, using energy","**Endocytosis** — the membrane folds inward to take substances in: **pinocytosis** (liquids) and **phagocytosis** (solids)","**Exocytosis** — the membrane fuses outward to expel substances"]}
+  ],
   focus:[
     "Definition of biology and its major branches",
     "Contributors: Aristotle, Linnaeus, Pasteur, Koch, Mendel",
@@ -164,6 +194,36 @@ var BI_CURRICULUM = [
     "Name unicellular organisms that cause disease and the diseases they cause"
   ],
   note:"<b>Taxonomy</b> is the science of classifying organisms. The hierarchy runs <b>Kingdom → Phylum → Class → Order → Family → Genus → Species</b>. The five kingdoms are <b>Monera</b> (bacteria), <b>Protista</b>, <b>Fungi</b>, <b>Plantae</b> and <b>Animalia</b>. Each organism receives a two-word Latin name — the <b>binomial system</b> of Linnaeus, as in <i>Homo sapiens</i>.",
+  study:[
+    /* ---- course text: Semester One, Period II — Hierarchy and Diversity of Living Things; Unicellular Organisms (guide pp. 5-6) ---- */
+    {k:"h3", t:"Classification and the Importance of Living Things"},
+    {k:"p", t:"The **diversity of living things** is immense, so biology sorts them: **taxonomy (classification)** groups organisms by their shared characteristics, and life is understood to have evolved from the simplest to the complex forms. Classify organisms into the ranks: **kingdom, phylum, class, order, family, genus and species**."},
+    {k:"rule"},
+    {k:"h3", t:"The Five Major Kingdoms"},
+    {k:"p", t:"List the major characteristics of each kingdom, and draw and label one organism belonging to each:"},
+    {k:"table", head:["Kingdom","General characteristics","Example"], rows:[
+      ["Monera (bacteria)","Unicellular, prokaryotic — no true nucleus","Bacterium"],
+      ["Protista (protists)","Mainly unicellular, eukaryotic — with a true nucleus","Amoeba, Paramecium, Euglena"],
+      ["Fungi","Non-green, absorb food; cell walls of chitin","Mould, mushroom"],
+      ["Plantae (plants)","Multicellular, green, make food by photosynthesis","Flowering plant"],
+      ["Animalia (animals)","Multicellular, feed on other organisms, move about","Butterfly, cockroach, snail, earthworm, cat, man"]
+    ]},
+    {k:"p", t:"**Viruses** are the relationship bordering between living and non-living things: outside a host cell they are inert particles; only inside a host do they reproduce — they are not placed in any kingdom."},
+    {k:"rule"},
+    {k:"h3", t:"Unicellular Organisms"},
+    {k:"p", t:"The basic characteristics of unicellular organisms: one cell performs every function of life — feeding, moving, respiring, excreting and reproducing. Draw and label the structures of the **Amoeba**, **Paramecium** and **Euglena**, and observe them by examining a drop of brackish or pond water containing protozoa under the microscope."},
+    {k:"rule"},
+    {k:"h3", t:"Parasitic Protozoa and the Diseases They Cause"},
+    {k:"table", head:["Organism","Disease it causes"], rows:[
+      ["Entamoeba histolytica","Amoebic dysentery (amoebiasis)"],
+      ["Giardia lamblia","Giardiasis"],
+      ["Plasmodium falciparum","Malaria"]
+    ]},
+    {k:"p", t:"The **sporozoa (Plasmodium)** has a life cycle running between the mosquito and man — draw its life cycle, and discuss the effects and prevention of malaria and dysentery (sleep under treated nets, clear stagnant water; boil drinking water and wash fruits)."},
+    {k:"rule"},
+    {k:"h3", t:"STI-causing Agents"},
+    {k:"p", t:"Unicellular causative agents of disease include the agents of sexually transmitted infections: the **fungus** (Candida), the **bacteria** of **gonorrhoea** and **syphilis**, the **virus** of **HIV/AIDS** (borderline living), and the **protozoa Trichomonas (vaginalis)**. List and discuss the causative agents of STIs and the diseases they cause."}
+  ],
   focus:[
     "Classification and its importance",
     "The taxonomic hierarchy and the binomial system",
@@ -288,6 +348,33 @@ var BI_CURRICULUM = [
     "Outline the effects, symptoms and methods of preventing STIs and substance abuse"
   ],
   note:"Multicellular bodies are organised in levels: <b>cells → tissues → organs → systems → organism</b>. The four basic animal tissues are <b>epithelial, connective, muscular and nervous</b>. The worms fall into three groups — <b>flatworms</b> (Platyhelminthes), <b>roundworms</b> (Nematoda) and <b>segmented worms</b> (Annelida). Many are parasites transmitted through contaminated food, water or soil.",
+  study:[
+    /* ---- course text: Semester One, Period III — Multicellular Organisms and Reproductive Structures (guide pp. 7-9) ---- */
+    {k:"h3", t:"Tissues, Organs and Systems"},
+    {k:"p", t:"**Tissues are formed from cells, organs from tissues, and systems from organs.** Discuss the functions of the four types of tissues — epithelial (covering), connective (supporting and joining), muscular (moving) and nervous (coordinating) — and explain the concept of the organ as a combination of tissues (the heart) and the system as a combination of organs (the circulatory system)."},
+    {k:"rule"},
+    {k:"h3", t:"General Characteristics — Sponges and Hydra"},
+    {k:"p", t:"The first **multicellular organisms** show cells at work together. The **sponge** (simple pores, a body cavity, and three cell types): draw and label the body structure of a sponge, stating the function of each labelled part, and draw its three different cells with the function of each. The **hydra** (a hollow two-cell-layer column with tentacles, stinging cells, and budding reproduction): draw and label its parts and state the function of each labelled part."},
+    {k:"rule"},
+    {k:"h3", t:"Classifying the Worms"},
+    {k:"table", head:["Group","Examples","Way of life"], rows:[
+      ["Flat worms","Planarian (free-living); blood and liver flukes; tape worms","Planarian free in water; flukes and tapeworms parasitic"],
+      ["Parasitic round worms","Ascaris, hook worm, filarial worm, trichina worm","Parasites of the gut, blood or muscle"],
+      ["Segmented worms","Earthworm and leeches","Earthworm free in soil; leech a blood-sucker"]
+    ]},
+    {k:"p", t:"Explain **parasitism** among the worms and the **alternative hosts** in their life cycles, and the conditions for the **oral transmission** of intestinal parasites. Differentiate the leech and the earthworm by morphology (the leech is flattened with suckers and no bristles; the earthworm is cylindrical, segmented and bristled). Dissect an earthworm, identifying its external and internal features; observe and draw the external structures of the filarial worm, tape worm, hook worm and round worm."},
+    {k:"p", t:"**Measures for preventing parasitic worm infections:** washing hands after the use of the latrine and before eating, and eating well-cooked meat. Outline also the effects and symptoms of intestinal parasites — weakness, swollen belly, anaemia."},
+    {k:"rule"},
+    {k:"h3", t:"Human Reproductive Structures"},
+    {k:"p", t:"Name the **male and female reproductive organs** and state the functions of these organs — dismissing the common **myths about reproduction** with biological fact. Trace the **human life cycle**: infancy, juvenile, **adolescence**, adult, senescence (old age). What influences sexual desires? **Hormones**. How can one control sexual desire? By understanding the feeling, keeping busy, choosing good friends and standing by one's values."},
+    {k:"p", t:"**Menstruation** is the monthly shedding of the womb lining; learn menstruation and pregnancy (menstruation stops when pregnancy begins), the stages of the menstrual cycle, and **menstrual hygiene** — bathing, clean pads changed regularly, and no teasing: it is health, not shame."},
+    {k:"rule"},
+    {k:"h3", t:"Pregnancy and STI Prevention; the Essence of Contraception"},
+    {k:"bul", items:["**Abstinence** — the surest protection against pregnancy, STIs and HIV","**Use of condoms** — their importance, their challenges, and the risky behaviours and values that defeat them; the condom's role in STI prevention","**Contraceptives** — the methods and how each stops conception (a health professional explains each with its strength and side effects); remember that natural family planning does **not** prevent STI and HIV — consider **double protection**"]},
+    {k:"rule"},
+    {k:"h3", t:"Substance Abuse and Sexual Desires"},
+    {k:"p", t:"**Drugs and substance abuse** — name the drugs and substances commonly abused and classify them: **alcohol**, **narcotics**, **opioids** and others. Alcohol and drugs lower self-control, inflame sexual desires and lead to risky behaviour; their effects wreck health, schooling and family life. **Ways of prevention**: say no the first time, avoid the company of abusers, and seek help early; substances are harmful to life."}
+  ],
   focus:[
     "Tissues, organs and systems",
     "General characteristics of sponges and hydra",
@@ -409,6 +496,31 @@ var BI_CURRICULUM = [
     "Discuss the economic importance of arthropods and methods of biological control"
   ],
   note:"<b>Arthropods</b> have a segmented body, a hard <b>exoskeleton</b> of chitin and <b>jointed appendages</b>. Because the exoskeleton cannot stretch, they grow by <b>ecdysis</b> — moulting. <b>Complete metamorphosis</b> passes through egg → larva → pupa → adult; <b>incomplete metamorphosis</b> passes through egg → nymph → adult with no pupal stage.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Arthropods and Biological Control of Pests (guide pp. 10-11) ---- */
+    {k:"h3", t:"Arthropods — General Characteristics and Classification"},
+    {k:"p", t:"The **arthropods** are the joint-legged animals: **general characteristics** — a hard outer skeleton (exoskeleton), a segmented body, and jointed limbs. Classify them by **morphology** into their classes — the insects (grasshopper, mosquito, butterfly), the crustaceans (crab, crayfish), the arachnids (spider) and the myriapods (centipede, millipede). Study their morphology and life processes: **respiration** (by tracheae, gills or book lungs), **feeding**, **mouth parts and body segments**. On a field trip, collect different species — butterfly, grasshopper, cockroach, weevils, cotton stainers and housefly — and observe their external body structures, then study the specimens: grasshopper/locust, cockroach, weevils and cotton stainers."},
+    {k:"rule"},
+    {k:"h3", t:"Life Cycles — Metamorphosis and Moulting"},
+    {k:"p", t:"**Metamorphosis** is the change of form through the life cycle. **Complete metamorphosis** runs egg → larva → pupa → adult (mosquito, butterfly); **incomplete metamorphosis** runs egg → nymph → adult (grasshopper, cockroach), the nymph resembling a small wingless adult. **Ecdysis (moulting)** is the shedding of the hard exoskeleton so the growing body can expand. Explain the general characteristics of the butterfly, and diagram the life cycle of the **Anopheles mosquito** in relationship to the plasmodium of malaria; collect mosquito larvae (wigglers) and bring them to the lab for observation."},
+    {k:"rule"},
+    {k:"h3", t:"Vectors — Carriers of Disease"},
+    {k:"p", t:"**Vectors** are organisms that carry disease from host to host. Their general characteristics — mouth parts, feeding, life cycle and the transmission of diseases:"},
+    {k:"table", head:["Vector","How it transmits disease"], rows:[
+      ["Mosquito","The female Anopheles injects the plasmodium of malaria as she sucks blood"],
+      ["Tsetse fly","Carries the trypanosome of sleeping sickness with its bite"],
+      ["Housefly","Carries germs from filth to food on its legs and gut"],
+      ["Cockroach","Crawls from latrines to kitchens, contaminating food at night"]
+    ]},
+    {k:"p", t:"List the methods of controlling the spread of malaria: clear stagnant water, sleep under treated nets, spray and screen the house, and treat fevers early."},
+    {k:"rule"},
+    {k:"h3", t:"The Caste System in Social Insects"},
+    {k:"p", t:"**Social insects** live in colonies divided into **castes** with different work. The **honey bees**: a queen (lays eggs), drones (mate) and sterile workers (forage, guard, feed the brood). The **termites**: a king and queen, soldiers and workers. Discuss honey bees and termites as social insects."},
+    {k:"rule"},
+    {k:"h3", t:"Economic Importance and the Control of Pests"},
+    {k:"p", t:"**Economic importance of the honey bees**: honey and beeswax, and the pollination without which our crops would fail; **of termites**: breaking down dead wood — but also destroying houses and crops. Describe the features and economic importance of grasshoppers (crop pests; also food). **Pests** cost the farmer crops and the family health; their control:"},
+    {k:"bul", items:["**Chemical control** — insecticides sprayed against the pest; powerful but poisonous, so use with care","**Biological control** — the pest's natural enemies are encouraged or introduced to keep it down, with no poison entering the food chain","Cultural methods — clearing weeds and wastes, rotating crops, and clean storage"]}
+  ],
   focus:[
     "General characteristics and classification of arthropods",
     "Morphology and life processes: respiration, feeding, mouthparts, body segments",
@@ -533,6 +645,25 @@ var BI_CURRICULUM = [
     "Illustrate the life cycle of Rhizopus"
   ],
   note:"<b>Photosynthesis</b> is the process by which green plants make food using light energy: <b>6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</b> in the presence of chlorophyll and sunlight. It occurs in two stages — the <b>light-dependent</b> stage in the grana and the <b>light-independent</b> stage in the stroma. <b>Alternation of generations</b> means the life cycle alternates between a gamete-producing <b>gametophyte</b> and a spore-producing <b>sporophyte</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Plant-like Organisms and Photosynthesis; Fungi (guide pp. 12-14) ---- */
+    {k:"h3", t:"Algae"},
+    {k:"p", t:"The **algae** are the simple green organisms of water. **General characteristics and classification**: green, mostly aquatic, from single cells to long filaments. The **phytoplankton** (floating microbes) are the producers of atmospheric oxygen and serve as food for the world's water organisms. **Spirogyra** — a filament of green cells with spiral chloroplasts — reproduces **asexually** by fragmentation and **sexually** by conjugation, in which two filaments join cell to cell and exchange nuclei; draw and label the parts of a spirogyra and the stages of its sexual reproduction. **Economic importance of algae** in food, medicine and industry."},
+    {k:"rule"},
+    {k:"h3", t:"Mosses and Ferns — the Non-vascular and Early Vascular Plants"},
+    {k:"p", t:"**Mosses** (e.g. Brachymerium and Funaria) are small **non-vascular plants** of damp places; **ferns** (i.e. Nephrolepis, Platycerium) are the first plants with true vessels, roots, stems and leaves. Both reproduce by **alternation of generations** — a spore-producing generation alternating with a gamete-producing generation; draw and label the life cycles of mosses and ferns, and state their economic importance."},
+    {k:"rule"},
+    {k:"h3", t:"Fungi"},
+    {k:"p", t:"**General characteristics and classification**: the fungi are non-green organisms that **absorb** food (they cannot photosynthesize) — moulds, yeasts, mushrooms. **Types of nutrition / mode of life**: **parasitic** (feeding on living hosts) and **saprophytic** (feeding on dead matter) — a **symbiotic relationship** appears when a fungus lives within another's body to mutual benefit, as in lichens. Observe a piece of moulded bread under the microscope; draw and label the parts of the hyphae of **Rhizopus**, and illustrate its life cycle; explain the life cycle of a club fungus, and collect and study a bracket fungus, identifying the annual rings. Reproduction in fungi is **sexual and asexual** — diagram it."},
+    {k:"p", t:"**Diseases that affect plants and humans:** blight, smuts and rust (on crops); athlete's foot, yeast infection, ringworm and eczema (dishcloth rash) in man. State ways of preventing fungal infections: keep the skin clean and dry, do not share towels, wash and dry clothes, and store food dry. **Economic importance** — food (mushrooms), medicine (penicillin) and industry (yeast in baking and brewing)."},
+    {k:"rule"},
+    {k:"h3", t:"Photosynthesis"},
+    {k:"p", t:"**Definition:** photosynthesis is the process by which **autotrophs make their food** — green plants using the energy of light to combine carbon dioxide and water into glucose, releasing oxygen. **Conditions of photosynthesis:** light, chlorophyll, carbon dioxide and water. **Leaf adaptation to photosynthesis:** a broad thin blade, stomata below, veins carrying water in and sugar away, and chloroplasts packed near the top. The process divides into the **light-dependent reactions** (light splits water, releasing oxygen) and the **light-independent reactions** (carbon dioxide is built into glucose)."},
+    {k:"p", t:"**Products of photosynthesis** — glucose and oxygen; the **fate of photosynthetic products** — glucose is respired for energy, built into starch for storage, or into cellulose and proteins for growth. **Macronutrients and micronutrients** — their effects in photosynthesis: nitrogen and magnesium (macro) build chlorophyll and protein; iron and manganese (micro) assist the reactions; a starved plant pales and fails."},
+    {k:"rule"},
+    {k:"h3", t:"Experiments on Photosynthesis"},
+    {k:"num", items:["Grow two plants, one in sunlight and one in the shade, to observe the effect of sunlight on plant growth.","Wrap some leaves of a growing plant with aluminium foil and compare them with the other leaves of the same plant after four days.","**Test a leaf for starch:** boil the leaf in water, soften and decolour it in warm ethanol, rinse, and add iodine solution — blue-black shows starch is present.","Break down the cell wall and stop the action of enzymes within a leaf (boiling does both) before testing.","Extract the **chlorophyll** (ethanol warmed with the leaf turns green) and demonstrate the need for chlorophyll in photosynthesis: test a **variegated leaf** and show starch formed only where the leaf was green."]}
+  ],
   focus:[
     "Algae: general characteristics, classification, phytoplankton, green algae",
     "Spirogyra: structure and reproduction",
@@ -656,6 +787,32 @@ var BI_CURRICULUM = [
     "Explain transpiration and the factors affecting the rise of water in the xylem"
   ],
   note:"Flowering plants (angiosperms) divide into <b>monocotyledons</b> — one seed leaf, parallel veins, fibrous roots, floral parts in threes — and <b>dicotyledons</b> — two seed leaves, net veins, tap root, floral parts in fours or fives. Water rises in the <b>xylem</b> by <b>root pressure, capillarity and transpiration pull</b>; food travels in the <b>phloem</b> by translocation.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Flowering Plants (guide pp. 15-18) ---- */
+    {k:"h3", t:"Flowering Plants — Classification and Success"},
+    {k:"p", t:"The **flowering plants** are the major food producers in the biosphere and stand at the heart of the food chain. **Classification:** the **monocotyledonae (monocots)** — one seed leaf, parallel leaf veins, scattered stem bundles, flower parts in threes (palm, grass, maize) — and the **dicotyledonae (dicots)** — two seed leaves, net leaf veins, a ring of stem bundles, parts in fours or fives (bean, flamboyant). Their **success**: the flower, the fruit, and the seed that waits for rain. Distinguish the structural characteristics of monocots and dicots, and draw and label cross sections of monocot and dicot stems and roots."},
+    {k:"rule"},
+    {k:"h3", t:"Roots, Stems, Leaves and Flowers"},
+    {k:"p", t:"Describe the structures and functions of **roots** (anchor; absorb water and mineral salts — note the **root system types**, the **regions of the root tip**, and the structures of the root hairs), **stems** (support; transport; store), **leaves** (photosynthesis; transpiration; classify them and their arrangement on the stem) and **flowers** (reproduction). **Types of plant tissues:** dermal (covering), ground (packing) and vascular (conducting). **Modified roots, stems and leaves:** tubers, bulbs, tendrils and runners — store food or climb or spread."},
+    {k:"p", t:"Draw and label the parts of a **complete flower** — sepals, petals, stamens (anther and filament) and carpels (stigma, style, ovary) — stating their functions, and determine the **floral formulae** of flowers such as the flamboyant (Delonix), Pride of Barbados (Caesalpinia) and the rattle box (Crotalaria)."},
+    {k:"rule"},
+    {k:"h3", t:"Reproduction in Flowering Plants"},
+    {k:"p", t:"**Types of pollination** — self and cross; the **agents of pollination** — insects, wind, water and animals. Follow the pollen tube to the ovule and explain the process of **zygote and embryo formation**. **Sexual reproduction** (seed) and **asexual / vegetative propagation** — illustrate the types: cutting, grafting, and others. Collect various fruits and seeds and classify them into types: **kinds of fruits** and the **dispersal of fruits and seeds** by their agents — wind (winged and plumed), water (floating), animals (hooked or fleshy) and explosive pods."},
+    {k:"rule"},
+    {k:"h3", t:"Germination"},
+    {k:"p", t:"**Conditions necessary for seed germination:** water, oxygen, and a suitable temperature (the seed must also be alive and mature). The **types of germination**: **epigeal** — the cotyledons are carried above the ground (bean); **hypogeal** — the cotyledons remain below the ground (maize). Set up the experiment demonstrating the two types using corn seed (kernel) and bean seed."},
+    {k:"rule"},
+    {k:"h3", t:"Plant Hormones and Growth"},
+    {k:"p", t:"**Plant hormones and their functions** — the auxins steer the tips toward light and away from it, gibberellins drive stem length, cytokinins divide cells, abscisic acid rests the bud and sheds the leaf, and ethene ripens the fruit. Describe plant growth and development: **primary growth** lengthens (at the tips); **secondary growth** thickens (in the trunk). Measure growth in plants by height and girth over time, and observe **nastic and tropic movements in plants** — the sleep-movement of leaves (nastic) and the bend of the shoot to light and the root to gravity (tropic). Examine sections of stems and roots showing different stages of primary and secondary growth."},
+    {k:"rule"},
+    {k:"h3", t:"The Transport System in Vascular Plants"},
+    {k:"p", t:"**Movement of water and minerals through plants:** soil water enters the root hairs, crosses the root and rises in the **xylem** to the leaves. The **physiological factors affecting the rise of water in the xylem:** root pressure, **transpiration** pull, the cohesion-tension mechanism, adhesion, and the water potential gradient. **Movement of organic materials from the leaves to the roots** runs the other way, in the **phloem** — the **pressure flow hypothesis** and **cytoplasmic streaming** account for this translocation."},
+    {k:"p", t:"**Transpiration** — the loss of water vapour from the leaves — has **advantages** (it pulls the water column and cools the leaf) and **disadvantages** (wilting in drought). **Environmental factors affecting transpiration:** light, temperature, humidity, air movement and water supply. Observe transpiration through experiments."},
+    {k:"rule"},
+    {k:"h3", t:"Excretion and Gaseous Exchange in Plants"},
+    {k:"p", t:"**Excretory products of plants:** water, carbon(IV) oxide, oxygen, alkaloids, tannins, resins, acids and gums. **Gaseous exchange** follows the **concentration gradient** through the **structure and function of the stomata** (leaf pores opened and shut by guard cells) and the **lenticels** (breathing pores of woody stems)."},
+    {k:"p", t:"The metabolic equations: respiration — **C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + heat energy**; and alcoholic fermentation — **C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ + heat**. Compared types of respiration: **facultative aerobic** and **facultative anaerobic** organisms can switch between the two as oxygen allows."}
+  ],
   focus:[
     "Classification: monocots and dicots",
     "Functions of roots, stems, leaves and flowers",
@@ -787,6 +944,24 @@ var BI_CURRICULUM = [
     "Outline preventive measures for bacterial diseases and state the usefulness of bacteria"
   ],
   note:"A <b>virus</b> is an obligate parasite consisting of nucleic acid — DNA or RNA — inside a protein <b>capsid</b>. It has no cytoplasm or organelles and can reproduce only inside a host cell. In the <b>lytic cycle</b> the virus multiplies and bursts the host cell; in the <b>lysogenic cycle</b> its genetic material is incorporated into the host DNA and remains latent. <b>Bacteria</b> are prokaryotes classified by shape as <b>cocci, bacilli, spirilla</b> and <b>vibrio</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Viruses and Bacteria (guide pp. 19-20) ---- */
+    {k:"h3", t:"Viruses — Definition, Characteristics and Structure"},
+    {k:"p", t:"A **virus** is a tiny particle, far smaller than a cell, that can reproduce only inside the living cell of a host. **General characteristics:** viruses are on the border of the living and the non-living — no cytoplasm, no respiration, no feeding; only a core of nucleic acid inside a protein coat. That is the **composition of the viral structure**: nucleic acid (DNA or RNA — never both) wrapped in protein."},
+    {k:"rule"},
+    {k:"h3", t:"Classification of Viruses"},
+    {k:"p", t:"Viruses are classified **based on their nucleic acid**: **DNA viruses** (e.g. smallpox, herpes) and **RNA viruses** (e.g. influenza, HIV, polio). **Common viral diseases:** the cold, flu, mumps, chicken pox, rabies, polio and HIV/AIDS — with the organisms they attack, their modes of transmission and their methods of prevention."},
+    {k:"rule"},
+    {k:"h3", t:"The Life Cycle of a Virus"},
+    {k:"p", t:"The **lytic cycle**: the virus attaches to a host cell, injects its nucleic acid, hijacks the cell to manufacture new virus particles, and the cell bursts (lyses), releasing the new viruses. The **lysogenic cycle**: the viral nucleic acid inserts itself into the host's own DNA and sleeps there, copied with the host's divisions, until a trigger wakes it into the lytic cycle. **The bacteriophage** — a virus that attacks bacteria — shows both cycles; diagram its life cycle."},
+    {k:"rule"},
+    {k:"h3", t:"Bacteria — Definition, Characteristics, Classification and Structure"},
+    {k:"p", t:"**Bacteria** are unicellular prokaryotic organisms — a cell wall and membrane, cytoplasm with ribosomes, one circular strand of DNA, and no true nucleus. **Classification and shape:** cocci (spheres), bacilli (rods), spirilla (spirals) and vibrios (commas); further classed by staining and by how they respire. Describe the structure of a bacterial cell as observed under a microscope, and draw and label a typical bacterial cell. Distinguish **autotrophic** bacteria (making their own food) from **heterotrophic** (feeding on other matter), and **aerobic**, **anaerobic** and **facultative** respiration."},
+    {k:"p", t:"**Common bacterial diseases:** tuberculosis, tetanus and the streptococcus infections, with their symptoms; and the **preventive measures**: vaccination, clean water and food, covered wounds, and finished courses of antibiotics. **Economic importance of bacteria:** decay and soil fertility, the making of cheese, yoghurt and vinegar, and the work of the gut flora — besides disease."},
+    {k:"rule"},
+    {k:"h3", t:"Sexually Transmitted Infections (STIs) — Transmission, Prevention and HIV Support"},
+    {k:"p", t:"Viruses and bacteria are the causative agents of diseases including the STIs: the viruses of **HIV/AIDS and herpes**; the bacteria of **syphilis and gonorrhoea**. **Modes of transmission:** unprotected sexual contact, infected blood, and mother to child. **Prevention:** abstinence, mutual faithfulness, correct condom use, and never sharing sharp instruments. Discuss in groups the causes and the preventive measures for controlling STIs, and the importance of **HIV testing and support** — knowing your status early protects you, your partner, and your future children."}
+  ],
   focus:[
     "Viruses: definition, general characteristics and structure",
     "Classification: DNA and RNA viruses",
@@ -913,6 +1088,33 @@ var BI_CURRICULUM = [
     "Name and discuss various methods of preserving and storing food, including local methods used in West Africa"
   ],
   note:"<b>Nutrition</b> is the taking in and use of food. <b>Autotrophic</b> organisms make their own food; <b>heterotrophic</b> organisms obtain it from others; <b>holozoic</b> nutrition involves ingestion, digestion, absorption, assimilation and egestion. The food tests are: <b>Benedict's</b> for reducing sugar, <b>iodine</b> for starch, the <b>emulsion test</b> for lipids and the <b>Biuret test</b> for protein.",
+  study:[
+    /* ---- course text: Semester One, Period II — Nutrition and Food Preservation (guide pp. 21-23) ---- */
+    {k:"h3", t:"Nutrition — Definition and Types"},
+    {k:"p", t:"**Nutrition** is the process by which living things take in and use food to produce energy and support the life processes. The types: **autotrophic nutrition** (green plants making their own food by photosynthesis), **heterotrophic nutrition** (feeding on ready-made food), and **holozoic nutrition** (taking in solid food, digesting it and absorbing it — the animal way). Different foods contain different **nutrients**, and that is why living things need them."},
+    {k:"rule"},
+    {k:"h3", t:"Food and its Nutrients — Classified and Tested"},
+    {k:"p", t:"Classify the types of nutrients found in food: **carbohydrates, lipids, proteins, vitamins, mineral salts and water**. Classify foods into groups, and demonstrate the presence of the nutrients by test:"},
+    {k:"table", head:["Nutrient","Test","Positive result"], rows:[
+      ["Reducing sugar","Benedict's test (heat with Benedict's solution)","Brick-red precipitate"],
+      ["Non-reducing sugar (e.g. sucrose)","Boil with dilute acid, neutralize, then Benedict's test","Brick-red precipitate after hydrolysis"],
+      ["Starch","Iodine / potassium iodide test","Blue-black colour"],
+      ["Lipid","The emulsion test (shake with ethanol, pour into water)","A milky white emulsion"],
+      ["Protein","Biuret test (sodium hydroxide, then copper (II) sulphate)","A purple (violet) colour"],
+      ["Vitamin C","DCPIP dye","The blue dye is decolourised"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Balanced Diet and Malnutrition"},
+    {k:"p", t:"A **balanced diet** contains every nutrient in the right proportion — energy foods, body-building foods and protective foods, with water and fibre, matched to age and work. **Malnutrition** is the wrong feeding — too little (undernutrition: kwashiorkor, marasmus), too much (obesity), or the lack of one nutrient (scurvy, rickets, goitre, anaemia)."},
+    {k:"rule"},
+    {k:"h3", t:"Teeth, the Dental Formula and Dental Care"},
+    {k:"p", t:"Determine the **dental formula of a mammal** — the number and arrangement of the teeth (incisors, canines, premolars and molars) on one side of the jaws. Man's adult formula is **2.1.2.3 / 2.1.2.3 = 32**. The shapes fit the work: incisors cut, canines tear, premolars and molars crush and grind. **Dental care in humans:** brush the teeth morning and night, avoid sweet things between meals, chew hard fibrous food, and visit the dentist — decayed teeth poison digestion and sour the whole health."},
+    {k:"rule"},
+    {k:"h3", t:"Food Poisoning and Food Preservation"},
+    {k:"p", t:"**Food poisoning** comes from germs and their poisons in spoiled food; its prevention is the same as preservation's purpose: deny the germs warmth, moisture and time. The **biological basis for preserving and storing food** is to stop the growth of bacteria and fungi and slow the action of enzymes. Name and discuss the methods of preserving and storing food — with local resources and other West African methods:"},
+    {k:"bul", items:["**Drying / dehydration** — sun-drying fish and peppers; water gone, germs halt (locally made dryer, charcoal, coal pot)","**Salting** — salt draws the water from food, as with fish and meat","**Smoking** — smoke and heat over the fire preserve fish and bush meat","**Parboiling** — partly boiling, as with rice, to keep it","**Refrigeration** — cold slows every germ and enzyme","**Frying** — heating through in hot palm oil","**Use of oil** — sealing food from the air in oil","**Heating** — boiling and cooking kill the germs"]},
+    {k:"p", t:"Use the preservative methods on samples of food — groundnuts, fish, milk, pawpaw, sliced cassava and potato — and compare them with other foodstuffs that have not been preserved, watching which spoils first. Food security for the family and the nation stands on these methods."}
+  ],
   focus:[
     "Nutrition: autotrophic, heterotrophic and holozoic",
     "Food nutrients: carbohydrates, lipids, proteins, vitamins, mineral salts and water",
@@ -1041,6 +1243,26 @@ var BI_CURRICULUM = [
     "Define and calculate population density, and distinguish immigration from emigration"
   ],
   note:"<b>Soil</b> is the loose upper layer of the earth formed by weathering of rock plus humus; it contains mineral particles, humus, water, air and living organisms. An <b>ecosystem</b> is a community of organisms interacting with their non-living environment. Energy flows from <b>producers → primary consumers → secondary consumers → decomposers</b>, losing roughly 90% at each <b>trophic level</b>.",
+  study:[
+    /* ---- course text: Semester One, Period III — Soil, Energy and Ecology: Patterns in Nature (guide pp. 24-26) ---- */
+    {k:"h3", t:"Soil — Formation and Composition"},
+    {k:"p", t:"**Soil** is the loose upper layer of the earth in which plants grow. Its **formation** is by **weathering**: **physical weathering** (heat, cold, water and wind breaking the rock apart) and **chemical weathering** (rain and acids dissolving and changing the minerals). Its **composition**: mineral particles, humus (decayed organic matter), air, water and living organisms — demonstrate the presence of air and moisture in the soil in the lab, and collect, observe and classify the soil types."},
+    {k:"p", t:"Distinguish the **types of soil**: **loamy soil** (the fertile balance of sand, silt, clay and humus), **sandy soil** (coarse, quick-draining, hungry) and **clay soil** (fine, water-holding, heavy)."},
+    {k:"rule"},
+    {k:"h3", t:"Erosion, Conservation and the Renewal of Fertility"},
+    {k:"p", t:"**Erosion** — water and wind stripping away the topsoil — and the overuse of soil rob it of fertility: the land tires and the yields fall. The **processes of soil conservation, maintenance and renewal of fertility**: contour ploughing, terracing, cover crops, mulching, adding manure and compost, crop rotation, and fallowing. The **slash and burn** method: advantages — it clears the bush quickly and the ash fertilizes cheaply; disadvantages — it destroys the humus and the cover, invites erosion, and shortens the land's life. Campaign against dumping **non-biodegradable substances (plastics)** into the environment — dig the school yard or dump site to observe the plastic and metallic materials that will not rot — and consider **Liberia's food and cash crops** and the type of soil each needs."},
+    {k:"rule"},
+    {k:"h3", t:"Habitat and Niche; Population"},
+    {k:"p", t:"An organism's **habitat** is the place where it lives; its **niche** is its role there — what it eats, what eats it, what it does. A **population** is the number of one species in an area. Define and calculate: **population density** (numbers per unit area), **population growth rate**, **doubling time**, **percentage growth rate**, **birth rate and death rate**, and distinguish **immigration** (arriving) from **emigration** (leaving). Growth is checked by **density-dependent factors** (food, disease, space) and **density-independent factors** (flood, drought, fire)."},
+    {k:"rule"},
+    {k:"h3", t:"Interactions and Trophic Levels"},
+    {k:"p", t:"**Inter-specific interactions (biological associations)** between species: **mutualism** (both benefit), **commensalism** (one benefits, the other unaffected), **predation** (the predator eats the prey), **parasitism** (the parasite lives at the host's expense) and **competition** (both strive for one scarce need); **intra-specific** interactions run within one species, and the **isolation mechanisms** keep the species apart and distinct."},
+    {k:"p", t:"**Trophic levels** — the feeding steps: **producers** (green plants) → **consumers** (herbivores, then carnivores) → **decomposers**. Build **food chains** and **food webs**, the **pyramids of numbers** and the **pyramid of energy** — energy flows through the trophic levels, most of it lost at each step, so the top predator is few. The **productivity of an ecosystem**: distinguish **gross primary productivity** (all the food the plants make) from **net primary productivity** (what remains after the plants' own respiration)."},
+    {k:"rule"},
+    {k:"h3", t:"The Biocycles, Succession and Conservation"},
+    {k:"p", t:"Discuss and diagram the cycles that keep matter moving in nature — the **water cycle**, the **carbon (carbon dioxide) cycle**, the **nitrogen cycle**, the **phosphorus cycle** and the **sulfur cycle**. **Ecological succession**: **primary succession** colonizes bare rock; **secondary succession** re-colonizes disturbed land — from the **pioneer community** to the stable **climax community**."},
+    {k:"p", t:"**Conservation of nature**: **soil conservation**, **forest conservation**, **wildlife conservation**, **oil conservation** and **mineral conservation** — use the gifts without wasting them. Take the field trips: observe the effects of erosion on soil fertility, and visit the ponds and the forest regions to read the ecosystem for yourself."}
+  ],
   focus:[
     "Soil: formation, composition, types and profile",
     "Physical and chemical weathering",
@@ -1172,6 +1394,24 @@ var BI_CURRICULUM = [
     "Recognise sexual decisions that have an impact on the family"
   ],
   note:"<b>Mitosis</b> produces two genetically identical diploid daughter cells for growth and repair. <b>Meiosis</b> produces four genetically different haploid gametes and halves the chromosome number, so that fertilisation restores the diploid number. Both proceed through <b>prophase, metaphase, anaphase and telophase</b> — meiosis twice over.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Cell Growth and Division; Reproduction (guide pp. 27-29) ---- */
+    {k:"h3", t:"The Cell Cycle, Mitosis and Meiosis"},
+    {k:"p", t:"Reproduction is a characteristic of living things, and it begins with **cell division**. Describe the stages of the **cell cycle**: a long **interphase** of growth and DNA replication, then division. **Mitosis** is the division of body cells: its phases — **prophase** (the chromosomes appear), **metaphase** (they line on the equator), **anaphase** (the chromatids part to the poles) and **telophase** (two identical nuclei form) — produce two daughter cells each with the full **diploid** number. In the LAB, examine thin slices of **onion root tip** under the microscope to study the stages of mitosis."},
+    {k:"p", t:"**Meiosis** is the division that forms the gametes: two successive divisions halve the chromosome number, making **haploid** gametes — and crossing over shuffles the inheritance. List and diagram the phases of meiosis, draw and label the stages of both divisions, and **distinguish mitosis from meiosis**. The importance of meiosis in sexual reproduction: it makes the gametes (**gamete formation**) and mixes the genes, so fertilization restores the diploid number with new variety. Explain the terms: **gametes, diploid, haploid**."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Reproduction"},
+    {k:"p", t:"Distinguish **asexual reproduction** (one parent, offspring identical) from **sexual reproduction** (gametes from two parents fuse). Forms of asexual reproduction in plants and animals:"},
+    {k:"bul", items:["**Fission** — one cell dividing into two (bacteria, Amoeba)","**Budding** — a bud grows on the parent and separates (Hydra, yeast)","**Vegetative propagation** — new plants from stems, roots or leaves (cuttings, runners, grafting)","**Cloning** — copying an organism from one of its body cells"]},
+    {k:"p", t:"Sexual reproduction: **conjugation** (an exchange between two individuals, as in Paramecium and Spirogyra), the formation of male and female **gametes** (by meiosis), and the **fusion of gametes (fertilization)** into the zygote."},
+    {k:"rule"},
+    {k:"h3", t:"Reproduction and Parenting in Humans (Sexuality)"},
+    {k:"p", t:"**Responsibilities of parenting** — the roles of each parent in child rearing: feeding, sheltering, teaching, loving — and the **risks of teenage parenting**: interrupted schooling, poor health of mother and child, and a childhood raising children. Write individually: what kind of family do you intend to have in the next ten years? Babies who grow up without their fathers carry the lack all their lives — boys must plan to take responsibility for their babies."},
+    {k:"p", t:"**Sexual decisions have impact on the family:** make healthy decisions on sexual issues — waiting until you are older with a person you love and have known long; understand **reproductive health and rights**, **infertility** and the cycles of sexuality, and the consequences of sexual decision making. Knowing your rights empowers teenagers to make the right decisions about their sexuality."},
+    {k:"rule"},
+    {k:"h3", t:"Advocacy — Against Substance Abuse and School-Based Violence"},
+    {k:"p", t:"Work together with peers to establish an environment free of substance abuse and **School-Based Violence (SBV)**: the **role of the youth in stopping substance abuse and SBV** is active. Draw on posters, write poems, compose songs, prepare speeches, plan a peaceful demonstration, plan a radio interview … against drug abuse and School Based Violence. Involve other young people in the school; fill the school with activities, drawings and writings against them; organize a hotline where victims can call for help and advice; and involve local NGOs."}
+  ],
   focus:[
     "The cell cycle: interphase and division",
     "Phases of mitosis and their significance",
@@ -1297,6 +1537,26 @@ var BI_CURRICULUM = [
     "State the evidence for evolution and outline the theories of evolution"
   ],
   note:"<b>DNA</b> is a double helix of two strands held by complementary base pairs — <b>A pairs with T, C pairs with G</b>. In <b>transcription</b> DNA is copied to mRNA (with U replacing T); in <b>translation</b> ribosomes read each three-base <b>codon</b> and assemble the corresponding amino acid chain. Mendel's <b>Law of Segregation</b> states that the two alleles of a gene separate during gamete formation.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Genetics, Sexuality and Evolution (guide pp. 30-32) ---- */
+    {k:"h3", t:"Nucleic Acids — DNA and RNA"},
+    {k:"p", t:"**Nucleic acids** are the molecules that carry the hereditary instructions; the **types** are **DNA** (deoxyribonucleic acid) and **RNA** (ribonucleic acid — with its own types: messenger, transfer and ribosomal RNA). They are the principal transmitters of genetic characteristics, gene interaction and genetic variation. The **double helix model of DNA structure**: two strands of nucleotides wound in a spiral, joined by the rungs of base pairs. The **structure of nucleotides** — sugar, phosphate and base — and **complementary base pairing**: adenine pairs thymine, guanine pairs cytosine (in RNA, uracil replaces thymine)."},
+    {k:"p", t:"**DNA replication** — the helix unzips and each strand templates a new partner, giving two identical helices for the dividing cell; demonstrate it with a DNA model. **RNA transcription** — one gene's code is copied onto a messenger RNA, which carries the message to the ribosomes."},
+    {k:"rule"},
+    {k:"h3", t:"Protein Synthesis"},
+    {k:"p", t:"The **stages of protein synthesis**: the gene is transcribed to messenger RNA in the nucleus; the mRNA carries the code to a ribosome; transfer RNAs bring the amino acids in the coded order; and the chain grows and folds into a protein. The **importance of protein synthesis**: proteins are the body's structure and workers — the examples synthesized in humans include the enzymes, the haemoglobin of the blood, the antibodies, the hormones (insulin) and the muscle proteins actin and myosin. Use charts to demonstrate the whole process."},
+    {k:"rule"},
+    {k:"h3", t:"Genetics and Heredity — Mendel's Contribution"},
+    {k:"p", t:"**Genetics** is the study of heredity and variation; **heredity** is the passing of traits from parents to offspring — through the DNA; **sexuality** is the biological makeup of maleness and femaleness. **Mendel's experiment with garden peas** founded the principles of genetics: crossing tall and dwarf peas, he found the traits pass as particles we now call genes, sorted by the laws of segregation and independent assortment. The **genetic terms**: **phenotype** (what shows), **genotype** (the gene makeup), **alleles** (the alternative forms of a gene), **hybrid**, **homozygous** (two alike), **heterozygous** (two different), **monohybrid** and **dihybrid** crosses, and **genes dominant and recessive**. Solve monohybrid and dihybrid problems using the **Punnett square** — and state the importance of the Punnett square: it predicts the probability of every offspring before a seed is sown."},
+    {k:"rule"},
+    {k:"h3", t:"Hereditary Traits, Blood Groups and Sex Determination"},
+    {k:"p", t:"**Hereditary traits** — and disorders — are inherited; therefore it is important to do medical examination when selecting a partner: **haemophilia, mental disorders, sickle cell, colour blindness, baldness, ear lobes**. Discuss some genetic disorders and diseases. The **influence of environment on heredity**: genes set the range, environment fills it — so with the development of traits such as intelligence."},
+    {k:"p", t:"The **ABO blood grouping and the Rhesus factor**: the types of blood are A, B, AB and O, each Rh positive or negative. List the various types of blood group, and state the type of blood needed for transfusion to specific blood groups — the groups must match or the blood clumps. **Sex determination (the X and Y chromosomes):** the mother always gives an X; the sperm carries X or Y — XX a girl, XY a boy; the father therefore determines the sex. **Linkage** joins genes on one chromosome; **sex-linked characters** (colour blindness, haemophilia) ride on the X chromosome, which is why they strike boys more often."},
+    {k:"rule"},
+    {k:"h3", t:"Variation and Evolution"},
+    {k:"p", t:"**Variation** — the differences among members of a species: **continuous variation** shades (height, weight); **discontinuous variation** jumps (blood group, ear lobes). **Sources of variation:** **crossing over** in meiosis, the **independent assortment** of the chromosomes, and the **random fusion of gametes**. **Causes of variation:** genetic factors and environmental factors. The **consequence of variation — natural selection**: the best-fitted variations survive and breed."},
+    {k:"p", t:"**Theories of evolution:** **Lamarck's theory** — characters acquired in life are inherited (disproved); **Charles Darwin's theory** — variation exists, the struggle for existence selects, and the fittest survive (**natural selection**). The **evidence of evolution**: the fossil records, the similarities and differences of comparative anatomy, and the developmental stages of vertebrates; outline them. Add **population genetics** (evolution measured in populations) and **convergent and divergent evolution** (unrelated forms growing alike in one way of life; related forms diverging into many)."}
+  ],
   focus:[
     "Nucleic acids: DNA and RNA, and the types of RNA",
     "Nucleotide structure and complementary base pairing",
@@ -1427,6 +1687,22 @@ var BI_CURRICULUM = [
     "List the general characteristics of reptiles and describe the amniote egg"
   ],
   note:"<b>Chordates</b> possess, at some stage, a notochord, a dorsal hollow nerve cord, pharyngeal gill slits and a post-anal tail. Vertebrates have a backbone of vertebrae; invertebrates do not. Fishes fall into three groups: <b>jawless</b> (lamprey), <b>cartilaginous</b> (shark) and <b>bony</b> (tilapia). The <b>amniote egg</b> of reptiles freed vertebrates from dependence on water for reproduction.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Vertebrates: Fishes, Amphibians and Reptiles (guide pp. 33-34) ---- */
+    {k:"h3", t:"The Phylum Chordata — Vertebrates and Invertebrates"},
+    {k:"p", t:"The **phylum Chordata** is the animals with a **notochord** (in the vertebrates replaced by the backbone), a hollow dorsal nerve cord, and gill slits at some stage. The **vertebrates** carry a backbone and an internal skeleton; the **invertebrates** have neither — describe the differences between them. Realize the **economic importance** of fishes, amphibians and reptiles — food, leather, pest control, medicine and the aquarium trade — and appreciate their **nutritional values** (fish and frogs as first-class protein)."},
+    {k:"rule"},
+    {k:"h3", t:"The Fishes"},
+    {k:"p", t:"**General characteristics of the fish:** aquatic, a streamlined scaled body, fins for swimming, gills for breathing, and a two-chambered heart. The differences among the **three groups**: the **jawless fishes** (lampreys — round sucking mouths, no jaws), the **cartilaginous fishes** (sharks and rays — a skeleton of cartilage, not bone), and the **bony fishes** (the familiar food fishes — a bony skeleton and a swim bladder)."},
+    {k:"p", t:"Dissect a fish, studying the external and internal structures: the external features — the scales, the lateral line, fins and gill covers — and the internal — heart, gills, swim bladder, gut and gonads. **Economic importance of fishes:** food protein for all Liberia, the fishing trade, fishmeal and oil — and the danger of overfishing."},
+    {k:"rule"},
+    {k:"h3", t:"The Amphibians"},
+    {k:"p", t:"**General characteristics of the amphibians:** moist scaleless skin, two lives in one — gilled aquatic young (tadpoles) and lunged land adults (frogs, toads), three-chambered heart, and eggs laid in water without shells, so they must return to the water to breed. Describe the **external and internal features of the frog** on a live specimen — the webbed hind feet, the eardrum, the lungs simple and the skin breathing too."},
+    {k:"rule"},
+    {k:"h3", t:"The Reptiles"},
+    {k:"p", t:"**General characteristics of the reptiles:** dry scaly skin, lungs from hatching, clawed limbs (where present), **internal fertilization** and the **amniotic egg** — the egg with the **extraembryonic membranes** (amnion, chorion and others) that lets the embryo develop on dry land. Draw and label the amniote egg, highlighting those membranes. Describe the **external and internal features of a lizard**: the scaled skin, the four-legged walk, the three-chambered heart building toward four."},
+    {k:"p", t:"**The success of reptiles on land, as opposed to amphibians:** the waterproof scaly skin holds the body's water; the amniotic egg with its shell and membranes frees reproduction from the water; internal fertilization protects the gametes from drying; and strong lungs and limbs suit dry ground. The amphibian, skin moist and eggs unprotected, stays tied to the pond."}
+  ],
   focus:[
     "General characteristics of chordates and vertebrates",
     "Vertebrates versus invertebrates",
@@ -1555,6 +1831,24 @@ var BI_CURRICULUM = [
     "Describe the structure of a typical mammalian molar tooth and write dental formulae"
   ],
   note:"Birds and mammals are <b>endothermic</b> — they generate and regulate their own body heat. Birds are adapted to flight by <b>hollow pneumatic bones, feathers, powerful flight muscles on a keeled sternum, air sacs</b> and the loss of teeth and one ovary to save weight. Mammals have <b>hair, mammary glands</b> and <b>heterodont dentition</b>, and are grouped as <b>monotremes, marsupials</b> and <b>placentals</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Chordata: Aves and Mammals (guide pp. 35-36) ---- */
+    {k:"h3", t:"Birds — General Characteristics and Features"},
+    {k:"p", t:"**General characteristics of birds (Aves):** the body is covered with feathers, the forelimbs are wings, the bones are hollow and light, a beak replaces teeth, and the eggs are hard-shelled. Distinguish birds from mammals (feathers against hair, beak against teeth, eggs against milk). Describe the **external and internal features of birds** — the streamlined body, wings, tail and claws outside; the large flight muscles on the keel, the air sacs and the efficient lungs within — and dissect a bird (chicken) to observe them. Examine and draw the contents of a chicken egg."},
+    {k:"rule"},
+    {k:"h3", t:"The Types of Feathers and Birds"},
+    {k:"p", t:"Draw and label the three **types of feathers**: the **contour (flight) feathers** that form the wings and stream, the soft **down feathers** that insulate beneath them, and the hair-like **filoplumes**. The **types of birds**: the flying birds and the **flightless** (ostrich, penguin)."},
+    {k:"rule"},
+    {k:"h3", t:"Adaptation to Flight"},
+    {k:"p", t:"Relate the **adaptations of birds to flight**: wings with a curved upper surface for lift; hollow bones with internal struts — light and strong at once; a keeled breastbone anchoring huge flight muscles; feathers that shape the wing and steer; air sacs making the body light and the breathing one-way; a high body temperature driving quick energy; and keen eyes judging distance in the air."},
+    {k:"rule"},
+    {k:"h3", t:"Mammals — Characteristics, Classes and Reproduction"},
+    {k:"p", t:"**General characteristics of mammals:** hair on the body, milk from the mother's mammary glands, a diaphragm dividing the trunk, and constant warm blood. **Classify mammals on the basis of class, structure and types of reproduction:** the **monotremes** (egg-laying — the duck-billed platypus), the **marsupials** (born young carried in the pouch) and the **placental mammals** (the young fed through a placenta before birth — rat, dog, man). Describe the features of each class."},
+    {k:"p", t:"Draw and label the structure of a **typical mammalian molar tooth** — crown and root, enamel, dentine, the pulp cavity with its nerve, and the cement — and write the **dental formulae** of the rabbit, the dog and man (man's adult formula: 2.1.2.3 / 2.1.2.3 = 32). Teeth divide the mammals by diet: the gnawing rodent, the tearing carnivore, and the grinding herbivore."},
+    {k:"rule"},
+    {k:"h3", t:"Control Mechanisms of Body Temperature in Mammals"},
+    {k:"p", t:"Mammals hold the **body temperature nearly constant** whatever the weather: when the body overheats, the sweat glands pour sweat (evaporation cools), the skin vessels widen to lose heat, and the hairs lie flat; when the body chills, shivering burns sugar for heat, the skin vessels narrow, and the hairs stand to trap warm air. The hypothalamus of the brain reads the blood's temperature and commands both responses — describe these control mechanisms."}
+  ],
   focus:[
     "Birds: general characteristics and external and internal features",
     "Adaptations to flight; flight and flightless birds",
@@ -1682,6 +1976,30 @@ var BI_CURRICULUM = [
     "Describe gametogenesis — oogenesis and spermatogenesis"
   ],
   note:"The human skeleton has about <b>206 bones</b> in two regions: the <b>axial skeleton</b> (skull, vertebral column, ribs and sternum) and the <b>appendicular skeleton</b> (limbs and girdles). Muscle occurs in three types — <b>skeletal (voluntary, striated), smooth (involuntary)</b> and <b>cardiac</b>. Skeletal muscles work in <b>antagonistic pairs</b>.",
+  study:[
+    /* ---- course text: Semester One, Period II — Skeletal, Muscular and Reproductive Systems (guide pp. 37-38) ---- */
+    {k:"h3", t:"The Division of the Human Body and the Skeletal System"},
+    {k:"p", t:"The human body divides into the **head, neck, trunk and appendages** (the limbs), and its organs sit in the **body cavities**. The **skeletal system** is composed of **bones, cartilage, ligaments and tendons**. Its **regions**: the **axial skeleton** (skull, vertebral column, ribs — the axis of the body) and the **appendicular skeleton** (the limbs and their girdles). List the bones of the skeletal system, and state its **functions**: support and shape, protection, movement, the manufacture of blood cells in the marrow, and mineral storage. Examine bone cells under the microscope."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Joints and their Locations"},
+    {k:"p", t:"Name and describe the locations of the various types of joints: the **fixed** joints of the skull; the **slightly movable** joints between the vertebrae; and the **freely movable** joints — **ball-and-socket** at the shoulder and hip, **hinge** at the elbow and knee, **pivot** where the head turns, and **gliding** at the wrist and ankle."},
+    {k:"rule"},
+    {k:"h3", t:"The Muscular System — the Three Types of Muscle Tissue"},
+    {k:"table", head:["Muscle tissue","Where found","Nature of its work"], rows:[
+      ["Skeletal (voluntary / striped)","Attached to the bones","Moves the limbs at our will; tires quickly"],
+      ["Smooth (involuntary / unstriped)","Walls of the gut, blood vessels, bladder","Slow, tireless, not under our will"],
+      ["Cardiac (heart muscle)","The heart only","Beats without rest or command, all life long"]
+    ]},
+    {k:"p", t:"Summarize the importance of bones and muscles in the body for movement and coordination: the bone is the lever, the joint the hinge, the muscle the engine, and the nerve the driver. List the **effects of sexually transmitted infections and substance abuse on the human (muscular) system** — weak, wasting muscles and disordered nerves — and their methods of prevention."},
+    {k:"rule"},
+    {k:"h3", t:"The Reproductive System"},
+    {k:"p", t:"**Adolescence development:** between childhood and adulthood the body changes — growth spurts, the voice, hair, the breast, the first sperm and the first menstruation — and the emotions that accompany adolescence: strong feelings, self-consciousness, rising desires. Knowing them facilitates the way to **abstinence or the prevention of STIs and teenage pregnancy**."},
+    {k:"p", t:"**Gamete formation (gametogenesis):** **oogenesis** makes the egg (ova) in the ovaries; **spermatogenesis** makes the sperm in the testes — demonstrate both by models and diagrams. Explain the functions of the male and female **reproductive organs** (draw them and label), and describe the structure and functions of the **sperm cell** — a head of DNA tipped with an enzyme cap, a middle packed with mitochondria for energy, and a tail (flagellum) for swimming."},
+    {k:"p", t:"The **menstrual cycle** — about twenty-eight days: the lining builds, an egg is released near the fourteenth day (ovulation), and if no pregnancy begins, the lining is shed in the monthly flow; describe its stages. **Fertilization and conception** — the sperm meeting the egg in the oviduct, and the developing baby (foetus) growing in the womb; **sex determination** rests on the X and Y the sperm carries; **infertility** has causes in men and women alike, and medicine can help many."},
+    {k:"rule"},
+    {k:"h3", t:"STIs, HIV/AIDS, Gender-Based Violence and Family Planning"},
+    {k:"p", t:"**STIs** — modes of transmission (unprotected sex, infected blood, mother to child) and methods of prevention (abstinence, faithfulness, correct condom use); give a group presentation with emphasis on **HIV/AIDS**: the immune system it destroys, the risky behaviours that spread it, **care and support** for those infected, **stigma and discrimination** — which are wrong — and the importance of **testing**. **Gender-based violence** has reproductive health consequences — injury, unwanted pregnancy, infection — and is a crime to report. **Family planning:** its benefits — children spaced, healthy and provided for — and the various methods used; discuss them honestly."}
+  ],
   focus:[
     "Divisions of the human body and the body cavities",
     "Skeletal system: composition, axial and appendicular regions, functions",
@@ -1810,6 +2128,24 @@ var BI_CURRICULUM = [
     "Explain blood groups and the Rh factor"
   ],
   note:"<b>Digestion</b> breaks large insoluble food molecules into small soluble ones for absorption. <b>Enzymes</b> are biological catalysts, each specific to a substrate: <b>amylase</b> acts on starch, <b>protease</b> on protein and <b>lipase</b> on fats. Blood circulates in a <b>double circulation</b> — <b>pulmonary</b> to the lungs and <b>systemic</b> to the body — driven by the four-chambered heart.",
+  study:[
+    /* ---- course text: Semester One, Period III — Digestive, Circulatory and Lymphatic Systems (guide pp. 39-40) ---- */
+    {k:"h3", t:"The Digestive System and the Alimentary Canal"},
+    {k:"p", t:"**Digestion** is the breaking down of food into small soluble molecules the blood can carry. The **processes of nutrition** run in order: ingestion — **digestion — absorption — assimilation** (and the residue is egested). The organs involved — the **alimentary canal**: the **mouth** (teeth cutting, tongue mixing), the **oesophagus** (carrying the bolus by peristalsis), the **stomach** (churning with acid and pepsin), and the **intestines** — the small intestine completing digestion and absorbing through the **villi**, the large absorbing water. The **accessory organs** feed the canal: the exocrine glands (**salivary glands** and **pancreatic gland**), the teeth and tongue, and the **liver** with its functions — making bile, storing glycogen, and cleaning the blood of poisons. Draw and label the alimentary canal."},
+    {k:"rule"},
+    {k:"h3", t:"The Enzymes of Digestion"},
+    {k:"p", t:"State the **functions of enzymes** in the process of digestion: each enzyme digests one food at one place — salivary **amylase** begins starch in the mouth; **pepsin** begins protein in the stomach's acid; pancreatic amylase, trypsin and lipase finish starch, protein and fat in the small intestine; and the maltase of the gut wall completes the sugars. Test for carbohydrates, proteins and oils in the lab."},
+    {k:"rule"},
+    {k:"h3", t:"Nutrition — the Classes of Food and their Uses"},
+    {k:"p", t:"List and describe the **classes of food and their specific importance to the body**: carbohydrates (energy), proteins (growth and repair), lipids (concentrated energy and warmth), vitamins and mineral salts (protection and regulation), water, and roughage (fibre). Outline the **nutritional benefits of eating a balanced diet of locally available food** — rice, cassava, plantain, beans, groundnuts, palm oil, greens, fish and bush pepper feed every class cheaply. Discuss the **effects of malnutrition** on growth and development and on the immune system: the stunted child and the sickly adult. Describe absorption through the villi and the hepatic portal vein carrying the digested food to the liver."},
+    {k:"rule"},
+    {k:"h3", t:"The Circulatory System — Heart, Blood Vessels and Blood"},
+    {k:"p", t:"Discuss the **heart** — the four-chambered double pump (draw and label the human heart) — and the **blood vessels**: arteries carrying blood away under pressure, veins returning it with valves, and capillaries trading with the cells. The **types of circulation: the systemic circulation** (heart → body → heart) **and the pulmonary circulation** (heart → lungs → heart) — a double circuit."},
+    {k:"p", t:"List the **components of blood** and describe their functions: **plasma** carrying food, wastes and hormones; **red cells** carrying oxygen (in haemoglobin); **white cells** devouring germs; **platelets** starting the **process of blood clotting** — with the soluble fibrinogen of the plasma turning to a net of fibrin over a wound. The **blood types and the Rh factor** (A, B, AB, O; positive or negative) must be matched in transfusion."},
+    {k:"rule"},
+    {k:"h3", t:"The Lymphatic System"},
+    {k:"p", t:"The **lymphatic system** — the vessels, nodes and spleen — drains the spare fluid from the tissues back to the blood and stands as part of the **defence mechanism of the body**: its nodes filter germs and its lymphocytes multiply the antibodies. Whereas the circulatory system transports the **nutrients**, the lymphatic system defends — appreciate the two roles, and name the **effects of substance abuse** on both: alcohol and drugs punish the liver, the heart, the vessels and the blood."}
+  ],
   focus:[
     "Digestion: definition, processes and the alimentary canal",
     "Accessory organs: salivary glands, pancreas, liver, teeth and tongue",
@@ -1946,6 +2282,27 @@ var BI_CURRICULUM = [
     "Interpret the balanced chemical equation for respiration"
   ],
   note:"<b>Excretion</b> removes the waste products of metabolism. The kidney's functional unit is the <b>nephron</b>, which works by <b>ultrafiltration</b> at the glomerulus and <b>selective reabsorption</b> in the tubule. <b>Aerobic respiration</b>: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energy (about 38 ATP). <b>Glycolysis</b> occurs in the cytoplasm; the <b>Krebs cycle</b> in the mitochondrion.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Excretory and Respiratory Systems; Cellular Respiration (guide pp. 41-43) ---- */
+    {k:"h3", t:"The Excretory System"},
+    {k:"p", t:"Describe the **excretory system** and state the functions of all its associated organs: the **kidneys** filtering urea, salts and spare water from the blood (draw and label the longitudinal section of the kidney — cortex, medulla, pelvis, and the nephrons doing the filtering); the **urinary bladder** storing the urine; the **urethra** passing it out; with the **skin** (sweat), the **liver** (making the urea), the **lungs** (carbon dioxide and water vapour) and the **large intestine** (the last of the water and the wastes of digestion) assisting. Explain the **process of urination**, and **homeostasis in relation to the excretory system** — the kidneys holding the blood's water, salt and acid constant, whatever we eat or drink."},
+    {k:"rule"},
+    {k:"h3", t:"The Respiratory System and Breathing"},
+    {k:"p", t:"The organs of the **respiratory system**: the **lungs**, the **pharynx**, the **larynx**, the **trachea** dividing into the **bronchi**, the **bronchioles** and the **alveoli** — the millions of air sacs where exchange occurs. **Respiration (gaseous exchange)** is **external** (between the air and the blood in the alveoli) and **internal** (between the blood and the cells). Its **phases — inspiration and expiration**: the **diaphragm** and the **intercostal muscles** move the **ribs**; inspiration flattens the diaphragm and lifts the ribs to fill the lungs, expiration relaxes them to empty. List the tissues and organs involved in the mechanism of breathing, describe the lungs and the air passageways — and demonstrate artificial resuscitation."},
+    {k:"rule"},
+    {k:"h3", t:"Substance Abuse and the Two Systems"},
+    {k:"p", t:"Explain the **effects of substance abuse and STIs on the excretory and respiratory organs**: alcohol burns the liver and kidneys, tobacco tar blackens the lungs and closes the airways, hard drugs slow the breathing centre to silence; and the weak body falls to infections (as HIV leaves the lungs open to tuberculosis). Take the appropriate steps: keep the organs clean and never abuse them."},
+    {k:"rule"},
+    {k:"h3", t:"An Overview of Cellular Respiration"},
+    {k:"p", t:"The energy released during gaseous exchange (respiration) is the key to the survival of all living organisms. The characteristics of the **types of respiration**: **aerobic respiration** burns glucose with oxygen to carbon dioxide and water, releasing much energy; **anaerobic respiration** works without oxygen and releases little. The energy is captured in **ATP, a phosphorylated nucleotide** — the cell's spendable energy. The major stages run sequentially:"},
+    {k:"num", items:["**Glycolysis** — in the cytoplasm, glucose (6C) is split to two pyruvates (3C); the **significance of phosphorylation in glycolysis** is that a little ATP is spent first to prime the molecule; note the final products of glycolysis: pyruvate, a small yield of ATP and reduced coenzyme.","**Link reaction** — pyruvate loses carbon dioxide and enters the cycle (a decarboxylation).","**Krebs cycle** (the tricarboxylic acid — TCA / citric acid — cycle) — in the mitochondria the fuel is broken down completely; its reactions: **decarboxylation** (carbon dioxide is removed) and **dehydrogenation** (hydrogen is removed and carried off by coenzymes).","**Electron transport chain** — the carried hydrogens are oxidized to water, and the released energy makes the great harvest of ATP."]},
+    {k:"rule"},
+    {k:"h3", t:"Oxidation, Reduction and the Coenzymes; the Fate of Pyruvate"},
+    {k:"p", t:"Distinguish **oxidation and reduction** — with regard to oxygen (gain is oxidation, loss reduction), hydrogen (loss is oxidation, gain reduction) and electrons (loss oxidation, gain reduction). The **coenzymes of respiration** — **nicotinamide adenine dinucleotide (NAD)** and the **dehydrogenase enzymes** — shuttle hydrogen from Krebs to the transport chain. The **fate of pyruvate after glycolysis**: with oxygen it enters the Krebs cycle; without oxygen it is turned aside — into lactic acid in muscle, into alcohol in yeast."},
+    {k:"rule"},
+    {k:"h3", t:"Anaerobic Respiration in Muscle and Fermentation"},
+    {k:"p", t:"**Anaerobic respiration in the muscle**: in violent exercise the demand for oxygen outruns the supply, and the muscles respire without it, pyruvate becoming **lactic acid**; the lactic acid is the pain of the sprint, and it must be oxidized afterwards — the panting afterwards repays the **oxygen debt**. **Alcoholic fermentation using yeast and fruits (for alcohol production):** yeast respires anaerobically, turning the sugars of fruit and palm sap to alcohol and carbon dioxide. LAB: obtain palm wine and place it in a plastic gallon to observe alcoholic fermentation — the froth and the rising bubbles are the carbon dioxide — and estimate the alcohol content of various drinks. The importance of fermentation in industry: bread rises and beer brews by it."}
+  ],
   focus:[
     "Excretory organs: kidneys, ureter, bladder, urethra, skin, liver and lungs",
     "Structure of the nephron; ultrafiltration and selective reabsorption",
@@ -2079,6 +2436,32 @@ var BI_CURRICULUM = [
     "Explain hormone secretion and control by negative feedback"
   ],
   note:"The <b>nervous system</b> gives rapid, short-lived, precisely targeted responses by electrical impulses; the <b>endocrine system</b> gives slower, longer-lasting, widespread responses by hormones in the blood. A <b>reflex arc</b> — receptor → sensory neuron → relay neuron → motor neuron → effector — produces a rapid automatic protective response. Hormones are regulated by <b>negative feedback</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Nervous and Endocrine Systems (guide pp. 44-46) ---- */
+    {k:"h3", t:"Two Ways of Control"},
+    {k:"p", t:"The body's activities are coordinated and controlled in two ways: the **nervous system** — fast, electrical, exact — and the **endocrine system** — slower chemical messengers (hormones) carried by the blood, working longer. Distinguish the functions of the two systems; outline the features of their control of body activities."},
+    {k:"rule"},
+    {k:"h3", t:"The Nervous System — Composition and Parts"},
+    {k:"p", t:"**Composition:** the **central nervous system (CNS)** — brain and spinal cord — and the **peripheral nervous system** — the nerves running to every part. Draw the nervous system and list its major parts; compare the central and peripheral nervous systems in relation to their work: the CNS decides, the peripheral nerves carry the news in and the orders out."},
+    {k:"p", t:"The **neuron (nerve cell)** — structure: the cell body with its nucleus, the dendrites receiving, and the long axon transmitting, many axons wrapped in the fatty **myelin sheath**. Classify the neurons: **sensory neurons** (receptors → CNS), **motor neurons** (CNS → effector muscles and glands — draw and label a typical motor neuron), and **relay (connector) neurons** within the cord. Describe the functions of sensory and motor neurons."},
+    {k:"rule"},
+    {k:"h3", t:"Brain and Spinal Cord; the Nerve Impulse"},
+    {k:"p", t:"The **brain** — structure and function of its parts: the **cerebrum** thinks, senses and commands the voluntary muscles; the **cerebellum** balances and coordinates movement; the **medulla oblongata** governs breathing and the heartbeat; the hypothalamus watches the blood. The **spinal cord** is the great cable down the backbone and the seat of reflexes — differentiate its regions in relation to their function. Examine models of the brain and spinal cord and draw and label the parts."},
+    {k:"p", t:"**Generation and transmission of nerve impulses:** the resting axon membrane holds a **resting potential**; a stimulus reverses it in a spike — the **action potential** — which travels the fibre; the fibre cannot fire again during the **refractory period**; the **role of the myelin sheath** is to insulate and speed the impulse, which leaps from node to node. At the **synapse** between two neurons the signal crosses chemically — the **structure and function of the synapse** and **synaptic transmission**: the impulse arrives, chemical transmitter is released, and the next neuron fires."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Nervous Action"},
+    {k:"p", t:"Differentiate **voluntary actions** (willed — writing, running) from **involuntary actions** (unwilled — the heartbeat, digestion). A **reflex** is the body's quickest answer: the **reflex arc** runs receptor → sensory neuron → spinal cord (relay neuron) → motor neuron → effector, and the hand leaves the flame before the brain has time to think. The **autonomic nervous system** — sympathetic and parasympathetic — governs the organs without our will: its functions and importance in keeping the heart, the gut and the glands tuned."},
+    {k:"rule"},
+    {k:"h3", t:"The Sense Organs — Eye, Ear and Skin"},
+    {k:"p", t:"Describe the structures and functions of the **eye** (sclera, cornea, iris and pupil, lens, retina with rods and cones, optic nerve — and explain the causes and corrections of eye defects: short sight and long sight by concave and convex lenses) and the **ear** (the ear drum and ossicles forwarding sound, the cochlea hearing, the semicircular canals balancing). Draw, label and discuss the **skin as a sense organ** — its touch, pressure, pain, heat and cold receptors."},
+    {k:"rule"},
+    {k:"h3", t:"The Endocrine System and Hormonal Control"},
+    {k:"p", t:"Distinguish **exocrine glands** (pouring through a duct — sweat, saliva, tears) from **endocrine glands** (ductless, secreting hormones into the blood): the pituitary (master gland), thyroid (thyroxine — the pace of the body), pancreas (insulin — blood sugar), adrenals (adrenaline — alarm), and the testes and ovaries. Explain the regulation of hormone secretion through **negative feedback** — a rising hormone switches its own gland down, as insulin follows sugar — and the two basic mechanisms of hormone action."},
+    {k:"rule"},
+    {k:"h3", t:"Substance Abuse, STIs — and Our Advocacy"},
+    {k:"p", t:"Discuss the **causes and effects of substance abuse on the nervous system** (alcohol slows and blurs the brain, drugs hijack its reward and destroy self-command — with prevention), and the **effects of some STIs on the nervous system** (untreated syphilis attacks the nerves and the brain). List the organs of the nervous system that STIs and substance abuse affect."},
+    {k:"p", t:"Work together to prevent **gender-based violence, rape, sexual abuse, sexual harassment, STIs and intergenerational sex** (the age difference that makes consent impossible — know the statutory age). The CONTINUUM: draw on posters, write poems, compose songs, prepare speeches, plan a peaceful demonstration, plan a radio interview — against drug abuse, GBV and intergenerational sex among young people in the school; organize a hotline where victims can call for help and advice; and involve local NGOs."}
+  ],
   focus:[
     "Nervous system: central and peripheral divisions",
     "Structure and types of neurons: sensory, motor and relay",
@@ -2213,6 +2596,27 @@ var BI_CURRICULUM = [
     "Explain the importance of vaccination, immunisation and personal hygiene"
   ],
   note:"<b>Natural resources</b> are materials from nature useful to man. <b>Renewable</b> resources — forests, fisheries, water, solar energy — regenerate if harvested no faster than they are replaced; <b>non-renewable</b> resources — iron ore, gold, diamonds, petroleum — are finite. <b>Pollution</b> is the release of harmful substances into the environment, and may be of the <b>air, water, land</b>, or take the form of <b>thermal</b> and <b>noise</b> pollution.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Ecology: Natural Resources, Pollution and Health (guide pp. 47) ---- */
+    {k:"h3", t:"Natural Resources — Renewable and Non-renewable"},
+    {k:"p", t:"**Natural resources** are the materials of nature that man uses — the soil, forests, water, wildlife, minerals and fuels. Natural resources contribute towards the **wealth of a nation**: Liberia's rubber, iron ore, gold, diamonds, timber and fish are its economy. **Renewable natural resources are regenerated** — forests regrow, rain refills the rivers, wildlife breeds — unlike the **non-renewable natural resources** — gold, diamond, iron ore, oil and coal — **which can be exhausted if not used wisely**. Study the definition and examples of the flow of renewable resources (sunlight, wind, tides)."},
+    {k:"rule"},
+    {k:"h3", t:"Conservation of Natural Resources"},
+    {k:"p", t:"**Explain the methods of conserving natural resources:** replanting logged forest, closed seasons for fishing and hunting, game reserves, fighting bush fires, and recycling metals and plastics. **Preserving the ecosystem as an approach to natural resource management:** protect the whole system — the forest with its rivers and animals together — rather than mining the parts one by one. Group work on the importance of conservation; field trips to view sites of natural resources — rain forests, gold and diamond mines, rivers, lakes, the ocean beach, coal, iron ore, the rubber factory, the petroleum refinery — and to observe the flows themselves: solar radiation, the tides, the winds."},
+    {k:"rule"},
+    {k:"h3", t:"Pollution"},
+    {k:"p", t:"**Pollution** is the harmful fouling of the environment with wastes and poisons — harmful to the environment and to organisms. Its **causes (types):** **air pollution** (smoke, exhaust, gases), **water pollution** (sewage, oil, chemicals in the rivers and sea), **land pollution** (plastic and refuse), **thermal pollution** (heated factory water) and **noise pollution**. Its **effects**: poisoned rivers and fish, sickness, dead soil and drowned hearing. **Control of pollution:** laws and their enforcement, treating wastes before disposal, planting trees, burying or burning refuse safely, and refusing to dump at sea. Visit a water and sewage treatment plant to see the control at work."},
+    {k:"rule"},
+    {k:"h3", t:"Vaccination and Immunization; Personal and Community Health"},
+    {k:"p", t:"**Vaccination and immunization** prevent people against diseases: a vaccine teaches the body its enemy in advance, and the antibodies wait. Its importance: smallpox is gone, and poliomyelitis, measles and the childhood killers retreat where every child is immunized. The importance of **personal health** joins **community health**: one family's clean yard protects the whole street. And state the **dangers posed by drugs, alcoholic beverages and smoking** — and accept that drug abuse is harmful to the well-being of people."},
+    {k:"rule"},
+    {k:"h3", t:"Sewage, Water and Refuse — the Engineered Health"},
+    {k:"p", t:"**Sewage** is the waste water of houses and towns; **sewage disposal** is its safe removal and treatment. **Methods of sewage disposal:** the pit latrine, the septic tank, the town's treatment plant (settling, filtering and the action of helpful bacteria). **Economic uses of sewage:** treated sludge as fertilizer; gas from the digestion as fuel. Discuss the different methods."},
+    {k:"p", t:"**Water** — the **sources**: rain, wells, springs, streams and rivers; the **modes of contamination**: latrines too near the well, waste thrown in streams, animals at the source. The **methods of purification** — boil it, **chlorinate** it, or filter it. LAB: purify water by **boiling, chlorination and sand filtration** (pumping water through a sand filter removes particles greater than 0.002 mm diameter); test water for contaminants; filter contaminated water using clean cloth. **Refuse collection and disposal:** covered dustbins, regular collection, sanitary landfills — never the street. Observe **nitrogen-fixing bacteria** under the microscope — nature's own recyclers."},
+    {k:"rule"},
+    {k:"h3", t:"First Aid — the Final Safeguard"},
+    {k:"p", t:"State the **importance of first aid** — the immediate care that saves life before medical help — and be able to treat a number of conditions: practise first aid exercises on partners for bleeding, burns, stings, sprains and the unconscious casualty."}
+  ],
   focus:[
     "Natural resources: definition and importance",
     "Renewable and non-renewable resources; Liberia's resources",

@@ -2,6 +2,11 @@
    Derived from the "Physical Education" Junior High curriculum guide (27 pp.),
    6 periods per grade.
 
+   Every unit carries a `study[]` block list — the course text of the guide,
+   rendered verbatim on the Study Notes page (see data-pe.js for the
+   elementary half of the same subject). `**bold**` marks the key terms;
+   table cells take no markup because the renderer escapes them.
+
    Same unit shape as the elementary PE_CURRICULUM so GEN_PE renders it unchanged:
      terms[] {t,d,x} · facts[] {q,a} · tf[] {s,a,why} · apply[] {q,a}
      · sort {title,groups} · compare {title,caption,items} · casestudy
@@ -22,6 +27,20 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to discuss the history and importance of football, and identify and apply the rules and skills of the game."],
   objectives:["Discuss the history and importance of football","Identify the skills of football","Apply the rules and skills of football"],
   note:"Football is played by two teams of <b>eleven players</b> each on a rectangular field, with the aim of putting the ball into the opponent's goal. A match lasts <b>90 minutes</b> in two halves of 45 minutes. Only the <b>goalkeeper</b> may handle the ball, and only inside his own penalty area.",
+  study:[
+    /* ---- course text: Semester One, Period I — Football (guide pp. 3) ---- */
+    {k:"h3", t:"Definition and History of Football"},
+    {k:"p", t:"**Football** (soccer) is a team game played by two sides of **eleven players** each on a rectangular field, with the aim of putting the ball into the opponents' goal. From old folk games it grew into the world's most popular sport; in Liberia it is the game of every town and village. Its **importance**: it builds fitness and strength, teaches teamwork and discipline, and unites communities."},
+    {k:"rule"},
+    {k:"h3", t:"The Rules of Football"},
+    {k:"bul", items:["A match lasts **90 minutes** — two halves of 45 minutes.","Only the **goalkeeper** may handle the ball, and only inside his own penalty area.","When the ball crosses the touchline, play restarts with a **throw-in** — both hands over the head, both feet on the ground.","A foul by a defender inside his own area gives the attackers a **penalty kick** from the penalty spot.","A player beyond the second-last defender when the ball is played to him is **offside**, and the goal does not count."]},
+    {k:"rule"},
+    {k:"h3", t:"The Skills of Football"},
+    {k:"p", t:"Identify and list the skills, then practise them through drills: **passing** (sending the ball to a teammate), **dribbling** (running with the ball close to the feet), **trapping** (bringing a moving ball under control), **shooting** (striking at goal) and **heading** (playing the ball with the forehead)."},
+    {k:"rule"},
+    {k:"h3", t:"Drill — the Penalty Kick"},
+    {k:"p", t:"**The Penalty Kick drill** — the ball is placed on the penalty mark (the spot above the 6-yard box, inside the goalkeeper's area). The second learner stands between the posts as goalkeeper. On the sound of a whistle, the other learners kick the ball one after another until the entire class has gone through the practice drill. Repeat the exercise (drill) with all the other rules of football."}
+  ],
   focus:["Definition and history of football","Importance of the game","The laws (rules) of football","Basic skills: passing, dribbling, shooting, heading, trapping","Officials and their duties","The penalty kick"],
   terms:[
     {t:"football", d:"a team game in which two sides of eleven try to score goals with the feet", x:"Football is the most popular sport in Liberia."},
@@ -102,6 +121,26 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to list drugs commonly abused, explain the effects of tobacco and alcohol on health and the family, and state ways to prevent alcohol and drug abuse."],
   objectives:["Explain the effects of tobacco and alcohol abuse on your health","Discuss how alcohol affects the family","List some drugs commonly abused","State ways of preventing alcohol and drug abuse"],
   note:"<b>Ethyl alcohol</b> is formed by the chemical reaction of <b>fermenting sugar and yeast</b>. When a person drinks, the alcohol follows the same path as food through the digestive system, and about <b>20% is absorbed directly into the bloodstream from the stomach</b>. Its effect is measured as the <b>Blood Alcohol Level (BAL)</b> — the weight of alcohol per 100 units of blood, expressed as a percentage.",
+  study:[
+    /* ---- course text: Semester One, Period II — Substance Abuse (guide pp. 4-6) ---- */
+    {k:"h3", t:"The Facts about Alcohol"},
+    {k:"p", t:"**Ethyl alcohol** is a natural substance formed by the chemical reaction of fermenting sugar and yeast; **fermentation** is the process that produces alcohol by the action of yeast on sugar and starches. The source of sugar varies with the type of alcoholic drink."},
+    {k:"p", t:"**How does alcohol work in the body?** When someone has a drink, the alcohol follows the same path that food does in the body, particularly the digestive system. About **20% of the alcohol is absorbed directly into the bloodstream from the stomach**."},
+    {k:"rule"},
+    {k:"h3", t:"Factors Affecting Alcohol in the Body"},
+    {k:"p", t:"Alcohol's effect on the body is measured by the proportional weight of alcohol per 100 units of blood, expressed as a percentage, which is called **the blood alcohol level**. Four factors affect the amount of alcohol in a person's blood:"},
+    {k:"num", items:["**The amount of alcohol** a person drinks — not the number of drinks","**Whether or not the person eats** before or while drinking","**How much the person weighs**","**How much time elapses** after drinking stops or between drinks"]},
+    {k:"rule"},
+    {k:"h3", t:"Alcohol — a Social Problem"},
+    {k:"p", t:"Reasons young people — and even adults — give for drinking: to **escape pressure or problems**; to **feel better** or get over being sad or lonely; to **relax**; and to **gain more self-confidence**, to feel better about oneself. Each reason hides a lie: alcohol solves no problem; it multiplies them — in health, in the family budget, in violence and broken homes."},
+    {k:"rule"},
+    {k:"h3", t:"The Risk of Drug Abuse"},
+    {k:"p", t:"**Drug use** is when a drug is taken when needed, as directed, and only for the purpose it is intended. **Drug misuse** is when a drug is used in a way that it is not intended — taking someone else's medicine or increasing the directed dosage are examples of misuse. **Drug abuse** is taking drugs in ways for which they are not medically intended, or using substances that are illegal or not intended to be taken into the body. The abuse of these drugs presents an additional serious health hazard: they are not controlled by any governing agency."},
+    {k:"rule"},
+    {k:"h3", t:"Stimulant Drugs"},
+    {k:"p", t:"**Amphetamines** are stimulants used in medicine to reduce fatigue and drowsiness or to suppress the appetite. Amphetamines interfere with muscle control and body movement."},
+    {k:"p", t:"**Cocaine** is a white powder made from the coca bush, which grows mainly in South America. It is a stimulant that causes an increased heartbeat and a rise in blood pressure and body temperature. It produces a feeling of euphoria and high energy — the euphoric lift is the feeling of being confident. **Regular use can lead to depression.**"}
+  ],
   focus:["The facts about alcohol and how it works in the body","Factors affecting the level of alcohol in the body","Alcohol as a social problem","The risks of drug abuse","Stimulant drugs","Prevention of alcohol and drug abuse"],
   terms:[
     {t:"substance abuse", d:"the harmful or excessive use of alcohol, tobacco or drugs", x:"Substance abuse damages health and family life."},
@@ -183,6 +222,24 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to state the meaning of personal hygiene and first aid, discuss the causes and prevention of common diseases, explain the principles of first aid and list safety rules."],
   objectives:["State the meaning of personal hygiene and first aid","Discuss the causes and prevention of common diseases","Discuss first aid and the types of injuries (wounds)","List safety and first aid measures for wounds","Discuss the process of treating minor wounds"],
   note:"<b>First aid</b> is the immediate help given to an injured or sick person before medical care arrives. Its aims are to <b>preserve life, prevent the condition worsening, and promote recovery</b>. To stop bleeding, apply direct pressure: place a thick clean cloth over the wound and press with the palm of your hand.",
+  study:[
+    /* ---- course text: Semester One, Period III — Health Care and Safety (guide pp. 7-8) ---- */
+    {k:"h3", t:"Personal Hygiene — Common Diseases and their Prevention"},
+    {k:"p", t:"**Personal hygiene** is the daily care of the body — bathing, clean clothing, clean food and safe water. Neglect of hygiene causes **common diseases** — skin infections, diarrhoea, worm infestations and fevers — and their **prevention** is the same everywhere: clean hands before eating, boiled or treated drinking water, covered food, and a clean home and compound."},
+    {k:"rule"},
+    {k:"h3", t:"First Aid — Definition and Importance"},
+    {k:"p", t:"**First aid** is the immediate, temporary care given to a sick or injured person before medical help arrives. Its **importance**: quick, correct first aid saves lives, stops small injuries from becoming dangerous, and relieves pain until the victim reaches the clinic."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Injuries (Wounds)"},
+    {k:"bul", items:["**Abrasion** — skin scraped off by a rough surface","**Incision** — a clean cut made by a sharp edge","**Laceration** — a jagged tear in the flesh","**Puncture** — a deep, narrow wound from a pointed object","**Avulsion** — tissue torn partly or wholly away"]},
+    {k:"rule"},
+    {k:"h3", t:"First Aid for Wounds"},
+    {k:"num", items:["**Stop the bleeding**","**Protect the wound from contamination and infection**","**Treat the victim for shock**","**Seek medical care immediately**"]},
+    {k:"p", t:"To stop the bleeding, apply **direct pressure**: place a thick, clean cloth over the wound; place the palm of your hand over the cloth and press firmly; do **not** remove the cloth — if the blood soaks through the cloth, place another layer of cloth over the first one. Continue direct pressure until the bleeding stops."},
+    {k:"rule"},
+    {k:"h3", t:"Safety Rules and Measures"},
+    {k:"bul", items:["Inspect the playing field for stones, holes and broken glass before every game","Warm up before exercise and cool down after","Use equipment correctly and report damaged equipment","Keep a stocked first aid kit at every practice and game","In any emergency, send for an adult or health worker at once"]}
+  ],
   focus:["Personal hygiene","Common diseases and their prevention","Definition and importance of first aid","Types of injuries: abrasion, incision, laceration, puncture, avulsion","First aid for wounds","Safety rules"],
   terms:[
     {t:"personal hygiene", d:"keeping one's own body clean and healthy", x:"Personal hygiene prevents skin disease."},
@@ -263,6 +320,20 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to analyse the history and rules of track and field events and demonstrate the skills and techniques of each event."],
   objectives:["Analyse the history and rules of track and field events","Describe the technique of sprinting","Describe the flight over hurdles and the distances involved","Explain the baton take-over and the take-over zone","Demonstrate the skills and techniques of the high jump"],
   note:"Track and field, also called <b>athletics</b>, is the oldest organised sport, central to the ancient Olympic Games. <b>Track events</b> are races run on the track — sprints, middle and long distance, hurdles and relays. <b>Field events</b> are jumps and throws — high jump, long jump, javelin, shot put and discus.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Track and Field (guide pp. 9-10) ---- */
+    {k:"h3", t:"History and Rules of Track and Field"},
+    {k:"p", t:"**Track and field** — athletics — descends from the running, jumping and throwing contests of the ancient Olympic Games. Its rules fix the distances of the races, the lanes, the fair start (no runner may beat the gun), the takeover in relays, and the measuring of jumps and throws."},
+    {k:"rule"},
+    {k:"h3", t:"Track Events — Sprinting (Skill and Techniques)"},
+    {k:"p", t:"Break the sprint into its parts and discuss each: **the start** (a legal, explosive leaving of the blocks), **the stride** (driving arms and high knees at top speed) and **the finish** (the torso thrown at the tape). In **hurdling** study the flight over the hurdles and the different distances involved in hurdling. In the relay, master the **visual type of baton exchange** (the receiver watches the baton into his hand) and the **non-visual type** (the pass is trusted, by call, inside the zone), and learn the **take-over and the take-over zone** within which the baton must change hands in every start and finish race."},
+    {k:"rule"},
+    {k:"h3", t:"Field Events — the High Jump (Skill and Techniques)"},
+    {k:"p", t:"In the **high jump** the athlete runs in on a curving approach, takes off from one foot, arches the back over the bar and lands on the back on the soft pit — the bar must stay up. Learn the skill in parts: approach, take-off, flight, landing. Other field equipment named in the guide: the **javelin**, the **hammer**, and the **pole vault**."},
+    {k:"rule"},
+    {k:"h3", t:"Materials for Practice"},
+    {k:"p", t:"Track event materials: **spikes** (track shoes) and **relay batons**. Field event materials: **javelin**, **hammer** and the pole for the **pole vault**. Practise and demonstrate the skills and techniques of each event."}
+  ],
   focus:["History and rules of track and field","Track events and sprinting technique","Hurdling: flight and distances","Relay: visual and non-visual baton exchange and the take-over zone","The start, stride and finish","Field events: the high jump"],
   terms:[
     {t:"athletics", d:"the sport of running, jumping and throwing events", x:"Athletics is also called track and field."},
@@ -343,6 +414,19 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to state the meaning and history of gymnastics and tumbling, classify gymnastics as a competitive sport, apply the rules of performance and demonstrate basic fundamental skills."],
   objectives:["State the meaning and history of gymnastics and tumbling","Classify gymnastics as a competitive sport","Apply the rules of performance","Demonstrate basic fundamental skills and techniques","Perform the forward roll safely"],
   note:"<b>Gymnastics</b> is a sport of controlled body movement demanding strength, flexibility, balance and coordination. <b>Tumbling</b> is the floor branch — rolls, cartwheels and handstands performed without apparatus. Safety is paramount: always use a <b>mat</b>, warm up first, and never attempt a new skill without a <b>spotter</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Gymnastics and Tumbling (guide pp. 11) ---- */
+    {k:"h3", t:"Meaning and History of Gymnastics and Tumbling"},
+    {k:"p", t:"**Gymnastics** is the sport of controlled body exercises — balances, rolls, swings and leaps — and **tumbling** is its floor branch of rolls and aerial stunts. From the gymnasia of ancient Greece, where athletes trained naked (gymnos) for contest, gymnastics grew into a modern **competitive sport** judged by rules of performance, with apparatus work, floor exercises and tumbling passes."},
+    {k:"rule"},
+    {k:"h3", t:"Importance and Safety Rules"},
+    {k:"p", t:"Gymnastics builds strength, balance, flexibility, courage and grace. Because the body leaves the ground, safety rules come first:"},
+    {k:"bul", items:["**Always use mats** — never tumble on bare, hard ground","**Warm up** the wrists, neck, back and ankles first","**Work with a partner or spotter** who supports your shoulders on new stunts","**Learn skills in order** — master the roll before the handstand, the handstand before the walkover","**One performer on the mat at a time**; others wait at the edge"]},
+    {k:"rule"},
+    {k:"h3", t:"Fundamental Skills and Techniques — the Forward Roll"},
+    {k:"p", t:"**Forward Roll** — begin in a squat position, with the head up, the arms extended forward slightly, and the fingers pointing straight ahead. Push off from the toes, raise the seat, and tuck the chin to the chest. Continue the forward movement, landing on the base of the neck and the top of the shoulders; push off with the hands and continue the forward motion to a crouching or standing position."},
+    {k:"p", t:"When the forward roll is smooth, build the sequence: forward roll, backward roll, cartwheel, handstand — always with control, always with a spotter."}
+  ],
   focus:["History of gymnastics and tumbling","Importance of gymnastics","Safety rules","Fundamental skills and techniques","The forward roll","Gymnastics as a competitive sport"],
   terms:[
     {t:"gymnastics", d:"a sport of controlled body movements requiring strength, balance and flexibility", x:"Gymnastics develops total body control."},
@@ -423,6 +507,20 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to identify, define and discuss physical fitness and its health-related and skill-related components."],
   objectives:["Identify and define physical fitness and its components","Discuss the history and importance of physical fitness","Discuss the health-related components","Discuss the skill-related components","Perform basic fitness exercises correctly"],
   note:"<b>Physical fitness</b> is the ability of the body to carry out daily tasks with vigour and alertness, without undue fatigue, and with energy left over for emergencies. It has two sides: <b>health-related</b> components (endurance, strength, flexibility, body composition) and <b>skill-related</b> components (agility, balance, coordination, speed, power, reaction time).",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Physical Fitness and its Components (guide pp. 12) ---- */
+    {k:"h3", t:"Definition, History and Importance"},
+    {k:"p", t:"**Physical fitness** is the ability of the body to carry out daily tasks with vigour and alertness, without undue fatigue, and with energy left over for emergencies. From the drills of ancient armies to the screening tests of modern schools, fitness has been measured and trained because **a fit body learns and works better, resists illness, and recovers quickly**."},
+    {k:"rule"},
+    {k:"h3", t:"The Health-Related Components"},
+    {k:"bul", items:["**Cardiovascular endurance** — the heart and lungs supplying oxygen through long activity","**Muscular strength** — the greatest force a muscle can produce in one effort","**Muscular endurance** — the muscle keeping on working over time","**Flexibility** — the range of movement possible at a joint","**Body composition** — the proportion of fat to lean tissue in the body"]},
+    {k:"rule"},
+    {k:"h3", t:"The Skill-Related Components"},
+    {k:"bul", items:["**Agility** — changing direction quickly and under control","**Balance** — remaining stable, still or moving","**Coordination** — moving accurately and smoothly, as eye with hand","**Speed** — moving the body quickly","**Power** — strength applied quickly","**Reaction time** — how quickly the body answers a signal"]},
+    {k:"rule"},
+    {k:"h3", t:"Exercise — the Jumping Jack"},
+    {k:"p", t:"**Jumping Jack** — learners form a line before the teacher; on the sound of a whistle, they jump up with hands clapping overhead and legs opening while in the air, then return to the start on the next count. Used at the start of a lesson, it is the classic **warm-up** that raises the pulse before harder work — and counting your own repetitions begins **measuring your own fitness**."}
+  ],
   focus:["Definition and history of physical fitness","Importance of physical fitness","Health-related components","Skill-related components","Exercises: the jumping jack","Measuring your own fitness"],
   terms:[
     {t:"physical fitness", d:"the ability to carry out daily tasks with vigour and without undue fatigue", x:"Physical fitness leaves energy in reserve."},
@@ -505,6 +603,23 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to discuss health-related and skill-related concepts, distinguish types of endurance, explain the importance and effects of exercise, create activities for male and female competitions and demonstrate exercises as they relate to sports."],
   objectives:["Discuss health-related and skill-related activities","Distinguish between the types of endurance","Explain the importance of exercise and its effects on the human body","Create activities for male and female competitions","Demonstrate exercises as they relate to sports"],
   note:"<b>Cardiovascular endurance</b> depends on a strong, healthy heart pumping oxygen-rich blood from the lungs to the cells. Longer exercise <b>increases the capacity of the lungs</b> to move oxygen from the environment into the bloodstream. The <b>human body works like a machine</b>: bones are the levers, joints the hinges, muscles the engine and food the fuel.",
+  study:[
+    /* ---- course text: Semester One, Period I — Health and Fitness (guide pp. 13-14) ---- */
+    {k:"h3", t:"Health-Related and Skill-Related Fitness Activities"},
+    {k:"p", t:"**Health-related fitness** activities build the body's health; **skill-related fitness** activities build the qualities that win games. Research and discuss both groups:"},
+    {k:"bul", items:["**Health-related:** walking distances; cardiovascular endurance; muscular strength; body composition; flexibility","**Skill-related:** agility (change direction quickly); balance (remain stable); coordination (move accurately and smoothly); fast reaction (respond quickly)"]},
+    {k:"rule"},
+    {k:"h3", t:"Types of Endurance"},
+    {k:"p", t:"**Cardiovascular endurance (heart muscle)** — a strong, healthy heart is responsible for pumping the oxygen-rich blood from the lungs to the cells. Longer exercise increases the capacity of the lungs to move oxygen from the environment to the bloodstream."},
+    {k:"p", t:"**Muscular endurance** — learners must withstand a sustained level of muscular force in running, standing or sitting for a longer period of time. It develops by frequently repeating an exercise and practising sports."},
+    {k:"p", t:"**Cardiorespiratory / aerobic endurance (breathing)** — the ability to supply energy for activities lasting more than an hour depends on the consumption and use of oxygen (O₂); because most physical activities in daily life and in athletics take more than an hour, oxygen consumption is critical for survival as well as performance."},
+    {k:"rule"},
+    {k:"h3", t:"The Human Body as a Machine"},
+    {k:"p", t:"Think of the body as a **machine**: food is its fuel, the lungs its air intake, the heart its pump, the muscles its pistons and the bones its frame. A machine that is run regularly and maintained stays in order — so **exercise is significant to sports** because it tunes the machine: it strengthens the heart, builds muscle, burns excess fat, and sharpens the reflexes."},
+    {k:"rule"},
+    {k:"h3", t:"Gender Sensitivity in Sports"},
+    {k:"p", t:"Sport belongs to **everyone**. Create activities for male and female competitions equally: girls and boys share the field, the equipment, the teams and the prizes. Selecting teams, giving leadership roles and scheduling games must respect both sexes — talent, not gender, decides who plays."}
+  ],
   focus:["Health-related and skill-related fitness activities","Types of endurance","The human body as a machine","Gender sensitivity in sport","Why exercise is significant to sport","Effects of exercise on the body"],
   terms:[
     {t:"health-related fitness", d:"fitness that keeps the body well: endurance, strength, flexibility, body composition", x:"Walking distances builds health-related fitness."},
@@ -585,6 +700,21 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to define obesity, eating disorder and overweight, identify the impact of obesity on health, explain the relationship of weight control to eating behaviour, and recall the guidelines for maintaining a healthy diet."],
   objectives:["Define obesity and overweight","Identify the impact of obesity on overall health","Explain the relationship of weight control to eating behaviour","Define eating disorder","Discuss the major problems of successful weight control","Discuss special problems relating to athletics and dieting","Recall the seven guidelines for maintaining a healthy diet"],
   note:"<b>Obesity</b> is the condition in which the body contains an excess of fat, or <b>adipose tissue</b> — a type of connective tissue in which many of the cells are filled with fat. Obesity is one of the most common and serious nutritional and health problems for adults, and in teenagers it is also a serious <b>psychological and social</b> problem.",
+  study:[
+    /* ---- course text: Semester One, Period II — Obesity and Weight Control (guide pp. 15-16) ---- */
+    {k:"h3", t:"Obesity — Causes and Effects"},
+    {k:"p", t:"**Obesity** is when the body contains an excess of fats or **adipose tissue** — a type of connective tissue in which many of its cells are filled with fats. Its causes sit in eating behaviour: a **poor diet** results in underweight; **weight control** results in optimum weight; and **overweight** is attributed to over-eating. An **eating disorder** is an illness of eating behaviour — refusing food or over-eating past control."},
+    {k:"p", t:"Obesity is one of the most common and serious nutritional and health problems for adults, and in teenagers it is a serious psychological and social problem. If obese teenagers do not lose weight and practise weight control, there is a strong possibility that they will continue to have this problem in adulthood."},
+    {k:"rule"},
+    {k:"h3", t:"Four Healthy Ways to Gain Weight (for the underweight)"},
+    {k:"num", items:["**Increase your calorie intake**, especially with foods high in complex carbohydrates — potatoes, rice and bread.","**Eat between-meal snacks**, two to three hours before meals, so you do not lose your appetite.","**Drink plenty of water.**","**Follow a personal exercise programme.**"]},
+    {k:"rule"},
+    {k:"h3", t:"Weight Control and Exercise"},
+    {k:"p", t:"You can increase the effectiveness of your weight-control efforts by increasing your daily activity, mainly through exercises. **Exercise does more than just help you lose weight** — it helps to tone your body, and replaces fat with an increase of lean body tissue, which is your body's bone, organ and muscle tissue. This is the relationship of weight control to eating behaviours: what you eat adds, what you do uses; the balance sets the weight."},
+    {k:"rule"},
+    {k:"h3", t:"Athletics, Dieting and the Problems of Weight Control"},
+    {k:"p", t:"Successful weight control faces major problems: old eating habits, rich party foods, and quick-fix diets that starve then fail. Athletes face **special problems relating to dieting** — cutting weight for a class can drain strength and harm growth; athletes should control weight through training and sound meals, never by starving or dangerous dehydration."}
+  ],
   focus:["Obesity: causes and effects","Poor diet and underweight","Weight control and optimum weight","Overweight and overeating","Eating disorders","Athletics and dieting","The seven guidelines for a healthy diet"],
   terms:[
     {t:"obesity", d:"the condition of carrying an excess of body fat", x:"Obesity raises the risk of heart disease."},
@@ -666,6 +796,28 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to analyse and utilise the functions of the skeletal system."],
   objectives:["Discuss the importance and functions of the skeletal system","Describe the skeletal system","Identify the connective tissues","Distinguish the types of joints","Name the kinds of joint movement"],
   note:"The skeleton has five main functions: to give the body <b>support and shape</b>, to <b>protect</b> the organs, to allow <b>movement</b>, to <b>make blood cells</b>, and to serve as a store of <b>minerals</b>. Joints are classified as <b>immovable</b>, <b>slightly movable</b> and <b>freely movable</b>; the freely movable include the <b>ball and socket</b> and the <b>hinge</b>.",
+  study:[
+    /* ---- course text: Semester One, Period III — The Skeletal System (guide pp. 17-18) ---- */
+    {k:"h3", t:"The Skeletal System — Importance and Functions"},
+    {k:"p", t:"The **skeletal system** is the bony framework of the human body — about 206 bones. Its importance and functions:"},
+    {k:"bul", items:["**To support and give shape** — the skeleton holds the body upright and gives it form","**To protect** — the skull guards the brain; the ribs guard the heart and lungs","**For movement** — bones are the levers the muscles pull on","**For making blood cells** — the marrow inside bones manufactures new blood","**For mineral storage** — bones store calcium and phosphorus for the body's use"]},
+    {k:"rule"},
+    {k:"h3", t:"The Connective Tissues"},
+    {k:"table", head:["Tissue","Where found","What it does"], rows:[
+      ["Cartilage","The ends of bones at the joints (and the nose and ears)","Cushions the joint so the bones glide without grinding"],
+      ["Ligaments","Join bone to bone at a joint","Hold the joint together within its safe range"],
+      ["Tendons","Join muscle to bone","Carry the pull of the muscle to the bone, making movement"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Types of Joints"},
+    {k:"bul", items:["**Fixed (immovable) joints** — as between the plates of the skull; no movement","**Slightly movable joints** — as between the bones of the spine; small give for bending","**Freely movable joints** — as at the shoulder, elbow, hip and knee; wide movement for sport"]},
+    {k:"rule"},
+    {k:"h3", t:"Kinds of Joint Movements"},
+    {k:"p", t:"Joint movements: **extension** (straightening the limb), **flexion** (bending it), **adduction** (moving toward the body's midline), **abduction** (moving away from it), and **rotation** (turning around the axis of the bone)."},
+    {k:"rule"},
+    {k:"h3", t:"The Freely Movable Joints"},
+    {k:"bul", items:["**Ball-and-socket joint** — the ball of one bone sits in the cup of another: the shoulder and the hip, allowing movement in every direction","**Hinge joint** — opens and closes like a door hinge: the elbow and the knee, allowing flexion and extension only"]}
+  ],
   focus:["Importance and functions of the skeletal system","Connective tissues: cartilage, ligaments, tendons","Types of joints","Kinds of joint movement","Freely movable joints: ball and socket, hinge","Care of the skeleton"],
   terms:[
     {t:"skeleton", d:"the framework of bones supporting the body", x:"The adult skeleton has 206 bones."},
@@ -747,6 +899,21 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to recognise different foods, differentiate nutrients from nutrition, explain that a balanced diet is important for a healthy active lifestyle, and show that diet can improve performance."],
   objectives:["Recognise different foods, what they contain and why we need to eat them","Explain that eating a balanced diet is an important part of a healthy, active lifestyle","Differentiate between nutrients and nutrition","Show that diet can help improve your performance","State the seven rules for a healthy diet"],
   note:"<b>Nutrition</b> is the process by which the body takes in and uses food; a <b>nutrient</b> is a substance in food that the body needs. <b>Macronutrients</b> — proteins, carbohydrates and fats — are needed in large amounts. <b>Micronutrients</b> — vitamins and minerals — are needed in small amounts, together with <b>water and dietary fibre</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Diet and Nutrition (guide pp. 19) ---- */
+    {k:"h3", t:"Nutrients and Nutrition — the Difference"},
+    {k:"p", t:"**Nutrients** are the chemical substances in food that the body uses — proteins, carbohydrates, fats, vitamins, minerals, water and fibre. **Nutrition** is the whole study and practice of how the body takes in and uses food. A **diet** is what a person habitually eats and drinks, and a **balanced diet** — an important part of a healthy, active lifestyle — contains every nutrient in the right amount. Recognize different foods, what they contain, and why we need to eat them; show that diet can help improve your performance."},
+    {k:"rule"},
+    {k:"h3", t:"The Seven (7) Rules for a Healthy Diet"},
+    {k:"num", items:["**Eat a variety of foods.**","**Maintain a desirable weight.**","**Avoid too much fat.**","**Eat food adequate in starch and fibre.**","**Avoid too much sugar.**","**Avoid too much sodium** (salt).","**If a person drinks alcoholic beverages, he or she should do so in moderation.**"]},
+    {k:"rule"},
+    {k:"h3", t:"Macronutrients — Needed in Large Amounts"},
+    {k:"bul", items:["**Proteins** — build and repair the body's tissues; from meat, fish, eggs and beans","**Carbohydrates** — the body's main fuel for work and play; from rice, cassava, bread and yam","**Fats** — concentrated energy and protection of organs; needed in small amounts only"]},
+    {k:"rule"},
+    {k:"h3", t:"Micronutrients — Needed in Small Amounts"},
+    {k:"bul", items:["**Vitamins** — regulate the body's processes and protect against disease; from fruits and vegetables","**Minerals** — build bones and blood (calcium, iron); from milk, greens and meat","**Water and dietary fibre** — water carries every process of the body; fibre keeps the digestion moving"]},
+    {k:"p", t:"Remember: an athlete's plate decides an athlete's performance — eat the variety, keep the weight, and drink water, and the training will show."}
+  ],
   focus:["Nutrients and nutrition distinguished","Macronutrients: proteins, carbohydrates, fats","Micronutrients: vitamins, minerals, water and fibre","The balanced diet","The seven rules for a healthy diet","Diet and sports performance"],
   terms:[
     {t:"nutrition", d:"the process by which the body takes in and uses food", x:"Good nutrition supports growth."},
@@ -828,6 +995,20 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to demonstrate motor skills, good body posture, proper grips and techniques, and coordination during racket games."],
   objectives:["Explain the history and rules of lawn tennis","Select tennis equipment appropriate for them","Demonstrate the proper grips and techniques for strokes","Identify the playing courtesies, safety considerations and basic terminology associated with tennis"],
   note:"Racket sports are played by striking a ball or shuttle over a net with a racket. In <b>lawn tennis</b> the ball may bounce once before it is returned; in <b>badminton</b> the shuttle must not touch the ground at all. All three games depend on the <b>grip</b>, <b>footwork</b>, <b>ready position</b> and eye–hand <b>coordination</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Racket Sports: Lawn Tennis, Table Tennis, Badminton (guide pp. 20) ---- */
+    {k:"h3", t:"History (Nature and Purpose)"},
+    {k:"p", t:"The **racket sports** — **lawn tennis**, **table tennis** and **badminton** — are net games in which a ball or shuttle is struck with a racket (or bat) over a net. Lawn tennis grew from old handball games into the outdoor court game; table tennis shrank it to the parlour table; badminton replaces the ball with the feathered **shuttlecock**. Their purpose is the same: all three train quick eyes, quick feet and good body posture."},
+    {k:"rule"},
+    {k:"h3", t:"Official Rules of Lawn Tennis"},
+    {k:"bul", items:["The server stands behind the baseline and serves diagonally into the service box; a served ball that faults may be taken **again** — the second serve.","Scoring runs **love, 15, 30, 40, game**; when both players reach 40 the score is **deuce**, and a player must take two points running to win the game.","A ball landing **on the line is in**; a ball touched by the body, or hit twice, loses the point.","Players change ends after odd games and observe the courtesies: no shouting during play, and honest line calls."]},
+    {k:"rule"},
+    {k:"h3", t:"Skills and Techniques — the Grips and Strokes"},
+    {k:"p", t:"Demonstrate proper **grips** — the **forehand grip** (shake hands with the racket), the **backhand grip** (thumb laid up the handle) and the **service grip** — and the strokes built on them: the **forehand drive**, the **backhand drive**, the **serve**, the **volley** and the **smash**. In table tennis the same family appears in miniature, and in badminton the strokes answer the flight of the shuttle: the low and high service, the clear, the drop shot and the smash."},
+    {k:"rule"},
+    {k:"h3", t:"Equipment, Courtesies and Terminology"},
+    {k:"p", t:"Select equipment appropriate for yourself: a **racket** of the right weight and grip size, **tennis balls**, the **net** at regulation height, and proper flat court shoes. Learn the **playing courtesies** (return stray balls promptly, call scores clearly, respect close lines), the **safety considerations** (clear the court of obstacles; warm the shoulder before serving), and the **basic terminology** — ace, deuce, fault, let, rally and set. Then demonstrate various skills and techniques in the game."}
+  ],
   focus:["History, nature and purpose of racket sports","Official rules of lawn tennis","Skills and techniques: grips and strokes","Equipment selection","Playing courtesies and safety","Basic terminology"],
   terms:[
     {t:"racket", d:"the frame with strings used to strike the ball or shuttle", x:"Choose a racket of the right weight."},
@@ -909,6 +1090,22 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to explain the values of exercise and take part in health fitness tests to prepare for physical activities and monitor changes in body growth."],
   objectives:["Assess their personal readiness for starting an activity","Know their fitness level before engaging in any training or activity","Carry out tests for cardiovascular endurance","Carry out health-related and skill-related fitness tests","Record and interpret their results"],
   note:"<b>Fitness testing</b> measures where you are now, so training can be planned and progress checked. Test before you train: it establishes a <b>baseline</b>. A <b>health check</b> for readiness asks whether the learner has chest pain, dizziness, asthma, or a recent injury; anyone in doubt should see a health worker before starting hard training.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Fitness Testing (guide pp. 21) ---- */
+    {k:"h3", t:"Why We Test Fitness"},
+    {k:"p", t:"**Fitness testing** means engaging in health and fitness tests to prepare for physical activities and for the changes in body growth. Two duties fall on every learner before training begins: **assess your personal readiness for starting an activity**, and **know your fitness level before engaging in any training or activities**. Testing gives a starting point, guides the training plan, and measures progress honestly."},
+    {k:"rule"},
+    {k:"h3", t:"Fitness Tests for Cardiovascular Endurance"},
+    {k:"p", t:"For **cardiovascular endurance**, distance tests measure how long the heart and lungs can keep the body supplied with oxygen — timed runs and walks such as the twelve-minute run or the one-mile walk, with the distance or time recorded in the diary keeping book."},
+    {k:"rule"},
+    {k:"h3", t:"Health-Related and Skill-Related Fitness Tests"},
+    {k:"bul", items:["**Health-related fitness tests** — cardiovascular endurance runs; sit-up and press-up counts for muscular strength and endurance; sit-and-reach for flexibility; and body measurements for body composition","**Skill-related fitness tests** — shuttle runs for agility and speed; balance stands and beam walks for balance; throwing and catching drills for coordination; ruler-drop catches for reaction time"]},
+    {k:"rule"},
+    {k:"h3", t:"Health Checks and the Tools of Testing"},
+    {k:"p", t:"Before vigorous testing come the **health checks**: rest if you are ill, report old injuries, and stop at once on chest pain or dizziness. The guide names the tools of the testing ground:"},
+    {k:"bul", items:["**Pedometer** — counts steps and distance walked","**Diary keeping book** — records every test, score and session so progress can be seen","**Treadmill** — the machine for measured walking and running tests","**Dynamometer** — measures the strength of the grip","**Heart rate monitor** — reads the pulse before, during and after exercise"]},
+    {k:"p", t:"Demonstrate the various health and fitness tests; record the results; re-test after a term of training — and let the numbers tell your improvement."}
+  ],
   focus:["Personal readiness and health checks","Tests for cardiovascular endurance","Health-related fitness tests","Skill-related fitness tests","Recording and interpreting results","Monitoring changes in body growth"],
   terms:[
     {t:"fitness test", d:"a standard task used to measure a component of fitness", x:"The bleep test is a fitness test."},
@@ -992,6 +1189,17 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners explain the history and importance of physical education and general health."],
   objectives:["Discuss Physical Education as a field of study","Explain general health","Discuss the history of Physical Education and its historical contributions","Explain the importance of Physical Education","Identify health-related activities"],
   note:"<b>Physical Education</b> is the study of the body in motion. It plays a crucial role in physical development and well-being: the maintenance of the body through <b>fitness, health, flexibility and endurance</b> promotes sound reasoning and healthy growth. Organised physical education traces back to ancient Greece and the <b>Olympic Games</b>, and became part of modern school curricula in the nineteenth century.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Physical Education (guide pp. 22) ---- */
+    {k:"h3", t:"The History of Physical Education"},
+    {k:"p", t:"**Physical Education** is the study of the body in motion — the school subject in which movement itself is taught. Its **history**: from the games and dances of Africa's villages and the gymnasia of ancient Greece, through Roman military drill and the gymnastics systems of Europe, to the organized sports of the modern school. Each age contributed: the **Greeks** the Olympic ideal, the **Romans** the drill, the **Europeans** gymnastics, and the **Americans** the indoor games."},
+    {k:"rule"},
+    {k:"h3", t:"The Importance of Physical Education"},
+    {k:"bul", items:["It builds **health** — a strong heart, sound lungs and trained muscles","It builds **character** — discipline, fair play, leadership and respect for rules","It builds **skill** — the motor abilities every trade and game requires","It builds **community** — teams, houses and schools united in healthy competition"]},
+    {k:"rule"},
+    {k:"h3", t:"General Health and Health-Related Activities"},
+    {k:"p", t:"**General health** is the well-being of body and mind together. **Health-related activities** are the exercises that protect it: walking distances, jogging and running for cardiovascular endurance; strength work for the muscles; stretching for flexibility; and balanced training for sound body composition. Discuss physical education, its importance, its historical contributions, and the health-related activities — then make weekly health activity your own habit."}
+  ],
   focus:["Definition of Physical Education","History of Physical Education","Historical contributions to the field","The importance of Physical Education","General health","Health-related activities"],
   terms:[
     {t:"physical education", d:"the study of the body in motion and of movement, sport and health", x:"Physical Education develops the whole learner."},
@@ -1070,6 +1278,17 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to draw the various parts of the muscular system and show how they function in the body."],
   objectives:["Describe the formation of the muscular system","Describe the functions of the muscular system","Explain the importance of the muscular system","Identify the main muscle groups","Show how muscles work in pairs to produce movement"],
   note:"There are three kinds of muscle: <b>skeletal</b> (voluntary, attached to bones and moving the body), <b>smooth</b> (involuntary, in the walls of organs) and <b>cardiac</b> (the heart muscle). Skeletal muscles work in <b>antagonistic pairs</b>: as one contracts the other relaxes — the biceps bends the elbow and the triceps straightens it.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Muscular System (guide pp. 23) ---- */
+    {k:"h3", t:"The Muscular System — Its Formation"},
+    {k:"p", t:"The **muscular system** is the body's machinery of movement — the hundreds of muscles fitted over the skeleton, each joined to bone by **tendons**. A muscle is formed of bundles of fibres that can **contract** (shorten and thicken) and **relax** (lengthen again); since a muscle can only pull and never push, muscles work in **pairs** — as one contracts, its partner relaxes, and the joint moves."},
+    {k:"rule"},
+    {k:"h3", t:"The Importance of the Muscular System"},
+    {k:"bul", items:["Without muscles no movement is possible — no running, throwing, speaking or breathing","Muscles hold the body's **posture** upright against gravity","Working muscles produce the **heat** that keeps the body warm","Trained muscles protect the **joints and organs** from injury"]},
+    {k:"rule"},
+    {k:"h3", t:"The Functions of the Muscular System"},
+    {k:"p", t:"Draw the various parts of the muscular system from a pictorial chart — the biceps and triceps of the arm, the deltoids of the shoulder, the pectorals of the chest, the abdominals of the trunk, and the quadriceps, hamstrings and calf muscles of the leg — and show how they function in the body: every contraction pulls a bone, and pairs of muscles open and close the joint between them. Exercise increases the size, strength and endurance of every muscle that is regularly worked."}
+  ],
   focus:["Formation of the muscular system","Types of muscle: skeletal, smooth, cardiac","Functions and importance of muscles","Main muscle groups","Antagonistic pairs","Effects of exercise on muscle"],
   terms:[
     {t:"muscular system", d:"all the muscles of the body and the tissue that connects them", x:"The muscular system produces all movement."},
@@ -1151,6 +1370,31 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to explain the respiratory and the circulatory systems and how they work together."],
   objectives:["Describe the anatomy and the function of the heart","Identify the components of blood and what each does","Explain what blood pressure is and how it is measured","Explain how blood is classified and what is meant by the Rh factor","Name some illnesses of the circulatory system","Explain the process of respiration"],
   note:"No body system works in isolation — the systems depend on one another. The <b>respiratory system</b> processes the oxygen that the <b>circulatory system</b> carries to every part of the body. The <b>heart</b> is the body's pump, enclosed in a loose-fitting sac called the <b>pericardium</b>, which consists of two layers.",
+  study:[
+    /* ---- course text: Semester One, Period III — The Respiratory and Circulatory Systems (guide pp. 24-25) ---- */
+    {k:"h3", t:"Systems that Depend on One Another"},
+    {k:"p", t:"No body system works in isolation — body systems are dependent upon one another. Just as all of the systems depend on the nervous system, they also depend on the **circulatory** and the **respiratory** systems. The respiratory system processes the **oxygen** that the circulatory system carries to all of the parts of the body."},
+    {k:"rule"},
+    {k:"h3", t:"The Circulatory System — the Heart, the Body's Pump"},
+    {k:"p", t:"The **heart** is the body's pump. It is enclosed in a loose-fitting sac called the **pericardium**, which consists of **two layers**: one is a thin, watery membrane that closely covers the heart's surface, and the other is **fibrous** and is attached to the diaphragm."},
+    {k:"p", t:"Learn the **layers of the heart** wall and the **heart chambers**: the heart is divided into four chambers — two receiving **atria** above and two pumping **ventricles** below. Blood leaves the heart in **arteries**, exchanges gases and food in the microscopic **capillaries**, and returns in **veins** — passing through the lungs to drop carbon dioxide and collect oxygen."},
+    {k:"rule"},
+    {k:"h3", t:"The Components of Blood"},
+    {k:"table", head:["Component","What it does"], rows:[
+      ["Plasma","The liquid part that carries the blood cells, nutrients and wastes"],
+      ["Red blood cells","Carry oxygen from the lungs to every cell, using haemoglobin"],
+      ["White blood cells","Defend the body against infection"],
+      ["Platelets","Help the blood to clot, sealing wounds"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Blood Pressure, Blood Groups and the Rh Factor"},
+    {k:"p", t:"**Blood pressure** is the force of the blood pushing against the artery walls; it is measured with an instrument (the sphygmomanometer) and recorded as two numbers. **Blood is classified** into the groups **A, B, AB and O**; the **Rh factor** is a protein that may be present on the red blood cells — blood carrying it is Rh positive, blood lacking it Rh negative. Groups and Rh factor must match before a transfusion can be safe."},
+    {k:"p", t:"Illnesses of the circulatory system include **high blood pressure (hypertension)**, **anaemia**, **heart disease** and **stroke**; exercise, modest salt and regular checks protect against them."},
+    {k:"rule"},
+    {k:"h3", t:"The Respiratory System — its Anatomy and the Process of Respiration"},
+    {k:"p", t:"The **respiratory system** — nose, windpipe (trachea) and the two lungs with their air sacs — has the function of taking in oxygen and giving out carbon dioxide. **The process of respiration:** air is drawn into the lungs on breathing in; oxygen passes into the blood at the air sacs; the blood delivers it to the cells, where food is burned for energy; and the waste carbon dioxide is carried back and breathed out."},
+    {k:"p", t:"**Types of respiration** — **aerobic** (with oxygen, as in long steady work) and **anaerobic** (without oxygen, for short bursts of maximum effort). Hence **aerobic sports** (distance running, football) train the heart-lung partnership, while **anaerobic sports** (sprinting, high jumping) train explosive release. Illnesses of the respiratory system include asthma, pneumonia, tuberculosis and influenza; clean air, no smoking and vaccination guard against them."}
+  ],
   focus:["The circulatory system and the heart","The pericardium","Components of blood","Blood pressure and its measurement","Blood groups and the Rh factor","Illnesses of the circulatory system","The respiratory system and the process of respiration"],
   terms:[
     {t:"circulatory system", d:"the heart, blood and blood vessels that transport materials round the body", x:"The circulatory system delivers oxygen to the cells."},
@@ -1232,6 +1476,26 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to explain the types of injuries, apply preventive methods in sports competitions, and treat injuries correctly."],
   objectives:["Explain the types of injuries — minor and major","Apply preventive methods","Carry out a risk assessment before activity","Describe the treatment of joint injuries and sudden stress","Apply the RICE method correctly"],
   note:"The standard first treatment for a soft-tissue or joint injury is the <b>RICE method</b>: <b>R</b>est the injured part, apply <b>I</b>ce to reduce swelling, apply <b>C</b>ompression with a bandage, and <b>E</b>levate the limb above the level of the heart. Prevention starts with a <b>risk assessment</b> — checking the surface, equipment, clothing and the readiness of the players.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Injuries: Prevention and Treatment (guide pp. 26) ---- */
+    {k:"h3", t:"Types of Injuries — Minor and Major"},
+    {k:"p", t:"Sports injuries divide into **minor wounds and injuries** — abrasions (scrapes), small cuts, bruises, blisters, simple sprains and strains — which first aid can treat on the spot, and **major wounds and injuries** — deep or heavily bleeding wounds, broken bones (fractures), dislocations, head and neck injuries and unconsciousness — which are emergencies: make the casualty safe, give only gentle first aid, and send for medical help at once."},
+    {k:"rule"},
+    {k:"h3", t:"Preventive Methods — Risk Assessment"},
+    {k:"p", t:"Prevention begins with **risk assessment**: before play, walk the field and ask — what here can hurt a player? Apply the preventive methods:"},
+    {k:"bul", items:["Inspect and clear the playing area of stones, holes, glass and obstructions","Check the equipment and use it only for its proper purpose","Warm up thoroughly and cool down afterwards","Play by the rules and to the referee's whistle","Wear the right shoes and simple protective gear","Never train through illness or an unhealed injury"]},
+    {k:"p", t:"In competition, **improve on the arousal level** — alert and eager, not tense and reckless — for perfect performance; the over-aroused player injures himself and fouls others."},
+    {k:"rule"},
+    {k:"h3", t:"Treatment — Joints and Sudden Stress"},
+    {k:"p", t:"For **joint injuries** (sprains) and injuries of **sudden stress** (strains and pulls), apply the **RICE method** at once:"},
+    {k:"table", head:["Letter","Word","Action"], rows:[
+      ["R","Rest","Stop play and rest the injured part"],
+      ["I","Ice","Apply ice or a cold wet cloth to reduce swelling and pain"],
+      ["C","Compression","Bandage the part firmly — snug, never tight enough to numb"],
+      ["E","Elevation","Raise the injured part above the level of the heart"]
+    ]},
+    {k:"p", t:"Keep the first aid kit — bandages and plasters — at every practice and match, and record every injury treated."}
+  ],
   focus:["Types of injuries: minor and major wounds","Preventive methods","Risk assessment","Joint injuries and sudden stress","Treatment of injuries","The RICE method"],
   terms:[
     {t:"injury", d:"damage to the body caused by an accident or overuse", x:"Most sports injury is preventable."},
@@ -1313,6 +1577,20 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to define, identify and utilise the basic rules and terminology used in the game of badminton."],
   objectives:["Utilise the fundamental principles of badminton","Display an understanding of basic strategy in both singles and doubles","Identify and understand the basic rules for singles and doubles","Define the basic terminology used in the game","Demonstrate the backhand service"],
   note:"Badminton is played with a light racket and a <b>shuttlecock</b>, which must never touch the ground during a rally. A match is the best of <b>three games to 21 points</b>, with <b>rally scoring</b> — a point is won on every rally, whoever served. The service must be struck <b>below the waist</b> with the racket head pointing downwards.",
+  study:[
+    /* ---- course text: Semester Two, Period V — The Badminton Game (guide pp. 27) ---- */
+    {k:"h3", t:"The Nature and Purpose of Badminton"},
+    {k:"p", t:"**Badminton** is a racket game in which players strike a feathered **shuttlecock** over a high net. Its purpose is to land the shuttle within the opponent's court — and because the shuttle falls quickly and changes direction on a breath, badminton builds the fastest reactions of any racket sport. Learn the **dimensions of the court** — the rectangular court divided by the net, with its service courts, long and short service lines marked differently for singles and doubles."},
+    {k:"rule"},
+    {k:"h3", t:"Rules of Badminton — Singles and Doubles"},
+    {k:"bul", items:["The serve must be struck **below the waist**, diagonally into the opposite service court","In **singles** the server serves from the **right court when his score is even** and the left when odd","Only the serving side can score a point from its own rally — a fault by the receiver wins the point, a fault by the server hands over the service","The shuttle landing **on a line is in**; a shuttle touching the net and falling over remains in play","A player may not touch the net with body or racket while the shuttle is in play"]},
+    {k:"rule"},
+    {k:"h3", t:"Fundamental Principles — Skills, Techniques and Strokes"},
+    {k:"p", t:"Master the fundamental skills and techniques: the **grips** (forehand and backhand), the ready position, and the strokes — the **service** (low and high), the **clear** (high and deep to the back line), the **drop shot** (falling softly over the net), the **smash** (the steep winning strike) and the **drive** (flat and fast). **Practise the backhand service drill**: grip the racket by its backhand grip, hold the shuttle loosely before you, and brush it gently over the net into the near service court, again and again until it falls true."},
+    {k:"rule"},
+    {k:"h3", t:"Learning Cues — Strategy and Terminology"},
+    {k:"p", t:"**Basic strategy in singles**: cover the court from its centre, move your opponent to all four corners, and finish at his weak side. **In doubles**: one partner covers the front and the other the back — or they divide the court side by side — calling every shuttle. Learn the basic **terminology**: serve, rally, fault, let, clear, drop, drive, smash, love and match point."}
+  ],
   focus:["Nature and purpose of badminton","Dimensions of the court","Rules of badminton for singles and doubles","Fundamental skills, techniques and strokes","Basic strategy: singles and doubles","Terminology","The backhand service"],
   terms:[
     {t:"shuttlecock", d:"the feathered or plastic projectile struck in badminton", x:"The shuttlecock must not touch the ground."},
@@ -1394,6 +1672,21 @@ var PE_CURRICULUM_79 = [
   outcomes:["Learners are able to explain and apply the basic rules, skills, techniques and playing strategies of volleyball."],
   objectives:["Describe the nature and adaptability of volleyball","Apply basic skills in modified practice games","Discuss and put into practice the rules of power volleyball during a game","Demonstrate the forearm pass and the overhead pass","Explain offensive and defensive playing strategies"],
   note:"Volleyball is played by two teams of <b>six players</b> separated by a net. A team may touch the ball a maximum of <b>three times</b> before returning it, and no player may touch it twice in succession. The two fundamental skills are the <b>forearm pass</b> (the dig, used to receive) and the <b>overhead pass</b> (the set, used to place the ball for an attacker).",
+  study:[
+    /* ---- course text: Semester Two, Period VI — The Volleyball Game (guide pp. 27) ---- */
+    {k:"h3", t:"The Nature and Adaptability of Volleyball"},
+    {k:"p", t:"**Volleyball** is a net game for two teams of six, played by striking a light ball over the net with the hands and arms. Its **nature**: the ball is never caught — only played — and a side may touch it no more than three times before it crosses the net. Its **adaptability**: it can be played indoors or on grass, by men, women or mixed teams, with the full court or smaller modified courts for teaching; that is why it fits whole school classes at once."},
+    {k:"rule"},
+    {k:"h3", t:"The Basic Rules"},
+    {k:"bul", items:["**Serve** — the game begins with the serve, struck from behind the end line over the net into the opponents' court; a served ball may touch the net and remain live","**Net play** — no player may touch the net during play, and the ball crossing the net must pass between the antennae or court posts","A team loses the rally when the ball touches the floor of its own court, when it plays the ball a fourth time, or when one player plays the ball **twice in succession**","After winning the service, a team **rotates** one place clockwise before serving"]},
+    {k:"rule"},
+    {k:"h3", t:"Skills and Techniques"},
+    {k:"p", t:"**Forearm pass** — join the forearms flat, knees bent, and bump the oncoming ball up to the setter with the platform of the arms. **Overhead pass** — form a window of thumbs and fingers above the forehead and push the ball high and softly for the attacker. Build from these to the service, the spike and the block, and apply the skills in **modified practice games** before full matches."},
+    {k:"rule"},
+    {k:"h3", t:"Playing Strategies and Terminology"},
+    {k:"p", t:"**Offensive play** builds the attack: pass (forearm) — set (overhead) — spike. **Defensive play** answers: the block at the net and the digging up of spikes. The **service** itself is strategy — serve deep to the weak receiver. Discuss and put into practice the rules of power volleyball during a game or match."},
+    {k:"p", t:"**Terminology:** **attack** (the strike that tries to win the point), **ball handling** (how cleanly the ball is played), **block** (the wall of hands at the net), and **dump** (the soft, unexpected drop over the blockers). **Service drill**: serve ten balls in turn, aiming successively at each corner of the opposite court."}
+  ],
   focus:["Nature and adaptability of volleyball","Basic rules: serve and net play","Skills and techniques: forearm pass and overhead pass","Playing strategies: offensive and defensive play","Service","Terminology: attack, ball handling, block, dump"],
   terms:[
     {t:"volleyball", d:"a game in which two teams of six strike a ball over a net", x:"Volleyball needs little equipment."},
