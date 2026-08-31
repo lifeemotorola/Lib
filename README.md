@@ -114,7 +114,7 @@ same tool lives in `book.html`.
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html`. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (Node check that every `study[]` block list renders as-is). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies 7–9 and General Science 7–9 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -130,11 +130,14 @@ same tool lives in `book.html`.
   focus, terms[], worked[], drills[], word[], challenge[], activities[]}`
   (French uses `fr`/`en`/`vocab[]`; each subject carries the fields its
   engine needs). The note field may contain simple `<b>/<i>` markup.
-- A unit may also carry `study[]` — a block list (`h3`/`p`/`bul`/`num`/`rule`)
-  transcribed **as-is from the official course text**. When present, the
-  Study Notes page renders it verbatim instead of the auto-assembled page.
-  Any `p`/`bul`/`num`/`instr` text supports inline `**bold**` markup
-  (converted to `<b>`), used for key terms throughout the course text.
+- A unit may also carry `study[]` — a block list (`h3`/`p`/`bul`/`num`/`rule`,
+  plus `table`/`cols`) transcribed **as-is from the official course text**.
+  When present, the Study Notes page renders it verbatim instead of the
+  auto-assembled page. Any `p`/`bul`/`num`/`instr` text supports inline
+  `**bold**` markup (converted to `<b>`), used for key terms throughout the
+  course text. Social Studies 7–9 and General Science 7–9 (all 18 units each)
+  carry full verbatim notes derived from their curriculum guides; the other
+  units fall back to the auto-assembled page.
 - Generators emit a **uniform block model**
   (`{k:"h3"|"p"|"table"|"num"|"bul"|"mcq"|..., t/head/rows/...}`), so one
   renderer handles pagination and one exporter builds Word for every subject.
