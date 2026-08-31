@@ -7,6 +7,13 @@
 (function (root) {
   "use strict";
 
+  /* roman period ("I".."VI") -> its number, for the user-facing "Period n" labels */
+  function periodNo(p) {
+    var i = ["I", "II", "III", "IV", "V", "VI"].indexOf(String(p));
+    return i < 0 ? p : i + 1;
+  }
+
+
   /* The display name of the subject currently being rendered. Social Studies is
      the default; subjects that reuse this engine (Economics, Geography) set it
      via opts.subjectLine in buildPack so no worksheet ever reads "Social Studies"
@@ -456,8 +463,8 @@
             " · Liberian National Curriculum"
     }));
     doc.push({ k: "h3", t: "Contents" });
-    topics.forEach(function (t, i) { toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.title); });
-    if (opts.tests) toc.push("Period tests — one after each unit");
+    topics.forEach(function (t, i) { toc.push("Period " + periodNo(t.period) + ": " + t.title); });
+    if (opts.tests) toc.push("Period tests — one after each period");
     if (opts.exam) toc.push("Semester examinations (Semester One & Two)");
     if (opts.keys) toc.push("Answer keys — for the teacher");
     doc.push({ k: "bul", items: toc });
@@ -473,9 +480,9 @@
     doc.push({ k: "pagebreak" });
 
     topics.forEach(function (t, i) {
-      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.title, per: t.period });
-      doc.push({ k: "p", t: t.subtitle + "   ·   Period " + t.period + "   ·   Semester " + t.sem });
-      doc.push.apply(doc, UNIT_NOTES(t, i + 1));
+      doc.push({ k: "h1", t: "PERIOD " + periodNo(t.period) + " · " + t.title, per: t.period });
+      doc.push({ k: "p", t: t.subtitle + "   ·   Semester " + t.sem });
+      doc.push.apply(doc, UNIT_NOTES(t, periodNo(t.period)));
       doc.push({ k: "space" });
 
       var ukey = [];
@@ -487,7 +494,7 @@
         doc.push({ k: "space" });
         if (out.key.length) ukey.push({ h: out.blocks[0].t, lines: out.key });
       });
-      if (ukey.length) keys.push({ title: "Unit " + (i + 1) + " — " + t.title, sections: ukey });
+      if (ukey.length) keys.push({ title: "Period " + periodNo(t.period) + " — " + t.title, sections: ukey });
 
       if (opts.tests) {
         doc.push({ k: "pagebreak" });

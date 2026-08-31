@@ -197,13 +197,13 @@
      Short plain-language description of every exercise type, shown under its
      checkbox so a teacher knows what each sheet actually produces. */
   var SHEET_HELP = {
-    terms:"A reference list of the unit's key terms with meanings and examples.",
-    words:"A reference list of the unit's vocabulary with syllables, meanings and example sentences.",
+    terms:"A reference list of the period's key terms with meanings and examples.",
+    words:"A reference list of the period's vocabulary with syllables, meanings and example sentences.",
     match:"Learners match each term to its meaning by writing the correct letter.",
     cloze:"Sentences with a word removed; learners choose the missing word from a word box.",
     tf:"True or false statements; learners must correct the false ones.",
     short:"Recall questions answered in complete sentences on ruled lines.",
-    mcq:"Multiple choice questions built from the unit's terms, with four options each.",
+    mcq:"Multiple choice questions built from the period's terms, with four options each.",
     sort:"Learners sort a mixed list of items into the correct groups.",
     apply:"Open questions asking learners to apply the idea to a new situation.",
     casestudy:"A short scenario followed by questions about it.",
@@ -222,12 +222,12 @@
     spelling:"Spelling and dictation practice with syllable division.",
     copy:"Handwriting practice: learners copy each word neatly (elementary only).",
     worked:"Worked examples showing every step of the method before practice begins.",
-    drills:"A set of practice questions on the unit's main skill.",
+    drills:"A set of practice questions on the period's main skill.",
     drills2:"A second, mixed practice set with different questions.",
     show:"Long-form questions where learners must show all their working.",
     word:"Word problems requiring a number sentence, working and a labelled answer.",
     challenge:"Harder extension questions for learners who finish early.",
-    vocab:"The unit's vocabulary with pronunciation guidance.",
+    vocab:"The period's vocabulary with pronunciation guidance.",
     dialogue:"A short conversation to read, complete and act out.",
     journal:"A personal reflection page.",
     story:"A story followed by reflection questions.",
@@ -314,21 +314,21 @@
        straight from the official course text. When present it is rendered
        as-is (bold key terms via ** **), replacing the auto-assembled page. */
     if (t.study && t.study.length) {
-      out.push({ k: "h2", t: "Study Notes \u2014 Unit " + n + ": " + title });
+      out.push({ k: "h2", t: "Study Notes \u2014 Period " + n + ": " + title });
       t.study.forEach(function (b) { out.push(b); });
       out.push({ k: "rule" });
       out.push({ k: "space" });
       return out;
     }
 
-    out.push({ k: "h2", t: "Study Notes \u2014 Unit " + n + ": " + title });
-    out.push({ k: "instr", t: "Read this page before you begin the exercises. It explains the ideas the unit is built on, shows you a worked example, and warns you about the mistakes learners most often make." });
+    out.push({ k: "h2", t: "Study Notes \u2014 Period " + n + ": " + title });
+    out.push({ k: "instr", t: "Read this page before you begin the exercises. It explains the ideas the period is built on, shows you a worked example, and warns you about the mistakes learners most often make." });
 
     /* 1 - what this unit is about */
-    out.push({ k: "h3", t: "1 \u00b7 What this unit is about" });
+    out.push({ k: "h3", t: "1 \u00b7 What this period is about" });
     out.push({ k: "p", t: stripTags(t.note) });
     if (t.objectives && t.objectives.length) {
-      out.push({ k: "p", t: "By the end of this unit you should be able to:" });
+      out.push({ k: "p", t: "By the end of this period you should be able to:" });
       out.push({ k: "num", items: t.objectives.map(stripTags) });
     }
 
@@ -382,7 +382,7 @@
     }
 
     /* 5 - how to study this unit */
-    out.push({ k: "h3", t: "5 \u00b7 How to work through this unit" });
+    out.push({ k: "h3", t: "5 \u00b7 How to work through this period" });
     out.push({ k: "bul", items: [
       "Read the notes above and copy the table of key ideas into your exercise book.",
       "Do the exercises in order. Write full answers, not single words, unless you are told otherwise.",
@@ -1290,7 +1290,23 @@
     $("#grade").onchange = refreshPeriods;
     $("#gen").onclick = function () { generate(); collapseIfNarrow(); };
     $("#reseed").onclick = function () { $("#seed").value = Math.floor(Math.random() * 9999) + 1; generate(); };
-    $("#print").onclick = function () { window.print(); };
+    /* The printed booklet carries the subject-and-grade name, exactly like
+       the Word export, so the teacher's saved PDF is named after the pack
+       instead of the platform. */
+    function packFileBase() {
+      return S().file(opts().grade).replace(/\.docx$/, isTeacher() ? "_Teacher_Copy" : "_Student");
+    }
+    $("#print").onclick = function () {
+      var old = document.title;
+      var restore = function () {
+        document.title = old;
+        window.removeEventListener("afterprint", restore);
+      };
+      document.title = packFileBase();
+      window.addEventListener("afterprint", restore);
+      window.print();
+      setTimeout(restore, 3000);   /* fallback when afterprint never fires */
+    };
     $("#docx").onclick = function () {
       if (!pack) return;
       var THEMES = {
@@ -1310,7 +1326,7 @@
         li: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" }
       };
       var theme = THEMES[cur] || THEMES.en;
-      var fn = S().file(opts().grade).replace(/\.docx$/, (isTeacher() ? "_Teacher_Copy" : "_Student") + ".docx");
+      var fn = packFileBase() + ".docx";
       download(toDocx(pack.blocks, theme, runhead), fn);
     };
     /* study-notes toggle */
