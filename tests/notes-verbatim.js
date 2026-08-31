@@ -213,7 +213,39 @@ const SUBJECTS = [
             { grade: 12, period: "V",
               facts: ["resting potential", "action potential", "refractory period", "myelin sheath"] },
             { grade: 12, period: "VI",
-              facts: ["0.002 mm diameter", "chlorination", "sewage disposal"] }] }
+              facts: ["0.002 mm diameter", "chlorination", "sewage disposal"] }] },
+  { name: "Chemistry", global: "CH_CURRICULUM",
+    files: ["data-ch.js"],
+    grades: { from: 10, to: 12 },   /* Senior High band: every unit from Grade 10 to Grade 12 must carry study[] */
+    spots: [{ grade: 10, period: "II",
+              facts: ["1/1836", "relative atomic mass", "Aufbau"] },
+            { grade: 10, period: "V",
+              facts: ["6.02 × 10²³", "law of conservation of mass", "empirical formula"] },
+            { grade: 11, period: "III",
+              facts: ["pH + pOH = 14", "Arrhenius", "conjugate acid-base pair"] },
+            { grade: 11, period: "VI",
+              facts: ["0.693/k", "Le Chatelier", "dynamic"] },
+            { grade: 12, period: "II",
+              facts: ["glycerol", "thermosetting", "peptide bonds"] },
+            { grade: 12, period: "IV",
+              facts: ["limestone and clay", "cryolite", "copper + zinc — taps"] }] },
+  { name: "Physics", global: "PH_CURRICULUM",
+    files: ["data-ph.js"],
+    grades: { from: 10, to: 12 },   /* Senior High band: every unit from Grade 10 to Grade 12 must carry study[] */
+    spots: [{ grade: 10, period: "IV",
+              facts: ["W = F × s", "KE = ½mv²", "P = work ÷ time"] },
+            { grade: 10, period: "VI",
+              facts: ["P₁V₁ = P₂V₂", "Brownian motion", "K = °C + 273"] },
+            { grade: 11, period: "III",
+              facts: ["V = IR", "1/R = 1/R₁ + 1/R₂ + 1/R₃", "E = I(R + r)"] },
+            { grade: 11, period: "VI",
+              facts: ["Vs/Vp = Ns/Np", "Fleming's left-hand rule", "VpIp = VsIs"] },
+            { grade: 12, period: "I",
+              facts: ["v = u + at", "F = ma", "centripetal force"] },
+            { grade: 12, period: "V",
+              facts: ["F = kq₁q₂/r²", "9×10⁹", "C = Q/V"] },
+            { grade: 12, period: "VI",
+              facts: ["E = mc²", "carbon-14", "uncertainty principle"] }] }
 ];
 
 let grandTotal = 0;

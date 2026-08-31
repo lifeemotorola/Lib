@@ -2,6 +2,13 @@
    Derived from the "Physics 10-12" senior high curriculum guide (25 Jan 2012,
    Ministry of Education / WAEC), 6 periods per grade, 18 units.
 
+   Every unit carries a `study[]` block list — the course text of the guide,
+   rendered verbatim on the Study Notes page. The guide numbers its topics in a
+   different order from these units (its content is rearranged across the six
+   periods of each grade), so the comment above each study[] list cites the
+   guide pages it draws on. `**bold**` marks the key terms; table cells take no
+   markup because the renderer escapes them.
+
    Uses the same unit shape as SC_CURRICULUM so GEN_SC renders it unchanged:
      grade · period · sem · icon · title · subtitle · outcomes[] · objectives[]
      · note · focus[] · terms[]{t,d,x} · facts[]{q,a} · tf[]{s,a,why}
@@ -33,6 +40,21 @@ var PH_CURRICULUM = [
     "Relate physics to technology and national development"
   ],
   note:"<b>Physics</b> is the branch of science that studies <b>matter, energy and their interactions</b>. It underlies every other science and every technology around us. Physicists such as <b>Galileo</b> (motion and the telescope), <b>Newton</b> (laws of motion and universal gravitation), <b>Maxwell</b> (electromagnetic theory) and <b>Einstein</b> (relativity) built the ideas this course will develop.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Physics and Properties of Matter (guide pp. 1, 3-4) ---- */
+    {k:"h3", t:"What Physics Is"},
+    {k:"p", t:"**Physics** is the branch of science that studies **matter, energy and their interactions**. The syllabus is designed to give a sound knowledge of the fundamental concepts of physics through a conceptual approach — understanding phenomena, facts, concepts, theories, laws and principles — with ample scope for laboratory and practical work. It underlies every other science and every technology around us: the telephone, the car, the hospital scanner and the power line all answer to physics. Drumming, a thrown stone, a lightning strike — each is matter moving because energy moved."},
+    {k:"rule"},
+    {k:"h3", t:"The Branches of Physics"},
+    {k:"bul", items:["**Mechanics** — motion, forces, work and energy","**Heat (thermal physics)** — temperature, expansion and the behaviour of gases","**Waves, sound and optics** — vibrations, sound and light","**Electricity and magnetism** — charges, currents, circuits, motors and generators","**Atomic and nuclear physics** — the atom, radioactivity and the nucleus"]},
+    {k:"rule"},
+    {k:"h3", t:"Great Physicists and their Contributions"},
+    {k:"p", t:"**Galileo** gave us the experimental method, the telescope and the laws of motion; **Newton** — the three laws of motion and universal gravitation; **Maxwell** — the theory that unites electricity, magnetism and light; the **Curies** — the study of radioactivity; **Einstein** — relativity and the equation E = mc². Physics has a special relationship with the other sciences: it supplies their foundations, and its measurements make them exact. With the other natural sciences it drives technology and national development."},
+    {k:"rule"},
+    {k:"h3", t:"Careers that Use Physics"},
+    {k:"p", t:"Appreciate the importance of physics in everyday life and in careers: **engineering** (civil, electrical, mechanical), **medicine** (X-rays, scanners, radiotherapy), **teaching and research**, **energy** (power plants, solar installations), and **transport** (vehicle design, aviation, shipping). In each, accurate measurement of physical quantities is the daily bread — which is why the measurement of physical quantities leads the year's work."}
+  ],
+
   focus:[
     "Meaning of physics and its major branches",
     "Matter, energy and their interactions",
@@ -143,6 +165,24 @@ var PH_CURRICULUM = [
     "Discuss accuracy, precision, parallax error and random and systematic errors"
   ],
   note:"A <b>physical quantity</b> is anything that can be measured and given a number and a unit. <b>Fundamental quantities</b> — length, mass, time, temperature, electric current, amount of substance and luminous intensity — stand alone. <b>Derived quantities</b> are built from them, for example <b>speed = length ÷ time</b> (m/s), <b>density = mass ÷ volume</b> (kg/m³) and <b>force = mass × acceleration</b> (kg·m/s² = newton).",
+  study:[
+    /* ---- course text: Semester One, Period II — Physical Measurement (guide pp. 3-4) ---- */
+    {k:"h3", t:"Fundamental Quantities and Derived Quantities"},
+    {k:"p", t:"A **physical quantity** is anything measured by a number and a unit. Distinguish **fundamental quantities** from **derived quantities**: the SI system of measurement rests on seven base quantities — length (**metre, m**), mass (**kilogram, kg**), time (**second, s**), electric current (**ampere, A**), temperature (**kelvin, K**), amount of substance (**mole, mol**) and luminous intensity (**candela, cd**) — and every other unit is **derived** by combination: area (m²), volume (m³), density (**kg/m³** — distinguish density from **relative density**, the pure ratio to the density of water), speed (m/s), acceleration (m/s²), force (**newton, N**) and pressure (**pascal, Pa**)."},
+    {k:"rule"},
+    {k:"h3", t:"Metric Prefixes, Conversion and Scientific Notation"},
+    {k:"p", t:"The **metric prefixes** scale any unit — kilo (×1000), centi (×1/100), milli (×1/1000) — so convert units before calculating. Write very large and very small measures in **scientific notation** (a number between 1 and 10 times a power of ten: 0.00562 = 5.62×10⁻³) and report every result to the correct **number of significant figures** — the digits that carry news, never more than the measurement itself knows. Do the exercises in the calculation and deriving of units."},
+    {k:"rule"},
+    {k:"h3", t:"Accuracy, Precision and Errors"},
+    {k:"p", t:"**Accuracy** is nearness to the true value; **precision** is the agreement of repeated readings and the fineness of the scale. The **errors in measurement**: the **parallax error** of reading a pointer from the side (read at eye level), the **zero error** of an instrument that does not read zero, and the **random errors** of fluctuating readings — reduced by repeating the measurement and averaging."},
+    {k:"rule"},
+    {k:"h3", t:"Dimensional Analysis"},
+    {k:"p", t:"**Dimensional analysis** checks a formula by its units: work in the base dimensions of mass M, length L, time T — force is MLT⁻², and a correct equation must carry the same dimensions on both sides. Analyze dimensional analysis in terms of the relationship between fundamental and derived quantities."},
+    {k:"rule"},
+    {k:"h3", t:"Measuring Instruments and the Measurement of Pressure"},
+    {k:"p", t:"**Measure with the various measuring instruments:** length with the **meter rule**, the **vernier caliper** (jaws and slide — to a tenth of a millimetre) and the **micrometer screw gauge** (to a hundredth); mass with the **beam balance** and **electronic balance**; weight and force with the **spring balance**; time with the **stop watch**; temperature with the **thermometer**. In the laboratory find the density of a regular and an irregular solid with balance, graduated cylinder and **density bottle**, and read a liquid's specific gravity with a **hydrometer**. And **pressure** — force per unit area, P = F/A — works differently in the three states: transmitted from solids at the contact alone, acting equally in all directions within a **liquid** (increasing with depth), and filling its whole container in a **gas**."}
+  ],
+
   focus:[
     "Physical quantities and their classification",
     "The seven SI base units",
@@ -254,6 +294,22 @@ var PH_CURRICULUM = [
     "Apply the condition for equilibrium of a body"
   ],
   note:"A <b>scalar</b> has only magnitude (mass, speed, energy). A <b>vector</b> has magnitude and direction (force, velocity, displacement). A <b>force</b> is a push or pull measured in <b>newtons (N)</b>; it is a vector. Forces acting on the same point are added <b>head-to-tail</b> to find the <b>resultant</b>, or resolved into <b>perpendicular components</b> F·cosθ and F·sinθ. A body is in <b>equilibrium</b> when the resultant force on it is zero.",
+  study:[
+    /* ---- course text: Semester One, Period III — Forces and Vectors (guide pp. 3-4 and 17-18) ---- */
+    {k:"h3", t:"Scalars and Vectors"},
+    {k:"p", t:"Quantities divide by direction. A **scalar** has magnitude only — mass, time, temperature, speed, energy, distance. A **vector** has magnitude and direction both — force, velocity, acceleration, displacement, weight, momentum. Classify the quantities by the table and represent a vector by an **arrow**: length for magnitude, head for direction."},
+    {k:"rule"},
+    {k:"h3", t:"Forces — Contact and Non-contact"},
+    {k:"p", t:"A **force** is a push or pull, measured in newtons; it may act by **contact** (push, pull, friction, tension, the table propping the book) or **at a distance** (gravitational, magnetic and electrostatic forces). Forces change a body's motion or its shape — the various forms in which forces affect the state of a body."},
+    {k:"rule"},
+    {k:"h3", t:"Addition of Forces — Resultant and Equilibrant"},
+    {k:"p", t:"Combine force vectors to produce the **resultant**: for two forces at an angle, draw the **parallelogram of forces** (or place them **head-to-tail** in a triangle) and measure the diagonal. Where the vectors do not make a right angle, apply the **sine and cosine laws** to compute the resultant. When the resultant is zero, the body is in **equilibrium** — and the single force that balances a known resultant, equal and opposite to it, is the **equilibrant**. Distinguish the two: the resultant is what the forces together do; the equilibrant, what stops them."},
+    {k:"p", t:"**Resolve a force** into perpendicular **components** — F cos θ along a direction, F sin θ across it — letting a slope's downhill pull be separated from the rest."},
+    {k:"rule"},
+    {k:"h3", t:"Equilibrium and Friction"},
+    {k:"p", t:"The **conditions for equilibrium** of a body: the vector sum of all forces acting on it is zero **and** the sum of the moments about any point is zero. Demonstrate the types of equilibrium — **stable** (widened base, low centre), **unstable** (tipped past the point of no return) and **neutral** (the rolling ball). **Friction** — the force that opposes sliding — has its advantages (walking, brakes, grip) and disadvantages (wear and wasted heat); distinguish its types (static, sliding/kinetic, rolling) and calculate its **coefficient** μ = friction ÷ normal reaction. Distinguish **centre of gravity** (where the weight acts) from **centre of mass** (where the mass is spread). In the lab, verify the triangle of forces with spring balances."}
+  ],
+
   focus:[
     "Contact and non-contact forces",
     "Scalar and vector quantities and their examples",
@@ -362,6 +418,24 @@ var PH_CURRICULUM = [
     "Identify energy transformations in common devices"
   ],
   note:"<b>Work</b> is done when a force moves a body: W = F × d, measured in <b>joules (J)</b>. <b>Energy</b> is the ability to do work. A body in motion has <b>kinetic energy</b> KE = ½mv²; a raised body has <b>gravitational potential energy</b> PE = mgh. The <b>principle of conservation of energy</b> says energy can neither be created nor destroyed, only transformed. <b>Power</b> is the rate of doing work, P = W/t, measured in <b>watts (W)</b>.",
+  study:[
+    /* ---- course text: Semester One, Period IV — Work, Energy and Power (guide pp. 7-8) ---- */
+    {k:"h3", t:"Work"},
+    {k:"p", t:"**Work** is done only when a force moves its point of application along its own direction: **W = F × s** — force in newtons times displacement in metres gives work in **joules (J)**. Carrying the load level does no work on it against gravity; climbing the hill with it does. Identify the characteristics of work with its SI unit."},
+    {k:"rule"},
+    {k:"h3", t:"Energy — Kinetic and Potential"},
+    {k:"p", t:"**Energy** is the capacity to do work, measured in the same joules. The two **kinds of mechanical energy**: **kinetic energy** — the energy of motion, KE = ½mv² — and **potential energy** — the energy of position or state, PE = mgh. Compute potential and kinetic energy problems, converting mass to kilograms, g = 10 m/s². Energy appears in many other forms — chemical, heat, light, sound, electrical, nuclear — matter and energy being the twin stock of physics."},
+    {k:"rule"},
+    {k:"h3", t:"Conservation of Mechanical Energy"},
+    {k:"p", t:"The **law of conservation of energy:** energy can be **transformed** from one form to another but can neither be created nor destroyed. Demonstrate it with the falling body and the pendulum: potential at the top becomes kinetic at the bottom, and the total stays constant where friction may be ignored. Trace energy transformations in machines and the home: the palm-oil lamp's chemical energy to light and heat; the generator's chemical to electrical; the falling fruit's potential to kinetic."},
+    {k:"rule"},
+    {k:"h3", t:"Power"},
+    {k:"p", t:"**Power** is the rate of doing work: **P = work ÷ time = W/t**, measured in **watts (W)** — one joule each second. Two boys shift the same load; the quicker one is the more powerful. The same machine's power may be written P = Fv where the load moves steadily. Solve the simple problems involving work, energy and power."},
+    {k:"rule"},
+    {k:"h3", t:"Work Input, Work Output and the Roller Experiment"},
+    {k:"p", t:"Distinguish **work input** from **work output**: every machine takes work in and returns work out — no machine can give out more energy than it receives, and friction always taxes the difference. In the lab, investigate energy and power with a roller on a slope: let a toy car or ball roll from a measured height and time it down the incline."}
+  ],
+
   focus:[
     "Definition and formula of work",
     "Kinetic and potential energy",
@@ -469,6 +543,29 @@ var PH_CURRICULUM = [
     "Solve problems on simple machines"
   ],
   note:"The <b>moment of a force</b> about a point is <b>force × perpendicular distance</b>, measured in <b>newton-metres (N m)</b>. The <b>principle of moments</b> states that, for a body in equilibrium, the sum of the clockwise moments equals the sum of the anticlockwise moments about any point. A <b>couple</b> is two equal, parallel and opposite forces; its moment is one force × the distance between them. For a machine, <b>mechanical advantage MA = load ÷ effort</b>, <b>velocity ratio VR = distance moved by effort ÷ distance moved by load</b>, and <b>efficiency = (MA ÷ VR) × 100%</b>.",
+  study:[
+    /* ---- course text: Semester One, Period V — Machines, Moments and Couples (guide pp. 7-8 and 17-18) ---- */
+    {k:"h3", t:"The Moment of a Force"},
+    {k:"p", t:"The **moment of a force** about a point is its turning effect: **moment = force × perpendicular distance from the pivot**, in newton-metres (N·m). The same push opens a gate easily at its far edge and hardly at all near the hinges. Clockwise and anticlockwise moments balance in the **principle of moments**: for a body in equilibrium, the sum of the clockwise moments about a point equals the sum of the anticlockwise ones — the law of the balanced lever. In the lab, balance a metre rule on a fulcrum with known masses."},
+    {k:"rule"},
+    {k:"h3", t:"Couples and Centre of Gravity"},
+    {k:"p", t:"A **couple** is a pair of equal, opposite, parallel forces whose lines of action differ: it produces rotation only — the hands on the steering wheel, the fingers on the bottle top — with moment = one force × the perpendicular distance between the two. A body balances when its **centre of gravity** — the point through which its whole weight acts, in a uniform body the geometric centre — is vertically supported; this ties equilibrium to the parallel forces and moments."},
+    {k:"rule"},
+    {k:"h3", t:"Machines — the Three Numbers"},
+    {k:"p", t:"A **machine** is any device by which a force (the **effort**) overcomes a load more conveniently. Judge every machine by three numbers: the **mechanical advantage MA = load ÷ effort** (how much it multiplies force); the **velocity ratio VR = distance moved by effort ÷ distance moved by load** (fixed by its geometry, no friction in it); and the **efficiency = (MA ÷ VR) × 100%** (always below 100% — friction and the moving parts take their share). Distinguish work input from work output: the machine never creates energy."},
+    {k:"rule"},
+    {k:"h3", t:"The Simple Machines"},
+    {k:"table", head:["Machine","How it works","Liberian example"], rows:[
+      ["Lever","A rigid bar turning on a fulcrum; load and effort classes 1-3 by arrangement","Wheelbarrow, cutlass as a lever, the bottle opener, the market see-saw"],
+      ["Pulley","Wheel and rope; blocks compound the strands and raise the MA","Hoisting water from the well, raising a flag"],
+      ["Inclined plane","The long slope trades distance for force","Plank to roll a drum into a truck"],
+      ["Wheel and axle","A big wheel turns a small axle with it","Bicycle pedals, the windlass of a well"],
+      ["Wedge","A double inclined plane that splits","Axe and knife blades"],
+      ["Screw","An inclined plane wound round a post","Car jack, vice, bottle cap"]
+    ]},
+    {k:"p", t:"The **wheelbarrow** is the everyday second-class lever — load between fulcrum and effort, MA always above 1 — spot its class among levers about the market and the yard."}
+  ],
+
   focus:[
     "Moment of a force; clockwise and anticlockwise moments",
     "The principle of moments and the balanced lever",
@@ -581,6 +678,31 @@ var PH_CURRICULUM = [
     "Solve problems using the gas laws"
   ],
   note:"The <b>kinetic theory</b> pictures matter as made of tiny particles in constant motion — closely packed and vibrating in a solid, sliding past one another in a liquid, and far apart and moving rapidly in a gas. The three <b>gas laws</b> are <b>Boyle's law</b> (P ∝ 1/V at constant temperature), <b>Charles' law</b> (V ∝ T at constant pressure) and the <b>Pressure law</b> (P ∝ T at constant volume). They combine into the <b>combined gas equation</b> P₁V₁/T₁ = P₂V₂/T₂.",
+  study:[
+    /* ---- course text: Semester One, Period VI — Structure and Behaviour of Matter; the Gas Laws (guide pp. 13-14, 9-10) ---- */
+    {k:"h3", t:"The States and Structure of Matter"},
+    {k:"p", t:"Matter exists in three states, and its structure explains them: in a **solid** the particles hold fixed positions and only vibrate — definite shape and volume; in a **liquid** they slide about — definite volume, the vessel's shape; in a **gas** they fly free — filling any container. Distinguish **atoms** (the smallest particles of an element that take part in reaction) from **molecules** (the groups of atoms that exist free — O₂, H₂O)."},
+    {k:"rule"},
+    {k:"h3", t:"The Kinetic Theory of Matter"},
+    {k:"p", t:"The **kinetic theory** states that matter is made of tiny particles in constant motion, their energy rising with temperature. The direct evidence is **Brownian motion**: smoke or pollen specks in restlessness under the microscope, knocked about by invisible molecules. The theory explains diffusion, evaporation, pressure and all the states' properties."},
+    {k:"rule"},
+    {k:"h3", t:"Cohesion, Adhesion, Surface Tension and Viscosity"},
+    {k:"p", t:"**Cohesion** is the attraction between like molecules (water to water); **adhesion**, between unlike (water wetting glass, climbing the tube in **capillarity** while mercury falls). **Surface tension** draws a liquid's surface tight like a skin — the razor floats, the insect walks on water, a drop stands spherical. **Viscosity** is a fluid's internal friction: palm oil pours slow, kerosene fast. **Diffusion** mixes one substance through another by molecular wandering."},
+    {k:"rule"},
+    {k:"h3", t:"Elasticity — Hooke's Law and Young's Modulus"},
+    {k:"p", t:"**Elasticity** is the power to regain shape when the deforming force is withdrawn. **Hooke's law:** within the elastic limit, the extension of a spring or wire is directly proportional to the applied load — F = ke; past the **elastic limit** a body stretches and stays stretched. Plot the extension against load: straight through the proportional region, then curving away at the **yield point** — the graphical representation of elasticity. For stretching a material itself (not a specimen), use **Young's (elastic) modulus** E = stress ÷ strain, and apply it in the exercise problems; **elastic strings** store and return energy the same way."},
+    {k:"rule"},
+    {k:"h3", t:"The Gas Laws and Heating Curves"},
+    {k:"p", t:"Heating a substance raises its temperature till a change of state pins it: the **heating curve** of ice climbs to 0 °C, holds flat while it melts (the **melting point**), climbs again, and holds at 100 °C while it boils (the **boiling point**) — liquids cool in the mirror-image **cooling curve**. Water shows an **anomalous expansion**: it contracts on warming from 0 °C to 4 °C, where it is densest — that is why ponds freeze from the top and the fish survive below."},
+    {k:"table", head:["Law","Statement","Equation"], rows:[
+      ["Boyle's law","At constant temperature, the volume of a fixed mass of gas is inversely proportional to its pressure","P₁V₁ = P₂V₂"],
+      ["Charles's law","At constant pressure, the volume is directly proportional to the absolute temperature","V₁/T₁ = V₂/T₂"],
+      ["Pressure law","At constant volume, the pressure is directly proportional to the absolute temperature","P₁/T₁ = P₂/T₂"],
+      ["Combined","The three together for a fixed mass of gas","P₁V₁/T₁ = P₂V₂/T₂"]
+    ]},
+    {k:"p", t:"Demonstrate the laws: compress the air in a sealed syringe (Boyle), warm a trapped column of air (Charles), heat a sealed flask (Pressure law). Remember **temperatures must be in kelvin: K = °C + 273**."}
+  ],
+
   focus:[
     "Kinetic theory and its assumptions",
     "Adhesion, cohesion and elasticity",
@@ -693,6 +815,24 @@ var PH_CURRICULUM = [
     "Describe thermal expansion and its applications"
   ],
   note:"<b>Heat</b> is the energy that flows because of a temperature difference; <b>temperature</b> measures the degree of hotness. The heat needed to warm a substance is <b>Q = mcΔT</b>, where c is the <b>specific heat capacity</b>. During a change of state the temperature stays constant and the heat is the <b>latent heat</b> <b>Q = mL</b>. Heat moves by <b>conduction</b>, <b>convection</b> and <b>radiation</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Heat Energy (guide pp. 9-10 and 21-22) ---- */
+    {k:"h3", t:"Heat versus Temperature"},
+    {k:"p", t:"Distinguish **temperature** from **heat**: temperature is the degree of hotness — the level read on a thermometer — while heat is the **energy that flows** from a hotter body to a colder one, measured in joules. A teaspoon of boiling water holds less heat than the whole pot, at the same temperature. Heat transfer by **conduction** (particle to particle, best in metals), **convection** (carried by the rising currents of fluids) and **radiation** (by waves, needing no medium — the sun's route)."},
+    {k:"rule"},
+    {k:"h3", t:"Thermometry — Scales and Thermometers"},
+    {k:"p", t:"Outline the steps and principles involved in the measurement of temperature. The three **temperature scales**: **Celsius** (ice point 0 °C, steam point 100 °C), **Fahrenheit** (32 °F to 212 °F) and **Kelvin** (absolute scale, K = °C + 273). Convert between them: °F = (9/5)C + 32. The **fundamental intervals** of a thermometer are its two fixed points and the divisions between them; the **types of thermometers and their properties**: the mercury-in-glass (a thermometric liquid expanding uniformly), the alcohol thermometer (for cold climates), the clinical thermometer (with its kink), and the thermocouple."},
+    {k:"rule"},
+    {k:"h3", t:"Thermal Expansion"},
+    {k:"p", t:"Solids, liquids and gases expand on heating: the **expansion — linear, area and volume** — fits rails with gaps and bridges with rollers, loosens the stuck bottle cap in hot water, and sets the thermostat's bimetal strip bending. The expansion of gases the gas laws describe."},
+    {k:"rule"},
+    {k:"h3", t:"Specific Heat Capacity and Latent Heat"},
+    {k:"p", t:"The **specific heat capacity** c is the heat needed to raise 1 kg of a substance by one degree — Q = mcΔT; water's is high (4200 J kg⁻¹ K⁻¹), which is why the sea moderates the coastal air and why water cools engines. The **law of heat exchange**: when bodies mix in a calorimeter, heat lost by the hot equals heat gained by the cold. The **specific latent heat** is the heat of a change of state at fixed temperature — **fusion** for melting and freezing (L_f: Q = mL_f), **vaporization** for boiling and condensing (L_v: Q = mL_v). Apply them on the heating-curve numbers in the lab."},
+    {k:"rule"},
+    {k:"h3", t:"Heat Transfer and the Vacuum Flask"},
+    {k:"p", t:"Discuss heat transfer in the **vacuum flask**: the **vacuum** stops conduction and convection; the **silvered walls** return radiation; the **cork stopper** seals what the glass cannot. A well-made flask keeps the soup hot and the ice unmelted by fighting all three transfers at once."}
+  ],
+
   focus:[
     "Heat versus temperature",
     "Internal energy and specific heat capacity",
@@ -801,6 +941,21 @@ var PH_CURRICULUM = [
     "Describe the vibrating string and the range of human hearing"
   ],
   note:"A <b>wave</b> is a disturbance that transfers energy without transferring matter. In a <b>transverse</b> wave the particles vibrate at right angles to the direction of travel (water waves, light); in a <b>longitudinal</b> wave they vibrate along it (sound). The <b>wave equation</b> is <b>v = fλ</b>, where v is speed, f frequency and λ wavelength. <b>Sound</b> is a longitudinal wave produced by a vibrating source and needs a medium; it cannot travel in a vacuum.",
+  study:[
+    /* ---- course text: Semester One, Period II — Waves and Sound (guide pp. 23-24) ---- */
+    {k:"h3", t:"The Nature of Waves"},
+    {k:"p", t:"A **wave** carries energy from place to place without carrying matter — the sea's rollers travel, the water only bobs. The **characteristics and components**: **amplitude** (greatest displacement), **wavelength λ** (distance between crests), **frequency f** (vibrations each second, in hertz), **period T = 1/f**, and speed **v = fλ**. The **types of waves:** **transverse** (vibration across the travel — water and light) and **longitudinal** (vibration along it — sound); and **mechanical** waves need a medium where **electromagnetic** waves need none. Elaborate the properties: reflection, refraction, diffraction and interference."},
+    {k:"rule"},
+    {k:"h3", t:"Sound — Production, Transmission, Speed"},
+    {k:"p", t:"**Sound** is a longitudinal wave born of a vibrating source that needs a material medium — it passes through air, water and iron, but never through a vacuum. Compute the **speed of sound relative to the temperature of the air** — about 340 m/s at 15 °C, rising roughly 0.6 m/s for each degree; sound also travels fastest in solids and slowest in gases. **Use echoes to measure it** in the lab fieldwork: stand a known distance from a wall, clap in rhythm with the returning echo, and count the claps timed — the round trip of sound in one clap-time gives the speed."},
+    {k:"rule"},
+    {k:"h3", t:"The Qualities of Sound"},
+    {k:"p", t:"Distinguish the **loudness** of sound from its **intensity**: intensity is the physical power per unit area (its logarithm the **intensity level** in decibels), loudness the ear's answer to it. **Pitch** follows frequency; **quality (timbre)** separates the drum from the flute at the same note. Vibrations in **strings** (plucked and bowed, shorter and tighter giving higher notes) and in **tubes** (the organ pipe's stationary waves, open and closed) make the music; and when two close frequencies sound together they produce **beats** — the slow wax-and-wane as the waves slip in and out of step."},
+    {k:"rule"},
+    {k:"h3", t:"The Doppler Effect"},
+    {k:"p", t:"The **Doppler effect**: as a source approaches, its waves pile up and the pitch/rises; as it recedes, they stretch and the pitch falls — the taxi horn that drops as it passes. Design the methods of production and transmission of sound waves with applications: the sonar's echo, the doctor's ultrasound scan, the hall's acoustics."}
+  ],
+
   focus:[
     "Transverse and longitudinal waves",
     "Wavelength, frequency, period, amplitude and speed",
@@ -910,6 +1065,28 @@ var PH_CURRICULUM = [
     "Calculate resistance, current, voltage and power in simple circuits"
   ],
   note:"<b>Electric current</b> is the rate of flow of charge, measured in <b>amperes (A)</b>. <b>Direct current</b> flows one way (from a cell or battery); <b>alternating current</b> reverses direction regularly (from mains). <b>Ohm's law</b> states that, at constant temperature, the current through a conductor is proportional to the voltage across it: <b>V = IR</b>. In a <b>series</b> circuit the same current flows everywhere and resistances add; in a <b>parallel</b> circuit the voltage is the same across every branch.",
+  study:[
+    /* ---- course text: Semester One, Period III — Electricity: Current, Circuits and Ohm's Law (guide pp. 29-30) ---- */
+    {k:"h3", t:"Electric Charge and Current"},
+    {k:"p", t:"**Electric charge** (Q, in coulombs) is the property that makes electricity; the **current** I = Q/t is charge flowing, measured in **amperes** by the ammeter in series. **Direct current (DC)** flows one way — from cells and batteries; **alternating current (AC)** reverses many times a second — from the mains. Identify the **sources of direct current:** **primary cells** (spent once — the dry Leclanché cell of the torch), **secondary cells** (rechargeable — the car's lead-acid battery), and **fuel and solar cells**."},
+    {k:"rule"},
+    {k:"h3", t:"Circuit Components and Diagrams"},
+    {k:"p", t:"Draw and wire circuits with the standard symbols: cell and battery, switch, resistor, rheostat (variable), lamp, ammeter in series and voltmeter across, fuse and earth. Circuit diagrams are the electrician's shorthand; a closed loop is required for current."},
+    {k:"rule"},
+    {k:"h3", t:"Ohm's Law, Resistance and Resistivity"},
+    {k:"p", t:"**Ohm's law:** at constant temperature, the current through a metallic conductor is directly proportional to the potential difference across it — **V = IR**, with R in **ohms (Ω)**. The **factors affecting the resistance of a conductor**: length (R ∝ l), thickness (R ∝ 1/A), material and temperature — confirmed with the wire board, and summarized as R = ρl/A where ρ is the **resistivity**."},
+    {k:"rule"},
+    {k:"h3", t:"Series and Parallel Circuits"},
+    {k:"table", head:["Arrangement","Resistance","Current","Voltage"], rows:[
+      ["Series","R = R₁ + R₂ + R₃","Same everywhere","Divided across the parts"],
+      ["Parallel","1/R = 1/R₁ + 1/R₂ + 1/R₃","Divided among the branches","Same across all branches"]
+    ]},
+    {k:"p", t:"**Distinguish and analyze the series and parallel circuits** — and the series-parallel combinations at the third stroke: lamps in series share and dim; lamps in parallel keep full brightness, which is why homes are wired in parallel. Construct and analyze the circuits to determine resistance, p.d. and current."},
+    {k:"rule"},
+    {k:"h3", t:"EMF, Internal Resistance, Energy and Power"},
+    {k:"p", t:"The **electromotive force (E)** is the total energy a cell gives each coulomb; as current flows the cell's own **internal resistance (r)** spends some, so the terminal voltage falls: E = I(R + r). Calculate the internal resistance of cells and battery. **Electrical energy and power:** P = VI = I²R = V²/R, and energy = power × time. Apply the power relations in the resistance problems."}
+  ],
+
   focus:[
     "Electric current, charge and the ampere",
     "Direct and alternating current",
@@ -1020,6 +1197,21 @@ var PH_CURRICULUM = [
     "Explain how a national grid transmits electricity"
   ],
   note:"Electricity reaches the home through <b>live</b>, <b>neutral</b> and <b>earth</b> wires. A <b>fuse</b> melts to break the circuit if the current is too large. Energy is billed in <b>kilowatt-hours (kWh)</b>: energy = power × time, and cost = energy × price per unit. Home circuits are <b>ring circuits</b> for sockets and radial circuits for lights, each protected by its own fuse or breaker.",
+  study:[
+    /* ---- course text: Semester One, Period IV — Electricity in the Home (guide pp. 29-30) ---- */
+    {k:"h3", t:"Producing Electricity for Liberia"},
+    {k:"p", t:"The sources of electrical energy for the home: **hydroelectric** generation (the Mount Coffee plant on the St. Paul River — falling water turning turbines), **diesel generators** for towns and compounds, and **solar panels** on the village roof. Each converts another energy form into electrical energy; together they feed the **national grid**, which transmits the power at high voltage and low current (to minimize I²R heating losses over long lines) and steps it down near the consumer."},
+    {k:"rule"},
+    {k:"h3", t:"Domestic Circuits"},
+    {k:"p", t:"House wiring is wired in **parallel** so each appliance takes the full mains voltage and switches separately; lighting and socket rings (the **ring circuit**) make the rounds of the house. Know the wires: **live** (carries the voltage — insult to touch), **neutral** (completes the circuit, near earth potential) and **earth** (the safety wire, running current away if the live touches a metal case). The **fuse** — a thin wire that melts when the current is too high (or today the circuit breaker) — sits on the live line; **double insulation** (an all-plastic case) protects appliances that have no earth wire."},
+    {k:"rule"},
+    {k:"h3", t:"Paying for Electricity"},
+    {k:"p", t:"**Electrical energy sells by the kilowatt-hour (kWh)** — the 'unit': energy = power × time, so **units used = (power in kW) × (time in h)**. Cost of electricity: a 100 W bulb for 10 hours is 1 unit; a 2 kW cooker for 2 hours is 4 units. Read the meter (cumulative kWh) and compute the month's bill at the tariff per unit. Calculate examples for the appliances in your home."},
+    {k:"rule"},
+    {k:"h3", t:"Electrical Safety Rules"},
+    {k:"bul", items:["Never touch switches or appliances with wet hands — water conducts.","Never stick anything but a proper plug into a socket.","Replace worn or taped-over flex; never join wire by twisting and taping.","Switch off, and unplug, before servicing anything; keep children away from open installations.","Use the correct fuse rating — never bypass a fuse with wire.","Earth metal-cased appliances; treat every wire as live until proved dead."]}
+  ],
+
   focus:[
     "Methods of producing electricity: hydro, diesel generators, solar",
     "The national grid and transmission",
@@ -1129,6 +1321,21 @@ var PH_CURRICULUM = [
     "Explain how a magnet is used in the magnetic compass"
   ],
   note:"A <b>magnet</b> has two poles, <b>north (N)</b> and <b>south (S)</b>. Unlike poles attract and like poles repel. The space where a magnetic force acts is the <b>magnetic field</b>, drawn as <b>field lines</b> running from north to south. A bar magnet can be made by <b>stroking</b>, <b>electric current</b> (solenoid) or <b>hammering in a field</b>, and demagnetised by <b>heating</b>, <b>dropping</b> or <b>withdrawing it from an alternating current coil</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Magnetism and Electromagnetism (guide pp. 31-32) ---- */
+    {k:"h3", t:"Magnets — Types and Properties"},
+    {k:"p", t:"A **magnet** has attractive and directive properties: it pulls iron and steel and, swung free, settles north-south. The **types of magnets:** natural (lodestone), and artificial — bar, horseshoe and the strong modern alloys; **permanent** magnets hold their magnetism (steel), **temporary** magnets hold it only while magnetized (soft iron). **Magnetic materials:** iron, steel, cobalt and nickel — and their alloys; copper, aluminium, wood and rubber ignore the magnet."},
+    {k:"rule"},
+    {k:"h3", t:"Poles and the Law of Magnetism"},
+    {k:"p", t:"The force concentrates at the two **poles** — north-seeking and south-seeking. The **law of magnetic poles:** like poles repel, unlike poles attract. Repulsion alone proves magnetism — attraction only shows the other body might be mere unseduced iron. Breaking a magnet makes two smaller magnets, poles and all: no pole exists alone."},
+    {k:"rule"},
+    {k:"h3", t:"Magnetic Fields, Flux and the Earth"},
+    {k:"p", t:"A **magnetic field** is the space around a magnet where its force works; draw it with **field lines** running from N to S, closest where the force is strongest, never crossing. Map the field of a bar magnet with iron filings or a **plotting compass** — in the laboratory plotting the field around a bar magnet on the sheet. **Magnetic flux** counts the lines through an area, and **magnetic flux density** B is flux per unit area. The **Earth itself is a great magnet:** its magnetic south lies near the geographic north, and the **compass** needle aligns with Earth's field — the traveller's idea of direction."},
+    {k:"rule"},
+    {k:"h3", t:"Magnetizing and Demagnetizing"},
+    {k:"p", t:"**Methods of magnetizing:** stroking with a magnet (single and divided touch), and the electrical method — a strong DC current in a coil around the specimen. **Demagnetizing:** heating beyond the hot point, hammering, or withdrawing slowly from an AC coil. The **uses of magnets:** compasses, the telephone and loudspeaker, electric meters, magnetic catches and the separation of iron scrap."}
+  ],
+
   focus:[
     "Properties of magnets; magnetic and non-magnetic materials",
     "Poles, attraction and repulsion",
@@ -1237,6 +1444,21 @@ var PH_CURRICULUM = [
     "Describe the transformer and state how it steps voltage up or down"
   ],
   note:"An electric current produces a <b>magnetic field</b>, and a conductor in a magnetic field experiences a force — this is the basis of the <b>motor</b>. <b>Fleming's left-hand rule</b> gives the direction of the force (First finger = Field, seCond finger = Current, thuMb = Motion). <b>Electromagnetic induction</b> is the reverse: a changing magnetic field in a coil produces an <b>e.m.f.</b> — the basis of the <b>generator</b> and the <b>transformer</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Current and Magnetism: Motors, Generators and Transformers (guide pp. 31-34) ---- */
+    {k:"h3", t:"The Magnetic Effect of a Current"},
+    {k:"p", t:"An electric current **always produces a magnetic field** — magnetic effect is what makes electricity do work. A straight current carries circular field lines about it (the right-hand grip rule); winding the wire into a **solenoid** concentrates the field into a bar-magnet pattern, and an **iron core** inside makes the **electromagnet** — strong, switchable, and the heart of relays and bells."},
+    {k:"rule"},
+    {k:"h3", t:"Force on a Conductor — the Motor"},
+    {k:"p", t:"A current-carrying conductor lying across a magnetic field feels a **force**; **Fleming's left-hand rule** gives the direction: First finger Field, seCond finger Current, thuMb Motion. Wound into a coil between magnet poles, current makes the coil rotate — the **DC electric motor**, with a **split-ring commutator** to reverse the current every half-turn so the rotation keeps its direction. (Distinguish the AC and DC motors by their supply and their commutator.) Build a simple DC motor in the laboratory. The **moving-coil galvanometer** is the same action tamed: the coil's deflection against a spring measures the current — the ancestor of ammeter and voltmeter."},
+    {k:"rule"},
+    {k:"h3", t:"Electromagnetic Induction — the Generator"},
+    {k:"p", t:"**Electromagnetic induction:** when the magnetic flux through a circuit changes, an e.m.f. is induced in it — move the magnet or move the coil, either works. **Faraday's law:** the induced e.m.f. is proportional to the rate of change of flux. **Fleming's right-hand rule** gives the induced current's direction (Field, Motion, Current). The **generator (dynamo)** winds a coil in a magnetic field and spins it — mechanical energy in, electrical out, supply to the national grid. Distinguish motor from generator: one feeds current to make motion, the other feeds motion to make current."},
+    {k:"rule"},
+    {k:"h3", t:"The Transformer"},
+    {k:"p", t:"The **transformer** changes AC voltage: AC in the **primary** coil drives an alternating flux through the soft-iron core, which induces an alternating e.m.f. in the **secondary** coil. The turns ratio governs it: **Vs/Vp = Ns/Np** — **step-up** transformers raise the voltage for the grid's long-distance wires (so the I²R line losses fall), and **step-down** transformers return it to 220 V for the house. Elaborate the principle and the function: a transformer works only on AC, and for an ideal transformer VpIp = VsIs."}
+  ],
+
   focus:[
     "The magnetic effect of a current; the solenoid",
     "Force on a conductor; Fleming's left-hand rule",
@@ -1347,6 +1569,25 @@ var PH_CURRICULUM = [
     "State and apply the law of conservation of momentum to collisions"
   ],
   note:"<b>Speed</b> is scalar; <b>velocity</b> is speed with direction and is a vector. <b>Acceleration</b> is the rate of change of velocity. The <b>equations of motion</b> for constant acceleration are <b>v = u + at</b>, <b>s = ut + ½at²</b> and <b>v² = u² + 2as</b>. <b>Newton's laws</b> describe inertia, F = ma, and action and reaction. <b>Momentum</b> p = mv, and in a collision total momentum is conserved.",
+  study:[
+    /* ---- course text: Semester Two, Period I — Motion and Newton's Laws (guide pp. 5-6, 15-16, 19-20) ---- */
+    {k:"h3", t:"The Elements of Motion"},
+    {k:"p", t:"Distinguish the elements of motion: **distance** (the length travelled, a scalar) from **displacement** (distance with direction, a vector); **speed** = distance ÷ time from **velocity** = displacement ÷ time (with direction); **acceleration** = change of velocity ÷ time, in m/s² — negative acceleration decelerates. Uniform velocity covers equal displacements in equal times; uniform acceleration changes velocity equally in equal times."},
+    {k:"rule"},
+    {k:"h3", t:"Equations and Graphs of Uniformly Accelerated Motion"},
+    {k:"p", t:"For uniform acceleration the **equations of uniform linear motion:** v = u + at; s = ut + ½at²; v² = u² + 2as (u initial, v final velocity, s displacement, t time). Analyze motion by **graphical analysis on standard graph sheets:** the **position/displacement-time graph** slopes for velocity — curving upward when accelerating; the **velocity-time graph** slopes for acceleration, and its **area** gives the displacement. Interpret and construct both in the graph exercises."},
+    {k:"rule"},
+    {k:"h3", t:"Freely Falling Bodies"},
+    {k:"p", t:"Near the Earth every falling body accelerates at **g ≈ 9.8 m/s² (use 10 m/s²)** downward whatever its mass — air resistance aside, the stone and the feather fall together (as in the evacuated tube). Apply the equations of motion with a = g; a body thrown up slows at −10 m/s² to rest, then returns symmetrically. In the lab, measure the acceleration of a trolley on an inclined plane with ticker-timer or stopwatch."},
+    {k:"rule"},
+    {k:"h3", t:"Newton's Laws of Motion and Universal Gravitation"},
+    {k:"p", t:"**First law** (inertia): a body stays at rest or in uniform motion in a straight line unless a resultant force acts on it. **Second law:** the rate of change of momentum is proportional to the applied force — **F = ma** (newton: the force giving 1 kg an acceleration of 1 m/s²); solve the problems for mass, force and acceleration together. **Third law:** to every action there is an equal and opposite reaction — the launcher pushes the rocket's gas back, and the gas pushes the rocket on. **Newton's law of universal gravitation:** every mass attracts every other mass, F = Gm₁m₂/r² — gravity quiets the moon into orbit and drops the mango."},
+    {k:"rule"},
+    {k:"h3", t:"Circular Motion, Momentum and Collisions"},
+    {k:"p", t:"Motion in two dimensions: the **projectile** (horizontal speed constant, vertical speed accelerated by g); **circular motion** — a body in a circle accelerates toward the centre, held by the **centripetal force** F = mv²/r (the string's pull, the road's friction); **simple harmonic motion** — acceleration proportional to displacement, toward the middle (the pendulum and the spring, period T)."},
+    {k:"p", t:"Analyze the nature and effect of **momentum:** p = mv (kg·m/s). **Impulse** = force × time = change of momentum; the crumpling bumper lengthens the time and shrinks the force — the use of seatbelts and the dangers avoided in collisions of moving objects. The **law of conservation of momentum:** for interacting bodies with no external force, total momentum is unchanged — in **elastic collisions** kinetic energy is also conserved; in **inelastic collisions** the bodies may stick and energy is spent as heat and sound. Angular momentum is likewise conserved — the skater spinning faster with arms drawn in."}
+  ],
+
   focus:[
     "Speed, velocity and acceleration",
     "Graphs of motion",
@@ -1458,6 +1699,24 @@ var PH_CURRICULUM = [
     "Describe Bernoulli's principle and its applications"
   ],
   note:"<b>Pressure</b> is the force acting normally per unit area, P = F/A, measured in <b>pascals (Pa)</b> or N/m². In a liquid, <b>pressure = density × g × depth</b>, so it increases with depth. <b>Archimedes' principle</b> states that an object in a fluid experiences an upthrust equal to the weight of fluid it displaces. <b>Pascal's principle</b> says pressure applied to an enclosed fluid is transmitted equally in all directions — the basis of the hydraulic press.",
+  study:[
+    /* ---- course text: Semester Two, Period II — Hydrostatics and Fluid Pressure (guide pp. 3-4) ---- */
+    {k:"h3", t:"Pressure — in Solids, Liquids and Gases"},
+    {k:"p", t:"**Pressure** is force per unit area: **P = F/A**, in pascals (Pa) — 1 Pa = 1 N/m². A sharp cutlass cuts because the small area makes the pressure great; the tractor's broad tyres press softly and so do not sink. Compare the behaviour: a **solid** passes pressure on only at its contacts; a **liquid at rest** presses equally in all directions, and a **gas** presses everywhere on its container's walls."},
+    {k:"rule"},
+    {k:"h3", t:"Pressure in a Liquid"},
+    {k:"p", t:"The pressure in a liquid increases with **depth** and with the liquid's **density**: at depth h, **P = ρgh** (h in metres) — independent of the vessel's shape, which is why the dam's wall is thickest at its foot, and why the deep well's water bears more than the pan's. Liquids find their own level and transmit pressure undiminished — **Pascal's principle** — so a small force on a small piston becomes a great force on a large one: the **hydraulic press**, the brake pedal and the jack, where F₂/F₁ = A₂/A₁."},
+    {k:"rule"},
+    {k:"h3", t:"Density, Upthrust, Archimedes and Flotation"},
+    {k:"p", t:"**Density** ρ = m/V (kg/m³) — distinguish it from **relative density** (density ÷ density of water, a pure number), measured with the **density bottle** or the **hydrometer**. A body immersed in a fluid feels an **upthrust**: **Archimedes' principle** says the upthrust equals the weight of the fluid displaced — verified in the laboratory by weighing a body in air, then in water. The **law of flotation** follows: a floating body displaces its own weight of fluid — so the iron ship rides the sea, its average density below water's; the hydrometer sinks to its mark; the drowned stone, denser than water, stays down."},
+    {k:"rule"},
+    {k:"h3", t:"Gas Pressure and its Measurement"},
+    {k:"p", t:"The atmosphere itself presses on us: measure it with the **barometer** — mercury filling an inverted tube standing at **76 cm (760 mmHg)** at sea level, falling as one climbs a hill; the **manometer** gauges the excess pressure of a trapped gas. The **aneroid barometer** (a sealed thin box with a pointer) is the portable form and the base of the altimeter."},
+    {k:"rule"},
+    {k:"h3", t:"Bernoulli's Principle and Applications"},
+    {k:"p", t:"**Bernoulli's principle:** where a fluid flows faster, its pressure falls. It lifts the aeroplane wing (fast air over the curved top, slow beneath), draws the spray from the scent-atomizer, and makes two racing cars suck together. Applications in the house and on the road: the Bunsen burner's air hole, the filter pump."}
+  ],
+
   focus:[
     "Definition of pressure and its unit",
     "Pressure in a liquid: P = ρgh",
@@ -1565,6 +1824,30 @@ var PH_CURRICULUM = [
     "Give applications of each band of the spectrum"
   ],
   note:"<b>Electromagnetic waves</b> are transverse waves of electric and magnetic fields that travel through empty space at the speed of light, <b>c ≈ 3 × 10⁸ m/s</b>. In order of increasing frequency (and decreasing wavelength) the spectrum runs: <b>radio, microwave, infrared, visible, ultraviolet, X-ray, gamma</b>. All obey the <b>universal wave equation</b> <b>c = fλ</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period III — The Electromagnetic Spectrum (guide pp. 25-26) ---- */
+    {k:"h3", t:"Radiant Energy and Electromagnetic Waves"},
+    {k:"p", t:"**Radiant energy** travels as **electromagnetic waves** — oscillating electric and magnetic fields that need no material medium (which is how the sun's energy reaches us across empty space). All electromagnetic waves in a vacuum travel at the same **speed of light, c = 3.0 × 10⁸ m/s**, related to frequency and wavelength by the **universal wave equation c = fλ** — as the frequency rises, the wavelength shrinks. Determine the sources of radiant energy and their importance."},
+    {k:"rule"},
+    {k:"h3", t:"The Bands of the Spectrum"},
+    {k:"p", t:"Analyze the major regions of the electromagnetic spectrum, in order of rising frequency (falling wavelength):"},
+    {k:"table", head:["Band","Source/production","Uses and effects"], rows:[
+      ["Radio waves","Oscillating currents in an aerial","Broadcasting, communication"],
+      ["Microwaves","Electronic tubes","Cooking from within, radar, mobile telephony"],
+      ["Infrared","Every warm body","Heaters, remote controls, night viewing"],
+      ["Visible light","Very hot sources","The only band the eye sees — red to violet"],
+      ["Ultraviolet","The sun, arc lamps","Vitamin D and sun-sunburn, sterilizing, fluorescent security marks"],
+      ["X-rays","Fast electrons striking a target","Peering through flesh at bone, inspecting welds"],
+      ["Gamma rays","Radioactive nuclei","Killing cancers, sterilizing, tracing"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"The Dangers of the Short-Wave Bands"},
+    {k:"p", t:"The same energy that serves can harm: **ultraviolet** burns skin and eyes (the sun's excess, the welder's arc — the ozone layer normally screens it); **X-rays and gamma rays** penetrate and ionize living cells — handle radioactive sources with distance, shielding and short exposure, with the radiation symbol respected wherever it appears. In the laboratory, investigate the **inverse square law** of radiation from a source: intensity ∝ 1/d²."},
+    {k:"rule"},
+    {k:"h3", t:"The Photoelectric Effect and the Laser"},
+    {k:"p", t:"The **photoelectric effect** — electrons ejected from a metal surface by light of sufficient frequency, never below it however bright — showed that light arrives in packets (photo-electric cells put it to work in doors and meters), and the **principle of the laser** — excited atoms emitting identical photons in step — produces the intense, single-colour, narrow beam of the surveyor, the surgeon and the compact disc."}
+  ],
+
   focus:[
     "Nature and production of electromagnetic waves",
     "The speed of light in vacuum",
@@ -1677,6 +1960,24 @@ var PH_CURRICULUM = [
     "Solve problems on lenses and refractive index"
   ],
   note:"<b>Light</b> travels in straight lines. The <b>laws of reflection</b> state that the angle of incidence equals the angle of reflection and that the incident ray, normal and reflected ray lie in the same plane. <b>Refraction</b> is the bending of light when it passes from one medium to another; the <b>refractive index</b> n = sin i ÷ sin r (Snell's law). <b>Dispersion</b> splits white light into its colours through a prism. A <b>convex lens</b> converges light and forms images; it is the principle of the camera, the eye and the telescope.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Optics (guide pp. 25-28) ---- */
+    {k:"h3", t:"Light — Sources, Propagation, Shadows"},
+    {k:"p", t:"**Sources of light:** the sun and lamps (luminous), the moon and this page (illuminated). Light travels in **straight lines** — rectilinear propagation — as shadows prove: the **umbra** of full shadow and **penumbra** of partial shadow give us solar (**Sun–Moon–Earth)** and lunar (**Sun–Earth–Moon**) eclipses. The **pinhole camera** trades the same straightness for an inverted, diminished image on its screen — magnification = image size ÷ object size = image distance ÷ object distance. Examine the effects of its burning on the environment with the mirror's and lens's concentrated sun."},
+    {k:"rule"},
+    {k:"h3", t:"Reflection and its Laws; Mirrors"},
+    {k:"p", t:"The **laws of reflection:** the incident ray, the reflected ray and the **normal** lie in one plane, and the angle of incidence equals the angle of reflection. The **plane mirror** forms an image **laterally inverted, the same size, virtual, and as far behind the mirror as the object is in front**. The **spherical mirrors:** a **concave** mirror converges light — images real or magnified (the shaving mirror, the torch reflector); a **convex** mirror always gives small, upright, virtual images over a wide field (the car's wing mirror, security mirrors). Draw the **ray diagrams** with the principal axis, pole, **centre of curvature C** and principal **focus F**; the mirror equation 1/f = 1/u + 1/v with f = r/2."},
+    {k:"rule"},
+    {k:"h3", t:"Refraction — Laws, Snell, Refractive Index"},
+    {k:"p", t:"**Refraction** is the bending of light as it crosses between media of different optical density: toward the normal going in to glass, away coming out. The **laws of refraction:** the incident ray, refracted ray and normal lie in one plane, and **Snell's law: sin i / sin r = constant = n**, the **refractive index** — which is also the ratio of the **speed of light in vacuum to that in the medium**, n = c/v. A pool's **real depth** exceeds its **apparent depth** by the same factor: n = real depth / apparent depth — the straight stick 'bending' at the water. Calculate the refractive index of a glass block in the laboratory by tracing rays through it with pins; apply Snell's law to compute the index."},
+    {k:"rule"},
+    {k:"h3", t:"Critical Angle and Total Internal Reflection"},
+    {k:"p", t:"Light travelling from glass toward air refracts ever wider; at the **critical angle** C (sin C = 1/n) the ray just grazes the surface — and past it, with no route out, all the light reflects back inside: **total internal reflection**. Distinguish the two: the critical angle is the threshold; total internal reflection the result. It makes the prism's perfect mirrors, the sparkling diamond, the mirage on the hot road, and the **optical fibres** that carry telephone calls and endoscopes by the thousand reflections."},
+    {k:"rule"},
+    {k:"h3", t:"Dispersion, Colours, Lenses and the Eye"},
+    {k:"p", t:"The prism splits white light into the spectrum — **dispersion** — because each colour refracts by its own amount, violet most, red least: the rainbow is the sky's dispersion. Distinguish **primary colours** of light (red, green, blue — adding to white) from **primary pigments** (cyan, magenta, yellow — subtracting to black). **Lenses:** the **convex (converging)** forms real inverted images for camera, projector and telescope — and a magnified virtual one inside the focal length (the magnifying glass); the **concave (diverging)**, small upright images and the correction of **short sight (myopia)**, as the convex corrects **long sight (hyperopia)** — lenses and eye defects. The lens formula matches the mirror's: 1/f = 1/u + 1/v; m = v/u."}
+  ],
+
   focus:[
     "The pinhole camera and the rectilinear propagation of light",
     "The laws of reflection; the plane mirror",
@@ -1790,6 +2091,24 @@ var PH_CURRICULUM = [
     "State applications of electrostatics"
   ],
   note:"Matter is made of atoms with <b>protons</b> (positive), <b>electrons</b> (negative) and <b>neutrons</b> (neutral). Charging by <b>friction</b> transfers electrons between materials, so one gains a negative charge and the other a positive charge. <b>Like charges repel and unlike charges attract</b>. The <b>electroscope</b> detects charge, the <b>Van de Graaff generator</b> builds up a high voltage, and a <b>capacitor</b> stores charge.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Electrostatics (guide pp. 11-12) ---- */
+    {k:"h3", t:"The Concept of Electric Charge"},
+    {k:"p", t:"Every atom carries the two kinds of electric charge: the positive **protons** locked in the nucleus and the mobile negative **electrons** outside. Rubbing is a robbery of electrons: friction strips them from one body to another — the rubbed comb lifts paper bits, the balloon rubbed on hair clings to the wall. **State the two kinds of charges** and the **basic law of electrostatics: like charges repel, unlike charges attract.**"},
+    {k:"rule"},
+    {k:"h3", t:"Conductors and Insulators; Methods of Charging"},
+    {k:"p", t:"**Conductors** (metals, the human body, the damp earth) let charge run through their free electrons; **insulators** (glass, plastics, rubber, dry air) hold their charge where it lands. The **methods of charging a body:** by **friction** (rubbing), by **contact** (sharing charge with a charged body), and by **induction** (charge rearranging without contact — the way to a permanent charge on a conductor with none of the source's charge spent). **Detect an electric charge with the gold-leaf electroscope:** charged, its leaf diverges. Demonstrate charging by friction and induction with balloons rubbed on wool."},
+    {k:"rule"},
+    {k:"h3", t:"Coulomb's Law, Electric Fields and Potential"},
+    {k:"p", t:"**Coulomb's law of electrostatics:** the force between two point charges is F = kq₁q₂/r² — proportional to each charge, inverse-square in the distance, with k ≈ 9×10⁹ N·m²/C². An electric charge produces around it an **electric field** — the space in which another charge feels force; draw the **lines of force for single and paired charges**: from positive to negative, radial for a lone point charge, never crossing, dense where the field is strong. **Electric field intensity (strength)** E = F/q (N/C); the **potential difference** between two points is the **work done in an electric field per unit charge**, V = W/q (volts). Solve problems on Coulomb's law, field intensity and work."},
+    {k:"rule"},
+    {k:"h3", t:"The Van de Graaff and Lightning"},
+    {k:"p", t:"The **Van de Graaff generator** piles charge by the million volts on its dome by carrying it in on a moving belt — for accelerating particles and for spectacle. Nature's electrostatics is the thunderstorm: the friction of rising air charges the cloud till the spark to earth we call **lightning** — and the pointed **lightning conductor** discharges the danger quietly into the ground."},
+    {k:"rule"},
+    {k:"h3", t:"Capacitors and Capacitance"},
+    {k:"p", t:"A **capacitor** stores electric charge on two plates kept apart by an insulator (the dielectric); its **capacitance C = Q/V** in farads — raised by larger plates, closer spacing, and a better dielectric. Identify the **types and uses of capacitors:** camera flash and radio tuning; in **parallel the capacitances add (C = C₁ + C₂)**, in **series they combine reciprocally (1/C = 1/C₁ + 1/C₂)** — the network rules are the mirror image of resistors. Work the networks of capacitors — series, parallel and series-parallel — in the exercise set."}
+  ],
+
   focus:[
     "The atomic model: protons, electrons and neutrons",
     "Charging by friction, contact and induction",
@@ -1900,6 +2219,25 @@ var PH_CURRICULUM = [
     "Describe thermionic emission, the diode and simple electronic circuits"
   ],
   note:"The nucleus contains <b>protons (Z)</b> and <b>neutrons</b>; the <b>mass number A</b> is the total. <b>Isotopes</b> are atoms of the same element with different numbers of neutrons. Unstable nuclei emit <b>alpha (α)</b>, <b>beta (β)</b> or <b>gamma (γ)</b> radiation. <b>Half-life</b> is the time for half the nuclei in a sample to decay. <b>Fission</b> splits a heavy nucleus and <b>fusion</b> joins light nuclei, both releasing huge energy. A <b>diode</b> lets current flow one way and is used for rectification.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Atomic and Nuclear Physics; Electronics (guide pp. 33-39) ---- */
+    {k:"h3", t:"The Atom and the Electron"},
+    {k:"p", t:"Draw and analyze the typical atom: a minute dense **nucleus** of protons and neutrons, with the electrons around it; the **atomic number Z** counts the protons, the **mass number A** the protons + neutrons, and **isotopes** are atoms of the same element whose neutron counts differ (and with them, A). Examine the **properties of the electron** — discovered in **cathode rays**: tiny mass (1/1836 of the proton's), unit negative charge, deflected by electric and magnetic fields. **Thermionic emission** boils electrons off a hot cathode, and the **photoelectric emission** shakes them out with light — the doors by which electrons leave matter; X-rays are born where fast electrons are stopped."},
+    {k:"rule"},
+    {k:"h3", t:"Radioactivity — Types, Decay, Half-life"},
+    {k:"p", t:"**Radioactivity** is the spontaneous break-up of an unstable nucleus. The **types of radiation:** **alpha** particles (helium nuclei — charged +2, short range, stopped by paper, strongly ionizing), **beta** particles (fast electrons — stopped by thin metal) and **gamma** rays (uncharged electromagnetic waves — needing lead or thick concrete). **Radioactive decay** is random and exponential: the **half-life** — the time for half the atoms present to decay — is constant for each isotope, from fractions of a second to billions of years. In the laboratory simulate the decay curve by throwing dice ('sixes decay'), plotting survivors against throws."},
+    {k:"p", t:"Identify radioactive substances and the **effects of radioactivity on the human body** — radiation burns, sickness, cancer and damaged cells — and take the appropriate precautions against the harm of long-term exposure: shield, distance, hands off, short exposure. The **uses of radioactive isotopes**: treating cancers, sterilizing instruments, dating old things by carbon-14, and tracing paths through pipes and bodies."},
+    {k:"rule"},
+    {k:"h3", t:"Fission and Fusion — the Uses of Nuclear Energy"},
+    {k:"p", t:"Distinguish the types of nuclear reactions: **fission** — a heavy nucleus (uranium-235) splits when it swallows a neutron, releasing energy and more neutrons that sustain a **chain reaction**; controlled, it runs nuclear power stations; uncontrolled, the atomic bomb. **Fusion** — light nuclei (hydrogen's) joining to helium at star-temperatures — powers the sun and promises clean energy, tamed nowhere yet. Mass becomes energy by Einstein's **E = mc²**."},
+    {k:"rule"},
+    {k:"h3", t:"Basic Electronics — Semiconductors"},
+    {k:"p", t:"A **semiconductor** conducts between conductor and insulator — silicon and germanium. **Doping** adds trace impurities: donor atoms (with extra electrons) give **n-type**, acceptor atoms (leaving electron 'holes') give **p-type**; undoped material is **intrinsic**, doped **extrinsic**, and **band theory** explains their conductance rising with temperature — unlike a metal's. The **semiconductor devices:** the **diode** (conducts one way — rectifying AC to DC), the **thermistor** (resistance falling as it warms — the thermometer of circuits) and the **transistor** (the current amplifier and switch that makes modern electronics possible). Analyze their functions in a simple circuit."},
+    {k:"rule"},
+    {k:"h3", t:"High Energy Physics — the Frontier"},
+    {k:"p", t:"Modern physics pushes deeper: **quantum mechanics** rules the very small — Heisenberg's **uncertainty principle** limits how precisely a particle's position and momentum can both be known — and **quantum numbers** describe the electron's state and its motion about the nucleus. **Particle accelerators** (linacs and cyclotrons, giant rings) smash particles to reveal what's within, with **detecting instruments** (the cloud and bubble chambers, counters) recording their tracks; the **four basic interactions** between particles of matter — the gravitational, the electromagnetic, the weak and the strong nuclear — run the subatomic reactions, and the **conservation laws of particle physics** decide what may happen in them. Einstein's photoelectric equation hf = work function + KE ties the age-old light to the quantum."}
+  ],
+
   focus:[
     "The atom: protons, neutrons, electrons; A and Z",
     "Isotopes and their uses",
