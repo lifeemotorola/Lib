@@ -32,6 +32,18 @@ with sync_playwright() as p:
     pg = b.new_page(viewport={"width": 1366, "height": 900})
     pg.goto(HTML); pg.wait_for_timeout(900)
 
+    # --- 0. install metadata and Liberia-map favicon are present ---
+    pwa = pg.evaluate("""()=>({
+        manifest:document.querySelector('link[rel="manifest"]')?.getAttribute('href'),
+        favicon:document.querySelector('link[rel="icon"]')?.getAttribute('href'),
+        touch:document.querySelector('link[rel="apple-touch-icon"]')?.getAttribute('href'),
+        install:!!document.getElementById('installApp')
+    })""")
+    if pwa["manifest"] != "manifest.webmanifest" or not (pwa["favicon"] or "").startswith("data:image/png;base64,"):
+        bad.append(f"PWA manifest or inlined favicon missing: {pwa}")
+    if pwa["touch"] != "assets/icons/apple-touch-icon.png" or not pwa["install"]:
+        bad.append(f"touch icon or install control missing: {pwa}")
+
     # --- 1. the three key choices are visible without opening anything ---
     for sel, name in [("#session", "session"), ("#subjects", "subject"), ("#grade", "grade")]:
         if not pg.eval_on_selector(sel, "e=>e.offsetHeight>0"):

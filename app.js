@@ -1266,8 +1266,43 @@
     $("#exportbar").style.display = "flex";
   }
 
+  /* ---------------- installable Android / desktop app ----------------
+     Browsers expose the native install prompt only after the manifest and
+     service worker pass their checks. Keep the button hidden until then. */
+  var deferredInstallPrompt = null;
+  window.addEventListener("beforeinstallprompt", function (event) {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    var button = $("#installApp");
+    if (button) button.hidden = false;
+  });
+  window.addEventListener("appinstalled", function () {
+    deferredInstallPrompt = null;
+    var button = $("#installApp"), status = $("#installStatus");
+    if (button) button.hidden = true;
+    if (status) status.textContent = "The course pack generator is installed and ready offline.";
+  });
+
   document.addEventListener("DOMContentLoaded", function () {
     document.body.setAttribute("data-subject", cur);
+
+    var installButton = $("#installApp");
+    if (installButton) {
+      if (deferredInstallPrompt) installButton.hidden = false;
+      installButton.onclick = function () {
+        if (!deferredInstallPrompt) return;
+        deferredInstallPrompt.prompt();
+        deferredInstallPrompt.userChoice.then(function () {
+          deferredInstallPrompt = null;
+          installButton.hidden = true;
+        });
+      };
+    }
+    if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
+      navigator.serviceWorker.register("./sw.js").catch(function () {
+        /* The original single-file, file:// workflow still works without PWA support. */
+      });
+    }
     renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods();
 
     /* keep the preview fitted to the viewport on resize and rotation */

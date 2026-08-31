@@ -9,6 +9,15 @@ cd "$(dirname "$0")"
   echo '<meta charset="utf-8">'
   echo '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
   echo '<meta name="color-scheme" content="light">'
+  echo '<meta name="theme-color" content="#0b3b8c">'
+  echo '<meta name="application-name" content="Liberia Packs">'
+  echo '<link rel="manifest" href="manifest.webmanifest">'
+  echo '<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">'
+  if [ -f assets/icons/favicon-48.png ]; then
+    printf '<link rel="icon" type="image/png" sizes="48x48" href="data:image/png;base64,'
+    base64 -w0 assets/icons/favicon-48.png
+    echo '">'
+  fi
   echo '<title>Liberian Course Pack Generator &middot; English, French, General Science, Mathematics, Social Studies, Religious &amp; Moral Education, Physical Education, Biology, Chemistry, Physics, Economics, English Grammar &amp; Geography</title>'
   echo '<style>'
   cat styles.css
