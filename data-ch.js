@@ -4,6 +4,11 @@
    they are merged into that period's unit, as the guide itself teaches them
    together.
 
+   Every unit carries a `study[]` block list — the course text of the guide,
+   rendered verbatim on the Study Notes page, with a comment noting the guide
+   pages covered. `**bold**` marks the key terms; table cells take no markup
+   because the renderer escapes them.
+
    Uses the SC_CURRICULUM unit shape so GEN_SC renders it unchanged, plus the
    optional `worked` field (calculations with steps) which GEN_SC renders only
    when present:
@@ -41,6 +46,25 @@ var CH_CURRICULUM = [
     "Distinguish physical and chemical properties and changes, and classify matter"
   ],
   note:"<b>Chemistry</b> is the study of matter, its composition, properties and the changes it undergoes. The <b>scientific method</b> runs: observation → question → hypothesis → experiment → analysis → conclusion. The <b>SI base units</b> are the metre (length), kilogram (mass), second (time), kelvin (temperature) and mole (amount). <b>Matter</b> is anything that has mass and occupies space.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Chemistry; Matter and its Properties (guide pp. 3-6) ---- */
+    {k:"h3", t:"The Development of Chemistry"},
+    {k:"p", t:"**Chemistry** is the study of matter and the changes it undergoes. Its development runs from the alchemists' fires and the metal-workers of old to the modern laboratory science. The **scientific method** is its engine — observe, question, hypothesize, experiment, conclude — and learners apply its steps to solve problems. Among the **contributors of chemistry** are Dalton, Mendeleev, Rutherford and Bohr; among its **branches**: organic, inorganic, physical, analytical and biochemistry."},
+    {k:"rule"},
+    {k:"h3", t:"Units of Measurement"},
+    {k:"p", t:"Distinguish the **systems of units**: the SI (metric) system of the laboratory — mass in **kilograms**, length in **metres**, time in **seconds**, temperature in **kelvins/degrees**, volume in **litres or cubic metres** — and solve simple **conversion problems** between units. Write very large and very small measures in **scientific notation** and to the proper number of **significant figures**, and tell **precision** (how nearly repeated measures agree) from **accuracy** (how nearly they hit the true value), with standard deviation. Practise by measuring different objects — length, volume, time, mass, temperature and area — with rulers, tape rules, vernier calipers, the micrometer, stopwatches, balances and thermometers."},
+    {k:"rule"},
+    {k:"h3", t:"Chemical Symbols, Formulae and Naming Compounds"},
+    {k:"p", t:"The **origin of the symbols of the elements** lies with Berzelius: one or two letters, from the modern or the Latin name (Fe from ferrum, Na from natrium). Apply the symbols to write the **formulae** of compounds — the **types of formula**: empirical, molecular and structural — and to name compounds by the **IUPAC nomenclature**: the metal first, the non-metal ending in -ide; prefixes di-, tri-, tetra- where they are needed. Assignment: write the formula for the IUPAC names of some simple compounds."},
+    {k:"rule"},
+    {k:"h3", t:"Apparatus and Safety Rules"},
+    {k:"p", t:"In the laboratory, **identify and draw the apparatus** — beakers, flasks, test tubes, the Bunsen burner, pipettes and burettes — discuss **safety and the safety rules**: recognize the **safety and hazard signs** (flammable, toxic, corrosive), tie back hair, never taste a chemical, point no heated tube at anyone, and report every spill at once. Outline the format of a **lab report**: title, aim, apparatus, method, results, conclusion."},
+    {k:"rule"},
+    {k:"h3", t:"Matter and its Properties"},
+    {k:"p", t:"**Matter** is anything that has mass and occupies space. The **states of matter and their changes** — solid, liquid and gas, passing by melting, evaporation, condensation, freezing and sublimation. Identify the **properties and changes of matter**: a **physical change** alters no substance (ice to water); a **chemical change** makes a new one (iron to rust). **Classification of mixtures**: solid-solid, solid-liquid and liquid-liquid."},
+    {k:"p", t:"**Standard separation techniques for mixtures** — for solid-solid (handpicking, magnetism, dissolving), solid-liquid (filtration, evaporation) and liquid-liquid (distillation, the separating funnel); the **boiling point** reads for liquids and the **melting point** for solids, and a pure substance keeps its melting point sharp. In the lab, demonstrate experiments on chemical and physical changes, and apply the separation techniques to mixtures of ice, sand, salt and water."}
+  ],
+
   focus:[
     "Development of chemistry; the scientific method and its steps",
     "Contributors to chemistry and the branches of chemistry",
@@ -178,6 +202,26 @@ var CH_CURRICULUM = [
     "Explain the rules and principles for filling in electrons"
   ],
   note:"An atom consists of a tiny dense <b>nucleus</b> of <b>protons</b> (+1, mass 1) and <b>neutrons</b> (0, mass 1), surrounded by <b>electrons</b> (−1, negligible mass). <b>Atomic number Z</b> = number of protons; <b>mass number A</b> = protons + neutrons. Electrons fill orbitals by the <b>Aufbau principle</b> (lowest energy first), the <b>Pauli exclusion principle</b> (maximum two electrons per orbital, opposite spins) and <b>Hund's rule</b> (singly occupy degenerate orbitals before pairing).",
+  study:[
+    /* ---- course text: Semester One, Period II — Atomic Structure (guide pp. 7-8) ---- */
+    {k:"h3", t:"The History of Atomic Structure"},
+    {k:"p", t:"The atom grew clearer through a line of experiments. **Dalton's atomic theory** (all matter is made of indivisible atoms; atoms of one element are alike; compounds join atoms in simple ratios) began modern chemistry. Then came the **discovery of the electron** in J. J. Thomson's cathode-ray work and of the nucleus: **Rutherford's gold foil experiment** (with Geiger and Marsden) fired alpha particles at gold leaf; most passed through, a few bounced back — so the atom is mostly empty space with a tiny, dense, positive **nucleus**. **Bohr's model of hydrogen** placed the electrons in fixed energy levels, like shelves around the nucleus."},
+    {k:"rule"},
+    {k:"h3", t:"The Fundamental Particles and Their Arrangement"},
+    {k:"table", head:["Particle","Charge","Relative mass","Position in the atom"], rows:[
+      ["Proton","+1","1","In the nucleus"],
+      ["Neutron","0","1","In the nucleus"],
+      ["Electron","−1","1/1836","In the energy levels (shells) around the nucleus"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Atomic Number, Mass Number and Isotopes"},
+    {k:"p", t:"The **atomic number** is the number of protons (and, in a neutral atom, of electrons); the **mass number** counts the protons and neutrons together. **Isotopes** are atoms of the same element — same atomic number — with different mass numbers because their neutrons differ. The **relative atomic mass** of an element is the weighted average of the masses of its isotopes; calculate it from mass-spectrometer data: multiply each mass number by its relative abundance, add, and divide by the total abundance."},
+    {k:"rule"},
+    {k:"h3", t:"Quantum Numbers and Electron Configuration"},
+    {k:"p", t:"The four **quantum numbers** describe each electron: the principal (the shell, its size and energy), the subsidiary (the orbital's **shape** — s spherical, p dumb-bell, d cloverleaf), the magnetic (the orbital's orientation in space), and the spin (the electron's own spin, up or down)."},
+    {k:"p", t:"Construct **electron configurations** for atoms: the **rules and principles for filling in electrons** — the Aufbau principle (fill the lowest energy level first), the Pauli exclusion principle (no two electrons share all four quantum numbers), and Hund's rule (spread singly over equal orbitals before pairing). Write them in **dot notation**, **orbital notation**, **orbital diagrams**, the shorthand **noble-gas configuration**, and the **KLMNOPQ shell notation**. Assignment: prepare models of atoms using the Bohr model and simple molecules, and charts showing the shapes of the s, p and d orbitals."}
+  ],
+
   focus:[
     "History of atomic structure; Dalton's atomic theory",
     "Discovery of the electron and nucleus; Rutherford's gold foil experiment",
@@ -310,6 +354,28 @@ var CH_CURRICULUM = [
     "Describe the elements of the first transition series"
   ],
   note:"The <b>periodic law</b> states that the properties of the elements are a periodic function of their <b>atomic numbers</b>. A <b>group</b> is a vertical column whose members share the same number of valence electrons and therefore similar chemistry; a <b>period</b> is a horizontal row. Across a period, atomic radius <b>decreases</b> while ionisation energy and electronegativity <b>increase</b>; down a group the reverse occurs.",
+  study:[
+    /* ---- course text: Semester One, Period III — The Periodic Table and Periodic Chemistry (guide pp. 9-11) ---- */
+    {k:"h3", t:"History and Origin of the Periodic Law"},
+    {k:"p", t:"The history and development of the **periodic table** runs from Döbereiner's triads and Newlands' octaves to **Mendeleev**, who arranged the elements by increasing mass and left gaps for elements not yet found — and the gaps filled, proving the **periodic law**: the properties of the elements recur periodically with their atomic number. Elements are placed on the periodic table because of their **similar properties**."},
+    {k:"rule"},
+    {k:"h3", t:"The Structure of the Periodic Table"},
+    {k:"p", t:"Identify the main blocks, **groups and periods** of the periodic table: the **groups** are the vertical columns (same outer electrons, same family behaviour); the **periods** are the horizontal rows (a new shell each). The **metals** sit left and centre, the **non-metals** right, and the **metalloids** stand on the staircase between, sharing the properties of both. The blocks: the s-block, p-block, d-block (the transition metals) and f-block."},
+    {k:"rule"},
+    {k:"h3", t:"Trends in Periodic Properties"},
+    {k:"table", head:["Property","Across a period","Down a group"], rows:[
+      ["Electronegativity","Increases (the pull on bonding electrons grows)","Decreases"],
+      ["Ionization energy","Increases (the outer electron is held more tightly)","Decreases"],
+      ["Electron affinity","Generally increases toward the halogens","Generally decreases"],
+      ["Atomic radius","Decreases (same shell, stronger nuclear pull)","Increases (a new shell each step)"],
+      ["Metallic character","Decreases","Increases (non-metallic character fades)"]
+    ]},
+    {k:"p", t:"Bonding trends run with them: compounds pass from **ionic to covalent** character across a period, and **lattice energy** rises as the ions grow smaller and more highly charged. Plot these periodic trends from data in the lab."},
+    {k:"rule"},
+    {k:"h3", t:"The Elements of the First Transition Series"},
+    {k:"p", t:"The **first transition series** (scandium to zinc) shows the series' marks: all are hard, dense **metals** in the solid state; iron, cobalt and nickel are **magnetic**; they show **variable oxidation states**; they form **coloured compounds** (copper salts blue, iron(III) yellow-brown); and several serve as **catalysts** (iron in the Haber process, vanadium pentoxide in the Contact process)."}
+  ],
+
   focus:[
     "History and origin of the periodic law; Mendeleev and Moseley",
     "Structure of the periodic table: groups, periods, blocks",
@@ -439,6 +505,19 @@ var CH_CURRICULUM = [
     "Distinguish between inter-atomic bonding and intermolecular forces"
   ],
   note:"Atoms bond to attain a stable outer shell — the <b>octet rule</b>. In <b>ionic bonding</b> electrons are transferred from metal to non-metal, giving oppositely charged ions held by electrostatic attraction. In <b>covalent bonding</b> electrons are shared. <b>Metallic bonding</b> is a lattice of cations in a sea of delocalised electrons. Molecular shape follows <b>VSEPR</b>: electron pairs repel and arrange as far apart as possible.",
+  study:[
+    /* ---- course text: Semester One, Period IV — Chemical Bonding (guide pp. 12-14) ---- */
+    {k:"h3", t:"Bonding Types — Ionic Bonding"},
+    {k:"p", t:"An **ionic bond** forms when one atom **transfers** electrons to another: a metal loses its outer electrons, a non-metal gains them, and the oppositely charged ions attract. Factors influencing its formation: a metal of low ionization energy meeting a non-metal of high electron affinity. **Properties of ionic compounds:** crystalline solids of high melting point, hard but brittle, conducting electricity when molten or dissolved (the ions are then free) but not when solid, and soluble in water. Draw electron-dot and orbital diagrams to illustrate ionic bond formation for different compounds."},
+    {k:"rule"},
+    {k:"h3", t:"Covalent Bonding, Bond Polarity and Hybridization"},
+    {k:"p", t:"A **covalent bond** forms when two non-metal atoms **share** electron pairs — single, double and triple bonds by one, two or three shared pairs; use the models to illustrate them. Factors influencing its formation: two atoms of similar electronegativity, each short of a full outer shell. **Properties of covalent (molecular) compounds:** low melting and boiling points, soft, non-conductors, often insoluble in water but soluble in organic solvents."},
+    {k:"p", t:"**Bond polarity:** when the sharing is unequal the bond is polar — work it from the **electronegativity difference**: the greater the difference, the more ionic the character; calculate the percentage ionic character. **Hybridization of atomic orbitals** — **sp³** (tetrahedral, as in methane), **sp²** (trigonal, as in ethene), **sp** (linear, as in ethyne) — explains how carbon keeps four equal bonds. Apply the **octet rule** to draw the basic **Lewis structures** of compounds, and from the electron-pair geometry tell the **molecular shapes** — linear, bent, trigonal planar, tetrahedral, pyramidal."},
+    {k:"rule"},
+    {k:"h3", t:"Laboratory — Properties Compared"},
+    {k:"p", t:"Compare the **physical properties of ionic and covalent solids**; investigate the **polarity of some solvents**; investigate the effects of **heat, electricity and some solvents on covalent compounds**; and compare the boiling points of two liquids to show how **hydrogen bonding** affects boiling point — water's hydrogen bonds hold it liquid where its small mass says it should be a gas."}
+  ],
+
   focus:[
     "Ionic bonding: factors influencing formation and properties of ionic compounds",
     "Covalent bonding: factors influencing formation and properties of molecular compounds",
@@ -569,6 +648,24 @@ var CH_CURRICULUM = [
     "Analyse the techniques in balancing chemical equations"
   ],
   note:"The <b>mole</b> is the amount of substance containing <b>6.02 × 10²³</b> particles — the <b>Avogadro constant</b>. Key relationships: <b>moles = mass ÷ molar mass</b>, <b>number of particles = moles × 6.02 × 10²³</b>, and for gases at s.t.p. <b>1 mole occupies 22.4 dm³</b>. Equations are balanced because of the <b>law of conservation of mass</b>: atoms are neither created nor destroyed.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Atoms, Molecules, Ions and Stoichiometry (guide pp. 15-17) ---- */
+    {k:"h3", t:"The Fundamental Chemical Laws"},
+    {k:"p", t:"Three laws stand at the root of chemistry. The **law of conservation of mass** — matter is neither created nor destroyed in a reaction: the mass of the products equals the mass of the reactants. The **law of definite proportions** — all pure samples of a compound contain the same elements in the same proportions by mass. The **law of multiple proportions** — when two elements form more than one compound, the masses of one that combine with a fixed mass of the other are in a simple ratio (as in CO and CO₂). Demonstrate a lab to prove the fundamental chemical laws."},
+    {k:"rule"},
+    {k:"h3", t:"Atoms, Molecules and Ions"},
+    {k:"p", t:"An **atom** is the smallest particle of an element that takes part in a reaction; a **molecule** is two or more atoms chemically joined (O₂, H₂O); an **ion** is a charged particle formed when an atom or group gains or loses electrons — cations are positive, anions negative."},
+    {k:"rule"},
+    {k:"h3", t:"The Mole Concept"},
+    {k:"p", t:"The **mole** is chemistry's counting unit: one mole of any substance contains the Avogadro constant of particles (6.02 × 10²³) and weighs its molar mass in grams. Work the conversions in every direction: **mole-to-mole** (from the balanced equation's ratios), **mole-to-mass** and **mass-to-mass** (through the molar mass), and **mole-to-atom, particle or molecule** (through Avogadro's number). Demonstrate the mole concept in the lab."},
+    {k:"rule"},
+    {k:"h3", t:"Percentage Composition and the Formula of a Compound"},
+    {k:"p", t:"**Percentage composition**: for each element in a compound, percentage = (mass of the element in one mole of the compound ÷ molar mass) × 100. From analysis backward: divide each element's percentage by its relative atomic mass, reduce to the simplest whole-number ratio — that is the **empirical formula**; multiply it to match the molar mass — that is the **molecular formula**. Determine the formula of a compound from its data; find empirical and molecular formulae across the exercises; in the lab, determine the empirical formula of magnesium oxide by burning magnesium in a crucible."},
+    {k:"rule"},
+    {k:"h3", t:"Chemical Reactions and Balancing Equations"},
+    {k:"p", t:"The **kinds of chemical reactions**: combination (synthesis), decomposition, displacement, double decomposition, and redox. The **techniques in balancing chemical reactions**: write the correct formulae (never change a formula to balance), count the atoms on each side, fix the coefficients one element at a time — metals first, then non-metals, hydrogen, and oxygen last — and check the conservation of mass at the end. Present the fundamental laws and the calculations of percentage composition."}
+  ],
+
   focus:[
     "Law of conservation of mass, definite proportions and multiple proportions",
     "Atoms, molecules and ions distinguished",
@@ -700,6 +797,24 @@ var CH_CURRICULUM = [
     "Determine the mole ratio for a redox reaction experimentally"
   ],
   note:"<b>Oxidation is loss</b> of electrons; <b>reduction is gain</b> — remembered as <b>OIL RIG</b>. The species <b>oxidised</b> is the <b>reducing agent</b>; the species <b>reduced</b> is the <b>oxidising agent</b>. Oxidation number rules: free elements = 0; a simple ion = its charge; hydrogen = +1 (−1 in hydrides); oxygen = −2 (−1 in peroxides); and the sum over a neutral compound = 0, or the charge for an ion.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Oxidation-Reduction Reactions (guide pp. 18-19) ---- */
+    {k:"h3", t:"Oxidation and Reduction"},
+    {k:"p", t:"**Oxidation** is the **loss of electrons** (and, in the older terms, the gain of oxygen or the loss of hydrogen); **reduction** is the **gain of electrons** (the loss of oxygen or the gain of hydrogen). The two never occur apart: one species is **oxidized** while another is **reduced**, so we speak of **oxidation-reduction (redox) reactions**."},
+    {k:"rule"},
+    {k:"h3", t:"Oxidizing and Reducing Agents"},
+    {k:"p", t:"The **oxidizing agent** is the substance that takes electrons — it oxidizes the other and is itself **reduced**. The **reducing agent** is the substance that gives electrons — it reduces the other and is itself **oxidized**. Keep the difference straight: the agent is named for what it does to its partner, not to itself."},
+    {k:"rule"},
+    {k:"h3", t:"Oxidation Numbers"},
+    {k:"p", t:"Assign **oxidation numbers** by the rules: free elements are 0; a simple ion carries its charge; hydrogen is +1 (save in metal hydrides) and oxygen −2 (save in peroxides); fluorine is always −1; and the sum of the oxidation numbers equals the charge of the species. A rise in oxidation number is oxidation; a fall is reduction — the numbers find the redox in any equation. Exercise: determine the oxidation states for elements in various species."},
+    {k:"rule"},
+    {k:"h3", t:"Balancing Redox Equations"},
+    {k:"p", t:"Apply the **rules for balancing redox reactions**, in acidic and in basic solutions: split the skeleton equation into the oxidation and reduction **half-equations**; balance the atoms (in acid, add H₂O and H⁺; in base, add H₂O and OH⁻); balance the charges with electrons; equalize the electrons lost and gained; add the half-equations and cancel. Practise by balancing simple redox equations in acidic and basic media."},
+    {k:"rule"},
+    {k:"h3", t:"Laboratory — the Zinc-Copper Displacement"},
+    {k:"p", t:"Determine the **mole ratio**, and write the balanced equation, for the reaction between aqueous copper(II) sulfate and zinc metal: zinc gives its electrons to the copper(II) ions — **Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)** — a redox displacement in one-to-one ratio, the blue solution fading as the red copper coats the zinc."}
+  ],
+
   focus:[
     "Describing oxidation and reduction in terms of oxygen, hydrogen and electrons",
     "Rules for calculating oxidation numbers",
@@ -827,6 +942,25 @@ var CH_CURRICULUM = [
     "Discuss colloids and the factors affecting solubility"
   ],
   note:"A <b>solution</b> is a homogeneous mixture of <b>solute</b> dissolved in <b>solvent</b>. <b>Molarity</b> M = moles of solute ÷ volume of solution in dm³. On dilution the moles of solute are unchanged, so <b>M₁V₁ = M₂V₂</b>. <b>Colligative properties</b> — vapour pressure lowering, boiling point elevation, freezing point depression and osmotic pressure — depend on the <b>number</b> of dissolved particles, not their identity.",
+  study:[
+    /* ---- course text: Semester One, Period I — Solution and Solubility (guide pp. 20-23) ---- */
+    {k:"h3", t:"Solutions — Homogeneous and Heterogeneous"},
+    {k:"p", t:"A **solution** is a uniform mixture of a **solute** dissolved in a **solvent**. A **homogeneous** mixture is uniform throughout (salt in water); a **heterogeneous** mixture keeps its parts visibly separate (sand in water). Identify the solutes and solvents in common household mixtures. The types of solutions by saturation: a **saturated** solution holds all the solute it can at that temperature; an **unsaturated** solution can still dissolve more; a **supersaturated** solution holds (unstably) more than saturation — a single seed crystal brings the excess crashing out."},
+    {k:"rule"},
+    {k:"h3", t:"Dilute and Concentrated Solutions; Stock Solutions"},
+    {k:"p", t:"A **dilute** solution carries little solute in much solvent; a **concentrated** one, much solute. The laboratory keeps **stock solutions** — accurately made concentrated solutions from which working solutions are drawn by dilution; work the simple dilution calculations with **M₁V₁ = M₂V₂**."},
+    {k:"rule"},
+    {k:"h3", t:"Concentration Units"},
+    {k:"p", t:"Analyze the various **concentration units** and calculate with each:"},
+    {k:"bul", items:["**Molarity (M)** — moles of solute per litre of solution","**Molality (m)** — moles of solute per kilogram of solvent","**Normality (N)** — gram-equivalents of solute per litre of solution","**Percentage by mass (% w/w)** and **percentage by volume (% v/v)**","**Parts per million (ppm)** and **parts per billion (ppb)** — for trace amounts"]},
+    {k:"rule"},
+    {k:"h3", t:"Colligative Properties"},
+    {k:"p", t:"The **colligative properties of solutions** depend on the *number* of dissolved particles, not their kind: the **vapour pressure** falls, the **boiling point** rises (boiling point elevation), the **freezing point** falls (freezing point depression), and the **osmotic pressure** appears across a membrane. The **colligative properties of electrolyte solutions** run stronger still — each formula unit splits into several particles, multiplying the effect. Work the simple calculations involving boiling point elevation and freezing point depression."},
+    {k:"rule"},
+    {k:"h3", t:"Colloids, Solubility and Solubility Curves"},
+    {k:"p", t:"A **colloid** stands between solution and suspension — particles too small to see or settle, large enough to scatter a beam of light (the Tyndall effect): milk, fog, palm-wine haze and smoke. The **general principles of solubility**: like dissolves like — polar solutes in polar solvents — and the **factors affecting solubility**: temperature, pressure (for gases), stirring and particle size. Explain the **solubility of ionic substances**; analyze the **solubility curves** — a solubility curve reads how many grams dissolve in 100 g of water at each temperature — and apply the **solubility table** to the quantitative analysis of a solution. In the lab, determine the solubility curve of potassium nitrate."}
+  ],
+
   focus:[
     "Solutions: homogeneous and heterogeneous",
     "Saturated, unsaturated and supersaturated solutions",
@@ -961,6 +1095,27 @@ var CH_CURRICULUM = [
     "Calculate root mean square velocity and apply Graham's law of diffusion"
   ],
   note:"<b>Boyle's law</b>: at constant T, P₁V₁ = P₂V₂. <b>Charles's law</b>: at constant P, V₁/T₁ = V₂/T₂. <b>Gay-Lussac's law</b>: at constant V, P₁/T₁ = P₂/T₂. Combining them with Avogadro's law gives the <b>ideal gas equation PV = nRT</b>, where R = 8.31 J/K/mol. <b>Temperature must always be in kelvin.</b>",
+  study:[
+    /* ---- course text: Semester One, Period II — The Kinetic Theory of Gases (guide pp. 24-26) ---- */
+    {k:"h3", t:"Pressure and its Units"},
+    {k:"p", t:"**Pressure** is force per unit area — in a gas, the ceaseless hammering of molecules on the walls. The **units of pressure**: the pascal (Pa), the atmosphere (atm), and the millimetre of mercury (mmHg, or torr); **1 atm = 760 mmHg = 101,325 Pa**."},
+    {k:"rule"},
+    {k:"h3", t:"The Ideal Gas Laws"},
+    {k:"table", head:["Law","Statement","Relation (the constant held)"], rows:[
+      ["Boyle's law","At constant temperature, the volume of a fixed gas mass varies inversely with the pressure","P₁V₁ = P₂V₂"],
+      ["Charles's law","At constant pressure, the volume varies directly with the absolute (kelvin) temperature","V₁/T₁ = V₂/T₂"],
+      ["Gay-Lussac's law","At constant volume, the pressure varies directly with the absolute temperature","P₁/T₁ = P₂/T₂"],
+      ["Avogadro's law","Equal volumes of gases, at the same temperature and pressure, contain equal numbers of molecules","V ∝ n"]
+    ]},
+    {k:"p", t:"Combine them into the **ideal gas equation: PV = nRT** — and perform calculations with it. Explain and apply each law to observations of gas behaviour: the squeezed syringe (Boyle), the balloon swelling in the sun (Charles), the sealed tin bursting in the fire (Gay-Lussac)."},
+    {k:"rule"},
+    {k:"h3", t:"Gas Stoichiometry and Dalton's Law"},
+    {k:"p", t:"Apply the gas laws to **gas-phase reactions**, performing stoichiometric calculations through the mole and the molar gas volume; obtain the **molar mass of a gas** from its mass, volume and conditions through PV = nRT. **Dalton's law of partial pressures:** the total pressure of a gas mixture equals the sum of the partial pressures of its parts — so in **collecting a gas over water**, **P(gas) = P(total) − P(water vapour)** at that temperature."},
+    {k:"rule"},
+    {k:"h3", t:"The Kinetic Molecular Theory of Gases"},
+    {k:"p", t:"The **kinetic molecular theory** explains the laws: gases are made of tiny particles in constant, random motion; their own volume is negligible; there are no forces between them; collisions are perfectly elastic; and the average kinetic energy of the particles rises with the absolute temperature. From it follow **diffusion** (mixing into another gas) and **effusion** (escape through a pinhole) — light gases the faster; calculate sample problems involving **root mean square velocity**, effusion and diffusion. In the lab, conduct the experiment to verify Boyle's law with a syringe."}
+  ],
+
   focus:[
     "Pressure and its units",
     "Boyle's, Charles's, Gay-Lussac's and Avogadro's laws",
@@ -1094,6 +1249,24 @@ var CH_CURRICULUM = [
     "Describe the laboratory and industrial preparation of salt"
   ],
   note:"<b>Arrhenius</b>: an acid gives H⁺ in water, a base gives OH⁻. <b>Bronsted-Lowry</b>: an acid is a proton donor and a base a proton acceptor, which gives <b>conjugate acid-base pairs</b>. <b>Lewis</b>: an acid accepts an electron pair, a base donates one. <b>pH = −log[H⁺]</b> and <b>pH + pOH = 14</b> at 25 °C.",
+  study:[
+    /* ---- course text: Semester One, Period III — Electrolytes: Acids, Bases and Salts (guide pp. 27-30) ---- */
+    {k:"h3", t:"Electrolytes and Non-electrolytes"},
+    {k:"p", t:"An **electrolyte** is a substance which, molten or in solution, conducts electricity and is decomposed by it — the current is carried by free ions (acids, bases, salts). A **non-electrolyte** conducts in neither state — sugar, ethanol — because its molecules never part into ions. List several acids and bases, then write chemical equations to show how they behave as electrolytes."},
+    {k:"rule"},
+    {k:"h3", t:"Theories of Acids and Bases"},
+    {k:"p", t:"The **Arrhenius theory**: an acid gives hydrogen ions (H⁺) in water, and a base gives hydroxide ions (OH⁻) in water. The **Brønsted–Lowry theory** widens it: an acid is a **proton donor** and a base a **proton acceptor** — so HCl + H₂O → H₃O⁺ + Cl⁻ pairs acid HCl with its conjugate base Cl⁻, and base water with its conjugate acid H₃O⁺. Write acid-base equations explaining both theories, identifying each **conjugate acid-base pair**. Properties of acids and bases: acids taste sour and turn blue litmus red; bases feel soapy and turn red litmus blue."},
+    {k:"rule"},
+    {k:"h3", t:"pH and pOH; Percentage Dissociation"},
+    {k:"p", t:"The strength of an acid solution is read on the **pH** scale: **pH = −log[H⁺]** and likewise **pOH = −log[OH⁻]**, with **pH + pOH = 14** at 25 °C; below 7 acidic, 7 neutral, above 7 basic. Solve sample problems on the concept of pH and pOH, and demonstrate calculations analyzing the amounts of acid and base **dissociated** — the **percentage dissociation** = (amount ionized ÷ amount dissolved) × 100; a strong acid dissociates almost completely, a weak one barely."},
+    {k:"rule"},
+    {k:"h3", t:"Acid-Base Properties of Salts"},
+    {k:"p", t:"A **salt** is the product of acid + base. In water a salt may leave the solution neutral, acidic or basic — the salt of a strong acid and strong base stays neutral (NaCl); of a strong acid and a weak base turns acidic (NH₄Cl); of a weak acid and a strong base turns basic (CH₃COONa). Study the **determination of the effects of salt on** a solution, and the **laboratory and industrial preparation of salts** — by neutralization, displacement, double decomposition; by the Solvay process and the sea's evaporation."},
+    {k:"rule"},
+    {k:"h3", t:"Titration and Indicators"},
+    {k:"p", t:"The **acid-base titration** measures an unknown concentration: a standard solution runs from the **burette** into a measured pipette of the other until the **indicator** changes at the end-point; then cₐVₐ relates to c_bV_b through the equation's ratio. Prepare an indicator from **local plants** (hibiscus, hibiscus flower, or coloured leaves) and test household solutions with it."}
+  ],
+
   focus:[
     "Electrolytes and non-electrolytes; strong and weak",
     "Arrhenius and Bronsted-Lowry theories; conjugate pairs",
@@ -1236,6 +1409,24 @@ var CH_CURRICULUM = [
     "Describe the practical applications of electrolysis, including electroplating and smelting"
   ],
   note:"An <b>electrochemical (galvanic) cell</b> converts chemical energy to electrical energy spontaneously; an <b>electrolytic cell</b> uses electrical energy to force a non-spontaneous reaction. In both, <b>oxidation occurs at the anode</b> and <b>reduction at the cathode</b>. <b>Faraday's first law</b>: mass deposited is proportional to charge passed, Q = It, with 1 faraday = 96 500 C per mole of electrons.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Electrochemistry (guide pp. 31-34) ---- */
+    {k:"h3", t:"Review — Redox Reactions and Balancing"},
+    {k:"p", t:"Electrochemistry is redox put to work, so review the balancing of redox equations first: split the equation into the **oxidation half-equation** (electrons lost) and the **reduction half-equation** (electrons gained), balance atoms and charges in each, and join them with equal electrons. Practise the problems on balancing redox reactions."},
+    {k:"rule"},
+    {k:"h3", t:"Electrochemical Cells and Standard Electrode Potentials"},
+    {k:"p", t:"An **electrochemical (galvanic) cell** turns a spontaneous redox reaction into electric current: the anode is oxidized (negative terminal) and the cathode reduced (positive), the electrons travelling through the wire while the **salt bridge** completes the circuit. Each electrode has a **standard electrode potential** (E°), measured against the standard hydrogen electrode; the cell's **e.m.f.** is E°(cathode) − E°(anode) — a positive e.m.f. means a spontaneous cell reaction. Draw the diagrams of various electrochemical cells and do the simple e.m.f. calculations; solve problems using standard electrode potentials."},
+    {k:"rule"},
+    {k:"h3", t:"Cell Diagrams"},
+    {k:"p", t:"The **cell diagram** (cell notation) writes the cell in one line: anode on the left, cathode on the right, a single vertical line for a phase boundary and double lines for the salt bridge — Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s) for the Daniell cell."},
+    {k:"rule"},
+    {k:"h3", t:"Electrolysis — Principles, and the Factors Influencing Discharge"},
+    {k:"p", t:"**Electrolysis** is the reverse trade: an external current forces a non-spontaneous reaction in an **electrolytic cell**. Distinguish the **electrolytic cell from the electrochemical cell** — one consumes current to drive chemistry, the other makes current from chemistry; the anode is positive in electrolysis, negative in a battery. The **factors that influence the discharge of species** at the electrodes: the position of the ion in the electrochemical series, the concentration of the ions, and the nature of the electrodes. Simplify the cell reactions; apply electrolysis to electroplating — **electroplate a metal object with copper** in the lab — and to the extraction of metals."},
+    {k:"rule"},
+    {k:"h3", t:"Faraday and Applications"},
+    {k:"p", t:"**Faraday's laws of electrolysis** quantify the work: the mass discharged is proportional to the quantity of electricity passed (charge Q = current × time), and to the chemical equivalent of the ion. Applications: electroplating, the purification of copper, the extraction of aluminium, and the calculation of masses deposited across the exercises."}
+  ],
+
   focus:[
     "Review of redox reactions and balancing",
     "Electrochemical cells and standard electrode potential",
@@ -1372,6 +1563,25 @@ var CH_CURRICULUM = [
     "Distinguish between fission and fusion and explain their effects and uses"
   ],
   note:"An <b>exothermic</b> reaction releases heat and has a <b>negative ΔH</b>; an <b>endothermic</b> reaction absorbs heat and has a <b>positive ΔH</b>. <b>Hess's law</b>: the total enthalpy change is the same whatever route is taken. Heat energy is found from <b>q = mcΔT</b>. In nuclear chemistry the <b>half-life</b> is the time for half the nuclei present to decay, and it is constant for a given isotope.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Chemical Energetics and Nuclear Chemistry (guide pp. 35-38) ---- */
+    {k:"h3", t:"Thermodynamics — Heat, Systems and the Law of Conservation of Energy"},
+    {k:"p", t:"In every chemical process, name the **system** (the reaction under study) and the **surroundings** (all the rest). **Heat energy** moves between them; **heat capacity** is the heat needed to raise a body's temperature by one degree (specific heat, per gram). The **changes of state** — melting, boiling — take in or give out heat while the temperature stays fixed. **Chemical energy** is energy stored in bonds, and the **law of conservation of energy** rules the whole: energy is neither created nor destroyed, only transferred — from bond to heat, heat to surroundings."},
+    {k:"rule"},
+    {k:"h3", t:"Enthalpy Changes and Energy-Level Diagrams"},
+    {k:"p", t:"**Enthalpy (H)** is the heat content of a system at constant pressure; the change ΔH relates closely to the internal energy. An **exothermic** reaction releases heat — ΔH negative; an **endothermic** one absorbs heat — ΔH positive. Read them off **energy-level diagrams**: exothermic sits the products lower than the reactants; endothermic, higher. Analyze the experimental data behind them."},
+    {k:"rule"},
+    {k:"h3", t:"Standard Enthalpy Changes; Hess's Law"},
+    {k:"p", t:"The **standard enthalpy changes** are measured under standard conditions: the **standard enthalpy of combustion** (one mole burning completely in oxygen) and the **standard enthalpy of formation** (one mole formed from its elements). **Hess's law of heat summation**: the total enthalpy change is the same whatever the route — add the steps' ΔH values to reach a ΔH that cannot be measured directly. Calculate ΔH of a reaction using Hess's law, and using standard enthalpies: ΔH°(reaction) = ΣΔH°f(products) − ΣΔH°f(reactants). In the lab, measure the enthalpy change of neutralization of an acid by a base with a calorimeter and thermometer."},
+    {k:"rule"},
+    {k:"h3", t:"Nuclear Chemistry — Radioactivity"},
+    {k:"p", t:"**Radioactivity** is the spontaneous disintegration of an unstable nucleus with the giving out of radiation — Becquerel discovered it, and the Curies carried it on (the historical development). Nuclear reactions **differ from ordinary chemical reactions**: they change the nucleus, not the electrons; one element becomes another; the energies are millions of times greater; and the rate cannot be altered by heat, pressure or catalyst."},
+    {k:"p", t:"The **types and nature of radiations:** **alpha (α)** particles are helium nuclei — heavy, positive, short-range, stopped by paper; **beta (β)** particles are electrons — light, negative, stopped by a few millimetres of metal; **gamma (γ)** rays are electromagnetic waves — uncharged and needing lead or concrete."},
+    {k:"rule"},
+    {k:"h3", t:"Half-life, Fission and Fusion"},
+    {k:"p", t:"The **half-life** — the time for half the nuclei in a sample to decay — measures the stability of the nucleus: a short half-life goes quickly (unstable); a long one lasts for ages (nearly stable). Work half-life problems, including the dating of old objects by carbon-14. **Nuclear reactions — fission and fusion in nuclear reactors:** fission splits a heavy nucleus (uranium-235) into lighter ones plus energy — the reactors' and the bomb's process; fusion joins light nuclei (hydrogen) into helium at enormous temperature — the sun's process and man's future hope. Both give out energy far beyond chemistry's reach, and both demand respect."}
+  ],
+
   focus:[
     "Thermodynamics: heat energy, heat capacity, changes of state",
     "Law of conservation of energy; enthalpy changes",
@@ -1513,6 +1723,24 @@ var CH_CURRICULUM = [
     "Explain the concept of collision theory"
   ],
   note:"At <b>dynamic equilibrium</b> the forward and reverse reactions continue at <b>equal rates</b>, so concentrations remain constant. <b>Le Chatelier's principle</b>: if a system at equilibrium is disturbed, it shifts so as to oppose the change. For aA + bB ⇌ cC + dD, <b>Kc = [C]^c[D]^d ÷ [A]^a[B]^b</b>. <b>Collision theory</b>: reaction occurs only when particles collide with at least the <b>activation energy</b> and in the correct orientation.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Chemical Equilibrium and Chemical Kinetics (guide pp. 39-42) ---- */
+    {k:"h3", t:"General Principles of Equilibrium"},
+    {k:"p", t:"A **reversible reaction** runs in both directions at once; when the forward and backward rates become equal, the mixture reaches **chemical equilibrium** — concentrations constant, yet both reactions still running: equilibrium is **dynamic**, not stopped. The **law of mass action** states the general principle: the rate of a reaction is proportional to the product of the concentrations of the reactants. Describe several reversible reactions in nature — hemoglobin's grip on oxygen, the carbonates in the soil."},
+    {k:"rule"},
+    {k:"h3", t:"Factors Influencing Equilibrium — Le Chatelier's Principle"},
+    {k:"p", t:"**Le Chatelier's principle:** when a constraint (change of concentration, pressure or temperature) is imposed on a system at equilibrium, the system adjusts so as to **annul (undo) the constraint**. Add a reactant — the equilibrium shifts to consume it; squeeze a gaseous equilibrium — it shifts to the side with fewer molecules; heat an exothermic equilibrium — it shifts toward the reactants. A catalyst shifts nothing: it only makes equilibrium arrive sooner."},
+    {k:"rule"},
+    {k:"h3", t:"The Equilibrium Constant; Kp and Kc"},
+    {k:"p", t:"For aA + bB ⇌ cC + dD, the **equilibrium constant** is Kc = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ — concentrations of products over reactants, each raised to its coefficient; Kc ≫ 1 favours the products, Kc ≪ 1 the reactants, and K changes with temperature alone. For gases the constant may be written in partial pressures as K_p, and the **relationship between K_p and K_c** is K_p = K_c(RT)^Δn, where Δn counts the change in gas molecules. Perform the simple calculations on equilibrium constants."},
+    {k:"rule"},
+    {k:"h3", t:"Chemical Kinetics — Reaction Rates and the Rate Laws"},
+    {k:"p", t:"**Chemical kinetics** studies how fast: the **reaction rate** is the change in concentration per unit time. Describe the speeds of natural reactions — explosions in a moment, food decay in days, the rusting of iron in seasons. The **rate laws** write rate = k[A]ᵐ[B]ᵇ: **types of rate laws** — zero, first and second order by the sum of the powers. **Determine the form of the rate law** by the **method of initial rates** (compare how the rate answers when one concentration is doubled at a time), and apply the **integrated rate laws**: the **first-order** law falls exponentially, with a constant **half-life** (t½ = 0.693/k); the **second-order** half-life lengthens as the reactant thins."},
+    {k:"rule"},
+    {k:"h3", t:"Collision Theory, Activation Energy and Mechanisms"},
+    {k:"p", t:"The **collision theory**: reactions happen only when particles collide with enough energy and the right orientation. The **activation energy** is the minimum energy of a fruitful collision — heat supplies it, catalysts lower it, so both speed the rate. The **reaction mechanism** is the step-by-step path of the reaction, its slowest step setting the rate; demonstrate a mechanism for a model reaction. In the lab, investigate the effect of concentration on reaction rate."}
+  ],
+
   focus:[
     "General principles of equilibrium; reversible reactions and the law of mass action",
     "Factors influencing equilibrium: Le Chatelier's principle",
@@ -1648,6 +1876,22 @@ var CH_CURRICULUM = [
     "Discuss the general properties and reactions of hydrocarbons"
   ],
   note:"<b>Organic chemistry</b> is the chemistry of carbon compounds. Carbon is unique in <b>catenation</b> — bonding to itself in chains and rings — and forms four covalent bonds. A <b>homologous series</b> is a family with the same general formula and functional group, differing by <b>CH₂</b>, with a gradual change in physical properties. <b>Isomers</b> have the same molecular formula but different structures.",
+  study:[
+    /* ---- course text: Semester One, Period I — Introduction to Organic Chemistry (guide pp. 43-44) ---- */
+    {k:"h3", t:"General Characteristics of Organic Compounds"},
+    {k:"p", t:"**Organic chemistry** is the chemistry of carbon compounds. The **general characteristics of organic compounds**: they are built on carbon chains and rings, burn, are mostly insoluble in water but soluble in organic solvents, have lower melting points than inorganic salts, react more slowly, and exist in enormous variety because carbon bonds to itself without end. **Classification of organic compounds:** **straight chain and branched**, **cyclic and acyclic**, and the **aromatic compounds** built on the benzene ring."},
+    {k:"rule"},
+    {k:"h3", t:"Separation and Purification of Organic Compounds"},
+    {k:"p", t:"Demonstrate practical knowledge of the **separation and purification methods for organic compounds** — **distillation** (by boiling point), **crystallization** (by solubility), **chromatography** (by adsorption — in the lab, separate plant pigments by paper chromatography), sublimation and solvent extraction; the proof of purity is a sharp melting or boiling point."},
+    {k:"rule"},
+    {k:"h3", t:"Functional Groups and Homologous Series"},
+    {k:"p", t:"A **functional group** is the atom or group that gives a family of compounds its reactions: −OH of the alkanols, −COOH of the alkanoic acids, −CHO of the alkanals, C=O of the alkanones, −COO− of the esters. Identify the various functional groups in organic compounds, and recognize them from the structure in the exercises."},
+    {k:"p", t:"A **homologous series** is a family with a general formula, neighbouring members differing by CH₂, graded physical properties and similar chemistry — the alkanes C_nH_2n+2, alkenes C_nH_2n, alkynes C_nH_2n−2. Identify the members of the homologous series — and write and **name the hydrocarbons** by IUPAC rules: the longest chain, the lowest numbers, the family suffix."},
+    {k:"rule"},
+    {k:"h3", t:"Isomerism and Chemical Properties"},
+    {k:"p", t:"**Isomerism**: same molecular formula, different structures — chain isomers, position isomers, and functional isomers (as propan-1-ol and propan-2-ol). Classify and draw the structures of isomers. The **chemical properties and reactions**: the alkanes substitute, the alkenes and alkynes add, and the burning of all of them gives out the energy that runs our vehicles. Field trip: to LPRC to see how the quality of petrol is graded, using the **concept of the octane number** — branched chains burn smoothly and rate high."}
+  ],
+
   focus:[
     "General characteristics and classification of organic compounds",
     "Straight chain and branched, cyclic and acyclic, aromatic compounds",
@@ -1784,6 +2028,28 @@ var CH_CURRICULUM = [
     "Discuss fats and oils as alkyl esters and the basic biomolecules"
   ],
   note:"Functional groups define the derivative families: <b>alkanols</b> –OH, <b>alkanals</b> –CHO, <b>alkanones</b> C=O, <b>alkanoic acids</b> –COOH, and <b>esters</b> –COO–. <b>Saponification</b> is the hydrolysis of a fat or oil by hot alkali to give soap and glycerol. <b>Polymerisation</b> joins many small <b>monomers</b> into a long <b>polymer</b>, either by addition or by condensation.",
+  study:[
+    /* ---- course text: Semester One, Period II — Hydrocarbon Derivatives, Polymers and Biochemistry (guide pp. 45-47) ---- */
+    {k:"h3", t:"Hydrocarbon Derivatives"},
+    {k:"p", t:"Replace a hydrogen of a hydrocarbon and a derivative is born. For each family learn the **sources, classification, nomenclature, structure, physical properties, chemical properties and uses**, with the laboratory tests of characterization:"},
+    {k:"table", head:["Family","Functional group","Example","Notes"], rows:[
+      ["Alkanols (alcohols)","−OH","Ethanol","From fermentation; classified primary, secondary, tertiary; oxidized to alkanals then acids"],
+      ["Alkanals (aldehydes)","−CHO","Ethanal","Oxidation of primary alkanols; reduce Fehling's solution (brick-red)"],
+      ["Alkanones (ketones)","C=O (mid-chain)","Propanone","Oxidation of secondary alkanols; resist further oxidation"],
+      ["Ethers","−O−","Ethoxyethane","The anaesthetic solvent"],
+      ["Halocarbons (alkyl halides)","−X","Chloroethane","Alkane + halogen in light; solvents and refrigerants"],
+      ["Alkanoic (carboxylic) acids","−COOH","Ethanoic acid","Weak acids; vinegar is dilute ethanoic acid"],
+      ["Alkyl alkanoates (esters)","−COO−","Ethyl ethanoate","Acid + alkanol; the sweet smells of fruits; solvents and flavourings"]
+    ]},
+    {k:"p", t:"Demonstrate the techniques for their laboratory preparation and testing, and in the lab **make soap by the saponification of palm oil** — boiling the oil with sodium hydroxide until the ester splits into soap and glycerol."},
+    {k:"rule"},
+    {k:"h3", t:"Polymerization and Polymers"},
+    {k:"p", t:"**Polymerization** joins many small molecules (**monomers**) into a chain (**polymer**); two monomers make a **dimer**, and a **resin** is a solid or sticky polymer raw. **Natural polymers**: rubber (from the latex of Hevea, coagulated with acid — Liberia's own crop), starch, protein. **Synthetic (man-made) polymers**: classified and prepared from the monomers and co-monomers as **addition polymers** (polythene from ethene; write the polymerization reaction) and **condensation polymers** (nylon, with a small molecule dropped per link). **Plastics and resins**, distinguished; the **important properties of polymers**: **thermoplastics** soften on warming and can be reshaped, **thermosetting plastics** set once and for all. Distinguish natural from synthetic organic materials; visit a plastic or rubber processing industry."},
+    {k:"rule"},
+    {k:"h3", t:"Introductory Biochemistry"},
+    {k:"p", t:"**Amino acids** are **di-functional** — an amino group (−NH₂, basic) and a carboxyl group (−COOH, acidic) on one molecule — and **proteins** are synthesized from amino acids linked by peptide bonds: the body's own polymers. **Carbohydrates** — the sugars, starches and cellulose, C_x(H₂O)_y — are the fuel food. Discuss the proteins together with the carbohydrates: enzymes are proteins, and digestion breaks both down for rebuilding."}
+  ],
+
   focus:[
     "Alkanols: sources, classification, nomenclature, properties and uses",
     "Alkanals and alkanones; ethers and halocarbons",
@@ -1923,6 +2189,21 @@ var CH_CURRICULUM = [
     "Demonstrate the preparation and identification of these metals and their compounds"
   ],
   note:"<b>Heavy chemicals</b> are produced in bulk at low cost — sulfuric acid, sodium hydroxide, cement, fertiliser. <b>Fine chemicals</b> are made in small quantity at high purity and price — drugs, dyes, reagents. The chief pollution problems are of the <b>air</b> (smoke, SO₂, CO), the <b>water</b> (effluent, mining silt) and the <b>land</b> (solid waste), with the <b>greenhouse effect</b>, <b>acid rain</b> and <b>ozone depletion</b> as global consequences.",
+  study:[
+    /* ---- course text: Semester One, Period III — Chemistry, Industry and the Environment; Selected Metals (guide pp. 48-51) ---- */
+    {k:"h3", t:"The Chemical Industry — in History and in Liberia"},
+    {k:"p", t:"Trace the **historical development of industry** — from the dyers, soap-boilers and iron-smelters of old to the modern chemical works — and the **general characteristics and classification of the chemical industry**: heavy (bulk) inorganic and organic chemicals, fine chemicals, consumer products and biotechnology. Describe the **raw materials of the chemical industries in Liberia** — palm oil for soap, latex for rubber, iron ore, the lime of cement, cassava and sugar cane — and the **factors that determine the siting of chemical industries**: nearness of raw material, of power, of water, of transport and of the market. Classify the chemical industry in Liberia, giving the raw materials of each sector, and take field trips to the leading chemical industries."},
+    {k:"rule"},
+    {k:"h3", t:"Heavy and Fine Chemicals — the Distinction"},
+    {k:"p", t:"**Heavy chemicals** are produced cheap in great tonnage (sulfuric acid, sodium hydroxide, cement); **fine chemicals** are made pure and costly in small amounts (drugs, reagents, dyes). Classify examples of both as they relate to the chemical industry in Liberia."},
+    {k:"rule"},
+    {k:"h3", t:"Industry and the Environment"},
+    {k:"p", t:"Discuss the **effects of industries on the environment in Liberia** and their control. **Air, water and soil pollution — sources, effects and control:** smoke and gases foul the air; effluents poison the streams; dumping defaces the soil, and the controls are scrubbers, treatment plants, and law enforced. Three named menaces: the **greenhouse effect** (carbon dioxide and methane blanketing the earth's heat away), **acid rain** (sulfur and nitrogen oxides returning as acid) and the **depletion of the ozone layer** (the chlorine of old refrigerants and sprays eating the shield that stops the hard ultraviolet). The **various types of environmental** management, and the **biotechnology concept** — putting micro-organisms to industrial work (fermentation, waste treatment) — close the topic."},
+    {k:"rule"},
+    {k:"h3", t:"Chemistry of Selected Metals and their Compounds"},
+    {k:"p", t:"**Sodium** — a soft, water-attacking metal kept under oil; its compounds: **NaCl** (table salt, our seasoning and a chlor-alkali feedstock), **NaOH** (caustic soda — soap-making), **Na₂CO₃** (soda ash for glass), **NaHCO₃** (baking soda), **NaNO₃**, **NaClO₃** and **Na₂SO₄.** Describe the common household sodium compounds. **Calcium** — its compounds: **CaCO₃** (limestone, marble), **CaO** (quicklime), **Ca(OH)₂** (slaked lime — mortar and the soil's doctor), **CaSO₄** (gypsum) and **CaCl₂** (the drying agent). **Copper** — the red, non-rusting conductor; its compounds **CuSO₄** (the blue fungicide, electrolysis electrolyte), **CuO** and **CuCl₂**. Discuss the **reactivity of iron and aluminium with air, water and acid**, and demonstrate the preparation of copper, and the handling of sodium and calcium, in the school laboratory."}
+  ],
+
   focus:[
     "Historical development, characteristics and classification of the chemical industry",
     "Raw materials of the chemical industries in Liberia; factors siting an industry",
@@ -2060,6 +2341,25 @@ var CH_CURRICULUM = [
     "Discuss coal, coke and the composition of hard and soft water"
   ],
   note:"<b>Metallurgy</b> is the extraction of a metal from its ore. Very reactive metals such as <b>aluminium</b> require <b>electrolysis</b>; less reactive ones such as <b>iron</b> are <b>reduced with carbon</b> in a blast furnace; unreactive <b>gold</b> occurs native. An <b>alloy</b> is a mixture of a metal with other elements, giving improved properties — <b>brass</b> (Cu+Zn), <b>bronze</b> (Cu+Sn), <b>steel</b> (Fe+C), <b>duralumin</b> (Al+Cu+Mg).",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Metallurgy, Alloys and Cement; Selected Non-Metals (guide pp. 52-57) ---- */
+    {k:"h3", t:"Metallurgy — the Extraction of Metals"},
+    {k:"p", t:"**Metallurgy** wins a metal from its ore: mine, concentrate, reduce and refine. Describe the metallurgy, properties and uses of **aluminium** (from bauxite dissolved to alumina, then reduced by **electrolysis** in molten cryolite; light and air-proof, for roofing, pots and aircraft), **iron** (ore, coke and limestone charged in the **blast furnace**; the pig iron purified to steel), **copper** (roasting, then refining by electrolysis), **gold** (won by panning and dissolving — Liberia's rivers), and **tin** (from cassiterite). For each: raw materials, processing, main product, by-products, **recycling** — and uses of the metal. Identify some ores in Liberia and their constituent metals; take the field trips to CEMENCO and to a mining company."},
+    {k:"rule"},
+    {k:"h3", t:"Alloys"},
+    {k:"p", t:"An **alloy** is an intentional mixture of metals (or metal with carbon) whose properties surpass the pure metal. Discuss the common alloys of Cu, Al, Pb and Fe and their uses: **brass** (copper + zinc — taps, cartridge cases), **bronze** (copper + tin — statues, medals, bells), **steel** (iron + carbon — construction), and **duralumin** (aluminium + copper and magnesium — light and strong, for aircraft); with solder (lead + tin) joining the circuits. Identify some alloys in your surroundings and state their compositions."},
+    {k:"rule"},
+    {k:"h3", t:"Cement and its Uses"},
+    {k:"p", t:"Analyze the **production processes of cement**: limestone and clay (or shale) are ground, burned in a long rotary kiln to clinker, and ground again with a little gypsum. **Uses of cement:** with sand it makes mortar, with sand and gravel — concrete for our roads, bridges and blocks. The **environmental impact of cement** — the dust of the quarry and the kiln — must be controlled."},
+    {k:"rule"},
+    {k:"h3", t:"Selected Non-Metals and their Compounds"},
+    {k:"p", t:"Discuss the occurrence, properties, preparation, reactions and uses of the non-metals, and apply the laboratory methods of preparing and testing for them. **Carbon** — its **allotropes**: crystalline **diamond** (hardest natural substance — drills, jewellery) and **graphite** (soft, slippery, a conductor — pencils, electrodes), with the amorphous carbons (charcoal, lampblack). The **oxides of carbon:** **CO₂** — from burning and fermentation; prepared in the lab from calcium carbonate and dilute acid; the gas of lime-water turning milky, of photosynthesis, fire extinguishers and fizzy drinks; and **CO** — the poisonous, burning gas of incomplete combustion. Prepare and test carbon dioxide in the lab."},
+    {k:"p", t:"**Nitrogen** — for fertilizers, ammonia by the Haber process; **oxygen** — for welding, hospitals and burning; **sulfur** — for vulcanizing rubber and sulfuric acid by the Contact process; and the reactions of the compounds of carbon, nitrogen, oxygen and sulfur across the exercises."},
+    {k:"rule"},
+    {k:"h3", t:"Coal and Coke"},
+    {k:"p", t:"**Coal — its types** (peat, lignite, bituminous, anthracite, rising in carbon) — and its **destructive distillation**: heated without air it yields coke, coal gas, coal tar and ammoniacal liquor, each with its uses. **Coke** — the smokeless fuel and iron furnaces' reducing agent; its **gasification** with steam gives water gas, the **synthetic gas** (synthesis gas) from which synthetic petrol and ammonia are manufactured."}
+  ],
+
   focus:[
     "Metallurgy: extraction of aluminium, iron, gold and tin",
     "Raw materials, processing, main products, by-products and recycling",
@@ -2202,6 +2502,21 @@ var CH_CURRICULUM = [
     "Review acids, bases and salts, volumetric titration, solubility and energetics"
   ],
   note:"This period consolidates Grades 10 and 11 for the <b>WASSCE</b>. Work systematically: identify what each question asks, write the relevant relationship, substitute with units, and check that the answer is reasonable. Marks are awarded for <b>method as well as answer</b>, so always show the working. Practise past questions under timed conditions.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Review of Fundamental Topics I (guide pp. 58-59) ---- */
+    {k:"h3", t:"How to Review for the WASSCE"},
+    {k:"p", t:"This period reviews the fundamental topics of Grades 10-12 with **WASSCE past papers**. Work in topic order; for each topic, re-read the notes, then answer five past-paper questions from memory before checking the mark scheme; keep a correction book of every error and its right answer."},
+    {k:"rule"},
+    {k:"h3", t:"Review List 1 — the Foundations (Grades 10-11)"},
+    {k:"num", items:["**Units of measurement** — SI units, conversions, scientific notation, significant figures, precision and accuracy.","**The history and importance of chemistry** — the development of the science, its contributors and branches.","**Matter and its properties** — the states and their changes; physical versus chemical change; the separation techniques.","**The atomic structure** — the fundamental particles, Dalton to Bohr, isotopes, quantum numbers and electron configuration.","**The periodic table and periodic chemistry** — groups, periods, the property trends, and the first transition series.","**Chemical bonding** — ionic, covalent and hydrogen bonding; hybridization; polarity; molecular shapes from Lewis structures.","**Chemical reactions, equations and stoichiometry** — the fundamental laws, the mole in all its conversions, percentage composition, empirical and molecular formulae, and the balancing of equations.","**Oxidation-reduction reactions** — oxidation numbers, agents, and balancing redox in acidic and basic media.","**States of matter** — the kinetic view of solid, liquid and gas.","**Solutions** — the concentration units (molarity, molality, normality, ppm, %), dilution problems, colligative properties and solution stoichiometry."]},
+    {k:"rule"},
+    {k:"h3", t:"Drill the Skills the Paper Tests"},
+    {k:"bul", items:["Name and draw the laboratory apparatus; state the safety rules; outline a lab report format","Write and balance equations — including redox half-equations — without hesitating","Do mole, concentration and gas-law calculations showing all working, with units","Draw a periodic trend from data and give its reason","State one laboratory preparation and one test for each gas and each class of compound studied"]},
+    {k:"rule"},
+    {k:"h3", t:"Revision Practical"},
+    {k:"p", t:"In the lab, revise the practical arts — and determine the concentration of an unknown acid by titration against a standard base, indicator to the end-point, calculating with cₐVₐ to show full working. Present your worked answers to past papers in groups; internet research and group presentations support the topics under review."}
+  ],
+
   focus:[
     "Units of measurement; the history and importance of chemistry",
     "Matter and its properties",
@@ -2334,6 +2649,22 @@ var CH_CURRICULUM = [
     "Carry out research and make group presentations on the topics reviewed"
   ],
   note:"This final period consolidates Grade 12. Examination technique matters as much as knowledge: read the <b>command word</b> — <i>state</i> wants a brief fact, <i>explain</i> wants a reason, <i>describe</i> wants a sequence, <i>compare</i> wants both sides. Allocate time by the marks available, answer all parts, and support qualitative answers with an <b>equation or named example</b> wherever possible.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Review of Fundamental Topics II (guide pp. 60) ---- */
+    {k:"h3", t:"Review List 2 — Organic Chemistry"},
+    {k:"p", t:"Continue the review for the **WASSCE Chemistry papers**. For **introduction to organic chemistry**, revise and reproduce from memory:"},
+    {k:"num", items:["**General characteristics of organic compounds** — carbon's chains and rings, combustibility, slow reactions.","**Classification of organic compounds** — straight and branched chains, cyclic and acyclic, aromatic.","**Homologous series and functional groups** — general formulae and naming; −OH, −CHO, C=O, −COOH, −COO− at sight.","**Hydrocarbons** — alkanes, alkenes, alkynes: sources, tests (bromine water), and reactions.","**Hydrocarbon derivatives** — alkanols, alkanals, alkanones, ethers, halocarbons, alkanoic acids and esters, with a preparation and a test for each.","**Natural and synthetic organic compounds** — polymerization, addition and condensation polymers, plastics and resins, thermoplastic and thermosetting, and the biochemistry of amino acids, proteins and carbohydrates."]},
+    {k:"rule"},
+    {k:"h3", t:"Review — Industry, Metals, Non-Metals and the Environment"},
+    {k:"bul", items:["**Chemistry, industry and the environment** — heavy and fine chemicals; pollution of air, water and soil; greenhouse effect, acid rain, the ozone layer; biotechnology.","**Selected metals** — sodium, calcium, copper: their named compounds, properties and uses; the metallurgy of Al, Fe, Cu, Au and Sn; alloys and their compositions; cement from limestone and clay.","**Selected non-metals** — carbon (allotropes, the oxides CO and CO₂), nitrogen, oxygen and sulfur: preparation, properties, reactions and uses; coal and coke, with the destructive distillation and gasification products."]},
+    {k:"rule"},
+    {k:"h3", t:"Examination Technique for WASSCE Chemistry"},
+    {k:"bul", items:["Read every question twice; answer what is asked, not what you hoped was asked.","Show every step of every calculation — the method earns the marks.","Write equations balanced, with state symbols where required.","Answer the compulsory practical questions from real laboratory experience — reagent, observation, inference.","Attempt every question set; budget minutes per mark and leave ten to check."]},
+    {k:"rule"},
+    {k:"h3", t:"Revision Practical and Presentations"},
+    {k:"p", t:"Final revision practical: the **qualitative analysis of an unknown salt** — note its colour and solubility, flame it, confirm the cation with sodium hydroxide and the anion with the acid test, then statement of identity with reasons. Carry out internet research and make group presentations on selected topics related to those under review."}
+  ],
+
   focus:[
     "General characteristics and classification of organic compounds",
     "Homologous series, functional groups and hydrocarbons",
