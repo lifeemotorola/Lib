@@ -63,7 +63,7 @@
       model: MODEL,
       messages: messages,
       temperature: 0.7,
-      max_tokens: 2048,
+      max_tokens: 10000,
       stream: true
     };
     var ctrl = new AbortController();
