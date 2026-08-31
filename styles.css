@@ -654,6 +654,13 @@ input:focus-visible,label:focus-visible{
 .ai-fab:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(11,59,140,.45)}
 .ai-fab.open{background:linear-gradient(135deg,#d3242e,#e84057);box-shadow:0 6px 24px rgba(211,36,46,.35)}
 .ai-fab-ico{font-size:1.3rem;line-height:1}
+/* Emmanuel's portrait, used wherever the 🤖 emoji used to sit */
+.ai-avatar{display:block;border-radius:50%;object-fit:cover;object-position:50% 15%;
+  background:#dbe6f7;flex:none}
+img.ai-fab-ico{width:30px;height:30px;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
+img.ai-head-ico{width:32px;height:32px;box-shadow:0 0 0 2px rgba(255,255,255,.5)}
+img.ai-welcome-img{width:76px;height:76px;margin:0 auto;box-shadow:0 3px 14px rgba(11,59,140,.22)}
+img.ai-msg-img{width:26px;height:26px}
 .ai-fab-lab{white-space:nowrap}
 
 /* Chat panel */
@@ -683,7 +690,7 @@ input:focus-visible,label:focus-visible{
 
 /* Welcome screen */
 .ai-welcome{text-align:center;padding:20px 10px}
-.ai-welcome-ico{font-size:2.8rem;margin-bottom:8px}
+.ai-welcome-ico{font-size:2.8rem;margin-bottom:8px;line-height:1}
 .ai-welcome h3{margin:0 0 8px;font-size:1.05rem;color:var(--ink)}
 .ai-welcome p{margin:0 0 16px;font-size:.82rem;color:var(--muted);line-height:1.5}
 .ai-suggestions{display:flex;flex-direction:column;gap:7px}
@@ -696,6 +703,7 @@ input:focus-visible,label:focus-visible{
 .ai-msg{display:flex;gap:8px;max-width:92%}
 .ai-msg-user{align-self:flex-end}
 .ai-msg-assistant{align-self:flex-start}
+.ai-msg-ico{flex:none;font-size:1.05rem;line-height:1;margin-top:2px}
 .ai-bubble{padding:10px 14px;border-radius:14px;line-height:1.55;font-size:.85rem;
   word-wrap:break-word;overflow-wrap:break-word}
 .ai-msg-user .ai-bubble{background:var(--bleu);color:#fff;border-bottom-right-radius:4px}
@@ -758,6 +766,7 @@ input:focus-visible,label:focus-visible{
   .ai-fab{bottom:14px;right:14px;padding:10px 16px;font-size:.84rem}
   .ai-fab-lab{display:none}
   .ai-fab{border-radius:50%;width:52px;height:52px;padding:0;justify-content:center}
+  img.ai-fab-ico{width:34px;height:34px}
   .ai-panel{bottom:72px;right:10px;left:10px;width:auto;height:calc(100vh - 90px);max-height:none}
 }
 

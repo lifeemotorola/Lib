@@ -14,6 +14,29 @@
   // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
   var MODEL = "openai/gpt-oss-120b";     /* API identifier */
   var MODEL_NAME = "Emmanuel";           /* name shown to users */
+
+  /* Emmanuel's portrait. build.sh inlines assets/emmanuel.png as a data URI in
+     window.EMMANUEL_AVATAR so the single-file deliverable stays offline; when
+     running from the unbuilt sources the relative file is used instead. If the
+     picture cannot be loaded every avatar falls back to the 🤖 emoji. */
+  var AVATAR_SRC = window.EMMANUEL_AVATAR || "assets/emmanuel.png";
+
+  function avatarHTML(cls) {
+    return '<img class="ai-avatar ' + cls + '" src="' + AVATAR_SRC + '" alt="' + MODEL_NAME + '">';
+  }
+  /* swap any portrait that fails to load for the emoji it replaced */
+  function wireAvatars(root) {
+    if (!root) return;
+    var imgs = root.querySelectorAll("img.ai-avatar");
+    Array.prototype.forEach.call(imgs, function (img) {
+      img.onerror = function () {
+        var span = document.createElement("span");
+        span.className = img.className.replace("ai-avatar", "").trim();
+        span.textContent = "🤖";
+        if (img.parentNode) img.parentNode.replaceChild(span, img);
+      };
+    });
+  }
   var STORE_KEY = "lncpg.groq.v1";
 
   // Support GitHub Actions environment variable: set META tag <meta name="groq-api-key" content="..."> 
@@ -152,9 +175,10 @@
     var fab = document.createElement("button");
     fab.id = "aiFab";
     fab.className = "ai-fab";
-    fab.innerHTML = '<span class="ai-fab-ico">🤖</span><span class="ai-fab-lab">' + MODEL_NAME + '</span>';
+    fab.innerHTML = avatarHTML("ai-fab-ico") + '<span class="ai-fab-lab">' + MODEL_NAME + '</span>';
     fab.title = "Open " + MODEL_NAME + ", the AI tutor";
     fab.onclick = togglePanel;
+    wireAvatars(fab);
     document.body.appendChild(fab);
 
     /* Chat panel */
@@ -165,7 +189,7 @@
     panel.innerHTML =
       '<div class="ai-head">' +
         '<div class="ai-head-left">' +
-          '<span class="ai-head-ico">🤖</span>' +
+          avatarHTML("ai-head-ico") +
           '<div class="ai-head-txt">' +
             '<b>' + MODEL_NAME + '</b>' +
             '<span class="ai-head-sub">AI tutor · Liberian National Curriculum</span>' +
@@ -178,7 +202,7 @@
       '</div>' +
       '<div class="ai-body" id="aiBody">' +
         '<div class="ai-welcome" id="aiWelcome">' +
-          '<div class="ai-welcome-ico">🤖</div>' +
+          '<div class="ai-welcome-ico">' + avatarHTML("ai-welcome-img") + '</div>' +
           '<h3>Hello! I\'m ' + MODEL_NAME + ', your AI tutor</h3>' +
           '<p>I can help you with any subject in the Liberian curriculum. Try asking me to:</p>' +
           '<div class="ai-suggestions">' +
@@ -209,6 +233,7 @@
         '<button class="ai-foot-btn" id="aiSetBtn">⚙ Settings</button>' +
         '<span class="ai-foot-status" id="aiStatus"></span>' +
       '</div>';
+    wireAvatars(panel);
     document.body.appendChild(panel);
     wirePanel();
   }
@@ -238,6 +263,13 @@
 
     var msg = document.createElement("div");
     msg.className = "ai-msg ai-msg-" + role;
+    if (role !== "user") {
+      var av = document.createElement("span");
+      av.className = "ai-msg-ico";
+      av.innerHTML = avatarHTML("ai-msg-img");
+      wireAvatars(av);
+      msg.appendChild(av);
+    }
     var bubble = document.createElement("div");
     bubble.className = "ai-bubble";
     if (role === "user") {

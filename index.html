@@ -662,6 +662,13 @@ input:focus-visible,label:focus-visible{
 .ai-fab:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(11,59,140,.45)}
 .ai-fab.open{background:linear-gradient(135deg,#d3242e,#e84057);box-shadow:0 6px 24px rgba(211,36,46,.35)}
 .ai-fab-ico{font-size:1.3rem;line-height:1}
+/* Emmanuel's portrait, used wherever the 🤖 emoji used to sit */
+.ai-avatar{display:block;border-radius:50%;object-fit:cover;object-position:50% 15%;
+  background:#dbe6f7;flex:none}
+img.ai-fab-ico{width:30px;height:30px;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
+img.ai-head-ico{width:32px;height:32px;box-shadow:0 0 0 2px rgba(255,255,255,.5)}
+img.ai-welcome-img{width:76px;height:76px;margin:0 auto;box-shadow:0 3px 14px rgba(11,59,140,.22)}
+img.ai-msg-img{width:26px;height:26px}
 .ai-fab-lab{white-space:nowrap}
 
 /* Chat panel */
@@ -691,7 +698,7 @@ input:focus-visible,label:focus-visible{
 
 /* Welcome screen */
 .ai-welcome{text-align:center;padding:20px 10px}
-.ai-welcome-ico{font-size:2.8rem;margin-bottom:8px}
+.ai-welcome-ico{font-size:2.8rem;margin-bottom:8px;line-height:1}
 .ai-welcome h3{margin:0 0 8px;font-size:1.05rem;color:var(--ink)}
 .ai-welcome p{margin:0 0 16px;font-size:.82rem;color:var(--muted);line-height:1.5}
 .ai-suggestions{display:flex;flex-direction:column;gap:7px}
@@ -704,6 +711,7 @@ input:focus-visible,label:focus-visible{
 .ai-msg{display:flex;gap:8px;max-width:92%}
 .ai-msg-user{align-self:flex-end}
 .ai-msg-assistant{align-self:flex-start}
+.ai-msg-ico{flex:none;font-size:1.05rem;line-height:1;margin-top:2px}
 .ai-bubble{padding:10px 14px;border-radius:14px;line-height:1.55;font-size:.85rem;
   word-wrap:break-word;overflow-wrap:break-word}
 .ai-msg-user .ai-bubble{background:var(--bleu);color:#fff;border-bottom-right-radius:4px}
@@ -766,6 +774,7 @@ input:focus-visible,label:focus-visible{
   .ai-fab{bottom:14px;right:14px;padding:10px 16px;font-size:.84rem}
   .ai-fab-lab{display:none}
   .ai-fab{border-radius:50%;width:52px;height:52px;padding:0;justify-content:center}
+  img.ai-fab-ico{width:34px;height:34px}
   .ai-panel{bottom:72px;right:10px;left:10px;width:auto;height:calc(100vh - 90px);max-height:none}
 }
 
@@ -68980,6 +68989,29 @@ var LI_CURRICULUM = [
   // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
   var MODEL = "openai/gpt-oss-120b";     /* API identifier */
   var MODEL_NAME = "Emmanuel";           /* name shown to users */
+
+  /* Emmanuel's portrait. build.sh inlines assets/emmanuel.png as a data URI in
+     window.EMMANUEL_AVATAR so the single-file deliverable stays offline; when
+     running from the unbuilt sources the relative file is used instead. If the
+     picture cannot be loaded every avatar falls back to the 🤖 emoji. */
+  var AVATAR_SRC = window.EMMANUEL_AVATAR || "assets/emmanuel.png";
+
+  function avatarHTML(cls) {
+    return '<img class="ai-avatar ' + cls + '" src="' + AVATAR_SRC + '" alt="' + MODEL_NAME + '">';
+  }
+  /* swap any portrait that fails to load for the emoji it replaced */
+  function wireAvatars(root) {
+    if (!root) return;
+    var imgs = root.querySelectorAll("img.ai-avatar");
+    Array.prototype.forEach.call(imgs, function (img) {
+      img.onerror = function () {
+        var span = document.createElement("span");
+        span.className = img.className.replace("ai-avatar", "").trim();
+        span.textContent = "🤖";
+        if (img.parentNode) img.parentNode.replaceChild(span, img);
+      };
+    });
+  }
   var STORE_KEY = "lncpg.groq.v1";
 
   // Support GitHub Actions environment variable: set META tag <meta name="groq-api-key" content="..."> 
@@ -69118,9 +69150,10 @@ var LI_CURRICULUM = [
     var fab = document.createElement("button");
     fab.id = "aiFab";
     fab.className = "ai-fab";
-    fab.innerHTML = '<span class="ai-fab-ico">🤖</span><span class="ai-fab-lab">' + MODEL_NAME + '</span>';
+    fab.innerHTML = avatarHTML("ai-fab-ico") + '<span class="ai-fab-lab">' + MODEL_NAME + '</span>';
     fab.title = "Open " + MODEL_NAME + ", the AI tutor";
     fab.onclick = togglePanel;
+    wireAvatars(fab);
     document.body.appendChild(fab);
 
     /* Chat panel */
@@ -69131,7 +69164,7 @@ var LI_CURRICULUM = [
     panel.innerHTML =
       '<div class="ai-head">' +
         '<div class="ai-head-left">' +
-          '<span class="ai-head-ico">🤖</span>' +
+          avatarHTML("ai-head-ico") +
           '<div class="ai-head-txt">' +
             '<b>' + MODEL_NAME + '</b>' +
             '<span class="ai-head-sub">AI tutor · Liberian National Curriculum</span>' +
@@ -69144,7 +69177,7 @@ var LI_CURRICULUM = [
       '</div>' +
       '<div class="ai-body" id="aiBody">' +
         '<div class="ai-welcome" id="aiWelcome">' +
-          '<div class="ai-welcome-ico">🤖</div>' +
+          '<div class="ai-welcome-ico">' + avatarHTML("ai-welcome-img") + '</div>' +
           '<h3>Hello! I\'m ' + MODEL_NAME + ', your AI tutor</h3>' +
           '<p>I can help you with any subject in the Liberian curriculum. Try asking me to:</p>' +
           '<div class="ai-suggestions">' +
@@ -69175,6 +69208,7 @@ var LI_CURRICULUM = [
         '<button class="ai-foot-btn" id="aiSetBtn">⚙ Settings</button>' +
         '<span class="ai-foot-status" id="aiStatus"></span>' +
       '</div>';
+    wireAvatars(panel);
     document.body.appendChild(panel);
     wirePanel();
   }
@@ -69204,6 +69238,13 @@ var LI_CURRICULUM = [
 
     var msg = document.createElement("div");
     msg.className = "ai-msg ai-msg-" + role;
+    if (role !== "user") {
+      var av = document.createElement("span");
+      av.className = "ai-msg-ico";
+      av.innerHTML = avatarHTML("ai-msg-img");
+      wireAvatars(av);
+      msg.appendChild(av);
+    }
     var bubble = document.createElement("div");
     bubble.className = "ai-bubble";
     if (role === "user") {
