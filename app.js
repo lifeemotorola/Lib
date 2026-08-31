@@ -109,6 +109,14 @@
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "worked", "sort", "map", "casestudy", "project", "apply"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Geography_Grade" + g + "_Workbook.docx"; }
+    },
+    li: {
+      label: "Literature", flag: "\uD83D\uDCD6", accent: "#4a2f7a",
+      curriculum: function () { return LI_CURRICULUM; },
+      engine: function () { return GEN_LI; },
+      defaults: ["terms", "match", "cloze", "devices", "characters", "themes", "tf", "short", "mcq", "passage", "write", "appreciate"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Literature_Grade" + g + "_Workbook.docx"; }
     }
   };
 
@@ -223,7 +231,11 @@
     dialogue:"A short conversation to read, complete and act out.",
     journal:"A personal reflection page.",
     story:"A story followed by reflection questions.",
-    debate:"A discussion motion with rules and space to plan arguments."
+    debate:"A discussion motion with rules and space to plan arguments.",
+    devices:"Quotations: learners name the work, the device used and its effect.",
+    characters:"Learners match each character to the part they play in the work.",
+    themes:"Each theme is given with the textual evidence that supports it.",
+    appreciate:"Open appreciation questions answered in full sentences, with reasons."
   };
 
   /* ---------------- Study Notes & Explanations ----------------
@@ -668,7 +680,7 @@
 
     /* Grades outside the elementary band come from their own curriculum guide,
        so name the subject as that guide actually titles it. */
-    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography" };
+    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography", li: "Literature" };
     var jh = $("#jhNote");
     if (jh) {
       if (curBand === "el") {
@@ -1294,7 +1306,8 @@
         ph: { h1: "1F4AA8", h2: "3B6FD0", fill: "DCE6F7" },
         ec: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" },
         eg: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" },
-        gg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" }
+        gg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" },
+        li: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" }
       };
       var theme = THEMES[cur] || THEMES.en;
       var fn = S().file(opts().grade).replace(/\.docx$/, (isTeacher() ? "_Teacher_Copy" : "_Student") + ".docx");
