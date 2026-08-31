@@ -63,7 +63,22 @@ const SUBJECTS = [
             { grade: 6, period: "V",
               facts: ["MA = load ÷ effort", "Efficiency = (work out ÷ work in) × 100 %"] },
             { grade: 6, period: "VI",
-              facts: ["H₂O", "filtrate"] }] }
+              facts: ["H₂O", "filtrate"] }] },
+  { name: "English", global: "EN_CURRICULUM",
+    files: ["data-en.js"],       /* one file holds Grades 1-9 for this subject */
+    grades: 9,                    /* every unit from Grade 1 to Grade 9 must carry study[] */
+    spots: [{ grade: 1, period: "I",
+              facts: ["26 letters", "a, e, i, o, u (and sometimes y)"] },
+            { grade: 4, period: "VI",
+              facts: ["digraph", "two vowel letters, or a vowel and a w"] },
+            { grade: 6, period: "IV",
+              facts: ["past perfect"] },
+            { grade: 7, period: "I",
+              facts: ["sentence fragment"] },
+            { grade: 8, period: "V",
+              facts: ["The rain stopped", "Yours faithfully"] },
+            { grade: 9, period: "II",
+              facts: ["born in Harper in 1954", "first person throughout"] }] }
 ];
 
 let grandTotal = 0;

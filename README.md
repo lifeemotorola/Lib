@@ -24,8 +24,9 @@ so the whole thing stays self-contained.
   each backed by a deterministic generator with a **variant seed** — Test A /
   Test B share the same questions, just shuffled
 - **Study notes** for every unit: key ideas, worked examples and common
-  mistakes — and for Social Studies and General Science Grades 1–9 the full
-  **course text**, transcribed verbatim from the official curriculum guide
+  mistakes — and for Social Studies, General Science and English Grades 1–9 the
+  full **course text**, transcribed verbatim from the official curriculum
+  guide
 - **Customizable cover**: template choice, school name (persisted), uploaded
   logo & background photo, pupil/teacher/term/year fields, emoji crest
 - **Pagination engineered for A4** (794 × 1123 px sheets, fixed geometry),
@@ -116,7 +117,7 @@ same tool lives in `book.html`.
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html`. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies and General Science Grades 1–9 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` once every unit from Grade 1 to N carries its own list). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science and English Grades 1–9 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` once every unit from Grade 1 to N carries its own list). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -138,10 +139,12 @@ same tool lives in `book.html`.
   auto-assembled page. Any `p`/`bul`/`num`/`instr` text supports inline
   `**bold**` markup (converted to `<b>`), used for key terms throughout the
   course text — but not inside `table` cells, which are escaped, not
-  rendered. Social Studies and General Science, Grades 1–9 (54 units each),
-  carry full verbatim notes derived from their curriculum guides, with the
-  guide page range of each unit recorded in a comment above its list; the
-  remaining subjects fall back to the auto-assembled page.
+  rendered. Single `*asterisks*` are not converted, so example words and
+  sentences are quoted instead of italicised. Social Studies, General Science
+  and English, Grades 1–9 (54 units each), carry full verbatim notes derived
+  from their curriculum guides, with the guide page range of each unit recorded
+  in a comment above its list; the remaining subjects fall back to the
+  auto-assembled page.
 - Generators emit a **uniform block model**
   (`{k:"h3"|"p"|"table"|"num"|"bul"|"mcq"|..., t/head/rows/...}`), so one
   renderer handles pagination and one exporter builds Word for every subject.
