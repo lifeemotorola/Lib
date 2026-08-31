@@ -412,7 +412,8 @@
   var COVER = {
     on: true,
     tpl: "classic",          /* designed template id, or "table" for the plain list */
-    bgFade: 78,              /* how strongly the paper veils the background photo, % */
+    bgFade: 62,              /* how strongly the paper veils the background photo, % */
+    useSubjectArt: true,      /* bundled artwork follows the selected subject */
     school: "",
     motto: "",
     pupil: "",
@@ -452,8 +453,16 @@
      Logo and background are held as data URLs so the pack stays a single
      self-contained file with no external requests. Images are downscaled on
      import to keep the .docx and the saved settings to a sensible size. */
-  var COVER_IMG = { logo: null, bg: null };      /* {url, w, h, mime} */
+  var COVER_IMG = { logo: null, bg: null };      /* user uploads: {url, w, h, mime} */
+  var SUBJECT_COVER_ART = window.SUBJECT_COVER_ART || {};
   window.PACK_COVER_IMG = COVER_IMG;
+
+  /* A user upload takes priority. Otherwise every designed cover receives the
+     bundled PNG for the selected subject; no network is needed at runtime. */
+  function activeCoverBg() {
+    if (COVER_IMG.bg) return COVER_IMG.bg;
+    return COVER.useSubjectArt ? (SUBJECT_COVER_ART[cur] || null) : null;
+  }
 
   var IMG_MAX = { logo: 520, bg: 1400 };          /* longest edge, pixels */
   var IMG_LIMIT_BYTES = 6 * 1024 * 1024;          /* reject very large files */
@@ -549,6 +558,7 @@
     }
 
     /* ---- designed cover: one block occupying a whole sheet ---- */
+    var coverBg = activeCoverBg();
     out.push({
       k: "covart",
       tpl: COVER.tpl,
@@ -566,7 +576,8 @@
       crest: COVER.crest,
       note: COVER.note,
       logo: COVER_IMG.logo ? COVER_IMG.logo.url : "",
-      bg: COVER_IMG.bg ? COVER_IMG.bg.url : "",
+      bg: coverBg ? coverBg.url : "",
+      bgMime: coverBg ? (coverBg.mime || "image/png") : "",
       bgFade: COVER.bgFade,
       teacherCopy: isTeacher()
     });
@@ -608,7 +619,9 @@
         if (cur === id) return;
         cur = id;
         document.body.setAttribute("data-subject", id);
-        renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods(); generate();
+        renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods();
+        if (window.PACK_PAINT_COVER_PREVIEW) window.PACK_PAINT_COVER_PREVIEW();
+        generate();
       };
       box.appendChild(b);
     });
@@ -1067,9 +1080,9 @@
           /* Word cannot reproduce the CSS artwork, so the same information is
              laid out as a formal centred title block with a details table. */
           body += para("", { sz: 40 });
-          var bgId = b.bg ? addImage(b.bg, "image/jpeg") : null;
+          var bgId = b.bg ? addImage(b.bg, b.bgMime || "image/jpeg") : null;
           if (bgId) {
-            /* the photo is placed as a banner above the title: Word cannot tint
+            /* the subject image is placed as a banner above the title: Word cannot tint
                a full-bleed background reliably across versions */
             body += picXml(bgId, 1400, 620, 165);
             body += para("", { sz: 20 });
@@ -1401,6 +1414,8 @@
     function readCover() {
       COVER.on = $("#cvOn").checked;
       COVER.ownPage = $("#cvBreak").checked;
+      var subjectBg = $("#cvSubjectBg");
+      if (subjectBg) COVER.useSubjectArt = subjectBg.checked;
       Object.keys(CVMAP).forEach(function (id) {
         var el = $("#" + id);
         if (el) COVER[CVMAP[id]] = el.value.trim();
@@ -1408,7 +1423,7 @@
       $("#cvBox").style.display = COVER.on ? "" : "none";
       if (typeof saveCover === "function") saveCover();
     }
-    Object.keys(CVMAP).concat(["cvOn", "cvBreak"]).forEach(function (id) {
+    Object.keys(CVMAP).concat(["cvOn", "cvBreak", "cvSubjectBg"]).forEach(function (id) {
       var el = $("#" + id);
       if (el) el.addEventListener("input", readCover);
       if (el) el.addEventListener("change", readCover);
@@ -1458,7 +1473,7 @@
 
     /* ---- persistence: the school's details are remembered on this device ---- */
     var STORE = "lncpg.cover.v1";
-    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade"];
+    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade", "useSubjectArt"];
     function saveCover() {
       try {
         var o = {};
@@ -1481,6 +1496,8 @@
           var el = $("#" + back[k]);
           if (el && COVER[k]) el.value = COVER[k];
         });
+        var sb = $("#cvSubjectBg");
+        if (sb) sb.checked = COVER.useSubjectArt;
       } catch (e) { /* corrupt or unavailable storage: fall back to defaults */ }
     }
     loadCover();
@@ -1488,7 +1505,7 @@
 
     /* ---- logo and background uploads ---- */
     function paintImgPrev() {
-      var lp = $("#upLogoPrev"), bp = $("#upBgPrev");
+      var lp = $("#upLogoPrev"), bp = $("#upBgPrev"), activeBg = activeCoverBg();
       if (lp) {
         lp.className = "upprev" + (COVER_IMG.logo ? " has" : "");
         lp.innerHTML = COVER_IMG.logo
@@ -1496,14 +1513,20 @@
           : "<span>No logo</span>";
       }
       if (bp) {
-        bp.className = "upprev bgp" + (COVER_IMG.bg ? " has" : "");
-        bp.innerHTML = COVER_IMG.bg
-          ? '<img src="' + COVER_IMG.bg.url + '" alt="">'
+        bp.className = "upprev bgp" + (activeBg ? " has" : "");
+        bp.innerHTML = activeBg
+          ? '<img src="' + activeBg.url + '" alt=""><small>' +
+              (COVER_IMG.bg ? "Custom" : "Subject artwork") + "</small>"
           : "<span>No background</span>";
       }
       var fr = $("#fadeRow");
-      if (fr) fr.style.display = COVER_IMG.bg ? "" : "none";
+      if (fr) fr.style.display = activeBg ? "" : "none";
     }
+    window.PACK_PAINT_COVER_PREVIEW = paintImgPrev;
+    var subjectBgToggle = $("#cvSubjectBg");
+    if (subjectBgToggle) subjectBgToggle.onchange = function () {
+      readCover(); paintImgPrev(); generate();
+    };
     function upMsg(txt, bad) {
       var m = $("#upMsg");
       if (!m) return;

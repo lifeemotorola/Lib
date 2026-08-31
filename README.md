@@ -29,8 +29,10 @@ so the whole thing stays self-contained.
   (Mathematics and French also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
   transcribed verbatim from the official curriculum guide
-- **Customizable cover**: template choice, school name (persisted), uploaded
-  logo & background photo, pupil/teacher/term/year fields, emoji crest
+- **Customizable cover**: template choice, 14 built-in subject-matched PNG
+  backgrounds (equations for Mathematics, laboratory imagery for Science,
+  books for Literature, and so on), school name (persisted), uploaded logo or
+  replacement background, pupil/teacher/term/year fields, and emoji crest
 - **Pagination engineered for A4** (794 × 1123 px sheets, fixed geometry),
   with a responsive preview that scales the sheet instead of resizing it
 - **Export**: `.docx` (student or teacher copy) and **Print / PDF** with
