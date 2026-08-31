@@ -25,9 +25,9 @@ so the whole thing stays self-contained.
   Test B share the same questions, just shuffled
 - **Study notes** for every unit: key ideas, worked examples and common
   mistakes — and for Social Studies, General Science, English, Mathematics,
-  French, Religious & Moral Education and Physical Education Grades 1–9 and
-  Biology, Chemistry, Physics, Economics, English Grammar and Geography
-  Grades 10–12, the full **course text**,
+  French, Religious & Moral Education and Physical Education Grades 1–9
+  (Mathematics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
+  English Grammar and Geography Grades 10–12, the full **course text**,
   transcribed verbatim from the official curriculum guide
 - **Customizable cover**: template choice, school name (persisted), uploaded
   logo & background photo, pupil/teacher/term/year fields, emoji crest
@@ -119,7 +119,7 @@ same tool lives in `book.html`.
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html`. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics, French, Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar and Geography Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics (Grades 1–12), French, Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar and Geography Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -142,13 +142,13 @@ same tool lives in `book.html`.
   `**bold**` markup (converted to `<b>`), used for key terms throughout the
   course text — but not inside `table` cells, which are escaped, not
   rendered. Single `*asterisks*` are not converted, so example words and
-  sentences are quoted instead of italicised. Social Studies, General Science,
-  English, Mathematics, French, Religious & Moral Education and Physical
-  Education, Grades 1–9 (54 units each), and Biology, Chemistry, Physics,
-  Economics, English Grammar and Geography, Grades 10–12 (18 units each),
-  carry full verbatim notes derived from their curriculum guides, with the
-  guide page range of each unit recorded in a comment above its list; the
-  remaining subjects fall back to the auto-assembled page.
+  sentences are quoted instead of italicised. All 13 subjects now carry full
+  verbatim notes derived from their curriculum guides — Social Studies,
+  General Science, English, Mathematics, French, Religious & Moral Education
+  and Physical Education, Grades 1–9 (54 units each, plus the 42 Senior High
+  Mathematics units), and Biology, Chemistry, Physics, Economics, English
+  Grammar and Geography, Grades 10–12 (18 units each) — with the guide page
+  range of each unit recorded in a comment above its list.
 - Generators emit a **uniform block model**
   (`{k:"h3"|"p"|"table"|"num"|"bul"|"mcq"|..., t/head/rows/...}`), so one
   renderer handles pagination and one exporter builds Word for every subject.
