@@ -6149,7 +6149,19 @@ const EN_GENERAL = {
 </script>
 <script>
 /* Curriculum data — Republic of Liberia, Elementary French, Grades 1–6
-   Derived from "FRENCH 1-6" curriculum guide (36 topics, 6 periods per grade). */
+   Derived from "FRENCH 1-6" curriculum guide (36 topics, 6 periods per grade).
+
+   Every unit carries study[] — the course text of the unit, written out as a
+   block list (h3 / p / bul / num / table / rule) that follows the CONTENTS
+   column of the guide it comes from, with the guide page range of each unit
+   recorded in a comment above its list. Each list teaches the vocabulary and
+   expressions of the period, the relevant conjugation or grammar pattern,
+   and closes with a worked model dialogue (same pattern as data-fr79.js).
+
+   Per the project rule, the online resources listed in the source guide
+   (collinsdictionary.com, linguee.com, youtube.com) are deliberately omitted:
+   the pack must stay fully offline.
+*/
 
 const FR_CURRICULUM = [
 /* ================= GRADE 1 ================= */
@@ -6169,6 +6181,26 @@ const FR_CURRICULUM = [
     "Differentiate the vowel from the consonant in French"
   ],
   note:"Expression pattern: <b>Salutation + nom</b> — e.g. <i>Bonjour monsieur Dweh.</i> French vowels are <b>A, E, I, O, U, Y</b>; every other letter is a consonant.",
+  study:[
+    /* ---- course text: Semester One, Period I — Salutation & Alphabet Sounds (page 2) ---- */
+    {k:"h3", t:"Les salutations — Greetings"},
+    {k:"p", t:"A **salutation** is a word or expression we use to greet somebody. In French the greeting changes with the time of day, and it is polite to add the person's name or title: **Salutation + nom**."},
+    {k:"table", head:["Français","English","When to use it"], rows:[["Bonjour","Good morning / Hello","From morning until late afternoon"],["Bonsoir","Good evening","From evening onwards"],["Bonne nuit","Good night","When going to bed"],["Salut","Hi / Bye","With friends (informal)"],["Au revoir","Goodbye","When leaving"]]},
+    {k:"p", t:"**Worked example — Salutation + nom:** *Bonjour monsieur Dweh.* — Good morning, Mr. Dweh. *Bonsoir madame Kollie.* — Good evening, Mrs. Kollie."},
+    {k:"p", t:"Ask how someone is with **Comment ça va ?** (How are you?) and answer **Ça va bien, merci** (I am fine, thank you) or **Ça va mal** (I am not fine). Always say **Merci** (thank you) and **S'il vous plaît** (please)."},
+    {k:"rule"},
+    {k:"h3", t:"L'alphabet — the Alphabet Sounds"},
+    {k:"p", t:"The French alphabet has **26 letters**, like the English alphabet, but many letters are **pronounced differently**. Recite the alphabet and its sound in French: **A** (ah), **B** (bay), **C** (say), **D** (day), **E** (uh), **F** (eff), **G** (zhay)..."},
+    {k:"bul", items:["**A** (ah) · **B** (bay) · **C** (say) · **D** (day) · **E** (uh) · **F** (eff) · **G** (zhay) · **H** (ash)", "**I** (ee) · **J** (zhee) · **K** (kah) · **L** (ell) · **M** (emm) · **N** (enn) · **O** (oh) · **P** (pay)", "**Q** (koo) · **R** (air) · **S** (ess) · **T** (tay) · **U** (oo) · **V** (vay) · **W** (doo-bluh-vay)", "**X** (eeks) · **Y** (ee-grek) · **Z** (zed)"]},
+    {k:"p", t:"Sing the alphabet song in French, and use alphabet charts and flash cards with objects and letters to practise the sounds."},
+    {k:"rule"},
+    {k:"h3", t:"Les voyelles et les consonnes — Vowels and Consonants"},
+    {k:"p", t:"The French vowels are **A, E, I, O, U and Y** — every other letter is a **consonant**. The vowels can be remembered with the word *voyelle*, which means vowel."},
+    {k:"bul", items:["**Voyelles:** A, E, I, O, U, Y", "**Consonnes:** B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Z"]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — A Morning Greeting"},
+    {k:"num", items:["**Kofi:** Bonjour madame. Comment ça va ?", "**Madame Smith:** Ça va bien, merci. Et toi ?", "**Kofi:** Ça va bien. Au revoir madame !", "**Madame Smith:** Au revoir Kofi, à demain !"]}
+  ],
   vocab:[
     {fr:"Bonjour", en:"Good morning / Hello", say:"bon-ZHOOR", e:"🌅"},
     {fr:"Bonsoir", en:"Good evening", say:"bon-SWAHR", e:"🌇"},
@@ -6200,6 +6232,23 @@ const FR_CURRICULUM = [
   outcomes:["Name the days of the week in French","Tell how many days a week has in French","Translate the days both ways","Spell the days of the week in French"],
   objectives:["Name the days of the week in French","Tell how many days there are in a week","Spell the days of the week in French"],
   note:"Une semaine a <b>sept jours</b> — a week has seven days. Days are <b>not capitalised</b> in French. Use ordinal numbers: <i>lundi est le premier jour</i>.",
+  study:[
+    /* ---- course text: Semester One, Period II — Les jours de la semaine (page 3) ---- */
+    {k:"h3", t:"Les jours de la semaine — The Days of the Week"},
+    {k:"p", t:"There are **sept jours** (seven days) in a week: **une semaine** is a week. In French the days of the week are **not capitalised**, except at the beginning of a sentence."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["lundi","Monday","vendredi","Friday"],["mardi","Tuesday","samedi","Saturday"],["mercredi","Wednesday","dimanche","Sunday"],["jeudi","Thursday"]]},
+    {k:"p", t:"The week begins on **lundi** (Monday), so lundi is the **first day**. Ask **Quel jour est-ce aujourd'hui ?** (What day is it today?) and answer **Aujourd'hui, c'est lundi** (Today is Monday)."},
+    {k:"bul", items:["**Aujourd'hui** — today", "**Demain** — tomorrow", "**Hier** — yesterday"]},
+    {k:"rule"},
+    {k:"h3", t:"Les nombres ordinaux — Ordinal Numbers"},
+    {k:"p", t:"Use **ordinal numbers** to identify each day of the week: lundi is **le premier jour** (the first day), mardi **le deuxième** (second), mercredi **le troisième** (third), jeudi **le quatrième** (fourth), vendredi **le cinquième** (fifth), samedi **le sixième** (sixth), dimanche **le septième** (seventh)."},
+    {k:"rule"},
+    {k:"h3", t:"Spelling and Games"},
+    {k:"p", t:"Practise spelling the days of the week in French with oral and written drills, role play and dramatization. Jumping rope while naming the days is a fun way to remember the order: lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — What Day Is It?"},
+    {k:"num", items:["**Fatu:** Bonjour Marie ! Quel jour est-ce aujourd'hui ?", "**Marie:** Aujourd'hui, c'est lundi.", "**Fatu:** Et demain, quel jour est-ce ?", "**Marie:** Demain, c'est mardi.", "**Fatu:** Merci ! À demain !"]}
+  ],
   vocab:[
     {fr:"lundi", en:"Monday", say:"lun-DEE", e:"1️⃣"},
     {fr:"mardi", en:"Tuesday", say:"mar-DEE", e:"2️⃣"},
@@ -6223,6 +6272,23 @@ const FR_CURRICULUM = [
   outcomes:["Name the months of the year in French","Build vocabulary skills","Translate months both ways","Build confidence pronouncing and identifying the months"],
   objectives:["Name the months of the year in French","Tell how many months there are in one year","Spell the months of the year in French"],
   note:"Une année a <b>douze mois</b> — a year has twelve months. Ask with ordinals: <i>Quel est le premier mois ?</i> (Which is the first month?)",
+  study:[
+    /* ---- course text: Semester One, Period III — Les mois de l'année (page 4) ---- */
+    {k:"h3", t:"Les mois de l'année — The Months of the Year"},
+    {k:"p", t:"There are **douze mois** (twelve months) in **une année** (one year). Like the days of the week, the months of the year are **not capitalised** in French."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["janvier","January","juillet","July"],["février","February","août","August"],["mars","March","septembre","September"],["avril","April","octobre","October"],["mai","May","novembre","November"],["juin","June","décembre","December"]]},
+    {k:"p", t:"The year begins with **janvier** (January), so janvier is **le premier mois**. Ask **Quel mois est-ce ?** (Which month is it?) and answer **C'est le mois de mars** (It is the month of March)."},
+    {k:"rule"},
+    {k:"h3", t:"Les nombres ordinaux — Ordinal Numbers"},
+    {k:"p", t:"Identify each month with an **ordinal number**: janvier is the first month, février the second, mars the third, avril the fourth, mai the fifth, juin the sixth, juillet the seventh, août the eighth, septembre the ninth, octobre the tenth, novembre the eleventh, décembre the twelfth."},
+    {k:"p", t:"Construct interrogative sentences with ordinals: **Quel est le premier mois de l'année ?** (Which is the first month of the year?) — **Janvier.** **Quel est le dernier mois ?** (Which is the last month?) — **Décembre.**"},
+    {k:"rule"},
+    {k:"h3", t:"Vocabulary Building"},
+    {k:"p", t:"Develop vocabulary by learning the months in pairs with their English meanings, spelling each one, and using them in sentences. Recite the months with songs and poems: janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Which Month Is It?"},
+    {k:"num", items:["**M. Dweh:** Bonjour les élèves ! Quel mois sommes-nous ?", "**Musu:** Nous sommes au mois de mars, monsieur.", "**M. Dweh:** Très bien. Quel est le mois avant mars ?", "**Musu:** C'est le mois de février.", "**M. Dweh:** Bravo, Musu !"]}
+  ],
   vocab:[
     {fr:"janvier", en:"January", say:"zhahn-VYAY", e:"❄️"},
     {fr:"février", en:"February", say:"fay-vree-YAY", e:"💗"},
@@ -6247,6 +6313,24 @@ const FR_CURRICULUM = [
   outcomes:["Identify and count number names 1–10","Translate number names both ways","Match numbers to their names","Spell number names","Use objects to show position"],
   objectives:["Count from 1 to 10 in French","Match number names to their numerals","Name the kinds of numbers (cardinal & ordinal)"],
   note:"<b>Cardinal</b> numbers count (un, deux, trois). <b>Ordinal</b> numbers show position (premier, deuxième, troisième).",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Les nombres 1 à 10 (page 5) ---- */
+    {k:"h3", t:"Les nombres de 1 à 10 — Numbers from 1 to 10"},
+    {k:"p", t:"Learn the **number names** in French from 1 to 10, and **match each number to its name**."},
+    {k:"table", head:["Numeral","Français","English","Numeral","Français","English"], rows:[["1","un","one","6","six","six"],["2","deux","two","7","sept","seven"],["3","trois","three","8","huit","eight"],["4","quatre","four","9","neuf","nine"],["5","cinq","five","10","dix","ten"]]},
+    {k:"p", t:"Count objects in the classroom in French: **un, deux, trois, quatre, cinq, six, sept, huit, neuf, dix**. Group shapes and count objects to practise."},
+    {k:"rule"},
+    {k:"h3", t:"Les nombres cardinaux et ordinaux — Cardinal and Ordinal Numbers"},
+    {k:"p", t:"**Cardinal numbers** (un, deux, trois...) count how many. **Ordinal numbers** (premier, deuxième, troisième...) show position or order."},
+    {k:"table", head:["Position","Français","English"], rows:[["1st","premier","first"],["2nd","deuxième","second"],["3rd","troisième","third"],["4th","quatrième","fourth"],["5th","cinquième","fifth"],["6th","sixième","sixth"],["7th","septième","seventh"],["8th","huitième","eighth"],["9th","neuvième","ninth"],["10th","dixième","tenth"]]},
+    {k:"p", t:"Use objects to show position: line up ten pupils and say *le premier* (the first), *le deuxième* (the second), *le troisième* (the third), up to *le dixième* (the tenth)."},
+    {k:"rule"},
+    {k:"h3", t:"Spelling and Counting Games"},
+    {k:"p", t:"Spell the number names in French, and hold a reciting and spelling competition — boys versus girls! Practise sequence grouping with counters, number charts and flash cards."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Counting"},
+    {k:"num", items:["**Maîtresse:** Combien de livres y a-t-il ici ?", "**Korpo:** Un, deux, trois, quatre, cinq. Il y a cinq livres !", "**Maîtresse:** Très bien. Et combien de crayons ?", "**Korpo:** Un, deux, trois, quatre, cinq, six, sept, huit, neuf, dix !"]}
+  ],
   vocab:[
     {fr:"un", en:"one (1)", say:"UHN", e:"1️⃣"},
     {fr:"deux", en:"two (2)", say:"DUH", e:"2️⃣"},
@@ -6273,6 +6357,24 @@ const FR_CURRICULUM = [
   outcomes:["Identify shapes and colors, and make shapes","Translate words both ways in writing","Match colors and shapes"],
   objectives:["Describe different colors and shapes in French","Compare shapes in the school environment and the community","Spell the names of shapes and colors in French"],
   note:"Colour adjectives usually come <b>after</b> the noun: <i>un carré rouge</i> (a red square), <i>une balle jaune</i> (a yellow ball).",
+  study:[
+    /* ---- course text: Semester Two, Period V — Les formes et les couleurs (page 6) ---- */
+    {k:"h3", t:"Les formes — Shapes"},
+    {k:"p", t:"Learn the names of **shapes (les formes)** in French and identify them around the school and the community."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["le cercle","circle","le triangle","triangle"],["le carré","square","le rectangle","rectangle"],["l'étoile","star","la ligne","line"]]},
+    {k:"rule"},
+    {k:"h3", t:"Les couleurs — Colors"},
+    {k:"p", t:"Learn the names of **colors (les couleurs)** in French."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["rouge","red","noir","black"],["bleu","blue","blanc / blanche","white"],["jaune","yellow","orange","orange"],["vert / verte","green","rose","pink"],["violet / violette","purple","marron","brown"]]},
+    {k:"p", t:"In French the **color adjective comes after the noun**: *un carré **rouge*** (a red square), *une balle **jaune*** (a yellow ball)."},
+    {k:"rule"},
+    {k:"h3", t:"Making and Describing Shapes"},
+    {k:"p", t:"Use scissors, poster sheets and glue to **make shapes**, then color them and describe them in French. Compare the shapes you see in the school environment and the community with the shapes you have learned."},
+    {k:"p", t:"**Blend colors** as an art activity: mixing **rouge** (red) and **jaune** (yellow) gives **orange**; mixing **bleu** (blue) and **jaune** gives **vert** (green)."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — A Red Square"},
+    {k:"num", items:["**Maîtresse:** Qu'est-ce que c'est ?", "**Amara:** C'est un carré.", "**Maîtresse:** Quelle couleur est-il ?", "**Amara:** Il est rouge. C'est un carré rouge !", "**Maîtresse:** Excellent, Amara !"]}
+  ],
   vocab:[
     {fr:"rouge", en:"red", say:"ROOZH", e:"🟥"},
     {fr:"bleu", en:"blue", say:"BLUH", e:"🟦"},
@@ -6297,6 +6399,24 @@ const FR_CURRICULUM = [
   outcomes:["Name the parts of the body in French","Translate body parts both ways","Spell the parts of the body in French"],
   objectives:["Identify and point to parts of the body in French","Tell the use of each body part","Sing and act body-part songs in French"],
   note:"Use <b>j'ai</b> (I have) and <b>mal</b> (pain): <i>J'ai mal à la tête</i> — I have a headache.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Les parties du corps (page 7) ---- */
+    {k:"h3", t:"Les parties du corps — Parts of the Body"},
+    {k:"p", t:"Learn to **describe, identify and name** the parts of the body in French."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la tête","head","le bras","arm"],["les yeux","eyes","la main","hand"],["le nez","nose","la jambe","leg"],["la bouche","mouth","le pied","foot"],["l'oreille","ear","les dents","teeth"],["les cheveux","hair","le cœur","heart"]]},
+    {k:"p", t:"Point to each part of your body and say its name in French. Use a **parts of the body poster** and label each part."},
+    {k:"rule"},
+    {k:"h3", t:"Les cinq sens — The Five Senses"},
+    {k:"p", t:"Use short conversations in French to describe the **five senses** and identify which part of the body is used for each sense:"},
+    {k:"bul", items:["**Je vois avec les yeux.** — I see with my eyes.", "**J'entends avec les oreilles.** — I hear with my ears.", "**Je sens avec le nez.** — I smell with my nose.", "**Je goûte avec la bouche.** — I taste with my mouth.", "**Je touche avec les mains.** — I touch with my hands."]},
+    {k:"rule"},
+    {k:"h3", t:"Expressions with Body Parts"},
+    {k:"p", t:"To say you feel pain somewhere, use **avoir mal à** + the body part:"},
+    {k:"bul", items:["**J'ai mal à la tête.** — I have a headache.", "**J'ai mal au ventre.** — I have a stomach ache.", "**J'ai mal aux dents.** — I have a toothache."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — My Body"},
+    {k:"num", items:["**Maîtresse:** Montre-moi la tête !", "**Joseph:** Voici ma tête.", "**Maîtresse:** Avec quoi entends-tu ?", "**Joseph:** J'entends avec les oreilles.", "**Maîtresse:** Très bien, Joseph !"]}
+  ],
   vocab:[
     {fr:"la tête", en:"the head", say:"lah TET", e:"🧠"},
     {fr:"les yeux", en:"the eyes", say:"lay-ZYUH", e:"👀"},
@@ -6323,6 +6443,23 @@ const FR_CURRICULUM = [
   outcomes:["Initiate the act of speaking correctly in French","Improve social interaction skills","Translate expressions both ways, oral and written","Build up intellectualism"],
   objectives:["Greet each other using French","Initiate simple conversation in French","Translate greetings from French to English","Develop the confidence of expressing themselves","Build proper intellectual interaction in French"],
   note:"Expression: <b>personal pronoun + s'appeler</b> — <i>Comment tu t'appelles ? — Je m'appelle Musu.</i> Conjugate <b>être</b> (to be) and <b>avoir</b> (to have).",
+  study:[
+    /* ---- course text: Semester One, Period I — Salutation II (page 8) ---- */
+    {k:"h3", t:"Faire des amis — Making Friends"},
+    {k:"p", t:"To make friends in French, learn new words and expressions: **Bonjour**, **bonsoir**, **mon ami** (my friend), **c'est** (this is). Introduce yourself with the verb **s'appeler**."},
+    {k:"bul", items:["**Comment tu t'appelles ?** — What is your name?", "**Je m'appelle Musu.** — My name is Musu.", "**C'est mon ami Kofi.** — This is my friend Kofi.", "**Enchanté !** — Pleased to meet you! (said by a boy)", "**Enchantée !** — Pleased to meet you! (said by a girl)"]},
+    {k:"rule"},
+    {k:"h3", t:"La conjugaison de s'appeler — Conjugating s'appeler"},
+    {k:"p", t:"The expression **personal pronoun + s'appeler** means *to be called / to be named*. Conjugate s'appeler with each subject pronoun:"},
+    {k:"table", head:["Pronom","s'appeler","Exemple"], rows:[["je","je m'appelle","Je m'appelle Musu."],["tu","tu t'appelles","Comment tu t'appelles ?"],["il / elle","il s'appelle / elle s'appelle","Elle s'appelle Hawa."],["nous","nous nous appelons","Nous nous appelons Fatu et Kofi."],["vous","vous vous appelez","Comment vous appelez-vous ?"],["ils / elles","ils s'appellent","Ils s'appellent Paul et Jean."]]},
+    {k:"rule"},
+    {k:"h3", t:"Les verbes être et avoir — To Be and To Have"},
+    {k:"p", t:"**Être** (to be) and **avoir** (to have) are the two most important verbs in French. Learn their present-tense forms by heart."},
+    {k:"table", head:["être","avoir","Exemple"], rows:[["je suis — I am","j'ai — I have","Je suis élève."],["tu es — you are","tu as — you have","Tu es mon ami."],["il / elle est","il / elle a","Il est grand."],["nous sommes","nous avons","Nous sommes à l'école."],["vous êtes","vous avez","Vous êtes gentil."],["ils / elles sont","ils / elles ont","Ils ont des livres."]]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Making Friends"},
+    {k:"num", items:["**Musu:** Bonjour ! Comment tu t'appelles ?", "**Jean:** Je m'appelle Jean. Et toi ?", "**Musu:** Je m'appelle Musu. Voici mon amie Hawa.", "**Jean:** Enchanté, Hawa ! Comment allez-vous ?", "**Hawa:** Ça va bien, merci. À bientôt !"]}
+  ],
   vocab:[
     {fr:"Je m'appelle…", en:"My name is…", say:"zhuh mah-PELL", e:"🪪"},
     {fr:"Comment tu t'appelles ?", en:"What is your name?", say:"ko-mahn tu tah-PELL", e:"❓"},
@@ -6351,6 +6488,23 @@ const FR_CURRICULUM = [
   outcomes:["Compare types of animals (domestic & wild)","Translate names of animals and their young both ways","Spell the names of animals in French"],
   objectives:["Identify and name animals and their young ones","Discuss the usage of animal materials","Distinguish between domestic and wild animals","List the habitats (homes) of animals in French"],
   note:"Describe animals with adjectives: <i>un chien méchant</i> (a fierce dog), <i>un petit chat</i> (a small cat). <b>Domestique</b> = domestic, <b>sauvage</b> = wild.",
+  study:[
+    /* ---- course text: Semester One, Period II — Les animaux (page 9) ---- */
+    {k:"h3", t:"Les animaux — Animals"},
+    {k:"p", t:"Learn the names of **animals** in French, and **compare domestic and wild animals**."},
+    {k:"table", head:["Français","English","Type"], rows:[["le chien","dog","domestic"],["le chat","cat","domestic"],["la chèvre","goat","domestic"],["la vache","cow","domestic"],["le mouton","sheep","domestic"],["la poule","hen","domestic"],["le lion","lion","wild"],["l'éléphant","elephant","wild"],["le singe","monkey","wild"],["le serpent","snake","wild"],["le poisson","fish","water"],["l'oiseau","bird","air"]]},
+    {k:"p", t:"**Domestic animals (les animaux domestiques)** live with people — dogs, cats, goats, cows, sheep and hens. **Wild animals (les animaux sauvages)** live in the bush — lions, elephants, monkeys and snakes."},
+    {k:"rule"},
+    {k:"h3", t:"Describing Animals with Adjectives"},
+    {k:"p", t:"Use **adjectives in French to describe animals**: *un chien **méchant*** (a fierce dog), *un petit **chat*** (a small cat), *une grosse **vache*** (a fat cow). The adjective comes after the noun, except small adjectives like *petit* and *gros*."},
+    {k:"rule"},
+    {k:"h3", t:"Animals' Sounds, Size and Homes"},
+    {k:"p", t:"Talk about each animal's **attribute** — its sound and its size — and **list the habitat (homes) of animals** in French:"},
+    {k:"bul", items:["**Le chien aboie.** — The dog barks.", "**Le chat miaule.** — The cat meows.", "**Le lion rugit.** — The lion roars.", "**Le lion vit dans la brousse.** — The lion lives in the bush.", "**Le poisson vit dans l'eau.** — The fish lives in the water.", "**L'oiseau vit dans l'arbre.** — The bird lives in the tree."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — At the Farm"},
+    {k:"num", items:["**Marie:** Qu'est-ce que c'est ?", "**Kofi:** C'est une vache.", "**Marie:** Est-ce un animal domestique ?", "**Kofi:** Oui, c'est un animal domestique. La vache donne du lait !", "**Marie:** Et le lion ?", "**Kofi:** Le lion est un animal sauvage !"]}
+  ],
   vocab:[
     {fr:"le chien", en:"the dog", say:"luh SHYAN", e:"🐕"},
     {fr:"le chat", en:"the cat", say:"luh SHAH", e:"🐈"},
@@ -6375,6 +6529,23 @@ const FR_CURRICULUM = [
   outcomes:["Translate the calendar's month, day and date","Organize birthday celebrations in French on the calendar","Translate expressions both ways","Build up intellectualism"],
   objectives:["Write the full date in French","Tell the months, days and date in French","Identify their birthday's date, month or day and write it in French"],
   note:"Full date pattern: <b>le + number + month + year</b> — <i>C'est aujourd'hui le 12 mars 2026.</i> Say <i>le premier</i> for the 1st, then le deux, le trois…",
+  study:[
+    /* ---- course text: Semester One, Period III — Calendrier (page 10) ---- */
+    {k:"h3", t:"Le calendrier — The Calendar"},
+    {k:"p", t:"The **calendar** shows the days, the months and the dates. Learn to translate the calendar's month, day and date, and to **write the full date in French**."},
+    {k:"p", t:"The full date pattern is **le + number + month + year**: *C'est aujourd'hui le 12 mars 2026.* For the first day of the month, say **le premier** (the 1st): *le premier janvier*."},
+    {k:"table", head:["Français","English"], rows:[["Quelle est la date aujourd'hui ?","What is today's date?"],["C'est aujourd'hui le 12 mars.","Today is the 12th of March."],["Quand ?","When?"],["Je suis né(e) le…","I was born on…"],["l'anniversaire","birthday"],["le mois","month"],["l'année","year"],["le jour","day"]]},
+    {k:"rule"},
+    {k:"h3", t:"Les nombres de 1 à 31 — Numbers 1 to 31"},
+    {k:"p", t:"Dates use the numbers from 1 to 31. Review the numbers: **un, deux, trois, quatre, cinq, six, sept, huit, neuf, dix, onze, douze, treize, quatorze, quinze, seize, dix-sept, dix-huit, dix-neuf, vingt, vingt et un, vingt-deux ... trente et un**."},
+    {k:"rule"},
+    {k:"h3", t:"Mon Anniversaire — My Birthday"},
+    {k:"p", t:"**Identify your birthday's date, month or day and write it in French.** Organize birthday celebrations on the calendar and **graph the birthdays (math activity)** — count how many pupils were born in each month."},
+    {k:"bul", items:["**Mon anniversaire est le 5 juin.** — My birthday is on the 5th of June.", "**Quand est ton anniversaire ?** — When is your birthday?", "**Je suis né le 10 avril.** — I was born on the 10th of April. (said by a boy)", "**Je suis née le 10 avril.** — I was born on the 10th of April. (said by a girl)"]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — My Birthday"},
+    {k:"num", items:["**Amara:** Quand est ton anniversaire ?", "**Paul:** Mon anniversaire est le 3 août. Et toi ?", "**Amara:** Je suis née le 20 décembre.", "**Paul:** Quel jour est-ce aujourd'hui ?", "**Amara:** Aujourd'hui, c'est lundi 15 février."]}
+  ],
   vocab:[
     {fr:"Quelle est la date ?", en:"What is the date?", say:"kell ay lah DAHT", e:"❓"},
     {fr:"C'est aujourd'hui…", en:"Today is…", say:"say oh-zhoor-DWEE", e:"📍"},
@@ -6398,6 +6569,21 @@ const FR_CURRICULUM = [
   outcomes:["Name the seasons in French","Match the weather and seasons of other countries and Liberia","Translate words both ways"],
   objectives:["Name the seasons of Liberia in French","Tell how many seasons we have in Liberia","Outline when each season starts and ends","Show the difference between weather in Liberia and other countries"],
   note:"Liberia has <b>two seasons</b>: <i>la saison sèche</i> (dry season, November–April) and <i>la saison des pluies</i> (rainy season, May–October). Weather uses <b>il fait…</b>",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Le temps et les saisons (page 11) ---- */
+    {k:"h3", t:"Le temps — The Weather"},
+    {k:"p", t:"Ask about the weather with **Quel temps fait-il ?** (What is the weather like?) and answer with the expressions below."},
+    {k:"table", head:["Français","English"], rows:[["Il fait chaud.","It is hot."],["Il fait froid.","It is cold."],["Il pleut.","It is raining."],["Il y a du vent.","It is windy."],["Il y a du soleil.","It is sunny."],["le parapluie","umbrella"],["le nuage","cloud"],["l'orage","storm"]]},
+    {k:"p", t:"**Le temps** (the weather) is what the sky and air are doing today — hot, cold, rainy or sunny. **La saison** (the season) is a longer period of the year."},
+    {k:"rule"},
+    {k:"h3", t:"Les saisons du Libéria — Liberia's Seasons"},
+    {k:"p", t:"**Liberia has two seasons.** Name them in French and tell how many seasons we have:"},
+    {k:"bul", items:["**La saison sèche** — the dry season, from November to April. It is hot and sunny: *il fait chaud, il y a du soleil*.", "**La saison des pluies** — the rainy season, from May to October. It rains a lot: *il pleut*, with clouds and storms."]},
+    {k:"p", t:"**Outline when each season starts and ends**, and show the difference between the weather and seasons of Liberia and other countries (many countries have four seasons: spring, summer, autumn and winter)."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — The Weather"},
+    {k:"num", items:["**Maman:** Quel temps fait-il aujourd'hui ?", "**Fatu:** Il pleut, maman !", "**Maman:** Prends ton parapluie.", "**Fatu:** Oui, maman. Il pleut beaucoup en saison des pluies !", "**Maman:** C'est vrai, ma fille."]}
+  ],
   vocab:[
     {fr:"Quel temps fait-il ?", en:"What is the weather like?", say:"kell tahn feh-TEEL", e:"❓"},
     {fr:"Il fait chaud", en:"It is hot", say:"eel feh SHOH", e:"🥵"},
@@ -6421,6 +6607,24 @@ const FR_CURRICULUM = [
   outcomes:["Name different clothes in French","Match the weather and seasons with different clothes","Translate the names of clothes both ways"],
   objectives:["Name the various clothing in French","Explain what clothing we use for each season","Show the difference between clothes in Liberia and other countries","Spell the different clothes we use"],
   note:"Match clothing to season: <i>le parapluie → la saison des pluies</i>; <i>le chapeau → la saison sèche</i>. Use <b>porter</b> (to wear): <i>Je porte une chemise.</i>",
+  study:[
+    /* ---- course text: Semester Two, Period V — Les vêtements (page 12) ---- */
+    {k:"h3", t:"Les vêtements — Clothing"},
+    {k:"p", t:"Learn the names of the **different clothes** in French and **spell them**."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la chemise","shirt","les chaussures","shoes"],["le pantalon","trousers","le chapeau","hat"],["la robe","dress","le tricot","sweater"],["la jupe","skirt","les chaussettes","socks"],["le short","shorts","l'uniforme","uniform"]]},
+    {k:"rule"},
+    {k:"h3", t:"Match Clothes with the Seasons"},
+    {k:"p", t:"**Match clothes with seasons**: in the rainy season we wear boots and carry an umbrella; in the dry season we wear light clothes and a hat."},
+    {k:"bul", items:["**le parapluie → la saison des pluies** — the umbrella goes with the rainy season", "**le tricot → la saison froide** — the sweater goes with the cold season", "**le chapeau → la saison sèche** — the hat goes with the dry season", "**les sandales → la saison sèche** — sandals go with the dry season"]},
+    {k:"p", t:"**Show the difference between clothes in Liberia and other countries**: in cold countries people wear sweaters, coats and gloves, while in Liberia we mostly wear light clothes because it is hot."},
+    {k:"rule"},
+    {k:"h3", t:"Le verbe porter — To Wear"},
+    {k:"p", t:"Use the verb **porter** (to wear): *je porte*, *tu portes*, *il/elle porte*, *nous portons*, *vous portez*, *ils/elles portent*."},
+    {k:"bul", items:["**Je porte un pantalon.** — I am wearing trousers.", "**Elle porte une robe.** — She is wearing a dress.", "**Je porte l'uniforme à l'école.** — I wear the uniform at school."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Getting Dressed"},
+    {k:"num", items:["**Maman:** Que portes-tu aujourd'hui ?", "**Joseph:** Je porte ma chemise bleue et mon pantalon.", "**Maman:** Et tes chaussures ?", "**Joseph:** Je porte mes chaussures noires.", "**Maman:** Très bien ! Dépêche-toi pour l'école !"]}
+  ],
   vocab:[
     {fr:"la chemise", en:"the shirt", say:"lah shuh-MEEZ", e:"👔"},
     {fr:"le pantalon", en:"the trousers", say:"luh pahn-tah-LOHN", e:"👖"},
@@ -6444,6 +6648,25 @@ const FR_CURRICULUM = [
   outcomes:["Name common foods and meals in French","Translate food names both ways","Spell the names of foods in French"],
   objectives:["Name the three meals of the day in French","Express hunger and thirst","Order or request food politely in French"],
   note:"Use <b>j'ai faim</b> (I am hungry) and <b>j'ai soif</b> (I am thirsty). Meals: <i>le petit déjeuner, le déjeuner, le dîner</i>.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — La nourriture (page 13) ---- */
+    {k:"h3", t:"La nourriture — Food and Meals"},
+    {k:"p", t:"Learn the names of the **different kinds of food** in French, and spell the different kinds of food we eat."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["le riz","rice","le pain","bread"],["l'eau","water","le poisson","fish"],["la viande","meat","le lait","milk"],["la banane","banana","le manioc","cassava"]]},
+    {k:"p", t:"**Explain why food is important to us** and list places where we can find them: le marché (the market), le magasin (the shop), la ferme (the farm)."},
+    {k:"rule"},
+    {k:"h3", t:"Les repas de la journée — Meals of the Day"},
+    {k:"p", t:"A **balanced diet (régime équilibré)** needs the right foods at the right meals. The meals we eat during the day are:"},
+    {k:"bul", items:["**le matin** — morning: **le petit déjeuner** (breakfast), e.g. *le pain et le lait*", "**à midi** — noon: **le déjeuner** (lunch), e.g. *le riz et le poisson*", "**le soir** — evening: **le dîner** (dinner), e.g. *la soupe et le pain*"]},
+    {k:"rule"},
+    {k:"h3", t:"Les verbes manger et boire — To Eat and To Drink"},
+    {k:"p", t:"Conjugate **manger** (to eat) and **boire** (to drink), then use them in sentences:"},
+    {k:"table", head:["manger","boire","Exemple"], rows:[["je mange","je bois","Je mange le pain."],["tu manges","tu bois","Tu manges le riz."],["il / elle mange","il / elle boit","Il boit l'eau."],["nous mangeons","nous buvons","Nous mangeons à midi."],["vous mangez","vous buvez","Vous mangez bien."],["ils / elles mangent","ils / elles boivent","Ils mangent du poisson."]]},
+    {k:"p", t:"Also learn the expressions **J'ai faim** (I am hungry) and **J'ai soif** (I am thirsty)."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — At the Table"},
+    {k:"num", items:["**Maman:** Tu as faim, Kofi ?", "**Kofi:** Oui, maman, j'ai très faim !", "**Maman:** Que veux-tu manger ?", "**Kofi:** Je mange du riz avec du poisson, s'il vous plaît.", "**Maman:** Et tu bois quoi ?", "**Kofi:** Je bois l'eau, maman. Merci !"]}
+  ],
   vocab:[
     {fr:"le riz", en:"the rice", say:"luh REE", e:"🍚"},
     {fr:"le pain", en:"the bread", say:"luh PAN", e:"🍞"},
@@ -6470,6 +6693,30 @@ const FR_CURRICULUM = [
   outcomes:["Name a wider range of foods and drinks","Translate food expressions both ways","Spell food vocabulary correctly"],
   objectives:["Describe a balanced meal in French","Use expressions of liking: j'aime / je n'aime pas","Discuss local Liberian dishes in French"],
   note:"Express taste: <b>J'aime le riz</b> (I like rice) · <b>Je n'aime pas le piment</b> (I don't like pepper). Use <i>un peu de</i> for 'a little'.",
+  study:[
+    /* ---- course text: Semester One, Period I — La nourriture (page 14) ---- */
+    {k:"h3", t:"La nourriture — Food and Meals"},
+    {k:"p", t:"Learn the names of the **different kinds of food** in French, and spell the different kinds of food we eat."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["le riz","rice","l'huile","oil"],["le pain","bread","le piment","pepper"],["la banane","banana","le sel","salt"],["le manioc","cassava","le sucre","sugar"],["l'œuf","egg","le poulet","chicken"],["la soupe","soup","la viande","meat"]]},
+    {k:"p", t:"**Explain why food is important to us** and compare the kinds of food we eat in Liberia with those of other countries. **List places where we find foods**: le marché (market), le magasin (shop), la ferme (farm)."},
+    {k:"rule"},
+    {k:"h3", t:"J'aime / Je n'aime pas — I Like / I Do Not Like"},
+    {k:"p", t:"Express your taste with **J'aime** (I like) and **Je n'aime pas** (I do not like):"},
+    {k:"bul", items:["**J'aime le riz.** — I like rice.", "**Je n'aime pas le piment.** — I do not like pepper.", "**J'aime beaucoup la banane.** — I like banana very much.", "**Je n'aime pas le poisson.** — I do not like fish."]},
+    {k:"p", t:"Use **un peu de** for 'a little': *Je mange un peu de riz* — I eat a little rice."},
+    {k:"rule"},
+    {k:"h3", t:"Le verbe manger et boire — To Eat and To Drink"},
+    {k:"p", t:"Conjugate **manger** (to eat) and **boire** (to drink) and use them in oral expressions about the food we eat:"},
+    {k:"table", head:["manger","boire","Exemple"], rows:[["je mange","je bois","Je mange le pain."],["tu manges","tu bois","Tu manges la banane."],["il / elle mange","il / elle boit","Il boit l'eau."],["nous mangeons","nous buvons","Nous mangeons à midi."],["vous mangez","vous buvez","Vous mangez le riz."],["ils / elles mangent","ils / elles boivent","Ils mangent du poulet."]]},
+    {k:"rule"},
+    {k:"h3", t:"Le régime équilibré — A Balanced Diet"},
+    {k:"p", t:"A **balanced diet** means eating the right foods at the right meals of the day. Illustrate the different kinds of meals:"},
+    {k:"bul", items:["**le petit déjeuner** (breakfast) — bread, milk, eggs", "**le déjeuner** (lunch) — rice, fish, meat, vegetables", "**le dîner** (dinner) — soup, cassava, fruit"]},
+    {k:"p", t:"Drink water every day and eat fruits and vegetables to stay healthy and strong."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — What Do You Eat?"},
+    {k:"num", items:["**M. Smith:** Qu'est-ce que tu manges au déjeuner ?", "**Musu:** Je mange du riz avec du poulet.", "**M. Smith:** Est-ce que tu aimes la banane ?", "**Musu:** Oui, j'aime beaucoup la banane !", "**M. Smith:** Et le piment ?", "**Musu:** Je n'aime pas le piment !"]}
+  ],
   vocab:[
     {fr:"la banane", en:"the banana", say:"lah bah-NAHN", e:"🍌"},
     {fr:"le manioc", en:"the cassava", say:"luh mah-NYOK", e:"🥔"},
@@ -6494,6 +6741,28 @@ const FR_CURRICULUM = [
   outcomes:["Name the members of a family in French","Translate family words both ways","Spell family vocabulary in French"],
   objectives:["Introduce their family members in French","Draw and label a family tree","Use possessive adjectives mon / ma / mes"],
   note:"Possessives: <b>mon</b> + masculine (mon père), <b>ma</b> + feminine (ma mère), <b>mes</b> + plural (mes frères).",
+  study:[
+    /* ---- course text: Semester One, Period II — Membres de la famille (page 15) ---- */
+    {k:"h3", t:"Les membres de la famille — Members of the Family"},
+    {k:"p", t:"Learn the names of the **family members** in French, and spell each name."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["le père","father","le fils","son"],["la mère","mother","la fille","daughter"],["le frère","brother","le grand-père","grandfather"],["la sœur","sister","la grand-mère","grandmother"],["l'oncle","uncle","la tante","aunt"],["le cousin","cousin","la famille","family"]]},
+    {k:"p", t:"**Explain the role of each family member**: le père works and protects the family; la mère cooks and cares for the children; le frère and la sœur help at home and go to school; les grands-parents give advice."},
+    {k:"rule"},
+    {k:"h3", t:"J'aime mon père — I Love My Father"},
+    {k:"p", t:"Make **oral expressions in French about the family** using the verb **aimer** (to love / to like):"},
+    {k:"bul", items:["**J'aime mon père.** — I love my father.", "**J'aime ma mère.** — I love my mother.", "**J'aime mon frère et ma sœur.** — I love my brother and my sister.", "**J'aime toute ma famille !** — I love my whole family!"]},
+    {k:"p", t:"The possessive **mon** goes with a masculine noun (mon père), **ma** with a feminine noun (ma mère), and **mes** with a plural noun (mes frères)."},
+    {k:"rule"},
+    {k:"h3", t:"Les verbes aimer et avoir — To Love and To Have"},
+    {k:"p", t:"Conjugate **aimer** (to love/like) and review **avoir** (to have):"},
+    {k:"table", head:["aimer","avoir","Exemple"], rows:[["j'aime","j'ai","J'aime ma famille."],["tu aimes","tu as","Tu as un frère."],["il / elle aime","il / elle a","Elle aime sa mère."],["nous aimons","nous avons","Nous avons une grande famille."],["vous aimez","vous avez","Vous avez deux sœurs."],["ils / elles aiment","ils / elles ont","Ils aiment leurs parents."]]},
+    {k:"rule"},
+    {k:"h3", t:"L'arbre de famille — The Family Tree"},
+    {k:"p", t:"Draw a **family tree (l'arbre de famille)** with the images of your family members and label each one in French. Compare the different kinds of families in Liberia and other countries."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — My Family"},
+    {k:"num", items:["**Maîtresse:** Combien de personnes y a-t-il dans ta famille ?", "**Fatima:** Nous sommes six dans ma famille.", "**Maîtresse:** Nomme les membres de ta famille.", "**Fatima:** Mon père, ma mère, deux frères, une sœur et moi.", "**Maîtresse:** Très bien, Fatima ! J'aime ta famille !"]}
+  ],
   vocab:[
     {fr:"le père", en:"the father", say:"luh PAIR", e:"👨"},
     {fr:"la mère", en:"the mother", say:"lah MAIR", e:"👩"},
@@ -6518,6 +6787,25 @@ const FR_CURRICULUM = [
   outcomes:["Name the rooms and parts of a house in French","Translate house vocabulary both ways","Spell house words correctly"],
   objectives:["Describe their own home in French","Name the furniture found in each room","Use prepositions: dans, sur, sous"],
   note:"Prepositions: <b>dans</b> (in), <b>sur</b> (on), <b>sous</b> (under) — <i>Le livre est sur la table.</i>",
+  study:[
+    /* ---- course text: Semester One, Period III — La maison (page 16) ---- */
+    {k:"h3", t:"Les parties de la maison — Parts of the House"},
+    {k:"p", t:"Learn the **parts (divisions) of a house** in French, and **explain what we do in each part**."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la maison","house","la salle de bain","bathroom"],["la chambre","bedroom","la porte","door"],["la cuisine","kitchen","la fenêtre","window"],["le salon","living room","le toit","roof"],["la cour","yard","le lit","bed"],["la table","table","la chaise","chair"]]},
+    {k:"bul", items:["**On dort dans la chambre.** — We sleep in the bedroom.", "**Maman prépare dans la cuisine.** — Mummy cooks in the kitchen.", "**On mange dans le salon.** — We eat in the living room.", "**On se lave dans la salle de bain.** — We wash in the bathroom."]},
+    {k:"p", t:"**Identify different homes in Liberia and other countries**: la case (hut), la maison en terre (mud house), la maison en briques (brick house), l'immeuble (apartment building)."},
+    {k:"rule"},
+    {k:"h3", t:"Les verbes de la maison — Verbs of the House"},
+    {k:"p", t:"Conjugate verbs relating to the house — **laver** (to wash), **dormir** (to sleep), **manger** (to eat):"},
+    {k:"table", head:["laver","dormir","manger"], rows:[["je lave","je dors","je mange"],["tu laves","tu dors","tu manges"],["il / elle lave","il / elle dort","il / elle mange"],["nous lavons","nous dormons","nous mangeons"],["vous lavez","vous dormez","vous mangez"],["ils / elles lavent","ils / elles dorment","ils / elles mangent"]]},
+    {k:"rule"},
+    {k:"h3", t:"Les prépositions — Prepositions"},
+    {k:"p", t:"Use the prepositions **dans** (in), **sur** (on) and **sous** (under) to say where things are:"},
+    {k:"bul", items:["**Le livre est sur la table.** — The book is on the table.", "**Le chat est sous la chaise.** — The cat is under the chair.", "**Maman est dans la cuisine.** — Mummy is in the kitchen.", "**Le lit est dans la chambre.** — The bed is in the bedroom."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Our House"},
+    {k:"num", items:["**Amara:** Où est ta chambre ?", "**Kofi:** Ma chambre est là-bas.", "**Amara:** Qu'est-ce qu'il y a dans ta chambre ?", "**Kofi:** Il y a un lit, une table et une chaise.", "**Amara:** Où est le chat ?", "**Kofi:** Le chat est sous le lit !"]}
+  ],
   vocab:[
     {fr:"la maison", en:"the house", say:"lah may-ZOHN", e:"🏠"},
     {fr:"la chambre", en:"the bedroom", say:"lah SHAHM-bruh", e:"🛏️"},
@@ -6542,6 +6830,25 @@ const FR_CURRICULUM = [
   outcomes:["Name school places and people in French","Translate school vocabulary both ways","Spell school words correctly"],
   objectives:["Describe the school environment in French","Name school staff and their roles","Talk about school subjects in French"],
   note:"Ask and answer: <i>Où est la bibliothèque ? — Elle est là-bas.</i> (Where is the library? — It is over there.)",
+  study:[
+    /* ---- course text: Semester Two, Period IV — L'école (page 17) ---- */
+    {k:"h3", t:"L'école — The School"},
+    {k:"p", t:"Learn the **parts (divisions) of a school** in French and **list the components that make up your school, including the administration**."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["l'école","school","la bibliothèque","library"],["la classe","classroom","la cour de récréation","playground"],["le maître / la maîtresse","teacher","le bureau","office"],["l'élève","pupil","le tableau","board"],["le directeur","headmaster","la leçon","lesson"],["la salle de classe","classroom","la récréation","break"]]},
+    {k:"p", t:"**Write the name of your school** and **tell how many classrooms are in your school**. Compare the different classrooms in the school (larger, smaller)."},
+    {k:"rule"},
+    {k:"h3", t:"Avoir + objet — To Have + Object"},
+    {k:"p", t:"Use **avoir** with objects you find at school:"},
+    {k:"bul", items:["**J'ai un livre.** — I have a book.", "**L'école a une bibliothèque.** — The school has a library.", "**La classe a un tableau.** — The classroom has a board.", "**Nous avons un directeur.** — We have a headmaster."]},
+    {k:"rule"},
+    {k:"h3", t:"Où est…? — Where Is…?"},
+    {k:"p", t:"**Identify the location of the school** and ask where places are:"},
+    {k:"bul", items:["**Où est la bibliothèque ? — Elle est là-bas.** — Where is the library? — It is over there.", "**Où est la classe ? — Elle est ici.** — Where is the classroom? — It is here.", "**Où est le bureau du directeur ? — Il est en haut.** — Where is the headmaster's office? — It is upstairs."]},
+    {k:"p", t:"**Tell the location of the school** in French: *L'école est à Monrovia* — The school is in Monrovia."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — The School Tour"},
+    {k:"num", items:["**M. Dweh:** Voici notre école.", "**Élèves:** C'est une belle école !", "**M. Dweh:** Où est la bibliothèque ?", "**Élèves:** Elle est là-bas, à côté du bureau du directeur.", "**M. Dweh:** Très bien. Combien de classes avons-nous ?", "**Élèves:** Nous avons douze salles de classe !"]}
+  ],
   vocab:[
     {fr:"l'école", en:"the school", say:"lay-KOL", e:"🏫"},
     {fr:"la classe", en:"the class / classroom", say:"lah KLAHSS", e:"🚸"},
@@ -6566,6 +6873,23 @@ const FR_CURRICULUM = [
   outcomes:["Name classroom objects in French","Translate classroom vocabulary both ways","Spell the names of classroom objects"],
   objectives:["Identify and point to classroom objects in French","Ask for an object politely","Use indefinite articles un / une"],
   note:"<b>un</b> before masculine nouns (un livre), <b>une</b> before feminine nouns (une règle). Ask: <i>Donne-moi un crayon, s'il te plaît.</i>",
+  study:[
+    /* ---- course text: Semester Two, Period V — Les objets de la classe (page 18) ---- */
+    {k:"h3", t:"Les objets de la classe — Classroom Objects"},
+    {k:"p", t:"Learn the names of the **objects found in the classroom** in French, and **explain what we do with each object**."},
+    {k:"table", head:["Français","English","Usage"], rows:[["le livre","book","to read — lire"],["le cahier","exercise book","to write — écrire"],["le crayon","pencil","to draw — dessiner"],["le stylo","pen","to write — écrire"],["la règle","ruler","to measure — mesurer"],["la gomme","eraser","to erase — effacer"],["le sac","bag","to carry — porter"],["la craie","chalk","to write on the board"],["les ciseaux","scissors","to cut — couper"],["la carte","map","to find places"],["le pupitre","desk","to work — travailler"]]},
+    {k:"p", t:"**Identify different objects used in the classroom** and spell each name."},
+    {k:"rule"},
+    {k:"h3", t:"Un et une — A and An"},
+    {k:"p", t:"**Un** goes before masculine nouns (un livre, un crayon, un stylo) and **une** before feminine nouns (une règle, une gomme, une table). The classroom objects have a gender in French — learn the article with the noun."},
+    {k:"rule"},
+    {k:"h3", t:"Qu'est-ce que c'est ? — What Is This?"},
+    {k:"p", t:"Ask and answer questions about the objects in the classroom:"},
+    {k:"bul", items:["**Qu'est-ce que c'est ? — C'est un tableau.** — What is this? — It is a board.", "**Qu'est-ce que c'est ? — C'est une chaise.** — What is this? — It is a chair.", "**Qu'est-ce que c'est ? — C'est un livre.** — What is this? — It is a book.", "**Qu'est-ce que c'est ? — C'est une règle.** — What is this? — It is a ruler."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — In the Classroom"},
+    {k:"num", items:["**Maîtresse:** Qu'est-ce que c'est ?", "**Joseph:** C'est un cahier.", "**Maîtresse:** Donne-moi un crayon, s'il te plaît.", "**Joseph:** Voici un crayon, maîtresse.", "**Maîtresse:** Merci, Joseph. Qu'est-ce que c'est ?", "**Joseph:** C'est une gomme !"]}
+  ],
   vocab:[
     {fr:"le livre", en:"the book", say:"luh LEE-vruh", e:"📕"},
     {fr:"le cahier", en:"the notebook", say:"luh kah-YAY", e:"📓"},
@@ -6590,6 +6914,21 @@ const FR_CURRICULUM = [
   outcomes:["Count from 1 to 30 in French","Translate number names both ways","Spell numbers up to 30 in French"],
   objectives:["Count and write numbers 1–30 in French","Do simple addition and subtraction orally in French","Use numbers for ages and dates"],
   note:"Teens: <b>onze, douze, treize, quatorze, quinze, seize</b>, then <i>dix-sept, dix-huit, dix-neuf</i>. After 20: <i>vingt et un, vingt-deux…</i>",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Les nombres de 1 à 30 (page 19) ---- */
+    {k:"h3", t:"Les nombres de 1 à 30 — Numbers from 1 to 30"},
+    {k:"p", t:"Learn the **number names** in French from 1 to 30, and **match number names to their numerals**."},
+    {k:"table", head:["Numeral","Français","Numeral","Français"], rows:[["1","un","16","seize"],["2","deux","17","dix-sept"],["3","trois","18","dix-huit"],["4","quatre","19","dix-neuf"],["5","cinq","20","vingt"],["6","six","21","vingt et un"],["7","sept","22","vingt-deux"],["8","huit","25","vingt-cinq"],["9","neuf","28","vingt-huit"],["10","dix","30","trente"]]},
+    {k:"p", t:"The **teens** are: onze (11), douze (12), treize (13), quatorze (14), quinze (15), seize (16), then **dix-sept** (17), **dix-huit** (18), **dix-neuf** (19). After 20, the units are joined with a hyphen: vingt-deux (22), vingt-cinq (25) — but 21 is **vingt et un** with *et*."},
+    {k:"rule"},
+    {k:"h3", t:"Les nombres cardinaux et ordinaux — Cardinal and Ordinal Numbers"},
+    {k:"p", t:"**Cardinal numbers** count (un, deux, trois...). **Ordinal numbers** show position, from 1st to 20th:"},
+    {k:"table", head:["Position","Français","Position","Français"], rows:[["1st","premier","11th","onzième"],["2nd","deuxième","12th","douzième"],["3rd","troisième","13th","treizième"],["4th","quatrième","14th","quatorzième"],["5th","cinquième","15th","quinzième"],["6th","sixième","16th","seizième"],["7th","septième","17th","dix-septième"],["8th","huitième","18th","dix-huitième"],["9th","neuvième","19th","dix-neuvième"],["10th","dixième","20th","vingtième"]]},
+    {k:"p", t:"**Use objects to show position**: group shapes and count objects in French, then line up pupils and say le premier, le deuxième, le troisième... Use counters, number charts and flash cards."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Counting to Thirty"},
+    {k:"num", items:["**Maîtresse:** Comptez de 1 à 30 !", "**Élèves:** Un, deux, trois, quatre... vingt, vingt et un, vingt-deux... trente !", "**Maîtresse:** Bravo ! Combien d'élèves sont dans la classe ?", "**Amara:** Il y a vingt-cinq élèves.", "**Maîtresse:** Vingt-cinq, c'est correct !"]}
+  ],
   vocab:[
     {fr:"onze", en:"eleven (11)", say:"OHNZ", e:"1️⃣"},
     {fr:"douze", en:"twelve (12)", say:"DOOZ", e:"1️⃣"},
@@ -6617,6 +6956,27 @@ const FR_CURRICULUM = [
   outcomes:["Name and describe classroom objects in French","Translate descriptive phrases both ways","Spell classroom vocabulary accurately"],
   objectives:["Describe classroom objects using colour and size","Use il y a (there is / there are)","Write simple sentences about the classroom"],
   note:"<b>Il y a</b> = there is / there are: <i>Il y a vingt pupitres dans la classe.</i> Add adjectives: <i>un grand tableau noir</i>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Les objets de la classe (page 20) ---- */
+    {k:"h3", t:"Les objets de la classe — Classroom Objects"},
+    {k:"p", t:"**Identify the major objects in the classroom in French**, spell the names of each object, and **discuss the usage of each object**."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["le tableau","board","le dictionnaire","dictionary"],["le stylo","pen","l'horloge","clock"],["le cahier","exercise book","le drapeau","flag"],["la règle","ruler","l'étagère","shelf"],["l'ardoise","slate","le taille-crayon","pencil sharpener"],["la chaise","chair","le pupitre","desk"]]},
+    {k:"p", t:"**Select classroom objects from other objects**: on the poster, point only to the objects you find in the classroom, and name them in French."},
+    {k:"rule"},
+    {k:"h3", t:"Il y a — There Is / There Are"},
+    {k:"p", t:"Use **il y a** to say there is or there are:"},
+    {k:"bul", items:["**Il y a vingt pupitres dans la classe.** — There are twenty desks in the classroom.", "**Il y a un tableau noir.** — There is a blackboard.", "**Il y a une horloge sur le mur.** — There is a clock on the wall.", "**Il y a un drapeau dans la classe.** — There is a flag in the classroom."]},
+    {k:"rule"},
+    {k:"h3", t:"Les adjectifs — Adjectives"},
+    {k:"p", t:"Describe the objects with adjectives: *un grand tableau noir* (a big black board), *un nouveau dictionnaire* (a new dictionary), *un vieux stylo* (an old pen), *un petit taille-crayon* (a small pencil sharpener)."},
+    {k:"rule"},
+    {k:"h3", t:"Voici et voilà — Here Is / There Is"},
+    {k:"p", t:"Present objects with **voici** (here is) and **voilà** (there is), and ask what things are with **Qu'est-ce que c'est ?** :"},
+    {k:"bul", items:["**Voici un stylo.** — Here is a pen.", "**Voilà une règle.** — There is a ruler.", "**C'est un tableau.** — It is a board.", "**C'est une chaise.** — It is a chair."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — In Our Classroom"},
+    {k:"num", items:["**M. Smith:** Qu'est-ce qu'il y a dans la classe ?", "**Fatu:** Il y a un tableau, des pupitres et une horloge.", "**M. Smith:** Voici un dictionnaire. C'est pour quoi ?", "**Fatu:** C'est pour chercher les mots !", "**M. Smith:** Très bien, Fatu !"]}
+  ],
   vocab:[
     {fr:"Il y a", en:"There is / there are", say:"eel ee AH", e:"👉"},
     {fr:"grand", en:"big / tall", say:"GRAHN", e:"⬆️"},
@@ -6640,6 +7000,23 @@ const FR_CURRICULUM = [
   outcomes:["Count from 1 to 40 in French","Translate and spell numbers up to 40","Apply numbers in real situations"],
   objectives:["Count and write numbers 1–40 in French","Perform simple calculations aloud in French","Use numbers for prices, ages and quantities"],
   note:"Pattern after 30: <i>trente et un, trente-deux, trente-trois…</i> Only <b>et un</b> takes 'et' (21, 31, 41).",
+  study:[
+    /* ---- course text: Semester One, Period II — Les nombres de 1 à 40 (page 21) ---- */
+    {k:"h3", t:"Les nombres de 1 à 40 — Numbers from 1 to 40"},
+    {k:"p", t:"**Count from 1 to 40 correctly in French** and **match number names to their numerals**."},
+    {k:"table", head:["Numeral","Français","Numeral","Français"], rows:[["20","vingt","30","trente"],["21","vingt et un","31","trente et un"],["22","vingt-deux","32","trente-deux"],["23","vingt-trois","35","trente-cinq"],["25","vingt-cinq","39","trente-neuf"],["29","vingt-neuf","40","quarante"]]},
+    {k:"p", t:"The pattern after 30 is the same as after 20: **trente et un** (31), **trente-deux** (32), **trente-trois** (33)... Only **et un** takes the word *et* — 21, 31, 41 — all the other numbers use a hyphen: vingt-deux, trente-cinq, quarante."},
+    {k:"rule"},
+    {k:"h3", t:"Les expressions simples — Simple Expressions"},
+    {k:"p", t:"**Use simple expressions through numbers**:"},
+    {k:"bul", items:["**Voici deux élèves.** — Here are two pupils.", "**C'est un sac.** — It is a bag.", "**J'ai trois crayons.** — I have three pencils.", "**Il y a quarante élèves dans la classe.** — There are forty pupils in the class."]},
+    {k:"rule"},
+    {k:"h3", t:"Les nombres cardinaux et ordinaux — Cardinal and Ordinal Numbers"},
+    {k:"p", t:"Review the **cardinal numbers** (1 to 40) and the **ordinal numbers** from 1st to 20th: premier, deuxième, troisième, quatrième, cinquième, sixième, septième, huitième, neuvième, dixième, onzième, douzième, treizième, quatorzième, quinzième, seizième, dix-septième, dix-huitième, dix-neuvième, vingtième."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — How Many?"},
+    {k:"num", items:["**Maîtresse:** Combien d'élèves sont présents ?", "**Korpo:** Trente-cinq élèves sont présents.", "**Maîtresse:** Et combien de livres as-tu ?", "**Korpo:** J'ai trois livres et deux cahiers.", "**Maîtresse:** Très bien. Trente-cinq plus cinq, ça fait combien ?", "**Korpo:** Ça fait quarante !"]}
+  ],
   vocab:[
     {fr:"trente et un", en:"thirty-one (31)", say:"trahnt ay UHN", e:"3️⃣"},
     {fr:"trente-deux", en:"thirty-two (32)", say:"trahnt-DUH", e:"3️⃣"},
@@ -6663,6 +7040,24 @@ const FR_CURRICULUM = [
   outcomes:["Tell the time in French","Translate time expressions both ways","Write times correctly in French"],
   objectives:["Ask and answer what time it is","Use et quart, et demie, moins le quart","Relate time to the daily school routine"],
   note:"<b>Quelle heure est-il ? — Il est trois heures.</b> Add: <i>et quart</i> (:15), <i>et demie</i> (:30), <i>moins le quart</i> (:45).",
+  study:[
+    /* ---- course text: Semester One, Period III — L'heure (page 22) ---- */
+    {k:"h3", t:"L'heure — Telling Time"},
+    {k:"p", t:"Ask the time with **Quelle heure est-il ?** (What time is it?) and answer with **Il est + heure**."},
+    {k:"table", head:["Français","English"], rows:[["Quelle heure est-il ?","What time is it?"],["Il est une heure.","It is one o'clock."],["Il est deux heures.","It is two o'clock."],["Il est trois heures.","It is three o'clock."],["Il est midi.","It is noon."],["Il est minuit.","It is midnight."]]},
+    {k:"p", t:"**Il est** is always singular even with plural hours: *Il est quatre heures* (It is four o'clock). The expression uses the **subject pronoun + être** — *il est*."},
+    {k:"rule"},
+    {k:"h3", t:"Et quart, et demie, moins le quart — Quarters and Half Hours"},
+    {k:"p", t:"Add the minutes to the hour:"},
+    {k:"bul", items:["**Il est trois heures et quart.** — It is quarter past three (3:15).", "**Il est trois heures et demie.** — It is half past three (3:30).", "**Il est quatre heures moins le quart.** — It is quarter to four (3:45).", "**Il est dix heures du matin.** — It is ten o'clock in the morning.", "**Il est sept heures du soir.** — It is seven o'clock in the evening."]},
+    {k:"p", t:"**Show the difference between English and French time**: in French we say the hour first and then the minutes; the 12-hour clock is used with **du matin** (a.m.), **de l'après-midi** and **du soir** (p.m.)."},
+    {k:"rule"},
+    {k:"h3", t:"Discussing Time"},
+    {k:"p", t:"**Discuss the time in the class and community** in groups or pairs, and draw individual clocks showing various times. Use a clock, number charts and flash cards to practise."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — What Time Is It?"},
+    {k:"num", items:["**Maman:** Quelle heure est-il ?", "**Joseph:** Il est sept heures et demie, maman.", "**Maman:** Dépêche-toi ! L'école commence à huit heures !", "**Joseph:** Oui, maman. Quelle heure est-il maintenant ?", "**Maman:** Il est huit heures moins le quart !"]}
+  ],
   vocab:[
     {fr:"Quelle heure est-il ?", en:"What time is it?", say:"kell UHR ay-TEEL", e:"❓"},
     {fr:"Il est une heure", en:"It is one o'clock", say:"eel ay tune UHR", e:"🕐"},
@@ -6686,6 +7081,25 @@ const FR_CURRICULUM = [
   outcomes:["Name and describe colours in French","Translate colour expressions both ways","Apply colour agreement in writing"],
   objectives:["Name a wide range of colours in French","Make colour adjectives agree with the noun","Describe objects and the Liberian flag by colour"],
   note:"Agreement: <i>un livre <b>vert</b></i> → <i>une porte <b>verte</b></i>. Plural adds -s: <i>des livres verts</i>. Some, like <b>orange</b> and <b>marron</b>, never change.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Les couleurs (page 23) ---- */
+    {k:"h3", t:"Les couleurs — The Colors"},
+    {k:"p", t:"**Identify the eight basic colors and name them correctly in French**, and spell the colors you see in the class, the school environment, the home and the community."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["blanc / blanche","white","violet / violette","purple"],["noir / noire","black","rose","pink"],["rouge","red","marron","brown"],["jaune","yellow","gris / grise","grey"],["vert / verte","green","doré / dorée","golden"],["bleu / bleue","blue","orange","orange"]]},
+    {k:"p", t:"**Match colors to their appropriate objects**: *un sac noir* (a black bag), *une robe rouge* (a red dress), *un drapeau vert* (a green flag)."},
+    {k:"rule"},
+    {k:"h3", t:"Les couleurs primaires — Primary Colors"},
+    {k:"p", t:"**List the primary colors** and **describe how to form other colors** by mixing:"},
+    {k:"bul", items:["**Rouge + jaune = orange** — red + yellow = orange", "**Bleu + jaune = vert** — blue + yellow = green", "**Rouge + bleu = violet** — red + blue = purple", "**Noir + blanc = gris** — black + white = grey"]},
+    {k:"rule"},
+    {k:"h3", t:"Article + nom + adjectif — Article + Noun + Adjective"},
+    {k:"p", t:"Describe objects with the pattern **article + noun + adjective**. The color adjective agrees with the noun:"},
+    {k:"bul", items:["**une chemise bleue** — a blue shirt", "**un bic rouge** — a red pen", "**un sac rose** — a pink bag", "**une porte verte** — a green door", "**des livres verts** — green books"]},
+    {k:"p", t:"Some colors never change: **orange** and **marron** stay the same for masculine and feminine."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — What Color Is It?"},
+    {k:"num", items:["**Maîtresse:** De quelle couleur est le drapeau du Libéria ?", "**Amara:** Il est rouge, blanc et bleu !", "**Maîtresse:** Très bien. Et ta robe, Marie ?", "**Marie:** Ma robe est jaune.", "**Maîtresse:** Et ce livre ?", "**Amara:** C'est un livre vert."]}
+  ],
   vocab:[
     {fr:"gris", en:"grey", say:"GREE", e:"🩶"},
     {fr:"marron", en:"brown", say:"mah-ROHN", e:"🟤"},
@@ -6709,6 +7123,27 @@ const FR_CURRICULUM = [
   outcomes:["Name internal and external body parts in French","Translate health expressions both ways","Spell body vocabulary correctly"],
   objectives:["Name additional parts of the body in French","Describe pain and illness using avoir mal à","Discuss hygiene and health in French"],
   note:"<b>avoir mal à</b> + body part: <i>J'ai mal au ventre</i> (au = à + le), <i>J'ai mal à la tête</i>, <i>J'ai mal aux dents</i>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Les parties du corps (page 24) ---- */
+    {k:"h3", t:"Les parties du corps — Parts of the Body"},
+    {k:"p", t:"**Describe, identify and name the parts of the body in French**, and spell each part."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la tête","head","le pied","foot"],["le visage","face","la main","hand"],["le nez","nose","le bras","arm"],["la bouche","mouth","la jambe","leg"],["les yeux","eyes","le ventre","stomach"],["les oreilles","ears","le dos","back"],["les dents","teeth","le cou","neck"],["les cheveux","hair","le genou","knee"]]},
+    {k:"rule"},
+    {k:"h3", t:"Les cinq sens — The Five Senses"},
+    {k:"p", t:"**Use the five senses in French to describe the parts of the body**, and identify which part of the body is used for each sense:"},
+    {k:"bul", items:["**Je vois avec les yeux.** — I see with my eyes.", "**J'entends avec les oreilles.** — I hear with my ears.", "**Je sens avec le nez.** — I smell with my nose.", "**Je goûte avec la bouche.** — I taste with my mouth.", "**Je touche avec les mains.** — I touch with my hands."]},
+    {k:"rule"},
+    {k:"h3", t:"Les expressions — Simple Conversations"},
+    {k:"p", t:"Use **short conversations in French** with the demonstrative *voici* and the expressions *c'est* and *ce sont*:"},
+    {k:"bul", items:["**Voici ma main.** — Here is my hand.", "**C'est mon pied.** — This is my foot.", "**Ce sont mes yeux.** — These are my eyes.", "**C'est ma tête.** — This is my head."]},
+    {k:"rule"},
+    {k:"h3", t:"Avoir mal à — To Have Pain In"},
+    {k:"p", t:"Use **avoir mal à** + the body part to say where it hurts (au = à + le):"},
+    {k:"bul", items:["**J'ai mal à la tête.** — I have a headache.", "**J'ai mal au ventre.** — I have a stomach ache.", "**J'ai mal au dos.** — I have a backache.", "**J'ai mal aux dents.** — I have a toothache.", "**Je suis malade.** — I am sick."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — The Body"},
+    {k:"num", items:["**Maîtresse:** Montre-moi la tête !", "**Kofi:** Voici ma tête.", "**Maîtresse:** Avec quoi vois-tu ?", "**Kofi:** Je vois avec les yeux.", "**Maîtresse:** Et avec quoi entends-tu ?", "**Kofi:** J'entends avec les oreilles !"]}
+  ],
   vocab:[
     {fr:"le ventre", en:"the stomach", say:"luh VAHN-truh", e:"🫃"},
     {fr:"le dos", en:"the back", say:"luh DOH", e:"🔙"},
@@ -6732,6 +7167,25 @@ const FR_CURRICULUM = [
   outcomes:["Name means of transport in French","Translate travel expressions both ways","Spell travel vocabulary correctly"],
   objectives:["Talk about how they travel to school and to town","Use aller (to go) with prepositions","Ask for and give simple directions in French"],
   note:"<b>aller</b>: je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont. <i>Je vais à l'école en voiture.</i>",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Le voyage (page 25) ---- */
+    {k:"h3", t:"Le voyage — Travel"},
+    {k:"p", t:"**Describe, identify and name some basic objects used for travelling in French**, and spell them."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la voiture","car","le vélo","bicycle"],["le camion","truck","à pied","on foot"],["la moto","motorcycle","l'avion","aeroplane"],["le bus","bus","le bateau","boat"],["en vacances","on holiday","à la plage","to the beach"],["la route","road","le billet","ticket"]]},
+    {k:"p", t:"**Develop short conversations in French to tell how people travel from place to place**: *Je vais à l'école à pied* (I go to school on foot), *Papa va au marché en voiture* (Daddy goes to the market by car), *Nous allons à la plage en bus* (We go to the beach by bus)."},
+    {k:"rule"},
+    {k:"h3", t:"Le verbe aller — To Go"},
+    {k:"p", t:"Conjugate the verb **aller** (to go):"},
+    {k:"table", head:["Pronom","aller","Exemple"], rows:[["je","je vais","Je vais à l'école."],["tu","tu vas","Tu vas à la maison."],["il / elle","il / elle va","Elle va au marché."],["nous","nous allons","Nous allons à la plage."],["vous","vous allez","Vous allez au village."],["ils / elles","ils / elles vont","Ils vont en ville."]]},
+    {k:"rule"},
+    {k:"h3", t:"Les adjectifs démonstratifs et possessifs — Demonstrative and Possessive Adjectives"},
+    {k:"p", t:"Use the **French demonstrative and possessive adjectives in simple conversation** with nouns:"},
+    {k:"bul", items:["**C'est mon vélo.** — This is my bicycle.", "**Voici ton camion.** — Here is your truck.", "**C'est la jolie voiture de papa.** — This is daddy's pretty car.", "**Voilà sa moto.** — There is his motorcycle.", "**Ce bus va à la plage.** — This bus goes to the beach."]},
+    {k:"p", t:"The possessive adjectives are **mon/ma/mes** (my), **ton/ta/tes** (your), **son/sa/ses** (his/her)."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — The Journey"},
+    {k:"num", items:["**Fatu:** Où vas-tu, Paul ?", "**Paul:** Je vais à Monrovia.", "**Fatu:** Comment voyages-tu ?", "**Paul:** Je voyage en voiture avec mon père.", "**Fatu:** Bon voyage, Paul !", "**Paul:** Merci ! À bientôt !"]}
+  ],
   vocab:[
     {fr:"le voyage", en:"the journey / travel", say:"luh vwah-YAHZH", e:"🧳"},
     {fr:"la voiture", en:"the car", say:"lah vwah-TOOR", e:"🚗"},
@@ -6758,6 +7212,26 @@ const FR_CURRICULUM = [
   outcomes:["Describe the extended family in French","Translate family descriptions both ways","Write a short paragraph about the family"],
   objectives:["Describe family members' age, work and character","Use possessive adjectives son / sa / ses, notre, leur","Present a family tree orally in French"],
   note:"Possessives: <b>mon/ma/mes</b> (my), <b>ton/ta/tes</b> (your), <b>son/sa/ses</b> (his/her), <b>notre/nos</b> (our), <b>votre/vos</b>, <b>leur/leurs</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Membres de la famille (page 26) ---- */
+    {k:"h3", t:"Les membres de la famille — Members of the Family"},
+    {k:"p", t:"Learn the names of the **family members** in French, and **name and discuss the role of each member of the family**."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["les parents","parents","le neveu","nephew"],["les grands-parents","grandparents","la nièce","niece"],["le père","father","l'époux / l'épouse","husband / wife"],["la mère","mother","le beau-père","father-in-law"],["le frère","brother","l'aîné(e)","the eldest"],["la sœur","sister","le cadet / la cadette","the youngest"]]},
+    {k:"p", t:"**Discuss the role of each family member**: les parents work to provide for the family; les grands-parents give advice and share wisdom; les frères et sœurs help at home and study at school."},
+    {k:"p", t:"Compare the different kinds of families in Liberia and other countries: la famille nucléaire (nuclear family) and la famille élargie (extended family)."},
+    {k:"rule"},
+    {k:"h3", t:"Les adjectifs possessifs — Possessive Adjectives"},
+    {k:"p", t:"**Use the French possessive adjectives to describe the family members**. They agree with the noun that follows, not with the owner:"},
+    {k:"table", head:["Owner","Masculine","Feminine","Plural"], rows:[["my","mon père","ma mère","mes frères"],["your (tu)","ton père","ta mère","tes frères"],["his / her","son père","sa mère","ses frères"],["our","notre père","notre mère","nos parents"],["your (vous)","votre père","votre mère","vos parents"],["their","leur père","leur mère","leurs parents"]]},
+    {k:"bul", items:["**Voici mon père.** — Here is my father.", "**Ma mère arrive.** — My mother is coming.", "**C'est mon frère.** — This is my brother.", "**J'aime mes parents.** — I love my parents."]},
+    {k:"rule"},
+    {k:"h3", t:"Oral Expressions about the Family"},
+    {k:"p", t:"Make **oral expressions in French about the family**: *J'aime mon père* (I love my father), *Ma sœur est gentille* (My sister is kind), *Il s'appelle Joseph* (His name is Joseph), *Il a trente ans* (He is thirty years old)."},
+    {k:"p", t:"Draw a **family tree** with images of your family members, label each one in French, and present it to the class."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — My Family"},
+    {k:"num", items:["**Maîtresse:** Présente-moi ta famille.", "**Hawa:** Voici mon père et ma mère.", "**Maîtresse:** As-tu des frères et des sœurs ?", "**Hawa:** Oui, j'ai deux frères et une sœur.", "**Maîtresse:** Comment s'appelle ta sœur ?", "**Hawa:** Elle s'appelle Marie. Elle est l'aînée !"]}
+  ],
   vocab:[
     {fr:"les parents", en:"the parents", say:"lay pah-RAHN", e:"👫"},
     {fr:"les grands-parents", en:"the grandparents", say:"lay grahn-pah-RAHN", e:"👴👵"},
@@ -6781,6 +7255,23 @@ const FR_CURRICULUM = [
   outcomes:["Name professions in French","Translate profession names both ways","Spell profession vocabulary correctly"],
   objectives:["Name common professions in masculine and feminine forms","State what they want to be when they grow up","Describe what each worker does"],
   note:"No article after être with jobs: <i>Il est médecin.</i> Feminine forms: <i>un instituteur → une institutrice</i>; <i>un infirmier → une infirmière</i>.",
+  study:[
+    /* ---- course text: Semester One, Period II — Les professions (page 27) ---- */
+    {k:"h3", t:"Les professions — The Professions"},
+    {k:"p", t:"**Identify some professions and name them in French**, and discuss the different kinds of professions."},
+    {k:"table", head:["Français","English","Feminine"], rows:[["le médecin","doctor","la médecin / le docteur"],["l'infirmier","nurse (m.)","l'infirmière"],["l'instituteur","teacher (m.)","l'institutrice"],["l'agriculteur","farmer (m.)","l'agricultrice"],["le pêcheur","fisherman","la pêcheuse"],["le commerçant","trader","la commerçante"],["le chauffeur","driver","la conductrice"],["le policier","policeman","la policière"],["le tailleur","tailor","la tailleuse"],["l'avocat","lawyer","l'avocate"],["le maçon","builder","la maçonne"],["le chanteur","singer","la chanteuse"],["le musicien","musician","la musicienne"]]},
+    {k:"rule"},
+    {k:"h3", t:"Être + profession — To Be + Profession"},
+    {k:"p", t:"**Use the French helping verb être (to be)** with professions. There is **no article after être** with jobs:"},
+    {k:"bul", items:["**C'est un professeur.** — He is a teacher. (with c'est, the article is used)", "**Il est professeur.** — He is a teacher. (after être, no article)", "**Il est chanteur.** — He is a singer.", "**Elle est musicienne.** — She is a musician.", "**Je veux être médecin.** — I want to be a doctor.", "**Je veux être institutrice.** — I want to be a teacher. (girls)"]},
+    {k:"rule"},
+    {k:"h3", t:"Les adjectifs démonstratifs — Demonstrative Adjectives"},
+    {k:"p", t:"**Make use of demonstrative adjectives to relate to professions in French.** The demonstrative adjectives are **ce** (masculine), **cet** (masculine before a vowel), **cette** (feminine) and **ces** (plural):"},
+    {k:"bul", items:["**Ce médecin est gentil.** — This doctor is kind.", "**Cet instituteur est nouveau.** — This teacher is new.", "**Cette policière est forte.** — This policewoman is strong.", "**Ces commerçants travaillent au marché.** — These traders work at the market."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — What Do You Want to Be?"},
+    {k:"num", items:["**M. Dweh:** Quelle profession veux-tu faire, Jean ?", "**Jean:** Je veux être médecin, monsieur.", "**M. Dweh:** Et toi, Marie ?", "**Marie:** Je veux être institutrice !", "**M. Dweh:** Très bien ! Ce sont de belles professions."]}
+  ],
   vocab:[
     {fr:"le médecin", en:"the doctor", say:"luh mayd-SAN", e:"🩺"},
     {fr:"l'infirmier / l'infirmière", en:"the nurse", say:"lan-feer-MYAY", e:"💉"},
@@ -6805,6 +7296,25 @@ const FR_CURRICULUM = [
   outcomes:["Link weather conditions to appropriate clothing","Translate weather and clothing expressions both ways","Write a weather report in French"],
   objectives:["Give a short weather report in French","Justify clothing choices with parce que (because)","Compare Liberian weather with other countries"],
   note:"Justify with <b>parce que</b>: <i>Je porte un parapluie parce qu'il pleut.</i> Weather verbs: <i>il fait, il pleut, il y a</i>.",
+  study:[
+    /* ---- course text: Semester One, Period III — Les temps et vêtements (page 28) ---- */
+    {k:"h3", t:"Le temps et les saisons — Weather and Seasons"},
+    {k:"p", t:"**Name the seasons and the weather in French**, and tell how many seasons we have in Liberia."},
+    {k:"bul", items:["**La saison sèche** — the dry season (November to April): *Il fait chaud*, *Il y a du soleil*.", "**La saison des pluies** — the rainy season (May to October): *Il pleut*, *Il y a des orages*."]},
+    {k:"p", t:"**Differentiate between weather and season**: le temps is what the sky is doing today; la saison is the long period of the year. Compare with other countries that have four seasons: le printemps (spring), l'été (summer), l'automne (autumn), l'hiver (winter)."},
+    {k:"rule"},
+    {k:"h3", t:"Les expressions — Weather Expressions"},
+    {k:"p", t:"Use the weather verbs **il fait, il pleut, il y a**:"},
+    {k:"bul", items:["**Il fait chaud.** — It is hot.", "**Il fait beau.** — The weather is fine.", "**Il fait mauvais.** — The weather is bad.", "**Il fait frais.** — It is cool.", "**Il pleut.** — It is raining.", "**Il y a du soleil.** — It is sunny.", "**Il y a du vent.** — It is windy.", "**Il y a de l'humidité.** — It is humid."]},
+    {k:"rule"},
+    {k:"h3", t:"Les vêtements et le temps — Clothing and the Weather"},
+    {k:"p", t:"**List the different clothing suitable for different weather** and tell the names of different clothing:"},
+    {k:"bul", items:["**Il pleut → l'imperméable, les bottes, le parapluie** — rain → raincoat, boots, umbrella", "**Il fait chaud → la chemise, le short, les sandales** — hot → shirt, shorts, sandals", "**Il fait froid → le tricot, le pantalon, les chaussettes** — cold → sweater, trousers, socks", "**Il y a du soleil → les lunettes de soleil, le chapeau** — sunny → sunglasses, hat"]},
+    {k:"p", t:"Justify your choice with **parce que** (because): *Je porte un parapluie parce qu'il pleut* — I carry an umbrella because it is raining. *Je porte une robe parce qu'il fait chaud* — I wear a dress because it is hot."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — The Weather Report"},
+    {k:"num", items:["**Maman:** Quel temps fait-il aujourd'hui ?", "**Kofi:** Il fait beau, maman.", "**Maman:** Que portes-tu ?", "**Kofi:** Je porte ma chemise et mon short parce qu'il fait chaud.", "**Maman:** Et pour la saison des pluies ?", "**Kofi:** Je porte l'imperméable et les bottes !"]}
+  ],
   vocab:[
     {fr:"la météo", en:"the weather forecast", say:"lah may-tay-OH", e:"📺"},
     {fr:"parce que", en:"because", say:"pars-KUH", e:"➡️"},
@@ -6828,6 +7338,28 @@ const FR_CURRICULUM = [
   outcomes:["Link body parts to sporting actions in French","Translate sports vocabulary both ways","Discuss favourite sports in French"],
   objectives:["Name common sports in French","Use jouer à and faire de correctly","Explain which body parts each sport uses"],
   note:"<b>jouer à</b> + ball games (<i>je joue au football</i>) · <b>faire de</b> + activities (<i>je fais de la natation</i>).",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Les parties du corps et les sports (page 29) ---- */
+    {k:"h3", t:"Les parties du corps — Parts of the Body"},
+    {k:"p", t:"**Describe, identify and name the parts of the body in French**, and spell each part of the body."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la tête","head","le pied","foot"],["le visage","face","la main","hand"],["le nez","nose","le bras","arm"],["la bouche","mouth","la jambe","leg"],["les yeux","eyes","le ventre","stomach"],["les oreilles","ears","le dos","back"],["les dents","teeth","le muscle","muscle"]]},
+    {k:"rule"},
+    {k:"h3", t:"Les cinq sens — The Five Senses"},
+    {k:"p", t:"**Use the five senses in French to describe the parts of the body**:"},
+    {k:"bul", items:["**Je vois avec les yeux.** — I see with my eyes.", "**J'entends avec les oreilles.** — I hear with my ears.", "**Je sens avec le nez.** — I smell with my nose.", "**Je goûte avec la bouche.** — I taste with my mouth.", "**Je touche avec les mains.** — I touch with my hands."]},
+    {k:"rule"},
+    {k:"h3", t:"Les sports — Sports"},
+    {k:"p", t:"**Discuss the part of the body that is associated with sports**:"},
+    {k:"table", head:["Sport","Français","Body part"], rows:[["football","le football","les pieds"],["basketball","le basket-ball","les mains"],["swimming","la natation","les bras et les jambes"],["running","la course","les jambes"],["kickball","le kickball","les pieds"]]},
+    {k:"p", t:"Use **simple adjectives and verbs in French to describe the body parts**:"},
+    {k:"bul", items:["**Voici ma main.** — Here is my hand.", "**C'est mon pied.** — This is my foot.", "**Ce sont mes yeux.** — These are my eyes.", "**Je joue avec mes pieds.** — I play with my feet.", "**Je cours avec mes jambes.** — I run with my legs.", "**Je lance le ballon avec mes mains.** — I throw the ball with my hands."]},
+    {k:"rule"},
+    {k:"h3", t:"Jouer à et faire de — To Play and To Do"},
+    {k:"p", t:"**Jouer à** is used with ball games (*je joue au football*, *je joue au basket-ball*) and **faire de** with activities (*je fais de la natation*, *je fais de la course*)."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Let's Play Football"},
+    {k:"num", items:["**Jean:** Viens, Kofi ! On joue au football !", "**Kofi:** Oui ! Je joue avec mes pieds.", "**Jean:** Tu cours très vite !", "**Kofi:** Merci ! Je fais aussi de la course.", "**Jean:** Après le match, je fais de la natation !"]}
+  ],
   vocab:[
     {fr:"le football", en:"football / soccer", say:"luh foot-BALL", e:"⚽"},
     {fr:"le basket-ball", en:"basketball", say:"luh bas-ket-BALL", e:"🏀"},
@@ -6852,6 +7384,25 @@ const FR_CURRICULUM = [
   outcomes:["Identify the five French accent marks","Pronounce accented letters correctly","Write words with the correct accents"],
   objectives:["Name each accent in French","Explain how each accent changes pronunciation or meaning","Write dictated words with correct accents"],
   note:"Accents change sound and meaning: <i>ou</i> (or) vs <i>où</i> (where); <i>a</i> (has) vs <i>à</i> (to). Never omit an accent — it is part of the spelling.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Les accents (page 30) ---- */
+    {k:"h3", t:"Les accents — The Accents"},
+    {k:"p", t:"**Describe and identify the acute and grave accent in French**, and **tell which letter (vowels) the accents are used with**."},
+    {k:"table", head:["Accent","Name","Vowels","Example"], rows:[["é","l'accent aigu","e only","éléphant"],["è","l'accent grave","e, a, u","le frère, la mère"],["ê","l'accent circonflexe","a, e, i, o, u","la fenêtre"],["ë ï ü","le tréma","e, i, u","Noël"],["ç","la cédille","under c","garçon"]]},
+    {k:"p", t:"**List the appropriate vowel with which the accents are used**: the acute accent is used only on **e** (é); the grave accent is used on **e, a and u** (è, à, ù); the circumflex can sit on any vowel; the cedilla sits under the letter **c** before a, o or u to make the *s* sound (garçon, français)."},
+    {k:"rule"},
+    {k:"h3", t:"Spelling Words with Accents"},
+    {k:"p", t:"**Spell words correctly that contain the accents**:"},
+    {k:"bul", items:["**éléphant** — elephant (é at the start)", "**le frère** — the brother (è)", "**la mère** — the mother (è)", "**l'école** — the school (é)", "**très** — very (è)", "**la fenêtre** — the window (ê)", "**où** — where (ù)", "**garçon** — boy (ç)"]},
+    {k:"p", t:"Never omit an accent — it is part of the spelling and can change the meaning: **ou** (or) vs **où** (where), **a** (has) vs **à** (to)."},
+    {k:"rule"},
+    {k:"h3", t:"Noun + Avoir + Verb — Simple Conversation"},
+    {k:"p", t:"Use **short conversations with related verbs that reveal the accents** in French, with the pattern **noun + avoir + verb**:"},
+    {k:"bul", items:["**J'ai mangé.** — I have eaten. (j'ai + mangé)", "**Tu as parlé.** — You have spoken. (tu as + parlé)", "**Elle a écouté.** — She has listened. (elle a + écouté)", "**Nous avons fini.** — We have finished. (nous avons + fini)"]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — What Did You Do?"},
+    {k:"num", items:["**Maman:** Qu'est-ce que tu as fait aujourd'hui ?", "**Musu:** J'ai mangé du riz à l'école.", "**Maman:** Et ton frère ?", "**Musu:** Il a parlé avec le maître.", "**Maman:** Très bien. Maintenant, tu as fini tes devoirs ?", "**Musu:** Oui, maman, j'ai fini !"]}
+  ],
   vocab:[
     {fr:"l'accent aigu (é)", en:"acute accent — 'ay' sound", say:"ak-sahn tay-GU", e:"´"},
     {fr:"l'accent grave (è, à, ù)", en:"grave accent — open 'eh'", say:"ak-sahn GRAHV", e:"`"},
@@ -6875,6 +7426,31 @@ const FR_CURRICULUM = [
   outcomes:["Name fruits and vegetables in French","Translate produce vocabulary both ways","Spell fruit and vegetable names correctly"],
   objectives:["Distinguish fruits from vegetables in French","Use partitive articles du, de la, des","Role play buying produce at the market"],
   note:"Partitive: <b>du</b> (masc.), <b>de la</b> (fem.), <b>des</b> (plural) — <i>Je mange des mangues et du gombo.</i>",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Des fruits et des légumes (page 31) ---- */
+    {k:"h3", t:"Les fruits — Fruits"},
+    {k:"p", t:"**Name and discuss various kinds of fruits in French**, and spell the different kinds of fruits we eat."},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la mangue","mango","la papaye","papaya"],["l'orange","orange","la noix de coco","coconut"],["l'ananas","pineapple","le citron","lemon"],["la banane","banana","du raisin","grapes"]]},
+    {k:"rule"},
+    {k:"h3", t:"Les légumes — Vegetables"},
+    {k:"p", t:"Learn the names of **vegetables (les légumes)** in French:"},
+    {k:"table", head:["Français","English","Français","English"], rows:[["la tomate","tomato","la carotte","carrot"],["l'oignon","onion","le chou","cabbage"],["le gombo","okra","le manioc","cassava"],["les haricots","beans","la patate douce","sweet potato"]]},
+    {k:"p", t:"**Explain how fruits are important to us**: they give us vitamins, energy and health. **List places where we find fruits**: le marché (market), le magasin (shop), le jardin (garden), l'arbre fruitier (fruit tree)."},
+    {k:"rule"},
+    {k:"h3", t:"Le régime équilibré — A Balanced Diet"},
+    {k:"p", t:"A balanced diet includes **fruits and vegetables every day**. Illustrate the different kinds of meals of the day: breakfast (le petit déjeuner), lunch (le déjeuner) and dinner (le dîner), and name the fruits we eat at each."},
+    {k:"rule"},
+    {k:"h3", t:"Les articles partitifs — Partitive Articles"},
+    {k:"p", t:"Use the **partitive articles** **du** (masculine), **de la** (feminine) and **des** (plural) to say *some*:"},
+    {k:"bul", items:["**Je mange des mangues.** — I am eating mangoes.", "**Je mange du gombo.** — I am eating okra.", "**Je bois de l'eau.** — I am drinking water.", "**Elle achète des oranges au marché.** — She is buying oranges at the market."]},
+    {k:"rule"},
+    {k:"h3", t:"Au marché — At the Market"},
+    {k:"p", t:"Ask and answer about **prices** at the market:"},
+    {k:"bul", items:["**Quel est le prix d'un citron ?** — What is the price of a lemon?", "**C'est combien ?** — How much is it?", "**C'est cinquante dollars.** — It is fifty dollars.", "**Donne-moi deux mangues, s'il te plaît.** — Give me two mangoes, please."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — At the Market"},
+    {k:"num", items:["**Vendeuse:** Bonjour ! Qu'est-ce que tu veux ?", "**Fatu:** Je veux des mangues et des oranges.", "**Fatu:** C'est combien, les mangues ?", "**Vendeuse:** C'est cinquante dollars le kilo.", "**Fatu:** Et quel est le prix d'un citron ?", "**Vendeuse:** C'est vingt dollars. Voici tes fruits !", "**Fatu:** Merci beaucoup !"]}
+  ],
   vocab:[
     {fr:"la mangue", en:"the mango", say:"lah MAHNG", e:"🥭"},
     {fr:"l'orange", en:"the orange", say:"lo-RAHNZH", e:"🍊"},
@@ -6901,6 +7477,25 @@ const FR_CURRICULUM = [
   outcomes:["Identify nouns in a French sentence","Classify nouns by gender and number","Use nouns correctly in writing"],
   objectives:["Define a noun in French","Distinguish common from proper nouns","Identify masculine and feminine nouns and form plurals"],
   note:"Most plurals add <b>-s</b>. Nouns ending in <b>-eau/-eu</b> add <b>-x</b> (<i>bateau → bateaux</i>). Nouns ending in <b>-al</b> become <b>-aux</b> (<i>animal → animaux</i>).",
+  study:[
+    /* ---- course text: Semester One, Period I — Les noms (page 32) ---- */
+    {k:"h3", t:"Les noms — Nouns"},
+    {k:"p", t:"A **noun (un nom)** is a word that names a person, an animal, a place or a thing. **Describe and identify some basic nouns in French** and **classify nouns according to their groups**:"},
+    {k:"bul", items:["**Les personnes (people):** un homme, une femme, un garçon, une fille, le père, la mère", "**Les animaux (animals):** une vache, un chien, un chat, un lion", "**Les choses (things):** un cahier, un livre, une table, une maison", "**Les lieux (places):** l'école, le marché, la ville, le village"]},
+    {k:"p", t:"There are two kinds of nouns: the **nom commun** (common noun) names any person, animal, thing or place (*un garçon*); the **nom propre** (proper noun) names one particular person or place and starts with a capital letter (*Kofi*, *Monrovia*, *Libéria*)."},
+    {k:"rule"},
+    {k:"h3", t:"Le genre — Gender"},
+    {k:"p", t:"Every French noun is either **masculine** or **feminine**. The article tells you the gender: **un** (a) and **le** (the) are masculine; **une** (a) and **la** (the) are feminine."},
+    {k:"bul", items:["**Masculin:** un homme, un garçon, un chien, un cahier, un livre", "**Féminin:** une femme, une fille, une vache, une table, une maison"]},
+    {k:"p", t:"The **singular** (le singulier) names one thing; the **plural** (le pluriel) names more than one. Most nouns add **-s** for the plural: un livre → des livres. Nouns ending in **-eau / -eu** add **-x**: un bateau → des bateaux. Nouns ending in **-al** become **-aux**: un animal → des animaux, un journal → des journaux."},
+    {k:"rule"},
+    {k:"h3", t:"Les adjectifs démonstratifs — Demonstrative Adjectives"},
+    {k:"p", t:"Use **simple expressions with demonstrative adjectives and nouns**:"},
+    {k:"bul", items:["**C'est un homme.** — This is a man.", "**C'est une maison.** — This is a house.", "**C'est un chien.** — This is a dog.", "**Ce sont des cahiers.** — These are exercise books."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Nouns"},
+    {k:"num", items:["**Maîtresse:** Donne un nom de personne !", "**Kofi:** Un homme !", "**Maîtresse:** Donne un nom d'animal !", "**Marie:** Une vache !", "**Maîtresse:** Donne un nom de chose !", "**Kofi:** Un cahier !", "**Maîtresse:** Très bien ! Ce sont des noms."]}
+  ],
   vocab:[
     {fr:"le nom", en:"the noun / name", say:"luh NOHN", e:"📛"},
     {fr:"le nom commun", en:"the common noun", say:"luh nohn ko-MUHN", e:"📄"},
@@ -6924,6 +7519,25 @@ const FR_CURRICULUM = [
   outcomes:["Use definite and indefinite articles correctly","Explain the difference between the two types","Apply elision before a vowel"],
   objectives:["List the definite articles le, la, l', les","List the indefinite articles un, une, des","Choose the correct article for any noun"],
   note:"Before a vowel or silent h, <b>le/la → l'</b>: <i>l'école, l'homme</i>. Definite = a known thing; indefinite = any one thing.",
+  study:[
+    /* ---- course text: Semester One, Period II — Les articles définis et indéfinis (page 33) ---- */
+    {k:"h3", t:"Les articles — Articles"},
+    {k:"p", t:"An **article** is a small word placed before a noun. **Identify and describe the two major articles in French** — the definite article (l'article défini) and the indefinite article (l'article indéfini)."},
+    {k:"table", head:["","Masculine","Feminine","Plural"], rows:[["Défini (the)","le","la","les"],["Indéfini (a / some)","un","une","des"]]},
+    {k:"bul", items:["**Le garçon, la fille, les garçons, les filles** — the boy, the girl, the boys, the girls", "**Un garçon, une fille, des garçons, des filles** — a boy, a girl, (some) boys, (some) girls"]},
+    {k:"p", t:"**Le** (the) is used for a **known, definite** thing; **un/une/des** are used for **any** thing — indefinite. The definite article is used when we know exactly which one: *Donne-moi le livre* (the book we know) vs *Donne-moi un livre* (any book)."},
+    {k:"rule"},
+    {k:"h3", t:"Classify Articles by Gender and Number"},
+    {k:"p", t:"**Discuss and classify articles according to gender and number**:"},
+    {k:"bul", items:["**Masculin singulier:** le garçon, un garçon, l'homme", "**Féminin singulier:** la fille, une fille, l'amie", "**Masculin pluriel:** les garçons, des garçons", "**Féminin pluriel:** les filles, des filles", "**L'élision:** before a vowel or silent h, le and la become **l'**: l'homme, l'amie, l'école"]},
+    {k:"p", t:"Note the guide's examples: *le garçon, les garçons, la fille, les filles, l'homme, les hommes, l'amie, les amies* — the article changes with gender and number."},
+    {k:"rule"},
+    {k:"h3", t:"Au / aux — Contracted Articles"},
+    {k:"p", t:"**À + le = au** and **à + les = aux**: *Je vais au marché* (to the market), *Je parle aux élèves* (to the pupils)."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Articles"},
+    {k:"num", items:["**M. Smith:** Qu'est-ce que c'est ?", "**Marie:** C'est un livre.", "**M. Smith:** Et cela ?", "**Marie:** C'est une règle.", "**M. Smith:** Où sont les élèves ?", "**Kofi:** Les élèves sont dans la classe !"]}
+  ],
   vocab:[
     {fr:"le", en:"the (masculine singular)", say:"LUH", e:"♂️"},
     {fr:"la", en:"the (feminine singular)", say:"LAH", e:"♀️"},
@@ -6947,6 +7561,27 @@ const FR_CURRICULUM = [
   outcomes:["Use descriptive adjectives in French","Make adjectives agree in gender and number","Describe people and things in writing"],
   objectives:["Form the feminine and plural of adjectives","Place adjectives correctly before or after the noun","Write a descriptive paragraph in French"],
   note:"Most adjectives follow the noun. <b>BAGS</b> adjectives go before: <i>Beauty, Age, Goodness, Size</i> — <i>une belle grande maison</i>. Feminine usually adds <b>-e</b>.",
+  study:[
+    /* ---- course text: Semester One, Period III — Les adjectifs descriptifs (page 34) ---- */
+    {k:"h3", t:"Les adjectifs descriptifs — Descriptive Adjectives"},
+    {k:"p", t:"A **descriptive adjective (un adjectif descriptif)** describes a person, a place or a thing. **Describe and identify some descriptive adjectives in French**:"},
+    {k:"table", head:["Masculine","Feminine","English"], rows:[["grand","grande","tall / big"],["petit","petite","small"],["beau","belle","beautiful / handsome"],["bon","bonne","good"],["mauvais","mauvaise","bad"],["gentil","gentille","kind"],["heureux","heureuse","happy"],["intelligent","intelligente","intelligent"],["long","longue","long"],["vieux","vieille","old"],["nouveau","nouvelle","new"],["fort","forte","strong"]]},
+    {k:"rule"},
+    {k:"h3", t:"The Agreement of Adjectives"},
+    {k:"p", t:"**Discuss the use of basic descriptive adjectives in French.** The adjective **agrees** with the noun — add **-e** for the feminine and **-s** for the plural:"},
+    {k:"bul", items:["**Il est grand / Elle est grande.** — He is tall / She is tall.", "**Il est petit / Elle est petite.** — He is small / She is small.", "**Il est heureux / Elle est heureuse.** — He is happy / She is happy.", "**Ils sont grands / Elles sont grandes.** — They are tall (m.) / tall (f.)"]},
+    {k:"rule"},
+    {k:"h3", t:"The Position of Adjectives"},
+    {k:"p", t:"Most adjectives come **after** the noun in French: *un garçon gentil* (a kind boy), *une maison grande* (a big house). The **BAGS** adjectives — Beauty, Age, Goodness, Size — come **before** the noun: *un beau garçon*, *un jeune homme*, *un bon ami*, *une petite fille*."},
+    {k:"p", t:"Use the adjectives in **simple expressions**: *Elle est grande* (She is tall), *Il est petit* (He is small), *C'est joli* (It is pretty), *C'est une belle maison* (It is a beautiful house)."},
+    {k:"rule"},
+    {k:"h3", t:"Describing a Person, Place or Thing"},
+    {k:"p", t:"**Dramatize through dialogue by describing a person, place or thing**:"},
+    {k:"bul", items:["**Mon père est grand et fort.** — My father is tall and strong.", "**Ma mère est gentille et intelligente.** — My mother is kind and intelligent.", "**Mon école est nouvelle et grande.** — My school is new and big.", "**Le marché est vieux mais bon.** — The market is old but good."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Describing People"},
+    {k:"num", items:["**Maman:** Décris ton ami Jean.", "**Kofi:** Jean est grand et gentil.", "**Maman:** Et sa sœur Marie ?", "**Kofi:** Elle est petite et intelligente.", "**Maman:** C'est une belle famille !"]}
+  ],
   vocab:[
     {fr:"grand / grande", en:"big, tall", say:"GRAHN / GRAHND", e:"⬆️"},
     {fr:"petit / petite", en:"small", say:"puh-TEE / puh-TEET", e:"⬇️"},
@@ -6971,6 +7606,29 @@ const FR_CURRICULUM = [
   outcomes:["Name the four seasons and Liberia's two seasons","Compare seasons across countries in French","Write about seasonal activities"],
   objectives:["Name the four European seasons in French","Contrast them with Liberia's dry and rainy seasons","Describe activities typical of each season"],
   note:"Use <b>en</b> for three seasons (<i>en été, en automne, en hiver</i>) but <b>au</b> for spring (<i>au printemps</i>).",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Les saisons (page 35) ---- */
+    {k:"h3", t:"Les saisons — The Seasons"},
+    {k:"p", t:"**Name the seasons of Liberia in French** and **tell how many seasons we have in Liberia** — two:"},
+    {k:"bul", items:["**La saison sèche** — the dry season (November to April): *Il fait chaud, il y a du soleil*.", "**La saison des pluies** — the rainy season (May to October): *Il pleut, il y a des orages*."]},
+    {k:"p", t:"**Outline when each season starts and ends**, and **differentiate between weather and season**: the weather changes day by day; the season lasts for months."},
+    {k:"rule"},
+    {k:"h3", t:"Les saisons des autres pays — The Four Seasons"},
+    {k:"p", t:"**Distinguish the weather and seasons of other countries and Liberia.** Many countries have **four seasons**: le printemps (spring), l'été (summer), l'automne (autumn) and l'hiver (winter)."},
+    {k:"table", head:["Saison","English","Months"], rows:[["le printemps","spring","mars, avril, mai"],["l'été","summer","juin, juillet, août"],["l'automne","autumn","septembre, octobre, novembre"],["l'hiver","winter","décembre, janvier, février"]]},
+    {k:"p", t:"Use **en** for three seasons (*en été, en automne, en hiver*) but **au** for spring (*au printemps*)."},
+    {k:"rule"},
+    {k:"h3", t:"Les expressions — Weather Expressions"},
+    {k:"p", t:"Use the **oral expressions in French**: *Il fait chaud* (It is hot), *il pleut* (it is raining), *je porte une robe* (I am wearing a dress), *Il fait beau* (the weather is fine), *Est-ce que c'est le mois de printemps ?* (Is it the month of spring?)."},
+    {k:"rule"},
+    {k:"h3", t:"Clothing for Each Season"},
+    {k:"p", t:"**List the different clothing suitable for different weather and seasons** and **match proper clothing suitable for different weather**:"},
+    {k:"bul", items:["**Saison sèche:** le chapeau, la chemise, le short, les sandales, les lunettes de soleil", "**Saison des pluies:** le parapluie, l'imperméable, les bottes", "**Hiver (autres pays):** le tricot, le manteau, les gants"]},
+    {k:"p", t:"Words to learn: **le parapluie** (umbrella), **la saison sèche** (dry season), **le soleil** (sun), **le ciel** (sky), **le pantalon** (trousers), **la pluie** (rain)."},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — The Seasons of Liberia"},
+    {k:"num", items:["**Maman:** Combien de saisons avons-nous au Libéria ?", "**Fatu:** Nous avons deux saisons, maman.", "**Maman:** Nomme-les.", "**Fatu:** La saison sèche et la saison des pluies.", "**Maman:** En quelle saison sommes-nous ?", "**Fatu:** Nous sommes dans la saison des pluies — il pleut !"]}
+  ],
   vocab:[
     {fr:"le printemps", en:"spring", say:"luh pran-TAHN", e:"🌸"},
     {fr:"l'été", en:"summer", say:"lay-TAY", e:"☀️"},
@@ -6994,6 +7652,24 @@ const FR_CURRICULUM = [
   outcomes:["Ask questions in French using question words","Form questions in three different ways","Conduct an interview in French"],
   objectives:["Name the main French question words","Form questions using intonation, est-ce que, and inversion","Interview a classmate in French"],
   note:"Three ways to ask: <b>Tu viens ?</b> (intonation) · <b>Est-ce que tu viens ?</b> · <b>Viens-tu ?</b> (inversion).",
+  study:[
+    /* ---- course text: Semester Two, Period V — Les interrogatifs (page 36) ---- */
+    {k:"h3", t:"Les interrogatifs — Interrogatives"},
+    {k:"p", t:"An **interrogative** is a word used to ask a question. **Identify and describe interrogatives in French** and **outline some interrogative words**:"},
+    {k:"table", head:["Interrogatif","English","Example"], rows:[["où","where","Où vas-tu ?"],["quand","when","Quand arrives-tu ?"],["quoi","what","Tu manges quoi ?"],["qui","who","Qui est là ?"],["quel / quelle","which","Quel est ton nom ? Quelle heure est-il ?"],["comment","how","Comment ça va ?"],["pourquoi","why","Pourquoi pleures-tu ?"],["combien","how many / how much","Combien ça coûte ?"]]},
+    {k:"rule"},
+    {k:"h3", t:"Oral Expressions with Interrogatives"},
+    {k:"p", t:"Use the interrogatives in **oral expressions in French**:"},
+    {k:"bul", items:["**Où vas-tu ?** — Where are you going?", "**Qui est là ?** — Who is there?", "**Quel est ton nom ?** — What is your name?", "**Quelle heure est-il ?** — What time is it?", "**Qu'est-ce que c'est ?** — What is this?", "**Comment vas-tu ?** — How are you?", "**Combien d'élèves y a-t-il ?** — How many pupils are there?"]},
+    {k:"p", t:"Note: *quelle heure est-tu ?* in the guide is a slip — the correct form is **Quelle heure est-il ?** (What time is it?)."},
+    {k:"rule"},
+    {k:"h3", t:"Three Ways to Ask a Question"},
+    {k:"p", t:"There are **three ways to ask a question** in French:"},
+    {k:"bul", items:["**Intonation:** Tu viens ? (rising voice)", "**Est-ce que:** Est-ce que tu viens ?", "**Inversion:** Viens-tu ? (verb before pronoun)"]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — Questions"},
+    {k:"num", items:["**M. Smith:** Qui est là ?", "**Joseph:** C'est Joseph, monsieur.", "**M. Smith:** Où vas-tu ?", "**Joseph:** Je vais à la bibliothèque.", "**M. Smith:** Quand reviens-tu ?", "**Joseph:** Je reviens à trois heures. Combien de livres puis-je prendre ?"]}
+  ],
   vocab:[
     {fr:"Qui ?", en:"Who?", say:"KEE", e:"🧍"},
     {fr:"Que / Quoi ?", en:"What?", say:"KUH / KWAH", e:"❓"},
@@ -7017,6 +7693,26 @@ const FR_CURRICULUM = [
   outcomes:["Conjugate être and avoir in the present tense","Use auxiliaries to form the passé composé","Write sentences in the past tense"],
   objectives:["Conjugate être and avoir fully","Explain the role of an auxiliary verb","Form the passé composé with the correct auxiliary"],
   note:"<b>Passé composé = auxiliary (avoir/être) + past participle.</b> <i>J'ai mangé</i> (I ate) · <i>Je suis allé</i> (I went). Verbs of movement use <b>être</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Les verbes auxiliaires (page 37) ---- */
+    {k:"h3", t:"Les verbes auxiliaires — Auxiliary Verbs"},
+    {k:"p", t:"**Name and identify the auxiliary verbs in French** — **être** (to be) and **avoir** (to have). An **auxiliary verb** helps another verb to form its tenses. **List some auxiliary verbs**: est, es, sommes, êtes, suis, sont (être); ai, as, a, avons, avez, ont (avoir)."},
+    {k:"table", head:["Pronom","être","avoir"], rows:[["je","je suis","j'ai"],["tu","tu es","tu as"],["il / elle","il est / elle est","il a / elle a"],["nous","nous sommes","nous avons"],["vous","vous êtes","vous avez"],["ils / elles","ils sont / elles sont","ils ont / elles ont"]]},
+    {k:"rule"},
+    {k:"h3", t:"Conjugation — Present, Past and Future"},
+    {k:"p", t:"**Discuss how to use the auxiliary verbs** and conjugate them in the present, past and future:"},
+    {k:"bul", items:["**Présent:** Je suis à l'école. — I am at school.", "**Passé composé:** J'ai mangé. — I ate / I have eaten. (auxiliary avoir + past participle)", "**Passé composé:** Je suis allé. — I went. (verbs of movement use être)", "**Futur proche:** Je vais manger. — I am going to eat. (aller + infinitive)"]},
+    {k:"rule"},
+    {k:"h3", t:"Oral Expressions — Oral Expressions"},
+    {k:"p", t:"Use the **oral expressions in French**: *Je suis fatigué* (I am tired), *Nous sommes au marché* (We are at the market), *Tu es au cinéma* (You are at the cinema)."},
+    {k:"rule"},
+    {k:"h3", t:"Le passé composé — The Past Tense"},
+    {k:"p", t:"The **passé composé = auxiliary (avoir or être) + past participle**: *J'ai mangé* (I ate), *Je suis allé* (I went). Most verbs use **avoir**; verbs of movement (aller, partir, venir, naître, arriver) use **être**:"},
+    {k:"bul", items:["**J'ai mangé.** — I ate.", "**Tu as vu.** — You saw.", "**Nous avons fini.** — We finished.", "**Je suis allé(e).** — I went.", "**Ils sont partis.** — They left.", "**Elle est née.** — She was born."]},
+    {k:"rule"},
+    {k:"h3", t:"Dialogue — After School"},
+    {k:"num", items:["**Maman:** Tu es fatigué, Kofi ?", "**Kofi:** Oui, maman, je suis très fatigué.", "**Maman:** Qu'est-ce que tu as fait à l'école ?", "**Kofi:** J'ai fini mes devoirs et j'ai joué au football.", "**Maman:** Nous sommes tous fatigués. Va te reposer !"]}
+  ],
   vocab:[
     {fr:"être", en:"to be", say:"ET-ruh", e:"🪞"},
     {fr:"avoir", en:"to have", say:"ah-VWAHR", e:"🎁"},
