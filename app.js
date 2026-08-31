@@ -298,6 +298,17 @@
     var out = [];
     var title = t.title || t.fr || "";
 
+    /* Verbatim study notes: units may carry a `study` block list transcribed
+       straight from the official course text. When present it is rendered
+       as-is (bold key terms via ** **), replacing the auto-assembled page. */
+    if (t.study && t.study.length) {
+      out.push({ k: "h2", t: "Study Notes \u2014 Unit " + n + ": " + title });
+      t.study.forEach(function (b) { out.push(b); });
+      out.push({ k: "rule" });
+      out.push({ k: "space" });
+      return out;
+    }
+
     out.push({ k: "h2", t: "Study Notes \u2014 Unit " + n + ": " + title });
     out.push({ k: "instr", t: "Read this page before you begin the exercises. It explains the ideas the unit is built on, shows you a worked example, and warns you about the mistakes learners most often make." });
 
@@ -371,12 +382,15 @@
     return out;
   };
 
-  /* ---------------- session mode: student | teacher ----------------
-     Both sessions use the same seven curriculums and the same worksheets.
+  /* ---------------- session mode: teacher | student ----------------
+     The platform is built for TEACHERS first: the default session is the
+     teacher's copy, carrying the full verbatim study notes and every answer
+     key. A smaller student session remains for clean pupil materials.
+     Both sessions use the same curriculums and the same worksheets.
      Student = clean pupil materials, no answers anywhere.
      Teacher = identical worksheets plus every answer key, marked as the
      teacher's copy in the cover, running head and footer. */
-  var MODE = "student";
+  var MODE = "teacher";
   function isTeacher() { return MODE === "teacher"; }
   window.PACK_MODE = function () { return MODE; };
 
@@ -683,6 +697,8 @@
   /* ---------------- screen renderer ---------------- */
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function nl(s) { return esc(s).replace(/\n/g, "<br>"); }
+  /* inline **bold** markup for curriculum prose (study notes, key terms) */
+  function rich(s) { return nl(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>"); }
 
   /* ---- designed cover artwork ----
      Builds a full-sheet cover from the chosen template. Everything is inline
@@ -758,14 +774,14 @@
       case "h1": return "<h1" + (b.c ? ' class="ctr"' : "") + ">" + esc(b.t) + "</h1>";
       case "h2": return "<h2" + (b.c ? ' class="ctr"' : "") + ">" + esc(b.t) + "</h2>";
       case "h3": return "<h3" + (b.c ? ' class="ctr"' : "") + ">" + esc(b.t) + "</h3>";
-      case "p": return "<p class=\"" + (b.i ? "it " : "") + (b.c ? "ctr " : "") + (b.big ? "cbig" : "") + "\">" + nl(b.t) + "</p>";
-      case "instr": return '<p class="instr">' + nl(b.t) + "</p>";
-      case "bul": return "<ul>" + b.items.map(function (x) { return "<li>" + nl(x) + "</li>"; }).join("") + "</ul>";
+      case "p": return "<p class=\"" + (b.i ? "it " : "") + (b.c ? "ctr " : "") + (b.big ? "cbig" : "") + "\">" + rich(b.t) + "</p>";
+      case "instr": return '<p class="instr">' + rich(b.t) + "</p>";
+      case "bul": return "<ul>" + b.items.map(function (x) { return "<li>" + rich(x) + "</li>"; }).join("") + "</ul>";
       case "num": return "<ol" + (b.start ? ' start="' + b.start + '"' : "") + ">" +
-        b.items.map(function (x) { return "<li>" + nl(x) + "</li>"; }).join("") + "</ol>";
+        b.items.map(function (x) { return "<li>" + rich(x) + "</li>"; }).join("") + "</ol>";
       case "cols": return '<div class="cols"><ol class="ca">' +
-        b.a.map(function (x) { return "<li>" + nl(x) + "</li>"; }).join("") + '</ol><ul class="cb">' +
-        b.b.map(function (x) { return "<li>" + nl(x) + "</li>"; }).join("") + "</ul></div>";
+        b.a.map(function (x) { return "<li>" + rich(x) + "</li>"; }).join("") + '</ol><ul class="cb">' +
+        b.b.map(function (x) { return "<li>" + rich(x) + "</li>"; }).join("") + "</ul></div>";
       case "table": return "<table><thead><tr>" +
         b.head.map(function (x) { return "<th>" + esc(x) + "</th>"; }).join("") + "</tr></thead><tbody>" +
         b.rows.map(function (r) {
