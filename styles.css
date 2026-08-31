@@ -553,3 +553,91 @@ input:focus-visible,label:focus-visible{
 #cvFade{flex:1;min-width:0;accent-color:var(--bleu)}
 #fadeRow label{flex:none;white-space:nowrap;font-size:.8rem}
 #fadeRow{gap:9px}
+
+/* ================= duplex print helper (book print sequence) ================= */
+.book-open{overflow:hidden}
+.bookmask{position:fixed;inset:0;z-index:70;background:rgba(9,20,45,.55);
+  display:flex;align-items:flex-start;justify-content:center;padding:5vh 16px 28px;overflow:auto}
+.bookmask[hidden]{display:none}
+.bookmodal{background:#fff;border:1px solid var(--line);border-radius:16px;
+  box-shadow:0 26px 80px rgba(9,20,45,.38);width:100%;max-width:640px;
+  padding:18px 20px 22px}
+.book-head{display:flex;align-items:center;gap:10px}
+.book-head h2{margin:0;font-size:1.08rem;flex:1;display:flex;align-items:center;gap:8px}
+.book-x{border:1px solid var(--line);border-radius:9px;background:#f4f8ff;color:var(--muted);
+  width:34px;height:34px;font-size:.95rem;cursor:pointer;flex:none}
+.book-x:hover{background:#fdeeee;color:var(--rouge);border-color:#f3c9c9}
+.book-sub{margin:6px 0 14px;font-size:.82rem;color:var(--muted)}
+.book-row{display:grid;grid-template-columns:1fr 110px 150px;gap:10px}
+.book-f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.book-f label{font-size:.68rem;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.6px}
+.book-f input,.book-f select{padding:8px 10px;border:1px solid var(--line);border-radius:9px;
+  font-size:.9rem;width:100%}
+.book-f input:focus,.book-f select:focus{outline:2px solid #bcd3fb;outline-offset:0}
+.book-actions{display:flex;gap:8px;margin:12px 0 4px}
+.book-actions .b1,.book-actions .b2{padding:10px 18px;border:none;border-radius:9px;
+  font-weight:700;font-size:.88rem;cursor:pointer}
+.book-hint{display:none;margin:6px 0 0;font-size:.82rem;color:var(--rouge)}
+.book-hint.show{display:block}
+
+.results{display:none}
+.results.show{display:block}
+.summary{background:linear-gradient(135deg,#eef4ff,#fff6e0);border:1px solid var(--line);
+  border-radius:12px;padding:13px 15px;margin:12px 0}
+.summary h3{margin:0 0 9px;font-size:.9rem}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.summary-item{text-align:center;background:rgba(255,255,255,.75);border-radius:9px;padding:7px 4px}
+.summary-item .number{font-size:1.35rem;font-weight:800;color:var(--bleu)}
+.summary-item .label{font-size:.68rem;color:var(--muted);margin-top:2px}
+
+.sequence-card{border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin-bottom:10px}
+.sequence-header{display:flex;justify-content:space-between;align-items:center;
+  gap:8px;margin-bottom:9px;flex-wrap:wrap}
+.sequence-title{font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:7px}
+.pass{font-size:.62rem;font-weight:800;letter-spacing:.8px;padding:3px 9px;border-radius:20px}
+.pass-1{background:#fde4e8;color:#c2143a}
+.pass-2{background:#e3eefc;color:#0b3b8c}
+.bk-copy{border:none;border-radius:8px;padding:7px 13px;font-size:.78rem;font-weight:700;
+  background:#e8f0ff;color:var(--bleu);cursor:pointer}
+.bk-copy:hover{background:#d7e6ff}
+.bk-copy.copied{background:#d9f4e2;color:#0d6b3a}
+.sequence-numbers{font-family:"Courier New",Consolas,monospace;font-size:1.02rem;line-height:1.75;
+  word-break:break-all;color:var(--ink);background:#f4f7fd;border:1px solid var(--line);
+  border-radius:9px;padding:10px 12px;user-select:all}
+.page-count{text-align:right;font-size:.72rem;color:var(--muted);margin-top:6px}
+
+.instructions{background:#fffaf0;border:1px solid #f0e2bd;border-radius:12px;
+  padding:12px 15px;margin-top:12px}
+.instructions h3{margin:0 0 7px;font-size:.84rem;color:#8a6200}
+.instructions ol{margin:0;padding-left:19px;font-size:.8rem;color:var(--muted);line-height:1.75}
+
+.book-list{margin-top:16px}
+.book-list h3{margin:0 0 9px;font-size:.92rem}
+.book-item{border:1px solid var(--line);border-radius:11px;padding:11px 14px;margin-bottom:8px;
+  display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fcfdff}
+.book-item:hover{background:#f3f7ff}
+.book-info{min-width:0}
+.book-name{font-weight:700;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.book-pages{font-size:.74rem;color:var(--muted)}
+.book-actions{display:flex;gap:7px;flex:none}
+.btn-small{border:none;border-radius:8px;padding:6px 13px;font-size:.74rem;font-weight:700;cursor:pointer}
+.btn-view{background:#e3eefc;color:#0b3b8c}
+.btn-view:hover{background:#d7e6ff}
+.btn-delete{background:#fdeeee;color:var(--rouge)}
+.btn-delete:hover{background:#fbdcdc}
+.no-books{text-align:center;padding:18px 10px;color:var(--muted);font-style:italic;font-size:.82rem}
+
+@media(max-width:640px){
+  .book-row{grid-template-columns:1fr 1fr}
+  .book-f:first-child{grid-column:1/-1}
+  .bookmask{padding:3vh 10px 20px}
+  .bookmodal{padding:14px 14px 18px}
+  .sequence-numbers{font-size:.9rem}
+}
+
+/* never print the dialog itself; the sequences are for typing into the
+   printer's page range, not for printing */
+@media print{
+  .bookmask{display:none!important}
+}
