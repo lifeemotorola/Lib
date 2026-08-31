@@ -1232,6 +1232,98 @@
     setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 1500);
   }
 
+  /* ---------------- AI action buttons (injected after render) ----------------
+     After every pack render, find study-notes headings and period titles in the
+     DOM and append "Explain with AI", "Generate Questions" and "Quiz Me" buttons.
+     These are screen-only: they never appear in print or Word export. */
+  function injectAiButtons() {
+    var doc = $("#doc");
+    if (!doc) return;
+    var sj = S();
+    var subject = sj.label;
+    var grade = opts().grade;
+
+    /* find every h2 that starts with "Study Notes" and add AI buttons after it */
+    var h2s = doc.querySelectorAll("h2");
+    h2s.forEach(function (h2) {
+      if (h2.textContent.indexOf("Study Notes") === 0 && !h2.querySelector(".ai-actions")) {
+        var wrap = document.createElement("div");
+        wrap.className = "ai-actions";
+
+        var btnExplain = document.createElement("button");
+        btnExplain.className = "ai-act-btn";
+        btnExplain.innerHTML = '<span class="ai-act-ico">🤖</span> Explain with AI';
+        btnExplain.onclick = function () {
+          /* grab the heading text + next few paragraphs as context */
+          var ctx = h2.textContent + "\n\n";
+          var sib = h2.nextElementSibling;
+          var count = 0;
+          while (sib && count < 5) {
+            if (sib.tagName === "H2" || sib.tagName === "H1") break;
+            ctx += sib.textContent + "\n";
+            sib = sib.nextElementSibling;
+            count++;
+          }
+          if (typeof window.AI_EXPLAIN === "function") window.AI_EXPLAIN(ctx);
+        };
+        wrap.appendChild(btnExplain);
+
+        /* extract the topic title from the heading */
+        var topicMatch = h2.textContent.match(/Period\s+\w+:\s*(.+)/);
+        var topic = topicMatch ? topicMatch[1] : "";
+
+        var btnGen = document.createElement("button");
+        btnGen.className = "ai-act-btn";
+        btnGen.innerHTML = '<span class="ai-act-ico">📝</span> Generate Questions';
+        btnGen.onclick = function () {
+          if (typeof window.AI_GENERATE_QUESTIONS === "function")
+            window.AI_GENERATE_QUESTIONS(subject, grade, topic, 10);
+        };
+        wrap.appendChild(btnGen);
+
+        var btnQuiz = document.createElement("button");
+        btnQuiz.className = "ai-act-btn";
+        btnQuiz.innerHTML = '<span class="ai-act-ico">❓</span> Quiz Me';
+        btnQuiz.onclick = function () {
+          if (typeof window.AI_QUIZ === "function")
+            window.AI_QUIZ(subject, grade, topic);
+        };
+        wrap.appendChild(btnQuiz);
+
+        h2.parentNode.insertBefore(wrap, h2.nextSibling);
+      }
+    });
+
+    /* also add AI buttons after semester examination headings */
+    var h1s = doc.querySelectorAll("h1");
+    h1s.forEach(function (h1) {
+      if (h1.textContent.indexOf("Semester Examination") === 0 && !h1.querySelector(".ai-actions")) {
+        var wrap = document.createElement("div");
+        wrap.className = "ai-actions";
+
+        var btnGen = document.createElement("button");
+        btnGen.className = "ai-act-btn";
+        btnGen.innerHTML = '<span class="ai-act-ico">📝</span> Generate More Exam Questions';
+        btnGen.onclick = function () {
+          if (typeof window.AI_GENERATE_QUESTIONS === "function")
+            window.AI_GENERATE_QUESTIONS(subject, grade, "exam-level " + subject, 10);
+        };
+        wrap.appendChild(btnGen);
+
+        var btnQuiz = document.createElement("button");
+        btnQuiz.className = "ai-act-btn";
+        btnQuiz.innerHTML = '<span class="ai-act-ico">❓</span> Quiz Me on Exams';
+        btnQuiz.onclick = function () {
+          if (typeof window.AI_QUIZ === "function")
+            window.AI_QUIZ(subject, grade, "exam-style " + subject);
+        };
+        wrap.appendChild(btnQuiz);
+
+        h1.parentNode.insertBefore(wrap, h1.nextSibling);
+      }
+    });
+  }
+
   /* ---------------- actions ---------------- */
   function generate() {
     var o = opts();
@@ -1245,6 +1337,10 @@
     pack = sj.engine().buildPack(o);
     setRunning(o);
     render(pack.blocks);
+    injectAiButtons();
+    /* expose context for the AI tutor */
+    window.PACK_CUR_SUBJECT = sj.label;
+    window.PACK_CUR_GRADE = o.grade;
     $("#meta").textContent = S().label + " · Grade " + o.grade + " · " + pack.topics.length +
       " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
     $("#exportbar").style.display = "flex";
