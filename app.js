@@ -1307,6 +1307,37 @@
       window.print();
       setTimeout(restore, 3000);   /* fallback when afterprint never fires */
     };
+
+    /* ---- duplex print helper (book print sequence) ---- */
+    var bmask = $("#bookMask"), btool = null;
+    if (window.BOOK_TOOL && $("#bookTool")) btool = window.BOOK_TOOL.init($("#bookTool"));
+    function openBookTool() {
+      if (!bmask) return;
+      var n = parseInt(($("#pageN") || {}).textContent, 10) || 0;
+      var nm = n > 0 ? S().label + " Grade " + opts().grade + " workbook" : "";
+      if (btool) btool.open(n, nm);
+      bmask.hidden = false;
+      document.body.classList.add("book-open");
+      var pc = $("#pageCount");
+      if (pc && pc.focus) { pc.focus(); if (pc.select) pc.select(); }
+    }
+    function closeBookTool() {
+      if (!bmask) return;
+      bmask.hidden = true;
+      document.body.classList.remove("book-open");
+    }
+    var dupBtn = $("#dup");
+    if (dupBtn && bmask) {
+      dupBtn.onclick = openBookTool;
+      var bx = $("#bkClose");
+      if (bx) bx.onclick = closeBookTool;
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !bmask.hidden) closeBookTool();
+      });
+      bmask.addEventListener("mousedown", function (e) {
+        if (e.target === bmask) closeBookTool();
+      });
+    }
     $("#docx").onclick = function () {
       if (!pack) return;
       var THEMES = {
