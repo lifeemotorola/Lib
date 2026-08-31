@@ -753,14 +753,6 @@ input:focus-visible,label:focus-visible{
   color:#fff;font-weight:700;font-size:.86rem;cursor:pointer;font-family:inherit}
 .ai-set-save:hover{background:var(--bleu-l)}
 
-/* AI action buttons on study notes / exercise pages */
-.ai-actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 4px}
-.ai-act-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;
-  border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--bleu);
-  font-size:.78rem;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
-.ai-act-btn:hover{background:#eef4ff;border-color:#bcd3fb;box-shadow:0 2px 8px rgba(11,59,140,.08)}
-.ai-act-ico{font-size:.92rem;line-height:1}
-
 /* Responsive adjustments */
 @media(max-width:640px){
   .ai-fab{bottom:14px;right:14px;padding:10px 16px;font-size:.84rem}
@@ -769,7 +761,7 @@ input:focus-visible,label:focus-visible{
   .ai-panel{bottom:72px;right:10px;left:10px;width:auto;height:calc(100vh - 90px);max-height:none}
 }
 
-/* Never print the AI panel */
+/* Never print Emmanuel's floating button or chat panel */
 @media print{
   .ai-fab,.ai-panel{display:none!important}
 }

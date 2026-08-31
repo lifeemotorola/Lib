@@ -1,6 +1,8 @@
 /* ============================================================
-   AI Assistant — Groq (Llama 3 70B) integration
-   Provides: chat tutor, question generator, "Explain with AI"
+   Emmanuel — the platform's AI tutor (served through the Groq API)
+   Provides: chat tutor, question generator, explanations
+   "Emmanuel" is the user-facing name of the model; the identifier sent to the
+   API is kept in MODEL below.
    ============================================================ */
 (function () {
   "use strict";
@@ -10,7 +12,8 @@
   var GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
   // Llama 3 70B model replaced per Groq deprecation:
   // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
-  var MODEL = "openai/gpt-oss-120b";
+  var MODEL = "openai/gpt-oss-120b";     /* API identifier */
+  var MODEL_NAME = "Emmanuel";           /* name shown to users */
   var STORE_KEY = "lncpg.groq.v1";
 
   // Support GitHub Actions environment variable: set META tag <meta name="groq-api-key" content="..."> 
@@ -43,7 +46,8 @@
     var s = window.PACK_CUR_SUBJECT || "the curriculum";
     var g = window.PACK_CUR_GRADE || "";
     var mode = (typeof window.PACK_MODE === "function") ? window.PACK_MODE() : "teacher";
-    return "You are an expert AI tutor for the Liberian National Curriculum. " +
+    return "You are " + MODEL_NAME + ", an expert AI tutor for the Liberian National Curriculum. " +
+      "Your name is " + MODEL_NAME + "; if asked who you are, say you are " + MODEL_NAME + ". " +
       "You are currently helping with " + s + (g ? ", Grade " + g : "") + ". " +
       "The user is in " + mode + " mode. " +
       "Be clear, encouraging, and age-appropriate. " +
@@ -58,7 +62,7 @@
 
   /* ---- Groq API call ---- */
   function callGroq(messages, onChunk, onDone, onError) {
-    if (!apiKey) { onError("Please enter your Groq API key in the AI settings."); return; }
+    if (!apiKey) { onError("Please enter your Groq API key in the " + MODEL_NAME + " settings."); return; }
     var body = {
       model: MODEL,
       messages: messages,
@@ -148,8 +152,8 @@
     var fab = document.createElement("button");
     fab.id = "aiFab";
     fab.className = "ai-fab";
-    fab.innerHTML = '<span class="ai-fab-ico">🤖</span><span class="ai-fab-lab">AI Tutor</span>';
-    fab.title = "Open AI Tutor";
+    fab.innerHTML = '<span class="ai-fab-ico">🤖</span><span class="ai-fab-lab">' + MODEL_NAME + '</span>';
+    fab.title = "Open " + MODEL_NAME + ", the AI tutor";
     fab.onclick = togglePanel;
     document.body.appendChild(fab);
 
@@ -163,8 +167,8 @@
         '<div class="ai-head-left">' +
           '<span class="ai-head-ico">🤖</span>' +
           '<div class="ai-head-txt">' +
-            '<b>AI Tutor</b>' +
-            '<span class="ai-head-sub">Powered by Groq · openai/gpt-oss-120b</span>' +
+            '<b>' + MODEL_NAME + '</b>' +
+            '<span class="ai-head-sub">AI tutor · Liberian National Curriculum</span>' +
           '</div>' +
         '</div>' +
         '<div class="ai-head-right">' +
@@ -175,7 +179,7 @@
       '<div class="ai-body" id="aiBody">' +
         '<div class="ai-welcome" id="aiWelcome">' +
           '<div class="ai-welcome-ico">🤖</div>' +
-          '<h3>Hello! I\'m your AI Tutor</h3>' +
+          '<h3>Hello! I\'m ' + MODEL_NAME + ', your AI tutor</h3>' +
           '<p>I can help you with any subject in the Liberian curriculum. Try asking me to:</p>' +
           '<div class="ai-suggestions">' +
             '<button class="ai-sug" data-q="Explain the key concepts in the current study notes in simple terms">📖 Explain the study notes</button>' +
@@ -192,7 +196,7 @@
       '</div>' +
       '<div class="ai-settings" id="aiSettings" style="display:none">' +
         '<div class="ai-set-head">' +
-          '<b>⚙ AI Settings</b>' +
+          '<b>⚙ ' + MODEL_NAME + ' Settings</b>' +
           '<button class="ai-btn-icon ai-set-close" id="aiSetClose">✕</button>' +
         '</div>' +
         '<label class="ai-set-label">Groq API Key' +
@@ -409,7 +413,7 @@
     });
   }
 
-  /* ---- "Explain with AI" — called from rendered pages ---- */
+  /* ---- explain / generate / quiz helpers, callable from anywhere ---- */
   window.AI_EXPLAIN = function (text) {
     if (!isOpen) togglePanel();
     var inp = $("#aiInput");

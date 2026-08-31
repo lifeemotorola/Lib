@@ -761,14 +761,6 @@ input:focus-visible,label:focus-visible{
   color:#fff;font-weight:700;font-size:.86rem;cursor:pointer;font-family:inherit}
 .ai-set-save:hover{background:var(--bleu-l)}
 
-/* AI action buttons on study notes / exercise pages */
-.ai-actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 4px}
-.ai-act-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;
-  border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--bleu);
-  font-size:.78rem;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
-.ai-act-btn:hover{background:#eef4ff;border-color:#bcd3fb;box-shadow:0 2px 8px rgba(11,59,140,.08)}
-.ai-act-ico{font-size:.92rem;line-height:1}
-
 /* Responsive adjustments */
 @media(max-width:640px){
   .ai-fab{bottom:14px;right:14px;padding:10px 16px;font-size:.84rem}
@@ -777,7 +769,7 @@ input:focus-visible,label:focus-visible{
   .ai-panel{bottom:72px;right:10px;left:10px;width:auto;height:calc(100vh - 90px);max-height:none}
 }
 
-/* Never print the AI panel */
+/* Never print Emmanuel's floating button or chat panel */
 @media print{
   .ai-fab,.ai-panel{display:none!important}
 }
@@ -790,7 +782,7 @@ input:focus-visible,label:focus-visible{
     <div class="top-txt">
       <h1>Liberian National Curriculum &middot; Course Pack Generator</h1>
       <p>English &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Physics &middot; Economics &middot; English Grammar &middot; Geography<br>
-         <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; 🤖 AI Tutor &middot; works offline</span></p>
+         <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; 🤖 Emmanuel AI tutor &middot; works offline</span></p>
     </div>
   </div>
 </header>
@@ -68973,8 +68965,10 @@ var LI_CURRICULUM = [
 </script>
 <script>
 /* ============================================================
-   AI Assistant — Groq (Llama 3 70B) integration
-   Provides: chat tutor, question generator, "Explain with AI"
+   Emmanuel — the platform's AI tutor (served through the Groq API)
+   Provides: chat tutor, question generator, explanations
+   "Emmanuel" is the user-facing name of the model; the identifier sent to the
+   API is kept in MODEL below.
    ============================================================ */
 (function () {
   "use strict";
@@ -68984,10 +68978,23 @@ var LI_CURRICULUM = [
   var GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
   // Llama 3 70B model replaced per Groq deprecation:
   // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
-  var MODEL = "openai/gpt-oss-120b";
+  var MODEL = "openai/gpt-oss-120b";     /* API identifier */
+  var MODEL_NAME = "Emmanuel";           /* name shown to users */
   var STORE_KEY = "lncpg.groq.v1";
 
-  var apiKey = "";
+  // Support GitHub Actions environment variable: set META tag <meta name="groq-api-key" content="..."> 
+  // or expose window.GROQ_API_KEY in GitHub Actions workflow for browser auto-population.
+  var apiKey = (function () {
+    // Check for GitHub-injected env var via meta tag (common for GitHub Pages)
+    var meta = document.querySelector('meta[name="groq-api-key"]');
+    if (meta && meta.content) return meta.content.trim();
+    // Check for window.GROQ_API_KEY (set by GitHub Actions job)
+    if (window.GROQ_API_KEY) return String(window.GROQ_API_KEY).trim();
+    // Fall back to stored localStorage key
+    try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
+    // Fall back to hardcoded default (for local development)
+    return "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";
+  })();
   var chatHistory = [];     /* {role, content}[] */
   var isOpen = false;
   var isStreaming = false;
@@ -69005,7 +69012,8 @@ var LI_CURRICULUM = [
     var s = window.PACK_CUR_SUBJECT || "the curriculum";
     var g = window.PACK_CUR_GRADE || "";
     var mode = (typeof window.PACK_MODE === "function") ? window.PACK_MODE() : "teacher";
-    return "You are an expert AI tutor for the Liberian National Curriculum. " +
+    return "You are " + MODEL_NAME + ", an expert AI tutor for the Liberian National Curriculum. " +
+      "Your name is " + MODEL_NAME + "; if asked who you are, say you are " + MODEL_NAME + ". " +
       "You are currently helping with " + s + (g ? ", Grade " + g : "") + ". " +
       "The user is in " + mode + " mode. " +
       "Be clear, encouraging, and age-appropriate. " +
@@ -69020,12 +69028,12 @@ var LI_CURRICULUM = [
 
   /* ---- Groq API call ---- */
   function callGroq(messages, onChunk, onDone, onError) {
-    if (!apiKey) { onError("Please enter your Groq API key in the AI settings."); return; }
+    if (!apiKey) { onError("Please enter your Groq API key in the " + MODEL_NAME + " settings."); return; }
     var body = {
       model: MODEL,
       messages: messages,
       temperature: 0.7,
-      max_tokens: 2048,
+      max_tokens: 10000,
       stream: true
     };
     var ctrl = new AbortController();
@@ -69110,8 +69118,8 @@ var LI_CURRICULUM = [
     var fab = document.createElement("button");
     fab.id = "aiFab";
     fab.className = "ai-fab";
-    fab.innerHTML = '<span class="ai-fab-ico">🤖</span><span class="ai-fab-lab">AI Tutor</span>';
-    fab.title = "Open AI Tutor";
+    fab.innerHTML = '<span class="ai-fab-ico">🤖</span><span class="ai-fab-lab">' + MODEL_NAME + '</span>';
+    fab.title = "Open " + MODEL_NAME + ", the AI tutor";
     fab.onclick = togglePanel;
     document.body.appendChild(fab);
 
@@ -69125,8 +69133,8 @@ var LI_CURRICULUM = [
         '<div class="ai-head-left">' +
           '<span class="ai-head-ico">🤖</span>' +
           '<div class="ai-head-txt">' +
-            '<b>AI Tutor</b>' +
-            '<span class="ai-head-sub">Powered by Groq · openai/gpt-oss-120b</span>' +
+            '<b>' + MODEL_NAME + '</b>' +
+            '<span class="ai-head-sub">AI tutor · Liberian National Curriculum</span>' +
           '</div>' +
         '</div>' +
         '<div class="ai-head-right">' +
@@ -69137,7 +69145,7 @@ var LI_CURRICULUM = [
       '<div class="ai-body" id="aiBody">' +
         '<div class="ai-welcome" id="aiWelcome">' +
           '<div class="ai-welcome-ico">🤖</div>' +
-          '<h3>Hello! I\'m your AI Tutor</h3>' +
+          '<h3>Hello! I\'m ' + MODEL_NAME + ', your AI tutor</h3>' +
           '<p>I can help you with any subject in the Liberian curriculum. Try asking me to:</p>' +
           '<div class="ai-suggestions">' +
             '<button class="ai-sug" data-q="Explain the key concepts in the current study notes in simple terms">📖 Explain the study notes</button>' +
@@ -69154,13 +69162,13 @@ var LI_CURRICULUM = [
       '</div>' +
       '<div class="ai-settings" id="aiSettings" style="display:none">' +
         '<div class="ai-set-head">' +
-          '<b>⚙ AI Settings</b>' +
+          '<b>⚙ ' + MODEL_NAME + ' Settings</b>' +
           '<button class="ai-btn-icon ai-set-close" id="aiSetClose">✕</button>' +
         '</div>' +
         '<label class="ai-set-label">Groq API Key' +
           '<input type="password" id="aiKeyInput" placeholder="gsk_...">' +
         '</label>' +
-        '<p class="ai-set-hint">Get a free API key at <a href="https://console.groq.com" target="_blank" rel="noopener">console.groq.com</a>. Your key is stored locally on this device only.</p>' +
+        '<p class="ai-set-hint">Get a free API key at <a href="https://console.groq.com" target="_blank" rel="noopener">console.groq.com</a>. <br>• To auto-load from GitHub: add a <code>&lt;meta name="groq-api-key" content="YOUR_KEY"</code> tag to your HTML, or set <code>window.GROQ_API_KEY</code> in your GitHub Actions workflow. <br>• Key is also saved to localStorage on this device for future sessions.</p>' +
         '<button class="ai-set-save" id="aiKeySave">Save Key</button>' +
       '</div>' +
       '<div class="ai-foot">' +
@@ -69371,7 +69379,7 @@ var LI_CURRICULUM = [
     });
   }
 
-  /* ---- "Explain with AI" — called from rendered pages ---- */
+  /* ---- explain / generate / quiz helpers, callable from anywhere ---- */
   window.AI_EXPLAIN = function (text) {
     if (!isOpen) togglePanel();
     var inp = $("#aiInput");
@@ -70653,98 +70661,6 @@ var LI_CURRICULUM = [
     setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 1500);
   }
 
-  /* ---------------- AI action buttons (injected after render) ----------------
-     After every pack render, find study-notes headings and period titles in the
-     DOM and append "Explain with AI", "Generate Questions" and "Quiz Me" buttons.
-     These are screen-only: they never appear in print or Word export. */
-  function injectAiButtons() {
-    var doc = $("#doc");
-    if (!doc) return;
-    var sj = S();
-    var subject = sj.label;
-    var grade = opts().grade;
-
-    /* find every h2 that starts with "Study Notes" and add AI buttons after it */
-    var h2s = doc.querySelectorAll("h2");
-    h2s.forEach(function (h2) {
-      if (h2.textContent.indexOf("Study Notes") === 0 && !h2.querySelector(".ai-actions")) {
-        var wrap = document.createElement("div");
-        wrap.className = "ai-actions";
-
-        var btnExplain = document.createElement("button");
-        btnExplain.className = "ai-act-btn";
-        btnExplain.innerHTML = '<span class="ai-act-ico">🤖</span> Explain with AI';
-        btnExplain.onclick = function () {
-          /* grab the heading text + next few paragraphs as context */
-          var ctx = h2.textContent + "\n\n";
-          var sib = h2.nextElementSibling;
-          var count = 0;
-          while (sib && count < 5) {
-            if (sib.tagName === "H2" || sib.tagName === "H1") break;
-            ctx += sib.textContent + "\n";
-            sib = sib.nextElementSibling;
-            count++;
-          }
-          if (typeof window.AI_EXPLAIN === "function") window.AI_EXPLAIN(ctx);
-        };
-        wrap.appendChild(btnExplain);
-
-        /* extract the topic title from the heading */
-        var topicMatch = h2.textContent.match(/Period\s+\w+:\s*(.+)/);
-        var topic = topicMatch ? topicMatch[1] : "";
-
-        var btnGen = document.createElement("button");
-        btnGen.className = "ai-act-btn";
-        btnGen.innerHTML = '<span class="ai-act-ico">📝</span> Generate Questions';
-        btnGen.onclick = function () {
-          if (typeof window.AI_GENERATE_QUESTIONS === "function")
-            window.AI_GENERATE_QUESTIONS(subject, grade, topic, 10);
-        };
-        wrap.appendChild(btnGen);
-
-        var btnQuiz = document.createElement("button");
-        btnQuiz.className = "ai-act-btn";
-        btnQuiz.innerHTML = '<span class="ai-act-ico">❓</span> Quiz Me';
-        btnQuiz.onclick = function () {
-          if (typeof window.AI_QUIZ === "function")
-            window.AI_QUIZ(subject, grade, topic);
-        };
-        wrap.appendChild(btnQuiz);
-
-        h2.parentNode.insertBefore(wrap, h2.nextSibling);
-      }
-    });
-
-    /* also add AI buttons after semester examination headings */
-    var h1s = doc.querySelectorAll("h1");
-    h1s.forEach(function (h1) {
-      if (h1.textContent.indexOf("Semester Examination") === 0 && !h1.querySelector(".ai-actions")) {
-        var wrap = document.createElement("div");
-        wrap.className = "ai-actions";
-
-        var btnGen = document.createElement("button");
-        btnGen.className = "ai-act-btn";
-        btnGen.innerHTML = '<span class="ai-act-ico">📝</span> Generate More Exam Questions';
-        btnGen.onclick = function () {
-          if (typeof window.AI_GENERATE_QUESTIONS === "function")
-            window.AI_GENERATE_QUESTIONS(subject, grade, "exam-level " + subject, 10);
-        };
-        wrap.appendChild(btnGen);
-
-        var btnQuiz = document.createElement("button");
-        btnQuiz.className = "ai-act-btn";
-        btnQuiz.innerHTML = '<span class="ai-act-ico">❓</span> Quiz Me on Exams';
-        btnQuiz.onclick = function () {
-          if (typeof window.AI_QUIZ === "function")
-            window.AI_QUIZ(subject, grade, "exam-style " + subject);
-        };
-        wrap.appendChild(btnQuiz);
-
-        h1.parentNode.insertBefore(wrap, h1.nextSibling);
-      }
-    });
-  }
-
   /* ---------------- actions ---------------- */
   function generate() {
     var o = opts();
@@ -70758,8 +70674,7 @@ var LI_CURRICULUM = [
     pack = sj.engine().buildPack(o);
     setRunning(o);
     render(pack.blocks);
-    injectAiButtons();
-    /* expose context for the AI tutor */
+    /* expose context for Emmanuel, the AI tutor */
     window.PACK_CUR_SUBJECT = sj.label;
     window.PACK_CUR_GRADE = o.grade;
     $("#meta").textContent = S().label + " · Grade " + o.grade + " · " + pack.topics.length +
