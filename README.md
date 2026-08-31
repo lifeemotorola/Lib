@@ -4,8 +4,8 @@ An **offline, single-file web app** that generates printable course packs for th
 Liberian National Curriculum: pupil workbooks, period tests, semester
 examinations and teacher's answer keys — in **English, French, General
 Science, Mathematics, Social Studies, Religious & Moral Education, Physical
-Education, Biology, Chemistry, Physics, Economics, English Grammar and
-Geography**, Grades 1–12, all A4-exact on screen, in print and in Word.
+Education, Biology, Chemistry, Physics, Economics, English Grammar,
+Geography and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
 
 Everything runs from one HTML file with **no server and no internet**
 (`index.html`, about 3.5 MB). It has no dependencies at runtime — the
@@ -14,7 +14,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **13 subjects** with real curriculum content (6 units per grade per subject)
+- **14 subjects** with real curriculum content (6 units per grade per subject)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -59,7 +59,7 @@ bash build.sh
 | Control | What it does |
 |---|---|
 | **Session** | `Student` or `Teacher`. Teacher adds the answer-key pack contents. |
-| **Subject** | One of the 13 subjects; Biology/Chemistry/Physics reuse the Science engine, and Economics/Geography reuse the Social Studies engine. |
+| **Subject** | One of the 14 subjects; Biology/Chemistry/Physics reuse the Science engine, and Economics/Geography reuse the Social Studies engine, and Literature has its own engine. |
 | **Level / Grade** | Education band (Elementary, Junior High, Senior High) and grade; a subject only shows the bands it covers. |
 | **Units to include** | Select the curriculum periods per grade. |
 | **Exercise types** | Which worksheets each unit gets. |
@@ -101,10 +101,11 @@ same tool lives in `book.html`.
 | Economics (`ec`) | 10–12 | 6 | 18 |
 | English Grammar (`eg`) | 10–12 | 6 | 18 |
 | Geography (`gg`) | 10–12 | 6 | 18 |
+| Literature (`li`) | 10–12 | 6 | 18 |
 
 > **Known limitation:** Grades 10–12 are covered by Mathematics and by
-> Biology, Chemistry, Physics, Economics, English Grammar and Geography; the
-> other elementary and junior-high subjects stop at Grade 9.
+> Biology, Chemistry, Physics, Economics, English Grammar, Geography and
+> Literature; the other elementary and junior-high subjects stop at Grade 9.
 
 ## Project layout
 
@@ -115,11 +116,11 @@ same tool lives in `book.html`.
 | `styles.css` | All styling, including A4 sheet geometry and `@media print` rules. |
 | `app.js` | The platform: subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence. |
 | `data-*.js` | Curriculum content per subject (`data-en.js`, `data-ma79.js` = Junior High part, `data-bi.js`, ...). |
-| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`). |
+| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`; Literature has its own, `gen-li.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html`. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics (Grades 1–12), French, Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar and Geography Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics (Grades 1–12), French, Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -142,13 +143,13 @@ same tool lives in `book.html`.
   `**bold**` markup (converted to `<b>`), used for key terms throughout the
   course text — but not inside `table` cells, which are escaped, not
   rendered. Single `*asterisks*` are not converted, so example words and
-  sentences are quoted instead of italicised. All 13 subjects now carry full
+  sentences are quoted instead of italicised. All 14 subjects now carry full
   verbatim notes derived from their curriculum guides — Social Studies,
   General Science, English, Mathematics, French, Religious & Moral Education
   and Physical Education, Grades 1–9 (54 units each, plus the 42 Senior High
   Mathematics units), and Biology, Chemistry, Physics, Economics, English
-  Grammar and Geography, Grades 10–12 (18 units each) — with the guide page
-  range of each unit recorded in a comment above its list.
+  Grammar, Geography and Literature, Grades 10–12 (18 units each) — with the
+  guide page range of each unit recorded in a comment above its list.
 - Generators emit a **uniform block model**
   (`{k:"h3"|"p"|"table"|"num"|"bul"|"mcq"|..., t/head/rows/...}`), so one
   renderer handles pagination and one exporter builds Word for every subject.
