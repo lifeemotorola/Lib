@@ -2,7 +2,15 @@
 
 ## `emmanuel.png` — the portrait of Emmanuel, the AI tutor
 
-Drop the photo here as **`assets/emmanuel.png`**, then run `./build.sh`.
+Currently **320 × 320, 30 KB, transparent background**. It was cut from the
+photograph committed as `tests/fixtures/converted_image (4).jpeg`: that JPEG had
+the checkerboard "transparency" pattern baked into its pixels, so the backdrop
+was flood-filled away from the corners (`-fuzz 8%`), the head and shoulders were
+cropped square, and the result was reduced to 192 colours to keep the inlined
+data URI small.
+
+To replace it, drop a new photo here as **`assets/emmanuel.png`** and run
+`./build.sh`.
 
 `build.sh` inlines the file into `index.html` as a base64 data URI
 (`window.EMMANUEL_AVATAR`), so the single-file deliverable keeps working
