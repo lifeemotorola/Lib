@@ -38,12 +38,47 @@ vm.runInContext(slice, sandbox);
 const SUBJECTS = [
   { name: "Social Studies", global: "SS_CURRICULUM",
     files: ["data-ss.js", "data-ss79.js"],
-    spot: { grade: 7, period: "I",
-            facts: ["12,742", "40,075", "24 time zones", "7 continents", "5 major oceans"] } },
+    grades: 9,                     /* every unit from Grade 1 to Grade 9 must carry study[] */
+    spots: [
+      { grade: 1, period: "VI",
+        facts: ["fifteen (15) counties", "26 July 1847", "eleven stripes"] },
+      { grade: 4, period: "III",
+        facts: ["1816", "Bushrod Washington", "26 July 1847"] },
+      { grade: 7, period: "I",
+        facts: ["12,742", "40,075", "24 time zones", "7 continents", "5 major oceans"] }
+    ] },
   { name: "General Science", global: "SC_CURRICULUM",
     files: ["data-sc.js", "data-sc79.js"],
-    spot: { grade: 7, period: "I",
-            facts: ["Density = mass ÷ volume", "215 cm", "hydrocarbons"] } }
+    grades: 9,                     /* every unit from Grade 1 to Grade 9 must carry study[] */
+    spots: [{ grade: 7, period: "I",
+              facts: ["Density = mass ÷ volume", "215 cm", "hydrocarbons"] },
+            { grade: 1, period: "V",
+              facts: ["December to February", "Mercury, Venus, Earth, Mars"] },
+            { grade: 2, period: "VI",
+              facts: ["Refuse – reason – run – report", "expiry date"] },
+            { grade: 4, period: "III",
+              facts: ["carbon dioxide + water", "chlorophyll"] },
+            { grade: 5, period: "III",
+              facts: ["1 kg = 1,000 g", "Fair test"] },
+            { grade: 6, period: "V",
+              facts: ["MA = load ÷ effort", "Efficiency = (work out ÷ work in) × 100 %"] },
+            { grade: 6, period: "VI",
+              facts: ["H₂O", "filtrate"] }] },
+  { name: "English", global: "EN_CURRICULUM",
+    files: ["data-en.js"],       /* one file holds Grades 1-9 for this subject */
+    grades: 9,                    /* every unit from Grade 1 to Grade 9 must carry study[] */
+    spots: [{ grade: 1, period: "I",
+              facts: ["26 letters", "a, e, i, o, u (and sometimes y)"] },
+            { grade: 4, period: "VI",
+              facts: ["digraph", "two vowel letters, or a vowel and a w"] },
+            { grade: 6, period: "IV",
+              facts: ["past perfect"] },
+            { grade: 7, period: "I",
+              facts: ["sentence fragment"] },
+            { grade: 8, period: "V",
+              facts: ["The rain stopped", "Yours faithfully"] },
+            { grade: 9, period: "II",
+              facts: ["born in Harper in 1954", "first person throughout"] }] }
 ];
 
 let grandTotal = 0;
@@ -84,10 +119,24 @@ for (const subj of SUBJECTS) {
     if (wantBold.length && !/<b>/.test(html)) { console.error("FAIL: no <b> rendered", subj.name, u.grade, u.period); bad++; }
     if (/\*\*/.test(html)) { console.error("FAIL: raw ** left in output", subj.name, u.grade, u.period); bad++; }
     /* spot facts survive (subject-specific, if given) */
-    if (subj.spot && u.grade === subj.spot.grade && u.period === subj.spot.period) {
-      for (const s of subj.spot.facts) {
-        if (!html.includes(s)) {
-          console.error("FAIL: missing fact", JSON.stringify(s), "in", subj.name, u.grade, u.period); bad++;
+    for (const spot of subj.spots || []) {
+      if (u.grade !== spot.grade || u.period !== spot.period) continue;
+      for (const fct of spot.facts) {
+        if (!html.includes(fct)) {
+          console.error("FAIL: missing fact", JSON.stringify(fct), "in", subj.name, u.grade, u.period); bad++;
+        }
+      }
+    }
+  }
+  /* `grades: N` — the subject claims verbatim notes for every unit in 1..N */
+  if (subj.grades) {
+    for (let g = 1; g <= subj.grades; g++) {
+      for (const p of ["I", "II", "III", "IV", "V", "VI"]) {
+        const u = units.find(x => x.grade === g && x.period === p);
+        if (!u) { console.error("FAIL: no such unit", subj.name, "Grade", g, "Period", p); bad++; continue; }
+        if (!u.study || !u.study.length) {
+          console.error("FAIL: unit without verbatim study notes:", subj.name, "Grade", g, "Period", p);
+          bad++;
         }
       }
     }
