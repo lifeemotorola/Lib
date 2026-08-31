@@ -81,7 +81,7 @@ const SUBJECTS = [
               facts: ["born in Harper in 1954", "first person throughout"] }] },
   { name: "Mathematics", global: "MA_CURRICULUM",
     files: ["data-ma.js", "data-ma79.js", "data-ma-sh.js"],
-    grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */
+    grades: { from: 1, to: 12 },  /* every unit from Grade 1 to Grade 12 must carry study[] */
     spots: [{ grade: 1, period: "I",
               facts: ["members", "union", "3 + 2 = 5 children", "subset"] },
             { grade: 1, period: "III",
@@ -113,7 +113,27 @@ const SUBJECTS = [
             { grade: 9, period: "I",
               facts: ["n(A ∪ B) = n(A) + n(B) − n(A ∩ B)", "A = P(1 + R ÷ 100)ⁿ"] },
             { grade: 9, period: "V",
-              facts: ["sine θ", "opposite ÷ hypotenuse"] }] },
+              facts: ["sine θ", "opposite ÷ hypotenuse"] },
+            /* Senior High Mathematics — 42 units over Grades 10-12 (11 in Grade 10,
+               8 in Grade 11, 23 in Grade 12; several periods carry more than one unit) */
+            { grade: 10, period: "III", title: "Plane Geometry",
+              facts: ["Pythagoras", "hypotenuse", "(n − 2) × 180°", "135°"] },
+            { grade: 10, period: "VI", title: "Statistics, Ratio and Rates, and Percentages",
+              facts: ["frequency table", "box-and-whisker", "1 : 50 000", "360/1 800 × 100"] },
+            { grade: 11, period: "I", title: "Indices and Logarithms",
+              facts: ["index laws", "a⁰ = 1", "a⁻ⁿ = 1/aⁿ", "a^(m/n) = (ⁿ√a)ᵐ", "log (xy) = log x + log y"] },
+            { grade: 11, period: "V", title: "Trigonometry",
+              facts: ["SOH", "CAH", "TOA", "hypotenuse", "angle of elevation", "angle of depression"] },
+            { grade: 12, period: "I", title: "Sequence and Series",
+              facts: ["arithmetic progression", "geometric progression", "Tₙ = a + (n − 1)d", "S∞ = a/(1 − r)"] },
+            { grade: 12, period: "II", title: "Standard Deviation",
+              facts: ["variance", "standard deviation", "interquartile range", "Σd²", "σ = √variance"] },
+            { grade: 12, period: "IV", title: "Numbers and Numeration",
+              facts: ["prime factorization", "A × 10ⁿ", "modular arithmetic", "commutative"] },
+            { grade: 12, period: "V", title: "Plane Geometry",
+              facts: ["interior angles", "regular polygon", "cyclic quadrilateral", "tangent"] },
+            { grade: 12, period: "VI", title: "Differentiation and Integration",
+              facts: ["difference quotient", "derivative", "constant of integration", "area under a curve", "∫(6x² − 4x + 1) dx"] } ] },
   { name: "French", global: "FR_CURRICULUM",
     files: ["data-fr.js", "data-fr79.js"],
     grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */
@@ -402,9 +422,11 @@ for (const subj of SUBJECTS) {
       .match(/\*\*[^*]+\*\*/g) || [];
     if (wantBold.length && !/<b>/.test(html)) { console.error("FAIL: no <b> rendered", subj.name, u.grade, u.period); bad++; }
     if (/\*\*/.test(html)) { console.error("FAIL: raw ** left in output", subj.name, u.grade, u.period); bad++; }
-    /* spot facts survive (subject-specific, if given) */
+    /* spot facts survive (subject-specific, if given); `title` picks one unit
+       when a period carries more than one (e.g. Senior High Mathematics) */
     for (const spot of subj.spots || []) {
       if (u.grade !== spot.grade || u.period !== spot.period) continue;
+      if (spot.title && u.title !== spot.title) continue;
       for (const fct of spot.facts) {
         if (!html.includes(fct)) {
           console.error("FAIL: missing fact", JSON.stringify(fct), "in", subj.name, u.grade, u.period); bad++;
@@ -415,19 +437,19 @@ for (const subj of SUBJECTS) {
   /* `grades: N` — the subject claims verbatim notes for every unit in 1..N.
      `grades: {from: a, to: b}` claims them for the band a..b, which is how a
      subject whose notes cover only part of its range (Junior High, say) is
-     checked without asking Grades 1-6 for notes they do not carry yet. */
+     checked without asking Grades 1-6 for notes they do not carry yet.
+     Every unit in the span is checked, not just one per period, so a period
+     that carries several units (Senior High Mathematics) is fully covered. */
   if (subj.grades) {
     const span = (typeof subj.grades === "number")
       ? { from: 1, to: subj.grades }
       : subj.grades;
-    for (let g = span.from; g <= span.to; g++) {
-      for (const p of ["I", "II", "III", "IV", "V", "VI"]) {
-        const u = units.find(x => x.grade === g && x.period === p);
-        if (!u) { console.error("FAIL: no such unit", subj.name, "Grade", g, "Period", p); bad++; continue; }
-        if (!u.study || !u.study.length) {
-          console.error("FAIL: unit without verbatim study notes:", subj.name, "Grade", g, "Period", p);
-          bad++;
-        }
+    for (const u of units) {
+      if (u.grade < span.from || u.grade > span.to) continue;
+      if (!u.study || !u.study.length) {
+        console.error("FAIL: unit without verbatim study notes:",
+          subj.name, "Grade", u.grade, "Period", u.period, "—", u.title);
+        bad++;
       }
     }
   }
