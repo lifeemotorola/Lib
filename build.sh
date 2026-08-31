@@ -15,6 +15,15 @@ cd "$(dirname "$0")"
   echo '</style>'
   echo '</head>'
   cat body.html
+  # Emmanuel's portrait, inlined as a data URI so the deliverable stays offline
+  if [ -f assets/emmanuel.png ]; then
+    echo '<script>'
+    printf 'window.EMMANUEL_AVATAR="data:image/png;base64,'
+    base64 -w0 assets/emmanuel.png
+    printf '";'
+    echo
+    echo '</script>'
+  fi
   for f in data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-gg.js data-li.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js book.js ai.js app.js; do
     echo '<script>'
     cat "$f"
