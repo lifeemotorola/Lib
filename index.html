@@ -68982,7 +68982,9 @@ var LI_CURRICULUM = [
 
   /* ---- Groq API config ---- */
   var GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-  var MODEL = "llama3-70b-8192";
+  // Llama 3 70B model replaced per Groq deprecation:
+  // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
+  var MODEL = "openai/gpt-oss-120b";
   var STORE_KEY = "lncpg.groq.v1";
 
   var apiKey = "";
@@ -69124,7 +69126,7 @@ var LI_CURRICULUM = [
           '<span class="ai-head-ico">🤖</span>' +
           '<div class="ai-head-txt">' +
             '<b>AI Tutor</b>' +
-            '<span class="ai-head-sub">Powered by Groq · Llama 3 70B</span>' +
+            '<span class="ai-head-sub">Powered by Groq · openai/gpt-oss-120b</span>' +
           '</div>' +
         '</div>' +
         '<div class="ai-head-right">' +

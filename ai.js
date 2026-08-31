@@ -8,10 +8,24 @@
 
   /* ---- Groq API config ---- */
   var GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-  var MODEL = "llama3-70b-8192";
+  // Llama 3 70B model replaced per Groq deprecation:
+  // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
+  var MODEL = "openai/gpt-oss-120b";
   var STORE_KEY = "lncpg.groq.v1";
 
-  var apiKey = "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";
+  // Support GitHub Actions environment variable: set META tag <meta name="groq-api-key" content="..."> 
+  // or expose window.GROQ_API_KEY in GitHub Actions workflow for browser auto-population.
+  var apiKey = (function () {
+    // Check for GitHub-injected env var via meta tag (common for GitHub Pages)
+    var meta = document.querySelector('meta[name="groq-api-key"]');
+    if (meta && meta.content) return meta.content.trim();
+    // Check for window.GROQ_API_KEY (set by GitHub Actions job)
+    if (window.GROQ_API_KEY) return String(window.GROQ_API_KEY).trim();
+    // Fall back to stored localStorage key
+    try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
+    // Fall back to hardcoded default (for local development)
+    return "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";
+  })();
   var chatHistory = [];     /* {role, content}[] */
   var isOpen = false;
   var isStreaming = false;
@@ -150,7 +164,7 @@
           '<span class="ai-head-ico">🤖</span>' +
           '<div class="ai-head-txt">' +
             '<b>AI Tutor</b>' +
-            '<span class="ai-head-sub">Powered by Groq · Llama 3 70B</span>' +
+            '<span class="ai-head-sub">Powered by Groq · openai/gpt-oss-120b</span>' +
           '</div>' +
         '</div>' +
         '<div class="ai-head-right">' +
@@ -184,7 +198,7 @@
         '<label class="ai-set-label">Groq API Key' +
           '<input type="password" id="aiKeyInput" placeholder="gsk_...">' +
         '</label>' +
-        '<p class="ai-set-hint">Get a free API key at <a href="https://console.groq.com" target="_blank" rel="noopener">console.groq.com</a>. Your key is stored locally on this device only.</p>' +
+        '<p class="ai-set-hint">Get a free API key at <a href="https://console.groq.com" target="_blank" rel="noopener">console.groq.com</a>. <br>• To auto-load from GitHub: add a <code>&lt;meta name="groq-api-key" content="YOUR_KEY"</code> tag to your HTML, or set <code>window.GROQ_API_KEY</code> in your GitHub Actions workflow. <br>• Key is also saved to localStorage on this device for future sessions.</p>' +
         '<button class="ai-set-save" id="aiKeySave">Save Key</button>' +
       '</div>' +
       '<div class="ai-foot">' +
