@@ -78,7 +78,31 @@ const SUBJECTS = [
             { grade: 8, period: "V",
               facts: ["The rain stopped", "Yours faithfully"] },
             { grade: 9, period: "II",
-              facts: ["born in Harper in 1954", "first person throughout"] }] }
+              facts: ["born in Harper in 1954", "first person throughout"] }] },
+  { name: "Mathematics", global: "MA_CURRICULUM",
+    files: ["data-ma.js", "data-ma79.js", "data-ma-sh.js"],
+    grades: { from: 7, to: 9 },  /* Junior High: course text for every Grade 7-9 unit */
+    spots: [{ grade: 7, period: "I",
+              facts: ["sieve of Eratosthenes", "2² × 3 × 7"] },
+            { grade: 7, period: "IV",
+              facts: ["(−8) + (−5) − (−3)", "5x − 7 = 23"] },
+            { grade: 8, period: "VI",
+              facts: ["c² = a² + b²", "15 cm"] },
+            { grade: 9, period: "I",
+              facts: ["n(A ∪ B) = n(A) + n(B) − n(A ∩ B)", "A = P(1 + R ÷ 100)ⁿ"] },
+            { grade: 9, period: "V",
+              facts: ["sine θ", "opposite ÷ hypotenuse"] }] },
+  { name: "French", global: "FR_CURRICULUM",
+    files: ["data-fr.js", "data-fr79.js"],
+    grades: { from: 7, to: 9 },  /* Junior High: course text for every Grade 7-9 unit */
+    spots: [{ grade: 7, period: "I",
+              facts: ["Je m'appelle", "J'ai treize ans"] },
+            { grade: 8, period: "IV",
+              facts: ["Combien coûte ce livre ?", "Il coûte cinq cents dollars."] },
+            { grade: 9, period: "III",
+              facts: ["plus grande que", "meilleur"] },
+            { grade: 9, period: "IV",
+              facts: ["Il a l'air triste", "avoir peur"] }] }
 ];
 
 let grandTotal = 0;
@@ -128,9 +152,15 @@ for (const subj of SUBJECTS) {
       }
     }
   }
-  /* `grades: N` — the subject claims verbatim notes for every unit in 1..N */
+  /* `grades: N` — the subject claims verbatim notes for every unit in 1..N.
+     `grades: {from: a, to: b}` claims them for the band a..b, which is how a
+     subject whose notes cover only part of its range (Junior High, say) is
+     checked without asking Grades 1-6 for notes they do not carry yet. */
   if (subj.grades) {
-    for (let g = 1; g <= subj.grades; g++) {
+    const span = (typeof subj.grades === "number")
+      ? { from: 1, to: subj.grades }
+      : subj.grades;
+    for (let g = span.from; g <= span.to; g++) {
       for (const p of ["I", "II", "III", "IV", "V", "VI"]) {
         const u = units.find(x => x.grade === g && x.period === p);
         if (!u) { console.error("FAIL: no such unit", subj.name, "Grade", g, "Period", p); bad++; continue; }
