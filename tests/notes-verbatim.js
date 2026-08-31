@@ -148,7 +148,40 @@ const SUBJECTS = [
             { grade: 9, period: "III",
               facts: ["plus grande que", "meilleur"] },
             { grade: 9, period: "IV",
-              facts: ["Il a l'air triste", "avoir peur"] }] }
+              facts: ["Il a l'air triste", "avoir peur"] }] },
+  { name: "Religious & Moral Education", global: "RM_CURRICULUM",
+    files: ["data-rm.js", "data-rm79.js"],   /* 7-9 file appends its units into RM_CURRICULUM */
+    grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */
+    spots: [{ grade: 1, period: "I",
+              facts: ["The Creator", "Genesis 1:26-27", "Holy Quran 6:23"] },
+            { grade: 1, period: "V",
+              facts: ["Physical death", "Spiritual death", "Matthew 25:31-46"] },
+            { grade: 2, period: "I",
+              facts: ["six days", "Psalm 24:1-2", "Quran 2:164"] },
+            { grade: 3, period: "II",
+              facts: ["66 books", "114 surahs", "2 Timothy 3:16"] },
+            { grade: 3, period: "V",
+              facts: ["Conflict", "Conflict resolution", "Matthew 18:15-20"] },
+            { grade: 4, period: "II",
+              facts: ["Ten Commandments", "Constitution of the Republic of Liberia"] },
+            { grade: 4, period: "VI",
+              facts: ["John 3:16", "Repentance", "Sanctification"] },
+            { grade: 5, period: "V",
+              facts: ["Alhaji Nayyar", "Hijrah", "Savior of Mankind"] },
+            { grade: 6, period: "I",
+              facts: ["Big Bang Theory", "Genesis 1 and 2"] },
+            { grade: 6, period: "IV",
+              facts: ["Al-Fatiha", "Psalm 100:1-2"] },
+            { grade: 7, period: "I",
+              facts: ["Reconciliation", "2 Corinthians 5:18-19", "man to God"] },
+            { grade: 8, period: "III",
+              facts: ["Fornication", "Adultery", "HIV/AIDS"] },
+            { grade: 8, period: "V",
+              facts: ["Stewardship", "1 Peter 4:10"] },
+            { grade: 9, period: "III",
+              facts: ["Eid al-Fitr", "Eid al-Adha", "Christmas", "Easter"] },
+            { grade: 9, period: "VI",
+              facts: ["Chastity", "immorality", "temple of the Holy Spirit"] }] }
 ];
 
 let grandTotal = 0;

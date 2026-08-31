@@ -18,6 +18,23 @@ const RM_CURRICULUM = [
     "Draw pictures of the things that were created"
   ],
   note: "God is the Creator of all things. Christians read the creation story in the Holy Bible, and Muslims read of God's creation in the Holy Quran. Both teach that God made the heavens and the earth and everything in them.",
+  study:[
+    /* ---- course text: Semester One, Period I — Creation (page 2) ---- */
+    {k:"h3", t:"The Creator"},
+    {k:"p", t:"**God is the Creator** — He made everything that exists. The Holy Bible and the Holy Quran both teach that God created the heavens and the earth and everything in them. Christians read the creation story in **Genesis**, and Muslims read of God's creation in the **Holy Quran**."},
+    {k:"p", t:"Scripture references: the Holy Bible, Genesis 1:26-27, and the Holy Quran 6:23. Read these verses and discuss how each book describes the one true Creator."},
+    {k:"rule"},
+    {k:"h3", t:"Creation of All Things"},
+    {k:"p", t:"God created **all things** — the heavens, the earth, the sun, the moon, the stars, the plants, the animals, and finally **Man**. Everything God made was made for a purpose."},
+    {k:"bul", items:["**Plants** — trees, grass and flowers, which give us food and shade", "**Animals** — birds, fish and animals on the land", "**People** — created in the image of God, with a **mind**, a **body** and a **soul**", "**The heavens and the earth** — the sky, the sun, the moon and the stars"]},
+    {k:"p", t:"**Training the whole man** means caring for the whole person: the **mind** (learning and thinking), the **body** (health and strength) and the **soul** (knowing and serving God)."},
+    {k:"rule"},
+    {k:"h3", t:"Heaven, Hell and Earth"},
+    {k:"p", t:"Discuss the **heaven** (the holy place where God dwells), the **earth** (the world God gave us to live in and care for) and **hell** (the place of punishment for sin). Both religions teach that how we live on earth prepares us for what comes after."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment and Reflection"},
+    {k:"num", items:["Write one or two paragraphs on creation.", "In a group, discuss the creation of Man: why did God make people?", "Discuss the things we can do because we are alive and created.", "Draw and colour pictures of the things that were created."]}
+  ],
   focus: ["The Creator", "Creation of all things", "Heaven, hell and earth", "Training the mind, body and soul"],
   terms: [
     { t: "Creator", d: "God, the one who made everything that exists", x: "We call God the Creator because He made all things." },
@@ -117,6 +134,28 @@ const RM_CURRICULUM = [
     "Exhibit kindness to other people"
   ],
   note: "The Ten Commandments are laws that God gave to His people through Moses. They teach us to love God and to love other people. Muslims also learn the teachings of Prophet Moses from the Holy Quran.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Ten Commandments (page 3) ---- */
+    {k:"h3", t:"The Ten Commandments"},
+    {k:"p", t:"The **Ten Commandments** are the laws God gave to His people through **Prophet Moses**. Christians read them in the Holy Bible, and Muslims also honour the teaching of Prophet Moses as recorded in the Holy Quran. The commandments teach us to **love God** and to **love and respect one another**."},
+    {k:"p", t:"Scripture references: the Holy Bible, Exodus 20:2-17 (the Ten Commandments) and Luke 10:25-37 (the story of the Good Samaritan); in the Holy Quran, read the teachings of Prophet Moses according to faith."},
+    {k:"rule"},
+    {k:"h3", t:"Love"},
+    {k:"p", t:"The first and greatest law is to **love God with all your heart**, and the second is to **love your neighbour as yourself**. Love shows itself in what we do for others, just as the **Good Samaritan** stopped to help the wounded man on the road."},
+    {k:"rule"},
+    {k:"h3", t:"Obedience"},
+    {k:"p", t:"**Obedience** means doing what God and our parents and teachers ask us to do. God blesses those who obey Him. In the family, at school and in the community, obedient children bring joy to those who care for them."},
+    {k:"rule"},
+    {k:"h3", t:"Law and Respect in the Family and Community"},
+    {k:"p", t:"Every family and community has **laws and rules** that keep people safe and happy. Respecting these rules shows that we respect the people who made them and the people around us."},
+    {k:"rule"},
+    {k:"h3", t:"Self Esteem"},
+    {k:"p", t:"**Self esteem** means knowing that you are valuable because God made you. When we know our worth, we take care of ourselves and we do not do things that are wrong."},
+    {k:"rule"},
+    {k:"h3", t:"Kindness to Others"},
+    {k:"p", t:"**Kindness** is treating people the way we would like them to treat us. The Ten Commandments teach us not to steal, lie or hurt others — they teach us to be kind, honest and fair."},
+    {k:"bul", items:["Read the Ten Commandments of God from the Holy Bible and the Holy Quran.", "Discuss the importance of the commandments and their impact on everyday activities.", "Read, discuss and colour pictures of the Good Samaritan.", "Practise one act of kindness at home and one at school today."]}
+  ],
   focus: ["Love", "Obedience", "Law and respect in the family and community", "Self esteem", "Kindness to others"],
   terms: [
     { t: "commandment", d: "a law that God gives to people to obey", x: "Do not steal is one commandment." },
@@ -217,6 +256,25 @@ const RM_CURRICULUM = [
     "Explain the death and resurrection of the Lord Jesus Christ"
   ],
   note: "Christians believe that Jesus Christ is the Son of God, who was born in Bethlehem, taught people to love one another, died and rose again. Muslims honour Jesus as one of the great prophets of God. In our multi-religious classes we learn about him with respect.",
+  study:[
+    /* ---- course text: Semester One, Period III — The Lord Jesus Christ (page 4) ---- */
+    {k:"h3", t:"The Promise of the Messiah"},
+    {k:"p", t:"Long before Jesus was born, the prophets of God promised that a **Messiah** (a Saviour) would come. Christians believe that promise was fulfilled in **Jesus Christ**, the Son of God. Scripture references: the Holy Bible, Isaiah 9:6-7 and Zechariah 12:8."},
+    {k:"rule"},
+    {k:"h3", t:"The Birth of Jesus Christ"},
+    {k:"p", t:"Jesus was born in **Bethlehem**. His mother was **Mary**. Scripture references: the Holy Bible, Matthew 1:18-25, Matthew 2, and Luke chapters 1 and 2. Muslims also honour Jesus (Isa) as a great prophet of God, born of the virgin Mary, as taught in the Holy Quran."},
+    {k:"rule"},
+    {k:"h3", t:"His Purpose — The Calling of His Disciples"},
+    {k:"p", t:"Jesus came with a **purpose**: to teach the way of God and to save people from their sins. He chose **twelve disciples** to follow Him, learn from Him and continue His work."},
+    {k:"bul", items:["Jesus taught about the **kingdom of God**.", "Jesus **healed the sick** and did many good works.", "He called ordinary people — fishermen and others — to be His disciples."]},
+    {k:"rule"},
+    {k:"h3", t:"The Divine Qualities of Jesus Christ"},
+    {k:"p", t:"Christians believe Jesus showed **divine qualities** — He is holy, loving, forgiving, merciful and powerful. The Bible says He is the Son of God. Scripture reference: John 3:16 — God so loved the world that He gave His only Son."},
+    {k:"rule"},
+    {k:"h3", t:"His Death and Resurrection"},
+    {k:"p", t:"Jesus **died on the cross**, was **buried**, and on the third day **rose again** from the dead. His resurrection shows His power over death. Scripture reference: the Holy Bible, Mark 16:1-13."},
+    {k:"p", t:"**Practise the teachings of Jesus every day** — kindness, honesty, forgiveness and love. Through classroom play, learners demonstrate an understanding of the teachings and life of Jesus Christ, and make a field trip to the market place, hospital or church to practise acts of kindness and respect as Jesus taught."}
+  ],
   focus: ["Birth of Jesus Christ", "His purpose and the calling of his disciples", "The divine qualities of Jesus", "His death and resurrection"],
   terms: [
     { t: "Jesus Christ", d: "the one Christians call the Son of God and Saviour", x: "Christians pray in the name of Jesus Christ." },
@@ -316,6 +374,22 @@ const RM_CURRICULUM = [
     "Tell stories illustrating his human qualities: his behaviour, gentleness, humility, obedience and truthfulness"
   ],
   note: "Muslims believe that Mohammed (peace be upon him) is the Prophet and Messenger of God, through whom the Holy Quran was given. Christians in the class should learn about him with the same respect that Muslim pupils show when learning about Jesus.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Religious Personality: Prophet Mohammed (Muslim Emphasis) (page 5) ---- */
+    {k:"h3", t:"The Birth and Childhood of Prophet Mohammed"},
+    {k:"p", t:"**Prophet Mohammed** (peace be upon him) was born in the city of **Mecca** around the year 570. He was an orphan — his father died before he was born and his mother died when he was young — so he was raised by his grandfather and then his uncle. Muslims recognise him as the **Prophet and Messenger of God**."},
+    {k:"rule"},
+    {k:"h3", t:"His Calling"},
+    {k:"p", t:"Prophet Mohammed was **called by God** to be a messenger. He received the revelations of the **Holy Quran** and taught the people of Mecca and the whole world to worship **one God (Allah)** alone and to live righteously."},
+    {k:"rule"},
+    {k:"h3", t:"His Human Qualities"},
+    {k:"p", t:"Prophet Mohammed is remembered for his beautiful **human qualities**: his gentle **behaviour**, his **humility**, his **obedience** to God, and his **truthfulness**. Even before his calling he was known in Mecca as *Al-Amin* — the trustworthy one."},
+    {k:"bul", items:["As a **military leader** — he led his people wisely and justly", "As a **philosopher** — he taught deep truths about God and human life", "As a **prophet** — he delivered the message of God to mankind"]},
+    {k:"rule"},
+    {k:"h3", t:"'May the Peace and Blessings of Allah be upon Him'"},
+    {k:"p", t:"When Muslims mention the Prophet, they add the blessing *s.a.s.* — meaning **'May the Peace and Blessings of Allah be upon Him'**. This is a sign of love and respect for the Messenger of God."},
+    {k:"p", t:"**Assignment:** read and discuss the birth and life of Prophet Mohammed in Mecca; tell stories illustrating his behaviour, gentleness, humility, obedience and truthfulness; and visit a mosque to learn about the Muslim faith."}
+  ],
   focus: ["Birth and childhood of Prophet Mohammed", "His calling", "His human qualities"],
   terms: [
     { t: "prophet", d: "a person chosen by God to carry His message to people", x: "Muslims believe Mohammed is a prophet of God." },
@@ -416,6 +490,24 @@ const RM_CURRICULUM = [
     "Learn about judgment day, the penalty of sin and the reward of heaven or hell"
   ],
   note: "Death is a part of life. All living things die. Both the Holy Bible and the Holy Quran teach that there is life after death and that God will judge how each person lived. Speak about death gently, because some pupils have lost people they love.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Death and Hereafter (page 6) ---- */
+    {k:"h3", t:"Death as a Result of Sin"},
+    {k:"p", t:"Religious teaching says that **sin** brought death into the world. The Holy Bible tells of the first sin of man and its result: death. Scripture references: the Holy Bible, Genesis 3:16-19 and John 1:1-3."},
+    {k:"rule"},
+    {k:"h3", t:"The Meaning of Death"},
+    {k:"p", t:"**Death** is the end of earthly life. It is a **departure from the earthly body** — the soul leaves the body and goes to another place called the **afterlife**. Death is a reality for every living person, and it is not the end of everything."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Death: Physical and Spiritual"},
+    {k:"p", t:"There are two kinds of death we study:"},
+    {k:"table", head:["Type of death","What it means"], rows:[["Physical death","The stopping of the body — breathing, heartbeat and life on earth end."],["Spiritual death","Separation from God because of sin — being cut off from the life of God."]]},
+    {k:"p", t:"(Table cells are shown without bold styling; the terms are **physical death** and **spiritual death**.)"},
+    {k:"rule"},
+    {k:"h3", t:"Judgment Day — Heaven or Hell"},
+    {k:"p", t:"Both the Bible and the Quran teach that there is a **Judgment Day**, when God will judge every person. Those who **obey God** receive the **reward of heaven**; those who are sinners and do not repent receive **punishment in hell** after death."},
+    {k:"p", t:"Scripture reference: the Holy Bible, Matthew 25:31-46 — the sheep and the goats; the righteous inherit the kingdom prepared for them, while the unrighteous go away into eternal punishment."},
+    {k:"p", t:"**Assignment:** read scriptures on life, death, hell and heaven; discuss the afterlife; dramatise the effect of death in order to appreciate the beauty and seriousness of life; and interview pastors or imams about their teaching on death and the hereafter."}
+  ],
   focus: ["Death as a result of sin", "Types of death: physical and spiritual", "Death as a departure from the earthly body"],
   terms: [
     { t: "death", d: "the end of life in the body", x: "All living things come to death one day." },
@@ -515,6 +607,24 @@ const RM_CURRICULUM = [
     "Collectively sing with other people"
   ],
   note: "Worship is the way people honour God. Christians worship in the church and Muslims worship in the mosque. Both pray, sing or recite, read their Holy Book, and give offerings.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Worship and Offering (page 7) ---- */
+    {k:"h3", t:"Kinds of Worship and Offering"},
+    {k:"p", t:"**Worship** is how we show God that He is great and that we love Him. **Offering** is what we give to God and His house. We worship God by praising Him, by praying, and by giving."},
+    {k:"rule"},
+    {k:"h3", t:"Praising God through Songs, Prayers and Praises"},
+    {k:"p", t:"We can **praise God** in many ways: by singing **songs** of praise, by saying **prayers** of thanks, and by telling others how **great God is**. Praise should come from the heart."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Worship"},
+    {k:"bul", items:["**Private worship** — praying and praising God alone", "**Fellowship worship** — worshipping with other believers", "**Prayer meetings** — gathering together to pray", "**General worship** — the regular service of the church or mosque", "**Self-prayer and praise** — praying to God without anyone helping us"]},
+    {k:"rule"},
+    {k:"h3", t:"Kinds of Offerings"},
+    {k:"bul", items:["**General offering** — the offering given during worship", "**Tithe** — giving one tenth of what we earn or receive to God", "**Prayer offering** — an offering given with prayer", "**Worship God with thanksgiving** — giving thanks to God for His goodness"]},
+    {k:"p", t:"Scripture references: the Holy Bible, Genesis 14:19-20, Malachi 3:8, Luke 5:16 and Mark 1:35; the Holy Quran 73:1-20 on prayer. Muslims also use books of prayer and praise, such as the Mohammad Book of Prayers."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Offer spontaneous prayers and praises.", "Read scriptures in reference to prayers, praises and service to the Lord.", "Sing simple songs of praise to God.", "Write two or three sentences on the various kinds of offerings and their importance."]}
+  ],
   focus: ["Kinds of worship and offering", "Praising God through songs, prayers and praises", "Types of worship: private, fellowship, prayer meetings, general worship", "Kinds of offering: general offering, tithe"],
   terms: [
     { t: "worship", d: "honouring God through prayer, songs and service", x: "The family goes to worship every week." },
@@ -616,6 +726,25 @@ const RM_CURRICULUM = [
     "Explain about the sky, sun, moon and stars"
   ],
   note: "The Holy Bible tells that God made the world and everything in it, and the Holy Quran teaches that God created the heavens and the earth. In this topic we look closely at four parts of creation: plants, animals, the heavenly bodies and man.",
+  study:[
+    /* ---- course text: Semester One, Period I — Creation (page 8) ---- */
+    {k:"h3", t:"The Creation Story"},
+    {k:"p", t:"God created all things. The **creation story** tells how God made the **animals**, **man**, **plants** and the whole **universe**. In Grade 2 we learn the story in its fullness — the Bible account and the Quran account side by side."},
+    {k:"p", t:"Scripture references: the Holy Bible, Genesis 1 and 2, and Psalm 24:1-2 ('The earth is the Lord's and everything in it'); the Holy Quran 2:164, which calls people to reflect on the signs of God's creation."},
+    {k:"rule"},
+    {k:"h3", t:"Animals Made by God"},
+    {k:"p", t:"God made all the **animals** — the beasts of the forest, the birds of the air and the fish of the sea. Each animal has its own place in creation, and God gave man care over them."},
+    {k:"rule"},
+    {k:"h3", t:"Plants Made by God"},
+    {k:"p", t:"God made the **plants** — the trees that give fruit, the grass that covers the ground, and the food that grows from the soil. Plants give us food, shade, medicine and wood."},
+    {k:"rule"},
+    {k:"h3", t:"The Universe — Sky, Sun, Moon and Stars"},
+    {k:"p", t:"God made the **universe**: the **sky** above us, the **sun** that gives light and heat by day, the **moon** that shines at night, and the **stars** that fill the heavens. Psalm 24:1-2 teaches that the whole earth and everything in it belongs to God."},
+    {k:"p", t:"**How many days did it take to make the world?** The Bible teaches that God created the heavens and the earth in **six days** and rested on the seventh day (Genesis 1 and 2)."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and discuss the creation story from the Bible and the Quran.", "Make a spontaneous prayer of praise and thanksgiving to God for His creation.", "Sing songs and rhymes of praise, and read Bible verses on creation.", "Go out of the class to observe and describe God's creation around the school."]}
+  ],
   focus: ["The creation story: animals, man, plants, the universe", "The existence of the sky, sun, moon and stars"],
   terms: [
     { t: "universe", d: "everything that exists — the earth, sky, sun, moon and stars", x: "God created the whole universe." },
@@ -717,6 +846,20 @@ const RM_CURRICULUM = [
     "Understand the importance of keeping promises"
   ],
   note: "A commitment is a promise you decide to keep. Both Holy Books teach that God always keeps His promises, and that people should keep their promises to God and to one another.",
+  study:[
+    /* ---- course text: Semester One, Period II — Commitment (page 9) ---- */
+    {k:"h3", t:"God's Commitment and Promises to Mankind"},
+    {k:"p", t:"**God is the greatest promise keeper.** He made promises (covenants) to man and He always keeps them. After the flood, God promised Noah that He would never destroy the earth with a flood again, and He set the **rainbow** in the sky as the sign of that promise."},
+    {k:"p", t:"Scripture references: the Holy Bible, Genesis 9:13-16 (the rainbow covenant), John 3:16 and 1 John 4:8 ('God is love'); the Holy Quran 2:164 on the signs of God."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Commitment to God"},
+    {k:"p", t:"Because God keeps His promises, we must keep **our promises to God**. We show commitment to God by obeying Him, praying to Him, worshipping Him and loving Him with all our heart."},
+    {k:"p", t:"Read scripture verses such as **'God is love'** (1 John 4:8), **'Love your neighbour as yourself'** and **'Children, obey your parents in the Lord'**, and read the corresponding scripture verses from the Holy Quran."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Commitment to Man"},
+    {k:"p", t:"We also make **promises to each other** — to our parents, our teachers, our friends and those who take care of us. Keeping a promise builds **trust**; breaking a promise hurts the person we failed."},
+    {k:"bul", items:["Promise to obey your parents, teachers and those who take care of you.", "Make and keep promises to your friends.", "Discuss promises that were broken and how you felt.", "Write one paragraph explaining God's promises to man."]}
+  ],
   focus: ["God's commitment and promises to mankind", "Man's commitment to God", "Man's commitment to man"],
   terms: [
     { t: "commitment", d: "a promise you decide to keep, whatever happens", x: "Coming to school every day is a commitment." },
@@ -816,6 +959,21 @@ const RM_CURRICULUM = [
     "Perform honest duties to God and man"
   ],
   note: "God's commandments can be summed up in two duties: love God, and love your neighbour as yourself. Everything we learn about kindness, honesty and forgiveness grows out of these two.",
+  study:[
+    /* ---- course text: Semester One, Period III — Commandments (page 11) ---- */
+    {k:"h3", t:"God's Faithfulness to Man"},
+    {k:"p", t:"God is **faithful** — He keeps His word and His commandments. Because God is faithful to us, He expects us to be faithful to Him and to one another. Scripture references: the Holy Bible, Matthew 5:44-45 and John 13:34 (love one another as I have loved you)."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Responsibility to God"},
+    {k:"p", t:"Man's first responsibility is to **God**: to love Him, obey His commandments, thank Him and worship Him. When we do our duty to God, we learn to do our duty to other people."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Responsibility to His Fellow Man"},
+    {k:"p", t:"The commandments of God call us to live well with other people through acts of:"},
+    {k:"bul", items:["**Forgivingness** — forgiving those who wrong us, as Jesus forgave (Luke 22:54-62; John 10:18)", "**Kindness** — doing good to others even when they are not kind to us (Matthew 5:44-45)", "**Helpfulness** — lending a hand at home, at school and in the community", "**Honesty** — telling the truth and not taking things that are not ours", "**Truthfulness and loyalty** — standing by the truth and by our friends and family"]},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Write on examples of kindness and love.", "Show an example of giving and showing kindness at home and in the community.", "Resist the temptation to take things that are not yours.", "Make a field trip to the market, hospital or community to observe and practise good behaviour."]}
+  ],
   focus: ["Forgiveness", "Loyalty, truthfulness and love", "Honest duties to God and to man"],
   terms: [
     { t: "loyalty", d: "standing by God, your family and your friends", x: "She showed loyalty by defending her friend from unfair blame." },
@@ -915,6 +1073,22 @@ const RM_CURRICULUM = [
     "Name the kinds of offering given in worship"
   ],
   note: "People worship God in different ways, but with the same reverence. Christians gather in the church and Muslims in the mosque. In each place there is prayer, reading of the Holy Book, praise and the giving of offerings.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Worship and Offering (pages 12-13) ---- */
+    {k:"h3", t:"Who Is Jesus Christ?"},
+    {k:"p", t:"Christians believe **Jesus Christ is the Son of God** and the Saviour. He holds an important place in the church as the head of the church. Muslims honour Jesus (Isa) as a great prophet of God. Scripture references: the Holy Bible, John 3:16, Matthew 17:5 and Matthew 16:16; the Holy Quran 3:45 on the good news of Jesus."},
+    {k:"rule"},
+    {k:"h3", t:"Praying to God in the Name of Jesus"},
+    {k:"p", t:"Christians **pray to God through Jesus Christ**. Jesus taught His followers to pray, and He gave them the **Lord's Prayer** (Matthew 6:9-13): 'Our Father who art in heaven, hallowed be Thy name...'"},
+    {k:"rule"},
+    {k:"h3", t:"Praying in Private and in Public"},
+    {k:"p", t:"We can pray **in private** (alone) and **in public** — in the church, the mosque, the classroom and at other gatherings. Both the Bible and the Quran teach believers to pray: pray aloud and pray quietly."},
+    {k:"p", t:"Scripture references: the Holy Bible, Matthew 6:9-13, Luke 11:9-13 and 1 Samuel 3:10-18; prayers from the Holy Quran, including Quran 37:103-106. Muslim learners learn the **Al-Fatiha**, the opening prayer of the Quran, which asks for God's guidance, lordship and mercy."},
+    {k:"rule"},
+    {k:"h3", t:"Committing Oneself to Acts of Charity"},
+    {k:"p", t:"Worship is not only in words — it is also in **acts of charity** (giving and helping). Jesus taught us to give freely, and the Quran also teaches giving to those in need. Dramatise stories in the Holy Bible and the Holy Quran as they relate to giving freely."},
+    {k:"bul", items:["Carry out spontaneous prayers for others.", "Learn the Lord's Prayer and the Al-Fatiha of the Holy Quran through reading and listening.", "Give freely in acts of kindness.", "Attend places of worship and practise praying aloud and quietly.", "Write a paragraph each on private prayer and general prayer."]}
+  ],
   focus: ["Forms of worship", "Prayer in general", "Worship with tithes and offerings", "Worship in thanksgiving and personal service"],
   terms: [
     { t: "reverence", d: "deep respect shown to God and to holy places", x: "We enter the place of worship with reverence." },
@@ -1016,6 +1190,25 @@ const RM_CURRICULUM = [
     "Show respect for the religious personalities of other faiths"
   ],
   note: "A religious personality is a person whose life and teaching guide believers. Christians look to Jesus Christ and his apostles. Muslims look to Prophet Mohammed. We study each with respect.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Religious Personality: Christian Emphasis (pages 14-15) ---- */
+    {k:"h3", t:"Jesus — His Birth"},
+    {k:"p", t:"Jesus Christ was **born** in Bethlehem to the virgin **Mary**. His birth was promised by the prophets. Christians read the story in the Gospels of Matthew and Luke, and Muslims honour the birth of Jesus (Isa), son of Mary, as a sign of God's power."},
+    {k:"rule"},
+    {k:"h3", t:"His Purpose and His Works"},
+    {k:"p", t:"Jesus came with a **purpose**: to save people from sin and to show the way to God. His **works** included teaching, healing the sick, feeding the hungry and doing **miracles**. Scripture references: the Holy Bible, Exodus 20:2-17 and Ephesians 6:1-24 (the teaching of the Apostle Paul)."},
+    {k:"bul", items:["His **miracle** — turning water into wine, healing the sick, raising the dead", "His **teaching** — the Sermon on the Mount, the parables", "His **calling of disciples** — ordinary people who followed Him", "The **purpose** for which Jesus Christ came — to seek and to save the lost"]},
+    {k:"rule"},
+    {k:"h3", t:"His Death"},
+    {k:"p", t:"Jesus was **arrested, judged and crucified**. He died on the cross and was buried. His death was for the sins of the world, according to Christian teaching."},
+    {k:"rule"},
+    {k:"h3", t:"His Resurrection and Ascension"},
+    {k:"p", t:"On the third day, Jesus **rose again** from the dead — the **resurrection**. After appearing to His disciples, He was taken up to heaven in the **ascension**. The resurrection shows that Jesus is the Son of God with power over death."},
+    {k:"rule"},
+    {k:"h3", t:"Living by the Teaching of Jesus"},
+    {k:"p", t:"Learners should **live by the teachings of Jesus Christ** and of the New Testament writers such as Paul, as in Ephesians 6. Determine ways by which you can help others, and dramatise the story of Jesus' death and resurrection."},
+    {k:"num", items:["Read with comprehension the birth, life and death of Jesus Christ.", "Using class discussion and simple objects, dramatise the works of Jesus Christ.", "Determine ways by which you can help others.", "Write a paragraph each about the birth and death of Jesus Christ."]}
+  ],
   focus: ["Jesus Christ and his teaching", "The apostles and their work", "Writers of the New Testament", "Respect for personalities of other faiths"],
   terms: [
     { t: "apostle", d: "one of the close followers sent out by Jesus to teach", x: "Peter was an apostle of Jesus." },
@@ -1116,6 +1309,27 @@ const RM_CURRICULUM = [
     "Show sympathy to people who have lost a relative"
   ],
   note: "Death comes to every living thing. Believers of both faiths teach that the body returns to the earth while the soul goes on to face God. Because some pupils have lost loved ones, this topic must be handled gently.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Death and After Life (pages 16-17) ---- */
+    {k:"h3", t:"Sin Is the Cause of Death"},
+    {k:"p", t:"Religious teaching explains that **sin is the cause of death**. When the first man and woman disobeyed God, sin and death entered the world. Scripture references: the Holy Bible, Genesis 3:1-15 and Genesis 3:16-19."},
+    {k:"rule"},
+    {k:"h3", t:"What Is Death?"},
+    {k:"p", t:"**Death** is the end of life on earth — the **departure of the soul from the earthly body**. Death is a reality for every living person; the Bible says all die, and the Quran also teaches that every soul shall taste death."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Death: Physical and Spiritual"},
+    {k:"table", head:["Type of death","What it means","Example"], rows:[["Physical death","The body stops living and returns to dust","A person, animal or plant dies"],["Spiritual death","The soul is separated from God because of sin","Living far from God in wrongdoing"]]},
+    {k:"rule"},
+    {k:"h3", t:"Death as a Gateway for the Soul to the Afterlife"},
+    {k:"p", t:"Death is not the end of everything — it is a **gateway** through which the soul passes into the **afterlife**. After death comes the life to come, where every soul stands before God."},
+    {k:"rule"},
+    {k:"h3", t:"Punishment or Reward for the Life Lived on Earth"},
+    {k:"p", t:"There is a **Judgment Day**: God will reward those who obeyed Him with **heaven**, and will punish sinners who did not repent with **hell**. The life we live on earth determines the reward or punishment that waits after death."},
+    {k:"p", t:"Scripture references: the Holy Bible, Revelation 21:4 (God will wipe away every tear), John 1:1-3 and Matthew 25:31-46 (the judgment of the sheep and the goats); the Holy Quran on death and punishment."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read scriptures and Bible stories on life, death, hell and heaven.", "Discuss death and the afterlife, and the effect of death for sinners.", "Express how you feel about death.", "Write a paragraph each on what you understand about life, death and the afterlife.", "Discuss how these teachings should impact your daily life."]}
+  ],
   focus: ["The meaning of death", "Body and soul", "Teachings of the Holy Bible and the Holy Quran on the after life", "Comforting the bereaved"],
   terms: [
     { t: "after life", d: "the life that believers say continues after death", x: "Both faiths teach about the after life." },
@@ -1217,6 +1431,25 @@ const RM_CURRICULUM = [
     "Give thanks to God for creation"
   ],
   note: "God is the Creator; everything else is creation. The Holy Books teach that after God had made the world He placed man in it as a caretaker, not as a destroyer.",
+  study:[
+    /* ---- course text: Semester One, Period I — Creator and Creation (pages 18-19) ---- */
+    {k:"h3", t:"The Creator"},
+    {k:"p", t:"**God is the Creator** of all things. The creative works of God, His creative power, and the purpose of His creation are taught in both the Holy Bible and the Holy Quran. Scripture references: the Holy Bible, Genesis chapters 6, 7 and 8, Psalm 8:1-3 and Psalm 24:1-2; the Holy Quran 35:27-29."},
+    {k:"rule"},
+    {k:"h3", t:"How the Earth Came into Existence"},
+    {k:"p", t:"Learners understand **how the earth came into existence** through the account of the Holy Books: God spoke and the world was made. In the beginning God created the heavens and the earth, and by His power everything came to be."},
+    {k:"rule"},
+    {k:"h3", t:"Earth Growth — Plants, Flowers, Fowl, Rivers, Ocean, Mountains and Animals"},
+    {k:"p", t:"God filled the earth with **growing things** and living creatures:"},
+    {k:"bul", items:["**Plants and flowers** that grow from the ground", "**Fowl** — the birds of the air", "**Rivers and the ocean** — the waters of the earth", "**Mountains** — the high places of the land", "**Animals** — the creatures of the field", "**Man** — created in the image of God"]},
+    {k:"p", t:"Learners also understand the **growth of man, plants and animals** — how living things grow, and how God provides for them."},
+    {k:"rule"},
+    {k:"h3", t:"The Creation of Man"},
+    {k:"p", t:"God created **Man** as the crown of creation, giving him life and placing him on the earth. Man is created to know God, to worship Him and to care for His creation."},
+    {k:"rule"},
+    {k:"h3", t:"Discussion — The Purpose of Creation"},
+    {k:"num", items:["Discuss the purpose for God creating Man.", "Why did God choose Noah?", "Why did God destroy the earth with His powerful flood?", "Read the scriptures, do the group assignment and prepare a written or oral report.", "Go on an outdoor observation to see the works of God's creation."]}
+  ],
   focus: ["The Creator and His creation", "The order of creation", "Man as caretaker of the earth", "Thanksgiving for creation"],
   terms: [
     { t: "Creator", d: "God, the maker of everything that exists", x: "Only the Creator can make something out of nothing." },
@@ -1317,6 +1550,23 @@ const RM_CURRICULUM = [
     "Know the books of the Holy Bible and of the Holy Quran"
   ],
   note: "Scriptures are the holy writings of a faith. The Christian Scripture is the Holy Bible, which has two parts: the Old Testament and the New Testament. The Islamic Holy Book is the Holy Quran, which is arranged in chapters called surahs.",
+  study:[
+    /* ---- course text: Semester One, Period II — Knowing the Different Scriptures (pages 20-21) ---- */
+    {k:"h3", t:"What Are Scriptures?"},
+    {k:"p", t:"**Scriptures** are the holy writings of a religion — the books that believers hold as the revealed word of God. They teach us about God, about how to live, and about the world to come."},
+    {k:"rule"},
+    {k:"h3", t:"The Holy Bible — Christian Scriptures"},
+    {k:"p", t:"The **Holy Bible** is the sacred book of the Christian faith. It has two main parts: the **Old Testament** and the **New Testament**. The Old Testament is made up of the books of the Law, the Prophets and the Writings; the New Testament contains the four **Gospels** (Matthew, Mark, Luke and John), the Acts of the Apostles, the Epistles and Revelation."},
+    {k:"p", t:"Scripture references: 2 Timothy 3:16 — 'All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness'; 2 Peter 1:20-21 — no prophecy of Scripture came about by the prophet's own interpretation, but men spoke from God as they were carried along by the Holy Spirit."},
+    {k:"rule"},
+    {k:"h3", t:"The Holy Quran — Islamic Holy Book"},
+    {k:"p", t:"The **Holy Quran** is the sacred book of the Islamic faith. Muslims believe it was revealed to **Prophet Mohammed** by God (Allah). It contains **114 chapters (surahs)** and teaches the worship of one God, righteous living, prayer, fasting and mercy."},
+    {k:"bul", items:["**Purpose of scriptures** — to reveal God, to guide our lives, and to teach right from wrong", "**Books of the Holy Bible** — 66 books: 39 in the Old Testament and 27 in the New Testament", "**Books of the Holy Quran** — 114 surahs revealed to Prophet Mohammed"]},
+    {k:"rule"},
+    {k:"h3", t:"Holy Scriptures and Other Writings"},
+    {k:"p", t:"Discuss the **difference between the Holy Scriptures and other writings** according to faith. Holy Scriptures are believed to be the word of God; other books are the writings of people. Respect each other's holy books and learn to know them by name and number."},
+    {k:"num", items:["Name the books of the Holy Bible and their number.", "Name the books of the Holy Quran and their number.", "Write a paragraph each on the Christian Scripture and the Islamic Holy Book.", "Give a group written report on the purpose of the scriptures."]}
+  ],
   focus: ["The Scriptures", "The Holy Bible — Christian Scripture", "The Holy Quran — Islamic Holy Book", "The difference between Scriptures and other writings"],
   terms: [
     { t: "scripture", d: "the holy writings of a faith", x: "Believers read their scripture with reverence." },
@@ -1418,6 +1668,28 @@ const RM_CURRICULUM = [
     "Know the types of offering for both Christians and Muslims, and the holy day of each"
   ],
   note: "Both faiths worship the one God, but in different forms. Christians worship God through Jesus Christ; Muslims worship God as taught through Prophet Mohammed. Prayers may be offered standing, sitting, kneeling or prostrating.",
+  study:[
+    /* ---- course text: Semester One, Period III — Worship and Offering (pages 22-23) ---- */
+    {k:"h3", t:"Forms of Worship"},
+    {k:"p", t:"**Worship** is giving honour and praise to God. Christians worship God through **Jesus Christ**; Muslims worship God (Allah) as taught by **Prophet Mohammed**. Learners understand the difference in the worship of God through Jesus Christ and the worship of God through Prophet Mohammed, and they know the importance of giving offerings and of reverencing places of worship."},
+    {k:"rule"},
+    {k:"h3", t:"Prayer in General"},
+    {k:"p", t:"**Prayer** is speaking to God. Prayers are offered by **standing, sitting, kneeling and prostrating**. Both faiths practise private, public and devotional prayer, and both teach times of **meditation** — quietly thinking about God and His word."},
+    {k:"p", t:"Scripture references: the Holy Bible, Luke 2:42-50, Luke 4:16-22 and Psalm 100 ('Enter His gates with thanksgiving'); the Holy Quran 2:9-10."},
+    {k:"rule"},
+    {k:"h3", t:"Worship God with Tithes and Offerings"},
+    {k:"p", t:"**Tithes** are the tenth part that belongs to God; **offerings** are gifts given freely to God. Giving tithes and offerings is part of worship in both the church and the mosque — it supports the house of God and helps those in need."},
+    {k:"rule"},
+    {k:"h3", t:"Worship God in Thanksgiving"},
+    {k:"p", t:"**Thanksgiving** is worship that says 'thank you' to God for His goodness, His gifts and His mercy. Psalm 100 calls us to enter God's presence with thanksgiving and praise."},
+    {k:"rule"},
+    {k:"h3", t:"Worship God with Personal Service"},
+    {k:"p", t:"**Personal service** is using our time, talents and strength to serve God. Serving God with our hands and feet is worship — helping in church or mosque, helping at home, and helping our neighbours."},
+    {k:"bul", items:["**Types of offering for Christians and Muslims** — general offerings, tithes, charity (zakat) and gifts at holy days", "**Times of meditation** — quiet times set apart for thinking about God", "**Places of worship** — the church for Christians, the mosque for Muslims; both are reverenced as houses of God"]},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read scriptures of prayers, and sing hymns and songs used at various services and at home devotion.", "Visit various churches and mosques during service wherever appropriate, according to faith.", "Pray in public and private places.", "Draw and colour pictures of churches and mosques.", "Write a paragraph each on self-prayer and meditation."]}
+  ],
   focus: ["Forms of worship", "Prayer in general", "Worship with tithes and offerings", "Worship in thanksgiving and personal service", "Postures of prayer"],
   terms: [
     { t: "devotional prayer", d: "a short regular time of prayer, at home or at school", x: "Morning devotional prayer begins the school day." },
@@ -1519,6 +1791,22 @@ const RM_CURRICULUM = [
     "Take part respectfully in devotion at school"
   ],
   note: "A religious service is an organised time of worship. In Christian churches there are Sunday services, prayer meetings and special services. In the mosque, Muslims perform daily prayers and the Friday congregational prayer, opening with Al-Fatiha.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Religious Services (pages 24-25) ---- */
+    {k:"h3", t:"Various Types of Religious Services"},
+    {k:"p", t:"Religious services are the **gatherings of believers to worship God**. Learners understand and practise religion according to their faith by attending places of worship and by keeping private devotions. There are different types of religious services in the Christian church and in the mosque."},
+    {k:"rule"},
+    {k:"h3", t:"Services in the Christian Churches"},
+    {k:"p", t:"Christian church services include **morning devotion**, **Sunday worship**, **prayer meetings**, **thanksgiving services** and special services such as Christmas and Easter. The service usually includes **singing, prayer, scripture reading, the sermon and offering**."},
+    {k:"bul", items:["Songs and hymns of praise", "Prayers — opening, thanksgiving and intercession", "Reading from the Holy Bible (various Bible verses on religious services; 101 Bible Stories)", "Preaching and teaching from the word of God", "Offering and giving"]},
+    {k:"rule"},
+    {k:"h3", t:"Al-Fatiha for Muslims in the Mosque"},
+    {k:"p", t:"Muslims worship in the **mosque**, where they pray the five daily prayers. The **Al-Fatiha** — the opening chapter of the Holy Quran — is recited in every unit of prayer. It asks for the guidance, lordship and mercy of God: *'Guide us on the straight path'* (Quran 1:1-7)."},
+    {k:"p", t:"Various scriptures on religious services from the Holy Quran are studied according to faith; other related books are used according to the belief systems."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Lead prayers and morning devotion around the flag pole.", "Worship in places according to your faith and beliefs.", "Draw and colour people attending church or mosque according to your faith.", "Write a paragraph on Christian church services, or say the Al-Fatiha for Muslims (according to your faith).", "Give an oral report on a visit to a church and a mosque."]}
+  ],
   focus: ["Various types of religious services", "Services in Christian churches", "Al-Fatiha for Muslims in the mosque"],
   terms: [
     { t: "religious service", d: "an organised time of worship", x: "The religious service began at nine o'clock." },
@@ -1619,6 +1907,26 @@ const RM_CURRICULUM = [
     "Know the methods of conflict resolution"
   ],
   note: "Conflict is a serious disagreement between people. Liberia has learned at great cost that conflict destroys, and that peace must be built patiently. Both Holy Books teach peacemaking, forgiveness and justice.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Conflict and its Resolution Process (pages 26-27) ---- */
+    {k:"h3", t:"Definition of Conflict"},
+    {k:"p", t:"**Conflict** is a disagreement, quarrel or fight between people or groups. It happens when people want different things, or when one person's actions hurt another. Learners define the word conflict and learn to manage it using religious teachings from both the Holy Bible and the Holy Quran according to faith."},
+    {k:"rule"},
+    {k:"h3", t:"Kinds of Conflicts"},
+    {k:"bul", items:["**Physical conflict** — fighting with the body, such as pushing, hitting or fighting", "**Spiritual conflict** — a struggle between good and evil, right and wrong", "**Emotional conflict** — a storm of feelings inside a person, such as anger, jealousy or fear", "**Family conflict** — quarrels between members of a family", "**Ethnic conflict** — disagreements between ethnic groups", "**Governmental conflict** — conflict over power, laws or leadership in a country"]},
+    {k:"rule"},
+    {k:"h3", t:"Causes of Conflicts"},
+    {k:"p", t:"Conflicts are caused by many things:"},
+    {k:"bul", items:["Misunderstanding — not understanding one another", "Greed and selfishness — wanting more than our share", "Jealousy and envy of other people's success", "Unfairness and injustice", "Bad words — insults, lies and gossip", "Refusing to forgive past wrongs"]},
+    {k:"rule"},
+    {k:"h3", t:"Resolution of Conflict"},
+    {k:"p", t:"**Conflict resolution** is the process of bringing a disagreement to a peaceful end. Religious teaching offers a way of peace:"},
+    {k:"num", items:["**Listen** — hear both sides of the story.", "**Speak calmly** — avoid angry words and insults.", "**Forgive** — let go of the wrong done to you.", "**Make peace** — apologise, make amends and shake hands.", "**Get help** — involve elders, teachers or religious leaders when needed."]},
+    {k:"p", t:"Scripture references for study: the Holy Bible, A Program of Ministry to Manage Conflict (Matthew 18:15-20); the Holy Quran, Peace and Conflict Resolution in Islam. Also study the Teacher's Guide on Conflict Resolution."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Define the word conflict.", "Research and write one paragraph each on the types of conflict: physical, spiritual, emotional, family, ethnic and governmental.", "Stage a resolution process for two conflicts.", "Apply the religious teachings of peace and forgiveness to real situations at home and at school."]}
+  ],
   focus: ["Definition of conflict", "Kinds of conflict", "Causes of conflict", "Resolution of conflict"],
   terms: [
     { t: "conflict", d: "a serious disagreement or quarrel between people", x: "The conflict began over a small piece of land." },
@@ -1718,6 +2026,27 @@ const RM_CURRICULUM = [
     "Explain what death is"
   ],
   note: "Death is a characteristic of all living things: plants die, animals die and people die. Understanding this helps us to value life and to treat one another well while we have time.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Death and Hereafter (page 28) ---- */
+    {k:"h3", t:"Death as a Characteristic of Living Things"},
+    {k:"p", t:"**Death** is a characteristic of living things — everything that has life will one day die. Learners are able to differentiate between physical, spiritual and emotional death, and accept death as a **reality of life**."},
+    {k:"rule"},
+    {k:"h3", t:"The Death of Plants"},
+    {k:"p", t:"Plants die: leaves fall, trees wither and dry up. The death of plants is part of the natural cycle of growth and decay on the earth."},
+    {k:"rule"},
+    {k:"h3", t:"The Death of Animals"},
+    {k:"p", t:"Animals die: birds, fish and beasts all come to the end of their lives. The death of animals is also a natural part of life."},
+    {k:"rule"},
+    {k:"h3", t:"The Death of Man"},
+    {k:"p", t:"**Man also dies.** Death is the departure of the soul from the body. For man, death is more than a natural event — religious teaching connects it to sin and to the life that comes after."},
+    {k:"p", t:"Scripture references: the Holy Bible, 1 Thessalonians 4:14-16 — we believe that Jesus died and rose again, and so those who have fallen asleep in Him will be raised; Revelation 21:1-5 — God will wipe away every tear, and death shall be no more."},
+    {k:"rule"},
+    {k:"h3", t:"Physical and Spiritual Death"},
+    {k:"bul", items:["**Physical death** — the end of the body's life on earth", "**Spiritual death** — separation from God through sin", "**Emotional death** — feelings of hopelessness, despair and being crushed in spirit"]},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Define death and list its characteristics.", "Discuss the differences between physical death and spiritual death.", "Interview pastors and imams on the subject of death.", "Give an oral presentation on the two kinds of death."]}
+  ],
   focus: ["Death as a characteristic of living things", "Death of man", "Death of animals", "Death of plants"],
   terms: [
     { t: "characteristic", d: "a quality that belongs to something by nature", x: "Death is a characteristic of every living thing." },
@@ -1819,6 +2148,27 @@ const RM_CURRICULUM = [
     "State the mental characteristics of an individual"
   ],
   note: "God created every person differently. No two people, not even twins, are exactly alike. Because each person is uniquely made by God, every person deserves respect, whatever their tribe, faith, sex or ability.",
+  study:[
+    /* ---- course text: Semester One, Period I — Creation: The Uniqueness of the Individual (pages 29-30) ---- */
+    {k:"h3", t:"Creation — The Uniqueness of Individuals"},
+    {k:"p", t:"God created every person, and every person is **unique** — there is no one else exactly like you. Learners are able to identify the uniqueness of an individual and to list those physical characteristics that make him or her unique, and they understand that **God's creation is continuous**."},
+    {k:"p", t:"Scripture references: the Holy Bible, Genesis 1:26-27 (God created man in His own image), Genesis 2:7 (the Lord formed man from the dust and breathed life into him) and Genesis 2:21-22 (the creation of woman); the Holy Quran on the great flood, Sura 11 and Sura 71."},
+    {k:"rule"},
+    {k:"h3", t:"Physical Characteristics"},
+    {k:"p", t:"**Physical characteristics** are the features of the body that we can see and identify:"},
+    {k:"bul", items:["Face, height, skin colour and body size", "Colour and shape of the eyes", "Colour and style of the hair", "Voice and way of walking", "The shape of the nose, mouth and ears"]},
+    {k:"p", t:"No two people look exactly the same, even twins have small differences. These differences make each person unique."},
+    {k:"rule"},
+    {k:"h3", t:"Mental Characteristics"},
+    {k:"p", t:"**Mental characteristics** are the abilities of the mind:"},
+    {k:"bul", items:["Intelligence — how quickly and well we learn", "Memory — how well we remember", "Creativity — the new ideas we make", "Talent — the special gifts God has given each person", "Attitude — whether we are cheerful, calm, kind or determined"]},
+    {k:"rule"},
+    {k:"h3", t:"Why Each Person Is Different"},
+    {k:"p", t:"Each person is different because **God made each one unique**. Difference is not a mistake — it is God's design. Our differences mean we can help one another: the person who sings well, the person who thinks deeply, the person who is strong and the person who is kind."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Discuss the uniqueness of the individual.", "Explain how and why individuals are unique one from the other.", "Make a written presentation on the characteristics of an individual.", "Explain and identify some of the physical characteristics of an individual."]}
+  ],
   focus: ["Creation: the uniqueness of individuals", "Physical characteristics", "Mental characteristics"],
   terms: [
     { t: "unique", d: "the only one of its kind; unlike any other", x: "Every fingerprint is unique." },
@@ -1919,6 +2269,24 @@ const RM_CURRICULUM = [
     "Compare the laws of God with the laws of man"
   ],
   note: "The commandments of God make harmonious living possible. Religious teaching speaks of moral laws, which govern right and wrong; ceremonial laws, which govern worship and ceremonies; and civil laws, which govern the running of a society. The Constitution of Liberia also gives laws that citizens must obey.",
+  study:[
+    /* ---- course text: Semester One, Period II — Commandments of God (pages 31-32) ---- */
+    {k:"h3", t:"Commandments Facilitate Harmonious Living"},
+    {k:"p", t:"The **commandments of God** are the moral laws that teach us how to live. Learners understand the need to live in fellowship with God and with fellow man, and to be **law-abiding citizens**. Commandments facilitate **harmonious living** — when people keep the commandments, families and communities live in peace."},
+    {k:"rule"},
+    {k:"h3", t:"The Moral Laws of God"},
+    {k:"p", t:"The **Ten Commandments** (Exodus 20:3-17) are the moral laws of God given through Prophet Moses. They fall into two parts:"},
+    {k:"bul", items:["**Duty to God** — worship God alone; make no idols; do not misuse God's name; keep the Sabbath holy", "**Duty to man** — honour your father and mother; do not murder; do not commit adultery; do not steal; do not lie; do not covet"]},
+    {k:"rule"},
+    {k:"h3", t:"Moral, Ceremonial and Civil Laws"},
+    {k:"table", head:["Kind of law","What it covers","Example"], rows:[["Moral laws","Right and wrong behaviour for all people, at all times","Do not steal; do not lie; love your neighbour"],["Ceremonial laws","Worship, festivals, offerings and the holy things of religion","The festivals and offerings of the community of faith"],["Civil laws","The rules of a country, community or society","The laws of the Constitution of Liberia"]]},
+    {k:"rule"},
+    {k:"h3", t:"The Laws of God and the Laws of Man"},
+    {k:"p", t:"God's laws teach what is right and wrong everywhere; man's laws are the rules that communities and societies make for themselves. In Liberia, the **Constitution of the Republic of Liberia** sets out the laws of the land. Discuss the **similarities and differences** between the laws of God and the laws of man — the Book of Moses, the Book of Discipline and the Constitution are study texts."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and write the Ten Commandments.", "Discuss the laws of God given to man.", "Write five moral laws of the Constitution of Liberia.", "Write three to four paragraphs explaining the ceremonial laws of the community and society.", "Write two to three paragraphs explaining the purpose of the Ten Commandments of God.", "Hold a class discussion on the similarity and differences between the laws of God and the laws of man."]}
+  ],
   focus: ["Commandments facilitate harmonious living", "Moral, ceremonial and civil laws", "The laws of God and the laws of man"],
   terms: [
     { t: "moral law", d: "a law about right and wrong behaviour", x: "Do not steal is a moral law." },
@@ -2023,6 +2391,24 @@ const RM_CURRICULUM = [
     "State the moral teachings of Muhammad"
   ],
   note: "This topic studies both faiths side by side. Christians know Jesus Christ as Redeemer and Healer. Muslims know Prophet Mohammed as the Messenger through whom the Holy Quran was revealed, whose moral teaching stresses truthfulness, charity and mercy.",
+  study:[
+    /* ---- course text: Semester One, Period III — Religious Personality (pages 33-34) ---- */
+    {k:"h3", t:"Religious Personalities"},
+    {k:"p", t:"Learners understand the fundamental teachings of the **Christian faith** through Jesus Christ, the Apostles and other writers of the New Testament, and the teachings of **Islam** through Prophet Mohammed in the Holy Quran and other writers of the faith. Learners are able to distinguish between Christianity, Islam and other religions."},
+    {k:"rule"},
+    {k:"h3", t:"Jesus Christ as Redeemer and Healer"},
+    {k:"p", t:"Christians believe Jesus Christ is the **Redeemer** — the one who saves mankind from sin — and the **Healer** — the one who healed the sick and still heals through prayer and faith."},
+    {k:"bul", items:["**Events of healing performed by Jesus** — He healed the blind, the lame, the lepers and the sick (Matthew 4:23-25)", "**The redemptive role of Jesus** — He gave His life as a ransom for many (Matthew 20:28)", "**His teachings** — the Sermon on the Mount, the parables of the kingdom", "**His resurrection** — He rose from the dead on the third day (Matthew 28:1-13)"]},
+    {k:"p", t:"Scripture references: the Holy Bible, Matthew 5-25, Matthew 27:1-6 and Matthew 28:1-13; the Apostles of Jesus Christ."},
+    {k:"rule"},
+    {k:"h3", t:"Prophet Mohammed — His Calling and Moral Teachings"},
+    {k:"p", t:"Prophet Mohammed was **called by God** to be the Messenger of Allah. He was known for his **moral teachings** — honesty, mercy, justice, kindness to the poor, and the worship of one God. Muslims follow his example (the *Sunna*) as recorded in the Holy Quran and the Hadith."},
+    {k:"bul", items:["**His calling** — the revelation of the Quran began in the cave of Hira", "**His moral teachings** — truthfulness, charity, prayer, fasting and good treatment of neighbours", "**His concern for morality** — he taught that God sees all we do"]},
+    {k:"p", t:"The Holy Quran is the primary text, with supplementary religious literatures."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and discuss religious personalities.", "Research the healing and teaching ministry of Jesus.", "Explain Jesus as a Redeemer.", "Research the teaching and concern for morality of Prophet Mohammed s.a.s.", "Make a group work and class presentation on the teaching and morality of Prophet Mohammed.", "Write two or three paragraphs on the healing and teaching of Jesus, the Redeemer.", "Write two or three paragraphs on the teaching and morality of Prophet Mohammed s.a.s."]}
+  ],
   focus: ["Jesus Christ as Redeemer and Healer", "Prophet Mohammed: his calling and moral teachings", "Distinguishing Christianity, Islam and other religions"],
   terms: [
     { t: "redeemer", d: "one who buys back or rescues people from bondage", x: "Christians call Jesus their Redeemer." },
@@ -2126,6 +2512,25 @@ const RM_CURRICULUM = [
     "Explain what the Holy Bible and the Holy Quran teach about death and the hereafter"
   ],
   note: "Both faiths teach that life comes from God, that every person will die, and that there is a judgment after death. This teaching is not meant to frighten pupils but to encourage them to live honest and merciful lives.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Death and Hereafter (pages 35-36) ---- */
+    {k:"h3", t:"God Is the Source of All Life"},
+    {k:"p", t:"Learners comprehend the fact that **God is the only source of life**. God gives life, and God alone controls death. The body and the soul both come from God, and to God they return."},
+    {k:"bul", items:["**Body** — the earthly part of a person, which dies and returns to dust", "**Soul** — the part of a person that is not the body; it lives on after death"]},
+    {k:"rule"},
+    {k:"h3", t:"What Is Death?"},
+    {k:"p", t:"**Death** is the separation of the soul from the body. Everyone must die — death is appointed for all people. Learners recognise that everyone must die and that God is the giver and taker of life."},
+    {k:"rule"},
+    {k:"h3", t:"What Happens to the Soul after Death?"},
+    {k:"p", t:"After death the **soul continues to exist**. The Bible teaches that to be away from the body is to be at home with the Lord (2 Corinthians 5:8), and the Quran teaches that the soul passes to the next life to await the Day of Judgment. Study the topic of death and the afterlife according to the teachings of the Holy Quran."},
+    {k:"rule"},
+    {k:"h3", t:"Where Does the Soul Go after Death?"},
+    {k:"p", t:"The life one lives determines where the soul goes — **hell or heaven**. Scripture references: the Holy Bible, Luke 16:10-31 (the rich man and Lazarus), John 5:24 (whoever hears my word and believes has crossed from death to life), 1 John 1:18, Revelation 2:10, Matthew 25:31-46 (the judgment) and Revelation 6:8."},
+    {k:"p", t:"Read the Islamic view of death and the afterlife according to the teachings of the Holy Quran."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and discuss death, body and soul.", "Research and discuss who is the giver of life.", "Research who controls death.", "Discuss where the soul goes after death.", "Write two or three paragraphs on each of the following: death, soul, hell, heaven."]}
+  ],
   focus: ["God is the source of all life: body and soul", "What is death", "What happens to the soul after death", "Where the soul goes after death"],
   terms: [
     { t: "source of life", d: "the one from whom all life comes", x: "Both faiths teach that God is the source of life." },
@@ -2227,6 +2632,29 @@ const RM_CURRICULUM = [
     "Demonstrate personal commitment to God by keeping and observing God's moral rules"
   ],
   note: "Commitment means faithfully carrying out what you have undertaken. This unit looks at three directions of commitment: upward to God, outward to other people, and inward to oneself.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Commitment: Man's Commitment to God, to His Fellow Man and to Himself (pages 37-38) ---- */
+    {k:"h3", t:"Define Commitment"},
+    {k:"p", t:"**Commitment** is a promise or pledge to stand by someone or something. Learners understand the importance of keeping commitment to **God**, to **his fellow man** and to **himself**, and they demonstrate personal commitment to God by keeping and observing God's moral laws, ceremonial laws and civil laws."},
+    {k:"rule"},
+    {k:"h3", t:"God's Promise to Man"},
+    {k:"p", t:"God is committed to man — He has made **promises** (covenants) to mankind and He keeps them. God's commitment is seen in His love, His care and His promise of salvation. Scripture references: the Holy Bible, 2 Corinthians 5:18-19, Hebrews 2:17, Daniel 6 and 10, Matthew 5:24 and Romans 5:10."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Duty to God"},
+    {k:"p", t:"Man has a **duty to respond to God**: to love Him, obey Him, worship Him and thank Him. Man's duty is also to **reconcile with God** — when we sin, we break our friendship with God, and we must repent and be restored to fellowship with Him."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Reconciliation with God"},
+    {k:"p", t:"**Reconciliation** means bringing a broken relationship back to peace. Man was separated from God by sin, and God made a way of reconciliation: *'God was reconciling the world to Himself in Christ'* (2 Corinthians 5:18-19)."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Duty to Fellow Man"},
+    {k:"p", t:"Commitment also reaches to **fellow man**: keeping promises to family, friends and neighbours, and living a reconciled life — first be reconciled to your brother, then bring your offering (Matthew 5:24)."},
+    {k:"rule"},
+    {k:"h3", t:"Expressions of Commitment"},
+    {k:"bul", items:["**Repentance** — turning away from sin and back to God", "**Obedience** — keeping God's moral rules daily", "**Worship and prayer** — regular worship at church or mosque", "**Forgiveness** — forgiving others as God forgives us", "**Service** — helping the needy and serving the community"]},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Research the various steps to repentance and reconciliation for sin.", "Read the covenant between God and man.", "Give testimonies of how your parents treat you when you do wrong.", "Write a short story on God's gift to man and man's failure to respond to God."]}
+  ],
   focus: ["Definition of commitment", "God's promise to man", "Man's duty to God", "Man's reconciliation with God", "Man's duty to his fellow man", "Expressions of commitment"],
   terms: [
     { t: "commitment", d: "faithfully carrying out what you have undertaken", x: "His commitment to study never wavered." },
@@ -2329,6 +2757,23 @@ const RM_CURRICULUM = [
     "Discuss sanctification"
   ],
   note: "Salvation means being rescued and made safe. In Christian teaching, salvation comes through Jesus Christ, and is followed by repentance and a sanctified, holy life. Muslim pupils will relate these ideas to God's mercy, repentance (tawbah) and righteous living, according to their faith.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Salvation (page 39) ---- */
+    {k:"h3", t:"The Meaning of Salvation"},
+    {k:"p", t:"**Salvation** is being saved — rescued from sin and its punishment, and brought into a new life with God. Learners are able to analyze how man fits into **God's salvation plan**, and they know the meanings of salvation, repentance and living a sanctified life."},
+    {k:"p", t:"Scripture references: the Holy Bible, John 3:16 — *'God so loved the world that He gave His one and only Son, that whoever believes in Him shall not perish but have eternal life'*; Luke 19:9 — salvation came to Zacchaeus' house; Acts 4:12 — there is no other name by which we must be saved; Romans 1:16; Romans 11:11; 2 Timothy 2:10."},
+    {k:"rule"},
+    {k:"h3", t:"Repentance"},
+    {k:"p", t:"**Repentance** means being truly sorry for sin, turning away from it, and turning to God. Repentance is the first step of salvation — it changes the heart and the direction of life."},
+    {k:"bul", items:["**Admit** the wrong you have done", "**Be sorry** for it from the heart", "**Turn away** from the sin", "**Turn to God** and ask His forgiveness"]},
+    {k:"rule"},
+    {k:"h3", t:"Sanctification"},
+    {k:"p", t:"**Sanctification** is being made holy — set apart for God and growing more like Him. After salvation and repentance, the believer lives a **sanctified life**: a life of obedience, purity, love and service that pleases God."},
+    {k:"p", t:"Study the teaching of salvation in the Holy Quran according to faith, and read supplementary religious literatures."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and discuss the salvation of man through Jesus Christ.", "Define and explain the meaning of repentance.", "Dramatize repentance and sanctification.", "Write an essay on repentance, salvation and sanctification."]}
+  ],
   focus: ["The meaning of salvation", "Repentance", "Sanctification"],
   terms: [
     { t: "salvation", d: "being rescued from sin and made safe with God", x: "Christian teaching centres on salvation." },
@@ -2430,6 +2875,27 @@ const RM_CURRICULUM = [
     "Explain about the fall of man"
   ],
   note: "The Holy Books teach that God placed man over creation as a steward or viceroy — a caretaker acting on behalf of the owner. The fall of man describes how disobedience spoiled that relationship, and both faiths teach that God provides a way back.",
+  study:[
+    /* ---- course text: Semester One, Period I — Creation (page 40) ---- */
+    {k:"h3", t:"Creation in General"},
+    {k:"p", t:"Learners describe the **Fall story of God's creation** and the trust that man would be given dominion over the works of the hands of God. God created the heavens and the earth, and He gave man a place of honour in creation. Scripture references: the Holy Bible, Genesis 1, Genesis 1:28, Psalm 8, Psalm 100:3 and 2 Corinthians 5:17; the Holy Quran 2:30 and 16:10-16."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Responsibility to God"},
+    {k:"p", t:"Man has a **responsibility to God** — to know Him, worship Him and obey Him. God blessed man and told him to be fruitful and fill the earth (Genesis 1:28)."},
+    {k:"rule"},
+    {k:"h3", t:"Man as God's Steward and Viceroy"},
+    {k:"p", t:"Man is God's **steward** — the caretaker of God's creation — and His **viceroy** — the one placed over the works of God's hands. Psalm 8 asks: *'What is man that You are mindful of him?'* and answers that God crowned man with glory and honour and put all things under his feet. In the Quran, God made man His **vicegerent (khalifah)** on the earth (Quran 2:30)."},
+    {k:"rule"},
+    {k:"h3", t:"The Development of Creation"},
+    {k:"p", t:"Learners explain the **development of creation** — how the world God made grows and develops: the growth of plants, animals and people, and the use God gave man to name the animals, work the ground and develop the earth (Genesis 2:15; Psalm 100:3). Scripture reference: the Holy Bible, Matthew 25:14-30 — the parable of the talents, where the master gives his servants gifts and expects them to use and increase them."},
+    {k:"rule"},
+    {k:"h3", t:"The Fall of Man"},
+    {k:"p", t:"**The Fall of man** is the story of how the first man and woman disobeyed God and brought sin into the world. Because of the Fall, man lost his perfect friendship with God, and death and suffering entered creation. But God did not abandon man — He promised a Redeemer."},
+    {k:"p", t:"Scripture references: the Holy Bible, Genesis 3; 2 Corinthians 5:17 — *'If anyone is in Christ, the new creation has come'* — man becomes a **new creation through Jesus Christ**. Study the story of Prophet Adam and the story of creation according to Islam."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Conduct research and have a class discussion on the fall of man.", "Write an essay on creation and on man's responsibility to God.", "Write an essay on the development of creation."]}
+  ],
   focus: ["Creation", "Man's responsibility to God", "Man as God's steward or viceroy", "The development of creation", "The fall of man"],
   terms: [
     { t: "dominion", d: "authority to rule over and care for something", x: "Man was given dominion over the earth." },
@@ -2529,6 +2995,30 @@ const RM_CURRICULUM = [
     "Explain reconciliation with God"
   ],
   note: "A covenant is a binding agreement. This unit examines what God has undertaken towards man, what man owes in return, where man commonly fails, and how reconciliation is restored.",
+  study:[
+    /* ---- course text: Semester One, Period II — Commitment: Man's Commitment to God, to His Fellow Man and to Himself (page 41) ---- */
+    {k:"h3", t:"Commitment"},
+    {k:"p", t:"Learners understand **God's covenant with man**, **man's commitment to God**, and **man obeying and living by God's commandments**. A covenant is a solemn promise — God made covenants with man and keeps them, and man is called to respond with his own commitment."},
+    {k:"rule"},
+    {k:"h3", t:"Our Duty to Respond to God"},
+    {k:"p", t:"We have a **duty to respond to God** — to love Him, obey Him, worship Him and serve Him. Commitment to God is shown through **service**: serving God with our time, talents and strength, and serving the church and the mosque."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Failure to Respond to God"},
+    {k:"p", t:"Sometimes man **fails to respond to God** — he disobeys, forgets God, and turns to his own ways. The parable of the **prodigal son** (Luke 15:11-31) tells of a son who left his father and wasted everything, and of the father's love when he returned."},
+    {k:"rule"},
+    {k:"h3", t:"Man's Reconciliation with God through Jesus Christ"},
+    {k:"p", t:"When man fails, God provides the way back: **reconciliation through Jesus Christ**. The prodigal son was received back with joy; in the same way, the Lord Jesus Christ is the way by which man is reconciled to God. Scripture reference: the Holy Bible, Luke 15:11-31."},
+    {k:"rule"},
+    {k:"h3", t:"Personal Commitment to God"},
+    {k:"p", t:"**Personal commitment to God** means deciding for yourself to follow God: accepting the Lord Jesus Christ as Lord and Saviour, keeping the commandments, praying, and doing our **duties to God and to the church or mosque**."},
+    {k:"rule"},
+    {k:"h3", t:"Expressions of Commitment"},
+    {k:"bul", items:["**Accepting the Lord Jesus Christ as Lord and Saviour**", "**Restoring relationships** — forgiving friends and classmates, and being forgiven", "**Regular worship** — at church or mosque and in the home", "**Daily obedience** — living by God's commandments", "**Service to others** — acts of kindness and generosity"]},
+    {k:"p", t:"Study scholarly articles on commitment from an Islamic perspective, including the dignity of man, according to faith."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Dramatize the parable of the prodigal son as a means of reconciliation.", "Carry out acts of restoring relationship with friends, each other and classmates in forgiveness.", "Explain our duties as personal commitment to God and to the church or mosque."]}
+  ],
   focus: ["Commitment", "Our duty to respond to God", "Man's failure to respond to God", "Man's reconciliation with God", "Personal commitment to God", "Expressions of commitment"],
   terms: [
     { t: "covenant", d: "a solemn binding agreement between two parties", x: "The covenant set out duties on both sides." },
@@ -2628,6 +3118,25 @@ const RM_CURRICULUM = [
     "Explain how obedience to God's law leads to freedom and happiness"
   ],
   note: "The Constitution of Liberia guarantees freedom of religion. This unit teaches pupils to know God's commandments, to distinguish them from human laws, and to understand that real freedom is not doing whatever one likes but choosing what is right.",
+  study:[
+    /* ---- course text: Semester One, Period III — Commandments: To Walk in God's Instructions (pages 42-43) ---- */
+    {k:"h3", t:"The Ten Commandments of God"},
+    {k:"p", t:"The **Ten Commandments** (Exodus 20:3-17) are the laws God gave through Prophet Moses. Learners are able to name and explain the **laws of God**, and to distinguish between **God's laws and man's laws**. Scripture references: the Holy Bible, Exodus 20:3-17 and Ephesians 5; the teaching of the Ten Commandments in Islam is also studied according to faith."},
+    {k:"bul", items:["**No other gods** — worship the Lord God alone", "**No idols** — do not make or bow down to images", "**Do not misuse the name of God**", "**Keep the Sabbath holy** — set apart a day for God", "**Honour your father and mother**", "**Do not murder**", "**Do not commit adultery**", "**Do not steal**", "**Do not lie**", "**Do not covet** — do not long for what belongs to others"]},
+    {k:"rule"},
+    {k:"h3", t:"Obey the Laws"},
+    {k:"p", t:"Learners understand that the Ten Commandments **result in positive choices** and demonstrate a positive approach to the teaching of the Ten Commandments. Obeying God's laws keeps us safe, honest and happy; obeying man's good laws keeps the community peaceful and fair."},
+    {k:"p", t:"Learners are able to make their own **choice of religion** because they are able to distinguish between God's laws and man's laws, and they identify the religion of their choice."},
+    {k:"rule"},
+    {k:"h3", t:"Freedom and Happiness"},
+    {k:"p", t:"God's laws do not take away our freedom — they **protect** it. Living within God's instructions brings **freedom and happiness**: the freedom of a clear conscience, and the happiness of a life that pleases God. Illustrate the **love of God**, **love for fellow man** and **faithfulness to God** through your actions."},
+    {k:"rule"},
+    {k:"h3", t:"The Historical Background of the Commandments"},
+    {k:"p", t:"Learners research and discuss the **historical background of God giving man the Ten Commandments**: after He freed His people from slavery in Egypt, God met them at Mount Sinai and gave them the commandments as the terms of His covenant with them. Supplementary text: 101 Bible Stories."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Research and discuss the historical background of God giving to man the Ten Commandments.", "Understand and demonstrate how the Ten Commandments result in positive choices.", "Demonstrate a positive approach to the teaching of the Ten Commandments.", "Illustrate the love of God, love for fellow man and faithfulness to God through your actions."]}
+  ],
   focus: ["The Ten Commandments of God", "Obeying the laws", "Freedom and happiness", "Freedom of religion"],
   terms: [
     { t: "instruction", d: "a direction given to be followed", x: "The Holy Books contain God's instructions for living." },
@@ -2729,6 +3238,26 @@ const RM_CURRICULUM = [
     "State some unique types of offering and sacrifice offered by various religious groups, according to faith"
   ],
   note: "Worship is the response of the creature to the Creator. It may be private or public. Offerings support the work of the place of worship and relieve the poor. Both faiths also teach sacrifice — the giving up of something valuable.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Worship and Offering (pages 44-45) ---- */
+    {k:"h3", t:"The Importance of Worship"},
+    {k:"p", t:"Learners know the **various types of worship** to God the Creator, and state the **importance of worship and offering**. Worship is how we honour God: it is our duty, our joy and our thanksgiving. Scripture references: the Holy Bible, John 3:16, Matthew 17:5, Matthew 16:16, Matthew 6:9-13 and Luke 11:9-13, 1 Samuel 3:10-18."},
+    {k:"rule"},
+    {k:"h3", t:"Place of Worship"},
+    {k:"p", t:"Learners identify **places of worship from multi-religious schools of thought**: the **church** for Christians and the **mosque** for Muslims, and other places where people gather to pray. Explain where you pray alone and where you pray with others."},
+    {k:"bul", items:["**The church** — Christian worship, prayer, praise and the word of God", "**The mosque** — Muslim prayer five times a day and the Friday congregation", "**The home** — family and private devotion in both faiths"]},
+    {k:"rule"},
+    {k:"h3", t:"Types of Offering"},
+    {k:"p", t:"Learners state some **unique types of offering and sacrifices** offered by various religious groups, according to faith:"},
+    {k:"bul", items:["**General offering** — gifts given during worship", "**Tithes** — the tenth part given to God (Malachi 3:8-10)", "**Thanksgiving offering** — given in gratitude for God's goodness", "**Sacrifices** — offerings made at special times, such as the Muslim sacrifices at the time of the festival of sacrifice (Eid al-Adha)", "**Charity (zakat and alms)** — giving to the poor and needy"]},
+    {k:"p", t:"Learners research scripture readings on praying alone, praying with others, and giving offerings to God in worship; for Muslims, study the **prayers at the time of sacrifice**. Supplementary text: Muslim Prayer Book by A. B. Rafiq."},
+    {k:"rule"},
+    {k:"h3", t:"Sacrifices in Both Religions"},
+    {k:"p", t:"Discuss **when sacrifices are offered and for what purpose in both religions**. In Christianity, the sacrifice of praise and the offering of thanks are given in worship; in Islam, sacrifice is offered at Eid al-Adha in remembrance of the obedience of Prophet Ibrahim, and the meat is shared with the poor."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Explain where you pray alone and with others.", "Discuss the gifts offered to God in service to Him.", "Research scripture readings on praying alone, praying with others, and giving offerings to God in worship.", "For Muslims, study the prayers at the time of sacrifice.", "Name the different types of prayers and their purpose in worship.", "State when sacrifices are offered and for what purpose in both religions."]}
+  ],
   focus: ["The importance of worship", "Places of worship", "Types of offering", "Praying alone and praying with others", "Sacrifice"],
   terms: [
     { t: "worship", d: "honouring God with reverence, prayer and service", x: "Worship is the response of the creature to the Creator." },
@@ -2833,6 +3362,30 @@ const RM_CURRICULUM = [
     "Name some pioneer missionaries of Islam in West Africa, according to faith"
   ],
   note: "Both Christianity and Islam came to Liberia and West Africa through the work of dedicated men and women. Churches and mosques built many of the country's first schools and clinics. This unit studies those personalities and their local successors.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Religious Personalities (pages 46-47) ---- */
+    {k:"h3", t:"Jesus, the Savior of Mankind (Christian)"},
+    {k:"p", t:"Learners will know **Jesus Christ as the Savior of Mankind**. Christians believe Jesus, the Son of God, was born as the Saviour of the world: *'God so loved the world that He gave His one and only Son'* (John 3:16). Read and explain the purpose for which Jesus, the Son of God, was born. Scripture references: the Holy Bible, Genesis 6:5-8, John 3:16, Exodus 4:1-17, Jeremiah 1:1-10, 1 Kings 1:34-35, Mark 1:16-20, Isaiah 9:6-7, Isaiah 7:14, Isaiah 53:1-12 and Matthew 2:1-6."},
+    {k:"rule"},
+    {k:"h3", t:"Mohammed's Works as a Prophet"},
+    {k:"p", t:"Learners will recognize **Prophet Mohammed as a Messenger of God** and explain the works of Prophet Mohammed: receiving the revelation of the Quran, calling people to worship one God, teaching justice and mercy, and building a community of believers. Research the **call of Mohammed as Prophet by God**."},
+    {k:"rule"},
+    {k:"h3", t:"The Role of Pastors and Imams"},
+    {k:"p", t:"Learners compare and contrast the **roles of Pastors and Imams**: the **pastor** leads the church — preaching the word, praying, teaching and caring for the flock; the **imam** leads the mosque — leading prayers, teaching the Quran and guiding the Muslim community. Interview a pastor and an imam on their roles."},
+    {k:"rule"},
+    {k:"h3", t:"The Ministry of the Church"},
+    {k:"p", t:"Learners discuss the **ministry of the church**: preaching the gospel, teaching, caring for the sick and needy, and making disciples — the work Jesus gave His church to do."},
+    {k:"rule"},
+    {k:"h3", t:"Pioneer Missionaries of Islam in West Africa"},
+    {k:"p", t:"Learners name some **pioneer missionaries of Islam in West Africa**, according to faith. One example is **Alhaji Nayyar**, remembered as the first Muslim missionary to West Africa, who preached the correct teaching about reliance on Allah, rejected the use of talismans, and brought medical cure for diseases."},
+    {k:"bul", items:["**The Islamic year** — count it from the time of the Hijrah, the Prophet's journey from Mecca to Medina", "**The prayers** — learn the prayers taught in Islam", "**The estimated year of Jesus' birth** — about 4 BC, in the town of Bethlehem"]},
+    {k:"rule"},
+    {k:"h3", t:"The Life and Works of Biblical Churches in Liberia"},
+    {k:"p", t:"Learners discuss the **life and works of some Biblical churches in the growth and development of Liberia** — how churches have built schools, clinics and communities, and how they continue to serve the nation. Supplementary text: Books on Islam teaching."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and explain the purpose for which Jesus, the Son of God, was born as Savior of the world.", "Research the call of Mohammed as Prophet by God.", "Give some ideas about Alhaji Nayyar as the first Muslim missionary to West Africa.", "Calculate the Islamic year from the time of the Hijrah and learn the prayers.", "Give the estimated year of Jesus' birth.", "Interview a pastor and an imam on their roles in the church and mosque, and on Jesus Christ as the Savior of Mankind."]}
+  ],
   focus: ["Jesus, the Saviour of mankind", "Mohammed's works as a Prophet", "The role of pastors and imams", "The ministry of the church", "Pioneer missionaries in West Africa", "The work of churches in the growth of Liberia"],
   terms: [
     { t: "missionary", d: "a person sent to spread a faith and serve in another place", x: "Missionaries opened many early schools in Liberia." },
@@ -2937,6 +3490,26 @@ const RM_CURRICULUM = [
     "Discuss conflict resolution"
   ],
   note: "Liberia's own history shows both the cost of conflict and the possibility of peace. This unit trains pupils not merely to avoid conflict but to intervene positively to prevent and resolve it.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Conflicts and its Resolution Process (pages 48-49) ---- */
+    {k:"h3", t:"Definition of Conflict"},
+    {k:"p", t:"**Conflict** is a disagreement, quarrel or fight between individuals or groups. Learners understand the **definition, causes and types of conflict**, and they learn to intervene positively in **preventing and resolving conflicts and crises**."},
+    {k:"rule"},
+    {k:"h3", t:"Kinds of Conflicts"},
+    {k:"bul", items:["**Family conflict** — quarrels inside the home", "**School conflict** — quarrels among learners or with teachers", "**Community conflict** — disputes between neighbours or groups", "**Physical conflict** — fighting with the body", "**Emotional conflict** — struggles of anger, jealousy and fear", "**Spiritual conflict** — the struggle between right and wrong, good and evil", "**Ethnic and governmental conflict** — disputes between ethnic groups or over power"]},
+    {k:"rule"},
+    {k:"h3", t:"Causes of Conflicts"},
+    {k:"bul", items:["Misunderstanding and poor communication", "Selfishness, greed and jealousy", "Unfairness and injustice", "Bad words, insults, lies and gossip", "Refusing to forgive", "Competition for land, money, power or position"]},
+    {k:"p", t:"Learners discuss in class the **negative impact of conflict** in the family, in school and in society: broken relationships, hurt feelings, wasted time, damaged property and division in the community."},
+    {k:"rule"},
+    {k:"h3", t:"Conflict Resolution"},
+    {k:"p", t:"**Conflict resolution** is the process of ending a conflict peacefully. The Bible teaches the steps of resolving conflict between believers: *'If your brother or sister sins against you, go and point out their fault, just between the two of you... if they listen, you have won them over'* (Matthew 18:15-20)."},
+    {k:"num", items:["**Go to the person** — speak directly, not through others.", "**Listen** to both sides of the story.", "**Forgive** — let go of the offence.", "**Make amends** — put right what was damaged.", "**Seek help** — involve elders, teachers or religious leaders when needed.", "**Be reconciled** — restore the relationship and live in peace."]},
+    {k:"p", t:"Supplementary texts: Trauma Healing and Resolution Book; related literatures on conflict resolution."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Define and discuss the types of conflicts.", "Discuss in class the negative impact of conflict in the family, in school and in society.", "Dramatize a conflict and its resolution process."]}
+  ],
   focus: ["Definition of conflict", "Kinds of conflict", "Causes of conflict", "Conflict resolution", "The negative impact of conflict in the family, school and society"],
   terms: [
     { t: "conflict", d: "a serious disagreement between people or groups", x: "The conflict spread from two families to two quarters." },
@@ -3038,6 +3611,27 @@ const RM_CURRICULUM = [
     "Explain the Big Bang theory"
   ],
   note: "This unit compares scriptural accounts of creation with the scientific description known as the Big Bang theory. Pupils learn to distinguish a myth, a scientific theory and a statement of faith, and to discuss all three without insult.",
+  study:[
+    /* ---- course text: Semester One, Period I — Creation (page 50) ---- */
+    {k:"h3", t:"Creation Stories"},
+    {k:"p", t:"Learners will know the creation of the earth through the **Holy Bible account**, the **Holy Quran account** and the **Big Bang Theory**, and will be able to differentiate between **myths, facts and faith**. Scripture references: the Holy Bible, Genesis 1 and 2; the Holy Quran 6:15, 19:36 and 12:102."},
+    {k:"rule"},
+    {k:"h3", t:"The Holy Bible Account"},
+    {k:"p", t:"The Bible teaches that **God created the heavens and the earth**: in the beginning God spoke, and light, sky, land, plants, sun, moon, stars, fish, birds, animals and finally man came into being (Genesis 1 and 2). This is the **scriptural fact** of the Christian faith."},
+    {k:"rule"},
+    {k:"h3", t:"The Holy Quran Account"},
+    {k:"p", t:"The Quran teaches that **God (Allah) is the Creator of the heavens and the earth**, and that He created all things by His command. Reflect on the signs of creation in the Quran 6:15, 19:36 and 12:102 — the wonders of the universe point to the one true God."},
+    {k:"rule"},
+    {k:"h3", t:"The Big Bang Theory"},
+    {k:"p", t:"Learners explain the **Big Bang Theory** — the scientific account that the universe began from a great explosion of energy and matter billions of years ago, and has been expanding ever since. Learners understand the **wondrous phenomena of the universe** — the earth with its sun, moon and stars."},
+    {k:"rule"},
+    {k:"h3", t:"Myths, Facts and Faith"},
+    {k:"p", t:"Learners distinguish **non-scriptural myths** (stories made up by people) from **scriptural facts** (what the Holy Books teach) and from **faith** (trusting in God). The Holy Books give the religious account of creation; science gives a natural account. Both are studied and discussed."},
+    {k:"bul", items:["**Myth** — a story made by people, not a holy book", "**Fact** — what is true and can be verified", "**Faith** — trusting God and His word", "**Holy Books used by various religious groups** — the Holy Bible, the Holy Quran and other scriptures"]},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and discuss how the world came into existence: through the Holy Bible and through science.", "Understand the wondrous phenomena of the universe, the earth, with its sun, moon and stars.", "Debate the topic of creation as stated in the Holy Books and as mentioned by science.", "Write an essay on how you believe the universe was created."]}
+  ],
   focus: ["Creation stories", "Non-scriptural accounts", "The Holy Bible", "The Holy Quran", "The Big Bang theory", "Myth, fact and faith"],
   terms: [
     { t: "myth", d: "a traditional story, often explaining origins, not offered as verified fact", x: "Every culture has a myth about how the world began." },
@@ -3140,6 +3734,26 @@ const RM_CURRICULUM = [
     "Name various kinds of ceremonies"
   ],
   note: "Commitment at this level means a whole way of life: living for God through witnessing and holiness, and living for others through humility, faith and trust. Both faiths mark the stages of life with ceremonies.",
+  study:[
+    /* ---- course text: Semester One, Period II — Commitment (pages 51-52) ---- */
+    {k:"h3", t:"Commitment — Living for God"},
+    {k:"p", t:"Learners understand **commitment, holiness, witnessing, trust and faith**, and the differences in the **ceremonies practised by the Christian faith and the Islamic faith**. Commitment means giving ourselves fully to God and to others."},
+    {k:"p", t:"Scripture references: the Holy Bible, John 13:1-20, Leviticus 11:45, 1 Samuel 2:2, Titus 2:3, Hebrews 12:14, Mark 1:1-9, Mark 16:16, John 4:1, Job 4:5, Psalm 125:1 and Psalm 37:3."},
+    {k:"rule"},
+    {k:"h3", t:"Witnessing and Holiness"},
+    {k:"p", t:"**Witnessing** is telling others about God by our words and by the way we live. **Holiness** is being set apart for God — living a pure and obedient life. The Bible calls believers to *'be holy, because I am holy'* (Leviticus 11:45), and to strive for the holiness without which no one will see the Lord (Hebrews 12:14)."},
+    {k:"rule"},
+    {k:"h3", t:"Living for Others — Humility, Faith and Trust"},
+    {k:"bul", items:["**Humility** — not thinking you are better than others; Jesus washed His disciples' feet to teach humility (John 13:1-20)", "**Faith** — trusting in God and His promises; the just shall live by faith", "**Trust** — relying on God with all your heart (Psalm 37:3; Psalm 125:1)"]},
+    {k:"rule"},
+    {k:"h3", t:"Ceremonies of Commitment"},
+    {k:"p", t:"Commitment to God is marked by **ceremonies** — special religious services that seal our promises to God. Name the various kinds of ceremonies practised in the church and in the mosque as they relate to holiness, faith and trust:"},
+    {k:"bul", items:["**Baptism and confirmation services** — entering and confirming the Christian faith", "**Outdooring (naming ceremonies)** — presenting a new child to God and the community", "**Marriage ceremonies** — a man and a woman committing to each other before God", "**The shahada and dedication in Islam** — the declaration of faith and dedication of children", "**Holy ceremonies of the mosque** — the prayers and festivals of the Islamic faith"]},
+    {k:"p", t:"Learners write an essay on **holiness and trust** as it pertains to them as learners, and on the types of ceremonies practised in the church and in the mosque. Study the commitment of the Christian life and the commitment to Islam according to faith."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Read and discuss in class the meaning of living for God, witnessing for God, humility, faith and trust.", "Write an essay on holiness and trust as they pertain to you as a learner.", "Discuss in class the ceremonies practised in the church and in the mosque: baptism and confirmation services, outdooring, and the holy ceremonies of the faith."]}
+  ],
   focus: ["Commitment", "Living for God: witnessing and holiness", "Living for others: humility, faith and trust", "Ceremonies of commitment", "Kinds of ceremonies"],
   terms: [
     { t: "witnessing", d: "showing and telling others what you believe, chiefly by how you live", x: "His fair dealing was his strongest witnessing." },
@@ -3244,6 +3858,28 @@ const RM_CURRICULUM = [
     "Apply mediation skills in resolving conflicts"
   ],
   note: "People handle conflict in different ways: some avoid, some force, some accommodate, some compromise and some collaborate. Knowing your own style, and choosing the right style for the situation, is a practical peace skill. Mediation must be free of gender stereotypes — girls and boys alike can mediate.",
+  study:[
+    /* ---- course text: Semester One, Period III — Conflict and its Resolution Process (page 53) ---- */
+    {k:"h3", t:"Conflicts and Its Resolution Process"},
+    {k:"p", t:"Learners will apply various types of **mediation skills in conflict resolution** based on non-gender stereotypes, and demonstrate the ability to **prevent and solve conflict**. Define conflict and name the kinds of conflict studied in earlier grades: physical, spiritual, emotional, family, ethnic and governmental."},
+    {k:"rule"},
+    {k:"h3", t:"Styles of Conflict Management"},
+    {k:"p", t:"There are different **styles of conflict management**, and each person has his or her own style:"},
+    {k:"bul", items:["**Avoiding** — stepping away from the conflict", "**Accommodating** — giving in to keep the peace", "**Competing** — pushing for your own way", "**Compromising** — each side gives up something", "**Collaborating** — working together to find a solution that satisfies everyone"]},
+    {k:"p", t:"Identify your **personal style of conflict management** and learn when each style is appropriate."},
+    {k:"rule"},
+    {k:"h3", t:"Conflicts in the Bible and Quran"},
+    {k:"p", t:"The Holy Books give examples of conflict and its peaceful resolution:"},
+    {k:"bul", items:["**1 Kings 3:16-28** — King Solomon wisely judged the dispute between two mothers and resolved the conflict", "**Matthew 5:44** — love your enemies and pray for those who persecute you", "**Matthew 19:19 and Matthew 22:39** — love your neighbour as yourself", "**John 13:34** — love one another as Jesus loved us", "**The Holy Quran** — teachings of forgiveness, justice and reconciliation"]},
+    {k:"rule"},
+    {k:"h3", t:"The Mediation Process of Conflicts"},
+    {k:"p", t:"**Mediation** is when a third person helps the two sides of a conflict to reach peace. The mediator listens to both sides, keeps the discussion calm and fair, and helps the parties find their own solution."},
+    {k:"num", items:["**Listen** to both sides without taking sides.", "**Clarify** the problem — what each person wants and why.", "**Discuss** possible solutions calmly.", "**Agree** on a fair solution.", "**Reconcile** — forgive, and restore the relationship."]},
+    {k:"p", t:"Supplementary texts: Islamic books on conflict resolution; Trauma Healing and Reconciliation; related literatures on conflicts resolution and management."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Research and write an essay on conflict management and its prevention.", "List the causes of various kinds of conflicts.", "Demonstrate through drama, play let or class discussion how learners can best mediate and manage conflict.", "Invite an expert guest to speak on the importance of HIV privacy in an effort to avert conflict.", "Narrate for class discussion two simple conflicts in the school or community that were resolved."]}
+  ],
   focus: ["Conflict and its resolution process", "Styles of conflict management", "Conflicts in the Holy Books", "The mediation process"],
   terms: [
     { t: "conflict management", d: "the way a person handles disagreement", x: "His conflict management style was to avoid everything." },
@@ -3346,6 +3982,25 @@ const RM_CURRICULUM = [
     "Name some scriptures, symbols and gestures used in religious worship"
   ],
   note: "Worship uses words, actions and symbols. This unit looks closely at the structures, symbols and gestures of worship in both faiths, and at how denominations within Christianity differ from one another.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Worship and Offering (pages 54-55) ---- */
+    {k:"h3", t:"Forms of Worship"},
+    {k:"p", t:"Learners are able to describe various **types of worship in different churches and mosques**, and know the difference between the **Al-Fatiha prayers for Muslims**, the structures, symbols and gestures for worship, from that of the Christian faith. Learners will know forms of worship, giving of offering and tithes, songs of praise and scripture reading in different churches according to denomination."},
+    {k:"rule"},
+    {k:"h3", t:"Al-Fatiha Prayers, Structures, Symbols and Gestures"},
+    {k:"p", t:"The **Al-Fatiha** is the opening chapter of the Holy Quran, recited by Muslims in every prayer. Worship in the mosque uses particular **structures, symbols and gestures**: the **dome** and **minaret** of the mosque, facing the direction of Mecca, and gestures of standing, bowing and prostrating in prayer."},
+    {k:"bul", items:["**Muslim worship** — the Al-Fatiha prayer, the call to prayer, and prostration before God", "**Christian worship** — hymns, prayers, scripture reading, the sermon, baptism and the Lord's Supper", "**Structures and symbols** — the cross and the church building; the dome, crescent and mosque", "**Gestures** — kneeling and standing in prayer, raising hands in praise, prostration in the mosque"]},
+    {k:"p", t:"Scripture references: the Holy Bible, Exodus 4:31, 1 Corinthians 16:29, John 4:24 (worship in spirit and truth), Revelation 5:14, Revelation 7:11, Psalm 100:1-2 and Psalm 107:1; the Holy Quran 73:1-5 and 29:45, and the Al-Fatiha (the Opening), the threshold of the Quran."},
+    {k:"rule"},
+    {k:"h3", t:"Use of Holy Books in Worship"},
+    {k:"p", t:"Learners state the **importance of the use of the Holy Books in worship**: the Bible is read, taught and preached in Christian worship; the Quran is recited and studied in Muslim worship. Read selected prayers in the Holy Bible and the Holy Quran."},
+    {k:"rule"},
+    {k:"h3", t:"Id Prayers"},
+    {k:"p", t:"Learners recite and learn the **Id prayers** — the special prayers Muslims offer at the two festivals of Eid (Eid al-Fitr and Eid al-Adha), when the community gathers to thank God, pray and share with the poor."},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Tell of the experiences you had worshipping in different churches and mosques.", "Demonstrate forms of worship learned in various places of worship through class participation.", "Read selected prayers in the Holy Bible and the Holy Quran.", "Draw various forms of people at worship in the church and mosque you visited.", "Make oral and written reports of four paragraphs on your recent visit and worship in a church."]}
+  ],
   focus: ["Forms of worship", "Al-Fatiha prayers", "Structures, symbols and gestures", "The use of the Holy Books in worship", "Differences between denominations"],
   terms: [
     { t: "symbol", d: "an object or sign that stands for a deeper meaning", x: "The crescent and the cross are religious symbols." },
@@ -3452,6 +4107,24 @@ const RM_CURRICULUM = [
     "Explain about some pioneers in the Muslim faith"
   ],
   note: "This unit studies the sources: the four gospels for the life of Jesus, and the Quran and Hadith for the prophets and teaching of Islam. It then traces the pioneers of both faiths who shaped education in Liberia.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Religious Personalities (pages 56-57) ---- */
+    {k:"h3", t:"Jesus Christ in the Four Gospels"},
+    {k:"p", t:"Learners are able to analyze the **birth, works, death, resurrection and ascension of Jesus Christ in the four Gospels** — Matthew, Mark, Luke and John — and justify their similarities. The four Gospels agree on the great events of Jesus' life: His virgin birth in Bethlehem, His teaching and miracles, His death on the cross, His resurrection on the third day and His ascension to heaven. Write a two-page report on the life of Jesus Christ."},
+    {k:"rule"},
+    {k:"h3", t:"Mary, the Mother of Jesus Christ"},
+    {k:"p", t:"Learners state **how Mary became the Mother of Jesus**: the angel announced to Mary that she would conceive and bear a son by the power of the Holy Spirit, and she was told to name Him Jesus, for He would save His people from their sins (Luke 1:26-38; Matthew 1:18-25). Muslims also honour Mary (Maryam) as the pure mother of the prophet Jesus."},
+    {k:"rule"},
+    {k:"h3", t:"Christian Pioneers in Liberia"},
+    {k:"p", t:"Learners name and discuss **Christian pioneers and their contribution to the educational system of Liberia** — missionaries and churches that built the first schools, trained teachers and opened the way for learning in the country. Research the role of the Christian churches in the promotion and development of education in Liberia."},
+    {k:"rule"},
+    {k:"h3", t:"Some Prophets and Kings in the Quran and Hadith (for Muslims)"},
+    {k:"p", t:"Learners are able to name **Prophets, Kings and the Hadith of the Islamic Faith**: the Quran tells of the prophets of God — Adam, Nuh, Ibrahim, Musa, Isa and Mohammed (peace be upon them all) — and of kings and rulers; the **Hadith** are the recorded sayings and deeds of Prophet Mohammed, which guide Muslims alongside the Quran."},
+    {k:"bul", items:["**Prophets in the Quran** — Adam, Nuh (Noah), Ibrahim (Abraham), Musa (Moses), Isa (Jesus), Mohammed (peace be upon them)", "**Kings** — such as the rulers mentioned in the stories of the Quran", "**The Hadith** — the collected teachings and example of Prophet Mohammed", "**Pioneers in the Muslim Faith** — the early believers who spread the teaching of Islam"]},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Research the birth, works, death, resurrection and ascension of Jesus Christ.", "Write a two-page report on the life of Jesus Christ.", "Research and have a class discussion on the works of Islamic pioneers, prophets, kings and the Hadith.", "Research the role of the Christian churches in the promotion and development of education in Liberia."]}
+  ],
   focus: ["Jesus Christ in the four gospels", "Mary, the mother of Jesus Christ", "Christian pioneers in Liberia", "Prophets and kings in the Quran and Hadith", "Pioneers in the Muslim faith"],
   terms: [
     { t: "gospel", d: "one of the four accounts of the life and teaching of Jesus", x: "Each gospel gives its own perspective." },
@@ -3553,6 +4226,24 @@ const RM_CURRICULUM = [
     "Give reasons for the teaching that the dead will be judged"
   ],
   note: "This final unit distinguishes four ideas often confused: eternal life, resurrection, judgment and reincarnation. Pupils learn what each means, which faiths hold which, and how to discuss traditional beliefs respectfully.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Death and Hereafter (pages 58-59) ---- */
+    {k:"h3", t:"Eternal Life"},
+    {k:"p", t:"**Eternal life** is the endless life with God that believers receive — life that does not end at physical death. Both the Bible and the Quran teach that the soul lives on, and that the faithful will enjoy everlasting life with God. Scripture references: the Holy Bible, John 5:29, Acts 24:15 and Revelation 20:5."},
+    {k:"rule"},
+    {k:"h3", t:"Resurrection"},
+    {k:"p", t:"**Resurrection** is the rising of the dead back to life on the last day. Jesus Christ rose from the dead (Matthew 28:1-10; Mark 16:1-7), and His resurrection is the promise that the dead will also be raised. Scripture references: the Holy Bible, John 5:29 and Acts 24:15."},
+    {k:"rule"},
+    {k:"h3", t:"Judgment"},
+    {k:"p", t:"**Judgment** is God's final judging of every person. The dead will be judged according to what they did: some are sent to **hell** and others to **heaven**. Scripture references: the Holy Bible, Romans 14:10 (we will all stand before God's judgment seat) and Revelation 20:5. Give reasons why the dead will be judged, some sent to hell while others go to heaven."},
+    {k:"rule"},
+    {k:"h3", t:"Reincarnation"},
+    {k:"p", t:"**Reincarnation** is the belief that the soul is reborn into a new body after death, living again on earth. This is a **traditional belief** in some African communities. Learners discuss the **traditional beliefs on reincarnation of man** and compare them with the teaching of the Holy Books: the Bible and the Quran teach resurrection and judgment, not rebirth into another body."},
+    {k:"table", head:["Teaching","What it means","Source"], rows:[["Eternal life","Life with God that never ends","Holy Bible; Holy Quran"],["Resurrection","The dead are raised to life again","Matthew 28:1-10; Mark 16:1-7"],["Judgment","God judges everyone; heaven or hell","Romans 14:10; Revelation 20:5"],["Reincarnation","Rebirth of the soul in a new body (traditional belief)","African traditional beliefs"]]},
+    {k:"rule"},
+    {k:"h3", t:"Assignment"},
+    {k:"num", items:["Research, write and hold class discussions on eternal life, resurrection, judgment and reincarnation.", "Discuss the traditional beliefs on the reincarnation of man.", "Give reasons why the dead will be judged, some sent to hell while others go to heaven.", "Visit a place of worship, interview a pastor or imam, and report on resurrection, judgment and reincarnation."]}
+  ],
   focus: ["Eternal life", "Resurrection", "Judgment", "Reincarnation", "Traditional beliefs"],
   terms: [
     { t: "eternal life", d: "life with God that never ends", x: "Christians speak of eternal life as God's gift." },
