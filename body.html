@@ -7,6 +7,8 @@
       <p>English &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Physics &middot; Economics &middot; English Grammar &middot; Geography<br>
          <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; 🤖 Emmanuel AI tutor &middot; works offline</span></p>
     </div>
+    <button type="button" class="install-app" id="installApp" hidden>&#11015; Install app</button>
+    <span class="install-status" id="installStatus" role="status" aria-live="polite"></span>
   </div>
 </header>
 
@@ -110,6 +112,7 @@
             <p class="hint">The school name is saved on this device and reused on every cover you generate.</p>
 
             <div class="cvsec">Logo &amp; background</div>
+            <label class="chk"><input type="checkbox" id="cvSubjectBg" checked><span>Use a subject-matched background image</span></label>
             <div class="upgrid">
               <div class="upcell">
                 <div class="upprev" id="upLogoPrev"><span>No logo</span></div>
@@ -125,12 +128,12 @@
             <p class="hint" id="upMsg"></p>
             <div class="row" id="fadeRow" style="display:none">
               <label for="cvFade">Background fade</label>
-              <input type="range" id="cvFade" min="0" max="95" step="5" value="78">
-              <b id="fadeVal" class="fadeval">78%</b>
+              <input type="range" id="cvFade" min="0" max="95" step="1" value="62">
+              <b id="fadeVal" class="fadeval">62%</b>
             </div>
             <div class="row"><label for="cvCrest">Emoji crest (used when no logo)</label>
               <input type="text" id="cvCrest" value="&#128218;" maxlength="4" class="crest-in"></div>
-            <p class="hint">Images are stored inside this page, so the pack still works offline. PNG keeps a transparent logo; the background is faded so the text stays readable.</p>
+            <p class="hint">Each subject includes its own real PNG artwork (mathematics shows equations, science shows laboratory imagery, and so on). Uploading a background overrides it. Everything is stored inside this page for offline use.</p>
 
             <div class="cvsec">This pack</div>
             <input type="text" id="cvClass" placeholder="Class (blank = Grade from above)">

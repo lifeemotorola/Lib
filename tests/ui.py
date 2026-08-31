@@ -32,6 +32,18 @@ with sync_playwright() as p:
     pg = b.new_page(viewport={"width": 1366, "height": 900})
     pg.goto(HTML); pg.wait_for_timeout(900)
 
+    # --- 0. install metadata and Liberia-map favicon are present ---
+    pwa = pg.evaluate("""()=>({
+        manifest:document.querySelector('link[rel="manifest"]')?.getAttribute('href'),
+        favicon:document.querySelector('link[rel="icon"]')?.getAttribute('href'),
+        touch:document.querySelector('link[rel="apple-touch-icon"]')?.getAttribute('href'),
+        install:!!document.getElementById('installApp')
+    })""")
+    if pwa["manifest"] != "manifest.webmanifest" or not (pwa["favicon"] or "").startswith("data:image/png;base64,"):
+        bad.append(f"PWA manifest or inlined favicon missing: {pwa}")
+    if pwa["touch"] != "assets/icons/apple-touch-icon.png" or not pwa["install"]:
+        bad.append(f"touch icon or install control missing: {pwa}")
+
     # --- 1. the three key choices are visible without opening anything ---
     for sel, name in [("#session", "session"), ("#subjects", "subject"), ("#grade", "grade")]:
         if not pg.eval_on_selector(sel, "e=>e.offsetHeight>0"):
@@ -91,7 +103,13 @@ with sync_playwright() as p:
         bad.append("sheets badge broken after subject switch")
     pg.eval_on_selector(".subtab[data-s='en']", "e=>e.click()"); pg.wait_for_timeout(800)
 
-    # --- 3b. customization: templates, auto fields, persistence ---
+    # --- 3b. customization: subject artwork, templates, auto fields, persistence ---
+    art = pg.evaluate("""()=>{const a=window.SUBJECT_COVER_ART||{};
+        return {ids:Object.keys(a), png:Object.values(a).every(x=>x.url.startsWith('data:image/png;base64,')),
+                unique:new Set(Object.values(a).map(x=>x.url)).size};}""")
+    expected_art = {"en", "fr", "sc", "ma", "ss", "rm", "pe", "bi", "ch", "ph", "ec", "eg", "gg", "li"}
+    if set(art["ids"]) != expected_art or not art["png"] or art["unique"] != 14:
+        bad.append(f"subject cover artwork incomplete or duplicated: {art}")
     pg.eval_on_selector("#ddCover>summary", "e=>e.click()"); pg.wait_for_timeout(150)
     tpls = pg.eval_on_selector_all(".tplbtn", "e=>e.map(x=>x.dataset.tpl)")
     print("  cover templates:", tpls)
@@ -156,14 +174,17 @@ with sync_playwright() as p:
     if op not in ("0.40", "0.4"):
         bad.append(f"fade slider did not set veil opacity (got {op})")
 
-    # removing an image must restore the emoji crest and clear the photo
+    # removing uploads restores the emoji crest and bundled subject artwork
     pg.eval_on_selector("#rmBg", "e=>e.click()"); pg.wait_for_timeout(1100)
     pg.eval_on_selector("#rmLogo", "e=>e.click()"); pg.wait_for_timeout(1100)
     r2 = pg.evaluate("""()=>{const c=document.querySelector('.cvart');
         return {logo:!!c.querySelector('.cv-logo img'), bg:!!c.querySelector('.cv-bg'),
-                crest:!!c.querySelector('.cv-emblem')};}""")
-    if r2["logo"] or r2["bg"]:
-        bad.append("Remove did not clear the uploaded image")
+                crest:!!c.querySelector('.cv-emblem'),
+                subjectLabel:document.querySelector('#upBgPrev small')?.textContent};}""")
+    if r2["logo"]:
+        bad.append("Remove did not clear the uploaded logo")
+    if not r2["bg"] or r2["subjectLabel"] != "Subject artwork":
+        bad.append("removing custom background did not restore subject artwork")
     if not r2["crest"]:
         bad.append("emoji crest did not return after the logo was removed")
     pg.evaluate("()=>localStorage.removeItem('lncpg.coverimg.v1')")

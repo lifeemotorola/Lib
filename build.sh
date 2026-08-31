@@ -9,6 +9,15 @@ cd "$(dirname "$0")"
   echo '<meta charset="utf-8">'
   echo '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
   echo '<meta name="color-scheme" content="light">'
+  echo '<meta name="theme-color" content="#0b3b8c">'
+  echo '<meta name="application-name" content="Liberia Packs">'
+  echo '<link rel="manifest" href="manifest.webmanifest">'
+  echo '<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">'
+  if [ -f assets/icons/favicon-48.png ]; then
+    printf '<link rel="icon" type="image/png" sizes="48x48" href="data:image/png;base64,'
+    base64 -w0 assets/icons/favicon-48.png
+    echo '">'
+  fi
   echo '<title>Liberian Course Pack Generator &middot; English, French, General Science, Mathematics, Social Studies, Religious &amp; Moral Education, Physical Education, Biology, Chemistry, Physics, Economics, English Grammar &amp; Geography</title>'
   echo '<style>'
   cat styles.css
@@ -24,6 +33,20 @@ cd "$(dirname "$0")"
     echo
     echo '</script>'
   fi
+  # Real, subject-matched cover photographs/artwork. Keep these in the page so
+  # a Mathematics cover still shows mathematics when opened from a USB stick.
+  echo '<script>window.SUBJECT_COVER_ART={'
+  first=1
+  for id in en fr sc ma ss rm pe bi ch ph ec eg gg li; do
+    img="assets/covers/$id.png"
+    [ -f "$img" ] || continue
+    if [ "$first" -eq 0 ]; then printf ','; fi
+    first=0
+    printf '%s:{url:"data:image/png;base64,' "$id"
+    base64 -w0 "$img"
+    printf '",mime:"image/png",w:480,h:640}'
+  done
+  echo '};</script>'
   for f in data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-gg.js data-li.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js book.js ai.js app.js; do
     echo '<script>'
     cat "$f"

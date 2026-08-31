@@ -29,8 +29,10 @@ so the whole thing stays self-contained.
   (Mathematics and French also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
   transcribed verbatim from the official curriculum guide
-- **Customizable cover**: template choice, school name (persisted), uploaded
-  logo & background photo, pupil/teacher/term/year fields, emoji crest
+- **Customizable cover**: template choice, 14 built-in subject-matched PNG
+  backgrounds (equations for Mathematics, laboratory imagery for Science,
+  books for Literature, and so on), school name (persisted), uploaded logo or
+  replacement background, pupil/teacher/term/year fields, and emoji crest
 - **Pagination engineered for A4** (794 × 1123 px sheets, fixed geometry),
   with a responsive preview that scales the sheet instead of resizing it
 - **Export**: `.docx` (student or teacher copy) and **Print / PDF** with
@@ -38,6 +40,8 @@ so the whole thing stays self-contained.
 - **Duplex print helper** — odd/even page sequences so an A4 workbook can be
   printed double-sided on a printer that only prints one side at a time
 - Settings persist in `localStorage` (subject, grade, cover details, images)
+- **Installable on Android and PC** as a Progressive Web App, with the Liberia
+  flag-map favicon and offline app icon
 
 ## Quick start
 
@@ -53,6 +57,27 @@ Rebuilding `index.html` from the source parts (e.g. after editing content):
 ```bash
 bash build.sh
 ```
+
+### Install on Android or PC
+
+The original `index.html` can still be opened directly and used offline. To
+install the platform like an app, serve the repository over HTTPS (or
+`localhost` during development), open `index.html` in Chrome or Edge, and use
+the **Install app** button when it appears.
+
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+- **Android:** open the site in Chrome, tap **Install app** (or browser menu →
+  **Add to Home screen**), then confirm.
+- **Windows/macOS/Linux:** open the site in Chrome or Edge, click **Install
+  app**, then confirm. It opens in its own window and remains available offline.
+
+A service worker stores the generated single-file app and its icons after the
+first successful visit. Installation requires HTTP/HTTPS because browsers do
+not allow service workers from a `file://` URL.
 
 ## Using the generator
 
@@ -119,7 +144,9 @@ same tool lives in `book.html`.
 | `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`; Literature has its own, `gen-li.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
-| `build.sh` | Concatenates styles + markup + scripts into `index.html`. |
+| `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
+| `assets/icons/` | Liberia flag-map favicon, touch icon and installable-app icons. |
+| `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art. |
 | `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
 

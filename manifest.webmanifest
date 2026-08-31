@@ -1,0 +1,33 @@
+{
+  "id": "./",
+  "name": "Liberian National Curriculum Course Pack Generator",
+  "short_name": "Liberia Packs",
+  "description": "Create printable Liberian curriculum workbooks, tests, examinations and teacher answer keys for Grades 1–12.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#e9eef7",
+  "theme_color": "#0b3b8c",
+  "orientation": "any",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
