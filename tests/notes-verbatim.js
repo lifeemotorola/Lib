@@ -135,8 +135,8 @@ const SUBJECTS = [
             { grade: 12, period: "VI", title: "Differentiation and Integration",
               facts: ["difference quotient", "derivative", "constant of integration", "area under a curve", "∫(6x² − 4x + 1) dx"] } ] },
   { name: "French", global: "FR_CURRICULUM",
-    files: ["data-fr.js", "data-fr79.js"],
-    grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */
+    files: ["data-fr.js", "data-fr79.js", "data-fr1012.js"],
+    grades: 12,                 /* every unit from Grade 1 to Grade 12 must carry study[] */
     spots: [{ grade: 1, period: "I",
               facts: ["Bonjour", "Salutation + nom", "voyelles", "Comment ça va ?"] },
             { grade: 1, period: "II",
@@ -201,7 +201,15 @@ const SUBJECTS = [
             { grade: 9, period: "III",
               facts: ["Eid al-Fitr", "Eid al-Adha", "Christmas", "Easter"] },
             { grade: 9, period: "VI",
-              facts: ["Chastity", "immorality", "temple of the Holy Spirit"] }] },
+              facts: ["Chastity", "immorality", "temple of the Holy Spirit"] },
+            { grade: 10, period: "I",
+              facts: ["Le participe passé", "j'ai mangé", "hier soir"] },
+            { grade: 11, period: "V",
+              facts: ["300 million speakers", "Léopold Sédar Senghor", "franc CFA"] },
+            { grade: 12, period: "I",
+              facts: ["Il faut qu'il parte", "que je sois", "-e, -es, -e, -ions, -iez, -ent"] },
+            { grade: 12, period: "VI",
+              facts: ["plus-que-parfait", "Bonne chance", "d'abord, ensuite, puis"] }] },
   { name: "Physical Education", global: "PE_CURRICULUM",
     files: ["data-pe.js", "data-pe79.js"],   /* 7-9 file appends its units into PE_CURRICULUM */
     grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */

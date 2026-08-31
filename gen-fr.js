@@ -16,6 +16,13 @@
 (function (root) {
   "use strict";
 
+  /* roman period ("I".."VI") -> its number, for the user-facing "Period n" labels */
+  function periodNo(p) {
+    var i = ["I", "II", "III", "IV", "V", "VI"].indexOf(String(p));
+    return i < 0 ? p : i + 1;
+  }
+
+
   /* ---------- seeded RNG (mulberry32) ---------- */
   function rng(seed) {
     var a = seed >>> 0;
@@ -351,13 +358,13 @@
     doc.push.apply(doc, PACK_COVER(opts, {
       title: "FRENCH — GRADE " + opts.grade,
       sub: "Pupil Workbook & Assessment Pack",
-      line: "Elementary French · Liberian National Curriculum"
+      line: (opts.bandName || "Elementary") + " French · Liberian National Curriculum"
     }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) {
-      toc.push("Unit " + (i + 1) + " — Period " + t.period + ": " + t.fr + " (" + t.en + ")");
+      toc.push("Period " + periodNo(t.period) + ": " + t.fr + " (" + t.en + ")");
     });
-    if (opts.tests) toc.push("Period tests — one after each unit");
+    if (opts.tests) toc.push("Period tests — one after each period");
     if (opts.exam) toc.push("Semester examinations (Semester One & Two)");
     if (opts.keys) toc.push("Answer keys — for the teacher");
     doc.push({ k: "bul", items: toc });
@@ -366,9 +373,9 @@
 
     /* ---- units ---- */
     topics.forEach(function (t, i) {
-      doc.push({ k: "h1", t: "UNIT " + (i + 1) + " · " + t.fr, per: t.period });
-      doc.push({ k: "p", t: t.en + "   ·   Period " + t.period + "   ·   Semester " + t.sem });
-      doc.push.apply(doc, UNIT_NOTES(t, i + 1));
+      doc.push({ k: "h1", t: "PERIOD " + periodNo(t.period) + " · " + t.fr, per: t.period });
+      doc.push({ k: "p", t: t.en + "   ·   Semester " + t.sem });
+      doc.push.apply(doc, UNIT_NOTES(t, periodNo(t.period)));
       if (t.extra) {
         doc.push({ k: "h3", t: t.extra.title });
         doc.push({ k: "bul", items: t.extra.items });
@@ -383,7 +390,7 @@
         doc.push({ k: "space" });
         if (out.key.length) ukey.push({ h: out.blocks[0].t, lines: out.key });
       });
-      if (ukey.length) keys.push({ title: "Unit " + (i + 1) + " — " + t.fr, sections: ukey });
+      if (ukey.length) keys.push({ title: "Period " + periodNo(t.period) + " — " + t.fr, sections: ukey });
 
       if (opts.tests) {
         doc.push({ k: "pagebreak" });

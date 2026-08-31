@@ -26,7 +26,7 @@ so the whole thing stays self-contained.
 - **Study notes** for every unit: key ideas, worked examples and common
   mistakes — and for Social Studies, General Science, English, Mathematics,
   French, Religious & Moral Education and Physical Education Grades 1–9
-  (Mathematics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
+  (Mathematics and French also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
   transcribed verbatim from the official curriculum guide
 - **Customizable cover**: template choice, school name (persisted), uploaded
@@ -89,7 +89,7 @@ same tool lives in `book.html`.
 | Subject | Grades | Units per grade | Total units |
 |---|---|---|---|
 | English (`en`) | 1–9 | 6 | 54 |
-| French (`fr`) | 1–9 | 6 | 54 |
+| French (`fr`) | 1–12 | 6 | 72 |
 | General Science (`sc`) | 1–9 | 6 | 54 |
 | Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
 | Social Studies (`ss`) | 1–9 | 6 | 54 |
@@ -103,8 +103,8 @@ same tool lives in `book.html`.
 | Geography (`gg`) | 10–12 | 6 | 18 |
 | Literature (`li`) | 10–12 | 6 | 18 |
 
-> **Known limitation:** Grades 10–12 are covered by Mathematics and by
-> Biology, Chemistry, Physics, Economics, English Grammar, Geography and
+> **Known limitation:** Grades 10–12 are covered by Mathematics, French and
+> by Biology, Chemistry, Physics, Economics, English Grammar, Geography and
 > Literature; the other elementary and junior-high subjects stop at Grade 9.
 
 ## Project layout
@@ -120,13 +120,15 @@ same tool lives in `book.html`.
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html`. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics (Grades 1–12), French, Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
 
 - Each `data-*.js` file declares one curriculum array; Junior High content
   comes from a `*79.js` file that is merged in (`FR_CURRICULUM.push(...)`),
+  Senior High French from `data-fr1012.js`
+  (`FR_CURRICULUM.push.apply(FR_CURRICULUM, FR_CURRICULUM_1012)`),
   and Senior High Mathematics from `data-ma-sh.js`
   (`MA_CURRICULUM.push.apply(MA_CURRICULUM, MA_CURRICULUM_SH)`). The Senior
   High generators live in `gen-ma-sh.js`, which adds its `_sh` drills and
@@ -147,7 +149,8 @@ same tool lives in `book.html`.
   verbatim notes derived from their curriculum guides — Social Studies,
   General Science, English, Mathematics, French, Religious & Moral Education
   and Physical Education, Grades 1–9 (54 units each, plus the 42 Senior High
-  Mathematics units), and Biology, Chemistry, Physics, Economics, English
+  Mathematics units and the 18 Senior High French units), and Biology,
+  Chemistry, Physics, Economics, English
   Grammar, Geography and Literature, Grades 10–12 (18 units each) — with the
   guide page range of each unit recorded in a comment above its list.
 - Generators emit a **uniform block model**
