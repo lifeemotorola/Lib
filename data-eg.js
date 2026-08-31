@@ -2,6 +2,11 @@
    Derived from the "English Grammar 10-12" senior high curriculum guide (37 pp.),
    6 periods per grade, 18 units.
 
+   Every unit carries a `study[]` block list — the course text of the guide,
+   rendered verbatim on the Study Notes page, with a comment noting the guide
+   pages covered. `**bold**` marks the key terms; table cells take no markup
+   because the renderer escapes them.
+
    Uses the EN_CURRICULUM unit shape so GEN_EN renders it unchanged:
      grade · period · sem · icon · title · subtitle · outcomes[] · objectives[]
      · note · focus[]
@@ -38,6 +43,25 @@ var EG_CURRICULUM = [
     "Write an autobiographical narrative and a short story"
   ],
   note:"A <b>noun</b> names a person, place, thing or idea. A <b>pronoun</b> stands in place of a noun, and the noun it replaces is its <b>antecedent</b>: in <i>Musu lost her book</i>, <b>Musu</b> is the antecedent of <b>her</b>. A pronoun must agree with its antecedent in <b>number, gender and person</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Nouns and Pronouns (guide pp. 2-3) ---- */
+    {k:"h3", t:"Nouns and their Kinds"},
+    {k:"p", t:"A **noun** is a word that names a person, place, thing or idea. The kinds: a **common noun** names any member of a class (market, river, teacher); a **proper noun** names a particular one and takes a capital letter (Monrovia, Liberia, Musu). A **concrete noun** can be seen or touched (book, mango); an **abstract noun** names an idea or quality (honesty, freedom, fear). Nouns are **singular** or **plural** — one child, two children; one box, six boxes — and irregular plurals must be learned one by one. A **compound noun** is made of two or more words (classroom, mother-in-law); a **collective noun** names a group taken as one (team, choir, flock). Nouns are **countable** (three oranges) or **uncountable** (rice, water, information) — and uncountable nouns take no plural and no 'a'. List the different kinds of nouns in a given piece of work."},
+    {k:"rule"},
+    {k:"h3", t:"Pronouns and their Antecedents"},
+    {k:"p", t:"A **pronoun** stands in place of a noun, and the noun it replaces is its **antecedent**. The kinds: **personal pronouns** — I, you, he, she, it, we, they, with their object and possessive forms; **possessive pronouns** — mine, yours, hers, ours, theirs; **indefinite pronouns** — someone, anybody, each, all, none; **demonstrative pronouns** — this, that, these, those; and **interrogative pronouns** — who, whom, whose, which, what. A pronoun must agree with its antecedent in number, gender and person: 'Kollie lost his pen', not 'their pen'."},
+    {k:"p", t:"Two harder cases: a pronoun may stand for an **entire group of words** — 'He promised to come early, which surprised us' — and sometimes the **antecedent follows the pronoun** — 'Although she was tired, Musu kept on digging.' Identify the antecedent in every sentence you meet, and construct sentences of your own using nouns and pronouns correctly in speech and writing."},
+    {k:"rule"},
+    {k:"h3", t:"Narration: Autobiographical Writing"},
+    {k:"p", t:"**Autobiographical writing** tells the story of your own life, in the first person, in time order: where and when you were born, your family, the schools you attended, the events that shaped you, and your hopes. Select the important events rather than everything; use the past tense for what happened and the present for what continues; and let your own voice be heard. Write yours, then read it aloud to the class."},
+    {k:"rule"},
+    {k:"h3", t:"Narration: The Short Story"},
+    {k:"p", t:"A **short story** is a brief imagined narration with a beginning that sets the scene and the people, a middle in which a problem rises to a turning point, and an end that resolves it. Keep the cast small, the time short, the setting clear; use dialogue to bring the characters alive; and give the story a title that fits. Write a short story set in your own community."},
+    {k:"rule"},
+    {k:"h3", t:"Vocabulary Development and Study Skills"},
+    {k:"p", t:"Take at least **ten words every week**: learn their spellings and their meanings, and use each in a sentence of your own. Review **study skills and note taking** — listening for the main idea, writing notes in your own words, arranging them under headings, and reviewing them the same day. A growing vocabulary and good notes carry every other subject."},
+  ],
+
   focus:[
     "Common and proper nouns",
     "Concrete and abstract nouns",
@@ -144,6 +168,27 @@ var EG_CURRICULUM = [
     "Form and use the progressive forms of verbs"
   ],
   note:"An <b>action verb</b> tells what the subject does, whether visible (<i>run, write</i>) or mental (<i>think, believe</i>). A <b>transitive</b> verb passes its action to an object; an <b>intransitive</b> verb does not. A <b>linking verb</b> joins the subject to a word describing it. <b>Helping verbs</b> combine with a main verb: <i>is going, has eaten, will travel</i>.",
+  study:[
+    /* ---- course text: Semester One, Period II — Verbs, Part 1 (guide pp. 4-5) ---- */
+    {k:"h3", t:"Action Verbs: Visible and Mental"},
+    {k:"p", t:"A **verb** is the doing or being word of the sentence. An **action verb** shows what the subject does, and the action may be **visible** — run, carry, sweep, throw — or **mental**, performed in the mind — know, believe, remember, decide, love. Point out the action words in a passage and say whether each is visible or mental."},
+    {k:"rule"},
+    {k:"h3", t:"Transitive and Intransitive Verbs"},
+    {k:"p", t:"A **transitive verb** passes its action to an **object** that receives it: 'The farmer **planted** maize' — maize receives the planting. An **intransitive verb** takes no object: 'The baby **slept**.' Many verbs do both: 'She sings' (intransitive) and 'She sings a song' (transitive). Identify the transitive verbs in sentences and the objects that receive the action; note that intransitive verbs do not take one."},
+    {k:"rule"},
+    {k:"h3", t:"Linking Verbs"},
+    {k:"p", t:"A **linking verb** does not show action; it links the subject to a word that renames or describes it. The chief linking verb is **be** — am, is, are, was, were — with **become, seem, appear, feel, taste, smell, grow, look**: 'The soup tastes salty'; 'He became a teacher.' After a linking verb comes a **complement**, not an object."},
+    {k:"rule"},
+    {k:"h3", t:"Helping Verbs and Modal Auxiliaries"},
+    {k:"p", t:"A **helping (auxiliary) verb** stands before the main verb and helps mark its tense or voice — be, do, have: 'She **is coming**', 'They **have finished**', '**Do** you agree?' Distinguish the main verb from the helping verb in passages. A **modal auxiliary** adds ideas such as ability, permission, possibility and obligation — **can, could, may, might, shall, should, will, would, must, ought to**: 'You must wash your hands.' Modals never change their form and are followed by the base verb."},
+    {k:"rule"},
+    {k:"h3", t:"The Tenses and Progressive Forms"},
+    {k:"p", t:"The **present tense** tells of now or of what is always true ('Water boils at 100 degrees'); the **past tense** of what is finished ('We visited Gbarnga last year'); the **future tense** of what is to come, with shall or will ('It will rain tomorrow'). Each tense has a **progressive form** with be + the -ing form, for an action in progress — 'I am writing', 'She was cooking', 'They will be travelling.' Construct sentences in the three tenses, then in their progressive forms."},
+    {k:"rule"},
+    {k:"h3", t:"Descriptive and Narrative Writing"},
+    {k:"p", t:"Go through the writing process — prewrite, draft, revise, edit, publish — and develop given topics into **descriptive writing**, which paints a person, place or thing with details the senses can see, hear, smell, taste and touch; and into **narrative writing**, which tells events in time order with a clear beginning, middle and end."},
+  ],
+
   focus:[
     "Action verbs: visible and mental",
     "Transitive and intransitive verbs",
@@ -245,6 +290,24 @@ var EG_CURRICULUM = [
     "Write persuasive essays using the relevant mechanics"
   ],
   note:"The <b>perfect tenses</b> use <b>have, has</b> or <b>had</b> with the past participle. Present perfect: <i>I have written</i> — completed, but connected to now. Past perfect: <i>I had written</i> — completed before another past action. Future perfect: <i>I will have written</i> — will be complete by a stated future time. <b>Regular</b> verbs add <b>-ed</b>; <b>irregular</b> verbs change form: <i>go, went, gone</i>.",
+  study:[
+    /* ---- course text: Semester One, Period III — Verbs, Part 2 (guide pp. 6-7) ---- */
+    {k:"h3", t:"The Perfect Tenses"},
+    {k:"p", t:"The perfect tenses use **have, has, had, will have** with the **past participle**. The **present perfect** — 'I **have finished** my work' — joins the past to the present, for an action completed not long ago or one whose effect remains. The **past perfect** — 'The bus **had left** before we arrived' — is the past before the past, the earlier of two past events. The **future perfect** — 'By Friday we **will have written** the test' — looks forward to an action that will be completed by a stated time. Explain each perfect tense, then construct sentences using them correctly."},
+    {k:"rule"},
+    {k:"h3", t:"Regular Verbs"},
+    {k:"p", t:"A **regular verb** forms its past tense and past participle by adding **-d** or **-ed** to the base: start, started, has started; cook, cooked, has cooked; carry, carried, has carried. Where the base ends in a consonant + y, the y becomes -ied; where it ends in e, only -d is added. List regular verbs and discuss how their past tense is formed."},
+    {k:"rule"},
+    {k:"h3", t:"Irregular Verbs"},
+    {k:"p", t:"An **irregular verb** forms its past tense and past participle by a change inside the word, not by -ed: go, went, gone; see, saw, seen; take, took, taken; eat, ate, eaten; write, wrote, written; buy, bought, bought; cut, cut, cut. There is no rule — each must be learned by heart in its three parts. List irregular verbs, discuss how their past tenses are formed, and construct sentences using regular and irregular verbs in their present and past tenses."},
+    {k:"rule"},
+    {k:"h3", t:"Comparative and Superlative Forms"},
+    {k:"p", t:"Adjectives and adverbs compare in three degrees. For most short words add **-er** and **-est** — tall, taller, tallest; for longer words use **more** and **most** — beautiful, more beautiful, most beautiful. Some change wholly: good, better, best; bad, worse, worst; little, less, least; many, more, most. Never put the two methods together — not 'more taller'. Use the forms correctly in your sentences."},
+    {k:"rule"},
+    {k:"h3", t:"Persuasion: the Persuasive Essay"},
+    {k:"p", t:"A **persuasive essay** seeks to convince the reader to accept a position or act. Its parts: a clear **position** stated early; **reasons** in support, each developed with evidence or example; **answers to the other side**; and a strong **call to action** at the close. Choose an issue that matters to your community, write persuasively using the relevant mechanics — capital letters, punctuation, spelling — and discuss the issues involved for presentation to the class."},
+  ],
+
   focus:[
     "Present perfect, past perfect and future perfect tenses",
     "Regular verbs and the -ed ending",
@@ -343,6 +406,24 @@ var EG_CURRICULUM = [
     "Ask of adjectives: what kind, which one, how much, how many?"
   ],
   note:"An <b>adjective</b> modifies a noun or pronoun and answers <b>what kind, which one, how much</b> or <b>how many</b>. An <b>adverb</b> modifies a verb, an adjective or another adverb and answers <b>where, when, in what way</b> or <b>to what extent</b>. A <b>conjunctive adverb</b> — <i>however, therefore, moreover</i> — joins independent clauses and takes a semicolon before it.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Adjectives and Adverbs (guide pp. 8-9) ---- */
+    {k:"h3", t:"Adjectives"},
+    {k:"p", t:"An **adjective** modifies — describes or limits — a noun or a pronoun: 'a **brave** girl', 'three **mangoes**', 'the field was **wet**.' Adjectives answer **what kind?** (red, brave, hungry), **which one?** (this, that, the second), and **how much? or how many?** (some, little, seven). Identify adjectives and the nouns or pronouns they modify in sentences, and classify them by the questions they answer."},
+    {k:"rule"},
+    {k:"h3", t:"Proper and Compound Adjectives"},
+    {k:"p", t:"A **proper adjective** is formed from a proper noun and begins with a capital letter — Liberian rubber, Ghanaian kente, African music. A **compound adjective** is two or more words acting as one adjective, usually hyphenated before the noun — a well-known trader, a ten-year-old boy, a first-rate school. Write and classify adjectives of both kinds in speech and writing."},
+    {k:"rule"},
+    {k:"h3", t:"Adverbs"},
+    {k:"p", t:"An **adverb** modifies a verb, an adjective or another adverb: 'She sings **beautifully**', 'very brave', 'quite slowly.' Adverbs answer four questions — **Where?** (here, outside, everywhere), **When?** (now, yesterday, later), **In what way?** (quickly, carefully, badly) and **To what extent?** (very, too, almost). Many are formed from adjectives with -ly; some change spelling — true, truly. Debate the four questions adverbs answer, and recognise how each adverb modifies."},
+    {k:"rule"},
+    {k:"h3", t:"Conjunctive Adverbs"},
+    {k:"p", t:"A **conjunctive adverb** joins two complete thoughts and shows their relation while also modifying the second — **however, therefore, moreover, nevertheless, consequently, furthermore, otherwise, meanwhile**: 'The rain fell; **nevertheless**, the match continued.' Use a semicolon before and a comma after. Explain the correlation between two ideas — contrast, similarity, emphasis — and use conjunctive adverbs to link them in writing."},
+    {k:"rule"},
+    {k:"h3", t:"Making Writing Vivid and Precise"},
+    {k:"p", t:"Well-chosen adjectives and adverbs make writing vivid or precise: 'the dog barked' becomes 'the fierce dog barked loudly in the yard.' But do not heap them — one exact word beats three vague ones. Apply adjectives and adverbs appropriately in compositions, and read the difference aloud."},
+  ],
+
   focus:[
     "Adjectives and the nouns they modify",
     "Proper adjectives and compound adjectives",
@@ -444,6 +525,24 @@ var EG_CURRICULUM = [
     "Write a persuasive advertisement"
   ],
   note:"A <b>preposition</b> shows the relationship between words — location, direction, cause or possession. With its object it forms a <b>prepositional phrase</b>: <i>under the table</i>. <b>Coordinating</b> conjunctions join equals (for, and, nor, but, or, yet, so — <b>FANBOYS</b>); <b>correlative</b> conjunctions work in pairs (<i>either… or</i>); <b>subordinating</b> conjunctions introduce a dependent clause (<i>because, although</i>).",
+  study:[
+    /* ---- course text: Semester Two, Period V — Prepositions, Conjunctions and Interjections (guide pp. 10-11) ---- */
+    {k:"h3", t:"Prepositions and the Prepositional Phrase"},
+    {k:"p", t:"A **preposition** relates a noun or pronoun to another word in the sentence, showing relationships of **location** (in, on, under, beside), **direction** (to, from, into, toward), **cause or purpose** (for, because of) and **possession** (of) — together with time (at, before, during). A **prepositional phrase** consists of the preposition and its object, with any modifiers: 'under the big table', 'from Monrovia'. Establish that the phrase consists of a preposition and a noun or pronoun, and identify the relationship each preposition shows in a sentence."},
+    {k:"rule"},
+    {k:"h3", t:"Telling Prepositions and Adverbs Apart"},
+    {k:"p", t:"Some words serve as both. A word is a **preposition** when it has an object — 'She walked **down** the hill'; the same word is an **adverb** when it stands alone — 'She walked **down**.' Test it: if a noun or pronoun follows and receives the relation, it is a preposition; if not, it is an adverb. Distinguish prepositions with their objects from adverbs in given sentences."},
+    {k:"rule"},
+    {k:"h3", t:"Conjunctions"},
+    {k:"p", t:"A **conjunction** joins words or groups of words. **Coordinating conjunctions** join equals — **for, and, nor, but, or, yet, so**: 'rice **and** cassava.' **Correlative conjunctions** work in pairs — **either … or, neither … nor, both … and, not only … but also**. **Subordinating conjunctions** begin a dependent clause — **although, because, if, when, since, unless, until, while**: '**Although** the road was bad, the truck arrived.' Supply the missing conjunction to complete a sentence, discuss the functions conjunctions perform, and identify each type with examples."},
+    {k:"rule"},
+    {k:"h3", t:"Interjections"},
+    {k:"p", t:"An **interjection** expresses feeling or emotion — surprise, joy, pain, disgust — and functions independently of the sentence around it: **Oh! Alas! Hurrah! Wow! Ah!** It is followed by an exclamation mark when it stands alone, or a comma when the sentence follows. Interjections carry feeling, not grammar."},
+    {k:"rule"},
+    {k:"h3", t:"Persuasion: the Advertisement"},
+    {k:"p", t:"Compose on approved topics incorporating prepositions, conjunctions, adverbs and interjections — among them the **advertisement**, a short piece of persuasion that names the product, claims its benefit, and calls on the reader to act, using words and pictures chosen to persuade."},
+  ],
+
   focus:[
     "Prepositions and prepositional phrases",
     "Telling prepositions and adverbs apart",
@@ -547,6 +646,27 @@ var EG_CURRICULUM = [
     "Compare and contrast independent and dependent clauses"
   ],
   note:"A <b>phrase</b> is a group of words with no subject and verb of its own; a <b>clause</b> has both. The three <b>verbals</b> are the <b>participle</b> (verb form used as an adjective), the <b>gerund</b> (-ing form used as a noun) and the <b>infinitive</b> (<i>to</i> + verb, used as noun, adjective or adverb). An <b>appositive</b> renames the noun beside it.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Phrases and Clauses (guide pp. 12-13) ---- */
+    {k:"h3", t:"Noun Phrases and Verb Phrases"},
+    {k:"p", t:"A **phrase** is a group of related words without both a subject and a predicate, working as one part of speech. A **noun phrase** is a noun with its modifiers, doing the work of a noun — 'the tall boy in the blue shirt' as the subject of a sentence. A **verb phrase** is the main verb with its helping verbs — 'has been eating.' Differentiate noun phrases from verb phrases in sentences, and generate examples of your own."},
+    {k:"rule"},
+    {k:"h3", t:"Verbal Phrases"},
+    {k:"p", t:"A **verbal** is a verb form used as another part of speech. A **participle** acts as an adjective — 'the **broken** window', 'the boy **sitting** by the door' — and a **participial phrase** is the participle with its modifiers: '**Worn out by the journey**, the travellers slept.' A **gerund** is the -ing form used as a noun — '**Swimming** builds strength' — and a **gerund phrase** is the gerund with its objects: '**Eating cold rice** made him ill.' An **infinitive** is to + the base verb — 'to read' — and an **infinitive phrase** with its objects: 'He went to the shop **to buy bread**.' Apply participle and gerund phrases in sentences, and construct sentences using infinitives and infinitive phrases. Classify each verbal phrase by whether it functions as a noun, an adjective or an adverb."},
+    {k:"rule"},
+    {k:"h3", t:"Appositives and Prepositional Phrases"},
+    {k:"p", t:"An **appositive** is a noun placed beside another noun to explain it, and an **appositive phrase** carries its modifiers: 'Kollie, **the class monitor**, collected the books.' Identify appositives and the words they name. A **prepositional phrase** — preposition, object, modifiers — works as an adjective or an adverb: 'the man **in the yard**', 'she arrived **before dawn**.' Distinguish prepositional phrases from adjective and adverb phrases."},
+    {k:"rule"},
+    {k:"h3", t:"Phrasal Verbs"},
+    {k:"p", t:"A **phrasal verb** is a verb followed by a preposition or adverb so that the pair takes a new meaning: **ran across** (met by chance), **broke down** (stopped working), **get away** (escape), put off (postpone), look after (care for). The meaning cannot be guessed from the parts — learn each as one word."},
+    {k:"rule"},
+    {k:"h3", t:"Clauses"},
+    {k:"p", t:"A **clause** has a subject and a predicate. An **independent (main) clause** stands alone as a sentence; a **dependent (subordinate) clause** cannot, and begins with a subordinating word. Dependent clauses do three works: a **noun clause** — 'I know **that she came**'; an **adjective clause** — 'the man **who called** is here'; an **adverb clause** — 'we stayed home **because it rained**.' Compare and contrast independent and subordinate clauses, and use each kind in your own sentences."},
+    {k:"rule"},
+    {k:"h3", t:"Exposition: Comparison and Contrast"},
+    {k:"p", t:"Write the **comparison-and-contrast** essay, a form of exposition that shows how two things are alike and how they differ: name the two subjects, state the basis of comparison, then treat the points one by one — by subject or by point. Develop your own topics and write the essay."},
+  ],
+
   focus:[
     "Noun phrases and verb phrases",
     "Prepositional, adjective and adverb phrases",
@@ -652,6 +772,21 @@ var EG_CURRICULUM = [
     "Write a cause-and-effect passage and state the problem"
   ],
   note:"Every verb has <b>five forms</b>: base (<i>start</i>), s-form (<i>starts</i>), -ing form (<i>starting</i>), past tense (<i>started</i>) and past participle (<i>has started</i>). From these come the <b>six tenses</b> — present, past, future, present perfect, past perfect, future perfect — each with a <b>progressive</b> form showing continuing action.",
+  study:[
+    /* ---- course text: Semester One, Period I — Verb Usage, Part 1 (guide pp. 14-15) ---- */
+    {k:"h3", t:"The Five Forms of a Verb"},
+    {k:"p", t:"Every verb has **five forms** (its principal parts). With the verb 'start': the **base form** — start, used for the present and after modals ('They start work'); the **s-form** — starts, for the third person singular of the present ('She starts early'); the **ing-form** — starting, for the progressive tenses ('He is starting'); the **past tense** — started ('We started yesterday'); and the **past participle** — has/have started, used with have, has, had and in the passive ('They have started'). Use the five forms correctly in your own writing."},
+    {k:"rule"},
+    {k:"h3", t:"The Six Tenses and their Progressive Forms"},
+    {k:"p", t:"Combine the three times with the two aspects and you have the **six tenses**: the **present** — 'I write'; the **past** — 'I wrote'; the **future** — 'I shall write'; the **present perfect** — 'I have written'; the **past perfect** — 'I had written'; and the **future perfect** — 'I shall have written.' Each carries a **progressive form** with be + -ing for action in progress: 'I am writing', 'I was writing', 'I shall be writing', 'I have been writing', 'I had been writing', 'I shall have been writing.' Read passages from any given text, identify as many verb tenses as possible, and classify the identified verbs into their tenses; then incorporate sentences using the six tenses."},
+    {k:"rule"},
+    {k:"h3", t:"Cause and Effect"},
+    {k:"p", t:"Write a **cause-and-effect passage**: state the problem clearly, then trace its causes and its effects in order, joining them with words such as because, since, therefore, as a result, consequently. Discuss contemporary issues to develop topics into a cause-and-effect essay — poor roads and the food supply, teenage pregnancy and school dropout."},
+    {k:"rule"},
+    {k:"h3", t:"Writing Book Reports"},
+    {k:"p", t:"In the context of literature, the **book report** in its standard format gives: the **title and author**; the **setting** — where and when; the **characters** — who they are; the **plot** — what happens, briefly and in order; the **theme** — what the story is really about; and your **evaluation** — what the book taught you and how well it did it. Read short stories and write a report on each using this format."},
+  ],
+
   focus:[
     "The five forms of a verb",
     "The six tenses and their progressive forms",
@@ -749,6 +884,21 @@ var EG_CURRICULUM = [
     "Proofread for misspelled words, grammatical errors, run-on sentences and fragments"
   ],
   note:"In the <b>active voice</b> the subject performs the action: <i>The council built the road.</i> In the <b>passive voice</b> the subject receives it: <i>The road was built by the council.</i> Use the active for directness; the passive when the doer is unknown or unimportant. A paragraph needs a <b>topic sentence</b>, a developed <b>body</b>, a <b>conclusion</b>, and both <b>unity</b> and <b>coherence</b>.",
+  study:[
+    /* ---- course text: Semester One, Period II — Verb Usage, Part 2: Voice, Paragraphs and Proofreading (guide pp. 16-17) ---- */
+    {k:"h3", t:"Proper Verb Usage"},
+    {k:"p", t:"Review the verb tenses. Write the past tense of given **irregular verbs** — go/went, see/saw, take/took. Construct verbs whose present principal part ends in **y** by adding **s** for the third person singular — study/studies, carry/carries — and note that the y becomes -ied in the past: carried, studied. Use each principal part properly in speech and writing."},
+    {k:"rule"},
+    {k:"h3", t:"Active and Passive Voice"},
+    {k:"p", t:"In the **active voice** the subject performs the action: 'The chef **cooked** the rice.' In the **passive voice** the subject receives it: 'The rice **was cooked** by the chef' — formed with be + the past participle. Use either of them appropriately in speech and writing: the active for directness, the passive when the doer is unknown or unimportant. Classify sentences as active or passive, and construct effective sentences in both voices."},
+    {k:"rule"},
+    {k:"h3", t:"Writing the Paragraph"},
+    {k:"p", t:"An effective paragraph is built of parts. The **topic sentence** states the main idea, usually first; the **body** develops it with supporting details, examples and reasons; the **conclusion** rounds it off or leads on. **Unity** keeps every sentence on the one subject; **coherence** links the sentences in smooth order, with transition words — first, next, however, finally. Read short paragraphs and identify the main idea; develop topic sentences and supporting details from current events, and compose effective paragraphs explicitly stating an opinion."},
+    {k:"rule"},
+    {k:"h3", t:"Proofreading"},
+    {k:"p", t:"**Proofreading** is checking finished writing for correctness. Hunt for: the **mechanics of grammar** — agreement of subject and verb, tense, pronoun case; **misspelled words**; **grammatical errors** such as **run-on sentences** (two sentences run together with only a comma or nothing) and **sentence fragments** (a piece of a sentence punctuated as one); **shifts in pronouns** — wandering from 'they' to 'you' or from 'one' to 'we'; and faults of **capitalization** and **abbreviation** — the capital for proper nouns and beginnings, the full stop and space in abbreviations. Apply proper mechanics to write sentences effectively, and correct a passage of every fault above."},
+  ],
+
   focus:[
     "Proper verb usage",
     "Active and passive voice and when each is appropriate",
@@ -849,6 +999,18 @@ var EG_CURRICULUM = [
     "Use the dictionary effectively in defining words"
   ],
   note:"A <b>thesis statement</b> is the single sentence stating what an essay will prove; every paragraph must serve it. An essay has an <b>introduction</b> ending in the thesis, a <b>body</b> of paragraphs each developing one supporting idea, and a <b>conclusion</b>. In a dictionary, words are in <b>alphabetical order</b> and <b>guide words</b> at the top of the page show the first and last entries.",
+  study:[
+    /* ---- course text: Semester One, Period III — Verb Usage, Part 3: Essay Writing and Dictionary Skills (guide pp. 18-19) ---- */
+    {k:"h3", t:"Using the Tenses in Practice"},
+    {k:"p", t:"Practise the tenses in use: the **past continuous** for an action going on in the past — 'At six o'clock I **was reading**'; the **present simple** for what is habitual or always true — 'The sun **rises** in the east'; the **past simple** for a finished action — 'We **visited** the farm last week'; and the **future** with shall and will — 'She **will travel** in May.' Use verbs in these tenses correctly and consistently in speech and writing."},
+    {k:"rule"},
+    {k:"h3", t:"Writing Essays"},
+    {k:"p", t:"**Selecting writing topics**: choose one that is limited enough to cover, worth saying, and fitted to your reader. The **thesis statement** is the central idea of the essay, stated in one sentence in the opening paragraph — every other sentence must serve it. The **organization of the essay** runs introduction, body paragraphs one point at a time, and conclusion. **Unity** keeps every paragraph on the thesis; **coherence** joins them in order; **mechanics** — spelling, punctuation, capitalisation — polish the whole. Identify the thesis statement of an essay and the supporting ideas in each body part that relate to it, then formulate thesis statements on various topics."},
+    {k:"rule"},
+    {k:"h3", t:"Dictionary Skills"},
+    {k:"p", t:"Use the dictionary effectively in defining words. Its keys: **words are arranged in alphabetical order**, letter by letter; the **guide words** at the top of every dictionary page show the first and last entries on that page; the **entry** gives the spelling, the pronunciation, the part or parts of speech, the meanings numbered by sense, and an example. Find a word by its guide words, then read its parts of speech and choose the meaning that fits the sentence."},
+  ],
+
   focus:[
     "Using past continuous, present simple, past simple and future tenses",
     "Selecting writing topics",
@@ -948,6 +1110,21 @@ var EG_CURRICULUM = [
     "Correct commonly misspelled words"
   ],
   note:"A <b>prefix</b> is added before a root and changes meaning (<i>un-, dis-, pre-</i>); a <b>suffix</b> is added after and usually changes the part of speech (<i>-ness, -ly, -tion</i>). Key spelling rules: <b>i before e except after c</b>; drop a silent <b>e</b> before a vowel suffix; change <b>y</b> to <b>i</b> after a consonant; and double a final consonant after a short stressed vowel.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Vocabulary and Spelling (guide pp. 20-21) ---- */
+    {k:"h3", t:"Synonyms, Antonyms and Homophones"},
+    {k:"p", t:"**Synonyms** are words of nearly the same meaning — begin, start, commence. **Antonyms** are opposites — generous, stingy. **Homophones** sound alike but differ in spelling and meaning — their/there, peace/piece, flour/flower. **Homographs** are spelled alike but differ in meaning or sound — the wind blows; wind the clock. Discuss each kind with examples, and generate your own lists."},
+    {k:"rule"},
+    {k:"h3", t:"Prefixes, Roots and Suffixes"},
+    {k:"p", t:"A **prefix** is a fixed beginning that changes a word's meaning — **un-** (not), **re-** (again), **dis-** (opposite), **pre-** (before), **mis-** (wrongly). A **suffix** is a fixed ending that changes its kind or meaning — **-ness** makes a noun, **-ful** and **-less** make adjectives, **-ly** makes an adverb, **-er/-or** name the doer. A **root** is the heart of the word carrying the core meaning — **port** (carry) in transport, import, porter; **spect** (look) in inspect, respect. Analyse word parts to arrive at meaning, distinguish a **base word** (a whole English word — play) from a **root** (a core that may not stand alone — port), and write words with prefixes and suffixes, exploring roots as a way to unlock unfamiliar words."},
+    {k:"rule"},
+    {k:"h3", t:"Using Context Clues"},
+    {k:"p", t:"A **context clue** is a hint in the sentence around an unfamiliar word: a definition or restatement, an example, a comparison or a contrast, or the general sense of the passage. 'The soil was **arid**, so dry that nothing grew' — the clause itself defines the word. Use context clues to arrive at word meanings, and take turns constructing sentences that contain them."},
+    {k:"rule"},
+    {k:"h3", t:"Spelling Rules and Commonly Misspelled Words"},
+    {k:"p", t:"Apply the **spelling rules**: i before e except after c — believe, receive; drop the final e before a vowel ending — hope, hoping, but hopeful; double the final consonant after a short vowel — stop, stopping; change y to i before an ending — easy, easier. Review the **commonly misspelled words** for proper spellings — accommodation, beginning, definite, embarrass, necessary, occasion, receive, tomorrow, until, writing — and drill them until they are secure."},
+  ],
+
   focus:[
     "Synonyms, antonyms, homophones and homographs",
     "Prefixes and their meanings",
@@ -1048,6 +1225,21 @@ var EG_CURRICULUM = [
     "Use scanning and skimming appropriately"
   ],
   note:"A <b>card catalogue</b> lists every item by <b>author, title</b> and <b>subject</b>, each card giving the <b>call number</b> that locates the book on the shelf. <b>Skimming</b> means reading quickly for the general sense; <b>scanning</b> means searching for one specific item. The <b>SQ4R</b> method is <b>Survey, Question, Read, Record, Recite, Review</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Library Skills and Reading Comprehension (guide pp. 22-23) ---- */
+    {k:"h3", t:"Using the Card Catalog and the Online Catalog"},
+    {k:"p", t:"The **card catalog** — or the **online catalog (OPAC)** in a modern library — is the index to everything the library holds. Each card or record lists the author, the title, the subject, the place, publisher and date, and above all the **call number**, the shelf address that shows where the book stands. The **information in the catalog**: author and title entries in alphabetical order and subject entries by topic; the **materials in the library** — books, reference works, journals, maps and digital media — each found through the same catalog. Demonstrate the use of the catalog to find materials in the library, and set up a class library with a librarian and a card catalog of poster sheets, role-playing a search."},
+    {k:"rule"},
+    {k:"h3", t:"Reading Comprehension"},
+    {k:"p", t:"Answer two kinds of question from a given text. **Direct questions** are answered straight from the page — who, what, where, when. **Critical thinking questions** ask you to read between and beyond the lines: infer the cause, judge the character, predict the outcome, draw the conclusion. Read passages and provide correct answers to both kinds."},
+    {k:"rule"},
+    {k:"h3", t:"Active Reading: Before, During and After"},
+    {k:"p", t:"**Active reading** engages the reader at every stage: activity **before reading** — survey the title and headings, recall what you already know, ask what you want to find out; activity **when reading** — underline key points, note new words, question the author, summarise section by section; activity **after reading** — retell, answer your questions, and review your notes."},
+    {k:"rule"},
+    {k:"h3", t:"Scanning, Skimming and the SQ4R Method"},
+    {k:"p", t:"**Scanning** searches the page for a particular fact — a name, a date, a figure — moving the eye quickly down the page. **Skimming** moves fast over the whole text to catch the main idea and the shape, reading headings, first and last lines. The **SQ4R method** orders serious study: **Survey** the whole text; **Question** each heading; **Read** for the answers; **Record** the answers in notes; **Recite** them from memory; **Review** them again later. Discuss and explain these reading methods and apply each to passages in class."},
+  ],
+
   focus:[
     "Using the card catalogue or online catalogue",
     "Call numbers and information in the catalogue",
@@ -1149,6 +1341,21 @@ var EG_CURRICULUM = [
     "Write reports and present them for critical evaluation"
   ],
   note:"A <b>formal letter</b> has the <b>writer's address</b> and date, the <b>recipient's address</b>, a <b>salutation</b>, the <b>body</b> and a <b>subscription</b>. Begin <i>Dear Sir/Madam</i> and end <i>Yours faithfully</i>; begin <i>Dear Mr Kollie</i> and end <i>Yours sincerely</i>. An <b>informal letter</b> needs only the writer's address, date, greeting, body and a friendly close.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Letter, Speech and Report Writing (guide pp. 24-25) ---- */
+    {k:"h3", t:"Informal Letters"},
+    {k:"p", t:"The **informal letter** goes to someone you know well — family or friend. Its five parts: the **writer's address and date** at the top right; the **salutation** — Dear Mama, Dear Kwi; the **body** in a friendly, conversational tone, one topic to a paragraph; the **closing** — Yours sincerely, Your son, With love; and the **signature**. Language may be warm and free, but spelling and punctuation still stand."},
+    {k:"rule"},
+    {k:"h3", t:"Formal and Business Letters"},
+    {k:"p", t:"The **formal/business letter** goes to an official, a firm or a stranger, and its language is polite and exact. Its parts: the **sender's address** and date; the **receiver's address**; the **salutation** — Dear Sir/Madam, Dear Mr Doe; the **body**, brief and to the point, stating your business in the first paragraph; the **closing** — Yours faithfully when no name is used, Yours sincerely when it is; and the **signature and full name**. Among its kinds: the **letter of application**, which applies for a job — state the post sought, your qualifications, your experience, your referees; and the **letters of excuse, request and thanks** — state the matter at once, give the reason or request plainly, and close courteously. Construct each kind in groups."},
+    {k:"rule"},
+    {k:"h3", t:"Speech Writing"},
+    {k:"p", t:"A **speech** is written to be heard. It opens with a greeting to the audience; states its subject early; develops two or three points in plain, forceful language, with examples they know; and closes with a short, memorable call. Write speeches on set topics, then deliver them for critical evaluation."},
+    {k:"rule"},
+    {k:"h3", t:"Report Writing, Oral Reading and Listening"},
+    {k:"p", t:"A **report** records an event, a visit or an investigation: its title, its date and place, its findings arranged under headings, its conclusion and any recommendation — all in the formal, impersonal style. Practise **oral reading and speaking** — clear voice, steady pace, eye contact — and **listening to speeches**, noting the main points and judging the delivery. Give **oral presentations for critical evaluation**, offering and receiving comment with respect."},
+  ],
+
   focus:[
     "Informal letters",
     "Formal and business letters",
@@ -1253,6 +1460,21 @@ var EG_CURRICULUM = [
     "Summarise passages"
   ],
   note:"Pronouns take three <b>cases</b>. The <b>nominative</b> (<i>I, he, she, we, they, who</i>) is used for subjects and after linking verbs. The <b>objective</b> (<i>me, him, her, us, them, whom</i>) is used for objects of verbs and prepositions. The <b>possessive</b> (<i>my, his, her, our, their, whose</i>) shows ownership and never takes an apostrophe.",
+  study:[
+    /* ---- course text: Semester One, Period I — The Three Cases of Pronouns and Perfect Tenses; Speeches and Summary (guide pp. 26-27) ---- */
+    {k:"h3", t:"The Three Cases of Pronouns"},
+    {k:"p", t:"Every personal pronoun stands in one of three **cases**. The **nominative (subjective) case** — I, we, he, she, they, who — is used as the subject of a verb or after a linking verb: '**She** won the prize'; 'It was **he**.' The **objective case** — me, us, him, her, them, whom — is used as the object of a verb or of a preposition: 'The teacher praised **her**'; 'Give the book to **me**.' The **possessive case** — my, mine, our, ours, his, her, hers, their, theirs, whose — shows ownership: '**Her** book; the book is **hers**.' Differentiate the three cases, provide examples, and use each correctly — never 'between you and I', but 'between you and me'."},
+    {k:"rule"},
+    {k:"h3", t:"Verb Usage: the Perfect Tenses and their Progressives"},
+    {k:"p", t:"In a contrived scenario, use the appropriate tense. The **present perfect** — 'She **has finished** the test' — links past action to the present. The **present perfect progressive** — 'He **has been farming** since dawn' — for an action begun in the past and still going on. The **past perfect** — 'The train **had gone** before we reached the station' — the earlier of two past actions. The **past perfect progressive** — 'They **had been waiting** for an hour when the bus came.' The **future perfect** — 'By June we **shall have completed** the syllabus.' The **future perfect progressive** — 'By then she **will have been teaching** for twenty years.' Construct speeches and compositions using the perfect tenses correctly."},
+    {k:"rule"},
+    {k:"h3", t:"Speeches: Kinds, Writing and Delivery"},
+    {k:"p", t:"Recognise the different **kinds of speeches** and their identifying characteristics: the **informative** speech explains; the **persuasive** speech urges; the **entertaining** speech amuses; the **extemporaneous** speech is prepared in outline and delivered from notes. Read one of each kind and say what marks it. Then develop and present speeches regularly on socio-economic issues, risky behaviours, teenage pregnancy, drug and alcohol abuse, and gender-based violence."},
+    {k:"rule"},
+    {k:"h3", t:"Summary Writing"},
+    {k:"p", t:"A **summary** gives the main ideas of a passage in your own words, in far fewer words, keeping the original sense and order. Method: read the passage through; find the topic sentence of each paragraph; strip away examples, repetitions and detail; write the essentials in your own words; and check that nothing important is lost and nothing added. Read given texts and summarise them."},
+  ],
+
   focus:[
     "The nominative, objective and possessive cases",
     "Who and whom",
@@ -1353,6 +1575,18 @@ var EG_CURRICULUM = [
     "Review the five principal parts of a verb and the six tenses"
   ],
   note:"<b>Prose</b> is ordinary written language; <b>poetry</b> is arranged in lines and uses rhythm, imagery and often rhyme; <b>drama</b> is written to be performed, in dialogue with stage directions. Useful devices: <b>simile</b> (<i>like</i> or <i>as</i>), <b>metaphor</b> (direct comparison), <b>personification</b>, <b>alliteration</b> and <b>imagery</b>.",
+  study:[
+    /* ---- course text: Semester One, Period II — Poem, Prose, Drama and Review of Verb Usage (guide pp. 28-29) ---- */
+    {k:"h3", t:"Review of Essay Writing"},
+    {k:"p", t:"Recall the essay: a clear thesis in the opening, body paragraphs one point at a time, a conclusion that gathers the argument — all in unity, coherence and correct mechanics. Review your own past essays against that measure and repair them."},
+    {k:"rule"},
+    {k:"h3", t:"Creative Writing: Poem, Story and Drama"},
+    {k:"p", t:"Create an **original work of art**. The **poem** is written in lines and stanzas, with imagery, rhythm and often rhyme — say something true in words that sing. The **short story** narrates imagined events through character, setting and plot. The **drama** is written in dialogue and stage directions to be acted — the script gives each character words to speak and the stage directions tell what is seen and done. Working in groups, write poems, plays or short stories using imagination and creativity, and read them to the class."},
+    {k:"rule"},
+    {k:"h3", t:"Review of Verb Usage: the Principal Parts and Six Tenses"},
+    {k:"p", t:"Review the **five forms (principal parts) of a verb** — base (start), s-form (starts), ing-form (starting), past (started), past participle (has/have started) — and gain more practice in using the tenses: **present simple, past simple, future simple, present perfect, past perfect, future perfect**. In groups, drill the parts and tenses until each is automatic in writing."},
+  ],
+
   focus:[
     "Review of essay writing",
     "Creative writing: poem, short story and drama",
@@ -1454,6 +1688,21 @@ var EG_CURRICULUM = [
     "Practise speech development and oral delivery"
   ],
   note:"A <b>phrasal verb</b> is a verb plus a preposition or adverb whose meaning is not obvious from the parts: <i>put off</i> means postpone. Common confusions to master: <b>affect / effect, its / it's, their / there / they're, accept / except, advice / advise, principal / principle, lie / lay, fewer / less</b>.",
+  study:[
+    /* ---- course text: Semester One, Period III — Phrasal Verbs, Common Mistakes and Past WASSCE Papers (guide pp. 30-31) ---- */
+    {k:"h3", t:"Review of Phrasal Verbs"},
+    {k:"p", t:"A **phrasal verb** is a verb plus a particle with a meaning of its own: **give up** (surrender), **put off** (postpone), **look into** (investigate), **carry on** (continue), **turn down** (refuse), **run out of** (use up). Construct compositions using proper phrasal verbs, and beware the ones whose meaning cannot be guessed — learn each as one item."},
+    {k:"rule"},
+    {k:"h3", t:"Review of Common Mistakes and Troublesome Words"},
+    {k:"p", t:"Discuss and review **troublesome words and common mistakes** — the pairs writers confuse: its/it's; their/there/they're; to/too/two; than/then; affect/effect; accept/except; advice/advise; principal/principle; stationary/stationery; lose/loose. Behind them lie the classic errors: 'he don't' for 'he doesn't'; 'I have seen him yesterday' for 'I saw him yesterday'; double negatives — 'I don't know nothing'; 'between you and I' for 'between you and me'. Demonstrate the correct use of words to avoid common mistakes in speech and writing."},
+    {k:"rule"},
+    {k:"h3", t:"Review of Past WASSCE Papers"},
+    {k:"p", t:"Review **past WASSCE papers** in preparation for public test taking: answer the objective items against the clock; plan and write the essay in the required form; and take the comprehension and cloze sections with close attention. Assign time to each section in proportion to its marks, and mark your own work against the examiner's report."},
+    {k:"rule"},
+    {k:"h3", t:"Speech Development, Oral Practice and Test Tips"},
+    {k:"p", t:"Continue **speech development and oral practice**: write speeches and present them in the classroom for critical evaluation — voice, pace, contact, argument. Tips for taking public tests: read every instruction twice; answer the questions asked, not the ones you hoped for; budget the time; attempt every question; leave minutes to check the paper through."},
+  ],
+
   focus:[
     "Review of phrasal verbs",
     "Common mistakes and troublesome words",
@@ -1552,6 +1801,21 @@ var EG_CURRICULUM = [
     "Evaluate different kinds of writing in the classroom"
   ],
   note:"There are four principal kinds of essay. <b>Narrative</b> tells a story in sequence. <b>Descriptive</b> creates a picture through sensory detail. <b>Expository</b> explains or informs, with no argument. <b>Persuasive</b> argues a case with evidence and answers the opposing view. Every essay needs an <b>introduction, body</b> and <b>conclusion</b>, with unity and coherence throughout.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Essay Writing, Creative Writing and Verb Usage (guide pp. 32-33) ---- */
+    {k:"h3", t:"Reviewing Essay Writing: the Expositions"},
+    {k:"p", t:"Review the forms of the essay. In groups of five, write **expositions** — the **essay** that explains a subject point by point; the **narrative** that tells a story with beginning, middle and end; the **descriptive** that paints a scene with the senses; and the **persuasive** that argues one side of a question to move the reader. Evaluate the different kinds of writings in the classroom against their forms."},
+    {k:"rule"},
+    {k:"h3", t:"Creative Writing"},
+    {k:"p", t:"Return to **creative writing** — poem, story, drama — and use the principal parts of a verb properly in given texts: the base form after modals, the s-form for he, she and it, the ing-form in the progressive, the past for finished actions, and the past participle with have, has, had and in the passive."},
+    {k:"rule"},
+    {k:"h3", t:"Review of Verb Usage"},
+    {k:"p", t:"Review the **five forms / principal parts of a verb** and the tenses built on them — **present simple, past simple, future simple, present perfect, past perfect, future perfect** — until each is used without hesitation in given texts and in your own writing."},
+    {k:"rule"},
+    {k:"h3", t:"Speech Development and Oral Practice"},
+    {k:"p", t:"Compose different kinds of **speeches** and develop and deliver **public speeches**: prepare thoroughly, open strongly, signpost the points, close memorably — and judge one another's delivery fairly in class evaluation."},
+  ],
+
   focus:[
     "Review of essay writing",
     "Narrative, descriptive, expository and persuasive essays",
@@ -1650,6 +1914,21 @@ var EG_CURRICULUM = [
     "Solicit feedback and apply corrective measures"
   ],
   note:"Four kinds of <b>context clue</b> help with an unknown word: a <b>definition</b> in the sentence, a <b>synonym</b> nearby, an <b>antonym</b> signalled by <i>but</i> or <i>unlike</i>, and an <b>example</b> introduced by <i>such as</i>. A sentence is <b>simple</b> (one independent clause), <b>compound</b> (two joined), <b>complex</b> (one independent and one dependent) or <b>compound-complex</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Review of Vocabulary, Phrases and Clauses (guide pp. 34-35) ---- */
+    {k:"h3", t:"Review of Vocabulary Development"},
+    {k:"p", t:"Review **vocabulary development through rehearsal exercises**: the weekly words, their spellings and meanings; synonyms, antonyms and homophones; prefixes, roots and suffixes unlocking unfamiliar words. Group work: solicit feedback on one another's vocabulary and provide corrective measures where words are misused."},
+    {k:"rule"},
+    {k:"h3", t:"Improved Use of Context Clues"},
+    {k:"p", t:"Demonstrate the improved use of **context clues** in learning vocabulary: definition clues, example clues, comparison and contrast clues, and the sense of the whole passage. Divide the class to review and discuss context clues and drill them on fresh passages until inferring meaning is a habit."},
+    {k:"rule"},
+    {k:"h3", t:"Improved Application of Spelling Rules"},
+    {k:"p", t:"Review the **spelling rules** — i before e except after c; drop the final e before a vowel ending; double the final consonant after a short vowel; change y to i before an ending — together with the list of commonly misspelled words. Apply them in every piece of writing, and construct stories, speeches and other documents that are correctly spelled throughout."},
+    {k:"rule"},
+    {k:"h3", t:"Review of Phrases and Clauses"},
+    {k:"p", t:"In groups of five, review and discuss **phrases and clauses**: the noun phrase and verb phrase; the verbal phrases — participle, gerund, infinitive; the prepositional phrase; and the clauses — independent; dependent; noun, adjective and adverb clauses. Construct sentences that use each, correctly punctuated — the comma after an introductory phrase, no comma between two verbs sharing one subject."},
+  ],
+
   focus:[
     "Review of vocabulary development",
     "Context clues: definition, synonym, antonym, example",
@@ -1748,6 +2027,26 @@ var EG_CURRICULUM = [
     "Rehearse continuously with past papers to build confidence"
   ],
   note:"Work systematically through the paper. Read the <b>rubric</b> first and note how many questions are compulsory. <b>Allocate time by the marks</b>: a 20-mark essay deserves four times the minutes of a 5-mark question. Attempt every required question — an unanswered question scores <b>zero</b>, while even a partial answer earns something. Leave five minutes at the end to proofread.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — WASSCE Review and Examination Technique (guide pp. 36-37) ---- */
+    {k:"h3", t:"Why Review Past Papers"},
+    {k:"p", t:"The WASSCE papers return year after year to the same syllabus and the same forms of question: **objective** items testing lexis and structure; the **essay** offering narrative, descriptive, argumentative and letter-writing topics; and **comprehension and summary** passages with their questions. Reviewing past WASSCE papers, in groups and alone, trains the hand and the eye to the standard and shows exactly what the examiner rewards."},
+    {k:"rule"},
+    {k:"h3", t:"How to Work Through a Paper"},
+    {k:"num", items:[
+      "Read the instructions twice and obey them exactly — the rubric is part of the paper",
+      "Budget the time in proportion to the marks, section by section, and keep to it",
+      "In the objective section, answer every item — eliminate the impossible options and choose the best",
+      "In the essay section, choose the topic you know best, plan it for three minutes, then write to the plan in the form the question demands",
+      "In comprehension, read the passage first, then the questions, then return to the passage for the answers — in your own words where required",
+      "In summary, keep only the main ideas, in your own words, within the word limit",
+      "Attempt every question; never leave a blank",
+      "Reserve the last minutes to check spelling, punctuation, grammar and omissions"]},
+    {k:"rule"},
+    {k:"h3", t:"Continuous Rehearsal to the End"},
+    {k:"p", t:"Assign yourselves continuous rehearsal of past WASSCE papers until the examination itself, so that responding to the questions becomes habit. Learners respond positively to questions in past WASSCE papers and make a successful pass in future examinations — that is the aim of this final review."},
+  ],
+
   focus:[
     "Review of nouns, pronouns and their cases",
     "Review of verbs, tenses and voice",

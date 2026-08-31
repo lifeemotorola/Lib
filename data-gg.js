@@ -4,6 +4,11 @@
    period they are merged into that period's unit, as the guide teaches them
    together.
 
+   Every unit carries a `study[]` block list — the course text of the guide,
+   rendered verbatim on the Study Notes page, with a comment noting the guide
+   pages covered. `**bold**` marks the key terms; table cells take no markup
+   because the renderer escapes them.
+
    Uses the SS_CURRICULUM unit shape so GEN_SS renders it unchanged, plus the
    optional `worked` field (calculations with steps):
      grade · period · sem · icon · title · subtitle · outcomes[] · objectives[]
@@ -41,6 +46,35 @@ var GG_CURRICULUM = [
     "Explain the earth's rotation and revolution and their effects"
   ],
   note:"<b>Latitude</b> measures distance north or south of the Equator (0°); <b>longitude</b> measures distance east or west of the Prime Meridian (0°). Together they form the <b>graticule</b>. The earth turns 360° in 24 hours, so <b>15° of longitude = 1 hour</b> and <b>1° = 4 minutes</b>. Places east of the Greenwich Meridian are <b>ahead</b> in time; places west are <b>behind</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — The Earth as a Planet; Latitude, Longitude and Time (guide pp. 2-7) ---- */
+    {k:"h3", t:"The Formation and Composition of the Universe"},
+    {k:"p", t:"The **universe** is all matter and energy everywhere — galaxies, stars, planets, dust and the space between. It formed some 14 billion years ago in the **Big Bang** and has been expanding since; its composition is chiefly the light gases hydrogen and helium, gathered into **galaxies** of billions of stars. Our own star, the **sun**, with its family of planets, lies in the Milky Way galaxy. Life on earth is possible because of the earth's planetary position in space — near enough to the sun for warmth, far enough to keep its water and its atmosphere."},
+    {k:"rule"},
+    {k:"h3", t:"The Solar System: Formation, Structure and the Planets"},
+    {k:"p", t:"The **solar system** formed about 4.6 billion years ago from a great spinning cloud of gas and dust that flattened into a disc; the sun gathered most of the mass at the centre and the planets formed from what circled it. Its **structure**: the sun at the centre, then the planets in orbit around it — **Mercury, Venus, Earth, Mars** (the inner, rocky planets), then **Jupiter, Saturn, Uranus and Neptune** (the giant outer planets) — with moons, asteroids, comets and dust between. Draw a diagram of the solar system showing the planets in orbit around the sun."},
+    {k:"rule"},
+    {k:"h3", t:"The Moon and its Impact"},
+    {k:"p", t:"The **moon** is the earth's only natural satellite, turning on its axis in the same time it takes to circle the earth, so the same face always looks at us. Its **phases** — new moon, crescent, first quarter, gibbous, full moon and back — follow its revolution about the earth in about 29½ days, as we see differing amounts of its sunlit side. Its **impact**: it raises the ocean **tides**, steadies the tilt of the earth's axis, and lightens the night sky. Demonstrate the moon's rotation and revolution by walking around a chair with one side of the body always facing it, and draw the phases of the moon."},
+    {k:"rule"},
+    {k:"h3", t:"The Shape and Size of the Earth"},
+    {k:"p", t:"The earth's shape is a slightly flattened sphere — an **oblate spheroid**, flattened at the poles and bulging at the equator. Its dimensions: the **equatorial circumference** about 40 075 km; the **polar circumference** about 40 008 km; the **equatorial diameter** about 12 756 km; the **polar diameter** about 12 714 km — a difference of about 42 km, small but real proof of the flattening. Measure the two circumferences and diameters of an orange or an egg with string and ruler as a model."},
+    {k:"p", t:"The **proof of the earth's spherical shape**: **circumnavigation of the earth** — sail or fly ever in one direction and you return to your starting point; the **lunar eclipse**, when the earth's shadow cast on the moon is always round; the **earth's curved horizon**, with distant ships appearing mast first; the **apparent sunrise and sunset**, the sun appearing and vanishing at different times in different places; **aerial photographs** from aircraft and spacecraft; and the **Bedford canal experiment**, in which a boat's hull vanished before its mast down a straight stretch of water. Plant three poles of equal height on level ground and observe the curved shadow line as further inferential proof."},
+    {k:"rule"},
+    {k:"h3", t:"Lines of Latitude"},
+    {k:"p", t:"**Latitude** is the angular distance of a place north or south of the **Equator**, the great circle at 0°. The **major lines of latitude**: the Equator (0°); the Tropic of Cancer (23½° N) and the Tropic of Capricorn (23½° S); the Arctic Circle (66½° N) and the Antarctic Circle (66½° S); and the North and South Poles (90°). **Characteristics**: latitudes run east to west, are parallel, never meet, and grow shorter toward the poles; all except the Equator are **small circles**. **Uses** of latitude: locating places, describing climate zones and calculating distance — one degree of latitude is about 111 km. **Linear distance calculation**: distance = difference in latitude × 111 km."},
+    {k:"rule"},
+    {k:"h3", t:"Lines of Longitude"},
+    {k:"p", t:"**Longitude** is the angular distance of a place east or west of the **Prime (Greenwich) Meridian** at 0°, measured to 180° E and 180° W. **Characteristics**: meridians run from pole to pole, are of equal length, and converge at the poles; they cross the Equator at right angles. **Great and small circles**: a great circle divides the earth into two equal halves — the Equator and every meridian circle with its partner on the far side; all other circles are small. **Uses** of longitude: locating places and calculating **local time**, for the earth turns 360° in 24 hours — **15° of longitude = 1 hour, and 1° = 4 minutes**; places east of Greenwich are ahead in time, places west behind. **Local time calculation**: multiply the difference in longitude by 4 minutes per degree and add or subtract as the direction requires."},
+    {k:"rule"},
+    {k:"h3", t:"The Graticule and the Kinds of North"},
+    {k:"p", t:"The **graticule** is the network of intersecting lines of latitude and longitude drawn over the globe — the grid by which every place on earth is fixed. Set within it are the different **norths**: the **North and South Poles** at the ends of the axis; **true north** toward the geographic pole along a meridian; **magnetic north**, to which the compass needle points; **grid north**, the direction of the northings on a map sheet; and the **magnetic declination**, the angle between true north and magnetic north at a place, which the navigator must correct."},
+    {k:"rule"},
+    {k:"h3", t:"The Earth's Movements"},
+    {k:"p", t:"The earth's **rotation** is its turning on its axis from west to east once in 24 hours. Its **effects**: the alternation of **day and night**; the apparent movement of the sun across the sky; the difference of local time from place to place; and, with the Ferrel deflection, the bending of winds and currents. The earth's **revolution** is its journey around the sun in its **orbit**, once in 365¼ days, at a tilt of 23½° from the plane of the orbit. The terms associated with revolution: the **orbit, axis, inclination (axial tilt), the solstices** of 21 June and 22 December, when the sun is overhead at a tropic, and the **equinoxes** of 21 March and 23 September, when day and night are equal everywhere. The **effects of revolution**: the **seasons** and the varying length of day and night through the year."},
+    {k:"p", t:"**Ferrel's law of deflection**: moving air and water are deflected to the right in the northern hemisphere and to the left in the southern, because of the earth's rotation — the trade winds and the great ocean currents all bend to this law. An **eclipse** is the hiding of one heavenly body by another or by the earth's shadow. A **solar (sun) eclipse** forms when the moon passes between the sun and the earth, casting its shadow on the earth; a **lunar (moon) eclipse** forms when the earth passes between the sun and the moon, so the earth's shadow falls on the moon. Illustrate both by diagrams, and distinguish carefully between them."},
+  ],
+
   focus:[
     "Formation and composition of the universe and the solar system",
     "The planets; the moon, its phases and its impact",
@@ -184,6 +218,28 @@ var GG_CURRICULUM = [
     "Describe the mode of formation of each rock type and state its economic importance"
   ],
   note:"The earth's <b>external structure</b> comprises four spheres: the <b>atmosphere</b> (air), the <b>hydrosphere</b> (water), the <b>lithosphere</b> (rock) and the <b>biosphere</b> (life). Its <b>internal structure</b> has three layers: the thin <b>crust</b>, the <b>mantle</b>, and the dense <b>core</b>. Rocks fall into three groups: <b>igneous</b> from cooled magma, <b>sedimentary</b> from deposited material, and <b>metamorphic</b> from rock altered by heat and pressure.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Structure of the Earth and its Rocks (guide pp. 8-9) ---- */
+    {k:"h3", t:"The External Structure of the Earth"},
+    {k:"p", t:"Externally the earth is a set of spheres. The **atmosphere** is the envelope of gases — chiefly nitrogen and oxygen — that gives the air, the weather and protection from the sun's radiation. The **hydrosphere** is all the water: oceans, seas, rivers, lakes and groundwater. The **biosphere** is the thin layer of life where air, water and land meet. The **lithosphere** is the solid rocky outer layer of the earth. Study the characteristics of each sphere, their importance to living organisms, and the relationship within and among the spheres — the water cycle linking hydrosphere and atmosphere, plants binding lithosphere and biosphere, weathering wearing rock into soil."},
+    {k:"rule"},
+    {k:"h3", t:"The Internal Structure of the Earth"},
+    {k:"p", t:"Internally the earth is divided into layers. The **crust** is the thin outer skin of rock — 5 to 70 km thick — on which we live. The **mantle** beneath it, some 2 900 km thick, is hot, semi-plastic rock whose slow movement drives the drifting continents. The **core**, at the centre, has a liquid outer part and a solid inner part of iron and nickel, and it gives the earth its magnetism. Draw a simplified diagram of the earth's internal and external structure to show the layers, and model the internal structure in clay."},
+    {k:"rule"},
+    {k:"h3", t:"Rocks and Minerals"},
+    {k:"p", t:"A **mineral** is a natural, pure substance with a composition of its own — quartz, feldspar, mica; a **rock** is any natural mass of mineral matter, of one mineral or many. Distinguish the two, then classify rocks by their **mode of formation** into the three great families."},
+    {k:"rule"},
+    {k:"h3", t:"The Three Types of Rocks"},
+    {k:"table", head:["Rock family","Mode of formation","Examples","Chief uses"], rows:[
+     ["Igneous","Cooled and hardened from molten magma — plutonic (granite) below, volcanic (basalt, pumice) at the surface","granite, basalt, obsidian, pumice","Building stone, road metal, monuments"],
+     ["Sedimentary","Laid down as sediments in water or air, then compressed and cemented — stratified, often fossil-bearing","sandstone, limestone, shale, conglomerate","Building, cement from limestone, fuel from coal"],
+     ["Metamorphic","Existing rock changed by heat and pressure into a new form","marble, slate, gneiss, quartzite","Marble for building, slate for roofing"]]},
+    {k:"p", t:"The characteristics of a rock are judged by its **texture, structure, colour and permeability** — coarse or fine grains, layered or massive, light or dark, passing water or holding it. Collect different rock samples from the community, classify them by type, and discuss their hardness, colour, mode of formation and uses."},
+    {k:"rule"},
+    {k:"h3", t:"The Importance of Rocks to Man"},
+    {k:"p", t:"Rocks matter to man: they are the parent material of all **soils**; a source of **building stone, road metal and cement**; the store of **mineral wealth** — iron, gold, diamonds and the fuels coal and petroleum, all won from rock; the aquifer that holds underground water; and the scenery and soils on which farming and settlement depend."},
+  ],
+
   focus:[
     "External structure: atmosphere, hydrosphere, biosphere, lithosphere",
     "Characteristics and importance of each sphere",
@@ -320,6 +376,28 @@ var GG_CURRICULUM = [
     "Explain the consequences of migration in source and receiving regions"
   ],
   note:"<b>Population density</b> = total population ÷ land area. <b>Overpopulation</b> means numbers exceed the resources available; <b>underpopulation</b> means too few people to develop the resources; <b>optimum population</b> gives the highest output per head. Settlements are <b>nucleated</b> (clustered), <b>dispersed</b> (scattered) or <b>linear</b> (strung along a route). Migration has <b>push</b> factors driving people out and <b>pull</b> factors drawing them in.",
+  study:[
+    /* ---- course text: Semester One, Period III — World Population, Settlement and Migration (guide pp. 10-13) ---- */
+    {k:"h3", t:"World Population"},
+    {k:"p", t:"**World population** is the total number of people living on the earth — now past eight billion and still growing. Its **characteristics**: uneven spread over the globe, rapid growth in the poorer countries, and ageing in the richer ones. The **terms associated with population growth**: birth rate, death rate, fertility rate, natural increase, growth rate, population density, census. The **factors affecting population growth**: the birth rate, the death rate, migration, early marriage, the status of women, health care and education. The **reasons for the rapid growth** of world population: falling death rates through modern medicine, better food and safer water — while birth rates stay high."},
+    {k:"rule"},
+    {k:"h3", t:"The Pattern of World Population Distribution"},
+    {k:"p", t:"The **pattern of world population distribution** divides into the **densely populated areas** — East and South Asia, Western Europe, the Nile valley, the coast of West Africa — where soil, water, climate and jobs favour settlement; the **moderately populated areas**; and the **sparsely populated areas** — the hot deserts, the cold polar lands, the high mountains and the dense equatorial forests — where one or more of those favours is missing. Draw population maps indicating densely and sparsely populated regions."},
+    {k:"p", t:"Distinguish **overpopulation**, where the people outnumber the resources to support them well, from **under-population**, where resources wait for want of people. The **advantages of high density**: a large labour force, a wide market, cheaper services; its **disadvantages**: pressure on land, housing, schools and jobs. The **advantages of low density**: room and resources; the **disadvantages**: thin labour, costly services, small markets. List some overpopulated and underpopulated counties and countries."},
+    {k:"rule"},
+    {k:"h3", t:"Population Control and Family Planning"},
+    {k:"p", t:"**Population control** means keeping population growth in step with resources. **Family planning** — spacing and limiting births by choice — and the **empowerment of women**, through education, work and a voice in decisions, are its chief means: where girls stay in school and women can decide, birth rates fall and families prosper. Debate population control in relation to family planning and women's empowerment."},
+    {k:"rule"},
+    {k:"h3", t:"Settlement: Site, Situation and Classification"},
+    {k:"p", t:"A **settlement** is any place where people live. Its **site** is the actual ground it occupies — dry land near water, a river crossing, a hill for defence; its **situation** is its position relative to other places. The factors affecting the **sitting and growth** of settlement: water supply, fertile soil, relief and drainage, transport routes, safety, and resources and trade. Settlements are classified by **type** — **urban** (towns and cities) and **rural** (villages and farm lands); by **pattern** — **nucleated** (clustered), **linear** (strung along a road, river or coast), **dispersed** (scattered) and **isolated**; by **function** — commercial, religious, administrative, industrial, educational, residential; and by **size** — the **city, town, metropolis** and **satellite town**, and at the rural end the **homestead, hamlet and farmstead**. State the reasons for each pattern, and identify the functions of rural and urban settlements and their contributions to mankind."},
+    {k:"rule"},
+    {k:"h3", t:"Urbanization"},
+    {k:"p", t:"**Urbanization** is the growing share of people living in towns. Its **causes**: natural increase in the towns and the influx of migrants seeking jobs, schools and services. Its **problems**: overcrowded housing and slums, unemployment, congestion, crime, pressure on water, power and sanitation, and pollution. Its **solutions**: planning, housing schemes, rural development to slow migration, and decentralisation of jobs and services."},
+    {k:"rule"},
+    {k:"h3", t:"Migration"},
+    {k:"p", t:"**Migration** is the movement of people from one place to settle in another. Its **forms and types**: internal (within a country) — rural to urban; and external (international); permanent or seasonal; voluntary or forced. Its **causes** are the **push factors** — lack of jobs, land and services, insecurity, poor harvests — and the **pull factors** — jobs, education, health care, higher wages, family ties. Its **effects** fall on both ends: at the **source**, lost labour and broken families but remittances sent home; at the **receiving region**, growth of labour and market but pressure on housing and services. Its **controls**: balanced regional development, rural employment and services, and town planning. Outline the consequences of migration for source and receiving regions, and suggest solutions."},
+  ],
+
   focus:[
     "World population: definition, characteristics and size",
     "Factors affecting population growth",
@@ -460,6 +538,22 @@ var GG_CURRICULUM = [
     "Determine direction using the compass and bearing"
   ],
   note:"A <b>scale</b> states the relation between map distance and ground distance. It is given three ways: as a <b>representative fraction</b> (1:50 000), as a <b>statement</b> (1 cm to 500 m), or as a <b>linear scale</b> drawn as a bar. <b>Ground distance = map distance × scale denominator</b>. <b>Gradient = vertical rise ÷ horizontal distance</b>, expressed as 1 in n.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Map Reading and Map Scales (guide pp. 14-15) ---- */
+    {k:"h3", t:"The Map: Definition, Characteristics, Types and Uses"},
+    {k:"p", t:"A **map** is a drawing of the whole earth, or a part of it, on a flat surface, drawn to scale from above. Its **characteristics**: it is reduced, it is to scale, it uses conventional signs, and it looks down from above. Its **types** by purpose: **topographical maps** of the physical and human features of an area; **physical or relief maps**; **political maps** of boundaries; **road maps**; **weather maps**; **geological, demographic (population) and land-use maps**; and the **atlas**, a bound collection. Its **importance and uses**: to give information, to locate places and find positions and directions, to identify and interpret landscape, and to find distances and areas. Its **limitations**: it flattens a curved earth, it omits what is too small, it shows one moment in time, and its signs must be learned."},
+    {k:"rule"},
+    {k:"h3", t:"The Map Scale"},
+    {k:"p", t:"The **map scale** is the relationship between a distance on the map and the distance it stands for on the ground. Its three types: the **statement scale** in words — 'one centimetre to one kilometre' — simple to read but useless when the map is enlarged; the **representative fraction (RF)** — 1:50 000 — a ratio that survives enlargement, but demands working; and the **linear (graph) scale**, a printed line divided into kilometres, usable directly on any map but only at its own size. State the advantages and disadvantages of each."},
+    {k:"p", t:"The **conversion of map scales** carries one form into another: 1:50 000 means 1 cm = 50 000 cm = 500 m = 0.5 km. Apply the skills to **reduce and enlarge** maps, and to **calculate ground distances** — map distance × ground value of one centimetre — and **areas** by the grid square, remembering that area scales by the square of the linear scale."},
+    {k:"rule"},
+    {k:"h3", t:"Positions and Directions"},
+    {k:"p", t:"Discover the positions of places using the **grid system** of eastings and northings — or by **longitude and latitude** on the globe. Determine directions using the **compass** — the cardinal points and their sixteen intermediate points — and the **bearing**, the angle of a line measured clockwise from north. Draw the prismatic compass and illustrate its direction and bearing."},
+    {k:"rule"},
+    {k:"h3", t:"Gradient, Diagrams, Profiles and Sketches"},
+    {k:"p", t:"The **gradient of a slope** is its steepness, expressed as a ratio of vertical rise to horizontal distance — 1 in 20, say — or as a percentage or an angle. Calculate it from the heights and distances of a map. Design **diagrams, profiles and sketches** resulting from survey exercises: the field sketch drawn from one viewpoint, the annotated map, and the cross-section. Prepare an annotated map using the three types of map scale."},
+  ],
+
   focus:[
     "Definition, characteristics and types of maps",
     "Importance, uses and limitations of maps",
@@ -591,6 +685,30 @@ var GG_CURRICULUM = [
     "Describe the major environmental hazards, their effects, prevention and control"
   ],
   note:"Water covers about <b>71%</b> of the earth's surface and land about <b>29%</b>. An <b>ecosystem</b> is a community of organisms together with their non-living environment, linked by the <b>food chain</b> and the recycling of nutrients. <b>Soil erosion</b> is the removal of topsoil by water or wind; it is controlled by <b>contour ploughing, terracing, cover cropping</b> and <b>afforestation</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Environmental Science: Land, Water, Soils and Hazards (guide pp. 16-20) ---- */
+    {k:"h3", t:"Land and Water Distribution"},
+    {k:"p", t:"Diagram the earth's surface and you find the ratio of **land to water is about 1 : 3** — some 29 % of the globe is land, and 71 % water. The land is gathered into seven **continents** — Africa, Asia, Europe, North America, South America, Australia (Oceania) and Antarctica — with smaller land masses as **islands**. Only a small part of the land is **suitable for agriculture**: much is desert, tundra, mountain or forest. The water forms the **oceans** — Pacific, Atlantic, Indian, Arctic and Southern — the **seas**, the great **rivers** and **lakes**, and drowned river mouths such as **rias**. Name the continents and oceans on the world physical map."},
+    {k:"rule"},
+    {k:"h3", t:"Vegetation and Mineral Resources"},
+    {k:"p", t:"The **vegetation resources** of the land run from the equatorial rainforest through the savannas to the desert and the temperate forests; Liberia's share is rainforest, savanna and mangrove. The **mineral resources** include iron ore, gold, diamonds, bauxite, manganese, copper, coal, petroleum and uranium. **Case study — the mineral resources of Liberia, West Africa and other parts of Africa**: Liberia — iron ore at Nimba and Bong, gold and diamonds; Guinea — bauxite and iron; Sierra Leone — diamonds and rutile; Ghana — gold; Nigeria — petroleum; South Africa — gold, diamonds and coal."},
+    {k:"rule"},
+    {k:"h3", t:"The Environment"},
+    {k:"p", t:"The **environment** is everything around us — living and non-living. Its **types**: the natural environment and the built (human) environment; its **components** are the physical — air, water, land — the biological — plants and animals — and the social — people and their works. Its **domains** are the lithosphere, hydrosphere, atmosphere and biosphere. Its **importance**: it supplies every resource and every service life depends on. Its **problems**: pollution, erosion, deforestation, waste and the destruction of habitat. Discuss each, and the relevance of the atmosphere to living organisms and the challenges it poses."},
+    {k:"rule"},
+    {k:"h3", t:"Pollution of Land and Water"},
+    {k:"p", t:"**Land pollution** — its **sources**: household and market refuse, plastic waste, mining spoils, bush burning, the over-use of agricultural chemicals; its **effects**: spoiled soil, sick animals and people, choked drains; its **prevention and control**: proper refuse collection and burial, recycling, controlled burning, and care with chemicals. **Water pollution** — its **sources**: river contamination by chemicals such as **D.D.T.**, **industrial waste**, sewage, oil spillage and sand winning; its **effects**: disease, dying fish, unsafe drinking water. Its control: treatment of waste before discharge, laws enforced, and safe waste disposal. Identify the sources in your environment and outline the chemicals responsible for the contamination of water and land."},
+    {k:"rule"},
+    {k:"h3", t:"The Land Ecosystem"},
+    {k:"p", t:"The **land ecosystem** is the community of living things together with its soil, water and air. Its **components**: the producers (green plants), the consumers (animals) and the decomposers (bacteria and fungi), with the sun's energy flowing through the **food chain** — grass → grasshopper → frog → snake → hawk — and back into the soil. The **nitrogen cycle** circles that element from the air through the soil, plants and animals and back. **Land reclamation** wins back wasted land — drained swamps, reforested slopes. Name the elements that make up the ecosystem and identify its problems and their solutions."},
+    {k:"rule"},
+    {k:"h3", t:"Environmental Balance: Soils"},
+    {k:"p", t:"**Soil** is the loose upper layer of the land in which plants grow, formed from weathered rock, dead matter, water and air. The **types of soil** by texture — sand, clay, loam and their mixtures — are classified by their characteristics: feel, drainage, water-holding and fertility. The **factors involved in soil formation**: the parent rock, climate, relief, vegetation and living things, and time; its **processes** include **humification**, the turning of dead matter into humus, and **mineralization**, the release of minerals from it. **Soil fertility** is the soil's power to feed plants, kept by humus and the cycling of nutrients and lost by erosion and exhaustive cropping. The **importance of soil**: plant life, the provision of minerals, a source of raw materials, a base for construction, and a habitat for fauna and flora. Draw the soil profile and label its layers, and outline the different soil types in Liberia."},
+    {k:"rule"},
+    {k:"h3", t:"Environmental Hazards"},
+    {k:"p", t:"**Environmental hazards** are events, natural or human, that threaten life and property. Their **types, causes, effects and control**: **soil erosion and depletion**, as water and wind strip the topsoil — controlled by cover, contour banks and trees; **drought**, the failure of rain; **deforestation**, the loss of forest to the axe and the fire; **global warming**, the heating of the atmosphere by greenhouse gases; **desertification**, the spread of desert-like conditions as land degrades — causing loss of farmlands, aridity and change in the pattern of agriculture; and **flooding**, whose causes include heavy **precipitation** and the **melting of ice**, and whose effects are the **displacement of population, loss of life and property** — prevented by drainage, protection of wetlands and careful building. Identify incidents of environmental hazards locally and elsewhere, and propose the ways to avoid or manage them."},
+  ],
+
   focus:[
     "The continents and islands; the ratio of land to water",
     "Water resources: oceans, seas, rivers, lakes and rias",
@@ -734,6 +852,29 @@ var GG_CURRICULUM = [
     "Describe the lithosphere and the biosphere and their importance to life"
   ],
   note:"Four types of <b>mountain</b> are recognised: <b>fold</b> mountains formed by compression of sediments; <b>block</b> mountains formed between faults; <b>volcanic</b> mountains built from erupted material; and <b>residual</b> mountains left by erosion of surrounding land. A <b>plateau</b> is an extensive elevated area of relatively level land; a <b>plain</b> is a large area of low, level land.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Landforms and the Earth's Spheres (guide pp. 21-26) ---- */
+    {k:"h3", t:"Introduction to Landforms"},
+    {k:"p", t:"A **landform** is any natural feature of the earth's surface. The great families are the **mountains**, the **plateaus** and the **plains**. Classify landforms in relation to structure, and state their importance: plains for farming and settlement, plateaus for minerals and pasture, mountains for water, timber and tourism."},
+    {k:"rule"},
+    {k:"h3", t:"Mountains: the Four Types"},
+    {k:"table", head:["Type of mountain","Mode of formation","Examples"], rows:[
+     ["Fold mountains","Formed where the earth's crust is compressed and the strata folded upward along geosynclines","The Himalayas, the Alps, the Atlas, the ridge and valley of Bong"],
+     ["Volcanic mountains","Built from lava, ash and cinder poured out at a vent","Mount Cameroon, Kilimanjaro, Vesuvius"],
+     ["Block mountains (horsts)","Formed when the crust is faulted and blocks pushed up between down-faulted troughs","The Ruwenzori, the Vosges, the Black Forest"],
+     ["Residual mountains","The worn stumps of old mountains, left standing after long erosion by water, wind and ice","The Scottish Highlands, the Sierras of Liberia's interior"]]},
+    {k:"p", t:"State the characteristics and formation of each of the four types, diagram them, and weigh their **economic importance**: forests, water for hydro-power, minerals, grazing on the high slopes, and tourism — against the disadvantages: isolation, difficult transport, thin soils and cold. Summarise the formation of mountains, plateaus and plains, and note that a **plateau** is a raised tableland (dissected, intermontane or volcanic) and a **plain** a broad lowland, built by deposition or worn down by erosion, each with its own advantages and disadvantages."},
+    {k:"rule"},
+    {k:"h3", t:"The Hydrosphere and the Water Cycle"},
+    {k:"p", t:"The **hydrosphere** is all the water of the earth — **oceans, seas, rivers and lakes**, with swamps and underground water. Its importance to life: drinking water, food, transport, power, irrigation and industry. The **water cycle** is the endless circulation of that water: the sun evaporates it from sea and land, **condensation** forms cloud, **precipitation** returns it as rain, and the run-off — overland flow and through streams — carries it back to the sea. Analyse and diagram the cycle; let an ice block in a beaker and a heated iron with a wet towel demonstrate evaporation and condensation."},
+    {k:"rule"},
+    {k:"h3", t:"The Lithosphere (Crust)"},
+    {k:"p", t:"The **lithosphere** is the land block of the earth — the crust and the rigid upper mantle. Its **composition**: the land blocks, that is the **continents**, and internally the **sial**, the lighter silica-alumina rock of the continents above, and the **sima**, the denser silica-magnesia rock beneath. Draw the map of the continents and a diagram of the internal and external composition of the lithosphere, compare it with the other natural features of the earth, and state its importance to life — the soil, the minerals, the platform of all settlement."},
+    {k:"rule"},
+    {k:"h3", t:"The Biosphere"},
+    {k:"p", t:"The **biosphere** is the life layer of the earth — the narrow zone where air, water and land support life. Its **composition** runs from the **forests**, **swamps** and **deserts** to grassland, rivers and sea. The **biochores** are the great life regions — forest, savanna, desert, tundra — each with its plant and animal communities. Its importance: food, medicine, timber, fuel, the regulation of climate and the protection of soil. Distinguish the **aquatic bio cycle** (life in water) from the **terrestrial bio cycle** (life on land), draw both with the other layers of the earth, and draw the Venn diagram that shows the biosphere as the meeting of atmosphere, hydrosphere and lithosphere."},
+  ],
+
   focus:[
     "Landforms: definition and classification",
     "Mountains: fold, block, volcanic and residual",
@@ -875,6 +1016,34 @@ var GG_CURRICULUM = [
     "Describe the landforms produced by running water, wind and waves"
   ],
   note:"<b>Internal (endogenic)</b> forces build up the land — folding, faulting and vulcanicity. <b>External (exogenic)</b> forces wear it down — weathering, erosion, transport and deposition, together called <b>denudation</b>. <b>Weathering</b> is the breakdown of rock in place; <b>erosion</b> also removes the material. The evidence for <b>continental drift</b> includes the jigsaw fit of coastlines and matching rocks and fossils across oceans.",
+  study:[
+    /* ---- course text: Semester One, Period I — Internal and External Forces Shaping Landforms (guide pp. 27-32) ---- */
+    {k:"h3", t:"Plate Tectonics"},
+    {k:"p", t:"**Plate tectonics** is the theory that the earth's lithosphere is broken into great **plates** that ride slowly on the mantle. The plates are of two kinds: the **oceanic plates**, thinner and denser, and the **continental plates**, thicker and lighter. The **plate boundaries**: **constructive** boundaries where plates pull apart and new crust is made; **destructive** boundaries where an oceanic plate dives beneath another and is consumed; and **conservative** boundaries where plates grind past one another. The **effects of plate tectonics**: earthquakes, volcanic eruptions, fold mountains, ocean trenches and island arcs — and the slow drift of the continents themselves."},
+    {k:"rule"},
+    {k:"h3", t:"The Theory of Continental Drift"},
+    {k:"p", t:"The **theory of continental drift** states that the continents were once joined in one great landmass — **Pangaea** — which broke apart and the pieces drifted to their present positions. Its **evidence or proofs**: the **fit of the coastlines** of South America and Africa across the Atlantic; matching **rock** types and mountain chains on opposite shores; matching **mineral** deposits and fossils of the same plants and animals; and the traces of ancient glaciation found on continents now in the tropics. Trace the continents, cut them out, and join them together to prove the theory."},
+    {k:"rule"},
+    {k:"h3", t:"Faulting and Folding (Diastrophism)"},
+    {k:"p", t:"**Diastrophism** is the movement of the crust that moulds landforms. **Folding** bends the strata by lateral compression: the **simple (symmetrical) fold**, the **asymmetrical fold** with one limb steeper, the **overturned and recumbent folds** pushed flat, and the overfold, with anticlines up and synclines down. **Faulting** fractures the strata and moves the blocks: the **normal fault**, where the hanging wall slips down under tension; the **reverse (thrust) fault**, where it is pushed up under compression; and the **tear (wrench) fault**, where the blocks slide past each other sideways. Differentiate faulting from folding in relation to land formation — folding bends, faulting breaks — and identify the landforms each produces: fold mountains, the rift valleys and block mountains of faulting, with the tilted horsts and grabens between. Compress a face towel to illustrate folding and stretch a rubber band to demonstrate faulting."},
+    {k:"rule"},
+    {k:"h3", t:"Vulcanicity"},
+    {k:"p", t:"**Vulcanicity** is all the movement of magma and gas from within the earth to or near the surface. Its **terms**: magma, lava, vent, crater, caldera, fissure. Its **causes**: the pressure and heat of the interior, the release of pressure at weak zones and plate boundaries, and the gases that drive the magma up."},
+    {k:"p", t:"Its **intrusive features**, formed where magma cools below ground — **batholiths**, the great granite masses; **dykes**, walls of rock cutting across the strata; **sills**, sheets forced between the strata; **laccoliths**, mushroom-shaped masses that dome the rock above; and **geysers**, fountains of boiling water and steam from the ground. Its **extrusive features**, formed where matter reaches the surface — the **composite cone** of alternate lava and ash, the **ash and cinder cone** of loose fragments, the **lava plateau** and **lava plain** spread from fissures, and the **crater** and enlarged **caldera** at the vent. Draw diagrams indicating the formation of these volcanic features; a shaken bottle of coke opened in class demonstrates the eruption."},
+    {k:"rule"},
+    {k:"h3", t:"The Effects of Vulcanicity and Earthquakes"},
+    {k:"p", t:"The **effects of vulcanicity** cut both ways: destruction by eruption, ash, lava flow and mud — and benefit as **tourist attractions**, **mineral deposits**, **fertile soils** on weathered ash and lava, and **geothermal power**. An **earthquake** is the shaking of the ground when the crust suddenly moves; its effects are **loss of life, displacement of people and destruction of property**, with fire, landslides and sea waves following. Identify the regions affected by volcanic eruption and earthquake, and weigh the economic importance of earthquake and volcanic landforms."},
+    {k:"rule"},
+    {k:"h3", t:"Weathering and Mass Wasting"},
+    {k:"p", t:"**Denudation** is the general wearing away of the land — weathering, erosion, transport and deposition are its sequence. **Weathering** is the breakdown of rock where it lies; the factors affecting it are climate, rock type, vegetation and time. Its types: **physical weathering** — by temperature change, frost, salt and wetting-and-drying; **biological weathering** — by roots, burrowing animals and human works; and **chemical weathering** — by solution, carbonation, oxidation and hydration. Its effects: the rotting of rock into soil, the shaping of cliffs and tors."},
+    {k:"p", t:"**Mass wasting (mass movement)** is the downward movement of rock and soil under gravity alone. The factors affecting it: slope, water, the nature of the material, vegetation and shock. Its types range from the slow **soil creep** and **solifluction** to the rapid **landslide, rockfall, mudflow** and **avalanche**; its effects: buried farms and roads, silted rivers, loss of life. Observe soil creep, landslide and rockfall on a field trip, and consider how vegetation and drainage hold the slope."},
+    {k:"rule"},
+    {k:"h3", t:"The Action of Running Water, Winds and Waves"},
+    {k:"p", t:"**Rivers** — the factors affecting the velocity of a river: gradient, volume, shape and roughness of the channel. The development of the **river valley** and its long profile through the upper, middle and lower course; the **processes of river erosion** — hydraulic action, abrasion (corrasion), attrition and solution; the **processes of river transportation** — traction, saltation, suspension and solution. The **landforms produced by river erosion** — the V-shaped valley, gorge, waterfall, potholes and meander cliffs; **by river deposition** — flood plain, levees, meanders and ox-bow lakes, deltas. The **importance of rivers**: water supply, transport, power, irrigation, fishing and fertile alluvial soils. Illustrate the river profile by diagrams."},
+    {k:"p", t:"**Winds** — the characteristics of the desert: aridity, great temperature range, sparse vegetation and sandy or rocky ground; the types of desert landscape — the rocky (hamada), stony (reg) and sandy (erg) deserts. The **processes of wind erosion** — deflation, abrasion and attrition; of **wind transportation** — saltation, suspension and creep, as wind is the agent where water is absent. The **landforms of wind erosion** — mushroom (rock) pedestals, zeugen, yardangs, rock basins and deflation hollows; **of wind deposition** — sand dunes, barchans, seif dunes and loess. Identify the different types of desert landscape and the features the wind carves from them."},
+    {k:"p", t:"**Waves** — the development of waves from wind over the sea; the **processes of wave erosion** — hydraulic action, corrasion, attrition and solution; of **wave transportation** — the longshore drift that carries material along the coast. The **landforms of wave erosion** — cliffs, wave-cut platforms, caves, arches, stacks and stumps; **of wave deposition** — beaches, spits, bars and mud flats. The **types of coast**: the **submergence coastline**, drowned by rising sea level, with rias and fjords; and the **emergence coastline**, lifted from the sea, with raised beaches and cliffs. Identify the different types of coastline in Africa, and adopt means of minimising river, wind and wave erosion."},
+  ],
+
   focus:[
     "Plate tectonics: oceanic and continental plates, plate boundaries and effects",
     "Continental drift: the theory and its proofs",
@@ -1021,6 +1190,25 @@ var GG_CURRICULUM = [
     "Discuss air pollution in Liberia and its control"
   ],
   note:"Rain reaching the ground either runs off, evaporates, or <b>infiltrates</b> to become <b>groundwater</b>. It descends until it meets impermeable rock, filling the pores of the rock above in the <b>zone of saturation</b>, whose upper surface is the <b>water table</b>. Where the water table meets the surface a <b>spring</b> emerges. <b>Atmospheric pressure</b> is measured by a <b>barometer</b> and falls with altitude.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Hydrological Cycle, Groundwater and the Atmosphere (guide pp. 33-35) ---- */
+    {k:"h3", t:"The Hydrological Cycle"},
+    {k:"p", t:"The **hydrological cycle** is the continuous movement of water between sea, air and land: **evaporation** lifts water into the air as vapour, **condensation** turns it to cloud, **precipitation** returns it as rain, and the **terms associated with the cycle** describe its paths over the land — **overland flow** across the surface, **infiltration** into the soil, **throughflow** through it, **percolation** down to the rocks, and the run-off of streams back to the sea. Its **importance**: it renews every source of fresh water, drives the weather, and links the spheres. Illustrate the hydrological cycle through drawing."},
+    {k:"rule"},
+    {k:"h3", t:"Underground Water"},
+    {k:"p", t:"**Groundwater (underground water)** is the water held in the pores and joints of rock beneath the surface. Its terms: the **zone of permanent saturation** (the phreatic zone), below the **water table** — the level above which the rock is unsaturated; **aquifers**, the permeable rocks that hold the water; **springs**, where the water table meets the ground; **wells and boreholes** sunk to reach it; and the **artesian basin**, a synclinal aquifer whose water rises under its own pressure. Conduct an experiment to practicalise the water table, and collect samples to distinguish permeable from impermeable rocks."},
+    {k:"p", t:"Where groundwater works on limestone it dissolves the rock and forms the **karst** features — dry valleys, sink holes and caverns — with the **stalactites** hanging from the roof, the **stalagmites** rising from the floor, and the **pillars** where the two meet. Discuss the mode of formation of these surface and underground limestone features, and state the importance of underground water: wells and boreholes for towns and farms, dry-season river flow, and mineral springs."},
+    {k:"rule"},
+    {k:"h3", t:"The Atmosphere"},
+    {k:"p", t:"The **atmosphere** is the blanket of gases surrounding the earth. Its **composition**: chiefly **nitrogen** (about 78 %) and **oxygen** (about 21 %), with argon, carbon dioxide, water vapour and dust. Its **layers**, upward from the ground: the **troposphere**, where our weather happens; the **stratosphere**, holding the ozone that shields us; the **mesosphere**; the **thermosphere**; and the thin **exosphere** beyond. Its importance: the air we breathe, the shield against radiation and meteors, the water it carries, the gases plants use, and the blanket that keeps the earth's temperature even. Draw the atmosphere showing the different layers, list its composition and layers on poster sheets, and note the problems it faces — above all atmospheric pollution — with their solutions."},
+    {k:"rule"},
+    {k:"h3", t:"Atmospheric Pressure and Winds"},
+    {k:"p", t:"**Atmospheric pressure** is the weight of the air pressing on the earth, measured by the **barometer** — draw one and explain its usage. Unequal heating sets the air moving: the great **pressure belts** — the equatorial low (doldrums), the sub-tropical highs, the temperate lows and the polar highs — with **zones of convergence** where air rises and **divergence** where it sinks. The **planetary wind system** follows: the trade winds, the westerlies and the polar easterlies. **Deflection of winds**: by Ferrel's law the winds bend right in the northern hemisphere and left in the southern. Nearer the ground come the **land and sea breezes** — the sea breeze by day, the land breeze by night — and the **warm and cold air** and **currents** with the **shape of the coastline** guide the winds ashore. Outline the types of wind on the basis of temperature variation."},
+    {k:"rule"},
+    {k:"h3", t:"Air Pollution"},
+    {k:"p", t:"**Air pollution** is the fouling of the air by harmful substances. Its **causes**: exhaust and generator fumes, bush and waste burning, dust from unpaved roads, smoke from industry and charcoal fires, and chemicals sprayed in farms. Its **effects**: breathing diseases, acid rain, damaged crops and the warming of the climate. Its **control**: cleaner fuels, enforced emission laws, waste collection, paved roads, and tree planting. **Case study — air pollution in Liberia**: the dust and fumes of Monrovia's traffic, charcoal burning, waste burning at dump sites and flare gases; research its causes and impacts and report."},
+  ],
+
   focus:[
     "The hydrological cycle: overland flow, infiltration, throughflow, evaporation and condensation",
     "Importance of the hydrological cycle",
@@ -1166,6 +1354,30 @@ var GG_CURRICULUM = [
     "Describe the major climatic regions and their natural vegetation"
   ],
   note:"<b>Weather</b> is the condition of the atmosphere at a place at a given moment; <b>climate</b> is the average weather of a place over about 35 years. The <b>elements</b> are temperature, rainfall, humidity, pressure, wind and sunshine. <b>Mean monthly temperature</b> = sum of daily means ÷ number of days. <b>Temperature range</b> = highest mean minus lowest mean.",
+  study:[
+    /* ---- course text: Semester One, Period III — Weather, Climate and Climatic Regions (guide pp. 36-38) ---- */
+    {k:"h3", t:"Weather and its Elements"},
+    {k:"p", t:"**Weather** is the condition of the atmosphere at a place at a given moment. Its **elements**: temperature, rainfall, humidity, atmospheric pressure, wind, cloud and sunshine — each read with its instrument at the **weather station**: the thermometer (maximum and minimum) for temperature, the rain gauge for rainfall, the hygrometer for humidity, the barometer for pressure, the anemometer and wind vane for wind, and the sunshine recorder. The **weather record** kept at fixed hours feeds the climate averages; the **attributes of weather** are its changeability from hour to hour and place to place; its **importance**: farming, fishing, aviation, health and daily life."},
+    {k:"rule"},
+    {k:"h3", t:"Climate"},
+    {k:"p", t:"**Climate** is the average weather of a place over a long period — about 35 years. The differences between weather and climate: weather is momentary and changes hourly; climate is the long average and changes slowly. The **factors affecting climate**: latitude, altitude, distance from the sea, ocean currents, prevailing winds, relief and cloud cover. The **elements of climate** are the same elements taken as averages; the **climatograph** (climatic graph) plots monthly rainfall as bars against monthly temperature as a line; and the **importance of climate**: it sets the vegetation, the crops, the water supply, the house types and the whole way of life. Differentiate weather from climate in a Venn diagram, and discuss the causes of weather and climatic change."},
+    {k:"p", t:"**Prepare a climatic chart** from data: calculate the **mean monthly temperature** (sum of daily means ÷ days), the **mean annual temperature** (mean of the twelve monthly means), and the **range of temperature** and **range of rainfall** (highest monthly value minus lowest)."},
+    {k:"rule"},
+    {k:"h3", t:"The Classification of Climate"},
+    {k:"p", t:"Two classifications matter. The **Greek classification**, the oldest, divides each hemisphere by latitude into the torrid, temperate and frigid zones — simple, but blind to rainfall and altitude. **Köppen's classification** divides climate by temperature and rainfall into the tropical rain (A), dry (B), warm temperate (C), cold snow-forest (D) and polar (E) types, with highland (H) apart. The **basis** of each: the Greeks on the sun's angle alone; Köppen on the vegetation each rainfall-and-temperature regime sustains. Weigh the advantages and disadvantages of both: Greek — simple but crude; Köppen — close to vegetation but its lettering must be learned and its boundaries approximate."},
+    {k:"rule"},
+    {k:"h3", t:"The Climatic Regions"},
+    {k:"bul", items:[
+      "**Equatorial** — hot and wet all year, convection rain, dense rainforest; the Congo and Amazon basins, coastal West Africa",
+      "**Tropical** — hot with a wet and a dry season, savanna grassland; much of Liberia's interior and West Africa",
+      "**Mediterranean** — hot dry summers, mild wet winters; the Cape and the North African coast",
+      "**Hot and cold deserts** — arid, great daily temperature range; the Sahara and the Gobi/Kalahari",
+      "**Warm temperate** — mild and moist all year",
+      "**Cool temperate** — cool with a clear winter; western Europe",
+      "**Cold temperate** — long hard winters, coniferous forest; Canada and Siberia",
+      "**Polar** — frozen all year; the tundra and ice caps"]},
+  ],
+
   focus:[
     "Weather: definition, elements and importance",
     "The weather station and its instruments",
@@ -1309,6 +1521,27 @@ var GG_CURRICULUM = [
     "Recommend solutions to the problems facing the primary industries"
   ],
   note:"<b>Natural vegetation</b> is the plant cover that grows without human interference, controlled chiefly by <b>climate</b>, then by <b>soil, relief</b> and <b>biotic factors</b>. Liberia's vegetation belts run roughly parallel to the coast: <b>mangrove swamp</b>, <b>coastal savanna</b>, <b>rainforest</b> and <b>montane vegetation</b>. The <b>primary industries</b> extract raw materials directly from nature.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Natural Vegetation and the Primary Industries (guide pp. 39-44) ---- */
+    {k:"h3", t:"Natural Vegetation and its Development"},
+    {k:"p", t:"**Natural vegetation** is the plant cover that grows of itself, untouched by man. Its types run from the equatorial rainforest, the tropical savanna, the Mediterranean scrub and the desert, to the temperate forests, the coniferous forests and the tundra. The factors in its **development**: **climatic** — rainfall and temperature chiefly; **biotic** — the animals and people, their grazing, burning and clearing; and **soil** — its depth, drainage and fertility. Define vegetation, relate it to climate, and research the methods used in **deforestation, afforestation and reforestation**."},
+    {k:"rule"},
+    {k:"h3", t:"Vegetation and Human Economic Activity"},
+    {k:"p", t:"Human economic activity works on the vegetation in the **primary** industries — farming, fishing, mining, lumbering — which take from nature, and in the **secondary** industries which process what the primary take. Their problems and solutions: the exhaustion of the resource against conservation, replanting and regulation. **Case study — Liberia**: the **forest**, the **mountain**, the **savanna**, the **mangrove swamps** and **marshlands**, and the activities each carries — timber and hunting in the forest, mining in the mountains, grazing and firewood in the savanna, fishing and rice in the mangrove and marsh."},
+    {k:"rule"},
+    {k:"h3", t:"Agriculture"},
+    {k:"p", t:"The **primary industries** are those that extract the raw materials of nature; the **major primary industries** are agriculture, fishing, mining and lumbering; the factors affecting their development include the resource itself, labour, capital, transport and market. **Agriculture** is the chief of them, and its **classification**: by purpose — **subsistence** farming to feed the family, and **commercial** farming for the market; and by product — **crop farming** and **animal farming**. The **systems of farming**: **shifting cultivation**, clearing new land as the old tires; **bush fallowing**, letting land rest some years; **mechanized farming** with machines and large fields; **crop rotation** by planned succession; **truck farming** in vegetables for the town market; and the animal systems — **pastoralism, nomadism** and **dairy farming**. Distinguish intensive from extensive farming, debate mechanized and subsistence farming in Liberia, and outline the problems affecting agriculture and their importance."},
+    {k:"rule"},
+    {k:"h3", t:"Fishing"},
+    {k:"p", t:"The **major fishing grounds** of the world: **the Grand Banks** off Newfoundland, **the coast of Peru**, and **the Sea of Japan** — each where warm and cool waters meet and plankton swarms. The **methods of fishing**, local and international: **hook and line**, **the use of nets** — cast net, drag net, trawl — and **the use of wicker baskets** and traps. The **conditions that favour fishing**: the meeting of warm and cool **ocean currents**, the **abundance of plankton**, a deeply indented coast with sheltered harbours, and the market and the fleet. Its **importance**: protein food, employment, export trade; its **problems and solutions** — over-fishing against regulation and closed seasons, poor storage against cold chains. **Fishing in West Africa**: the coastal waters of Liberia, Ghana and Senegal, lagoon and inland fishing."},
+    {k:"rule"},
+    {k:"h3", t:"Mining"},
+    {k:"p", t:"**Mining** is the extraction of minerals from the earth. The **types of minerals**: **metallic** — **ferrous** (iron, manganese) and **non-ferrous** (gold, copper, bauxite, tin); **non-metallic** — diamond, limestone, phosphate, salt; and **mineral fuels** — coal, petroleum, uranium. The **uses of selected minerals** and the **methods of mining**: the **open pit (open cast)** mine for near-surface deposits; the **adit**, a horizontal tunnel into a hillside; the **shaft or underground** mine for deep deposits; **dredging** from water; and **drilling** for oil and gas. The **importance of the mining industry**: export earnings, employment, **infrastructural development**, the fuel of industry. Its problems and solutions: environmental damage against reclamation, and the quick exhaustion of a wasting asset against diversification. The **case studies**: **iron ore mining in Liberia** — Nimba and Bong, railed to Buchanan; **gold in Ghana and South Africa**; **oil in the Delta Region of Nigeria**; **copper in the Katanga Region of DR Congo**."},
+    {k:"rule"},
+    {k:"h3", t:"Lumbering"},
+    {k:"p", t:"**Lumbering** is the felling and extraction of timber. Its **methods of exploitation** differ with the type of forest — the selective cutting of the mixed rainforest against the clear felling of the planted forest. The **choice trees** in lumbering: mahogany, abura, iroko, obeche, and in Liberia the red ironwood and the scented gum. The **factors affecting lumbering**: the density of valuable trees, terrain and drainage, transport — roads, rails and rivers — machinery, capital and skill, and the market and the mill. Its **importance**: the **provision of jobs**, **construction** timber, and a **foreign exchange earner**. Its problems — deforestation, lost species, silted rivers — and the solutions: selective logging, replanting, reserves. **Case studies**: **lumbering in Liberia**; **in the Congo Basin of Central Africa**; and **in West Africa** generally — visit a saw mill and report."},
+  ],
+
   focus:[
     "Natural vegetation: definition and types",
     "Development of vegetation: climatic, biotic and soil factors",
@@ -1451,6 +1684,21 @@ var GG_CURRICULUM = [
     "Describe the sources of energy, their location, distribution and importance"
   ],
   note:"<b>Secondary industry</b> processes raw materials into finished goods; <b>tertiary industry</b> provides services such as trade, transport, banking and tourism. Factors affecting <b>industrial location</b> include raw materials, power, labour, market, transport, water, capital and government policy. Energy sources are <b>renewable</b> (hydro, solar, wind, biomass) or <b>non-renewable</b> (coal, oil, gas).",
+  study:[
+    /* ---- course text: Semester Two, Period V — Manufacturing, Energy, Trade and Transport (guide pp. 44-45) ---- */
+    {k:"h3", t:"Manufacturing"},
+    {k:"p", t:"**Manufacturing** is the secondary industry that turns raw materials into finished goods. Its **classification** may be by product — food processing, textiles, building materials, chemicals, metal works — or by size and input — heavy or light, capital or labour intensive. The **major industrial regions** of the world: Western Europe, North America, East Asia, and the new centres of India and Brazil. The **factors affecting the location of manufacturing industries**: raw materials, power, labour, market, transport, capital, water, land and government policy — each weighted by the industry. The **importance of manufacturing**: employment, value added to raw materials, exports, skills and the growth of towns; examine too the impact of industry on the **health of communities** — pollution, waste and congestion — and the **problems facing manufacturing industries** in Liberia: power, capital, skills, transport and the small market."},
+    {k:"rule"},
+    {k:"h3", t:"Trade and Commerce"},
+    {k:"p", t:"**Trade and commerce** is the exchange of goods and services. Its **types**: **internal (domestic) trade** within the country, and **external (international) trade** with the rest of the world — the exports and imports recorded at the ports. Trade moves the goods that transport carries; each feeds the other."},
+    {k:"rule"},
+    {k:"h3", t:"Transport and Development"},
+    {k:"p", t:"**Transport** is the movement of people and goods from place to place; its **means**: road, rail, water — sea and river — pipeline, and air, with their advantages and limits. Transport and development move together: no road, no market; no market, no farm; no farm, no town. Examine the means of transport of Liberia and their state."},
+    {k:"rule"},
+    {k:"h3", t:"Sources of Energy"},
+    {k:"p", t:"The **sources of energy** are classified as **renewable** — hydro-electric power, solar, wind, tidal, geothermal and biomass — and **non-renewable** — the **mineral (fossil) fuels: coal, natural gas, petroleum** and the nuclear fuel **uranium**. The **location and distribution of power sources**: **hydro-electric power** on the great **rivers, waterfalls and dams** — the Mount Coffee plant on the St Paul; **solar** from the **sunlight** of the tropics; **wind** on the open plains and coast; **tidal** power at the narrow straits; **geothermal** in the volcanic lands; **underground** heat and gas; and **biomass** from **organic organisms** — wood, charcoal, crop waste, biogas. The **factors affecting the sources of energy**: **capital, technology, climate** and the resource itself. The **importance of energy**: it drives industry, transport, homes and services — the engine of development. The **problems of energy harnessing** — cost, distance, technology — and their solutions."},
+  ],
+
   focus:[
     "Manufacturing: definition and classification",
     "Major industrial regions of the world",
@@ -1596,6 +1844,21 @@ var GG_CURRICULUM = [
     "Construct and interpret statistical maps and diagrams"
   ],
   note:"<b>Geographic investigation</b> follows a sequence: state a question, collect data, present it, analyse it and draw a conclusion. Data is shown on <b>statistical maps</b> — the <b>dot map</b> for distribution, the <b>choropleth</b> shaded by density, the <b>isopleth</b> using lines of equal value, the <b>flow map</b> for movement, and <b>proportional symbols</b> sized by quantity.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Geographic Investigation and Statistical Maps (guide pp. 46-47) ---- */
+    {k:"h3", t:"Principles of Geographic Investigation"},
+    {k:"p", t:"Geographic investigation follows the **enquiry sequence**: ask a geographic **question**; collect the **data** — by field observation, measurement, interview, questionnaire and from records; **present** it in tables, maps and diagrams; **analyse** and interpret it; and **draw a conclusion** that answers the question. Its tools are the map and the survey. Outline the kinds of map and their characteristics — topographical, physical, political, road, weather, geological, demographic — with their importance and uses, and their limitations."},
+    {k:"rule"},
+    {k:"h3", t:"The Map Scale in Investigation"},
+    {k:"p", t:"Recall the definition of the **map scale** and its types — the **representative fraction**, the **statement** and the **linear** scale — with the characteristics of each, and practise the **conversion of map scales** from one form to another. Apply map scales to **reduce and enlarge** maps, and to **calculate areas and ground distances**; calculate the **gradient of slopes**; discover the **positions of places** using the **grid system**, or longitude and latitude; and **detect directions** using the compass and bearing. Use rulers, protractors and strings; draw the prismatic compass and illustrate its direction and bearing. Survey the school compound or playground as a group and prepare a sketch draft of the survey — then **design the diagrams, profiles and sketches** that result from survey exercises."},
+    {k:"rule"},
+    {k:"h3", t:"Statistical Maps and Diagrams"},
+    {k:"p", t:"The **sources of statistical data**: censuses and surveys, official yearbooks and records, ministries and agencies, atlases and gazetteers, and your own field counts. The **use of statistics and diagrams**: they condense figures into shapes the eye compares at a glance, and they map data by place — the dot map, the choropleth, the flow map and proportional symbols. Their **limitations**: figures may be old, incomplete or wrongly gathered; the diagram can mislead by its scale; and the map drops the detail between its lines. **Tabulation** of statistics comes first — arrange the data in rows and columns, total and check — before it is drawn."},
+    {k:"rule"},
+    {k:"h3", t:"The Graphical Representation of Statistics"},
+    {k:"p", t:"**Line graphs** — the simple line graph for one series over time; the **combined** line graph to set two series on one frame; and the **compound** line graph to stack the parts of a whole. **Bar graphs** — the **histogram** of continuous classes; the **simple bar graph** of compared totals; the **divergent bar graph** above and below a base; and the **percentage bar graph** scaled to one hundred. **Circle graphs** — the **pie chart** cut by shares of 360°; the **proportional pie chart**; and the **proportional circle** sized by total. For each, state the advantages and disadvantages, choose the scale with care, and use squared paper to represent statistical data accurately."},
+  ],
+
   focus:[
     "Principles of geographic investigation and the enquiry sequence",
     "Analysing map information and kinds of maps",
@@ -1736,6 +1999,30 @@ var GG_CURRICULUM = [
     "Use conventional signs and symbols and draw a labelled field sketch"
   ],
   note:"A <b>map scale</b> may be given as a statement, a ratio or a line scale; on a 1:50&nbsp;000 map one centimetre represents 500 metres on the ground. A <b>bearing</b> is the angle measured clockwise from north: a <b>whole-circle bearing</b> runs 0&ndash;360&deg;, while a <b>quadrant bearing</b> is measured from north or south toward east or west. Contours show <b>relief</b>: close contours mean a steep slope, spaced contours a gentle one; a cross-section gives the side view along a chosen line.",
+  study:[
+    /* ---- course text: Semester One, Period I — Map Work, Surveying and Practical Geography (guide pp. 48-55) ---- */
+    {k:"h3", t:"Kinds of Maps and their Uses"},
+    {k:"p", t:"Recall what a **map** is and its characteristics. The kinds you must command: **topographical maps**, showing relief and settlement in detail; **road maps**; **weather maps**; the **atlas**; **geological, demographic and land-use maps**. The importance and uses of maps: to **give information**, to **identify** and **interpret the landscape**, to **find directions and positions**, and to **find distances** — with the limitations of maps always remembered: they flatten the curved earth, omit the too-small, and freeze one moment of time."},
+    {k:"rule"},
+    {k:"h3", t:"Map Scales: Types and Conversion"},
+    {k:"p", t:"The **map scale** relates distance on the map to distance on the ground. Its types: the **representative fraction** (1:50 000), the **statement** ('one centimetre to half a kilometre') and the **linear scale**. Practise the **conversion of map scales** from one to another — 1:50 000 → 1 cm to 0.5 km — then apply the scales to **reduce and enlarge** maps, and to **calculate areas and ground distances**: a 1:50 000 grid square is 1 km on a side and 1 km² in area. Draw maps to scale and draw a linear scale with the ruler."},
+    {k:"rule"},
+    {k:"h3", t:"Finding Positions and Directions"},
+    {k:"p", t:"**Locate positions** on maps using **latitude and longitude**, and with the **grid reference** — the easting then the northing, read from the southwest corner of the square. Draw a grid map to show eastings and northings. **Direction** is given by the **compass points** — the cardinal four, the eight, and the full **sixteen intermediate points of the compass** — and by the **angular bearing**, the angle clockwise from north; use both together to find the direction of a structure from a given point. Distinguish the **types of north**: **magnetic, true** and **grid north**, and correct from one to the other."},
+    {k:"rule"},
+    {k:"h3", t:"Conventional Signs and Symbols"},
+    {k:"p", t:"**Conventional signs and symbols** are the standard marks by which maps carry their information. Their types: **point symbols** (a spot height, a building), **line symbols** (roads, rivers, boundaries), **literal symbols** (letters and figures — 'PS' for police station), **pictorial symbols** (a tiny picture — a tree for forest) and **colour symbols** (blue for water, green for forest, brown for relief). Their importance and uses: they load the map with detail in little space, and one learned key opens every map. Their limitation: a symbol shows the kind of feature, not its exact look or size. Draw the common signs and symbols."},
+    {k:"rule"},
+    {k:"h3", t:"Methods of Representing Relief"},
+    {k:"p", t:"**Relief** is the shape and height of the land, and maps show it seven ways: **contours** — lines joining points of equal height, the chief method; the **spot height**, a figure at a point; the **trigonometrical station (trig. point)**, a fixed survey mark with its height; the **bench mark**, the surveyor's level mark; **hill shading**, light and shade on the slopes; **form lines**, approximate contours sketchily drawn; and **hatchures**, short brush-strokes down the slope. State the characteristic features, and the advantages and disadvantages, of each method."},
+    {k:"rule"},
+    {k:"h3", t:"Slopes, Contour Landforms, Gradient and Cross-Sections"},
+    {k:"p", t:"The **types of slope** read from the contour spacing: **concave** (contours far apart above, close below), **convex** (close above, apart below), **steep**, **gentle**, **even** and **uneven**. The **contour landforms** to identify: the **plateau** with close contours rimming a high plain; the **ridge**, a long high back; the **valley**, its contours pointing upstream in a V; the **spur**, its contours pointing down-slope; the **col** and **saddle**, the low pass between two heights; the **pass** and **gap**; the **knoll**, a small isolated hill; and the **cuesta**, a ridge of steep dip slope and gentle back. The **gradient** is the ratio of vertical rise to horizontal distance — a rise of 50 m in 2 000 m is 1 in 40 — and the **cross-section** drawn along a chosen line shows the profile of the land; when its vertical scale is enlarged, calculate and state the **vertical exaggeration**."},
+    {k:"rule"},
+    {k:"h3", t:"Elementary Surveying"},
+    {k:"p", t:"**Survey** is the measurement of land to fix its positions and areas. The **chain survey equipment** and its uses: the **chain or tape** to measure distance; the **ranging poles** to keep the line; the **arrows (pins)** to count the chain lengths; the **optical square and cross-staff** to turn right angles; the **offset staff** for side measures; the **clinometer** for slope; the **prismatic compass** for bearings; and the **field book** for the sketch notes. The **traverse** — a chain of lines run from station to station — is **closed** when it returns to its start and **open** when it does not; run it by **chain surveying** with baseline, offsets and tie lines, or by **prismatic-compass traversing**, recording the fore-bearing of each leg and checking with the back-bearing, which should differ by 180°. State the advantages and disadvantages of the survey methods, survey the school compound, and design the diagrams, profiles and sketches resulting from the survey. The modern extension is the **Geographic Information System (GIS)** — the computer handling of mapped data, fed by satellite **remote sensing** and the GPS."},
+  ],
+
   focus:[
     "Scale conversion: statement, ratio and linear scale; distance and area",
     "Direction: true, magnetic and grid north; whole-circle and quadrant bearings",
@@ -1876,6 +2163,24 @@ var GG_CURRICULUM = [
     "Describe the importance and conduct of a population census"
   ],
   note:"<b>Population distribution</b> is how people are spread across an area; <b>population density</b> is the average number of people per square kilometre. Population grows by <b>natural increase</b> (births minus deaths) and by <b>net migration</b> (immigrants minus emigrants). A <b>population pyramid</b> shows the numbers by age and sex: a broad-based pyramid signals high birth and death rates and rapid growth. <b>Monrovia</b> holds a large share of Liberia's population because of its port, jobs and services, drawing young migrants from the counties.",
+  study:[
+    /* ---- course text: Semester One, Period II — Population Geography (guide pp. 10-11, 59) ---- */
+    {k:"h3", t:"World Population and its Distribution"},
+    {k:"p", t:"The concept of **world population** — its definition, size, characteristics and growth — carries the terms of population study: birth rate, death rate, fertility, natural increase, growth rate, density, census. The factors affecting its growth run from health and food to the status of women; the reasons for its rapid growth lie in death rates that have fallen while birth rates have not. The **distribution pattern** divides the world into the **densely populated** regions — fed by fertile soil, water, mild climate and jobs — the **moderately populated**, and the **sparsely populated** deserts, forests and cold lands. Draw population maps indicating the dense and the sparse regions, and explain the factors — relief, climate, water, soil, resources and history — behind each."},
+    {k:"rule"},
+    {k:"h3", t:"The Population of Liberia"},
+    {k:"p", t:"Describe the size, distribution and density of Liberia's population by county: the heavy share that lives in **Monrovia** and Montserrado, drawn by the port, the jobs and the services; the thicker settlement of the coastal and border counties; the thinner interior. Account for the pattern with the factors above, and name the over- and under-populated regions of Liberia."},
+    {k:"rule"},
+    {k:"h3", t:"Population Change and its Measures"},
+    {k:"p", t:"Population changes by **natural increase** — the birth rate over the death rate — and by **net migration**. Distinguish the birth rate, the death rate, the rate of natural increase and the growth rate. Read the **population pyramid**, with its bars of age and sex: the broad-based pyramid of rapid growth, the narrow-based of slow growth, and the columns of the aged societies. Trace the **stages of the demographic transition** — from high birth and death rates, through falling death rates and expanding numbers, to low rates and stable numbers. Compute the measures from data: density, birth rate per thousand, growth rate."},
+    {k:"rule"},
+    {k:"h3", t:"Migration"},
+    {k:"p", t:"Explain the factors that influence **population movements**: the **push** of poor land, no jobs, no services and insecurity; the **pull** of work, schools, hospitals and family. Treat the **consequences of migration** at the **source** — lost young labour, remittances home — and at the **receiving region** — labour and market, but crowded housing and strained services; Liberia's rural-urban migration and its war-time displacements are the near examples. Suggest the solutions that balance development between county and capital."},
+    {k:"rule"},
+    {k:"h3", t:"The Population Census"},
+    {k:"p", t:"Discuss **why and how a population census is conducted**: the count of every person, by age, sex, household and work, taken on a census night by trained enumerators, processed and published — the **de facto** count where people are, the **de jure** count where they usually live. Its importance: planning the schools, clinics and roads, dividing representation and revenue, and measuring every other population rate. Its difficulties in Liberia — remote roadless places, a mobile people, cost and trained staff — and how they are met."},
+  ],
+
   focus:[
     "World population: size, growth over time and the major concentrations",
     "Population of Liberia: size, distribution and density by county",
@@ -2015,6 +2320,21 @@ var GG_CURRICULUM = [
     "Describe rural settlement patterns: dispersed, nucleated and linear"
   ],
   note:"A <b>settlement</b> is a place where people live. Its <b>site</b> is the actual ground it stands on — flat land, water supply, dry ground, a river crossing — while its <b>situation</b> is its position relative to other places: routes, a harbour, farmland or trade. Towns grow where routes meet or goods are trans-shipped. Within a town, land is arranged in zones: the <b>central business district</b> at the core where shops and offices compete for central land, industry near transport, and housing spreading outward. Rural settlements are <b>nucleated</b> (clustered), <b>dispersed</b> (scattered farms) or <b>linear</b> (strung along a road or river).",
+  study:[
+    /* ---- course text: Semester One, Period III — Settlement Geography (guide pp. 12-13, 59) ---- */
+    {k:"h3", t:"Settlement: Definition, Site and Situation"},
+    {k:"p", t:"A **settlement** is any place where people live and build. Its **site** is the actual ground — a dry point above flood, a wet point beside water, a bridging point at a river crossing, a defence hill, or a route centre; its **situation** is its setting among other places — on the road, at the harbour, amid farmland. The factors affecting the **sitting and growth** of settlement: water, land, relief, transport, defence, trade and administration. Analyse the factors at work in your own town."},
+    {k:"rule"},
+    {k:"h3", t:"Classification of Settlements"},
+    {k:"p", t:"Classify settlements **by type** — **urban** against **rural**; **by pattern** — **nucleated** (clustered about a crossroads, well or market), **linear** (along a road, river or coast), **dispersed** (scattered farms) and **isolated**; **by size** — the hamlet and village, the town, the city, the **metropolis** and its **satellite towns**; and **by function** — **commercial, religious, administrative, industrial**, educational, port, mining and resort. The village family runs from the single **homestead** and **farmstead** to the **hamlet**. Explain the reasons for each pattern — water and safety nucleate, enclosure and soil scatter, the road strings out its linear line."},
+    {k:"rule"},
+    {k:"h3", t:"Functions and the Growth of Towns"},
+    {k:"p", t:"State the **functions of settlements** and how they change with growth: the market town, the administrative capital, the port, the mining camp, the university town — most great towns wear several functions at once. Towns grow where routes meet, where goods are trans-shipped, where government and industry settle; chart the growth of Monrovia, Gbarnga or Harper against these causes. Compare the contributions of rural and urban settlements to mankind — food and labour from the one, trade, services and industry from the other."},
+    {k:"rule"},
+    {k:"h3", t:"Urbanization: Causes, Problems and Planning"},
+    {k:"p", t:"**Urbanization** is the rising share of people in towns. Its **causes**: migrants pulled by jobs and services, and the natural increase of the towns themselves. Its **problems**: housing shortage and slums, unemployment and the informal sector, congestion, water and power shortage, sanitation and pollution. Its **solutions** — and the need for planning: planned housing estates, roads and drains, decentralised services and jobs, and development of the rural areas to slow the drift. Undertake a settlement study of your local town."},
+  ],
+
   focus:[
     "Rural and urban settlements; classification by size and function",
     "Site and situation: wet-point, dry-point, defence, bridging and route centres",
@@ -2155,6 +2475,27 @@ var GG_CURRICULUM = [
     "Interpret agricultural statistics and land-use data"
   ],
   note:"<b>Agriculture</b> is the cultivation of crops and rearing of animals. <b>Subsistence farming</b> produces mainly for the family, using simple tools and family labour; <b>commercial farming</b> produces for sale, with larger inputs and often a single crop. Liberia's main cash crops are <b>rubber, oil palm, cocoa and coffee</b>, grown partly on plantations, while <b>rice and cassava</b> are the leading food crops. Output is limited by the use of hand tools, limited fertilisers and improved seed, poor rural roads, post-harvest loss and reliance on rainfall. Raising production depends on improved varieties, processing to add value, organised marketing and better roads and credit.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Economic Geography: Agriculture (guide pp. 40, 58) ---- */
+    {k:"h3", t:"Agriculture as the Chief Primary Industry"},
+    {k:"p", t:"The **primary industries** take their products straight from nature, and agriculture is their chief. Its **classification**: by purpose — **subsistence** and **commercial**; by product — **crop** and **animal** farming. Differentiate the **primary, secondary and tertiary sectors** of the Liberian economy, and discuss the importance of each to its economic and infrastructural development."},
+    {k:"rule"},
+    {k:"h3", t:"Systems of Farming"},
+    {k:"p", t:"The **systems of farming**: **shifting cultivation** — clear, burn, crop, move on; **bush fallowing** — the land rested some seasons under regrowth; **mechanized farming** — tractors and large fields; **crop rotation** — the planned succession of crops that keeps the soil fed; **truck farming** — vegetables and perishables for the near town market; and among animal systems, **pastoralism**, **nomadism** and **dairy farming**. Distinguish **intensive** from **extensive** farming, and debate mechanized against subsistence farming in Liberia."},
+    {k:"rule"},
+    {k:"h3", t:"The Factors that Affect Agriculture"},
+    {k:"p", t:"The **physical factors**: climate — rainfall and temperature; soil; relief; and water supply. The **economic factors**: capital, labour, transport, the market, land tenure and technology. Weigh each for the Liberian farm, and account for the distribution of the major crops: the rice and cassava of the food farms, the rubber, oil palm, cocoa and coffee of the estates."},
+    {k:"rule"},
+    {k:"h3", t:"Crops and Livestock of Liberia"},
+    {k:"p", t:"The food crops — **rice, cassava, yams, plantain and vegetables**; the cash and export crops — **rubber, oil palm, cocoa, coffee and sugar cane**; the livestock — goats, sheep, poultry and pigs, few cattle; and the fisheries that complete the farm economy. Describe where each crop is grown and the conditions it needs, and outline **plantation agriculture** — the large estate, one crop, wage labour and processing — beside the smallholder farms."},
+    {k:"rule"},
+    {k:"h3", t:"Case Study: the Rubber Plantation"},
+    {k:"p", t:"**Case study — rubber plantation in Liberia (Firestone operations)**: the concession of 1926 at Harbel, the tapped trees and the processed latex, the housing, schools and hospital of the estate, the employment and export earnings — and the current trend and prospects: ageing trees, world prices, and the processing that adds value at home. Trace the path of the latex from tree to export."},
+    {k:"rule"},
+    {k:"h3", t:"Problems of Agriculture and their Improvement"},
+    {k:"p", t:"The problems: hand tools and little machinery, scarce fertiliser and improved seed, poor feeder roads, absent storage and processing, little credit, and land tenure that will not let farms grow; to these add pests, post-harvest loss and reliance on the rains. The improvement: better varieties and inputs, mechanisation fitted to the farm, cooperative marketing and processing to add value, rural credit, feeder roads and storage, irrigation where water allows, and secure tenure. Interpret agricultural statistics and land-use data in judging each reform, and debate the problems hampering Liberia's economy with recommendations for the primary industries."},
+  ],
+
   focus:[
     "Types of agriculture: subsistence, commercial, plantation, mixed, pastoral",
     "Physical factors: climate, soil, relief and water",
@@ -2295,6 +2636,24 @@ var GG_CURRICULUM = [
     "Assess Liberia's resources, trade partners and development challenges"
   ],
   note:"<b>Industry</b> is classified as primary (extracting), secondary (manufacturing) and tertiary (services). Factories locate where raw materials, power, labour, market and transport favour them: heavy, bulky or perishable materials are processed near their source. <b>Transport</b> moves people and goods — water is cheapest for heavy bulk cargo, road is most flexible door to door, rail suits steady heavy loads over land, and air is fastest and costliest. <b>Trade</b> is exports sold abroad against imports bought in; the <b>balance of trade</b> is the value of exports minus imports. Liberia exports iron ore, rubber and other primary products and imports manufactured goods, fuel and rice. <b>ECOWAS</b> promotes free movement and trade among West African states.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Industry, Transport, Trade and Development (guide pp. 44-45, 58) ---- */
+    {k:"h3", t:"Industry and its Classification"},
+    {k:"p", t:"Industry is classified as **primary** — extracting from nature: farming, fishing, mining, lumbering; **secondary** — manufacturing and processing; and **tertiary** — the services: trade, transport, banking, education, tourism. Differentiate the three sectors of the Liberian economy and outline the secondary industries — food processing, beverages, building materials, match and soap works, and the lumber mills."},
+    {k:"rule"},
+    {k:"h3", t:"The Location of Manufacturing Industries"},
+    {k:"p", t:"The **factors affecting the location of manufacturing industries**: raw materials — heavy, bulky or perishable materials pull the factory to their source; power; labour; the market; transport; water; capital; land; and government policy with its zones and tax relief. Weight the factors for a Liberian industry — where should a palm-oil mill stand, an iron-ore smelter, a fish cannery? — and discuss the role of secondary industries in industrial development."},
+    {k:"rule"},
+    {k:"h3", t:"Energy and its Sources"},
+    {k:"p", t:"Classify the **sources of energy** as **renewable** — hydro-electric power from rivers, waterfalls and dams; solar; wind; tidal; geothermal; biomass — and **non-renewable** — the fossil fuels coal, natural gas and petroleum, and uranium. Locate Liberia's power sources: the **Mount Coffee** hydro plant on the St Paul, the diesel and heavy fuel plants, the growing solar schemes. State the importance of energy to economic development, the factors — capital, technology, climate — affecting its sources, and the problems and solutions of energy harnessing."},
+    {k:"rule"},
+    {k:"h3", t:"Transport and Development"},
+    {k:"p", t:"**Transport** moves people and goods, and development follows the road. The means: **road** — flexible door to door; **rail** — steady heavy loads, as the iron-ore railway to Buchanan; **water** — cheapest for heavy bulk, as the port of Monrovia; **pipeline**; and **air** — fastest and dearest. Compare their advantages and limits for Liberia's goods, and read the transport network from the map."},
+    {k:"rule"},
+    {k:"h3", t:"Trade: Internal, External and Regional"},
+    {k:"p", t:"**Trade and commerce** — internal and external. Liberia's **exports**: iron ore, rubber, timber, cocoa, palm products and gold; its **imports**: rice, fuel, machinery and manufactured goods. Define the **balance of trade** — exports against imports — and read the ports through which each flows. **ECOWAS** and the **Mano River Union** open the regional market: free movement of goods and people, a wider market, joint projects. Assess Liberia's trade partners, the composition of its trade, and the development challenges it faces; outline the **tertiary industries** — trade, transport, banking and **tourism** on the beaches and reserves — with their problems and prospects."},
+  ],
+
   focus:[
     "Industrial classification: primary, secondary and tertiary",
     "Factors of industrial location and their weighting",
@@ -2435,6 +2794,27 @@ var GG_CURRICULUM = [
     "Locate and compare the major countries, features and resources of West Africa and Africa"
   ],
   note:"The natural <b>environment</b> provides resources — forests, soils, water, minerals and a stable climate — but these can be damaged. <b>Deforestation</b> for farming, logging and fuelwood removes the forest cover that holds soil and rainfall, leading to <b>soil erosion</b>, loss of species and changed runoff. <b>Sustainable development</b> uses resources to meet present needs without destroying them for the future, through conservation, replanting, pollution control and protected areas. Liberia lies in the <b>tropical rainforest and coastal belt</b>, with inland hills and plateaus; it shares the Mano River Union region with Guinea and Sierra Leone and belongs to West Africa and the wider African continent.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Environmental Management and Regional Geography (guide pp. 16-20, 56-57, 61) ---- */
+    {k:"h3", t:"The Environment and its Resources"},
+    {k:"p", t:"The **environment** — natural and built — supplies every resource: the forests, soils, water, minerals, and the stable climate. Its domains are the lithosphere, hydrosphere, atmosphere and biosphere, its components physical, biological and social. Its problems are pollution, erosion, deforestation and waste — and the balance of the environment, from the land ecosystem and the nitrogen cycle to the soils on which all farming rests, is easily upset."},
+    {k:"rule"},
+    {k:"h3", t:"Environmental Problems and Hazards"},
+    {k:"p", t:"**Deforestation** for farming, logging and fuelwood strips the cover that holds soil and water; **soil erosion** and **desertification** follow on the exposed land; **pollution** of land, water and air — waste, chemicals, fumes — spreads with the towns; **climate change** and **global warming** ride on the greenhouse gases; and the natural hazards — **flooding, drought, storms and coastal erosion** — strike the coast and the interior alike. For each state the meaning, the causes, the effects on human activity, and the prevention and control: conservation, replanting, protection of wetlands and coasts, waste management and enforced law."},
+    {k:"rule"},
+    {k:"h3", t:"Conservation and Sustainable Development"},
+    {k:"p", t:"**Conservation** is the careful use and protection of resources; **sustainable development** meets present needs without destroying the resource for the future. Its practice: **reforestation and afforestation**, **protected areas** and national parks such as Sapo, the management of the **watershed**, the control of harvesting and hunting, and the education of the people. Distinguish the **renewable** resources — water, timber, soil, fisheries — from the **non-renewable** — iron ore, gold, diamonds, oil — and manage each according to its kind. Undertake an environmental study of your local area."},
+    {k:"rule"},
+    {k:"h3", t:"Regional Geography: Liberia"},
+    {k:"p", t:"Locate and size Liberia — its **location, position and size**, bounded by Sierra Leone, Guinea, Côte d'Ivoire and the Atlantic. Describe its **relief** — the coastal plains, the rolling interior hills and plateaus rising to the northern highlands; its **drainage and lakes** — the Mano, St Paul, St John, Cestos, Cavally and Lofa; its **climate** — the tropical monsoon with the wet and dry seasons; its **natural vegetation** — rainforest, savanna, mangrove swamp and marshland; its **soils** — the latosols of the forest and the hydromorphic soils of the swamps, with the erosion that threatens them; and its **population and settlement**. Outline the five geographical regions of the country."},
+    {k:"rule"},
+    {k:"h3", t:"Regional Geography: the Regions of Africa"},
+    {k:"p", t:"Outline the geo-political regions of Africa with their countries, size and political boundaries: **West Africa** — the ECOWAS states from Senegal to Nigeria; **East Africa** — Ethiopia, Kenya, Uganda, Tanzania; **Equatorial and Central Africa** — Cameroon, Gabon, the two Congos; **North Africa** — the Maghreb and the Nile states; and **Southern Africa** — Angola, Zambia, Zimbabwe, Botswana, Namibia, South Africa. For each region examine the physical features and natural resources, the trade and communications relative to the population, and the factors influencing climate and agricultural activities. Map the countries, features and resources of the continent."},
+    {k:"rule"},
+    {k:"h3", t:"General Revision"},
+    {k:"p", t:"The course closes with general revision over five fronts: **map reading** — scales, positions, directions, relief and cross-sections; the **primary, secondary and tertiary industries of Liberia**; **climate and natural vegetation**; the **regional geography of Africa**; and **population and settlement**. Recap and remember the definitions, elements, description and activities of these geographic topics — through class discussion, group presentation and individual project — and prepare for the school and WASSCE examinations."},
+  ],
+
   focus:[
     "Ecosystems and the tropical rainforest: structure and value",
     "Deforestation: causes and consequences",

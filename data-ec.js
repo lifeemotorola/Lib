@@ -2,6 +2,11 @@
    Derived from the "Economics 10-12" senior high curriculum guide (35 pp.),
    6 periods per grade, 18 units.
 
+   Every unit carries a `study[]` block list — the course text of the guide,
+   rendered verbatim on the Study Notes page, with a comment noting the guide
+   pages covered. `**bold**` marks the key terms; table cells take no markup
+   because the renderer escapes them.
+
    Uses the SS_CURRICULUM unit shape so GEN_SS renders it unchanged, plus the
    optional `worked` field (calculations with steps) which GEN_SS renders only
    when present:
@@ -39,6 +44,24 @@ var EC_CURRICULUM = [
     "Categorise and explain the branches and types of economic systems"
   ],
   note:"<b>Economics</b> is the study of how people allocate <b>scarce</b> resources that have alternative uses to satisfy unlimited wants. Scarcity forces <b>choice</b>, and every choice has an <b>opportunity cost</b> — the value of the next best alternative given up. Every society must answer three basic questions: <b>what to produce, how to produce</b> and <b>for whom to produce</b>.",
+  study:[
+    /* ---- course text: Semester One, Period I — Nature and Scope of Economics (guide pp. 2-3) ---- */
+    {k:"h3", t:"Definitions and Origin of Economics"},
+    {k:"p", t:"**Economics** is the study of how people, firms and governments allocate **scarce resources** that have alternative uses, so as to satisfy **unlimited wants**. The word derives from the Greek 'oikos' (house) and 'nomos' (management) — the management of a household, widened to the management of a nation. The study grew through three definitions: the **wealth definition** of Adam Smith, who saw economics as the science of the nature and causes of the wealth of nations; the **welfare definition** of Alfred Marshall, which tied economics to material well-being; and the modern **scarcity definition** of Lionel Robbins — the science which studies human behaviour as a relationship between ends and scarce means which have alternative uses. Relate each idea to day-to-day experience: the household budget, the market stall, the government budget."},
+    {k:"rule"},
+    {k:"h3", t:"Fundamental Concepts of Economics"},
+    {k:"p", t:"**Scarcity** is the limited supply of resources against unlimited wants — the central fact of the subject. Because we cannot have everything, scarcity forces **choice**: to choose one thing is to give up another. A **scale of preference** is a list of wants arranged in order of importance, from the most pressing to the least; sensible people and sensible governments work down their scale. The **opportunity cost** of any choice is the value of the next best alternative forgone — the true cost of school fees may be the new roof the family gives up. A **want** is something desired but not essential to survival (a radio); a **need** is essential (food, water, shelter)."},
+    {k:"rule"},
+    {k:"h3", t:"The Basic Economic Problems"},
+    {k:"p", t:"Every society, rich or poor, must answer three basic questions. **What to produce** — and in what quantities, since resources spent on rice cannot also grow rubber. **How to produce** — by hand or by machine, with many workers or with capital, on large farms or small ones. **For whom to produce** — how the output is shared out among the people, which is the problem of distribution. Scarcity lies behind all three."},
+    {k:"rule"},
+    {k:"h3", t:"Branches of Economics"},
+    {k:"p", t:"**Microeconomics** studies the individual units of the economy — a household, a firm, a single market for rice or transport — and how their prices and outputs are set. **Macroeconomics** studies the economy as a whole: national income, total employment, the general price level, economic growth and the balance of payments. The two branches meet whenever the small decisions add up to the big totals."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Economic Systems"},
+    {k:"p", t:"An **economic system** is the way a society answers the three basic questions. Under **capitalism (the free enterprise or market economy)** resources are privately owned and the market, through price, decides what, how and for whom to produce — it rewards enterprise but can widen inequality. Under **socialism** the state owns the resources and directs production toward social goals — it spreads welfare but can grow slow and bureaucratic. The **mixed economy** blends the two: private firms alongside a public sector that provides roads, schools and health care. Debate the advantages and disadvantages of each, and note that **Liberia practises the mixed economy** — private markets operate beside state enterprises and regulation."},
+  ],
+
   focus:[
     "Definitions and origin of Economics",
     "Fundamental concepts: scarcity, choice, scale of preference, opportunity cost, wants and needs",
@@ -171,6 +194,33 @@ var EC_CURRICULUM = [
     "Explain exceptional demand curves, price ceiling and price floor"
   ],
   note:"The <b>law of demand</b>: other things being equal, the higher the price the lower the quantity demanded — the demand curve slopes <b>downward</b>. The <b>law of supply</b>: the higher the price the greater the quantity supplied — the supply curve slopes <b>upward</b>. <b>Equilibrium</b> occurs where the two curves intersect and quantity demanded equals quantity supplied. Above it there is a <b>surplus</b>; below it a <b>shortage</b>.",
+  study:[
+    /* ---- course text: Semester One, Period II — The Concepts of Demand and Supply (guide pp. 4-5) ---- */
+    {k:"h3", t:"The Laws of Demand and Supply"},
+    {k:"p", t:"**Demand** is the quantity of a commodity buyers are willing and able to purchase at a given price over a given period. The **law of demand** says that, other things being equal, the higher the price, the lower the quantity demanded — so the demand curve slopes **downward** to the right. **Supply** is the quantity producers are willing and able to offer for sale at a given price. The **law of supply** says the higher the price, the greater the quantity supplied — so the supply curve slopes **upward**. Apply both laws to your own consumption of rice, transport and talk-time, and to what a producer plants when prices rise."},
+    {k:"rule"},
+    {k:"h3", t:"Demand and Supply Schedules"},
+    {k:"p", t:"A **demand schedule** is a table of prices against the quantities demanded at each; a **supply schedule** sets prices against the quantities supplied. Plotting the two on one diagram gives the demand curve, the supply curve, and their crossing point. Draw hypothetical schedules for a good sold in your community, read the curves at each price level, and watch how quantity demanded falls as quantity supplied rises with price."},
+    {k:"rule"},
+    {k:"h3", t:"Kinds of Demand and Supply"},
+    {k:"bul", items:[
+      "**Composite demand** — a good demanded for several uses (land for farming, housing or roads)",
+      "**Joint (complementary) demand** — goods demanded together, like petrol and cars, or rice and palm oil",
+      "**Competitive demand** — goods that substitute for one another, like rice and cassava",
+      "**Derived demand** — a factor demanded for what it produces, such as the demand for farm labour derived from the demand for rice",
+      "**Joint supply** — goods produced together, like beef and hides",
+      "**Composite and competitive supply** — supply from several sources, or goods competing to be supplied to the same market"]},
+    {k:"rule"},
+    {k:"h3", t:"Movements and Shifts of the Curves"},
+    {k:"p", t:"A **movement** along a demand or supply curve is caused by a change in the good's own price alone. A **shift** of the whole curve is caused by other factors: for demand — income, taste, population, the prices of substitutes and complements, expectations; for supply — cost of production, technology, taxes and subsidies, weather, and the number of producers. A rightward shift means more is demanded (or supplied) at every price; a leftward shift means less."},
+    {k:"rule"},
+    {k:"h3", t:"Equilibrium Price and Quantity"},
+    {k:"p", t:"**Equilibrium** is reached where the demand and supply curves intersect: the **equilibrium (market) price** at which quantity demanded exactly equals quantity supplied — the **market clearing price**, because the market clears with neither surplus nor shortage left over. At a price **above** equilibrium, quantity supplied exceeds quantity demanded and a **surplus** pushes the price down. At a price **below** equilibrium, quantity demanded exceeds quantity supplied and a **shortage** pushes the price up. Derive the equilibrium of your own schedule and observe how a shift of either curve changes price and quantity."},
+    {k:"rule"},
+    {k:"h3", t:"The Exceptional Demand Curve; Price Ceiling and Price Floor"},
+    {k:"p", t:"Some demand curves slope upward, against the law: goods of **snob appeal (Veblen goods)** bought because they are expensive, **Giffen goods** on which the poor spend more as the price rises, and shares bought in the expectation of further rises — discuss the reasons for this abnormal behaviour. A **price ceiling** is a legal maximum price set below equilibrium, as with rent control: it helps buyers but creates shortages and queues. A **price floor** is a legal minimum set above equilibrium, as with a farm support price: it helps producers but creates a surplus. Demonstrate the effects of both in the market."},
+  ],
+
   focus:[
     "Definitions and the laws of demand and supply",
     "Demand and supply schedules",
@@ -308,6 +358,30 @@ var EC_CURRICULUM = [
     "Discuss division of labour, specialisation and the law of diminishing returns"
   ],
   note:"<b>Production</b> is the creation of goods and services to satisfy human wants. The four factors of production and their rewards are: <b>land → rent, labour → wages, capital → interest, entrepreneurship → profit</b>. The <b>production possibility curve</b> shows the maximum combinations of two goods an economy can produce using all its resources efficiently; points inside show waste, points outside are unattainable.",
+  study:[
+    /* ---- course text: Semester One, Period III — The Factors of Production (guide pp. 6-7) ---- */
+    {k:"h3", t:"Production and its Types"},
+    {k:"p", t:"**Production** is the creation of goods and services to satisfy human wants — it is not only making things but getting them to the people who need them. **Primary production** extracts from nature (farming, fishing, mining, forestry); **secondary production** manufactures and builds (milling rice, weaving cloth); **tertiary production** provides services (trade, transport, banking, teaching). Production may be **direct**, for one's own use, or **indirect**, for exchange through the market."},
+    {k:"rule"},
+    {k:"h3", t:"The Factors of Production and their Rewards"},
+    {k:"table", head:["Factor","What it covers","Reward"], rows:[
+     ["Land","All natural resources: soil, minerals, forests, rivers, the site itself","Rent"],
+     ["Labour","Human effort, physical and mental, applied to production","Wages / salary"],
+     ["Capital","Man-made aids to production: tools, machines, buildings, stock","Interest"],
+     ["Entrepreneurship","The organiser who combines the other factors, innovates and bears the risk","Profit"],
+     ["Technology","The knowledge and techniques applied to production","Raises the return to every factor"]]},
+    {k:"p", t:"Each factor is important and each earns its corresponding **remuneration**: land earns **rent**, labour earns **wages or salary**, capital earns **interest** and the entrepreneur earns **profit** — or bears the loss."},
+    {k:"rule"},
+    {k:"h3", t:"The Production Possibility Curve"},
+    {k:"p", t:"The **production possibility curve (frontier)** shows the maximum combinations of two goods an economy can produce when all its resources are fully and efficiently used — cassava against rice, say, or consumer goods against capital goods. A point **on** the curve is **full employment** of resources; a point **inside** the curve shows **underutilisation** — resources wasted or idle; a point **outside** the curve is **unattainable** with present resources, though economic growth or better technology can push the whole curve outward. Derive the curve of a hypothetical firm producing two goods and mark the attainable region, the unattainable region, full employment and underutilisation."},
+    {k:"rule"},
+    {k:"h3", t:"Division of Labour, Specialization and Diminishing Returns"},
+    {k:"p", t:"**Division of labour** breaks production into separate tasks, each done by a different worker; **specialization** is the concentration of a worker, firm or region on what it does best. Both raise skill and output — but a worker who repeats one task may grow bored, and specialized economies become dependent on the market for everything else. The **law of diminishing returns** states that as more and more units of a variable factor (labour) are added to a fixed factor (land), the extra output from each additional unit eventually falls."},
+    {k:"rule"},
+    {k:"h3", t:"Technology and Economic Growth"},
+    {k:"p", t:"**Technological change** — better tools, better seed, better methods — shifts the production possibility curve outward: more is produced from the same resources. There is therefore a direct relationship between technological change and **economic growth**, for growth is the sustained increase in an economy's output over time."},
+  ],
+
   focus:[
     "Definition and types of production: primary, secondary and tertiary",
     "The factors of production: land, labour, capital, entrepreneurship and technology",
@@ -443,6 +517,25 @@ var EC_CURRICULUM = [
     "Illustrate the concept of consumer surplus"
   ],
   note:"<b>Utility</b> is the satisfaction a consumer derives from a good. <b>Total utility</b> rises as more is consumed, but <b>marginal utility</b> — the extra satisfaction from one more unit — falls. This is the <b>law of diminishing marginal utility</b>. Total utility is at a maximum when marginal utility is <b>zero</b>. The consumer maximises satisfaction where <b>MUₐ/Pₐ = MUᵇ/Pᵇ</b> — the equi-marginal principle.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — The Theory of Consumer Behaviour (guide pp. 8-9) ---- */
+    {k:"h3", t:"The Concept of Utility"},
+    {k:"p", t:"**Utility** is the satisfaction a consumer derives from consuming a good or service. **Total utility (TU)** is the satisfaction from all the units consumed; **marginal utility (MU)** is the extra satisfaction from one more unit. **Utility maximization** is the goal of the rational consumer: to arrange spending so that total satisfaction is as great as the budget allows."},
+    {k:"rule"},
+    {k:"h3", t:"The Law of Diminishing Marginal Utility"},
+    {k:"p", t:"The **law of diminishing marginal utility (DMU)** states that, other things equal, as a consumer takes successive units of a commodity, the marginal utility from each additional unit falls. From this follow the relations between TU and MU: **TU rises while MU is positive; TU is at its maximum when MU is zero; TU falls when MU becomes negative**. Build a utility schedule for cups of water or plates of rice, compute MU as the change in TU at each step, and watch the pattern appear."},
+    {k:"rule"},
+    {k:"h3", t:"Applying Marginal Utility Theory"},
+    {k:"p", t:"Marginal utility explains the downward-sloping demand curve: since each extra unit gives less satisfaction, a buyer will purchase more only at a lower price. It also explains how a consumer divides income among goods — satisfaction is greatest when the last dollar spent on each good yields the same marginal utility, the **equi-marginal principle** (MU of A ÷ price of A = MU of B ÷ price of B). Cite examples from your own spending: the first loaf of bread, the first credit unit, the first pair of shoes."},
+    {k:"rule"},
+    {k:"h3", t:"The Indifference Curve and the Budget Line"},
+    {k:"p", t:"An **indifference curve** joins all the combinations of two goods that give the consumer equal satisfaction, so the consumer does not mind which combination is chosen. Its **characteristics**: it slopes downward, it is convex to the origin, curves nearer the origin represent less satisfaction and farther curves more, and indifference curves never touch or cross one another. The slope of the curve at any point is the **marginal rate of substitution (MRS)** — the amount of one good the consumer gives up for an extra unit of the other while remaining equally satisfied; the MRS falls as one moves down the curve."},
+    {k:"p", t:"The **consumer budget line** shows all the combinations of the two goods the consumer can just buy with a given income at given prices; its slope equals the ratio of the two prices. The consumer reaches equilibrium at the point where the budget line just touches the highest attainable indifference curve — the combination that spends the whole budget and equalises the MRS with the price ratio."},
+    {k:"rule"},
+    {k:"h3", t:"Consumer Surplus"},
+    {k:"p", t:"**Consumer surplus** is the difference between what a consumer is willing to pay for a good and what the consumer actually pays. If you would gladly pay 200 dollars for an umbrella but buy it at 120 dollars, your surplus is 80 dollars. On a diagram it is the area between the demand curve and the market price — the extra satisfaction consumers enjoy over and above their payment."},
+  ],
+
   focus:[
     "The concept of utility: total and marginal utility",
     "Utility maximisation and the law of diminishing marginal utility",
@@ -573,6 +666,30 @@ var EC_CURRICULUM = [
     "Interpret social data and draw conclusions from it"
   ],
   note:"Economists summarise data with the <b>measures of central tendency</b>. The <b>mean</b> is the sum of values divided by their number. The <b>median</b> is the middle value when the data are arranged in order. The <b>mode</b> is the value occurring most often. A <b>pie chart</b> converts each category to a share of 360°; a <b>bar chart</b> compares totals; a <b>line graph</b> shows change over time.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Basic Tools of Economic Analysis (guide pp. 10-11) ---- */
+    {k:"h3", t:"The Basic Economic Tools"},
+    {k:"p", t:"Economists collect, interpret and analyse data with a small toolkit: **tables, charts and graphs**, together with percentages and ratios. Their use and importance: a table organises raw figures for comparison; a chart or graph turns them into a picture the eye can grasp at once; percentages and ratios let us compare things of different size. Determine the usages of each tool in class — record the ages of learners in your class as data, tabulate them, and present them."},
+    {k:"rule"},
+    {k:"h3", t:"Frequency Distribution"},
+    {k:"p", t:"A **frequency distribution table** groups raw data into classes and counts how many observations fall in each class (the **frequency**). Constructing it: choose the number of classes, find the class interval, tally the observations class by class, and total the tallies. From the table the data can be carried into any of the graphic forms below."},
+    {k:"rule"},
+    {k:"h3", t:"Presenting Data: the Charts and Graphs"},
+    {k:"table", head:["Tool","What it shows","Best used when"], rows:[
+     ["Line graph","Change over time by a connected line","Following a trend, such as prices month by month"],
+     ["Histogram","Bars drawn from grouped classes, no gaps","Displaying a frequency distribution"],
+     ["Simple bar chart","Bars of equal width compared by height","Comparing totals of different items"],
+     ["Component bar chart","One bar stacked by parts of a whole","Showing the composition of each total"],
+     ["Divergent bar chart","Bars above and below a baseline","Showing gains and losses, surpluses and deficits"],
+     ["Percentage bar chart","A single bar scaled to 100 %","Comparing shares of different totals"],
+     ["Pie chart","Slices of a circle, each a share of 360°","Showing proportions of one total"],
+     ["Pictogram","Pictures or symbols repeated to stand for amounts","Simple display for general readers"]]},
+    {k:"rule"},
+    {k:"h3", t:"Measurement of Central Tendency"},
+    {k:"p", t:"The **arithmetic mean** is the sum of the values divided by their number — the average. The **median** is the middle value when the data are arranged in order; half the values lie above it and half below. The **mode** is the value that occurs most often. Calculate all three from your class survey of ages and compare them; note that a few very large or very small values pull the mean but leave the median untouched."},
+    {k:"p", t:"Worked example — the community survey: 100 teenagers were interviewed about contraceptive knowledge. Of 50 girls, 25 had knowledge, used contraceptives consistently, were not pregnant and remained in school; 10 had no knowledge, got pregnant and dropped from school; 15 had knowledge, yet got pregnant but remained in school. Of 50 boys, 36 had knowledge of contraceptive use and had not impregnated any girl; 14 had no knowledge and had impregnated girls. Present these findings in a pie chart, and process the information to show the implication of the data for schooling and health."},
+  ],
+
   focus:[
     "Definition and importance of the basic tools of economic analysis",
     "Tables, charts and graphs",
@@ -706,6 +823,28 @@ var EC_CURRICULUM = [
     "Explain the sources of funding available to each type of business"
   ],
   note:"A <b>sole proprietorship</b> is owned by one person with <b>unlimited liability</b> — personal assets can be taken to pay business debts. A <b>partnership</b> has two or more owners. A <b>corporation</b> or limited company is a separate <b>legal person</b> whose shareholders have <b>limited liability</b>, risking only what they invested. A <b>cooperative</b> is owned by its members, who share the surplus.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Types of Business Organisations (guide pp. 12-13) ---- */
+    {k:"h3", t:"The Types of Business Organisation"},
+    {k:"bul", items:[
+      "**Sole proprietorship** — a business owned by one person, who takes all the profit and bears all the loss",
+      "**Partnership** — a business owned by two to twenty persons who pool capital and share profit by agreement",
+      "**Corporation (limited company)** — a separate legal person owned by shareholders, whose liability is limited to their shares",
+      "**Joint-stock company** — a company whose capital is divided into transferable shares held by many investors",
+      "**Cooperative** — an association of members who pool resources and share the surplus among themselves",
+      "**Statutory corporation** — a public enterprise created by an Act of government to provide an essential service",
+      "**Joint venture** — a business undertaking shared between two or more independent parties for a common project"]},
+    {k:"rule"},
+    {k:"h3", t:"Main Features, Advantages and Disadvantages"},
+    {k:"p", t:"The **sole proprietorship** is easy to start, quick to decide and keeps all profit — but it has unlimited liability, limited capital, no continuity beyond the owner and bears all risk alone. The **partnership** brings more capital and shared skill, and partners share losses — yet partners bear joint unlimited liability, disagreements arise, and the death of a partner can dissolve the firm. The **corporation** has limited liability, huge capital from selling shares, continuity of life and professional management — but it is costly to form, double-taxed, heavily regulated, and its ownership is separated from control, so shareholders may lose voice. Weigh each form: a market table, a law practice, a bank, a farmers' cooperative."},
+    {k:"rule"},
+    {k:"h3", t:"Sources of Capital"},
+    {k:"p", t:"The sole proprietor relies on **personal savings, family loans, trade credit and ploughed-back profit**; the partnership adds the partners' contributions; the corporation raises capital by **issuing shares and debentures** and by bank borrowing; the cooperative draws **members' dues and deposits**; the statutory corporation is financed by **government subvention and its own trading surplus**; the joint venture by the parties' agreed contributions. Research the funding of businesses in your own community."},
+    {k:"rule"},
+    {k:"h3", t:"Business Enterprise Policy"},
+    {k:"p", t:"Four policies change who owns and runs business. **Privatization** transfers a public enterprise to private owners, seeking efficiency. **Commercialization** makes a public enterprise operate on commercial lines, charging economic prices without a change of ownership. **Indigenization** transfers ownership to citizens of the country, building local control. **Nationalization** transfers private business to the state, usually for strategic reasons. Examine the impact of each policy on the Liberian economy — on employment, prices, investment and public revenue."},
+  ],
+
   focus:[
     "Definitions of the types of business organisation",
     "Main features of sole proprietorship, partnership and corporation",
@@ -842,6 +981,24 @@ var EC_CURRICULUM = [
     "Analyse how changes in the price of a good affect total revenue and total expenditure"
   ],
   note:"<b>Price elasticity of demand</b> = percentage change in quantity demanded ÷ percentage change in price. If <b>PED > 1</b> demand is <b>elastic</b> and a price cut <b>raises</b> total revenue. If <b>PED < 1</b> demand is <b>inelastic</b> and a price rise <b>raises</b> total revenue. If <b>PED = 1</b> it is <b>unitary</b> and revenue is unchanged. The sign is normally negative but the magnitude is what matters.",
+  study:[
+    /* ---- course text: Semester One, Period I — Price Determination and Elasticity (guide pp. 14-15) ---- */
+    {k:"h3", t:"How the Market Sets the Price"},
+    {k:"p", t:"Price is determined by the **interaction of supply and demand**. Where the two curves cross, the **equilibrium price and quantity** are established; below it a **shortage** bids the price up, above it a **surplus** drags it down. A **change in equilibrium** follows whenever demand or supply shifts: a rise in demand raises both price and quantity; a rise in supply raises quantity but lowers price; a fall works the opposite way. Trace each shift on a diagram and read off the new equilibrium."},
+    {k:"rule"},
+    {k:"h3", t:"Elasticity Defined"},
+    {k:"p", t:"**Elasticity** measures how strongly one economic variable responds to another. The **price elasticity of demand (PED)** is the responsiveness of quantity demanded to a change in price. The **price elasticity of supply (PES)** is the responsiveness of quantity supplied to a change in price. **Income elasticity of demand** measures the response of demand to a change in consumer income — positive for normal goods, negative for inferior goods. **Cross-price elasticity** measures the response of demand for one good to a price change in another — positive between substitutes, negative between complements. Point out how each differs from the others before calculating anything."},
+    {k:"rule"},
+    {k:"h3", t:"Calculating Elasticity"},
+    {k:"p", t:"**PED = percentage change in quantity demanded ÷ percentage change in price**, and likewise for supply, income and cross elasticities. Read pairs of points from a demand or supply curve and compute the value. Worked example: a price rise from 40 dollars to 50 dollars (a 25 % rise) lowers quantity demanded from 200 to 150 units (a 25 % fall), so PED = 25 ÷ 25 = **1 (unitary)**. Judge every result: demand is **elastic** if the value exceeds 1, **inelastic** if less than 1, and **unitary** if exactly 1 — the negative sign of demand is customary, and it is the size that matters."},
+    {k:"rule"},
+    {k:"h3", t:"Elasticity, Total Revenue and Total Expenditure"},
+    {k:"p", t:"**Total revenue = price × quantity** (and equals the buyers' total expenditure). When demand is **elastic**, a price cut raises total revenue and a price rise lowers it; when demand is **inelastic**, a price rise raises total revenue and a price cut lowers it; when demand is **unitary**, revenue is unchanged. A business therefore studies elasticity before changing its price — and the same logic governs the effect of supply elasticity on revenue. Visit a local business centre to investigate its revenue (sales) and profit."},
+    {k:"rule"},
+    {k:"h3", t:"The Determinants of Elasticity"},
+    {k:"p", t:"Demand for a good is more elastic when close **substitutes** exist, when the good takes a large share of the consumer's budget, when it is a **luxury** rather than a necessity, and when buyers have time to adjust. Supply is more elastic when producers hold spare capacity, can store the good, can switch production easily, and when time is long. Calculate the elasticity of a good from a knowledge of its determinants."},
+  ],
+
   focus:[
     "Determination of price by supply and demand; equilibrium price and quantity",
     "Shortage, surplus and changes in equilibrium",
@@ -975,6 +1132,30 @@ var EC_CURRICULUM = [
     "State the advantages and disadvantages of each market type"
   ],
   note:"A <b>market</b> is any arrangement bringing buyers and sellers into contact — not necessarily a physical place. Under <b>perfect competition</b> there are many buyers and sellers, a homogeneous product, free entry and perfect knowledge, so the firm is a <b>price taker</b>. A <b>monopoly</b> is a single seller with barriers to entry and is a <b>price maker</b>. An <b>oligopoly</b> has a few large interdependent firms.",
+  study:[
+    /* ---- course text: Semester One, Period II — Market Structures (guide p. 16) ---- */
+    {k:"h3", t:"The Concept of a Market"},
+    {k:"p", t:"A **market** is any arrangement that brings buyers and sellers of a good or service into contact to trade — by telephone and internet as much as by stall. Distinguish it from the **market place**, which is only the physical spot where trading happens. Market structure — how many sellers, how alike the product, how free the entry — decides how prices and total revenue are determined."},
+    {k:"rule"},
+    {k:"h3", t:"Perfect and Imperfect Markets"},
+    {k:"p", t:"A **perfect market (perfect competition)** has many buyers and many sellers of a **homogeneous** product, free entry and exit, perfect knowledge of prices, and no single trader able to influence the market — every firm is a **price taker** selling at the ruling price. An **imperfect market** lacks one or more of these conditions; its forms are **monopolistic competition** (many sellers of slightly differentiated products), **oligopoly** (a few large, interdependent firms) and **monopoly** (a single seller protected by barriers to entry, a **price maker**)."},
+    {k:"rule"},
+    {k:"h3", t:"Comparing Perfect Competition and Monopolistic Competition"},
+    {k:"table", head:["Feature","Perfect competition","Monopolistic competition"], rows:[
+     ["Number of firms","Very many","Many"],
+     ["Product","Homogeneous — identical","Differentiated by brand, quality or location"],
+     ["Price control","None — price taker","Some — each firm sets its own price within a range"],
+     ["Entry","Completely free","Free in the long run"],
+     ["Advertising","None needed","Heavy — to stress the difference"],
+     ["Demand curve facing the firm","Perfectly elastic","Downward sloping"]]},
+    {k:"rule"},
+    {k:"h3", t:"Price and Quantity Determination"},
+    {k:"p", t:"Under **perfect competition** the firm accepts the market price and produces where its marginal cost equals that price; its demand curve is a horizontal line at the market price. Under **monopoly** the firm chooses the price — producing where marginal cost equals marginal revenue and then charging the price the demand curve allows, above marginal cost. Under **oligopoly** prices tend to be sticky, for each firm must match its rivals' moves; illustrate all three cases with diagrams of price and quantity."},
+    {k:"rule"},
+    {k:"h3", t:"Advantages and Disadvantages of Each Structure"},
+    {k:"p", t:"Perfect competition delivers the lowest price and efficient output, but no variety and no money for research. Monopolistic competition offers variety and innovation, at some cost in price. Oligopoly brings economies of scale and research, but risks collusion against consumers. Monopoly can achieve great scale and supply where others will not, but restricts output, raises price and may grow lazy. Weigh each structure as it serves the consumer and the economy."},
+  ],
+
   focus:[
     "The concept of a market versus the market place",
     "Perfect market and imperfect market",
@@ -1108,6 +1289,24 @@ var EC_CURRICULUM = [
     "Discuss the problems of distribution and marketing of commodities in Liberia"
   ],
   note:"A <b>plant</b> is a single physical unit of production such as a factory or shop. A <b>firm</b> is the business organisation that may own several plants. An <b>industry</b> is all the firms producing similar goods. The main <b>channel of distribution</b> runs <b>producer → wholesaler → retailer → consumer</b>, though producers may sell direct.",
+  study:[
+    /* ---- course text: Semester One, Period III — The Theory of Production and Distribution (guide pp. 17-18) ---- */
+    {k:"h3", t:"Production and the Classification of Goods"},
+    {k:"p", t:"**Production** is the creation of goods and services to satisfy wants; its types run primary, secondary and tertiary. Goods themselves are classified as **consumer goods**, used directly by households, and **producer (capital) goods**, used to make other goods; as **durable** or **non-durable**; as **intermediate goods**, partly finished inputs of one another's production; and as **free goods**, available without effort, against **economic goods**, scarce and priced. **Wealth**, in the Liberian setting, is the stock of valuable goods owned — land, rubber trees, livestock, savings — and it becomes wealth only when it is owned, valuable and transferable."},
+    {k:"rule"},
+    {k:"h3", t:"Firm, Plant and Industry"},
+    {k:"p", t:"A **plant** is a single physical unit of production — one factory, one shop, one farm. A **firm** is the business organisation that owns and manages one or more plants. An **industry** is the whole group of firms producing a similar product — all the rice mills, all the transport companies. One firm may own many plants; one industry holds many firms."},
+    {k:"rule"},
+    {k:"h3", t:"Fixed and Variable Inputs"},
+    {k:"p", t:"A **fixed input** cannot be changed with the level of output in the short run — the factory building, the land, the heavy machine. A **variable input** changes with output — labour, raw materials, fuel, power. The distinction sets the length of the planning horizon: in the long run all inputs become variable."},
+    {k:"rule"},
+    {k:"h3", t:"The Channels of Distribution"},
+    {k:"p", t:"Goods travel from producer to consumer along the **channel of distribution**. The **producer** makes the good; the **wholesaler** buys in bulk from producers, stores, breaks bulk and supplies the retailers; the **retailer** sells in small quantities to the final consumer, offering credit, variety and a near location. Each middleman performs real functions — transport, storage, grading, finance, risk-bearing, information — for which the margin is the reward. Producers may also sell **direct** to consumers, shortening the channel."},
+    {k:"rule"},
+    {k:"h3", t:"Problems of Distribution and Marketing in Liberia"},
+    {k:"p", t:"Relate the channel to practice in Liberia: poor rural roads raise the cost of moving produce from Lofa or Bong to Monrovia; storage is scarce, so perishable crops are sold cheap at harvest; market information is thin, so prices differ widely between markets; finance for traders is costly; packaging and processing are limited. Suggest how better roads, storage, cooperative marketing and market information would ease each problem."},
+  ],
+
   focus:[
     "Meaning and types of production",
     "Classification of goods: consumer and capital, durable and non-durable, free and economic",
@@ -1244,6 +1443,24 @@ var EC_CURRICULUM = [
     "Analyse the links between population and the labour market"
   ],
   note:"A <b>census</b> is the official counting of a country's population. A <b>de facto</b> census counts people where they actually are on census night; a <b>de jure</b> census counts them at their usual place of residence. <b>Population density = total population ÷ land area</b>. The <b>dependency ratio</b> compares those under 15 and over 64 with the working population aged 15 to 64.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — Population and the Labour Market (guide pp. 19-20) ---- */
+    {k:"h3", t:"Population and the Population Census"},
+    {k:"p", t:"**Population** is the total number of people living in a country or area at a given time. A **population census** is the official count of every person in a country at a specified time, together with facts about age, sex, occupation and housing. The two types: a **de facto** census counts people where they actually are on census night; a **de jure** census counts people at their usual place of residence, wherever they happen to be. Conduct a head count of your own family by gender and age group and sort members into the dependent ages and the working age."},
+    {k:"rule"},
+    {k:"h3", t:"Importance, Characteristics and Problems of the Census"},
+    {k:"p", t:"The census matters: it fixes the size and structure of the population, guides the sharing of seats and revenue, plans schools, hospitals and roads, and provides the base for every later survey. Its **characteristics**: it is universal, simultaneous, periodic (usually every ten years), individual and confidential. Its **problems** in Liberia and West Africa: high cost and shortage of trained enumerators, poor maps and addresses, remote and unsettled areas, distrust and undercounting, rapid growth between counts, and too slow publication of results."},
+    {k:"rule"},
+    {k:"h3", t:"Population Size, Growth and Distribution"},
+    {k:"p", t:"Population size changes through three determinants: the **birth rate**, the **death rate** and **migration**. **Population density = total population ÷ land area**, in persons per square kilometre. Distribution is studied by **geographical region** — coast against interior, county against county; by **age** and **sex**, which the dependency ratio summarises; and by **occupation** — farming, trading, public service. Describe each distribution for Liberia and account for it."},
+    {k:"rule"},
+    {k:"h3", t:"The Malthusian Theory"},
+    {k:"p", t:"**Malthus** argued that population, when unchecked, grows in a **geometric** progression (2, 4, 8, 16 ...) while food supply grows only in an **arithmetic** progression (2, 3, 4, 5 ...), so population must outrun food unless checked by **positive checks** — famine, disease and war — or **preventive checks** — later marriage and moral restraint. State the theory, then critique it: technology, new seed and world trade have raised food faster than he expected, and birth rates fall as incomes and education rise; yet in parts of Africa the pressure he described is real."},
+    {k:"rule"},
+    {k:"h3", t:"Optimum, Under- and Over-Population"},
+    {k:"p", t:"The **optimum population** is the size that, with the resources available, gives the highest output per head. **Under-population** leaves resources idle for want of people; **over-population** presses on resources and lowers output per head. Ask of any country which condition it is in — and consider the labour market: what will happen to the work force that contributes to national development if it is struck by a pandemic such as HIV and AIDS or other diseases? Give the social, economic and development impact on a country such as Liberia."},
+  ],
+
   focus:[
     "Definition of population and population census",
     "Types of census: de facto and de jure",
@@ -1380,6 +1597,25 @@ var EC_CURRICULUM = [
     "Calculate costs and revenue and determine profit"
   ],
   note:"<b>Total cost = fixed cost + variable cost</b>. <b>Average cost = TC ÷ Q</b>. <b>Marginal cost</b> is the addition to total cost from one more unit. <b>Total revenue = price × quantity</b>. The accountant counts only <b>explicit</b> money costs; the economist adds <b>implicit</b> costs — the opportunity cost of the owner's own resources. Profit is maximised where <b>MC = MR</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Theory of Cost and Revenue (guide pp. 21-22) ---- */
+    {k:"h3", t:"Cost, Revenue and the Two Views of Cost"},
+    {k:"p", t:"The **cost of production** is the total expense of making output; **revenue** is what the sale of the output brings in. The **accountant's view** counts only the **explicit costs** — actual money paid out for wages, materials, rent and interest. The **economist's view** adds the **implicit costs** — the opportunity cost of the owner's own time, building and money, which earn nothing elsewhere because they are used here. Profit to the accountant is revenue minus explicit cost; profit to the economist also deducts implicit cost."},
+    {k:"rule"},
+    {k:"h3", t:"The Cost Concepts"},
+    {k:"bul", items:[
+      "**Fixed cost (FC)** — does not change with output: rent, insurance, the manager's salary",
+      "**Variable cost (VC)** — changes with output: raw materials, fuel, piece-rate wages",
+      "**Total cost (TC) = fixed cost + variable cost**",
+      "**Average cost (AC) = total cost ÷ quantity produced**; average fixed and average variable cost follow the same pattern",
+      "**Marginal cost (MC)** — the addition to total cost from producing one more unit",
+      "**Short-run cost** — the period with at least one fixed input; **long-run cost** — the period in which all inputs can be varied, so every cost becomes variable"]},
+    {k:"rule"},
+    {k:"h3", t:"Cost Tables, Curves and Calculations"},
+    {k:"p", t:"Build a hypothetical firm's **cost table** output by output: fixed cost stays constant, variable cost climbs, total cost is their sum; divide and subtract to fill in average cost, average variable cost and marginal cost. Plotted, the curves show the familiar shapes: average fixed cost falls throughout, marginal cost cuts average cost and average variable cost at their lowest points, and the long-run average cost curve first falls with economies of scale and then rises with diseconomies. On the revenue side, **total revenue = price × quantity**, average revenue equals price, and **marginal revenue** is the addition to revenue from one more unit; profit is at its greatest where **marginal cost = marginal revenue**."},
+    {k:"p", t:"Apply the concepts in debate: using opportunity cost, weigh the effects of early marriage against the benefit of education for the social and economic development of the individual — for girls and for boys — and cite the regions or sections of Liberia where early marriage is still practised."},
+  ],
+
   focus:[
     "Definitions of cost of production and revenue",
     "The economist's and the accountant's view of cost",
@@ -1517,6 +1753,21 @@ var EC_CURRICULUM = [
     "Formulate recommendations to enhance government agricultural policy"
   ],
   note:"Agriculture contributes to development in several ways: it supplies <b>food</b>, provides <b>employment</b> for most of the rural population, earns <b>foreign exchange</b> from exports such as rubber and cocoa, supplies <b>raw materials</b> to industry, and provides a <b>market</b> for manufactured goods. Liberia's main <b>cash crops</b> are rubber, cocoa, coffee, oil palm and sugar cane; the main <b>food crops</b> are rice and cassava.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — The Role of Agriculture in Economic Development (guide p. 23) ---- */
+    {k:"h3", t:"Agricultural Products of Liberia and West Africa"},
+    {k:"p", t:"The **cash crops** grown for export and sale are rubber, cocoa, coffee, oil palm, sugar cane and cotton; the **food crops** are rice, cassava, yams, plantain, eddoes and vegetables; **livestock** — cattle, goats, sheep, pigs and poultry — remains small in scale; **fisheries** supply fish from the sea, the rivers and the fish ponds. Identify the major export crops and the major import products of Liberia and its West African neighbours: exports run to rubber, iron ore, timber, cocoa and palm products; imports bring rice, fuel, machinery and manufactured goods."},
+    {k:"rule"},
+    {k:"h3", t:"The Challenges of Agricultural Production"},
+    {k:"p", t:"Six constraints hamper farming in Liberia and West Africa. **Land** — tenure is often customary, insecure and fragmented, and good land lies unused. **Subsidy** — farmers receive little of the support their competitors abroad enjoy. **Storage** — without barns, silos and drying floors, crops spoil and prices collapse at harvest. **Education** — extension advice and training reach few farmers. **Infrastructure (roads)** — produce rots before it reaches the market. **Technology** — the hand hoe and the cutlass still rule, with little machinery, fertiliser or improved seed. Discuss each and how it might be alleviated."},
+    {k:"rule"},
+    {k:"h3", t:"The Importance of Agriculture to Development"},
+    {k:"p", t:"Using Liberia as the case: agriculture **feeds** the nation and saves foreign exchange on food imports; it **employs** most of the people and earns their income; it supplies **raw materials** to industry — rubber to the factories, palm fruit to the mills, cane to the sugar plant; it earns **foreign exchange** from exports; it provides a **market** for the products of towns; and its surplus releases labour and savings to the rest of the economy. No economy develops with agriculture left behind."},
+    {k:"rule"},
+    {k:"h3", t:"Recommendations for Policy"},
+    {k:"p", t:"Formulate recommendations to enhance government agricultural policy: secure land tenure and consolidate holdings; expand extension services and farmer education; subsidise seed, fertiliser and tools; build feeder roads, storage and processing plants; organise cooperative marketing; offer credit sized to the farming calendar; stabilise producer prices; and attract investment into plantations and agro-industry. Each recommendation should answer one of the challenges above."},
+  ],
+
   focus:[
     "Agricultural products in Liberia and West Africa: cash crops, food crops, livestock and fisheries",
     "Major export and import products",
@@ -1651,6 +1902,28 @@ var EC_CURRICULUM = [
     "Determine the factors which influence economic development in Liberia and West African countries"
   ],
   note:"<b>Economic growth</b> is a rise in national output, measured by real GDP. <b>Economic development</b> is broader: growth <b>plus</b> improvements in living standards, health, education, equality and the structure of the economy. A country can grow without developing if the gains reach only a few. <b>Economic planning</b> is the deliberate government direction of resources toward chosen development targets.",
+  study:[
+    /* ---- course text: Semester One, Period I — Economic Development and Planning: the Liberian Economy (guide pp. 24-25) ---- */
+    {k:"h3", t:"Development, Growth and Planning"},
+    {k:"p", t:"**Economic development** is the sustained improvement in the welfare of a people — income, health, education, choice. **Economic growth** is only the sustained increase in output of goods and services; a country may grow without developing if the gains bypass the many. **Planning** is the deliberate direction of the economy by government — setting targets, allocating resources and sequencing projects — because the market alone does not build roads, schools or power for everyone. Discuss how growth and development differ, and why Liberia needs both."},
+    {k:"rule"},
+    {k:"h3", t:"Underdeveloped, Developing and Developed Economies"},
+    {k:"table", head:["Feature","Underdeveloped","Developing","Developed"], rows:[
+     ["Income per head","Very low","Low and rising","High"],
+     ["Main occupation","Subsistence agriculture","Agriculture plus growing industry","Industry and services"],
+     ["Capital","Scarce; little saving","Increasing","Abundant"],
+     ["Infrastructure","Thin roads, power and schools","Expanding","Extensive"],
+     ["Health and education","Low life expectancy; little schooling","Improving","High life expectancy; widespread schooling"],
+     ["Trade","Exports of raw materials","Some processing","Exports of manufactures and services"]]},
+    {k:"p", t:"Research and chart these features for countries you know, and place each on the path from underdeveloped through developing to developed."},
+    {k:"rule"},
+    {k:"h3", t:"The Liberian Traditional Economy"},
+    {k:"p", t:"Before the modern economy, Liberia knew the **traditional economy**: subsistence farming by slash-and-burn, hunting, fishing and trade by barter within and between villages, production organised by kinship, and wealth held in land, cattle and kola. Debts and duties were settled by custom, and the whole system rested on cooperation rather than price. Trace its concepts and debate what it still contributes — food security, mutual support — and what it could not supply — scale, technology, public revenue."},
+    {k:"rule"},
+    {k:"h3", t:"Factors Influencing Development in Liberia and West Africa"},
+    {k:"p", t:"The factors: natural resources and their management; capital accumulation and savings; the size and skill of the labour force; technology; infrastructure of roads, power and ports; political stability and honest administration; health and education of the people; the terms of trade; and the flow of foreign investment and aid. Pair the factors with recommendations for Liberia and its West African neighbours, and propose what policy would lift each."},
+  ],
+
   focus:[
     "Concepts of economic development and planning",
     "Economic growth compared with economic development",
@@ -1783,6 +2056,24 @@ var EC_CURRICULUM = [
     "Suggest policy options that could improve the economy of Liberia"
   ],
   note:"<b>GDP</b> is the value of all final goods and services produced <b>within</b> a country in a year. <b>GNP = GDP + net income from abroad</b>. <b>NNP = GNP − depreciation</b>. <b>Per capita income = national income ÷ population</b>. National income can be measured three ways — by <b>output</b>, by <b>income</b> and by <b>expenditure</b> — which should give the same total.",
+  study:[
+    /* ---- course text: Semester One, Period II — Industrialisation of the Liberian Economy and Concepts of National Income (guide pp. 26-27) ---- */
+    {k:"h3", t:"Industrialisation and its Policies"},
+    {k:"p", t:"**Industrialisation** is the wide establishment of manufacturing industry in an economy. **Industrialization policies** are the measures governments use to encourage it — tax holidays, protective tariffs, industrial estates, credit and training. **Localization of industries** is the clustering of firms of one kind in one place, as iron ore processing at Buchanan or rubber processing around Harbel — attracted by raw materials, power, transport, labour and market. Analyse how industrialisation relates to Liberia's economic development, and the process by which it spreads."},
+    {k:"rule"},
+    {k:"h3", t:"The Role of Industrialisation in Development"},
+    {k:"p", t:"Industry brings the **optimum utilization of scarce resources** — raw materials worked up into goods worth far more than in raw form. It provides the **machinery that increases agricultural productivity** — tractors, mills, processing plants — and with them employment, skills, exports and public revenue. Observe the processes of production and distribution on an industrial site and report on how the plant uses what the country grows and mines."},
+    {k:"rule"},
+    {k:"h3", t:"Measuring National Income"},
+    {k:"p", t:"**National income** is the total money value of all goods and services produced by a country in a year. Its measures: **Gross National Product (GNP)** — the total value of final goods and services produced by the nationals of a country in a year, at home and abroad; **Net National Product (NNP) = GNP minus depreciation** of capital; **Gross Domestic Product (GDP)** — production within the country's borders whoever produces it; and **per capita income** — national income ÷ population, the average income of each person. The **uses of national income statistics**: measuring growth year by year, comparing countries, planning and budgeting, sharing revenue, and attracting aid and investment."},
+    {k:"rule"},
+    {k:"h3", t:"The Circular Flow of Income and Expenditure"},
+    {k:"p", t:"In the **circular flow diagram**, households supply factors of production to firms and receive wages, rent, interest and profit; firms supply goods and services to households and receive consumer spending. Income flows one way, expenditure the other, and output rides between them — which is why the three can be measured against one another. Demonstrate the linkages of the different actors — household, firm, government, bank, the outside world — in one diagram."},
+    {k:"rule"},
+    {k:"h3", t:"Methods of Calculation, Advantages and Limitations"},
+    {k:"p", t:"National income is calculated three ways, which must agree: the **output (product) method** — the value added by each industry; the **income method** — the sum of wages, rent, interest and profit earned; and the **expenditure method** — consumption + investment + government spending + net exports. The advantages of GNP per capita as a measure: simple, comparable, and observable. The **limitations and pitfalls**: it hides the distribution of income, excludes unpaid and subsistence work (large in Liberia), ignores leisure and the environment, is distorted by inflation, and is hard to measure where records are few. Identify the major development projects financed out of national income and compare government expenditure on each with the impact on the lives of Liberians."},
+  ],
+
   focus:[
     "Meaning of industrialisation, industrialisation policies and localisation of industries",
     "The role of industrialisation in economic development",
@@ -1919,6 +2210,27 @@ var EC_CURRICULUM = [
     "Demonstrate the relationship between inflation and the value of money"
   ],
   note:"Money has four functions: a <b>medium of exchange</b>, a <b>measure of value</b>, a <b>store of value</b> and a <b>standard of deferred payment</b>. Good money is <b>durable, portable, divisible, scarce, homogeneous</b> and <b>generally acceptable</b>. <b>Inflation</b> is a sustained rise in the general price level; it reduces the <b>purchasing power</b> of money and hurts savers and those on fixed incomes.",
+  study:[
+    /* ---- course text: Semester One, Period III — Money, Banking and the Financial Institutions (guide pp. 28-29) ---- */
+    {k:"h3", t:"Money: Origin, Characteristics and Functions"},
+    {k:"p", t:"**Money** is anything generally accepted in payment for goods, services and debts. Its **origin and development** ran from barter — whose troubles were the double coincidence of wants and the lack of a measure of value — through commodity money (cowries, salt, cattle, iron), to coin, to paper notes and to bank deposits and electronic money. Good money must be **acceptable, portable, durable, divisible, uniform, scarce and stable in value**. Its **functions**: a **medium of exchange**, a **measure of value**, a **store of value** and a **standard of deferred payment**. The **value for money** is what it will buy: when prices rise, each dollar buys less — that is the link between the value of money and price."},
+    {k:"rule"},
+    {k:"h3", t:"The Banks and Financial Institutions"},
+    {k:"table", head:["Institution","Chief function"], rows:[
+     ["Central Bank","Issues the currency, banks for the government, banks for the banks, controls credit and guards the value of the money"],
+     ["Commercial banks","Take deposits, give loans, transfer payments, create credit for trade and business"],
+     ["Merchant banks","Finance foreign trade, arrange large loans, manage shares and company finance"],
+     ["Development banks","Lend long-term to industry and agriculture, where ordinary banks fear the risk and the wait"],
+     ["Savings banks and building societies","Collect small savings and lend for homes and improvement"],
+     ["Insurance companies","Pool risk, compensate loss, and invest the premiums in the economy"]]},
+    {k:"rule"},
+    {k:"h3", t:"Inflation"},
+    {k:"p", t:"**Inflation** is a persistent rise in the general price level. Its main types: **demand-pull inflation**, where total demand outruns what the economy can supply; **cost-push inflation**, where wages and input costs push prices up; and imported inflation, where the price of imported goods rises. Control it by monetary policy — restraining credit and the money supply — by fiscal policy — cutting government spending and raising taxes — and by supply measures — producing more of what is scarce. Debate the merits and demerits of inflation in the economy: debtors gain and savers lose; revenue may rise but planning fails."},
+    {k:"rule"},
+    {k:"h3", t:"Unemployment and its Relation to Inflation"},
+    {k:"p", t:"**Unemployment** is the state of those able and willing to work who cannot find work. Its types: **structural** — the skills workers have no longer match the jobs the economy offers; **cyclical** — work lost in the downturn of the trade cycle; **frictional** — workers between jobs as they search and move. The two troubles meet: policy that fights inflation by restraining demand tends to raise unemployment, and policy that cures unemployment by expanding demand tends to raise prices — the trade-off that governments must balance."},
+  ],
+
   focus:[
     "Definition and origin of money; the development from barter",
     "Characteristics and functions of money",
@@ -2058,6 +2370,21 @@ var EC_CURRICULUM = [
     "Discuss terms of trade, balance of trade and balance of payments"
   ],
   note:"<b>Absolute advantage</b> exists when a country can produce a good using fewer resources than another. <b>Comparative advantage</b> exists when it can produce at a lower <b>opportunity cost</b> — and this, not absolute advantage, is the true basis of gainful trade. <b>Balance of trade</b> covers visible goods only; the <b>balance of payments</b> records all transactions with the rest of the world.",
+  study:[
+    /* ---- course text: Semester Two, Period IV — International Trade and Balance of Payments (guide pp. 30-31) ---- */
+    {k:"h3", t:"The Vocabulary of Trade"},
+    {k:"p", t:"**International trade** is the exchange of goods and services between countries; **domestic trade** is exchange within a country; **regional trade** is international trade among a group of neighbouring countries, as within ECOWAS or the Mano River Union. The **terms of trade** measure how much export buys in imports — the ratio of export prices to import prices. The **balance of trade** is the difference in value between a country's exports and imports of goods alone; **legal tender** is the money the law accepts in settlement of a debt within a country — the Liberian dollar at home, other currencies abroad."},
+    {k:"rule"},
+    {k:"h3", t:"Why Nations Trade"},
+    {k:"p", t:"The reasons for international trade: differences in **climate and resources**, differences in **technology and skill**, differences in **cost of production**, and the sheer **size of markets** — no country can produce everything well. Domestic and international trade differ in currency, distance and transport, laws and tariffs, and in the mobility of labour and capital across borders. Weigh the advantages — wider variety, cheaper goods, larger markets, foreign exchange — against the disadvantages — dumping, dependence on exports of raw materials, and the vulnerability of the home producer."},
+    {k:"rule"},
+    {k:"h3", t:"Absolute and Comparative Advantage; Free Trade and Protection"},
+    {k:"p", t:"A country has an **absolute advantage** where it produces a good more cheaply than any other. The **law of comparative cost** says that even without absolute advantage, a country gains by specialising where its **relative** cost is lowest and trading for the rest — Liberia in rubber and iron ore, its neighbours in what they do relatively best. **Free trade** leaves the market to decide; **protection** shelters home industry by tariffs, quotas and bans, as the channels of UNCTAD debate. Judge when each serves a developing economy."},
+    {k:"rule"},
+    {k:"h3", t:"The Balance of Payments"},
+    {k:"p", t:"The **balance of payments (BOP)** records all transactions between a country and the rest of the world — the current account of goods and services, and the capital account of investment and loans. The **use of foreign currency** — dollars, euros — to settle trade makes the exchange rate central. A **BOP disequilibrium** calls for **adjustment**: deflating demand, devaluing or letting the currency **depreciate** so exports grow cheaper and imports dearer, or borrowing. A **BOP deficit** means more paid out than taken in; a **surplus** the reverse. Show how devaluation and depreciation work, and trace their effect on Liberia's trade."},
+  ],
+
   focus:[
     "Definitions: international, domestic and regional trade",
     "Terms of trade and balance of trade",
@@ -2199,6 +2526,29 @@ var EC_CURRICULUM = [
     "Relate elasticity of demand and supply to taxation"
   ],
   note:"<b>Public finance</b> is the study of government revenue and expenditure. <b>Fiscal policy</b> is the use of taxation and spending to influence the economy. A <b>direct tax</b> is levied on income or wealth and cannot easily be shifted; an <b>indirect tax</b> is levied on goods and can be passed to the consumer. The <b>incidence</b> of a tax — who really bears it — depends on the <b>elasticity</b> of demand and supply.",
+  study:[
+    /* ---- course text: Semester Two, Period V — Public Finance and International Organisations (guide pp. 32-33) ---- */
+    {k:"h3", t:"Public Finance and Fiscal Policy"},
+    {k:"p", t:"**Public finance** is the study of how government raises and spends money. **Fiscal policy** is the use of taxation and government expenditure to steer the economy; its objectives: to finance public services, to redistribute income, to stabilise prices and employment, and to encourage growth. The **sources of government revenue** are chiefly taxation, together with fees and licences, the profits of public enterprises, borrowing and grants. The **economic effects of taxation**: it moves purchasing power to the state, can discourage what is taxed and encourage what is relieved, and changes the distribution of income."},
+    {k:"rule"},
+    {k:"h3", t:"Direct and Indirect Taxes"},
+    {k:"p", t:"A **direct tax** is levied on the person who bears it and cannot be shifted: income tax, company tax, property tax. Its advantages: certain, equitable by ability to pay, a lever of policy; its disadvantages: it can discourage work and saving, needs records and administration, and is easy to evade. An **indirect tax** is levied on goods and services and shifted to the consumer: customs duty, excise, sales tax and VAT. Its advantages: hard to evade, collected at the point of sale, spread wide; its disadvantages: regressive on the poor, uncertain in yield, and it raises prices. Examine the types and amounts of tax a business in your community pays in a fiscal year."},
+    {k:"rule"},
+    {k:"h3", t:"Tax Incidence, Elasticity and the Systems of Taxation"},
+    {k:"p", t:"**Tax incidence** is where the burden of a tax finally rests. The **elasticity of demand and supply** decides it: where demand is inelastic the consumer bears most of an indirect tax; where demand is elastic the seller bears it. Illustrate the burden graphically. The three **systems of taxation**: a **progressive tax** takes a rising share as income rises; a **proportional tax** takes the same share of all incomes; a **regressive tax** takes a rising share as income falls. Analyse the effect of each system on a family income, a business firm and the government."},
+    {k:"rule"},
+    {k:"h3", t:"The International Economic Organisations"},
+    {k:"table", head:["Organisation","What it does"], rows:[
+     ["IMF — International Monetary Fund","Watches over the world's money, lends to countries in balance of payments trouble, advises on policy"],
+     ["IBRD — World Bank","Lends long-term for development projects — roads, power, schools"],
+     ["IFC — International Finance Corporation","Finances private enterprise in developing countries"],
+     ["ADB / AfDB — African Development Bank","African-owned bank lending for African development"],
+     ["OPEC — Organization of Petroleum Exporting Countries","Coordinates the petroleum policies of member oil exporters"],
+     ["ECA — Economic Commission for Africa","UN commission promoting Africa's economic development"],
+     ["UNCTAD — UN Conference on Trade and Development","Promotes the trade and development interests of developing countries"]]},
+    {k:"p", t:"Prepare a research paper on these organisations and indicate how Liberia has benefited from each — in loans, debt relief, technical advice, training and market access."},
+  ],
+
   focus:[
     "Meaning of public finance; fiscal policy and its objectives",
     "Sources of government revenue, especially taxation",
@@ -2342,6 +2692,27 @@ var EC_CURRICULUM = [
     "Compare the natural resources of Liberia with those of countries in the sub-region"
   ],
   note:"<b>Economic integration</b> is the joining of the economies of separate states through the reduction of trade barriers. Its stages rise in depth: <b>preferential trading area → free trade area → customs union → common market → economic and monetary union → fiscal harmonisation</b>. Liberia's natural resources include <b>iron ore, gold, diamonds, rubber, timber, fisheries and abundant water</b>.",
+  study:[
+    /* ---- course text: Semester Two, Period VI — Economic Integration and Natural Resources (guide pp. 34-35) ---- */
+    {k:"h3", t:"Economic Integration and its Key Concepts"},
+    {k:"p", t:"**Economic integration** is the coming together of neighbouring economies to trade and move resources freely, so that together they achieve what none could alone. Its key concepts: **trade benefits** as goods move to where they are most wanted; **employment** as production and markets expand; **political cooperation** that keeps the peace; **market expansion** beyond the small national market; **technology sharing** across borders; and **cross-border investment flows** as capital moves to opportunity in the grouping."},
+    {k:"rule"},
+    {k:"h3", t:"The Stages of Economic Integration"},
+    {k:"num", items:[
+      "**Preferential trading area** — members lower tariffs on one another's goods below the rate charged on outsiders",
+      "**Free trade area** — members remove tariffs and quotas among themselves, but each keeps its own tariff against the outside world",
+      "**Customs union** — free trade within, plus one common external tariff for all members",
+      "**Common market** — the customs union plus free movement of labour, capital and enterprise",
+      "**Economic and monetary union** — one economic policy and one currency",
+      "**Fiscal policy harmonization** — members align taxes and public spending to hold the union together"]},
+    {k:"rule"},
+    {k:"h3", t:"Advantages and Disadvantages of Integration"},
+    {k:"p", t:"Advantages: a wider market and economies of scale, more competition and efficiency, stronger bargaining as a bloc, freer movement of people and capital, and shared projects no single state could fund. Disadvantages: loss of national control over policy and tariff, uneven gains that favour the strongest members, the cost of adjusting industries to bloc competition, and the strain of one rule for economies at different stages. Determine whether integration has impacted the economy of Liberia — within ECOWAS and the Mano River Union — and analyse the advantages and disadvantages of regional trade and cooperation."},
+    {k:"rule"},
+    {k:"h3", t:"Natural Resources of Liberia and the Sub-Region"},
+    {k:"p", t:"Compare Liberia's natural resources with its neighbours'. Liberia holds **iron ore** in Nimba and Bong, **rubber** growing across the counties, **timber** in the rainforest, **gold and diamonds**, **palm oil**, and fertile land and fishing waters. Guinea adds bauxite and iron; Sierra Leone diamonds and rutile; Côte d'Ivoire cocoa, coffee and oil; Ghana gold and cocoa; Nigeria oil and gas. Map each, and ask how far each country has turned resource into development — and what stands in the way."},
+  ],
+
   focus:[
     "Definition and key concepts of economic integration",
     "Trade benefits, employment, political cooperation, market expansion, technology sharing and investment flows",
