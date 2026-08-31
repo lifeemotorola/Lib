@@ -11,7 +11,7 @@
   var MODEL = "llama3-70b-8192";
   var STORE_KEY = "lncpg.groq.v1";
 
-  var apiKey = "";
+  var apiKey = "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";
   var chatHistory = [];     /* {role, content}[] */
   var isOpen = false;
   var isStreaming = false;
