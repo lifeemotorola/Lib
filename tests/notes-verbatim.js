@@ -49,8 +49,21 @@ const SUBJECTS = [
     ] },
   { name: "General Science", global: "SC_CURRICULUM",
     files: ["data-sc.js", "data-sc79.js"],
+    grades: 9,                     /* every unit from Grade 1 to Grade 9 must carry study[] */
     spots: [{ grade: 7, period: "I",
-              facts: ["Density = mass ÷ volume", "215 cm", "hydrocarbons"] }] }
+              facts: ["Density = mass ÷ volume", "215 cm", "hydrocarbons"] },
+            { grade: 1, period: "V",
+              facts: ["December to February", "Mercury, Venus, Earth, Mars"] },
+            { grade: 2, period: "VI",
+              facts: ["Refuse – reason – run – report", "expiry date"] },
+            { grade: 4, period: "III",
+              facts: ["carbon dioxide + water", "chlorophyll"] },
+            { grade: 5, period: "III",
+              facts: ["1 kg = 1,000 g", "Fair test"] },
+            { grade: 6, period: "V",
+              facts: ["MA = load ÷ effort", "Efficiency = (work out ÷ work in) × 100 %"] },
+            { grade: 6, period: "VI",
+              facts: ["H₂O", "filtrate"] }] }
 ];
 
 let grandTotal = 0;

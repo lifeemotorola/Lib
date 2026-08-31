@@ -1018,7 +1018,7 @@ const SS_CURRICULUM = [
   objectives:["Locate Liberia on the map of Africa","List some physical features of Liberia","State the importance of natural resources","Describe the climate of Liberia and its effects","Identify the people that make up Liberia"],
   note:"Liberia lies on the west coast of Africa. Its boundaries are <b>Guinea</b> to the north, the <b>Atlantic Ocean</b> to the south, <b>Sierra Leone</b> to the west and <b>Côte d'Ivoire (Ivory Coast)</b> to the east. Three groups of people make up Liberia: the <b>indigenous</b> people, the <b>settlers</b>, and <b>other Africans</b>.",
   study:[
-    /* ---- course text: Semester One, Period IV (guide pp. 22-23) ---- */
+    /* ---- course text: Semester Two, Period IV (guide pp. 22-23) ---- */
     {k:"h3", t:"Location of Liberia"},
     {k:"p", t:"**Location** is where a place is found. Liberia lies on the **west coast of Africa**, on the **Atlantic Ocean**, a little north of the equator."},
     {k:"bul", items:["**North** – the Republic of **Guinea**.","**East** – the Republic of **Côte d'Ivoire (Ivory Coast)**.","**West** – the Republic of **Sierra Leone**.","**South** – the **Atlantic Ocean**."]},
