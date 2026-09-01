@@ -68,7 +68,7 @@
     function copyText(text, btn) {
       function done() {
         var old = btn.textContent;
-        btn.textContent = "✔ Copied!";
+        btn.textContent = "Copied!";
         btn.classList.add("copied");
         setTimeout(function () { btn.textContent = old; btn.classList.remove("copied"); }, 2000);
       }
@@ -105,7 +105,7 @@
         info.className = "book-info";
         var nm = doc.createElement("div");
         nm.className = "book-name";
-        nm.textContent = "📖 " + book.name;
+        nm.textContent = book.name;
         var pg = doc.createElement("div");
         pg.className = "book-pages";
         pg.textContent = book.pages + " pages · " + (book.date || "");

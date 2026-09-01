@@ -1,20 +1,20 @@
 <body data-subject="en">
 <header class="top">
   <div class="top-in">
-    <div class="crest">📚</div>
+    <div class="crest"><svg class="ic" aria-hidden="true"><use href="#i-crest"/></svg></div>
     <div class="top-txt">
       <h1>Liberian National Curriculum &middot; Course Pack Generator</h1>
       <p>English &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Physics &middot; Economics &middot; English Grammar &middot; Geography<br>
-         <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; 🤖 Emmanuel AI tutor &middot; works offline</span></p>
+         <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> Emmanuel AI tutor &middot; works offline</span></p>
     </div>
-    <button type="button" class="install-app" id="installApp" hidden>&#11015; Install app</button>
+    <button type="button" class="install-app" id="installApp" hidden><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Install app</button>
     <span class="install-status" id="installStatus" role="status" aria-live="polite"></span>
   </div>
 </header>
 
 <div class="wrap">
   <button class="panel-toggle" id="panelToggle" aria-expanded="false" aria-controls="panel">
-    <span>&#9881; Course pack settings</span><span class="caret">&#9662;</span>
+    <span><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg> Course pack settings</span><span class="caret"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
   </button>
 
   <aside class="panel" id="panel">
@@ -25,8 +25,8 @@
       <section class="grp grp-key">
         <div class="grp-lab">Session</div>
         <div class="sesstabs" id="session">
-          <button class="sess on" data-m="teacher"><span class="fl">&#129489;&#8205;&#127979;</span>Teacher</button>
-          <button class="sess" data-m="student"><span class="fl">&#127891;</span>Student</button>
+          <button class="sess on" data-m="teacher"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-teacher"/></svg></span>Teacher</button>
+          <button class="sess" data-m="student"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-student"/></svg></span>Student</button>
         </div>
         <p class="hint" id="sessNote"></p>
       </section>
@@ -51,10 +51,10 @@
 
       <details class="dd" id="ddUnits">
         <summary>
-          <span class="dd-ic">&#128220;</span>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg></span>
           <span class="dd-t">Periods to include</span>
           <span class="dd-n" id="nUnits"></span>
-          <span class="dd-c">&#9662;</span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
         </summary>
         <div class="dd-b">
           <div class="mini"><button type="button" id="pkAll">Select all</button><button type="button" id="pkNone">Clear all</button></div>
@@ -64,10 +64,10 @@
 
       <details class="dd" id="ddSheets">
         <summary>
-          <span class="dd-ic">&#9997;</span>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-pencil"/></svg></span>
           <span class="dd-t">Exercise types</span>
           <span class="dd-n" id="nSheets"></span>
-          <span class="dd-c">&#9662;</span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
         </summary>
         <div class="dd-b">
           <div class="mini"><button type="button" id="allon">Select all</button><button type="button" id="alloff">Clear all</button></div>
@@ -77,10 +77,10 @@
 
       <details class="dd" id="ddParts">
         <summary>
-          <span class="dd-ic">&#128203;</span>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span>
           <span class="dd-t">Pack contents</span>
           <span class="dd-n" id="nParts"></span>
-          <span class="dd-c">&#9662;</span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
         </summary>
         <div class="dd-b">
           <label class="chk"><input type="checkbox" id="notes" checked><span>Study notes page at the start of each period
@@ -93,10 +93,10 @@
 
       <details class="dd" id="ddCover">
         <summary>
-          <span class="dd-ic">&#127912;</span>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg></span>
           <span class="dd-t">Customization</span>
           <span class="dd-n" id="nCover"></span>
-          <span class="dd-c">&#9662;</span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
         </summary>
         <div class="dd-b">
           <label class="chk"><input type="checkbox" id="cvOn" checked><span>Include a cover page</span></label>
@@ -131,9 +131,9 @@
               <input type="range" id="cvFade" min="0" max="95" step="1" value="62">
               <b id="fadeVal" class="fadeval">62%</b>
             </div>
-            <div class="row"><label for="cvCrest">Emoji crest (used when no logo)</label>
-              <input type="text" id="cvCrest" value="&#128218;" maxlength="4" class="crest-in"></div>
-            <p class="hint">Each subject includes its own real PNG artwork (mathematics shows equations, science shows laboratory imagery, and so on). Uploading a background overrides it. Everything is stored inside this page for offline use.</p>
+            <div class="row"><label for="cvCrest">Crest character (optional)</label>
+              <input type="text" id="cvCrest" value="" maxlength="4" class="crest-in" placeholder="drawn emblem"></div>
+            <p class="hint">Leave the crest blank to use the cover template's drawn emblem, or upload a school logo above. Each subject includes its own real PNG artwork (mathematics shows equations, science shows laboratory imagery, and so on). Uploading a background overrides it. Everything is stored inside this page for offline use.</p>
 
             <div class="cvsec">This pack</div>
             <input type="text" id="cvClass" placeholder="Class (blank = Grade from above)">
@@ -153,10 +153,10 @@
 
       <details class="dd" id="ddFmt">
         <summary>
-          <span class="dd-ic">&#127912;</span>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-type"/></svg></span>
           <span class="dd-t">Format &amp; text size</span>
           <span class="dd-n" id="nFmt"></span>
-          <span class="dd-c">&#9662;</span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
         </summary>
         <div class="dd-b">
           <div class="row"><label for="fsz">Body text size (pt)</label>
@@ -174,8 +174,8 @@
 
     <!-- ============ STICKY ACTION BAR: always reachable ============ -->
     <div class="panel-act">
-      <button class="btn btn-p" id="gen">&#9881; Generate course pack</button>
-      <button class="btn btn-s" id="reseed">&#127922; New random variant</button>
+      <button class="btn btn-p" id="gen"><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg> Generate course pack</button>
+      <button class="btn btn-s" id="reseed"><svg class="ic" aria-hidden="true"><use href="#i-dice"/></svg> New random variant</button>
     </div>
   </aside>
 
@@ -183,9 +183,9 @@
     <div class="bar" id="exportbar">
       <span class="meta" id="meta"></span>
       <span class="pill" id="pagePill">Pages: <b id="pageN">0</b></span>
-      <button class="b2" id="docx">&#11015; Word (.docx)</button>
-      <button class="b2" id="dup">&#128214; Duplex print</button>
-      <button class="b1" id="print">&#128424; Print / PDF</button>
+      <button class="b2" id="docx"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Word (.docx)</button>
+      <button class="b2" id="dup"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Duplex print</button>
+      <button class="b1" id="print"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg> Print / PDF</button>
     </div>
     <div id="doc"></div>
   </main>
@@ -195,8 +195,8 @@
 <div class="bookmask" id="bookMask" hidden>
   <div class="bookmodal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
     <div class="book-head">
-      <h2 id="bookTitle"><span>&#128214;</span> Book print sequence</h2>
-      <button type="button" class="book-x" id="bkClose" aria-label="Close">&#10005;</button>
+      <h2 id="bookTitle"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Book print sequence</h2>
+      <button type="button" class="book-x" id="bkClose" aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
     </div>
     <p class="book-sub">Odd / even page sequences for duplex printing on a printer that prints one side at a time.</p>
 
@@ -222,8 +222,8 @@
       </div>
 
       <div class="book-actions">
-        <button type="button" class="b1" id="bkGen">&#9889; Generate sequence</button>
-        <button type="button" class="b2" id="bkClear">&#10005; Clear</button>
+        <button type="button" class="b1" id="bkGen"><svg class="ic" aria-hidden="true"><use href="#i-bolt"/></svg> Generate sequence</button>
+        <button type="button" class="b2" id="bkClear"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg> Clear</button>
       </div>
       <p class="book-hint" id="bookHint"></p>
 
@@ -232,9 +232,9 @@
 
         <div class="sequence-card">
           <div class="sequence-header">
-            <span class="sequence-title"><span>&#128196;</span> Front side (odd pages)
+            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Front side (odd pages)
               <span class="pass pass-1">PASS 1</span></span>
-            <button type="button" class="bk-copy" id="bkCopyOdd">&#128203; Copy</button>
+            <button type="button" class="bk-copy" id="bkCopyOdd"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg> Copy</button>
           </div>
           <div class="sequence-numbers" id="oddSequence"></div>
           <div class="page-count" id="oddCount"></div>
@@ -242,16 +242,16 @@
 
         <div class="sequence-card">
           <div class="sequence-header">
-            <span class="sequence-title"><span>&#128196;</span> Back side (even pages)
+            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Back side (even pages)
               <span class="pass pass-2">PASS 2</span></span>
-            <button type="button" class="bk-copy" id="bkCopyEven">&#128203; Copy</button>
+            <button type="button" class="bk-copy" id="bkCopyEven"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg> Copy</button>
           </div>
           <div class="sequence-numbers" id="evenSequence"></div>
           <div class="page-count" id="evenCount"></div>
         </div>
 
         <div class="instructions">
-          <h3>&#128424; How to print</h3>
+          <h3><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg> How to print</h3>
           <ol>
             <li><b>Pass 1:</b> copy the <b>odd pages</b> sequence into your printer's page range. Print.</li>
             <li><b>Flip:</b> take the printed pages and flip/reinsert them into the printer tray.</li>
@@ -262,7 +262,7 @@
       </div>
 
       <div class="book-list">
-        <h3>&#128218; Saved books</h3>
+        <h3><svg class="ic" aria-hidden="true"><use href="#i-crest"/></svg> Saved books</h3>
         <div id="bookListItems"></div>
       </div>
     </div>

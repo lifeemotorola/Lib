@@ -24,6 +24,10 @@ cd "$(dirname "$0")"
   echo '</style>'
   echo '</head>'
   cat body.html
+  # Inline SVG icon sprite. Emoji rendered inconsistently across devices (and
+  # were missing entirely on some school PCs and older Android builds), so the
+  # interface draws real icons instead. Inlined to stay offline and single-file.
+  cat icons.svg.html
   # Central AI key. Provisioned once in GitHub (repository secret GROQ_API_KEY,
   # exported by .github/workflows/deploy.yml) and baked into the deliverable, so
   # no teacher or pupil ever has to obtain or paste an API key. When the variable
