@@ -474,11 +474,11 @@ input:focus-visible,label:focus-visible{
 .cv-sub{font-size:4.1mm;text-align:center;margin:1mm 0 0;opacity:.78;font-style:italic}
 
 /* the fill-in panel */
-.cv-panel{width:90%;margin:14mm 0 0;border:1.4px solid var(--cv-accent);border-radius:5mm;
+.cv-panel{width:90%;margin:auto 0 0;border:1.4px solid var(--cv-accent);border-radius:5mm;
   padding:8mm 8mm;background:rgba(255,255,255,.55)}
 .cv-panel.dash{border-style:dashed}
 /* pencil strip anchoring the lower area, echoing the desk in the reference */
-.cv-strip{width:90%;margin:12mm 0 0;display:flex;gap:2.5mm;align-items:flex-end;justify-content:center;opacity:.9}
+.cv-strip{width:90%;margin:7mm 0 0;display:flex;gap:2.5mm;align-items:flex-end;justify-content:center;opacity:.9}
 .cv-strip i{display:block;width:5mm;border-radius:1mm 1mm 0 0}
 .cv-row{display:flex;align-items:flex-end;gap:4mm;margin:0 0 8.5mm}
 .cv-row:last-child{margin-bottom:0}
@@ -492,7 +492,7 @@ input:focus-visible,label:focus-visible{
 .cv-val:empty::after{content:"";display:inline-block}
 
 /* footer strip */
-.cv-foot{margin-top:auto;width:100%;display:flex;align-items:flex-end;
+.cv-foot{margin-top:7mm;width:100%;display:flex;align-items:flex-end;
   justify-content:space-between;gap:4mm}
 .cv-note{font-size:3.6mm;line-height:1.45;background:#fdf0c8;border-radius:1.5mm;
   padding:3mm 4mm;max-width:52%;box-shadow:0 1px 4px rgba(0,0,0,.08)}
@@ -757,31 +757,9 @@ img.ai-msg-img{width:26px;height:26px}
 .ai-stop:hover{filter:brightness(1.1)}
 
 /* Footer */
-.ai-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;
+.ai-foot{display:flex;align-items:center;justify-content:flex-end;gap:8px;
   padding:6px 14px 8px;border-top:1px solid var(--line);background:#fcfdff;flex:none}
-.ai-foot-btn{border:none;background:none;color:var(--muted);font-size:.74rem;font-weight:600;
-  cursor:pointer;padding:4px 6px;border-radius:6px;transition:.15s;font-family:inherit}
-.ai-foot-btn:hover{color:var(--bleu);background:#eef4ff}
 .ai-foot-status{font-size:.72rem;color:var(--muted);font-style:italic}
-
-/* Settings panel (slides within chat) */
-.ai-settings{background:#fff;border-top:1px solid var(--line);padding:14px 15px;
-  position:absolute;bottom:0;left:0;right:0;z-index:5;
-  box-shadow:0 -4px 16px rgba(0,0,0,.08)}
-.ai-set-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.ai-set-head b{font-size:.88rem;color:var(--ink)}
-.ai-set-close{background:#f4f8ff;border:1px solid var(--line);width:28px;height:28px;
-  border-radius:7px;cursor:pointer;color:var(--muted);display:grid;place-items:center;font-size:.78rem;font-family:inherit}
-.ai-set-close:hover{background:#fdeeee;color:var(--rouge)}
-.ai-set-label{display:block;font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:6px}
-.ai-set-label input{width:100%;margin-top:5px;padding:9px 11px;border:1px solid var(--line);
-  border-radius:9px;font-size:.86rem;font-family:inherit;color:var(--ink)}
-.ai-set-label input:focus{outline:2px solid #bcd3fb;outline-offset:0}
-.ai-set-hint{font-size:.72rem;color:var(--muted);margin:6px 0 10px;line-height:1.45}
-.ai-set-hint a{color:var(--bleu);text-decoration:underline}
-.ai-set-save{width:100%;padding:10px;border:none;border-radius:9px;background:var(--bleu);
-  color:#fff;font-weight:700;font-size:.86rem;cursor:pointer;font-family:inherit}
-.ai-set-save:hover{background:var(--bleu-l)}
 
 /* Responsive adjustments */
 @media(max-width:640px){
@@ -69036,30 +69014,36 @@ var LI_CURRICULUM = [
   }
   var STORE_KEY = "lncpg.groq.v1";
 
-  // Support GitHub Actions environment variable: set META tag <meta name="groq-api-key" content="..."> 
-  // or expose window.GROQ_API_KEY in GitHub Actions workflow for browser auto-population.
-  var apiKey = (function () {
-    // Check for GitHub-injected env var via meta tag (common for GitHub Pages)
-    var meta = document.querySelector('meta[name="groq-api-key"]');
-    if (meta && meta.content) return meta.content.trim();
-    // Check for window.GROQ_API_KEY (set by GitHub Actions job)
+  /* ---- API key resolution --------------------------------------------
+     Teachers and pupils never have to obtain or paste a key. The key is
+     provisioned once, centrally, and shipped with the build:
+
+       1. window.GROQ_API_KEY  — injected by the GitHub Actions build from the
+          repository secret GROQ_API_KEY (see .github/workflows/deploy.yml)
+       2. <meta name="groq-api-key" content="..."> — same idea, for hosts that
+          prefer a meta tag
+       3. BUILT_IN_KEY          — the key baked into this source, used when the
+          workflow has not replaced it (local/offline copies, USB sticks)
+       4. localStorage          — a key saved by an earlier version of the app
+
+     There is no key entry UI any more; nothing is asked of the user.
+     -------------------------------------------------------------------- */
+  var BUILT_IN_KEY = "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";
+
+  function resolveKey() {
     if (window.GROQ_API_KEY) return String(window.GROQ_API_KEY).trim();
-    // Fall back to stored localStorage key
+    var meta = document.querySelector('meta[name="groq-api-key"]');
+    if (meta && meta.content && meta.content.indexOf("__") !== 0) return meta.content.trim();
+    if (BUILT_IN_KEY) return BUILT_IN_KEY;
     try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
-    // Fall back to hardcoded default (for local development)
-    return "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";
-  })();
+    return "";
+  }
+
+  var apiKey = resolveKey();
   var chatHistory = [];     /* {role, content}[] */
   var isOpen = false;
   var isStreaming = false;
 
-  /* ---- persistence ---- */
-  function loadKey() {
-    try { apiKey = localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
-  }
-  function saveKey() {
-    try { localStorage.setItem(STORE_KEY, apiKey); } catch (e) {}
-  }
 
   /* ---- system prompt: context-aware ---- */
   function systemPrompt() {
@@ -69082,7 +69066,7 @@ var LI_CURRICULUM = [
 
   /* ---- Groq API call ---- */
   function callGroq(messages, onChunk, onDone, onError) {
-    if (!apiKey) { onError("Please enter your Groq API key in the " + MODEL_NAME + " settings."); return; }
+    if (!apiKey) { onError(MODEL_NAME + " is not available in this copy of the platform."); return; }
     var body = {
       model: MODEL,
       messages: messages,
@@ -69215,19 +69199,7 @@ var LI_CURRICULUM = [
         '<button class="ai-send" id="aiSend" title="Send">➤</button>' +
         '<button class="ai-stop" id="aiStop" title="Stop" style="display:none">⏹</button>' +
       '</div>' +
-      '<div class="ai-settings" id="aiSettings" style="display:none">' +
-        '<div class="ai-set-head">' +
-          '<b>⚙ ' + MODEL_NAME + ' Settings</b>' +
-          '<button class="ai-btn-icon ai-set-close" id="aiSetClose">✕</button>' +
-        '</div>' +
-        '<label class="ai-set-label">Groq API Key' +
-          '<input type="password" id="aiKeyInput" placeholder="gsk_...">' +
-        '</label>' +
-        '<p class="ai-set-hint">Get a free API key at <a href="https://console.groq.com" target="_blank" rel="noopener">console.groq.com</a>. <br>• To auto-load from GitHub: add a <code>&lt;meta name="groq-api-key" content="YOUR_KEY"</code> tag to your HTML, or set <code>window.GROQ_API_KEY</code> in your GitHub Actions workflow. <br>• Key is also saved to localStorage on this device for future sessions.</p>' +
-        '<button class="ai-set-save" id="aiKeySave">Save Key</button>' +
-      '</div>' +
       '<div class="ai-foot">' +
-        '<button class="ai-foot-btn" id="aiSetBtn">⚙ Settings</button>' +
         '<span class="ai-foot-status" id="aiStatus"></span>' +
       '</div>';
     wireAvatars(panel);
@@ -69293,11 +69265,6 @@ var LI_CURRICULUM = [
     if (!inp) return;
     var text = inp.value.trim();
     if (!text || isStreaming) return;
-
-    if (!apiKey) {
-      addMessage("assistant", "⚠️ Please set your Groq API key first. Click **⚙ Settings** at the bottom of this panel, then paste your key.\n\nGet a free key at [console.groq.com](https://console.groq.com).");
-      return;
-    }
 
     addMessage("user", text);
     inp.value = "";
@@ -69403,32 +69370,6 @@ var LI_CURRICULUM = [
       });
     }
 
-    /* settings panel */
-    var setBtn = $("#aiSetBtn");
-    var setPanel = $("#aiSettings");
-    var setClose = $("#aiSetClose");
-    if (setBtn && setPanel) {
-      setBtn.onclick = function () {
-        setPanel.style.display = setPanel.style.display === "none" ? "" : "none";
-        var ki = $("#aiKeyInput");
-        if (ki) ki.value = apiKey;
-      };
-    }
-    if (setClose && setPanel) {
-      setClose.onclick = function () { setPanel.style.display = "none"; };
-    }
-    var keySave = $("#aiKeySave");
-    if (keySave) {
-      keySave.onclick = function () {
-        var ki = $("#aiKeyInput");
-        apiKey = ki ? ki.value.trim() : "";
-        saveKey();
-        setStatus(apiKey ? "✓ Key saved" : "No key set");
-        if (setPanel) setPanel.style.display = "none";
-        setTimeout(function () { setStatus(""); }, 2000);
-      };
-    }
-
     wireSuggestionClicks();
   }
 
@@ -69478,7 +69419,6 @@ var LI_CURRICULUM = [
 
   /* ---- init ---- */
   function init() {
-    loadKey();
     buildPanel();
   }
 

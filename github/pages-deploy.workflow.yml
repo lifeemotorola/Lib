@@ -1,0 +1,68 @@
+name: Build & deploy to GitHub Pages
+
+# Copy this file to .github/workflows/deploy.yml to enable it.
+# Builds the single-file deliverable index.html and publishes it to GitHub
+# Pages. The Groq API key is provisioned once, here, from the repository
+# secret GROQ_API_KEY — teachers and pupils never have to get a key of their
+# own, and the platform shows no key-setup message at all.
+#
+# One-time setup (repository owner only):
+#   1. Settings → Secrets and variables → Actions → New repository secret
+#        Name:  GROQ_API_KEY
+#        Value: gsk_...  (from https://console.groq.com)
+#   2. Settings → Pages → Build and deployment → Source: GitHub Actions
+# After that every push to main redeploys with the key already in place.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build index.html with the central API key
+        env:
+          # works whether the key was added as an Actions *secret* (recommended)
+          # or as an Actions *variable*
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY || vars.GROQ_API_KEY }}
+        run: |
+          if [ -z "$GROQ_API_KEY" ]; then
+            echo "::warning::GROQ_API_KEY is not set — falling back to the key compiled into ai.js."
+          else
+            echo "GROQ_API_KEY found (${#GROQ_API_KEY} characters) — baking it into index.html."
+          fi
+          bash build.sh
+
+      - name: Stage the site
+        run: |
+          mkdir -p _site
+          cp index.html manifest.webmanifest sw.js book.html book.js _site/
+          cp -r assets _site/assets
+          cp index.html _site/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

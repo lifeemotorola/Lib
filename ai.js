@@ -39,30 +39,36 @@
   }
   var STORE_KEY = "lncpg.groq.v1";
 
-  // Support GitHub Actions environment variable: set META tag <meta name="groq-api-key" content="..."> 
-  // or expose window.GROQ_API_KEY in GitHub Actions workflow for browser auto-population.
-  var apiKey = (function () {
-    // Check for GitHub-injected env var via meta tag (common for GitHub Pages)
-    var meta = document.querySelector('meta[name="groq-api-key"]');
-    if (meta && meta.content) return meta.content.trim();
-    // Check for window.GROQ_API_KEY (set by GitHub Actions job)
+  /* ---- API key resolution --------------------------------------------
+     Teachers and pupils never have to obtain or paste a key. The key is
+     provisioned once, centrally, and shipped with the build:
+
+       1. window.GROQ_API_KEY  — injected by the GitHub Actions build from the
+          repository secret GROQ_API_KEY (see .github/workflows/deploy.yml)
+       2. <meta name="groq-api-key" content="..."> — same idea, for hosts that
+          prefer a meta tag
+       3. BUILT_IN_KEY          — the key baked into this source, used when the
+          workflow has not replaced it (local/offline copies, USB sticks)
+       4. localStorage          — a key saved by an earlier version of the app
+
+     There is no key entry UI any more; nothing is asked of the user.
+     -------------------------------------------------------------------- */
+  var BUILT_IN_KEY = "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";
+
+  function resolveKey() {
     if (window.GROQ_API_KEY) return String(window.GROQ_API_KEY).trim();
-    // Fall back to stored localStorage key
+    var meta = document.querySelector('meta[name="groq-api-key"]');
+    if (meta && meta.content && meta.content.indexOf("__") !== 0) return meta.content.trim();
+    if (BUILT_IN_KEY) return BUILT_IN_KEY;
     try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
-    // Fall back to hardcoded default (for local development)
-    return "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";
-  })();
+    return "";
+  }
+
+  var apiKey = resolveKey();
   var chatHistory = [];     /* {role, content}[] */
   var isOpen = false;
   var isStreaming = false;
 
-  /* ---- persistence ---- */
-  function loadKey() {
-    try { apiKey = localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
-  }
-  function saveKey() {
-    try { localStorage.setItem(STORE_KEY, apiKey); } catch (e) {}
-  }
 
   /* ---- system prompt: context-aware ---- */
   function systemPrompt() {
@@ -85,7 +91,7 @@
 
   /* ---- Groq API call ---- */
   function callGroq(messages, onChunk, onDone, onError) {
-    if (!apiKey) { onError("Please enter your Groq API key in the " + MODEL_NAME + " settings."); return; }
+    if (!apiKey) { onError(MODEL_NAME + " is not available in this copy of the platform."); return; }
     var body = {
       model: MODEL,
       messages: messages,
@@ -218,19 +224,7 @@
         '<button class="ai-send" id="aiSend" title="Send">➤</button>' +
         '<button class="ai-stop" id="aiStop" title="Stop" style="display:none">⏹</button>' +
       '</div>' +
-      '<div class="ai-settings" id="aiSettings" style="display:none">' +
-        '<div class="ai-set-head">' +
-          '<b>⚙ ' + MODEL_NAME + ' Settings</b>' +
-          '<button class="ai-btn-icon ai-set-close" id="aiSetClose">✕</button>' +
-        '</div>' +
-        '<label class="ai-set-label">Groq API Key' +
-          '<input type="password" id="aiKeyInput" placeholder="gsk_...">' +
-        '</label>' +
-        '<p class="ai-set-hint">Get a free API key at <a href="https://console.groq.com" target="_blank" rel="noopener">console.groq.com</a>. <br>• To auto-load from GitHub: add a <code>&lt;meta name="groq-api-key" content="YOUR_KEY"</code> tag to your HTML, or set <code>window.GROQ_API_KEY</code> in your GitHub Actions workflow. <br>• Key is also saved to localStorage on this device for future sessions.</p>' +
-        '<button class="ai-set-save" id="aiKeySave">Save Key</button>' +
-      '</div>' +
       '<div class="ai-foot">' +
-        '<button class="ai-foot-btn" id="aiSetBtn">⚙ Settings</button>' +
         '<span class="ai-foot-status" id="aiStatus"></span>' +
       '</div>';
     wireAvatars(panel);
@@ -296,11 +290,6 @@
     if (!inp) return;
     var text = inp.value.trim();
     if (!text || isStreaming) return;
-
-    if (!apiKey) {
-      addMessage("assistant", "⚠️ Please set your Groq API key first. Click **⚙ Settings** at the bottom of this panel, then paste your key.\n\nGet a free key at [console.groq.com](https://console.groq.com).");
-      return;
-    }
 
     addMessage("user", text);
     inp.value = "";
@@ -406,32 +395,6 @@
       });
     }
 
-    /* settings panel */
-    var setBtn = $("#aiSetBtn");
-    var setPanel = $("#aiSettings");
-    var setClose = $("#aiSetClose");
-    if (setBtn && setPanel) {
-      setBtn.onclick = function () {
-        setPanel.style.display = setPanel.style.display === "none" ? "" : "none";
-        var ki = $("#aiKeyInput");
-        if (ki) ki.value = apiKey;
-      };
-    }
-    if (setClose && setPanel) {
-      setClose.onclick = function () { setPanel.style.display = "none"; };
-    }
-    var keySave = $("#aiKeySave");
-    if (keySave) {
-      keySave.onclick = function () {
-        var ki = $("#aiKeyInput");
-        apiKey = ki ? ki.value.trim() : "";
-        saveKey();
-        setStatus(apiKey ? "✓ Key saved" : "No key set");
-        if (setPanel) setPanel.style.display = "none";
-        setTimeout(function () { setStatus(""); }, 2000);
-      };
-    }
-
     wireSuggestionClicks();
   }
 
@@ -481,7 +444,6 @@
 
   /* ---- init ---- */
   function init() {
-    loadKey();
     buildPanel();
   }
 
