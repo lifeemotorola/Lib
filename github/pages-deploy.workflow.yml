@@ -35,17 +35,21 @@ jobs:
 
       - name: Build index.html with the central API key
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          # works whether the key was added as an Actions *secret* (recommended)
+          # or as an Actions *variable*
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY || vars.GROQ_API_KEY }}
         run: |
           if [ -z "$GROQ_API_KEY" ]; then
-            echo "::warning::Secret GROQ_API_KEY is not set — falling back to the key compiled into ai.js."
+            echo "::warning::GROQ_API_KEY is not set — falling back to the key compiled into ai.js."
+          else
+            echo "GROQ_API_KEY found (${#GROQ_API_KEY} characters) — baking it into index.html."
           fi
           bash build.sh
 
       - name: Stage the site
         run: |
           mkdir -p _site
-          cp index.html manifest.webmanifest sw.js _site/
+          cp index.html manifest.webmanifest sw.js book.html book.js _site/
           cp -r assets _site/assets
           cp index.html _site/404.html
 
