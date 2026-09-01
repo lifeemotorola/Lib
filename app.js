@@ -117,6 +117,111 @@
       defaults: ["terms", "match", "cloze", "devices", "characters", "themes", "tf", "short", "mcq", "passage", "write", "appreciate"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Literature_Grade" + g + "_Workbook.docx"; }
+    },
+    /* ---------------- WASSCE session ----------------
+     WASSCE = West African Senior School Certificate Examination (WAEC).
+     One entry per subject of the WASSCE syllabus the school keeps in
+     "Wassce_ Syllabus/". Each curriculum is a transcription of the official
+     WAEC examination syllabus — one unit per syllabus topic — and the shared
+     WASSCE engine (GEN_WA) builds Paper-1/Paper-2 style packs from it. */
+    wma: {
+      label: "WASSCE Mathematics", icon: "sub-ma", accent: "#5b2a86", wa: "ma",
+      curriculum: function () { return WA_ma.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_ma; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Mathematics_Core_Grade" + g + "_Pack.docx"; }
+    },
+    wen: {
+      label: "WASSCE English", icon: "sub-en", accent: "#0b6b3a", wa: "en",
+      curriculum: function () { return WA_en.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_en; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_English_Language_Grade" + g + "_Pack.docx"; }
+    },
+    wbio: {
+      label: "WASSCE Biology", icon: "sub-bi", accent: "#0f5132", wa: "bio",
+      curriculum: function () { return WA_bio.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_bio; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Biology_Grade" + g + "_Pack.docx"; }
+    },
+    wch: {
+      label: "WASSCE Chemistry", icon: "sub-ch", accent: "#7a1f5c", wa: "ch",
+      curriculum: function () { return WA_ch.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_ch; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Chemistry_Grade" + g + "_Pack.docx"; }
+    },
+    wph: {
+      label: "WASSCE Physics", icon: "sub-mag", accent: "#1f4aa8", wa: "ph",
+      curriculum: function () { return WA_ph.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_ph; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Physics_Grade" + g + "_Pack.docx"; }
+    },
+    weco: {
+      label: "WASSCE Economics", icon: "sub-ec", accent: "#1f5f7a", wa: "ec",
+      curriculum: function () { return WA_ec.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_ec; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Economics_Grade" + g + "_Pack.docx"; }
+    },
+    wgg: {
+      label: "WASSCE Geography", icon: "sub-gg", accent: "#1f6b4f", wa: "gg",
+      curriculum: function () { return WA_gg.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_gg; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Geography_Grade" + g + "_Pack.docx"; }
+    },
+    whis: {
+      label: "WASSCE History", icon: "sub-his", accent: "#8a5a00", wa: "his",
+      curriculum: function () { return WA_his.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_his; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_History_Grade" + g + "_Pack.docx"; }
+    },
+    wag: {
+      label: "WASSCE Agriculture", icon: "sub-ag", accent: "#4a6b12", wa: "ag",
+      curriculum: function () { return WA_ag.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_ag; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_General_Agriculture_Grade" + g + "_Pack.docx"; }
+    },
+    wali: {
+      label: "WASSCE Literature", icon: "sub-li", accent: "#4a2f7a", wa: "li",
+      curriculum: function () { return WA_li.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_li; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Literature_in_English_Grade" + g + "_Pack.docx"; }
+    },
+    wcrs: {
+      label: "WASSCE Christian Studies", icon: "sub-crs", accent: "#7a4a12", wa: "crs",
+      curriculum: function () { return WA_crs.units; },
+      engine: function () { return GEN_WA; },
+      waMeta: function () { return WA_crs; },
+      defaults: ["objective", "theory", "tf", "terms"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "WASSCE_Christian_Relig_Studies_Grade" + g + "_Pack.docx"; }
     }
   };
 
@@ -197,6 +302,8 @@
      Short plain-language description of every exercise type, shown under its
      checkbox so a teacher knows what each sheet actually produces. */
   var SHEET_HELP = {
+    objective:"WASSCE Paper-1 style objective questions with four options (a–d); the marked answer and its reason appear in the answer key.",
+    theory:"WASSCE Paper-2 style theory/structured questions with ruled answer space; model answer outlines appear in the answer key.",
     terms:"A reference list of the period's key terms with meanings and examples.",
     words:"A reference list of the period's vocabulary with syllables, meanings and example sentences.",
     match:"Learners match each term to its meaning by writing the correct letter.",
@@ -588,6 +695,40 @@
   var cur = "en";
   function S() { return SUBJECTS[cur]; }
 
+  /* ---------------- session track: national curriculum | WASSCE ----------------
+     The platform carries two syllabus tracks. The National Curriculum track is
+     the Liberian Grades 1-12 course pack generator. The WASSCE track exposes
+     the WAEC WASSCE subjects (one per official syllabus in "Wassce_ Syllabus/")
+     for Grade 12, and the WASSCE engine builds Paper-1/Paper-2 style packs.
+     The track only decides which subjects are offered; the teacher/student
+     session still decides whether answer keys are included. */
+  var TRACK = "curr";
+  function visibleSubjectIds() {
+    return Object.keys(SUBJECTS).filter(function (id) {
+      if (TRACK === "wa") return !!SUBJECTS[id].wa;
+      return !SUBJECTS[id].wa;
+    });
+  }
+  function setTrack(t) {
+    if (t === TRACK) return;
+    TRACK = t;
+    var ids = visibleSubjectIds();
+    if (ids.indexOf(cur) < 0) cur = ids[0];
+    document.body.setAttribute("data-subject", cur);
+    document.querySelectorAll("#tracks .track").forEach(function (b) {
+      b.className = "track" + (b.getAttribute("data-t") === TRACK ? " on" : "");
+    });
+    var n = $("#sessNote");
+    if (n) n.textContent = TRACK === "wa"
+      ? "WASSCE session: the WAEC West African Senior School Certificate Examination, Grade 12. Syllabus topics, objective (Paper 1) and theory (Paper 2) practice, topic mocks and a full WASSCE mock — built from the official WAEC syllabuses."
+      : isTeacher()
+        ? "Teacher session: the same worksheets as the pupils receive, with every answer key included and each sheet marked as the teacher's copy."
+        : "Student session: clean pupil worksheets, tests and examinations. No answers are included anywhere in the pack.";
+    renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods();
+    if (window.PACK_PAINT_COVER_PREVIEW) window.PACK_PAINT_COVER_PREVIEW();
+    generate();
+  }
+
   function opts() {
     var per = [], sh = [];
     document.querySelectorAll(".pk:checked").forEach(function (c) { per.push(c.value); });
@@ -609,7 +750,7 @@
   /* ---------------- controls ---------------- */
   function renderSubjectTabs() {
     var box = $("#subjects"); box.innerHTML = "";
-    Object.keys(SUBJECTS).forEach(function (id) {
+    visibleSubjectIds().forEach(function (id) {
       var s = SUBJECTS[id];
       var b = document.createElement("button");
       b.className = "subtab" + (id === cur ? " on" : "");
@@ -697,7 +838,10 @@
     var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography", li: "Literature" };
     var jh = $("#jhNote");
     if (jh) {
-      if (curBand === "el") {
+      if (S().wa) {
+        jh.style.display = "";
+        jh.innerHTML = "Grade 12 follows the <b>WASSCE</b> examination syllabus (West African Examinations Council) \u2014 the final national certificate examination in West Africa.";
+      } else if (curBand === "el") {
         jh.style.display = "none";
       } else {
         jh.style.display = "";
@@ -867,8 +1011,11 @@
     runhead.left = S().label + " \u00b7 " +
       (bnd.id === "el" ? "Grade " : bnd.label + " Grade ") + o.grade;
     runhead.right = isTeacher() ? "Teacher's Copy \u00b7 Answer Keys Included" : "Pupil Workbook & Assessment Pack";
-    /* name the grade actually being generated, not the whole band */
-    var band = "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
+    /* name the grade actually being generated, not the whole band. WASSCE
+       packs name the WAEC examination instead of the national curriculum. */
+    var band = S().wa
+      ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
+      : "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
     runhead.foot = isTeacher()
       ? band + "   |   TEACHER'S COPY \u2014 not for pupil distribution"
       : band + "   |   Name: ____________________   School: ____________________";
@@ -1260,6 +1407,7 @@
        and cover wording */
     var sj = S();
     if (sj.curriculum) o.curriculum = sj.curriculum();
+    if (sj.waMeta) o.waMeta = sj.waMeta();
     o.subjectName = (sj.packName || sj.label).toUpperCase();
     o.subjectLine = sj.packName || sj.label;
     o.bandName = bandOf(o.grade).label;
@@ -1413,7 +1561,18 @@
         ec: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" },
         eg: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" },
         gg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" },
-        li: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" }
+        li: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" },
+        wma: { h1: "5B2A86", h2: "8247B5", fill: "EBDFF7" },
+        wen: { h1: "0B6B3A", h2: "12864B", fill: "DCF0E4" },
+        wbio: { h1: "0F5132", h2: "1A7A4C", fill: "D9EFE2" },
+        wch: { h1: "7A1F5C", h2: "A6357E", fill: "F5DEEC" },
+        wph: { h1: "1F4AA8", h2: "3B6FD0", fill: "DCE6F7" },
+        weco: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" },
+        wgg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" },
+        whis: { h1: "8A5A00", h2: "B8860B", fill: "F7EBD0" },
+        wag: { h1: "4A6B12", h2: "6E8F2E", fill: "E8F2D4" },
+        wali: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" },
+        wcrs: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" }
       };
       var theme = THEMES[cur] || THEMES.en;
       var fn = packFileBase() + ".docx";
@@ -1435,9 +1594,11 @@
       var kr = $("#keysRow");
       if (kr) kr.style.display = isTeacher() ? "" : "none";
       var n = $("#sessNote");
-      if (n) n.textContent = isTeacher()
-        ? "Teacher session: the same worksheets as the pupils receive, with every answer key included and each sheet marked as the teacher's copy."
-        : "Student session: clean pupil worksheets, tests and examinations. No answers are included anywhere in the pack.";
+      if (n) n.textContent = TRACK === "wa"
+        ? "WASSCE session: the WAEC West African Senior School Certificate Examination, Grade 12. Syllabus topics, objective (Paper 1) and theory (Paper 2) practice, topic mocks and a full WASSCE mock \u2014 built from the official WAEC syllabuses."
+        : isTeacher()
+          ? "Teacher session: the same worksheets as the pupils receive, with every answer key included and each sheet marked as the teacher's copy."
+          : "Student session: clean pupil worksheets, tests and examinations. No answers are included anywhere in the pack.";
       syncBadges();
     }
     document.querySelectorAll("#session .sess").forEach(function (b) {
@@ -1448,6 +1609,10 @@
         paintSession();
         generate();
       };
+    });
+    /* session track: National Curriculum | WASSCE */
+    document.querySelectorAll("#tracks .track").forEach(function (b) {
+      b.onclick = function () { setTrack(b.getAttribute("data-t")); };
     });
     paintSession();
 

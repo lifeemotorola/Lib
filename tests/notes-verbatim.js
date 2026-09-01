@@ -429,7 +429,65 @@ const SUBJECTS = [
             { grade: 12, period: "V",
               facts: ["instruction word", "WASSCE"] },
             { grade: 12, period: "VI",
-              facts: ["Plan for five minutes, write for forty, check for five.", "discuss, compare, analyse, illustrate, assess"] }] }
+              facts: ["Plan for five minutes, write for forty, check for five.", "discuss, compare, analyse, illustrate, assess"] }] },
+  /* WASSCE track — each subject is a single file of Grade 12 units (bio
+     splits over two files) registered on the shared window.WA_<id> objects;
+     every unit carries a verbatim study[] transcription of the syllabus. */
+  { name: "WASSCE Mathematics", global: "window.WA_ma.units",
+    files: ["data-wa.js", "data-wa-ma.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "A",
+              facts: ["Number bases", "Modular arithmetic"] }] },
+  { name: "WASSCE English Language", global: "window.WA_en.units",
+    files: ["data-wa.js", "data-wa-en.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "A",
+              facts: ["Paper 1 (Liberia candidates): lexis", "Building and building construction"] }] },
+  { name: "WASSCE Biology", global: "window.WA_bio.units",
+    files: ["data-wa.js", "data-wa-bio.js", "data-wa-bio2.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "A1",
+              facts: ["Biology as a science of life", "scientific method"] }] },
+  { name: "WASSCE Chemistry", global: "window.WA_ch.units",
+    files: ["data-wa.js", "data-wa-ch.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "C1",
+              facts: ["Measurement of physical quantities", "Scientific measurements and their importance in chemistry"] }] },
+  { name: "WASSCE Physics", global: "window.WA_ph.units",
+    files: ["data-wa.js", "data-wa-ph.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "P1",
+              facts: ["Simple structure of matter", "Three physical states of matter: solid, liquid, gas"] }] },
+  { name: "WASSCE Economics", global: "window.WA_ec.units",
+    files: ["data-wa.js", "data-wa-ec.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "E1",
+              facts: ["scarcity and choice", "land, labour, capital and entrepreneurship"] }] },
+  { name: "WASSCE Geography", global: "window.WA_gg.units",
+    files: ["data-wa.js", "data-wa-gg.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "G1",
+              facts: ["contoured survey maps of parts of West Africa", "scale, measurement of distances, direction and bearing"] }] },
+  { name: "WASSCE History", global: "window.WA_his.units",
+    files: ["data-wa.js", "data-wa-his.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "H1",
+              facts: ["Historiography and Historical Skills", "sources of history"] }] },
+  { name: "WASSCE General Agriculture", global: "window.WA_ag.units",
+    files: ["data-wa.js", "data-wa-ag.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "AG1",
+              facts: ["Importance of agriculture to the national economy", "communal land ownership"] }] },
+  { name: "WASSCE Literature in English", global: "window.WA_li.units",
+    files: ["data-wa.js", "data-wa-li.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "LI1",
+              facts: ["Amma Darko — Faceless", "trafficking of the young women (the girls) in Accra"] }] },
+  { name: "WASSCE Christian Religious Studies", global: "window.WA_crs.units",
+    files: ["data-wa.js", "data-wa-crs.js"],
+    grades: 12,
+    spots: [{ grade: 12, period: "CRS1",
+              facts: ["God, the Creator; God, the Controller of the universe", "Gen. 1; 2"] }] }
 ];
 
 let grandTotal = 0;
@@ -437,11 +495,14 @@ for (const subj of SUBJECTS) {
   /* load the real curriculum data into the same context; publish the const
      on the sandbox so the harness can read it */
   for (const f of subj.files) {
-    vm.runInContext(fs.readFileSync(path.join(root, f), "utf8") +
-      "\n;globalThis." + subj.global + " = " + subj.global + ";", sandbox, { filename: f });
+    vm.runInContext(fs.readFileSync(path.join(root, f), "utf8"), sandbox, { filename: f });
   }
 
-  const units = sandbox[subj.global];
+  /* Resolve the curriculum reference: either a plain top-level const (the
+     regular subject data files) or a dotted path such as window.WA_ma.units
+     (the WASSCE subject files expose their units on the shared WA_<id>
+     registry objects). */
+  const units = vm.runInContext("(" + subj.global + ")", sandbox);
   if (!Array.isArray(units) || !units.length) {
     console.error("FAIL: " + subj.name + " curriculum did not load");
     process.exit(1);

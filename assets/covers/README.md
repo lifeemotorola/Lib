@@ -5,7 +5,7 @@ inlines them into `index.html`, so they continue to work offline. Each image is
 480 × 640 px, converted to an indexed PNG to keep the single-file app practical.
 
 The 14 curriculum covers (`en` … `li`) are photographs retrieved from the web.
-The four `wa-*` covers used by the WASSCE session are **AI-generated images**, not
+The four `w*` covers used by the WASSCE session are **AI-generated images**, not
 photographs — see the second table below.
 
 The source images were retrieved from the web and cropped/downsized for use as
@@ -37,24 +37,24 @@ not used as image input.
 
 | File | Subject | Depicts |
 |---|---|---|
-| `wa-ma.png` | WASSCE Mathematics (Core) | Classroom chalkboard with quadratic formula, sine curve, Venn diagram and log rules |
-| `wa-en.png` | WASSCE English Language | Open exercise book and worn English dictionary on a school desk |
-| `wa-hi.png` | WASSCE History | Aged map of West Africa with a leather-bound book and brass compass |
-| `wa-bi.png` | WASSCE Biology | School laboratory bench with microscope, prepared slides and leaf specimens |
+| `wma.png` | WASSCE Mathematics | Classroom chalkboard with quadratic formula, sine curve, Venn diagram and log rules |
+| `wen.png` | WASSCE English Language | Open exercise book and worn English dictionary on a school desk |
+| `whis.png` | WASSCE History | Aged map of West Africa with a leather-bound book and brass compass |
+| `wbio.png` | WASSCE Biology | School laboratory bench with microscope, prepared slides and leaf specimens |
 
 Two caveats worth knowing before these ship in front of learners:
 
-- **The chalkboard text in `wa-ma.png` is decorative, not authoritative.** Image
+- **The chalkboard text in `wma.png` is decorative, not authoritative.** Image
   models render handwriting imperfectly; at full size some of the working is
   garbled (a repeated line, a mangled factorisation). It reads correctly as a
   faded background at cover scale, which is the only role it has, but it must
   never be treated as worked mathematics a learner could follow.
-- **The map in `wa-hi.png` is not a real historical map** and its place names are
+- **The map in `whis.png` is not a real historical map** and its place names are
   not legible or accurate. It is atmosphere, not a reference.
 
 Both are acceptable because the cover renderer veils the background behind the
 paper (`COVER.bgFade`, default 62%). If a future change makes the artwork more
-prominent, revisit `wa-ma.png` in particular.
+prominent, revisit `wma.png` in particular.
 
 ## Replacing an image
 
@@ -62,5 +62,5 @@ When replacing an image, keep the subject filename and run `bash build.sh`. For 
 14 photographic covers, verify the source's license and attribution requirements
 before redistribution.
 
-`build.sh` quotes the keys in `window.SUBJECT_COVER_ART` because the `wa-*` ids
+`build.sh` quotes the keys in `window.SUBJECT_COVER_ART` because the WASSCE ids
 contain a hyphen, which is not a bare JavaScript identifier.
