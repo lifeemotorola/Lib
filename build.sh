@@ -44,12 +44,13 @@ cd "$(dirname "$0")"
   # a Mathematics cover still shows mathematics when opened from a USB stick.
   echo '<script>window.SUBJECT_COVER_ART={'
   first=1
-  for id in en fr sc ma ss rm pe bi ch ph ec eg gg li; do
+  for id in en fr sc ma ss rm pe bi ch ph ec eg gg li wa-ma wa-en wa-hi wa-bi; do
     img="assets/covers/$id.png"
     [ -f "$img" ] || continue
     if [ "$first" -eq 0 ]; then printf ','; fi
     first=0
-    printf '%s:{url:"data:image/png;base64,' "$id"
+    # quoted key: the WASSCE ids contain a hyphen, which is not a bare JS identifier
+    printf '"%s":{url:"data:image/png;base64,' "$id"
     base64 -w0 "$img"
     printf '",mime:"image/png",w:480,h:640}'
   done
