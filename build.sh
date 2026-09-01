@@ -24,6 +24,13 @@ cd "$(dirname "$0")"
   echo '</style>'
   echo '</head>'
   cat body.html
+  # Central AI key. Provisioned once in GitHub (repository secret GROQ_API_KEY,
+  # exported by .github/workflows/deploy.yml) and baked into the deliverable, so
+  # no teacher or pupil ever has to obtain or paste an API key. When the variable
+  # is not set the key compiled into ai.js is used instead.
+  if [ -n "${GROQ_API_KEY:-}" ]; then
+    echo "<script>window.GROQ_API_KEY=\"${GROQ_API_KEY}\";</script>"
+  fi
   # Emmanuel's portrait, inlined as a data URI so the deliverable stays offline
   if [ -f assets/emmanuel.png ]; then
     echo '<script>'

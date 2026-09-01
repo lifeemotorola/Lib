@@ -132,6 +132,28 @@ same tool lives in `book.html`.
 > by Biology, Chemistry, Physics, Economics, English Grammar, Geography and
 > Literature; the other elementary and junior-high subjects stop at Grade 9.
 
+## Emmanuel, the AI tutor — the key is set once, in GitHub
+
+Teachers and pupils never see an API-key prompt: there is **no key setup
+screen** in the app any more. The Groq key is provisioned centrally, one time,
+by the repository owner:
+
+1. **GitHub → Settings → Secrets and variables → Actions → New repository
+   secret** — name `GROQ_API_KEY`, value the `gsk_...` key from
+   [console.groq.com](https://console.groq.com).
+2. **GitHub → Settings → Pages → Build and deployment → Source:
+   *GitHub Actions*.**
+
+Every push to `main` then runs `.github/workflows/deploy.yml`, which builds
+`index.html` with the secret injected as `window.GROQ_API_KEY` and publishes it
+to GitHub Pages. `ai.js` resolves the key in this order:
+
+`window.GROQ_API_KEY` → `<meta name="groq-api-key">` → the key compiled into
+`ai.js` (used by offline/USB copies) → any key an older version saved in
+`localStorage`.
+
+To build locally with a key of your own: `GROQ_API_KEY=gsk_... bash build.sh`.
+
 ## Project layout
 
 | File | Purpose |
