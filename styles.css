@@ -469,8 +469,6 @@ input:focus-visible,label:focus-visible{
 .cv-strip i{display:block;width:5mm;border-radius:1mm 1mm 0 0}
 .cv-row{display:flex;align-items:flex-end;gap:4mm;margin:0 0 8.5mm}
 .cv-row:last-child{margin-bottom:0}
-.cv-ico{width:9mm;height:9mm;flex:none;border-radius:1.8mm;display:grid;place-items:center;
-  font-size:5mm;line-height:1;background:var(--cv-soft)}
 .cv-lab{font-size:4.6mm;font-weight:800;letter-spacing:.35mm;text-transform:uppercase;
   white-space:nowrap;padding-bottom:.6mm}
 .cv-val{flex:1;min-width:0;border-bottom:1.3px solid var(--cv-ink);min-height:7mm;

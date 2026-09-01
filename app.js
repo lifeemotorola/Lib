@@ -730,19 +730,21 @@
      CSS and SVG, so it renders identically offline and in print. */
   function coverArtHtml(b) {
     var t = COVER_TPL[b.tpl] || COVER_TPL.classic;
-    function row(icon, label, value) {
-      return '<div class="cv-row"><span class="cv-ico">' + icon + '</span>' +
+    /* The printed booklet the platform is modelled on writes each detail as a
+       plain LABEL: ______ ruled line, with no icon before the label. */
+    function row(label, value) {
+      return '<div class="cv-row">' +
         '<span class="cv-lab">' + esc(label) + ':</span>' +
         '<span class="cv-val">' + esc(value || "") + "</span></div>";
     }
     var rows = "";
-    rows += row("\ud83c\udfeb", "School", b.school);
-    rows += row("\ud83d\udcd6", "Subject", b.subject);
-    rows += row("\ud83c\udf93", "Class", b.klass);
+    rows += row("School", b.school);
+    rows += row("Subject", b.subject);
+    rows += row("Class", b.klass);
     rows += b.teacherCopy
-      ? row("\ud83d\udc69\u200d\ud83c\udfeb", "Teacher", b.teacher)
-      : row("\ud83d\udc64", "Name", b.pupil);
-    rows += row("\ud83d\udcc5", b.term ? "Term" : "Term / Year",
+      ? row("Teacher", b.teacher)
+      : row("Name", b.pupil);
+    rows += row(b.term ? "Term" : "Term / Year",
                 [b.term, b.year].filter(Boolean).join("   \u00b7   "));
 
     var note = b.note
