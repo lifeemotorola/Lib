@@ -22,14 +22,19 @@
     <!-- ============ ALWAYS VISIBLE: the three choices made every time ============ -->
     <div class="panel-scroll">
 
-      <section class="grp grp-key">
-        <div class="grp-lab">Session</div>
-        <div class="sesstabs" id="session">
-          <button class="sess on" data-m="teacher"><span class="fl">&#129489;&#8205;&#127979;</span>Teacher</button>
-          <button class="sess" data-m="student"><span class="fl">&#127891;</span>Student</button>
-        </div>
-        <p class="hint" id="sessNote"></p>
-      </section>
+    <section class="grp grp-key">
+      <div class="grp-lab">Session</div>
+      <div class="sesstabs" id="session">
+        <button class="sess on" data-m="teacher"><span class="fl">&#129489;&#8205;&#127979;</span>Teacher</button>
+        <button class="sess" data-m="student"><span class="fl">&#127891;</span>Student</button>
+      </div>
+      <div class="grp-lab" style="margin-top:12px">Session track</div>
+      <div class="tracks" id="tracks">
+        <button type="button" class="track on" data-t="curr"><span class="fl">&#128218;</span>National Curriculum</button>
+        <button type="button" class="track" data-t="wa"><span class="fl">&#127893;</span>WASSCE</button>
+      </div>
+      <p class="hint" id="sessNote"></p>
+    </section>
 
       <section class="grp grp-key">
         <div class="grp-lab">Subject</div>

@@ -1,17 +1,24 @@
 """Regression: every subject/grade/session at the default 12pt, plus a
 responsive sweep and a font-size sweep. Kept in the workspace so it
-survives /tmp being cleared."""
+survives /tmp being cleared.
+
+If the default playwright browser is not installed (offline sandboxes),
+point PW_CHROMIUM at any recent chromium/chrome executable (with its
+supporting libs on LD_LIBRARY_PATH) and the suite runs against that."""
 from playwright.sync_api import sync_playwright
+import os
 import pathlib
 # resolve index.html next to this test, so the suite runs in any checkout
 URL=pathlib.Path(__file__).resolve().parent.parent.joinpath('index.html').as_uri()
+PW_CHROMIUM=os.environ.get('PW_CHROMIUM') or None
 SUBS=['en','fr','sc','ma','ss','rm','pe','bi','ch','ph','ec','eg','gg']
 DEV=[("Smart TV 4K",3840,2160),("Desktop 1440p",2560,1440),("Laptop 1366",1366,768),
      ("iPad portrait",768,1024),("Tablet small",600,960),("iPhone SE",375,667),
      ("Small handset",320,568)]
 bad=[]
 with sync_playwright() as p:
-    b=p.chromium.launch(args=['--no-sandbox'])
+    b=p.chromium.launch(args=['--no-sandbox'],
+                        **({"executable_path":PW_CHROMIUM} if PW_CHROMIUM else {}))
 
     # ---- packs: all subjects, all grades, both sessions, default 12pt ----
     ctx=b.new_context(viewport={'width':1600,'height':1000}); pg=ctx.new_page()
@@ -46,6 +53,34 @@ with sync_playwright() as p:
                 if not r['n']: bad.append((sess,s,g,"empty",r))
                 if sess=="student" and r['keys']: bad.append((sess,s,g,"keys leaked",1))
     print("packs done, page errors:",errs[:3])
+    ctx.close()
+
+    # ---- WASSCE track: all subjects, both sessions, default 12pt ----
+    ctx=b.new_context(viewport={'width':1600,'height':1000}); pg=ctx.new_page()
+    errs=[]; pg.on("pageerror",lambda e:errs.append(str(e)))
+    pg.goto(URL); pg.wait_for_timeout(600)
+    pg.eval_on_selector("#tracks .track[data-t='wa']","e=>e.click()"); pg.wait_for_timeout(400)
+    WASUBS=['wma','wen','wbio','wch','wph','weco','wgg','whis','wag','wali','wcrs']
+    for sess in ("student","teacher"):
+        pg.eval_on_selector(f".sess[data-m='{sess}']","e=>e.click()"); pg.wait_for_timeout(150)
+        for s in WASUBS:
+            pg.eval_on_selector(f".subtab[data-s='{s}']","e=>e.click()"); pg.wait_for_timeout(250)
+            grades=pg.eval_on_selector_all("#grade option","o=>o.map(x=>x.value)")
+            for g in grades:
+                pg.eval_on_selector("#grade",f"e=>{{e.value='{g}';e.dispatchEvent(new Event('change',{{bubbles:true}}));}}")
+                pg.wait_for_timeout(200)
+                pg.eval_on_selector("#gen","e=>e.click()"); pg.wait_for_timeout(900)
+                r=pg.evaluate("""()=>{const ps=[...document.querySelectorAll('.page')];
+                  return {n:ps.length,w:ps[0].offsetWidth,h:ps[0].offsetHeight,
+                          fs:getComputedStyle(ps[0]).fontSize,
+                          keys:document.body.innerText.includes('Answer Key')};}""")
+                if r['w']!=794 or r['h']!=1123: bad.append((sess,s,g,"A4",r))
+                if r['fs']!="16px": bad.append((sess,s,g,"fs",r['fs']))
+                if not r['n']: bad.append((sess,s,g,"empty",r))
+                if sess=="student" and r['keys']: bad.append((sess,s,g,"keys leaked",1))
+    print("wassce done, page errors:",errs[:3])
+    # back to the National Curriculum track
+    pg.eval_on_selector("#tracks .track[data-t='curr']","e=>e.click()"); pg.wait_for_timeout(300)
     ctx.close()
 
     # ---- font-size sweep ----

@@ -235,6 +235,15 @@ body[data-subject="gg"] .page th,body[data-subject="gg"] .page td{border-color:#
   font:inherit;font-size:.85rem;font-weight:600;color:#44546a;cursor:pointer}
 .sesstabs .sess .fl{font-size:1.05rem}
 .sesstabs .sess.on{background:var(--bleu);border-color:var(--bleu);color:#fff}
+
+/* session track: National Curriculum | WASSCE */
+.tracks{display:flex;gap:6px;margin-bottom:6px}
+.tracks .track{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:9px 6px;border:1px solid #c9d3e2;background:#fff;border-radius:8px;
+  font:inherit;font-size:.83rem;font-weight:700;color:#44546a;cursor:pointer;transition:.15s}
+.tracks .track .fl{font-size:1.05rem}
+.tracks .track:hover{background:#eef4ff;color:var(--ink)}
+.tracks .track.on{background:var(--ink);border-color:var(--ink);color:#fff}
 body[data-mode="teacher"] .top{filter:saturate(1.15)}
 body[data-mode="teacher"] .page .phead{font-weight:700}
 
