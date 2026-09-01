@@ -24,6 +24,10 @@ cd "$(dirname "$0")"
   echo '</style>'
   echo '</head>'
   cat body.html
+  # Inline SVG icon sprite. Emoji rendered inconsistently across devices (and
+  # were missing entirely on some school PCs and older Android builds), so the
+  # interface draws real icons instead. Inlined to stay offline and single-file.
+  cat icons.svg.html
   # Central AI key. Provisioned once in GitHub (repository secret GROQ_API_KEY,
   # exported by .github/workflows/deploy.yml) and baked into the deliverable, so
   # no teacher or pupil ever has to obtain or paste an API key. When the variable
@@ -44,12 +48,13 @@ cd "$(dirname "$0")"
   # a Mathematics cover still shows mathematics when opened from a USB stick.
   echo '<script>window.SUBJECT_COVER_ART={'
   first=1
-  for id in en fr sc ma ss rm pe bi ch ph ec eg gg li; do
+  for id in en fr sc ma ss rm pe bi ch ph ec eg gg li wma wen whis wbio; do
     img="assets/covers/$id.png"
     [ -f "$img" ] || continue
     if [ "$first" -eq 0 ]; then printf ','; fi
     first=0
-    printf '%s:{url:"data:image/png;base64,' "$id"
+    # quoted key: the WASSCE ids contain a hyphen, which is not a bare JS identifier
+    printf '"%s":{url:"data:image/png;base64,' "$id"
     base64 -w0 "$img"
     printf '",mime:"image/png",w:480,h:640}'
   done

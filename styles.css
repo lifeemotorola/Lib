@@ -456,6 +456,7 @@ input:focus-visible,label:focus-visible{
   text-transform:uppercase;margin:0 0 1mm;color:var(--cv-ink);opacity:.9;line-height:1.2}
 .cv-motto{font-size:3.7mm;font-style:italic;text-align:center;margin:0;opacity:.72}
 .cv-emblem{font-size:17mm;line-height:1;margin:3mm 0 2mm;filter:saturate(1.05)}
+.cv-em-svg{width:15mm;height:15mm;stroke-width:1.25}
 .cv-t1{font-size:21mm;line-height:.92;font-weight:900;letter-spacing:.4mm;
   text-transform:uppercase;text-align:center;margin:0;color:var(--cv-ink);
   max-width:100%;overflow-wrap:break-word}
@@ -478,8 +479,6 @@ input:focus-visible,label:focus-visible{
 .cv-strip i{display:block;width:5mm;border-radius:1mm 1mm 0 0}
 .cv-row{display:flex;align-items:flex-end;gap:4mm;margin:0 0 8.5mm}
 .cv-row:last-child{margin-bottom:0}
-.cv-ico{width:9mm;height:9mm;flex:none;border-radius:1.8mm;display:grid;place-items:center;
-  font-size:5mm;line-height:1;background:var(--cv-soft)}
 .cv-lab{font-size:4.6mm;font-weight:800;letter-spacing:.35mm;text-transform:uppercase;
   white-space:nowrap;padding-bottom:.6mm}
 .cv-val{flex:1;min-width:0;border-bottom:1.3px solid var(--cv-ink);min-height:7mm;
@@ -672,7 +671,7 @@ input:focus-visible,label:focus-visible{
 .ai-fab:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(11,59,140,.45)}
 .ai-fab.open{background:linear-gradient(135deg,#d3242e,#e84057);box-shadow:0 6px 24px rgba(211,36,46,.35)}
 .ai-fab-ico{font-size:1.3rem;line-height:1}
-/* Emmanuel's portrait, used wherever the 🤖 emoji used to sit */
+/* Emmanuel's portrait, used wherever the drawn robot icon would otherwise sit */
 .ai-avatar{display:block;border-radius:50%;object-fit:cover;object-position:50% 15%;
   background:#dbe6f7;flex:none}
 img.ai-fab-ico{width:30px;height:30px;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
@@ -770,3 +769,14 @@ img.ai-msg-img{width:26px;height:26px}
 @media print{
   .ai-fab,.ai-panel{display:none!important}
 }
+
+/* ============ ICONS ============
+   Inline SVG line icons replacing the emoji glyphs the UI used to print.
+   Emoji were inconsistent across devices (and absent on some school PCs and
+   older Android builds); these inherit currentColor and render identically. */
+.icon-sprite{display:none}
+.ic{width:1.15em;height:1.15em;flex:none;vertical-align:-.2em;
+  fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.ic-fill{fill:currentColor;stroke:none}
+.ic .ic-dot{fill:currentColor;stroke:none}

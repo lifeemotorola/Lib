@@ -6,7 +6,7 @@
 
   var SUBJECTS = {
     en: {
-      label: "English", flag: "📘", accent: "#0b6b3a",
+      label: "English", icon: "sub-en", accent: "#0b6b3a",
       curriculum: function () { return EN_CURRICULUM; },
       engine: function () { return GEN_EN; },
       defaults: ["words", "match", "cloze", "phonics", "grammar", "pairs", "mcq", "passage", "write", "spelling"],
@@ -14,7 +14,7 @@
       file: function (g) { return "English_Grade" + g + "_Workbook.docx"; }
     },
     fr: {
-      label: "French", flag: "🇫🇷", accent: "#0b3b8c",
+      label: "French", icon: "sub-fr", accent: "#0b3b8c",
       curriculum: function () { return FR_CURRICULUM; },
       engine: function () { return GEN_FR; },
       defaults: ["vocab", "match", "fr2en", "en2fr", "mcq", "missing", "scramble", "copy", "write", "oral"],
@@ -22,7 +22,7 @@
       file: function (g) { return "French_Grade" + g + "_Workbook.docx"; }
     },
     sc: {
-      label: "General Science", flag: "🔬", accent: "#7a2e12",
+      label: "General Science", icon: "sub-sc", accent: "#7a2e12",
       curriculum: function () { return SC_CURRICULUM; },
       engine: function () { return GEN_SC; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "apply"],
@@ -30,7 +30,7 @@
       file: function (g) { return "General_Science_Grade" + g + "_Workbook.docx"; }
     },
     ma: {
-      label: "Mathematics", flag: "🔢", accent: "#5b2a86",
+      label: "Mathematics", icon: "sub-ma", accent: "#5b2a86",
       curriculum: function () { return MA_CURRICULUM; },
       engine: function () { return GEN_MA; },
       defaults: ["terms", "worked", "drills", "drills2", "mcq", "word", "show", "challenge", "mental"],
@@ -38,7 +38,7 @@
       file: function (g) { return "Mathematics_Grade" + g + "_Workbook.docx"; }
     },
     ss: {
-      label: "Social Studies", flag: "🌍", accent: "#0d6a6a",
+      label: "Social Studies", icon: "sub-ss", accent: "#0d6a6a",
       curriculum: function () { return SS_CURRICULUM; },
       engine: function () { return GEN_SS; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "sort", "map", "casestudy", "apply"],
@@ -46,7 +46,7 @@
       file: function (g) { return "Social_Studies_Grade" + g + "_Workbook.docx"; }
     },
     rm: {
-      label: "Religious & Moral", flag: "🕊️", accent: "#8a5a00",
+      label: "Religious & Moral", icon: "sub-rm", accent: "#8a5a00",
       curriculum: function () { return RM_CURRICULUM; },
       engine: function () { return GEN_RM; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "sort", "compare", "casestudy", "apply"],
@@ -54,7 +54,7 @@
       file: function (g) { return "Religious_and_Moral_Education_Grade" + g + "_Workbook.docx"; }
     },
     pe: {
-      label: "Physical Education", flag: "\ud83c\udfc3", accent: "#1f7a3d",
+      label: "Physical Education", icon: "sub-pe", accent: "#1f7a3d",
       curriculum: function () { return PE_CURRICULUM; },
       engine: function () { return GEN_PE; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "sort", "compare", "casestudy", "apply"],
@@ -62,7 +62,7 @@
       file: function (g) { return "Physical_Education_Grade" + g + "_Workbook.docx"; }
     },
     bi: {
-      label: "Biology", flag: "\uD83E\uDDEC", accent: "#0f5132",
+      label: "Biology", icon: "sub-bi", accent: "#0f5132",
       curriculum: function () { return BI_CURRICULUM; },
       engine: function () { return GEN_SC; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "apply"],
@@ -70,7 +70,7 @@
       file: function (g) { return "Biology_Grade" + g + "_Workbook.docx"; }
     },
     ch: {
-      label: "Chemistry", flag: "\u2697\uFE0F", accent: "#7a1f5c",
+      label: "Chemistry", icon: "sub-ch", accent: "#7a1f5c",
       curriculum: function () { return CH_CURRICULUM; },
       engine: function () { return GEN_SC; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "worked", "classify", "diagram", "experiment", "apply"],
@@ -78,7 +78,7 @@
       file: function (g) { return "Chemistry_Grade" + g + "_Workbook.docx"; }
     },
     ph: {
-      label: "Physics", flag: "\u269B\uFE0F", accent: "#1f4aa8",
+      label: "Physics", icon: "sub-ph", accent: "#1f4aa8",
       curriculum: function () { return PH_CURRICULUM; },
       engine: function () { return GEN_SC; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "worked", "apply"],
@@ -86,7 +86,7 @@
       file: function (g) { return "Physics_Grade" + g + "_Workbook.docx"; }
     },
     ec: {
-      label: "Economics", flag: "\uD83D\uDCB9", accent: "#1f5f7a",
+      label: "Economics", icon: "sub-ec", accent: "#1f5f7a",
       curriculum: function () { return EC_CURRICULUM; },
       engine: function () { return GEN_SS; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "worked", "sort", "map", "casestudy", "apply"],
@@ -94,7 +94,7 @@
       file: function (g) { return "Economics_Grade" + g + "_Workbook.docx"; }
     },
     eg: {
-      label: "English Grammar", flag: "\u270D\uFE0F", accent: "#7a4a12",
+      label: "English Grammar", icon: "sub-eg", accent: "#7a4a12",
       curriculum: function () { return EG_CURRICULUM; },
       engine: function () { return GEN_EN; },
       packName: "English Grammar",
@@ -103,7 +103,7 @@
       file: function (g) { return "English_Grammar_Grade" + g + "_Workbook.docx"; }
     },
     gg: {
-      label: "Geography", flag: "\uD83D\uDDFA\uFE0F", accent: "#1f6b4f",
+      label: "Geography", icon: "sub-gg", accent: "#1f6b4f",
       curriculum: function () { return GG_CURRICULUM; },
       engine: function () { return GEN_SS; },
       defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "worked", "sort", "map", "casestudy", "project", "apply"],
@@ -111,7 +111,7 @@
       file: function (g) { return "Geography_Grade" + g + "_Workbook.docx"; }
     },
     li: {
-      label: "Literature", flag: "\uD83D\uDCD6", accent: "#4a2f7a",
+      label: "Literature", icon: "sub-li", accent: "#4a2f7a",
       curriculum: function () { return LI_CURRICULUM; },
       engine: function () { return GEN_LI; },
       defaults: ["terms", "match", "cloze", "devices", "characters", "themes", "tf", "short", "mcq", "passage", "write", "appreciate"],
@@ -125,7 +125,7 @@
      WAEC examination syllabus — one unit per syllabus topic — and the shared
      WASSCE engine (GEN_WA) builds Paper-1/Paper-2 style packs from it. */
     wma: {
-      label: "WASSCE Mathematics", flag: "📐", accent: "#5b2a86", wa: "ma",
+      label: "WASSCE Mathematics", icon: "sub-ma", accent: "#5b2a86", wa: "ma",
       curriculum: function () { return WA_ma.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_ma; },
@@ -134,7 +134,7 @@
       file: function (g) { return "WASSCE_Mathematics_Core_Grade" + g + "_Pack.docx"; }
     },
     wen: {
-      label: "WASSCE English", flag: "📖", accent: "#0b6b3a", wa: "en",
+      label: "WASSCE English", icon: "sub-en", accent: "#0b6b3a", wa: "en",
       curriculum: function () { return WA_en.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_en; },
@@ -143,7 +143,7 @@
       file: function (g) { return "WASSCE_English_Language_Grade" + g + "_Pack.docx"; }
     },
     wbio: {
-      label: "WASSCE Biology", flag: "🧬", accent: "#0f5132", wa: "bio",
+      label: "WASSCE Biology", icon: "sub-bi", accent: "#0f5132", wa: "bio",
       curriculum: function () { return WA_bio.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_bio; },
@@ -152,7 +152,7 @@
       file: function (g) { return "WASSCE_Biology_Grade" + g + "_Pack.docx"; }
     },
     wch: {
-      label: "WASSCE Chemistry", flag: "⚗️", accent: "#7a1f5c", wa: "ch",
+      label: "WASSCE Chemistry", icon: "sub-ch", accent: "#7a1f5c", wa: "ch",
       curriculum: function () { return WA_ch.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_ch; },
@@ -161,7 +161,7 @@
       file: function (g) { return "WASSCE_Chemistry_Grade" + g + "_Pack.docx"; }
     },
     wph: {
-      label: "WASSCE Physics", flag: "🧲", accent: "#1f4aa8", wa: "ph",
+      label: "WASSCE Physics", icon: "sub-mag", accent: "#1f4aa8", wa: "ph",
       curriculum: function () { return WA_ph.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_ph; },
@@ -170,7 +170,7 @@
       file: function (g) { return "WASSCE_Physics_Grade" + g + "_Pack.docx"; }
     },
     weco: {
-      label: "WASSCE Economics", flag: "💱", accent: "#1f5f7a", wa: "ec",
+      label: "WASSCE Economics", icon: "sub-ec", accent: "#1f5f7a", wa: "ec",
       curriculum: function () { return WA_ec.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_ec; },
@@ -179,7 +179,7 @@
       file: function (g) { return "WASSCE_Economics_Grade" + g + "_Pack.docx"; }
     },
     wgg: {
-      label: "WASSCE Geography", flag: "🗺️", accent: "#1f6b4f", wa: "gg",
+      label: "WASSCE Geography", icon: "sub-gg", accent: "#1f6b4f", wa: "gg",
       curriculum: function () { return WA_gg.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_gg; },
@@ -188,7 +188,7 @@
       file: function (g) { return "WASSCE_Geography_Grade" + g + "_Pack.docx"; }
     },
     whis: {
-      label: "WASSCE History", flag: "🏛️", accent: "#8a5a00", wa: "his",
+      label: "WASSCE History", icon: "sub-his", accent: "#8a5a00", wa: "his",
       curriculum: function () { return WA_his.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_his; },
@@ -197,7 +197,7 @@
       file: function (g) { return "WASSCE_History_Grade" + g + "_Pack.docx"; }
     },
     wag: {
-      label: "WASSCE Agriculture", flag: "🌾", accent: "#4a6b12", wa: "ag",
+      label: "WASSCE Agriculture", icon: "sub-ag", accent: "#4a6b12", wa: "ag",
       curriculum: function () { return WA_ag.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_ag; },
@@ -206,7 +206,7 @@
       file: function (g) { return "WASSCE_General_Agriculture_Grade" + g + "_Pack.docx"; }
     },
     wali: {
-      label: "WASSCE Literature", flag: "", accent: "#4a2f7a", wa: "li",
+      label: "WASSCE Literature", icon: "sub-li", accent: "#4a2f7a", wa: "li",
       curriculum: function () { return WA_li.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_li; },
@@ -215,7 +215,7 @@
       file: function (g) { return "WASSCE_Literature_in_English_Grade" + g + "_Pack.docx"; }
     },
     wcrs: {
-      label: "WASSCE Christian Studies", flag: "✝️", accent: "#7a4a12", wa: "crs",
+      label: "WASSCE Christian Studies", icon: "sub-crs", accent: "#7a4a12", wa: "crs",
       curriculum: function () { return WA_crs.units; },
       engine: function () { return GEN_WA; },
       waMeta: function () { return WA_crs; },
@@ -528,7 +528,7 @@
     classname: "",
     term: "",
     year: String(new Date().getFullYear()),
-    crest: "\ud83d\udcda",
+    crest: "",                 /* optional user-typed character; blank = the template's drawn emblem */
     note: "",
     ownPage: true
   };
@@ -537,11 +537,11 @@
   /* Designed cover templates. Each is a CSS variant of one proven layout, so
      adding a template never changes the geometry of the A4 sheet. */
   var COVER_TPL = {
-    classic: { label: "Classic Cream",  cls: "cv-classic", emblem: "\ud83c\udf4e", leaf: "#7fa87f", dash: true  },
-    liberia: { label: "Liberian Blue",  cls: "cv-liberia", emblem: "\ud83c\uddf1\ud83c\uddf7", leaf: "#7d93bf", dash: false },
-    forest:  { label: "Forest Green",   cls: "cv-forest",  emblem: "\ud83c\udf3f", leaf: "#4f9a76", dash: true  },
-    sunrise: { label: "Sunrise Warm",   cls: "cv-sunrise", emblem: "\u2600\ufe0f", leaf: "#dba05a", dash: false },
-    plain:   { label: "Plain / Ink Saver", cls: "cv-plain", emblem: "\ud83d\udcd8", leaf: "#9aa3ad", dash: false }
+    classic: { label: "Classic Cream",  cls: "cv-classic", emblem: "em-apple", leaf: "#7fa87f", dash: true  },
+    liberia: { label: "Liberian Blue",  cls: "cv-liberia", emblem: "em-flag", leaf: "#7d93bf", dash: false },
+    forest:  { label: "Forest Green",   cls: "cv-forest",  emblem: "em-plant", leaf: "#4f9a76", dash: true  },
+    sunrise: { label: "Sunrise Warm",   cls: "cv-sunrise", emblem: "em-sun", leaf: "#dba05a", dash: false },
+    plain:   { label: "Plain / Ink Saver", cls: "cv-plain", emblem: "em-book", leaf: "#9aa3ad", dash: false }
   };
   window.PACK_COVER_TPL = COVER_TPL;
 
@@ -640,7 +640,7 @@
 
     /* ---- plain table cover (the original behaviour, kept as a choice) ---- */
     if (COVER.tpl === "table") {
-      if (COVER.school) out.push({ k: "p", t: COVER.crest + "  " + COVER.school, c: true, big: true });
+      if (COVER.school) out.push({ k: "p", t: (COVER.crest ? COVER.crest + "  " : "") + COVER.school, c: true, big: true });
       if (COVER.motto) out.push({ k: "p", t: COVER.motto, c: true, i: true });
       out.push({ k: "rule" });
       out.push({ k: "space" });
@@ -755,7 +755,8 @@
       var b = document.createElement("button");
       b.className = "subtab" + (id === cur ? " on" : "");
       b.setAttribute("data-s", id);
-      b.innerHTML = '<span class="fl">' + s.flag + "</span>" + s.label;
+      b.innerHTML = '<span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-' +
+        s.icon + '"/></svg></span>' + s.label;
       b.onclick = function () {
         if (cur === id) return;
         cur = id;
@@ -874,19 +875,21 @@
      CSS and SVG, so it renders identically offline and in print. */
   function coverArtHtml(b) {
     var t = COVER_TPL[b.tpl] || COVER_TPL.classic;
-    function row(icon, label, value) {
-      return '<div class="cv-row"><span class="cv-ico">' + icon + '</span>' +
+    /* The printed booklet the platform is modelled on writes each detail as a
+       plain LABEL: ______ ruled line, with no icon before the label. */
+    function row(label, value) {
+      return '<div class="cv-row">' +
         '<span class="cv-lab">' + esc(label) + ':</span>' +
         '<span class="cv-val">' + esc(value || "") + "</span></div>";
     }
     var rows = "";
-    rows += row("\ud83c\udfeb", "School", b.school);
-    rows += row("\ud83d\udcd6", "Subject", b.subject);
-    rows += row("\ud83c\udf93", "Class", b.klass);
+    rows += row("School", b.school);
+    rows += row("Subject", b.subject);
+    rows += row("Class", b.klass);
     rows += b.teacherCopy
-      ? row("\ud83d\udc69\u200d\ud83c\udfeb", "Teacher", b.teacher)
-      : row("\ud83d\udc64", "Name", b.pupil);
-    rows += row("\ud83d\udcc5", b.term ? "Term" : "Term / Year",
+      ? row("Teacher", b.teacher)
+      : row("Name", b.pupil);
+    rows += row(b.term ? "Term" : "Term / Year",
                 [b.term, b.year].filter(Boolean).join("   \u00b7   "));
 
     var note = b.note
@@ -907,7 +910,10 @@
     }
     var emblem = b.logo
       ? '<div class="cv-logo"><img src="' + b.logo + '" alt=""></div>'
-      : '<div class="cv-emblem">' + (b.crest || t.emblem) + "</div>";
+      : '<div class="cv-emblem">' + (b.crest
+          ? esc(b.crest)
+          : '<svg class="ic cv-em-svg" aria-hidden="true"><use href="#i-' + t.emblem + '"/></svg>') +
+        "</div>";
 
     return '<div class="cvart ' + t.cls + (b.bg ? " hasbg" : "") + '">' +
       bgLayer +
@@ -920,7 +926,9 @@
         emblem +
         '<h1 class="cv-t1' + sizeCls + '">' + esc(b.title1) + "</h1>" +
         '<div class="cv-t2">' + esc(b.title2) + "</div>" +
-        '<div class="cv-rule"><span></span><b>\ud83d\udcd6</b><span></span></div>' +
+        '<div class="cv-rule"><span></span>' +
+          '<b><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg></b>' +
+        '<span></span></div>' +
         '<p class="cv-sub">' + esc(b.line || "") + "</p>" +
       "</div>" +
       '<div class="cv-panel' + (t.dash ? " dash" : "") + '">' + rows + "</div>" +

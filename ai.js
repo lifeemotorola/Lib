@@ -18,13 +18,13 @@
   /* Emmanuel's portrait. build.sh inlines assets/emmanuel.png as a data URI in
      window.EMMANUEL_AVATAR so the single-file deliverable stays offline; when
      running from the unbuilt sources the relative file is used instead. If the
-     picture cannot be loaded every avatar falls back to the 🤖 emoji. */
+     picture cannot be loaded every avatar falls back to the drawn robot icon. */
   var AVATAR_SRC = window.EMMANUEL_AVATAR || "assets/emmanuel.png";
 
   function avatarHTML(cls) {
     return '<img class="ai-avatar ' + cls + '" src="' + AVATAR_SRC + '" alt="' + MODEL_NAME + '">';
   }
-  /* swap any portrait that fails to load for the emoji it replaced */
+  /* swap any portrait that fails to load for the drawn icon it replaced */
   function wireAvatars(root) {
     if (!root) return;
     var imgs = root.querySelectorAll("img.ai-avatar");
@@ -32,7 +32,7 @@
       img.onerror = function () {
         var span = document.createElement("span");
         span.className = img.className.replace("ai-avatar", "").trim();
-        span.textContent = "🤖";
+        span.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg>';
         if (img.parentNode) img.parentNode.replaceChild(span, img);
       };
     });
@@ -202,8 +202,8 @@
           '</div>' +
         '</div>' +
         '<div class="ai-head-right">' +
-          '<button class="ai-btn-icon" id="aiNewChat" title="New chat">🔄</button>' +
-          '<button class="ai-btn-icon" id="aiClose" title="Close">✕</button>' +
+          '<button class="ai-btn-icon" id="aiNewChat" title="New chat"><svg class="ic" aria-hidden="true"><use href="#i-refresh"/></svg></button>' +
+          '<button class="ai-btn-icon" id="aiClose" title="Close"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>' +
         '</div>' +
       '</div>' +
       '<div class="ai-body" id="aiBody">' +
@@ -212,16 +212,16 @@
           '<h3>Hello! I\'m ' + MODEL_NAME + ', your AI tutor</h3>' +
           '<p>I can help you with any subject in the Liberian curriculum. Try asking me to:</p>' +
           '<div class="ai-suggestions">' +
-            '<button class="ai-sug" data-q="Explain the key concepts in the current study notes in simple terms">📖 Explain the study notes</button>' +
-            '<button class="ai-sug" data-q="Generate 10 practice questions for this subject and grade">📝 Generate practice questions</button>' +
-            '<button class="ai-sug" data-q="Create a short quiz with 5 multiple choice questions">❓ Create a quiz</button>' +
-            '<button class="ai-sug" data-q="Give me a real-world example from Liberia that relates to this topic">🌍 Give a Liberian example</button>' +
+            '<button class="ai-sug" data-q="Explain the key concepts in the current study notes in simple terms"><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg> Explain the study notes</button>' +
+            '<button class="ai-sug" data-q="Generate 10 practice questions for this subject and grade"><svg class="ic" aria-hidden="true"><use href="#i-pencil"/></svg> Generate practice questions</button>' +
+            '<button class="ai-sug" data-q="Create a short quiz with 5 multiple choice questions"><svg class="ic" aria-hidden="true"><use href="#i-help"/></svg> Create a quiz</button>' +
+            '<button class="ai-sug" data-q="Give me a real-world example from Liberia that relates to this topic"><svg class="ic" aria-hidden="true"><use href="#i-sub-ss"/></svg> Give a Liberian example</button>' +
           '</div>' +
         '</div>' +
       '</div>' +
       '<div class="ai-input-wrap">' +
         '<textarea id="aiInput" placeholder="Ask a question about your studies..." rows="1"></textarea>' +
-        '<button class="ai-send" id="aiSend" title="Send">➤</button>' +
+        '<button class="ai-send" id="aiSend" title="Send"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg></button>' +
         '<button class="ai-stop" id="aiStop" title="Stop" style="display:none">⏹</button>' +
       '</div>' +
       '<div class="ai-foot">' +
@@ -324,7 +324,7 @@
         showStreaming(false);
         setStatus("");
         if (bubble) {
-          bubble.innerHTML = '<span class="ai-err">⚠️ ' + esc(err) + '</span>';
+          bubble.innerHTML = '<span class="ai-err"><svg class="ic" aria-hidden="true"><use href="#i-warn"/></svg> ' + esc(err) + '</span>';
         }
       }
     );
@@ -356,14 +356,14 @@
       w.className = "ai-welcome";
       w.id = "aiWelcome";
       w.innerHTML =
-        '<div class="ai-welcome-ico">🤖</div>' +
+        '<div class="ai-welcome-ico"><svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg></div>' +
         '<h3>Chat cleared!</h3>' +
         '<p>Ask me anything about the Liberian curriculum.</p>' +
         '<div class="ai-suggestions">' +
-          '<button class="ai-sug" data-q="Explain the key concepts in the current study notes in simple terms">📖 Explain the study notes</button>' +
-          '<button class="ai-sug" data-q="Generate 10 practice questions for this subject and grade">📝 Generate practice questions</button>' +
-          '<button class="ai-sug" data-q="Create a short quiz with 5 multiple choice questions">❓ Create a quiz</button>' +
-          '<button class="ai-sug" data-q="Give me a real-world example from Liberia that relates to this topic">🌍 Give a Liberian example</button>' +
+          '<button class="ai-sug" data-q="Explain the key concepts in the current study notes in simple terms"><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg> Explain the study notes</button>' +
+          '<button class="ai-sug" data-q="Generate 10 practice questions for this subject and grade"><svg class="ic" aria-hidden="true"><use href="#i-pencil"/></svg> Generate practice questions</button>' +
+          '<button class="ai-sug" data-q="Create a short quiz with 5 multiple choice questions"><svg class="ic" aria-hidden="true"><use href="#i-help"/></svg> Create a quiz</button>' +
+          '<button class="ai-sug" data-q="Give me a real-world example from Liberia that relates to this topic"><svg class="ic" aria-hidden="true"><use href="#i-sub-ss"/></svg> Give a Liberian example</button>' +
         '</div>';
       body.appendChild(w);
       wireSuggestionClicks();
