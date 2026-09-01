@@ -144,6 +144,11 @@ by the repository owner:
 2. **GitHub → Settings → Pages → Build and deployment → Source:
    *GitHub Actions*.**
 
+3. Copy the ready-made workflow into place (one command, once):
+   `mkdir -p .github/workflows && cp github/pages-deploy.workflow.yml .github/workflows/deploy.yml`
+   then commit it. (It ships as `github/pages-deploy.workflow.yml` because
+   automated agents are not allowed to write into `.github/workflows/`.)
+
 Every push to `main` then runs `.github/workflows/deploy.yml`, which builds
 `index.html` with the secret injected as `window.GROQ_API_KEY` and publishes it
 to GitHub Pages. `ai.js` resolves the key in this order:
@@ -168,6 +173,7 @@ To build locally with a key of your own: `GROQ_API_KEY=gsk_... bash build.sh`.
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
 | `assets/icons/` | Liberia flag-map favicon, touch icon and installable-app icons. |
+| `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `GROQ_API_KEY` repository secret and deploys to Pages. Copy it to `.github/workflows/deploy.yml`. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art. |
 | `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
