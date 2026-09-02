@@ -564,11 +564,17 @@
   var SUBJECT_COVER_ART = window.SUBJECT_COVER_ART || {};
   window.PACK_COVER_IMG = COVER_IMG;
 
-  /* A user upload takes priority. Otherwise every designed cover receives the
-     bundled PNG for the selected subject; no network is needed at runtime. */
+  /* A user upload takes priority. Otherwise the designed cover receives the
+     bundled PNG for the selected subject; no network is needed at runtime.
+     The whole WASSCE track shares one authentic cover — the WAEC objective
+     answer sheet (assets/covers/wa.png) — so every WASSCE subject (Maths,
+     English, History, Biology, …) shows the real examination cover. National
+     curriculum subjects keep their own subject-matched artwork by id. */
   function activeCoverBg() {
     if (COVER_IMG.bg) return COVER_IMG.bg;
-    return COVER.useSubjectArt ? (SUBJECT_COVER_ART[cur] || null) : null;
+    if (!COVER.useSubjectArt) return null;
+    if (S() && S().wa) return SUBJECT_COVER_ART.wa || null;
+    return SUBJECT_COVER_ART[cur] || null;
   }
 
   var IMG_MAX = { logo: 520, bg: 1400 };          /* longest edge, pixels */
