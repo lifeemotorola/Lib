@@ -48,7 +48,7 @@ cd "$(dirname "$0")"
   # a Mathematics cover still shows mathematics when opened from a USB stick.
   echo '<script>window.SUBJECT_COVER_ART={'
   first=1
-  for id in en fr sc ma ss rm pe bi ch ph ec eg gg li wma wen whis wbio; do
+  for id in en fr sc ma ss rm pe bi ch ph ec eg gg li wa; do
     img="assets/covers/$id.png"
     [ -f "$img" ] || continue
     if [ "$first" -eq 0 ]; then printf ','; fi
