@@ -1,7 +1,7 @@
 {
   "id": "./",
   "name": "Liberian National Curriculum Course Pack Generator",
-  "short_name": "Liberia Packs",
+  "short_name": "Curriculum Break Down",
   "description": "Create printable Liberian curriculum workbooks, tests, examinations and teacher answer keys for Grades 1–12.",
   "start_url": "./index.html",
   "scope": "./",
