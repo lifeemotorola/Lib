@@ -195,11 +195,14 @@ costs a real visitor at most a single click.
 
 1. In the Cloudflare dashboard: **Turnstile → Add site**. Add your site's
    hostname, choose the managed (non-interactive) mode, and create it.
-2. Copy the **site key** into the build — it is public by design, it only
-   identifies the widget. Repository → Settings → Secrets and variables →
-   Actions → **Variables** → `TURNSTILE_SITE_KEY`. `build.sh` bakes it in
-   (or: `TURNSTILE_SITE_KEY=0x… bash build.sh`).
-3. Copy the **secret key** to the server that verifies tokens:
+2. Put the **site key** into the build — it is public by design, it only
+   identifies the widget. The built `index.html` is committed with it, so a
+   Cloudflare Pages deployment that serves the repo root gets the live card
+   immediately; to change the key, run `TURNSTILE_SITE_KEY=0x… bash build.sh`
+   and commit `index.html` again. If you rebuild via GitHub Actions instead,
+   leave it as an Actions **variable** (`TURNSTILE_SITE_KEY`) and the workflow
+   bakes it in.
+3. Add the **secret key** on the server that verifies tokens:
    - **Cloudflare Pages:** Settings → Variables and Secrets →
      `TURNSTILE_SECRET_KEY` (type *Secret*), then redeploy.
    - **Standalone Worker:** `npx wrangler secret put TURNSTILE_SECRET_KEY`.

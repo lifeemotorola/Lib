@@ -16,13 +16,25 @@ challenges.cloudflare.com.
 
 Run:  python3 tests/humancheck.py
 """
-import functools, http.server, pathlib, socketserver, sys, threading
+import functools, http.server, pathlib, re, socketserver, sys, threading
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE_KEY = "1x00000000000000000000AA"          # Cloudflare's always-pass test key
 SENSITIVE = ("GROQ", "secret", "Cloudflare", "proxy", "deploy", "API error", "not configured")
 bad = []
+
+
+def keyless(route):
+    """Serve the checkout as it looks with no TURNSTILE_SITE_KEY configured.
+
+    The committed index.html ships with the live site key baked in by
+    build.sh, so its assignment is stripped before the no-key assertions
+    run — those guard the humancheck.js behaviour, not the deployment."""
+    response = route.fetch()
+    body = re.sub(r'<script>window\.TURNSTILE_SITE_KEY="[^"]*";</script>',
+                  "", response.text())
+    route.fulfill(response=response, body=body)
 
 
 class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -61,6 +73,7 @@ with sync_playwright() as p:
     try:
         # ---- 1. no site key → the gate stays off --------------------------
         pg = b.new_page()
+        pg.route("**/*", keyless)
         pg.goto(url); pg.wait_for_timeout(900)
         if pg.query_selector("#hcVeil"):
             bad.append("human check shown without a site key")
@@ -109,7 +122,10 @@ with sync_playwright() as p:
         pg.close()
 
         # ---- 3. the tutor keeps a wordy failure to itself -----------------
+        # The gate is off here too so the chat test does not sit behind the
+        # human-check card (the card itself is covered by tests 1 and 2).
         pg = b.new_page()
+        pg.route("**/*", keyless)
         pg.route("**/api/chat", lambda route: route.fulfill(
             status=500, content_type="application/json",
             body='{"error":{"message":"The AI tutor is not configured yet: '

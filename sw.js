@@ -2,7 +2,7 @@
 /* Bump on every release that changes index.html/scripts — old cached
    shells (including the pre-proxy build that contained a baked-in key)
    are flushed on activate. */
-var CACHE_NAME = "liberia-course-packs-v2";
+var CACHE_NAME = "liberia-course-packs-v3";
 var APP_SHELL = [
   "./index.html",
   "./manifest.webmanifest",
