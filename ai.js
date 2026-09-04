@@ -122,9 +122,17 @@
         return resp.text().then(function (t) {
           var msg = "API error (" + resp.status + ")";
           try { var j = JSON.parse(t); if (j.error && j.error.message) msg = j.error.message; } catch (e) {}
-          if (resp.status === 404 || resp.status === 500 || resp.status === 501) {
-            msg = "The AI tutor is not connected on this site yet. The site owner needs to enable the proxy " +
-                  "(Cloudflare Pages: set the GROQ_API_KEY secret in the Pages project) and redeploy.";
+          /* A 404/405 on the chat route means the POST reached a plain static
+             host with no /api/chat Pages Function mounted (or the wrong URL),
+             not that the AI service failed. Point people at the real cause. */
+          if (resp.status === 404 || resp.status === 405) {
+            msg = "The AI tutor proxy isn't running on this address. Open this site on its Cloudflare " +
+                  "Pages URL (e.g. …pages.dev), make sure the GitHub repo is connected to the Pages " +
+                  "project with its functions/ folder, set the GROQ_API_KEY secret (Pages → Settings → " +
+                  "Variables and secrets), redeploy, then hard-refresh (Ctrl/Cmd+Shift+R).";
+          } else if (resp.status === 500 || resp.status === 501) {
+            msg = "The AI tutor is not connected on this site yet. The site owner needs to set the " +
+                  "GROQ_API_KEY secret in the Cloudflare Pages project and redeploy.";
           }
           throw new Error(msg);
         });
