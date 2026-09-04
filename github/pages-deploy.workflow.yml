@@ -19,18 +19,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build index.html with the AI proxy URL
+      - name: Build index.html with the AI proxy URL and the human-check key
         # AI_PROXY_URL is the public URL of the deployed Cloudflare Worker
-        # (worker/groq-proxy.js). It is NOT a secret — set it under
+        # (worker/groq-proxy.js); TURNSTILE_SITE_KEY is the public site key of
+        # the "Are you human?" widget. Neither is a secret — set both under
         # Settings → Secrets and variables → Actions → Variables.
         # The Groq key itself lives only in the Worker (wrangler secret).
         env:
           AI_PROXY_URL: ${{ vars.AI_PROXY_URL }}
+          TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
         run: |
           if [ -z "$AI_PROXY_URL" ]; then
-            echo "::warning::AI_PROXY_URL is not set — the AI tutor will show a 'not connected' message until it is"
+            echo "::warning::AI_PROXY_URL is not set — the AI tutor stays unavailable until it is"
           else
             echo "AI proxy: $AI_PROXY_URL"
+          fi
+          if [ -z "$TURNSTILE_SITE_KEY" ]; then
+            echo "::notice::TURNSTILE_SITE_KEY is not set — the 'Are you human?' check stays switched off"
           fi
           bash build.sh
       - name: Stage the site

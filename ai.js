@@ -94,12 +94,27 @@
       "If the user asks something unrelated to their studies, gently redirect them.";
   }
 
-  /* ---- AI call (through the server-side proxy) ---- */
-  function callGroq(messages, onChunk, onDone, onError) {
-    if (!proxyUrl) {
-      onError(MODEL_NAME + " is not connected yet. The app owner must deploy the AI proxy (see worker/) and rebuild with AI_PROXY_URL set.");
-      return;
-    }
+  /* ---- human check ---------------------------------------------------
+     The platform's "Are you human?" card (humancheck.js) issues a token
+     that the proxy verifies before it spends any of the AI quota. The
+     token resolves to "" when no check is configured — offline and USB
+     copies have none — and the request still goes out; whether it is
+     accepted is then up to the proxy.
+     ------------------------------------------------------------------- */
+  function withHumanCheck(next) {
+    var hc = window.HUMAN_CHECK;
+    if (!hc || typeof hc.requestToken !== "function") { next(""); return; }
+    hc.requestToken().then(function (t) { next(t || ""); }, function () { next(""); });
+  }
+
+  /* ---- AI call (through the server-side proxy) -----------------------
+     Failures come back as a short machine-readable code and nothing else.
+     The proxy's own wording is never repeated in the chat: it talks about
+     hosting, keys and deployment, which is the site owner's business and
+     nobody else's. A failed turn simply disappears again.
+     ------------------------------------------------------------------- */
+  function callGroq(messages, checkToken, onChunk, onDone, onFail) {
+    if (!proxyUrl) { onFail({ code: "no_proxy" }); return; }
     var body = {
       model: MODEL,
       messages: messages,
@@ -107,6 +122,12 @@
       max_tokens: 6000,
       stream: true
     };
+    /* Checked by the proxy when TURNSTILE_SECRET_KEY is set over there.
+       A Turnstile token is single use, so spend it as it goes out. */
+    if (checkToken) {
+      body.turnstile = checkToken;
+      if (window.HUMAN_CHECK && window.HUMAN_CHECK.consume) window.HUMAN_CHECK.consume(checkToken);
+    }
     var ctrl = new AbortController();
     window._aiAbort = ctrl;
 
@@ -120,21 +141,14 @@
     }).then(function (resp) {
       if (!resp.ok) {
         return resp.text().then(function (t) {
-          var msg = "API error (" + resp.status + ")";
-          try { var j = JSON.parse(t); if (j.error && j.error.message) msg = j.error.message; } catch (e) {}
-          /* A 404/405 on the chat route means the POST reached a plain static
-             host with no /api/chat Pages Function mounted (or the wrong URL),
-             not that the AI service failed. Point people at the real cause. */
-          if (resp.status === 404 || resp.status === 405) {
-            msg = "The AI tutor proxy isn't running on this address. Open this site on its Cloudflare " +
-                  "Pages URL (e.g. …pages.dev), make sure the GitHub repo is connected to the Pages " +
-                  "project with its functions/ folder, set the GROQ_API_KEY secret (Pages → Settings → " +
-                  "Variables and secrets), redeploy, then hard-refresh (Ctrl/Cmd+Shift+R).";
-          } else if (resp.status === 500 || resp.status === 501) {
-            msg = "The AI tutor is not connected on this site yet. The site owner needs to set the " +
-                  "GROQ_API_KEY secret in the Cloudflare Pages project and redeploy.";
-          }
-          throw new Error(msg);
+          /* Only the code travels: "turnstile_required" tells the chat to ask
+             the visitor to check in again. Everything else stays silent. */
+          var code = "";
+          try {
+            var j = JSON.parse(t);
+            if (j && j.error) code = String(j.error.code || "");
+          } catch (e) {}
+          onFail({ code: code });
         });
       }
       var reader = resp.body.getReader();
@@ -160,13 +174,13 @@
           pump();
         }).catch(function (e) {
           if (e.name === "AbortError") { onDone(); return; }
-          onError(e.message || "Network error");
+          onFail({ code: "" });
         });
       }
       pump();
     }).catch(function (e) {
       if (e.name === "AbortError") { onDone(); return; }
-      onError(e.message || "Network error");
+      onFail({ code: "" });
     });
   }
 
@@ -309,11 +323,15 @@
     if (!inp) return;
     var text = inp.value.trim();
     if (!text || isStreaming) return;
-
-    addMessage("user", text);
     inp.value = "";
     inp.style.height = "auto";
+    submit(text, false);
+  }
 
+  /* Sends one message. `retry` re-sends after the visitor has passed the
+     human check again, so their question is not shown or logged twice. */
+  function submit(text, retry) {
+    if (!retry) addMessage("user", text);
     chatHistory.push({ role: "user", content: text });
 
     var msgs = [{ role: "system", content: systemPrompt() }].concat(chatHistory);
@@ -323,34 +341,63 @@
     showStreaming(true);
     setStatus("Thinking...");
 
-    callGroq(msgs,
-      function (chunk) {
-        setStatus("Typing...");
-        appendToBubble(bubble, chunk);
-      },
-      function () {
-        isStreaming = false;
-        showStreaming(false);
-        setStatus("");
-        if (bubble && bubble._raw) {
-          chatHistory.push({ role: "assistant", content: bubble._raw });
+    withHumanCheck(function (checkToken) {
+      callGroq(msgs, checkToken,
+        function (chunk) {
+          setStatus("Typing...");
+          appendToBubble(bubble, chunk);
+        },
+        function () {
+          isStreaming = false;
+          showStreaming(false);
+          setStatus("");
+          if (bubble && bubble._raw) {
+            chatHistory.push({ role: "assistant", content: bubble._raw });
+          }
+          /* Keep history manageable */
+          if (chatHistory.length > 20) chatHistory = chatHistory.slice(-16);
+        },
+        function (info) {
+          isStreaming = false;
+          showStreaming(false);
+          setStatus("");
+          /* Nothing is said: no keys, no hosting, no status codes. A reply
+             that never started is taken back; one that got part-way through
+             is simply left where it stopped. The owner can still read the
+             code in the browser console. */
+          if (bubble && bubble._raw) {
+            chatHistory.push({ role: "assistant", content: bubble._raw });
+          } else if (bubble && bubble.parentNode) {
+            var row = bubble.parentNode;
+            if (row.parentNode) row.parentNode.removeChild(row);
+            dropLastUserMessage(text);
+          }
+          if (window.console && console.warn) {
+            console.warn("[Emmanuel] request failed:", (info && info.code) || "unknown");
+          }
+          /* An expired human check is worth one more attempt: ask the visitor
+             to confirm themselves, then send the question again. */
+          if (info && info.code === "turnstile_required" && !retry && canReverify()) {
+            window.HUMAN_CHECK.verify(
+              "Please confirm you're human to keep chatting with " + MODEL_NAME + "."
+            ).then(function () { submit(text, true); }, function () {});
+          }
         }
-        /* Keep history manageable */
-        if (chatHistory.length > 20) chatHistory = chatHistory.slice(-16);
-      },
-      function (err) {
-        isStreaming = false;
-        showStreaming(false);
-        setStatus("");
-        if (bubble) {
-          bubble.innerHTML = '<span class="ai-err"><svg class="ic" aria-hidden="true"><use href="#i-warn"/></svg> ' + esc(err) + '</span>';
-        }
-      }
-    );
+      );
+    });
   }
 
-  function esc(s) {
-    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  /* A question the tutor never answered should not linger in its memory. */
+  function dropLastUserMessage(text) {
+    var last = chatHistory[chatHistory.length - 1];
+    if (last && last.role === "user" && last.content === text) chatHistory.pop();
+  }
+
+  /* True when the platform's human check is switched on and can be asked
+     to show itself again. */
+  function canReverify() {
+    var hc = window.HUMAN_CHECK;
+    return !!(hc && hc.enabled && hc.enabled() && typeof hc.verify === "function");
   }
 
   function showStreaming(on) {

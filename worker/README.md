@@ -43,7 +43,19 @@ The Worker:
    ```
 
    Paste the `gsk_...` key when prompted.
-4. Tell the app where the Worker is:
+   Optional, and recommended: paste the Turnstile **secret** key from
+   **Cloudflare → Turnstile → your site** to switch the "Are you human?"
+   check on:
+
+   ```bash
+   npx wrangler secret put TURNSTILE_SECRET_KEY
+   ```
+
+   Set `TURNSTILE_SITE_KEY` (the public half) as a repository **variable** so
+   `build.sh` bakes it into the page — see the README. The Worker only
+   enforces the check while this secret exists; without it, requests without
+   a token are served exactly as before.
+5. Tell the app where the Worker is:
    - **GitHub Pages build:** repository → Settings → Secrets and variables →
      Actions → **Variables** → new variable `AI_PROXY_URL` = the Worker URL.
      The next deploy of `.github/workflows/deploy.yml` bakes it in.
@@ -86,4 +98,5 @@ hand with `wrangler secret put` (step 3).
   the Worker only.
 - The Worker is open to the allowed origins by design (pupils/teachers use it
   with no login). The model allow-list, body-size limit and rate limit keep
-  abuse cheap; for tighter control add a turnstile/CAPTCHA or an issued token.
+  abuse cheap; set `TURNSTILE_SECRET_KEY` to add Cloudflare's "Are you human?"
+  check on top of them (the page then sends a token with every request).

@@ -26,6 +26,7 @@
    ============================================================ */
 
 var GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
+var TURNSTILE_ENDPOINT = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 /* Only these models may be requested — a public proxy should not be a
    general-purpose Groq relay. Keep in sync with MODEL in ai.js. */
@@ -39,13 +40,37 @@ var ALLOWED_MODELS = [
 var RATE_LIMIT = 60;       /* requests per visitor ... */
 var RATE_WINDOW = 60000;   /* ... per 60 s */
 
-function jsonError(message, status, origin) {
+function jsonError(message, status, origin, code) {
   var headers = { "Content-Type": "application/json" };
   if (origin) headers["Access-Control-Allow-Origin"] = origin;
-  return new Response(JSON.stringify({ error: { message: message } }), {
+  var payload = { error: { message: message } };
+  /* Codes are machine-readable shorthand for the page ("turnstile_required"
+     makes it ask the visitor to check in again). Messages are deliberately
+     vague: nothing about hosting, keys or deployment reaches the browser. */
+  if (code) payload.error.code = code;
+  return new Response(JSON.stringify(payload), {
     status: status,
     headers: headers
   });
+}
+
+/* "Are you human?" — verifies the token the page's Turnstile widget issued.
+   Only enforced when the TURNSTILE_SECRET_KEY secret is set on the Worker;
+   without it the proxy behaves exactly as it always has. */
+function humanOk(env, response, ip) {
+  if (!env || !env.TURNSTILE_SECRET_KEY) return Promise.resolve(true);
+  if (!response) return Promise.resolve(false);
+  var form = new URLSearchParams();
+  form.set("secret", String(env.TURNSTILE_SECRET_KEY));
+  form.set("response", String(response));
+  if (ip && ip !== "unknown") form.set("remoteip", String(ip));
+  return fetch(TURNSTILE_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: form
+  }).then(function (res) { return res.json(); })
+    .then(function (data) { return !!(data && data.success); })
+    .catch(function () { return false; });   /* could not confirm it */
 }
 
 /* Allowed browser origins. The github.io origin for any GitHub user or
@@ -130,12 +155,12 @@ export default {
       } catch (e) {
         return jsonError("Invalid request body", 400, allowedOrigin);
       }
-      return handleBody(payload, env, allowedOrigin);
+      return handleBody(payload, env, allowedOrigin, ip);
     });
   }
 };
 
-function handleBody(payload, env, origin) {
+function handleBody(payload, env, origin, ip) {
   if (!payload || !Array.isArray(payload.messages) || payload.messages.length === 0) {
     return jsonError("messages are required", 400, origin);
   }
@@ -145,6 +170,14 @@ function handleBody(payload, env, origin) {
   if (JSON.stringify(payload.messages).length > 100000) {
     return jsonError("Conversation too long", 413, origin);
   }
+
+  return humanOk(env, payload.turnstile, ip).then(function (passed) {
+    if (!passed) return jsonError("Human check required.", 403, origin, "turnstile_required");
+    return forwardToGroq(payload, env, origin);
+  });
+}
+
+function forwardToGroq(payload, env, origin) {
 
   /* Only chat completions pass through; force streaming on (the app UI
      streams). No other Groq endpoints are exposed. */

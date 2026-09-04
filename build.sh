@@ -28,6 +28,14 @@ cd "$(dirname "$0")"
   # were missing entirely on some school PCs and older Android builds), so the
   # interface draws real icons instead. Inlined to stay offline and single-file.
   cat icons.svg.html
+  # "Are you human?" (Cloudflare Turnstile). The site key is public by design
+  # — it only identifies the widget — so it is a repository *variable*, not a
+  # secret. Leave it unset and the human check stays switched off, which is
+  # what offline/USB copies need. The matching TURNSTILE_SECRET_KEY stays on
+  # the server (Pages secret or Worker secret) and is never built in.
+  if [ -n "${TURNSTILE_SITE_KEY:-}" ]; then
+    echo "<script>window.TURNSTILE_SITE_KEY=\"${TURNSTILE_SITE_KEY}\";</script>"
+  fi
   # AI endpoint. The Groq API key lives only on the proxy Worker (see worker/);
   # the page just needs the Worker's URL. Provisioned once as the GitHub
   # repository variable AI_PROXY_URL (or secret; the value is not sensitive).
@@ -60,7 +68,7 @@ cd "$(dirname "$0")"
     printf '",mime:"image/png",w:480,h:640}'
   done
   echo '};</script>'
-  for f in data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-gg.js data-li.js data-wa.js data-wa-ma.js data-wa-en.js data-wa-bio.js data-wa-bio2.js data-wa-ch.js data-wa-ph.js data-wa-ec.js data-wa-gg.js data-wa-his.js data-wa-ag.js data-wa-li.js data-wa-crs.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js gen-wa.js book.js ai.js app.js; do
+  for f in humancheck.js data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-gg.js data-li.js data-wa.js data-wa-ma.js data-wa-en.js data-wa-bio.js data-wa-bio2.js data-wa-ch.js data-wa-ph.js data-wa-ec.js data-wa-gg.js data-wa-his.js data-wa-ag.js data-wa-li.js data-wa-crs.js gen-en.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js gen-wa.js book.js ai.js app.js; do
     echo '<script>'
     cat "$f"
     echo '</script>'

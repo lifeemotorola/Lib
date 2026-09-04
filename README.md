@@ -187,6 +187,39 @@ message and the rest of the app works normally.
 Both proxies only accept chat-completion requests for the tutor's model, only
 from your site's origin, and rate-limit visitors.
 
+### "Are you human?" — Cloudflare Turnstile
+
+The platform opens behind a Cloudflare Turnstile card, so automated software
+does not quietly spend the AI quota. It is one small widget, free, and it
+costs a real visitor at most a single click.
+
+1. In the Cloudflare dashboard: **Turnstile → Add site**. Add your site's
+   hostname, choose the managed (non-interactive) mode, and create it.
+2. Copy the **site key** into the build — it is public by design, it only
+   identifies the widget. Repository → Settings → Secrets and variables →
+   Actions → **Variables** → `TURNSTILE_SITE_KEY`. `build.sh` bakes it in
+   (or: `TURNSTILE_SITE_KEY=0x… bash build.sh`).
+3. Copy the **secret key** to the server that verifies tokens:
+   - **Cloudflare Pages:** Settings → Variables and Secrets →
+     `TURNSTILE_SECRET_KEY` (type *Secret*), then redeploy.
+   - **Standalone Worker:** `npx wrangler secret put TURNSTILE_SECRET_KEY`.
+
+The page asks the widget for a token and sends it with every tutor request;
+the proxy checks it against the secret before it calls Groq. When the token
+has expired the tutor quietly asks the visitor to confirm themselves again
+and re-sends the question on its own.
+
+Nothing is enforced until step 3 — leave the secret unset and both proxies
+behave exactly as they did before. The card is switched off just as
+thoroughly when there is no site key, and on `file://` copies and offline
+visits, because the check cannot run there and a USB copy of the course
+packs must never be locked out by it.
+
+> **The tutor says nothing when a request fails** — no error text, no status
+> codes, no key or hosting details. An unanswered question is simply taken
+> back. The reason is logged as a short code in the browser console for the
+> site owner, and never shown to a pupil.
+
 > **Rotate any Groq key that was ever committed or built into an `index.html`**
 > — revoke it at [console.groq.com](https://console.groq.com) and give the new
 > key to the proxy only (Pages secret or `wrangler secret`).
@@ -207,14 +240,16 @@ from your site's origin, and rate-limit visitors.
 | `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`; Literature has its own, `gen-li.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
+| `ai.js` | The Emmanuel AI tutor: chat panel, streaming answers, and the quiet failure handling described below. |
+| `humancheck.js` | "Are you human?" — the Cloudflare Turnstile card that covers the platform until the visitor passes it. Switched off unless a `TURNSTILE_SITE_KEY` is baked in by `build.sh`. |
 | `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
 | `assets/icons/` | Liberia flag-map favicon, touch icon and installable-app icons. |
-| `functions/api/chat.js` | Cloudflare **Pages Function**: same-origin AI proxy at `/api/chat` used automatically when the site is hosted on Cloudflare Pages (set the `GROQ_API_KEY` Pages secret). |
+| `functions/api/chat.js` | Cloudflare **Pages Function**: same-origin AI proxy at `/api/chat` used automatically when the site is hosted on Cloudflare Pages (set the `GROQ_API_KEY` Pages secret, and `TURNSTILE_SECRET_KEY` to enforce the human check). |
 | `worker/` | Standalone Cloudflare **Worker** proxy for static hosts that can't run server code (GitHub Pages etc.): holds the Groq key, enforces the Origin allowlist, model allow-list and rate limiting. Deploy instructions in `worker/README.md`. |
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
-| `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
+| `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
