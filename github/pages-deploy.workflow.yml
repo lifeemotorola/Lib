@@ -19,14 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build index.html with the central API key
+      - name: Build index.html with the AI proxy URL
+        # AI_PROXY_URL is the public URL of the deployed Cloudflare Worker
+        # (worker/groq-proxy.js). It is NOT a secret — set it under
+        # Settings → Secrets and variables → Actions → Variables.
+        # The Groq key itself lives only in the Worker (wrangler secret).
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY || vars.GROQ_API_KEY }}
+          AI_PROXY_URL: ${{ vars.AI_PROXY_URL }}
         run: |
-          if [ -z "$GROQ_API_KEY" ]; then
-            echo "::warning::GROQ_API_KEY is not set"
+          if [ -z "$AI_PROXY_URL" ]; then
+            echo "::warning::AI_PROXY_URL is not set — the AI tutor will show a 'not connected' message until it is"
           else
-            echo "GROQ_API_KEY found (${#GROQ_API_KEY} characters)"
+            echo "AI proxy: $AI_PROXY_URL"
           fi
           bash build.sh
       - name: Stage the site

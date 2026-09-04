@@ -150,9 +150,15 @@ Setup is done once by the repository owner:
    variable `AI_PROXY_URL` with that URL. (A *variable*, not a secret — the URL
    is public; the key itself lives only inside the Worker.)
 4. **GitHub → Settings → Pages → Build and deployment → Source: *GitHub
-   Actions*.** The workflow at `.github/workflows/deploy.yml` builds
-   `index.html` with the proxy URL injected and publishes it on every push to
-   `main`.
+   Actions*.** Then install the deploy workflow (one command, once):
+
+   ```bash
+   mkdir -p .github/workflows && cp github/pages-deploy.workflow.yml .github/workflows/deploy.yml
+   ```
+
+   (It ships under `github/` because workflow files can only be added to
+   `.github/workflows/` by the repository owner.) Every push to `main` then
+   builds `index.html` with the proxy URL injected and publishes it.
 
 `ai.js` finds the proxy via `window.AI_PROXY_URL` (injected by `build.sh` from
 the `AI_PROXY_URL` environment variable / GitHub variable) →
@@ -189,7 +195,7 @@ and rate-limits visitors — see [`worker/README.md`](worker/README.md).
 | `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
 | `assets/icons/` | Liberia flag-map favicon, touch icon and installable-app icons. |
 | `worker/` | Cloudflare Worker proxy for the AI tutor: holds the Groq key server-side, enforces the Origin allowlist, model allow-list and rate limiting. Deploy instructions in `worker/README.md`. |
-| `.github/workflows/deploy.yml` | Builds `index.html` (with the `AI_PROXY_URL` repository variable) and deploys to GitHub Pages on every push to `main`. |
+| `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art. |
 | `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
