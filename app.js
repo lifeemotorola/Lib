@@ -13,6 +13,14 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "English_Grade" + g + "_Workbook.docx"; }
     },
+    pho: {
+      label: "Phonics", icon: "sub-pho", accent: "#c05a1e",
+      curriculum: function () { return PHO_CURRICULUM; },
+      engine: function () { return GEN_PHO; },
+      defaults: ["patterns", "words", "match", "blend", "family", "complete", "odd", "unscramble", "build", "spelling"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Phonics_Grade" + g + "_Workbook.docx"; }
+    },
     fr: {
       label: "French", icon: "sub-fr", accent: "#0b3b8c",
       curriculum: function () { return FR_CURRICULUM; },
@@ -321,6 +329,13 @@
     diagram:"Learners label the parts of a diagram.",
     classify:"Learners place examples into the correct scientific category.",
     experiment:"A practical investigation with method, observation and conclusion.",
+    patterns:"A study table of the period's sounds and patterns with space to add words of the same pattern.",
+    blend:"Learners blend the sounds of a word together to read it, or break it into parts/syllables.",
+    family:"Learners identify which sound, ending or word part each word follows.",
+    complete:"The first letter of a word is given; learners finish it using the pattern.",
+    odd:"Four words follow one pattern and one does not; learners find the odd one out.",
+    unscramble:"Letters are mixed up; learners put them in order to build the word.",
+    build:"Learners use the period's patterns to build new words of their own.",
     phonics:"Sound and spelling patterns with space to add words of the same pattern.",
     grammar:"Grammar items to correct or complete, each with a reason in the answer key.",
     pairs:"Synonyms, antonyms, homophones and other word pairs.",
@@ -841,7 +856,7 @@
 
     /* Grades outside the elementary band come from their own curriculum guide,
        so name the subject as that guide actually titles it. */
-    var JH_NAME = { en: "English &mdash; Language Arts", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography", li: "Literature" };
+    var JH_NAME = { en: "English &mdash; Language Arts", pho: "Phonics &mdash; Word Study", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography", li: "Literature" };
     var jh = $("#jhNote");
     if (jh) {
       if (S().wa) {

@@ -2,7 +2,7 @@
 
 An **offline, single-file web app** that generates printable course packs for the
 Liberian National Curriculum: pupil workbooks, period tests, semester
-examinations and teacher's answer keys — in **English, French, General
+examinations and teacher's answer keys — in **English, Phonics, French, General
 Science, Mathematics, Social Studies, Religious & Moral Education, Physical
 Education, Biology, Chemistry, Physics, Economics, English Grammar,
 Geography and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
@@ -14,7 +14,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **14 subjects** with real curriculum content (6 units per grade per subject)
+- **15 subjects** with real curriculum content (6 units per grade per subject)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -26,10 +26,10 @@ so the whole thing stays self-contained.
 - **Study notes** for every unit: key ideas, worked examples and common
   mistakes — and for Social Studies, General Science, English, Mathematics,
   French, Religious & Moral Education and Physical Education Grades 1–9
-  (Mathematics and French also Grades 10–12) and Biology, Chemistry, Physics, Economics,
+  (Mathematics, French and Phonics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
   transcribed verbatim from the official curriculum guide
-- **Customizable cover**: template choice, 14 built-in subject-matched PNG
+- **Customizable cover**: template choice, 15 built-in subject-matched PNG
   backgrounds (equations for Mathematics, laboratory imagery for Science,
   books for Literature, and so on), school name (persisted), uploaded logo or
   replacement background, pupil/teacher/term/year fields, and emoji crest
@@ -84,7 +84,7 @@ not allow service workers from a `file://` URL.
 | Control | What it does |
 |---|---|
 | **Session** | `Student` or `Teacher`. Teacher adds the answer-key pack contents. |
-| **Subject** | One of the 14 subjects; Biology/Chemistry/Physics reuse the Science engine, and Economics/Geography reuse the Social Studies engine, and Literature has its own engine. |
+| **Subject** | One of the 15 subjects; Biology/Chemistry/Physics reuse the Science engine, and Economics/Geography reuse the Social Studies engine, and Literature and Phonics have their own engines. |
 | **Level / Grade** | Education band (Elementary, Junior High, Senior High) and grade; a subject only shows the bands it covers. |
 | **Units to include** | Select the curriculum periods per grade. |
 | **Exercise types** | Which worksheets each unit gets. |
@@ -114,6 +114,7 @@ same tool lives in `book.html`.
 | Subject | Grades | Units per grade | Total units |
 |---|---|---|---|
 | English (`en`) | 1–9 | 6 | 54 |
+| Phonics (`pho`) | 1–12 | 6 | 72 |
 | French (`fr`) | 1–12 | 6 | 72 |
 | General Science (`sc`) | 1–9 | 6 | 54 |
 | Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
@@ -128,9 +129,10 @@ same tool lives in `book.html`.
 | Geography (`gg`) | 10–12 | 6 | 18 |
 | Literature (`li`) | 10–12 | 6 | 18 |
 
-> **Known limitation:** Grades 10–12 are covered by Mathematics, French and
-> by Biology, Chemistry, Physics, Economics, English Grammar, Geography and
-> Literature; the other elementary and junior-high subjects stop at Grade 9.
+> **Coverage:** Mathematics, French and **Phonics** span Grades 1–12, and
+> Biology, Chemistry, Physics, Economics, English Grammar, Geography and
+> Literature cover Grades 10–12; the other elementary and junior-high
+> subjects stop at Grade 9.
 
 ## Emmanuel, the AI tutor — a key that never touches the browser
 
@@ -239,8 +241,8 @@ packs must never be locked out by it.
 | `body.html` | Page markup (header, settings panel, action bar, duplex-print dialog). |
 | `styles.css` | All styling, including A4 sheet geometry and `@media print` rules. |
 | `app.js` | The platform: subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence. |
-| `data-*.js` | Curriculum content per subject (`data-en.js`, `data-ma79.js` = Junior High part, `data-bi.js`, ...). |
-| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`; Literature has its own, `gen-li.js`). |
+| `data-*.js` | Curriculum content per subject (`data-en.js`, `data-pho.js` = Phonics Grades 1–12, `data-ma79.js` = Junior High part, `data-bi.js`, ...). |
+| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`; Literature has its own, `gen-li.js`, and Phonics its own, `gen-pho.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `ai.js` | The Emmanuel AI tutor: chat panel, streaming answers, and the quiet failure handling described below. |
@@ -252,7 +254,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -277,11 +279,12 @@ packs must never be locked out by it.
   `**bold**` markup (converted to `<b>`), used for key terms throughout the
   course text — but not inside `table` cells, which are escaped, not
   rendered. Single `*asterisks*` are not converted, so example words and
-  sentences are quoted instead of italicised. All 14 subjects now carry full
+  sentences are quoted instead of italicised. All 15 subjects now carry full
   verbatim notes derived from their curriculum guides — Social Studies,
   General Science, English, Mathematics, French, Religious & Moral Education
   and Physical Education, Grades 1–9 (54 units each, plus the 42 Senior High
-  Mathematics units and the 18 Senior High French units), and Biology,
+  Mathematics units, the 18 Senior High French units and the 72 Phonics units
+  covering Grades 1–12), and Biology,
   Chemistry, Physics, Economics, English
   Grammar, Geography and Literature, Grades 10–12 (18 units each) — with the
   guide page range of each unit recorded in a comment above its list.

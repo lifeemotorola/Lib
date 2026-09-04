@@ -107,8 +107,8 @@ with sync_playwright() as p:
     art = pg.evaluate("""()=>{const a=window.SUBJECT_COVER_ART||{};
         return {ids:Object.keys(a), png:Object.values(a).every(x=>x.url.startsWith('data:image/png;base64,')),
                 unique:new Set(Object.values(a).map(x=>x.url)).size};}""")
-    expected_art = {"en", "fr", "sc", "ma", "ss", "rm", "pe", "bi", "ch", "ph", "ec", "eg", "gg", "li"}
-    if set(art["ids"]) != expected_art or not art["png"] or art["unique"] != 14:
+    expected_art = {"en", "pho", "fr", "sc", "ma", "ss", "rm", "pe", "bi", "ch", "ph", "ec", "eg", "gg", "li"}
+    if set(art["ids"]) != expected_art or not art["png"] or art["unique"] != 15:
         bad.append(f"subject cover artwork incomplete or duplicated: {art}")
     pg.eval_on_selector("#ddCover>summary", "e=>e.click()"); pg.wait_for_timeout(150)
     tpls = pg.eval_on_selector_all(".tplbtn", "e=>e.map(x=>x.dataset.tpl)")
