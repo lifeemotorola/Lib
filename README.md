@@ -135,46 +135,61 @@ same tool lives in `book.html`.
 ## Emmanuel, the AI tutor — a key that never touches the browser
 
 The tutor is powered by Groq, but the Groq API key is **never** shipped in the
-page, in `ai.js`, or in any GitHub secret that reaches the browser. The app
-calls a tiny server-side proxy (a free Cloudflare Worker) that holds the key.
-This matters: a key baked into a static page or a public repo is scraped and
-revoked automatically by Groq within hours, and can be abused for your quota.
+page, in `ai.js`, or in any secret that reaches the browser. A tiny
+server-side proxy holds the key; the browser calls the proxy. This matters: a
+key baked into a static page or a public repo is scraped and revoked
+automatically by Groq within hours, and can be abused for your quota.
 
-Setup is done once by the repository owner:
+### Recommended: host the site on Cloudflare Pages (easiest)
 
-1. Deploy the proxy Worker and store the key in it — full steps in
-   [`worker/README.md`](worker/README.md). Short version:
-   `cd worker && npx wrangler deploy && npx wrangler secret put GROQ_API_KEY`.
-2. Note the printed Worker URL, e.g. `https://liberia-packs-ai.you.workers.dev/`.
-3. **GitHub → Settings → Secrets and variables → Actions → Variables** → new
-   variable `AI_PROXY_URL` with that URL. (A *variable*, not a secret — the URL
-   is public; the key itself lives only inside the Worker.)
-4. **GitHub → Settings → Pages → Build and deployment → Source: *GitHub
-   Actions*.** Then install the deploy workflow (one command, once):
+Cloudflare Pages runs a serverless proxy *inside* the same site — no separate
+Worker to deploy and no URL to configure. The proxy ships in this repo at
+`functions/api/chat.js`; the app calls `/api/chat` on its own domain
+automatically.
 
-   ```bash
-   mkdir -p .github/workflows && cp github/pages-deploy.workflow.yml .github/workflows/deploy.yml
-   ```
+1. Create a fresh key at [console.groq.com/keys](https://console.groq.com/keys)
+   (and delete/revoke any old key — a key that ever appeared in a public page
+   is burned).
+2. Publish this repo to **Cloudflare Pages** (Workers & Pages → Create →
+   connect the GitHub repo). Build command can be empty; output directory the
+   repo root (or whatever serves `index.html`).
+3. In the Pages project: **Settings → Variables and Secrets → Add variable**:
+   - Name: `GROQ_API_KEY`
+   - Value: the `gsk_...` key
+   - Type: **Secret** (encrypted)
+4. **Deployments → Redeploy** (or push to GitHub). Done — the tutor works.
 
-   (It ships under `github/` because workflow files can only be added to
-   `.github/workflows/` by the repository owner.) Every push to `main` then
-   builds `index.html` with the proxy URL injected and publishes it.
+### Alternative: GitHub Pages (or any static host)
 
-`ai.js` finds the proxy via `window.AI_PROXY_URL` (injected by `build.sh` from
-the `AI_PROXY_URL` environment variable / GitHub variable) →
-`<meta name="ai-proxy-url">` → the `PROXY_URL` constant in `ai.js`. If none is
-set, the tutor shows a friendly "not connected" message and the rest of the
-app works normally.
+Static hosts can't run the proxy themselves, so deploy it as a standalone
+free Cloudflare Worker instead — full steps in [`worker/README.md`](worker/README.md).
+Short version:
 
-Build locally against your Worker: `AI_PROXY_URL=https://…workers.dev/ bash build.sh`.
+```bash
+cd worker && npx wrangler deploy && npx wrangler secret put GROQ_API_KEY
+```
 
-The Worker only accepts chat-completion requests for the tutor's model, only
-from your site's origin (`*.github.io` by default, custom domains configurable),
-and rate-limits visitors — see [`worker/README.md`](worker/README.md).
+Then set the GitHub repository **variable** (Settings → Secrets and variables
+→ Actions → **Variables**) `AI_PROXY_URL` to the printed Worker URL
+(`https://liberia-packs-ai.<you>.workers.dev/`), and install the deploy
+workflow once:
+
+```bash
+mkdir -p .github/workflows && cp github/pages-deploy.workflow.yml .github/workflows/deploy.yml
+```
+
+`ai.js` finds the proxy in this order: `window.AI_PROXY_URL` (injected by
+`build.sh` from the `AI_PROXY_URL` variable) → `<meta name="ai-proxy-url">` →
+same-origin `/api/chat` (the Pages Function above) → the `PROXY_URL` constant
+in `ai.js`. If none is reachable the tutor shows a friendly "not connected"
+message and the rest of the app works normally.
+
+Both proxies only accept chat-completion requests for the tutor's model, only
+from your site's origin, and rate-limit visitors.
 
 > **Rotate any Groq key that was ever committed or built into an `index.html`**
-> — revoke it at [console.groq.com](https://console.groq.com) and put the new
-> key in the Worker only.
+> — revoke it at [console.groq.com](https://console.groq.com) and give the new
+> key to the proxy only (Pages secret or `wrangler secret`).
 
 > **Offline note:** the curriculum content, books and printing work fully
 > offline; the AI tutor needs an internet connection (it calls an online
@@ -194,7 +209,8 @@ and rate-limits visitors — see [`worker/README.md`](worker/README.md).
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
 | `assets/icons/` | Liberia flag-map favicon, touch icon and installable-app icons. |
-| `worker/` | Cloudflare Worker proxy for the AI tutor: holds the Groq key server-side, enforces the Origin allowlist, model allow-list and rate limiting. Deploy instructions in `worker/README.md`. |
+| `functions/api/chat.js` | Cloudflare **Pages Function**: same-origin AI proxy at `/api/chat` used automatically when the site is hosted on Cloudflare Pages (set the `GROQ_API_KEY` Pages secret). |
+| `worker/` | Standalone Cloudflare **Worker** proxy for static hosts that can't run server code (GitHub Pages etc.): holds the Groq key, enforces the Origin allowlist, model allow-list and rate limiting. Deploy instructions in `worker/README.md`. |
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art. |

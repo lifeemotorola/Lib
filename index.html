@@ -78724,11 +78724,19 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     });
   }
   /* ---- Proxy URL resolution ------------------------------------------
-     No API key exists in the client. The app talks to the deployed proxy:
+     No API key exists in the client. The app talks to a server-side
+     proxy that holds the key:
 
        1. window.AI_PROXY_URL  — injected by build.sh from $AI_PROXY_URL
        2. <meta name="ai-proxy-url" content="...">
-       3. PROXY_URL below      — set to your Worker URL for local/USB copies
+       3. Same-origin "/api/chat" — a Cloudflare Pages Function that
+          ships with this repo (functions/api/chat.js). Hosting the
+          site on Cloudflare Pages requires no configuration beyond
+          setting the GROQ_API_KEY secret in the Pages project.
+       4. PROXY_URL below      — set for standalone Worker deployments
+
+     Offline/USB copies (file://) have no proxy; the tutor then shows a
+     friendly "not connected" message and everything else still works.
      -------------------------------------------------------------------- */
   var PROXY_URL = "";  /* e.g. "https://liberia-packs-ai.<you>.workers.dev/" */
 
@@ -78736,6 +78744,10 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     if (window.AI_PROXY_URL) return String(window.AI_PROXY_URL).trim();
     var meta = document.querySelector('meta[name="ai-proxy-url"]');
     if (meta && meta.content && meta.content.indexOf("__") !== 0) return meta.content.trim();
+    if (/^https?:$/.test(location.protocol)) {
+      /* absolute same-origin path works on domains and Pages sub-paths */
+      return location.origin + "/api/chat";
+    }
     return PROXY_URL;
   }
 
@@ -78792,6 +78804,10 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         return resp.text().then(function (t) {
           var msg = "API error (" + resp.status + ")";
           try { var j = JSON.parse(t); if (j.error && j.error.message) msg = j.error.message; } catch (e) {}
+          if (resp.status === 404 || resp.status === 500 || resp.status === 501) {
+            msg = "The AI tutor is not connected on this site yet. The site owner needs to enable the proxy " +
+                  "(Cloudflare Pages: set the GROQ_API_KEY secret in the Pages project) and redeploy.";
+          }
           throw new Error(msg);
         });
       }

@@ -1,6 +1,16 @@
-# AI proxy Worker (Groq)
+# AI proxy — Cloudflare Pages Function or standalone Worker
 
-The platform's AI tutor ("Emmanuel") calls this Cloudflare Worker instead of
+> **Hosting the whole site on Cloudflare Pages?** You don't need anything in
+> this folder. The same proxy ships at `functions/api/chat.js` and runs inside
+> your Pages project at the same-origin URL `/api/chat` automatically. Just set
+> one encrypted variable in **Pages → Settings → Variables and Secrets**:
+> `GROQ_API_KEY` = your `gsk_...` key, then redeploy. This standalone Worker is
+> only needed for static hosts (GitHub Pages, Netlify, USB...) that can't run
+> server code.
+
+---
+
+The platform's AI tutor ("Emmanuel") calls a server-side proxy instead of
 `api.groq.com` directly. The Groq API key lives **only** in the Worker — it is
 never sent to browsers, never committed, and never built into `index.html`.
 
