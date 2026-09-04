@@ -812,3 +812,107 @@ img.ai-msg-img{width:26px;height:26px}
   stroke-linecap:round;stroke-linejoin:round}
 .ic-fill{fill:currentColor;stroke:none}
 .ic .ic-dot{fill:currentColor;stroke:none}
+
+/* ============================================================
+   VOICE READER — pronounce difficult words & read sentences
+   Uses the browser's built-in speech synthesis (offline, no key).
+   A floating button + panel, modelled on the AI tutor, that never
+   appears in the printable/exported session (hidden in @media print).
+   ============================================================ */
+.vr-fab{position:fixed;bottom:22px;left:22px;z-index:60;display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#0d6a6a,#128f8f);color:#fff;border:none;border-radius:50px;
+  padding:12px 20px;font-size:.92rem;font-weight:700;cursor:pointer;
+  box-shadow:0 6px 24px rgba(13,106,106,.35);transition:all .2s;font-family:inherit}
+.vr-fab:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(13,106,106,.45)}
+.vr-fab.open{background:linear-gradient(135deg,#d3242e,#e84057);box-shadow:0 6px 24px rgba(211,36,46,.35)}
+.vr-fab-lab{white-space:nowrap}
+.vr-fab.speaking{animation:vrPulse 1.1s ease-in-out infinite}
+@keyframes vrPulse{0%,100%{box-shadow:0 6px 24px rgba(13,106,106,.35)}50%{box-shadow:0 6px 30px rgba(211,36,46,.55)}}
+
+.vr-panel{position:fixed;bottom:78px;left:22px;z-index:61;width:380px;max-width:calc(100vw - 44px);
+  height:560px;max-height:calc(100vh - 110px);background:#fff;border:1px solid var(--line);
+  border-radius:16px;box-shadow:0 16px 60px rgba(9,20,45,.25);display:flex;flex-direction:column;
+  overflow:hidden;font-size:.88rem}
+.vr-panel[hidden]{display:none}
+
+/* Header */
+.vr-head{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:13px 15px;background:linear-gradient(135deg,#0d6a6a,#128f8f);color:#fff;flex:none}
+.vr-head-txt{min-width:0;display:flex;align-items:center;gap:10px}
+.vr-head-txt .ic{width:1.4rem;height:1.4rem}
+.vr-head-txt b{display:block;font-size:.95rem;line-height:1.2}
+.vr-head-sub{font-size:.7rem;opacity:.84;display:block}
+.vr-x{width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.15);color:#fff;cursor:pointer;font-size:.82rem;
+  display:grid;place-items:center;transition:.15s;font-family:inherit;flex:none}
+.vr-x:hover{background:rgba(255,255,255,.3)}
+
+/* Body */
+.vr-body{flex:1;overflow-y:auto;padding:14px 15px;background:#f8fffc;display:flex;flex-direction:column;gap:14px}
+
+.vr-sec{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 13px}
+.vr-sec-head{font-size:.9rem;margin:0 0 10px;display:flex;align-items:center;justify-content:space-between}
+.vr-sec-head b{color:var(--ink)}
+.vr-pack-name{font-size:.72rem;color:var(--muted);font-weight:400}
+.vr-row{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.vr-row:last-child{margin-bottom:0}
+.vr-row label,.vr-lab{font-size:.78rem;color:var(--muted);width:70px;flex:none}
+.vr-row select{flex:1;padding:7px 9px;border:1px solid var(--line);border-radius:8px;
+  background:#fff;color:var(--ink);font-family:inherit;font-size:.85rem}
+.vr-row input[type=range]{flex:1;accent-color:#0d6a6a}
+.vr-row b{font-size:.72rem;color:var(--muted);min-width:38px;text-align:right}
+
+/* Person segmented control */
+.vr-seg{display:flex;flex:1;gap:4px;background:#eef6f2;border:1px solid var(--line);border-radius:9px;padding:3px}
+.vr-seg button{flex:1;border:none;background:transparent;color:var(--muted);font-size:.8rem;cursor:pointer;
+  padding:6px 4px;border-radius:7px;font-family:inherit;font-weight:600}
+.vr-seg button.on{background:#0d6a6a;color:#fff}
+.vr-seg button:not(.on):hover{background:#fff}
+
+.vr-test{width:100%;padding:8px;border:1px solid var(--line);border-radius:9px;background:transparent;
+  color:#0d6a6a;font-weight:600;cursor:pointer;font-family:inherit;font-size:.82rem}
+.vr-test:hover{background:#eef6f2}
+
+/* Type a word or sentence */
+.vr-txt{display:flex;flex-direction:column;gap:8px}
+.vr-txt label{font-size:.78rem;color:var(--muted)}
+.vr-txt textarea{resize:vertical;border:1px solid var(--line);border-radius:10px;padding:9px 11px;
+  font-family:inherit;font-size:.9rem;color:var(--ink);min-height:52px}
+.vr-txt textarea:focus{outline:2px solid #a9dcc8;outline-offset:0;border-color:#0d6a6a}
+.vr-txt-actions{display:flex;gap:8px}
+.vr-txt-actions .b1,.vr-txt-actions .b2{margin:0;font-size:.85rem;padding:8px 14px;border:none;
+  border-radius:9px;cursor:pointer;font-family:inherit;font-weight:700;display:flex;align-items:center;
+  justify-content:center;transition:.15s}
+.vr-txt-actions .b1:hover{background:var(--bleu-l)}
+.vr-txt-actions .b2:hover{filter:brightness(1.07)}
+
+/* Reading tabs & lists */
+.vr-tabs{display:flex;gap:6px;margin:0 0 10px}
+.vr-tabs button{flex:1;border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px;
+  border-radius:8px;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:600}
+.vr-tabs button.on{background:#0d6a6a;border-color:#0d6a6a;color:#fff}
+.vr-list{display:flex;flex-direction:column;gap:6px;max-height:210px;overflow-y:auto}
+.vr-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--line);
+  border-radius:50px;background:#fff;color:var(--ink);font-size:.85rem;cursor:pointer;transition:.15s}
+.vr-chip:hover{border-color:#0d6a6a;background:#eef6f2}
+.vr-chip .ic{width:1em;height:1em;color:#0d6a6a}
+.vr-chips{display:flex;flex-wrap:wrap;gap:7px}
+.vr-sent{display:flex;align-items:flex-start;gap:9px;padding:8px 10px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;cursor:pointer;transition:.15s;text-align:left;width:100%}
+.vr-sent:hover{border-color:#0d6a6a;background:#eef6f2}
+.vr-sent .ic{width:1.05rem;height:1.05rem;color:#0d6a6a;margin-top:1px;flex:none}
+.vr-sent .t{flex:1;font-size:.84rem;line-height:1.4;color:var(--ink)}
+.vr-empty{color:var(--muted);font-size:.8rem;padding:8px;text-align:center}
+.vr-note{font-size:.72rem;color:var(--muted);line-height:1.5;margin:0}
+
+@media(max-width:640px){
+  .vr-fab{bottom:14px;left:14px;padding:10px 16px;font-size:.84rem}
+  .vr-fab-lab{display:none}
+  .vr-fab{border-radius:50%;width:52px;height:52px;padding:0;justify-content:center}
+  .vr-panel{bottom:72px;left:10px;right:10px;width:auto;height:calc(100vh - 90px);max-height:none}
+}
+
+/* Never print the voice reader's floating button or panel */
+@media print{
+  .vr-fab,.vr-panel{display:none!important}
+}
