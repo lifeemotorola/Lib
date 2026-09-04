@@ -1,5 +1,6 @@
 /* ============================================================
-   Emmanuel — the platform's AI tutor (served through the Groq API)
+   Emmanuel — the platform's AI tutor (Groq model via a server-side
+   proxy — the API key never reaches the browser; see worker/)
    Provides: chat tutor, question generator, explanations
    "Emmanuel" is the user-facing name of the model; the identifier sent to the
    API is kept in MODEL below.
@@ -8,10 +9,13 @@
   "use strict";
   var $ = function (s) { return document.querySelector(s); };
 
-  /* ---- Groq API config ---- */
-  var GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-  // Llama 3 70B model replaced per Groq deprecation:
-  // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
+  /* ---- AI API config ----
+     Requests go to a tiny server-side proxy (a Cloudflare Worker — see
+     worker/groq-proxy.js). The Groq API key lives only in the Worker's
+     secret store; it is NEVER shipped to the browser, so it cannot be
+     scraped from the page or from this file. The proxy also enforces an
+     Origin allowlist and a per-visitor rate limit.
+  */
   var MODEL = "openai/gpt-oss-120b";     /* API identifier */
   var MODEL_NAME = "Emmanuel";           /* name shown to users */
 
@@ -37,34 +41,35 @@
       };
     });
   }
-  var STORE_KEY = "lncpg.groq.v1";
+  /* ---- Proxy URL resolution ------------------------------------------
+     No API key exists in the client. The app talks to a server-side
+     proxy that holds the key:
 
-  /* ---- API key resolution --------------------------------------------
-     Teachers and pupils never have to obtain or paste a key. The key is
-     provisioned once, centrally, and shipped with the build:
+       1. window.AI_PROXY_URL  — injected by build.sh from $AI_PROXY_URL
+       2. <meta name="ai-proxy-url" content="...">
+       3. Same-origin "/api/chat" — a Cloudflare Pages Function that
+          ships with this repo (functions/api/chat.js). Hosting the
+          site on Cloudflare Pages requires no configuration beyond
+          setting the GROQ_API_KEY secret in the Pages project.
+       4. PROXY_URL below      — set for standalone Worker deployments
 
-       1. window.GROQ_API_KEY  — injected by the GitHub Actions build from the
-          repository secret GROQ_API_KEY (see .github/workflows/deploy.yml)
-       2. <meta name="groq-api-key" content="..."> — same idea, for hosts that
-          prefer a meta tag
-       3. BUILT_IN_KEY          — the key baked into this source, used when the
-          workflow has not replaced it (local/offline copies, USB sticks)
-       4. localStorage          — a key saved by an earlier version of the app
-
-     There is no key entry UI any more; nothing is asked of the user.
+     Offline/USB copies (file://) have no proxy; the tutor then shows a
+     friendly "not connected" message and everything else still works.
      -------------------------------------------------------------------- */
-  var BUILT_IN_KEY = "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";
+  var PROXY_URL = "";  /* e.g. "https://liberia-packs-ai.<you>.workers.dev/" */
 
-  function resolveKey() {
-    if (window.GROQ_API_KEY) return String(window.GROQ_API_KEY).trim();
-    var meta = document.querySelector('meta[name="groq-api-key"]');
+  function resolveProxyUrl() {
+    if (window.AI_PROXY_URL) return String(window.AI_PROXY_URL).trim();
+    var meta = document.querySelector('meta[name="ai-proxy-url"]');
     if (meta && meta.content && meta.content.indexOf("__") !== 0) return meta.content.trim();
-    if (BUILT_IN_KEY) return BUILT_IN_KEY;
-    try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
-    return "";
+    if (/^https?:$/.test(location.protocol)) {
+      /* absolute same-origin path works on domains and Pages sub-paths */
+      return location.origin + "/api/chat";
+    }
+    return PROXY_URL;
   }
 
-  var apiKey = resolveKey();
+  var proxyUrl = resolveProxyUrl();
   var chatHistory = [];     /* {role, content}[] */
   var isOpen = false;
   var isStreaming = false;
@@ -89,9 +94,12 @@
       "If the user asks something unrelated to their studies, gently redirect them.";
   }
 
-  /* ---- Groq API call ---- */
+  /* ---- AI call (through the server-side proxy) ---- */
   function callGroq(messages, onChunk, onDone, onError) {
-    if (!apiKey) { onError(MODEL_NAME + " is not available in this copy of the platform."); return; }
+    if (!proxyUrl) {
+      onError(MODEL_NAME + " is not connected yet. The app owner must deploy the AI proxy (see worker/) and rebuild with AI_PROXY_URL set.");
+      return;
+    }
     var body = {
       model: MODEL,
       messages: messages,
@@ -102,11 +110,10 @@
     var ctrl = new AbortController();
     window._aiAbort = ctrl;
 
-    fetch(GROQ_URL, {
+    fetch(proxyUrl, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + apiKey
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(body),
       signal: ctrl.signal
@@ -115,6 +122,10 @@
         return resp.text().then(function (t) {
           var msg = "API error (" + resp.status + ")";
           try { var j = JSON.parse(t); if (j.error && j.error.message) msg = j.error.message; } catch (e) {}
+          if (resp.status === 404 || resp.status === 500 || resp.status === 501) {
+            msg = "The AI tutor is not connected on this site yet. The site owner needs to enable the proxy " +
+                  "(Cloudflare Pages: set the GROQ_API_KEY secret in the Pages project) and redeploy.";
+          }
           throw new Error(msg);
         });
       }

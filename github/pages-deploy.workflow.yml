@@ -1,0 +1,54 @@
+name: Build & deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build index.html with the AI proxy URL
+        # AI_PROXY_URL is the public URL of the deployed Cloudflare Worker
+        # (worker/groq-proxy.js). It is NOT a secret — set it under
+        # Settings → Secrets and variables → Actions → Variables.
+        # The Groq key itself lives only in the Worker (wrangler secret).
+        env:
+          AI_PROXY_URL: ${{ vars.AI_PROXY_URL }}
+        run: |
+          if [ -z "$AI_PROXY_URL" ]; then
+            echo "::warning::AI_PROXY_URL is not set — the AI tutor will show a 'not connected' message until it is"
+          else
+            echo "AI proxy: $AI_PROXY_URL"
+          fi
+          bash build.sh
+      - name: Stage the site
+        run: |
+          mkdir -p _site
+          cp index.html manifest.webmanifest sw.js book.html book.js _site/
+          cp -r assets _site/assets
+          cp index.html _site/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

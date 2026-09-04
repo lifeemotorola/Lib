@@ -28,12 +28,13 @@ cd "$(dirname "$0")"
   # were missing entirely on some school PCs and older Android builds), so the
   # interface draws real icons instead. Inlined to stay offline and single-file.
   cat icons.svg.html
-  # Central AI key. Provisioned once in GitHub (repository secret GROQ_API_KEY,
-  # exported by .github/workflows/deploy.yml) and baked into the deliverable, so
-  # no teacher or pupil ever has to obtain or paste an API key. When the variable
-  # is not set the key compiled into ai.js is used instead.
-  if [ -n "${GROQ_API_KEY:-}" ]; then
-    echo "<script>window.GROQ_API_KEY=\"${GROQ_API_KEY}\";</script>"
+  # AI endpoint. The Groq API key lives only on the proxy Worker (see worker/);
+  # the page just needs the Worker's URL. Provisioned once as the GitHub
+  # repository variable AI_PROXY_URL (or secret; the value is not sensitive).
+  # When not set, ai.js's built-in PROXY_URL constant is used (empty = the
+  # tutor shows a "not connected" message instead of making calls).
+  if [ -n "${AI_PROXY_URL:-}" ]; then
+    echo "<script>window.AI_PROXY_URL=\"${AI_PROXY_URL}\";</script>"
   fi
   # Emmanuel's portrait, inlined as a data URI so the deliverable stays offline
   if [ -f assets/emmanuel.png ]; then

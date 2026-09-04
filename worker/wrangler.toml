@@ -1,0 +1,11 @@
+name = "liberia-packs-ai"
+main = "groq-proxy.js"
+compatibility_date = "2025-01-01"
+
+# The Groq key is NOT stored here. Set it once as a Worker secret:
+#   wrangler secret put GROQ_API_KEY
+#
+# Optional: allow extra browser origins beyond the defaults (localhost,
+# *.github.io), e.g. a custom domain — comma separated:
+# [vars]
+# ALLOWED_ORIGINS = "https://liberia-packs.example.org"

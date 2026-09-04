@@ -132,32 +132,68 @@ same tool lives in `book.html`.
 > by Biology, Chemistry, Physics, Economics, English Grammar, Geography and
 > Literature; the other elementary and junior-high subjects stop at Grade 9.
 
-## Emmanuel, the AI tutor — the key is set once, in GitHub
+## Emmanuel, the AI tutor — a key that never touches the browser
 
-Teachers and pupils never see an API-key prompt: there is **no key setup
-screen** in the app any more. The Groq key is provisioned centrally, one time,
-by the repository owner:
+The tutor is powered by Groq, but the Groq API key is **never** shipped in the
+page, in `ai.js`, or in any secret that reaches the browser. A tiny
+server-side proxy holds the key; the browser calls the proxy. This matters: a
+key baked into a static page or a public repo is scraped and revoked
+automatically by Groq within hours, and can be abused for your quota.
 
-1. **GitHub → Settings → Secrets and variables → Actions → New repository
-   secret** — name `GROQ_API_KEY`, value the `gsk_...` key from
-   [console.groq.com](https://console.groq.com).
-2. **GitHub → Settings → Pages → Build and deployment → Source:
-   *GitHub Actions*.**
+### Recommended: host the site on Cloudflare Pages (easiest)
 
-3. Copy the ready-made workflow into place (one command, once):
-   `mkdir -p .github/workflows && cp github/pages-deploy.workflow.yml .github/workflows/deploy.yml`
-   then commit it. (It ships as `github/pages-deploy.workflow.yml` because
-   automated agents are not allowed to write into `.github/workflows/`.)
+Cloudflare Pages runs a serverless proxy *inside* the same site — no separate
+Worker to deploy and no URL to configure. The proxy ships in this repo at
+`functions/api/chat.js`; the app calls `/api/chat` on its own domain
+automatically.
 
-Every push to `main` then runs `.github/workflows/deploy.yml`, which builds
-`index.html` with the secret injected as `window.GROQ_API_KEY` and publishes it
-to GitHub Pages. `ai.js` resolves the key in this order:
+1. Create a fresh key at [console.groq.com/keys](https://console.groq.com/keys)
+   (and delete/revoke any old key — a key that ever appeared in a public page
+   is burned).
+2. Publish this repo to **Cloudflare Pages** (Workers & Pages → Create →
+   connect the GitHub repo). Build command can be empty; output directory the
+   repo root (or whatever serves `index.html`).
+3. In the Pages project: **Settings → Variables and Secrets → Add variable**:
+   - Name: `GROQ_API_KEY`
+   - Value: the `gsk_...` key
+   - Type: **Secret** (encrypted)
+4. **Deployments → Redeploy** (or push to GitHub). Done — the tutor works.
 
-`window.GROQ_API_KEY` → `<meta name="groq-api-key">` → the key compiled into
-`ai.js` (used by offline/USB copies) → any key an older version saved in
-`localStorage`.
+### Alternative: GitHub Pages (or any static host)
 
-To build locally with a key of your own: `GROQ_API_KEY=gsk_... bash build.sh`.
+Static hosts can't run the proxy themselves, so deploy it as a standalone
+free Cloudflare Worker instead — full steps in [`worker/README.md`](worker/README.md).
+Short version:
+
+```bash
+cd worker && npx wrangler deploy && npx wrangler secret put GROQ_API_KEY
+```
+
+Then set the GitHub repository **variable** (Settings → Secrets and variables
+→ Actions → **Variables**) `AI_PROXY_URL` to the printed Worker URL
+(`https://liberia-packs-ai.<you>.workers.dev/`), and install the deploy
+workflow once:
+
+```bash
+mkdir -p .github/workflows && cp github/pages-deploy.workflow.yml .github/workflows/deploy.yml
+```
+
+`ai.js` finds the proxy in this order: `window.AI_PROXY_URL` (injected by
+`build.sh` from the `AI_PROXY_URL` variable) → `<meta name="ai-proxy-url">` →
+same-origin `/api/chat` (the Pages Function above) → the `PROXY_URL` constant
+in `ai.js`. If none is reachable the tutor shows a friendly "not connected"
+message and the rest of the app works normally.
+
+Both proxies only accept chat-completion requests for the tutor's model, only
+from your site's origin, and rate-limit visitors.
+
+> **Rotate any Groq key that was ever committed or built into an `index.html`**
+> — revoke it at [console.groq.com](https://console.groq.com) and give the new
+> key to the proxy only (Pages secret or `wrangler secret`).
+
+> **Offline note:** the curriculum content, books and printing work fully
+> offline; the AI tutor needs an internet connection (it calls an online
+> model), as it always did — only the key handling changed.
 
 ## Project layout
 
@@ -173,7 +209,10 @@ To build locally with a key of your own: `GROQ_API_KEY=gsk_... bash build.sh`.
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
 | `assets/icons/` | Liberia flag-map favicon, touch icon and installable-app icons. |
-| `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `GROQ_API_KEY` repository secret and deploys to Pages. Copy it to `.github/workflows/deploy.yml`. |
+| `functions/api/chat.js` | Cloudflare **Pages Function**: same-origin AI proxy at `/api/chat` used automatically when the site is hosted on Cloudflare Pages (set the `GROQ_API_KEY` Pages secret). |
+| `worker/` | Standalone Cloudflare **Worker** proxy for static hosts that can't run server code (GitHub Pages etc.): holds the Groq key, enforces the Origin allowlist, model allow-list and rate limiting. Deploy instructions in `worker/README.md`. |
+| `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
+| `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art. |
 | `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
 | `requirements.txt` | Python test dependencies. |
