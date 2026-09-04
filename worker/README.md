@@ -57,11 +57,16 @@ then `npx wrangler deploy` again.
 
 ## CI deploys (optional)
 
-`.github/workflows/deploy-worker.yml` deploys the Worker automatically when
-files in `worker/` change. Enable it by adding repository secrets
-`CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit) and `CLOUDFLARE_ACCOUNT_ID`.
-The `GROQ_API_KEY` Worker secret is still set once by hand with
-`wrangler secret put` (step 3).
+A ready-made workflow ships at `github/deploy-worker.workflow.yml`. It deploys
+the Worker automatically when files in `worker/` change. Enable it:
+
+```bash
+cp github/deploy-worker.workflow.yml .github/workflows/deploy-worker.yml
+```
+
+then add repository secrets `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit) and
+`CLOUDFLARE_ACCOUNT_ID`. The `GROQ_API_KEY` Worker secret is still set once by
+hand with `wrangler secret put` (step 3).
 
 ## Security notes
 
