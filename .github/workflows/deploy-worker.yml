@@ -1,0 +1,36 @@
+name: Deploy AI proxy Worker
+
+# Optional: deploys the Groq proxy Cloudflare Worker automatically when
+# worker/ changes. To enable:
+#   1. Create a Cloudflare API token (Workers Scripts:Edit for the account)
+#      and set it as repository secret CLOUDFLARE_API_TOKEN.
+#   2. Set repository secret CLOUDFLARE_ACCOUNT_ID (Dashboard → Workers).
+#   3. Store the Groq key in the Worker once (it cannot be set from CI
+#      secrets in this file): after the first deploy, run locally
+#      `cd worker && npx wrangler secret put GROQ_API_KEY` and paste the
+#      gsk_... key from console.groq.com.
+# The Worker can also be deployed entirely by hand (see worker/README.md);
+# this workflow is just a convenience.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "worker/**"
+      - ".github/workflows/deploy-worker.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Deploy worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker

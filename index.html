@@ -78681,7 +78681,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 </script>
 <script>
 /* ============================================================
-   Emmanuel — the platform's AI tutor (served through the Groq API)
+   Emmanuel — the platform's AI tutor (Groq model via a server-side
+   proxy — the API key never reaches the browser; see worker/)
    Provides: chat tutor, question generator, explanations
    "Emmanuel" is the user-facing name of the model; the identifier sent to the
    API is kept in MODEL below.
@@ -78690,10 +78691,13 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   "use strict";
   var $ = function (s) { return document.querySelector(s); };
 
-  /* ---- Groq API config ---- */
-  var GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-  // Llama 3 70B model replaced per Groq deprecation:
-  // llama3-70b-8192 decommissioned → openai/gpt-oss-120b (or qwen/qwen3.6-27b)
+  /* ---- AI API config ----
+     Requests go to a tiny server-side proxy (a Cloudflare Worker — see
+     worker/groq-proxy.js). The Groq API key lives only in the Worker's
+     secret store; it is NEVER shipped to the browser, so it cannot be
+     scraped from the page or from this file. The proxy also enforces an
+     Origin allowlist and a per-visitor rate limit.
+  */
   var MODEL = "openai/gpt-oss-120b";     /* API identifier */
   var MODEL_NAME = "Emmanuel";           /* name shown to users */
 
@@ -78719,34 +78723,23 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       };
     });
   }
-  var STORE_KEY = "lncpg.groq.v1";
+  /* ---- Proxy URL resolution ------------------------------------------
+     No API key exists in the client. The app talks to the deployed proxy:
 
-  /* ---- API key resolution --------------------------------------------
-     Teachers and pupils never have to obtain or paste a key. The key is
-     provisioned once, centrally, and shipped with the build:
-
-       1. window.GROQ_API_KEY  — injected by the GitHub Actions build from the
-          repository secret GROQ_API_KEY (see .github/workflows/deploy.yml)
-       2. <meta name="groq-api-key" content="..."> — same idea, for hosts that
-          prefer a meta tag
-       3. BUILT_IN_KEY          — the key baked into this source, used when the
-          workflow has not replaced it (local/offline copies, USB sticks)
-       4. localStorage          — a key saved by an earlier version of the app
-
-     There is no key entry UI any more; nothing is asked of the user.
+       1. window.AI_PROXY_URL  — injected by build.sh from $AI_PROXY_URL
+       2. <meta name="ai-proxy-url" content="...">
+       3. PROXY_URL below      — set to your Worker URL for local/USB copies
      -------------------------------------------------------------------- */
-  var BUILT_IN_KEY = "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";
+  var PROXY_URL = "";  /* e.g. "https://liberia-packs-ai.<you>.workers.dev/" */
 
-  function resolveKey() {
-    if (window.GROQ_API_KEY) return String(window.GROQ_API_KEY).trim();
-    var meta = document.querySelector('meta[name="groq-api-key"]');
+  function resolveProxyUrl() {
+    if (window.AI_PROXY_URL) return String(window.AI_PROXY_URL).trim();
+    var meta = document.querySelector('meta[name="ai-proxy-url"]');
     if (meta && meta.content && meta.content.indexOf("__") !== 0) return meta.content.trim();
-    if (BUILT_IN_KEY) return BUILT_IN_KEY;
-    try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) {}
-    return "";
+    return PROXY_URL;
   }
 
-  var apiKey = resolveKey();
+  var proxyUrl = resolveProxyUrl();
   var chatHistory = [];     /* {role, content}[] */
   var isOpen = false;
   var isStreaming = false;
@@ -78771,9 +78764,12 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       "If the user asks something unrelated to their studies, gently redirect them.";
   }
 
-  /* ---- Groq API call ---- */
+  /* ---- AI call (through the server-side proxy) ---- */
   function callGroq(messages, onChunk, onDone, onError) {
-    if (!apiKey) { onError(MODEL_NAME + " is not available in this copy of the platform."); return; }
+    if (!proxyUrl) {
+      onError(MODEL_NAME + " is not connected yet. The app owner must deploy the AI proxy (see worker/) and rebuild with AI_PROXY_URL set.");
+      return;
+    }
     var body = {
       model: MODEL,
       messages: messages,
@@ -78784,11 +78780,10 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     var ctrl = new AbortController();
     window._aiAbort = ctrl;
 
-    fetch(GROQ_URL, {
+    fetch(proxyUrl, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + apiKey
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(body),
       signal: ctrl.signal
