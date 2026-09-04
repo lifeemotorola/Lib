@@ -70,7 +70,7 @@ cd "$(dirname "$0")"
   echo '};</script>'
   # data-pho.js builds PHO_CURRICULUM from EN_CURRICULUM and EG_CURRICULUM,
   # so it must load after both data-en.js and data-eg.js.
-  for f in humancheck.js data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-pho.js data-gg.js data-li.js data-wa.js data-wa-ma.js data-wa-en.js data-wa-bio.js data-wa-bio2.js data-wa-ch.js data-wa-ph.js data-wa-ec.js data-wa-gg.js data-wa-his.js data-wa-ag.js data-wa-li.js data-wa-crs.js gen-en.js gen-pho.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js gen-wa.js book.js ai.js app.js; do
+  for f in humancheck.js data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-pho.js data-gg.js data-li.js data-wa.js data-wa-ma.js data-wa-en.js data-wa-bio.js data-wa-bio2.js data-wa-ch.js data-wa-ph.js data-wa-ec.js data-wa-gg.js data-wa-his.js data-wa-ag.js data-wa-li.js data-wa-crs.js gen-en.js gen-pho.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js gen-wa.js book.js ai.js voice.js app.js; do
     echo '<script>'
     cat "$f"
     echo '</script>'

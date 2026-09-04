@@ -29,6 +29,15 @@ so the whole thing stays self-contained.
   (Mathematics, French and Phonics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
   transcribed verbatim from the official curriculum guide
+- **Voice reader (offline)** — a floating "voice reader" that pronounces the
+  difficult words of the current subject or reads any sentence aloud, using the
+  browser's built-in speech engine (no internet, no key, works from a USB
+  stick). It is customisable: choose a **Man**, **Woman** or **Auto** voice and
+  an **accent** — including African English (Nigeria, Ghana, Kenya, South
+  Africa, Liberia, Tanzania), US, UK and Australian English, and French for the
+  French subject — plus reading **speed** and **pitch**. It lives entirely
+  outside the printable session: the button and panel are hidden in print and
+  never appear on a generated sheet
 - **Customizable cover**: template choice, 15 built-in subject-matched PNG
   backgrounds (equations for Mathematics, laboratory imagery for Science,
   books for Literature, and so on), school name (persisted), uploaded logo or
@@ -90,6 +99,7 @@ not allow service workers from a `file://` URL.
 | **Exercise types** | Which worksheets each unit gets. |
 | **Pack contents** | Study notes, period tests, semester exams, answer keys (teacher only). |
 | **Customization** | Cover template, school name, logo/background uploads, pupil/teacher/term/year, emoji crest. |
+| **Voice reader** | The floating 🔊 button (bottom-left) pronounces the current pack's difficult words or any sentence you type — pick a **Man/Woman** voice and an **accent** (African/US/UK/Australian/French), then **Speed** & **Pitch**. It uses the device's own speech engine, so it works offline. It never appears on printed sheets. |
 | **Format & text size** | Body size (8–20 pt), questions per exercise, and the **variant seed**. |
 
 The **seed** makes packs reproducible: the same seed always produces exactly
@@ -246,6 +256,7 @@ packs must never be locked out by it.
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `ai.js` | The Emmanuel AI tutor: chat panel, streaming answers, and the quiet failure handling described below. |
+| `voice.js` | The offline voice reader: a floating button + panel (built with the browser's `speechSynthesis`) that pronounces the pack's difficult words or any typed sentence, with person (Man/Woman/Auto), African/other accents, speed and pitch controls. `app.js` feeds it the generated pack via `window.VOICE_READER.loadFromPack(pack, subjectId, label, grade)`. Hidden in print. |
 | `humancheck.js` | "Are you human?" — the Cloudflare Turnstile card that covers the platform until the visitor passes it. Switched off unless a `TURNSTILE_SITE_KEY` is baked in by `build.sh`. |
 | `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
 | `assets/icons/` | Liberia flag-map favicon, touch icon and installable-app icons. |

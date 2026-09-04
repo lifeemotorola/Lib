@@ -1438,6 +1438,8 @@
     /* expose context for Emmanuel, the AI tutor */
     window.PACK_CUR_SUBJECT = sj.label;
     window.PACK_CUR_GRADE = o.grade;
+    /* feed the voice reader this pack's difficult words and sentences */
+    if (window.VOICE_READER) window.VOICE_READER.loadFromPack(pack, cur, sj.label, o.grade);
     $("#meta").textContent = S().label + " · Grade " + o.grade + " · " + pack.topics.length +
       " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
     $("#exportbar").style.display = "flex";
