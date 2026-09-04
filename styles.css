@@ -660,6 +660,33 @@ input:focus-visible,label:focus-visible{
 }
 
 /* ============================================================
+   HUMAN CHECK — "Are you human?" (Cloudflare Turnstile)
+   The veil covers the platform until the visitor passes. In quiet mode
+   it sits out of the way at 1px (still rendered, so the widget can mint
+   a fresh token in the background) instead of display:none.
+   ============================================================ */
+.hc-veil{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(9,20,45,.55);backdrop-filter:blur(3px)}
+/* Quiet mode keeps the card at its real size (the widget needs room to run)
+   and simply takes it out of sight and out of the way. */
+.hc-veil.hc-quiet{background:none;backdrop-filter:none;opacity:0;pointer-events:none}
+body.hc-locked{overflow:hidden}
+.hc-card{width:100%;max-width:380px;background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:26px 24px 20px;text-align:center;box-shadow:0 24px 70px rgba(9,20,45,.35)}
+.hc-badge{width:54px;height:54px;margin:0 auto 12px;border-radius:16px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff}
+.hc-badge .ic{width:1.7rem;height:1.7rem;vertical-align:0}
+.hc-card h2{margin:0 0 6px;font-size:1.25rem;color:var(--ink)}
+.hc-note{margin:0 0 16px;font-size:.86rem;color:var(--muted);line-height:1.5}
+/* the Turnstile widget is drawn here */
+.hc-slot{min-height:66px;display:flex;align-items:center;justify-content:center}
+.hc-skip{margin-top:14px;padding:6px;border:none;background:none;color:var(--bleu);font-size:.82rem;
+  font-weight:600;cursor:pointer;text-decoration:underline;font-family:inherit}
+.hc-skip[hidden]{display:none}
+.hc-foot{margin:14px 0 0;font-size:.72rem;color:var(--muted)}
+@media print{.hc-veil{display:none!important}}
+
+/* ============================================================
    AI TUTOR PANEL — floating chat with Groq (Llama 3 70B)
    ============================================================ */
 
@@ -735,7 +762,6 @@ img.ai-msg-img{width:26px;height:26px}
 .ai-li{margin:3px 0;padding-left:4px}
 .ai-n,.ai-b{color:var(--bleu);font-weight:700;margin-right:4px}
 .ai-msg-user .ai-n,.ai-msg-user .ai-b{color:rgba(255,255,255,.85)}
-.ai-err{color:var(--rouge);font-weight:600}
 
 /* Input area */
 .ai-input-wrap{display:flex;align-items:flex-end;gap:8px;padding:10px 12px;
