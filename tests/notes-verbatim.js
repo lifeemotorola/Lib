@@ -31,6 +31,14 @@ sandbox.window.UNIT_NOTES = undefined;
 vm.createContext(sandbox);
 vm.runInContext(slice, sandbox);
 
+/* Common data sources. data-en.js and data-eg.js are loaded once below and
+   shared by the English and Phonics checks, because const declarations cannot
+   be re-declared in the same VM context. */
+const PRELOAD = ["data-en.js", "data-eg.js"];
+for (const f of PRELOAD) {
+  vm.runInContext(fs.readFileSync(path.join(root, f), "utf8"), sandbox, { filename: f });
+}
+
 /* Subjects to check. Each entry: the real data files (loaded in order — the
    7-9 file merges its Junior High units into the main curriculum), the
    curriculum global to read, and optional spot facts that must survive
@@ -65,7 +73,7 @@ const SUBJECTS = [
             { grade: 6, period: "VI",
               facts: ["H₂O", "filtrate"] }] },
   { name: "English", global: "EN_CURRICULUM",
-    files: ["data-en.js"],       /* one file holds Grades 1-9 for this subject */
+    files: [],                    /* data-en.js preloaded above (shared with Phonics) */
     grades: 9,                    /* every unit from Grade 1 to Grade 9 must carry study[] */
     spots: [{ grade: 1, period: "I",
               facts: ["26 letters", "a, e, i, o, u (and sometimes y)"] },
@@ -79,6 +87,21 @@ const SUBJECTS = [
               facts: ["The rain stopped", "Yours faithfully"] },
             { grade: 9, period: "II",
               facts: ["born in Harper in 1954", "first person throughout"] }] },
+  { name: "Phonics", global: "PHO_CURRICULUM",   /* the phonics/word-study strand,
+         Grades 1-9 from the English guides and Grades 10-12 from the English
+         Grammar guide; see data-pho.js for the source-period mapping */
+    files: ["data-pho.js"],       /* data-en.js and data-eg.js preloaded above */
+    grades: 12,                   /* every unit from Grade 1 to Grade 12 must carry study[] */
+    spots: [{ grade: 1, period: "I",
+              facts: ["26 letters", "-at", "cat"] },
+            { grade: 4, period: "VI",
+              facts: ["oy", "ew", "diphthong"] },
+            { grade: 7, period: "III",
+              facts: ["-ive", "-ous", "-able"] },
+            { grade: 10, period: "I",
+              facts: ["-ness", "-ment", "-tion", "-ship"] },
+            { grade: 12, period: "VI",
+              facts: ["plurals", "commands", "connectives"] }] },
   { name: "Mathematics", global: "MA_CURRICULUM",
     files: ["data-ma.js", "data-ma79.js", "data-ma-sh.js"],
     grades: { from: 1, to: 12 },  /* every unit from Grade 1 to Grade 12 must carry study[] */
