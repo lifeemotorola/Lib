@@ -94,17 +94,16 @@
       "If the user asks something unrelated to their studies, gently redirect them.";
   }
 
-  /* ---- human check ---------------------------------------------------
-     The platform's "Are you human?" card (humancheck.js) issues a token
-     that the proxy verifies before it spends any of the AI quota. The
-     token resolves to "" when no check is configured — offline and USB
-     copies have none — and the request still goes out; whether it is
-     accepted is then up to the proxy.
+  /* ---- human check (non-blocking) -----------------------------------
+     If the platform's "Are you human?" widget (humancheck.js) already has
+     a fresh token, it is attached to the request. Emmanuel never blocks
+     or waits on the human check — questions go out immediately and the
+     tutor works whether or not the check is completed.
      ------------------------------------------------------------------- */
-  function withHumanCheck(next) {
+  function currentCheckToken() {
     var hc = window.HUMAN_CHECK;
-    if (!hc || typeof hc.requestToken !== "function") { next(""); return; }
-    hc.requestToken().then(function (t) { next(t || ""); }, function () { next(""); });
+    if (!hc || typeof hc.token !== "function") return "";
+    return hc.token() || "";
   }
 
   /* ---- AI call (through the server-side proxy) -----------------------
@@ -193,7 +192,6 @@
   var FIRST_TOKEN_WAIT = 30000;   /* nothing at all came back by now */
   var IDLE_WAIT = 45000;          /* the stream dried up mid-answer */
   var TOTAL_WAIT = 240000;        /* hard ceiling on one answer */
-  var CHECK_WAIT = 6000;          /* how long the human check may hold us */
 
   /* What the visitor is told when a question cannot be answered. None of
      it mentions hosting, keys or status codes — that is the site owner's
@@ -201,13 +199,11 @@
   var NOTE_FAIL = "I couldn't reply just now. Please check your connection and try again.";
   var NOTE_EMPTY = "I didn't catch that. Please ask me again.";
   var NOTE_SLOW = "That was taking too long, so I stopped waiting. Please try again.";
-  var NOTE_CHECK = "Please complete the \"Are you human?\" check, then try again.";
   var NOTE_OFFLINE = "The AI tutor is not connected in this copy of the platform. The packs, printing and voice reader all still work offline.";
 
   function noteFor(info) {
     var code = (info && info.code) || "";
     if (code === "no_proxy") return NOTE_OFFLINE;
-    if (code === "turnstile_required") return NOTE_CHECK;
     return NOTE_FAIL;
   }
 
@@ -388,8 +384,7 @@
     submit(text, false);
   }
 
-  /* Sends one message. `retry` re-sends after the visitor has passed the
-     human check again, so their question is not shown or logged twice. */
+  /* Sends one message. */
   function submit(text, retry) {
     if (isStreaming) return;
 
@@ -406,17 +401,8 @@
     var turn = newTurn(bubble, text);
     active = turn;
 
-    var handedOff = false;
-    function go(token) {
-      if (handedOff || turn.dead) return;
-      handedOff = true;
-      startRequest(msgs, token || "", turn);
-    }
-    /* The human check gets a moment to answer. When the widget is slow or
-       blocked the question goes out anyway — waiting on a widget that is
-       never coming back is what used to leave the tutor silent for good. */
-    withHumanCheck(go);
-    turn.timers.push(setTimeout(function () { go(""); }, CHECK_WAIT));
+    var token = currentCheckToken();
+    startRequest(msgs, token, turn);
   }
 
   /* Sends the request and watches it. Three watchdogs, one timer: if
@@ -469,17 +455,6 @@
         if (window.console && console.warn) {
           console.warn("[Emmanuel] request failed:", (info && info.code) || "unknown");
         }
-        /* An expired human check is worth one more attempt: ask the visitor
-           to confirm themselves, then send the question again. */
-        if (info && info.code === "turnstile_required" && !turn.retried && canReverify()) {
-          turn.retried = true;
-          dropLastUserMessage(turn.userText);
-          window.HUMAN_CHECK.verify(
-            "Please confirm you're human to keep chatting with " + MODEL_NAME + "."
-          ).then(function () { submit(turn.userText, true); },
-                 function () { showFailure(turn, noteFor(info), true); });
-          return;
-        }
         showFailure(turn, noteFor(info), info && info.code !== "no_proxy");
       }
     );
@@ -517,13 +492,6 @@
   function dropLastUserMessage(text) {
     var last = chatHistory[chatHistory.length - 1];
     if (last && last.role === "user" && last.content === text) chatHistory.pop();
-  }
-
-  /* True when the platform's human check is switched on and can be asked
-     to show itself again. */
-  function canReverify() {
-    var hc = window.HUMAN_CHECK;
-    return !!(hc && hc.enabled && hc.enabled() && typeof hc.verify === "function");
   }
 
   function showStreaming(on) {

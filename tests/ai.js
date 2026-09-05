@@ -201,6 +201,21 @@ function ask(text) {
   assert.strictEqual(status().textContent, "", "The status line must clear after an answer");
   assert(fetchCalls >= 4, "Every question must reach the proxy");
 
+  /* ---------- 5. Emmanuel works immediately without waiting on human check ---------- */
+  let humanCheckTokenChecked = false;
+  sandbox.window.HUMAN_CHECK = {
+    enabled: () => true,
+    token: () => { humanCheckTokenChecked = true; return ""; }
+  };
+  fetchImpl = () => okStream(sseChunks(["Emmanuel ", "works ", "instantly."]));
+  ask("Can you help me?");
+  await wait(300);
+  assert.strictEqual(composerFree(), true, "Composer must be free after reply");
+  const helperRow = body().children[body().children.length - 1];
+  const helperBubble = helperRow.children.find((c) => /ai-bubble/.test(c.className));
+  assert.strictEqual(helperBubble._raw, "Emmanuel works instantly.");
+  assert.strictEqual(humanCheckTokenChecked, true, "Checked token synchronously without blocking");
+
   console.log("OK: AI tutor (Emmanuel) tests passed.");
 })().catch((err) => {
   console.error("FAIL: " + (err && err.message ? err.message : err));
