@@ -765,6 +765,12 @@ img.ai-msg-img{width:26px;height:26px}
 .ai-bubble code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;font-size:.84em}
 .ai-msg-user .ai-bubble code{background:rgba(255,255,255,.18)}
 .ai-bubble h3,.ai-bubble h4{margin:6px 0 4px;font-size:.92rem}
+/* a reply that never arrived: a short note plus a way to ask again */
+.ai-bubble.ai-err{background:#fff6f6;border-color:#f3c9cd;color:#7a1f26}
+.ai-retry{display:inline-block;margin-top:8px;margin-left:8px;padding:5px 12px;font:inherit;
+  font-size:.78rem;font-weight:700;color:var(--bleu);background:#fff;border:1px solid var(--line);
+  border-radius:999px;cursor:pointer}
+.ai-retry:hover{background:var(--bleu);color:#fff;border-color:var(--bleu)}
 .ai-li{margin:3px 0;padding-left:4px}
 .ai-n,.ai-b{color:var(--bleu);font-weight:700;margin-right:4px}
 .ai-msg-user .ai-n,.ai-msg-user .ai-b{color:rgba(255,255,255,.85)}
@@ -924,6 +930,8 @@ img.ai-msg-img{width:26px;height:26px}
 
 .vr-empty{color:var(--muted);font-size:.8rem;padding:8px;text-align:center}
 .vr-note{font-size:.72rem;color:var(--muted);line-height:1.5;margin:0}
+.vr-note.vr-note-warn{color:#7a1f26;background:#fff6f6;border:1px solid #f3c9cd;
+  border-radius:8px;padding:6px 8px}
 
 @media(max-width:640px){
   .vr-fab{bottom:14px;left:14px;padding:10px 16px;font-size:.84rem}

@@ -7,9 +7,10 @@ Guards two things:
     passes it, then gets out of the way — and stays switched off entirely
     when no site key is configured, which is what offline and USB copies
     need;
-  * Emmanuel never repeats what the proxy told it. A failed request takes
-    its empty reply back and says nothing: no key names, no hosting
-    details, no status codes.
+  * Emmanuel never repeats what the proxy told it. A failed request may
+    say that it failed — silence is what made the tutor look dead — but
+    it stays short, offers a way to ask again, and never mentions key
+    names, hosting details, status codes or the proxy's own wording.
 
 The widget itself is stubbed, so the suite runs without reaching
 challenges.cloudflare.com.
@@ -124,30 +125,55 @@ with sync_playwright() as p:
         # ---- 3. the tutor keeps a wordy failure to itself -----------------
         # The gate is off here too so the chat test does not sit behind the
         # human-check card (the card itself is covered by tests 1 and 2).
+        # A failed request is now allowed to say so — a tutor that says
+        # nothing looks broken — but it must stay short, hand the composer
+        # back, and repeat none of the proxy's own wording.
+        calls = {"n": 0}
+
+        def failing(route):
+            calls["n"] += 1
+            route.fulfill(status=500, content_type="application/json",
+                          body='{"error":{"message":"The AI tutor is not '
+                               'configured yet: the GROQ_API_KEY secret is '
+                               'not set on this site."}}')
+
         pg = b.new_page()
         pg.route("**/*", keyless)
-        pg.route("**/api/chat", lambda route: route.fulfill(
-            status=500, content_type="application/json",
-            body='{"error":{"message":"The AI tutor is not configured yet: '
-                 'the GROQ_API_KEY secret is not set on this site."}}'))
+        pg.route("**/api/chat", failing)
         pg.goto(url); pg.wait_for_timeout(900)
         pg.click("#aiFab")
         pg.fill("#aiInput", "Explain photosynthesis")
         pg.click("#aiSend")
-        pg.wait_for_timeout(900)
+        pg.wait_for_timeout(1200)
+        if calls["n"] != 1:
+            bad.append(f"question not sent to the proxy: {calls['n']}")
         panel = pg.inner_text("#aiPanel")
         for word in SENSITIVE:
             if word.lower() in panel.lower():
                 bad.append(f"tutor leaked {word!r}")
-        if pg.query_selector(".ai-err"):
-            bad.append("error bubble shown in the chat")
-        if pg.query_selector_all("#aiBody .ai-msg-assistant"):
-            bad.append("empty reply left behind")
+        if not pg.query_selector(".ai-err"):
+            bad.append("a failed reply was left unsaid — the visitor is told nothing")
+        if not pg.query_selector(".ai-retry"):
+            bad.append("a failed reply offers no way to ask again")
+        err = pg.inner_text(".ai-err") if pg.query_selector(".ai-err") else ""
+        if len(err.strip()) > 200:
+            bad.append(f"failure note is not short: {err!r}")
         if "Explain photosynthesis" not in panel:
             bad.append("the visitor's own question was removed")
         if pg.inner_text("#aiStatus").strip():
             bad.append("status line still showing after a failure")
+        if pg.is_hidden("#aiSend") or pg.is_visible("#aiStop"):
+            bad.append("composer left unusable after a failure")
+
+        # the way forward has to work: asking again sends the question again
+        if pg.query_selector(".ai-retry"):
+            pg.click(".ai-retry"); pg.wait_for_timeout(900)
+            if calls["n"] != 2:
+                bad.append(f"'Try again' did not resend the question: {calls['n']}")
+            if pg.is_hidden("#aiSend") or pg.is_visible("#aiStop"):
+                bad.append("composer left unusable after retrying")
         pg.close()
+
     finally:
         httpd.shutdown()
     b.close()

@@ -99,7 +99,7 @@ not allow service workers from a `file://` URL.
 | **Exercise types** | Which worksheets each unit gets. |
 | **Pack contents** | Study notes, period tests, semester exams, answer keys (teacher only). |
 | **Customization** | Cover template, school name, logo/background uploads, pupil/teacher/term/year, emoji crest. |
-| **Voice reader** | The floating 🔊 button (bottom-left) pronounces the current pack's difficult words or any sentence you type — pick a **Man/Woman** voice and an **accent** (African/US/UK/Australian/French), then **Speed** & **Pitch**. It uses the device's own speech engine, so it works offline. It never appears on printed sheets. |
+| **Voice reader** | The floating 🔊 button (bottom-left) pronounces the current pack's difficult words or any sentence you type — pick a **Man/Woman** voice and an **accent** (African/US/UK/Australian/French), then **Speed** & **Pitch**. It uses the device's own speech engine, so it works offline. Long readings are spoken a sentence or two at a time and watched while they play, so a browser that stops talking cannot leave the reader stuck — and the panel says so if nothing comes out at all. It never appears on printed sheets. |
 | **Format & text size** | Body size (8–20 pt), questions per exercise, and the **variant seed**. |
 
 The **seed** makes packs reproducible: the same seed always produces exactly
@@ -265,7 +265,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), and `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Two dependency-free Node checks sit alongside them: `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -324,6 +324,10 @@ node tests/book.js
 # verbatim study-notes check (no dependencies): executes the real
 # UNIT_NOTES/blockHtml/rich sources against the data files
 node tests/notes-verbatim.js
+
+# voice reader and AI tutor (no dependencies)
+node tests/voice.js
+node tests/ai.js
 
 # UI regressions (needs Playwright + Chromium)
 python3 -m pip install -r requirements.txt

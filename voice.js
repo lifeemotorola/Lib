@@ -52,6 +52,17 @@
     if (typeof win.clearInterval === "function") win.clearInterval(id);
     else if (typeof clearInterval === "function") clearInterval(id);
   }
+  /* one-shot timers, used by the watchdogs below */
+  function after(fn, ms) {
+    if (typeof win.setTimeout === "function") return win.setTimeout(fn, ms);
+    if (typeof setTimeout === "function") return setTimeout(fn, ms);
+    return null;
+  }
+  function clearAfter(id) {
+    if (!id) return;
+    if (typeof win.clearTimeout === "function") win.clearTimeout(id);
+    else if (typeof clearTimeout === "function") clearTimeout(id);
+  }
 
   var $ = function (s, r) { return (r || documentRef).querySelector(s); };
 
@@ -163,6 +174,25 @@
     syn.onvoiceschanged = loadVoices;
   }
 
+  /* Chrome hands the voice list over asynchronously and sometimes only
+     after a nudge, so poll briefly instead of trusting a first, empty
+     getVoices(): a reader that believes there are no voices stays quiet. */
+  var voicePoll = null;
+  function primeVoices() {
+    loadVoices();
+    if (!syn || voicesCache.length) return;
+    var tries = 0;
+    if (voicePoll) clearTimer(voicePoll);
+    voicePoll = setTimer(function () {
+      tries++;
+      loadVoices();
+      if (voicesCache.length || tries >= 12) {
+        clearTimer(voicePoll);
+        voicePoll = null;
+      }
+    }, 250);
+  }
+
   function pickVoice() {
     if (!voicesCache.length && syn) voicesCache = syn.getVoices() || [];
     /* manual override */
@@ -196,16 +226,40 @@
   }
 
   /* ------------------------------------------------------------------
-     Speech Synthesis Engine & Keepalive (Fixes Chrome GC / 15s freeze)
+     Speech engine
+     ------------------------------------------------------------------
+     One chunk is handed to the browser at a time; the rest wait in our
+     own queue. Handing a whole reading over in one go is exactly what
+     makes Chrome fall silent after about fifteen seconds and never fire
+     `onend` again — and the usual pause()/resume() keepalive stops the
+     voice outright on Chrome for Android, so this never pauses. Every
+     chunk is watched instead: when the browser never reports back the
+     chunk is dropped and the reading carries on with the next one.
      ------------------------------------------------------------------ */
-  var activeUtterances = [];   /* Prevents garbage collection in Chrome / WebKit */
+  var CHUNK_MAX = 160;        /* characters per utterance */
+  var START_WAIT = 1800;      /* how long to wait for the first sound */
+  var KEEPALIVE_MS = 5000;    /* watchdog tick — resume only, never pause */
+
+  /* Bumped by stop() and speak(), so an event arriving from an utterance
+     that has already been cancelled can be recognised and ignored. */
+  var session = 0;
+  var queue = [];             /* chunks still to speak */
+  var curChunk = "";          /* the chunk the browser is saying now */
+  var curUtter = null;
+  var activeUtterances = [];  /* Chrome garbage-collects loose utterances */
   var isSpeakingState = false;
+  var stallTimer = null;
   var keepAliveTimer = null;
+  var startTimer = null;
+  var startAttempts = 0;
+  var started = false;
   var activePlayingElement = null;
 
-  /* Split text into speakable sentence/phrase chunks (≤180 characters) */
+  /* Split text into speakable sentence/phrase chunks. Short chunks are what
+     keep a long reading alive: browsers that cut speech off after a while
+     never do it inside a single short utterance. */
   function chunkText(text, maxLen) {
-    maxLen = maxLen || 180;
+    maxLen = maxLen || CHUNK_MAX;
     text = cleanText(text);
     if (!text) return [];
     if (text.length <= maxLen) return [text];
@@ -218,9 +272,16 @@
       var s = sentences[i].trim();
       if (!s) continue;
       if (s.length > maxLen) {
+        /* A sentence with no full stop anywhere: fall back to words, and to
+           hard cuts for a single word longer than a whole chunk. */
         var words = s.split(/\s+/);
         for (var j = 0; j < words.length; j++) {
           var w = words[j];
+          while (w.length > maxLen) {
+            if (current) { chunks.push(current); current = ""; }
+            chunks.push(w.slice(0, maxLen));
+            w = w.slice(maxLen);
+          }
           if ((current + " " + w).trim().length <= maxLen) {
             current = (current + " " + w).trim();
           } else {
@@ -239,116 +300,188 @@
     return chunks;
   }
 
+  function clearSpeechTimers() {
+    if (stallTimer) { clearAfter(stallTimer); stallTimer = null; }
+    if (keepAliveTimer) { clearTimer(keepAliveTimer); keepAliveTimer = null; }
+    if (startTimer) { clearAfter(startTimer); startTimer = null; }
+  }
+
   function speaking() {
-    return isSpeakingState || (syn && (syn.speaking || syn.pending));
+    return isSpeakingState || !!(syn && (syn.speaking || syn.pending));
+  }
+
+  /* Cancel whatever is in flight and invalidate anything still to come. */
+  function resetSpeech() {
+    session++;
+    clearSpeechTimers();
+    queue = [];
+    curChunk = "";
+    curUtter = null;
+    activeUtterances = [];
+    startAttempts = 0;
+    started = false;
+    if (syn) {
+      try { syn.cancel(); } catch (e) {}
+      try { if (syn.paused && syn.resume) syn.resume(); } catch (e) {}
+      /* Chrome finishes cancelling asynchronously. A second nudge a moment
+         later clears a queue that is stuck — but only when nothing new has
+         started speaking in the meantime. */
+      var mine = session;
+      after(function () {
+        if (session === mine && syn) { try { syn.cancel(); } catch (e) {} }
+      }, 80);
+    }
   }
 
   function stop() {
-    if (keepAliveTimer) {
-      clearTimer(keepAliveTimer);
-      keepAliveTimer = null;
-    }
-    activeUtterances = [];
+    resetSpeech();
     isSpeakingState = false;
-    if (syn) {
-      try {
-        syn.cancel();
-        if (syn.resume) syn.resume();
-      } catch (e) {}
-    }
     if (FAB) FAB.classList.remove("speaking");
     setSpeakingUI(false);
     clearActivePlaying();
   }
 
+  function finish(my, onComplete) {
+    if (my !== session) return;
+    clearSpeechTimers();
+    isSpeakingState = false;
+    if (FAB) FAB.classList.remove("speaking");
+    setSpeakingUI(false);
+    clearActivePlaying();
+    if (typeof onComplete === "function") onComplete();
+  }
+
+  /* How long a chunk may take before we decide the browser has stopped
+     talking to us: twice as long as it should need, plus a margin. */
+  function stallBudget(text) {
+    var rate = clamp(state.rate, 0.5, 1.6);
+    var ms = ((String(text == null ? "" : text).length / (14 * rate)) * 2 + 6) * 1000;
+    return Math.max(8000, Math.min(40000, ms));
+  }
+
+  function armStall(my, onComplete, text) {
+    if (stallTimer) clearAfter(stallTimer);
+    stallTimer = after(function () {
+      stallTimer = null;
+      if (my !== session) return;
+      /* No `onend` came back — drop this chunk and carry on with the next. */
+      try { syn.cancel(); } catch (e) {}
+      curUtter = null;
+      playNext(my, onComplete);
+    }, stallBudget(text));
+  }
+
+  /* Chrome sometimes swallows a speak() call and stays silent without
+     firing a single event. Give it one retry, then say so in the panel. */
+  function startCheck(my, onComplete) {
+    startTimer = null;
+    if (my !== session || started) return;
+    startAttempts++;
+    if (startAttempts > 1) {
+      finish(my, onComplete);
+      setNote(NOTE_SILENT);
+      return;
+    }
+    try { syn.cancel(); } catch (e) {}
+    curUtter = null;
+    if (curChunk) queue.unshift(curChunk);
+    startTimer = after(function () { startCheck(my, onComplete); }, START_WAIT);
+    playNext(my, onComplete);
+  }
+
+  function playNext(my, onComplete) {
+    if (my !== session) return;
+    if (!queue.length) { finish(my, onComplete); return; }
+
+    curChunk = queue.shift();
+    var u = new Utterance(curChunk);
+    /* Re-read the settings for every chunk, so changing voice or speed
+       while a long reading is playing takes effect straight away. */
+    var v = pickVoice();
+    if (v) u.voice = v;
+    u.lang = (v && v.lang) || (state.subjectLang === "fr" ? "fr-FR" : "en-US");
+    u.rate = clamp(state.rate, 0.5, 1.6);
+    u.pitch = clamp(state.pitch, 0.5, 1.5);
+
+    activeUtterances.push(u);        /* keep the reference: Chrome GCs loose ones */
+    if (activeUtterances.length > 8) activeUtterances.splice(0, activeUtterances.length - 8);
+    curUtter = u;
+
+    var settled = false;
+    function advance() {
+      if (settled || my !== session) return;
+      settled = true;
+      started = true;                 /* any event at all means it did speak */
+      if (stallTimer) { clearAfter(stallTimer); stallTimer = null; }
+      if (startTimer) { clearAfter(startTimer); startTimer = null; }
+      curUtter = null;
+      playNext(my, onComplete);
+    }
+
+    u.onstart = function () {
+      if (my !== session) return;
+      started = true;
+      if (startTimer) { clearAfter(startTimer); startTimer = null; }
+      if (FAB) FAB.classList.add("speaking");
+      setSpeakingUI(true);
+    };
+    u.onend = advance;
+    u.onerror = function (ev) {
+      if (my !== session) return;
+      var err = (ev && ev.error) || "";
+      if (err === "interrupted" || err === "canceled") return;   /* we stopped it */
+      advance();
+    };
+
+    try {
+      if (syn.paused && syn.resume) syn.resume();
+      syn.speak(u);
+    } catch (err) {
+      advance();
+      return;
+    }
+    armStall(my, onComplete, curChunk);
+  }
+
   function speak(text, onComplete, targetEl) {
     text = cleanText(text);
     if (!text) return;
-    if (!syn || !Utterance) return;
+    if (!syn || !Utterance) { setNote(NOTE_UNSUPPORTED); return; }
 
-    /* Stop any active speech first */
-    stop();
+    var wasBusy = speaking();
+    resetSpeech();                    /* stops the previous reading, if any */
+    if (targetEl) setActivePlaying(targetEl);
 
-    if (targetEl) {
-      setActivePlaying(targetEl);
-    }
-
-    var chunks = chunkText(text, 180);
+    var chunks = chunkText(text, CHUNK_MAX);
     if (!chunks.length) return;
 
-    var v = pickVoice();
-    var lang = v ? (v.lang || (state.subjectLang === "fr" ? "fr-FR" : "en-US"))
-                 : (state.subjectLang === "fr" ? "fr-FR" : "en-US");
-    var rate = clamp(state.rate, 0.5, 1.6);
-    var pitch = clamp(state.pitch, 0.5, 1.5);
-
+    var my = session;
+    queue = chunks;
+    started = false;
+    startAttempts = 0;
+    setNote("");
     isSpeakingState = true;
     if (FAB) FAB.classList.add("speaking");
     setSpeakingUI(true);
 
-    /* Keep-alive interval for Chrome Web Speech API 15-second cutoff */
-    if (keepAliveTimer) clearTimer(keepAliveTimer);
+    /* Chrome can drop a speak() issued in the same tick as a cancel(), so
+       when we had to interrupt something we give it a moment to settle. */
+    var delay = wasBusy ? 70 : 0;
+
     keepAliveTimer = setTimer(function () {
-      if (syn && syn.speaking && !syn.paused) {
-        try {
-          syn.pause();
-          syn.resume();
-        } catch (e) {}
-      }
-    }, 10000);
+      if (my !== session) return;
+      /* Resume only: pausing here is what kills the voice on Android. */
+      try { if (syn && syn.paused && syn.resume) syn.resume(); } catch (e) {}
+    }, KEEPALIVE_MS);
 
-    var remaining = chunks.length;
+    startTimer = after(function () { startCheck(my, onComplete); }, START_WAIT + delay);
 
-    chunks.forEach(function (chunk, index) {
-      var u = new Utterance(chunk);
-      if (v) u.voice = v;
-      u.lang = lang;
-      u.rate = rate;
-      u.pitch = pitch;
-
-      /* Retain reference in array so garbage collector cannot kill it */
-      activeUtterances.push(u);
-
-      if (index === 0) {
-        u.onstart = function () {
-          if (FAB) FAB.classList.add("speaking");
-          setSpeakingUI(true);
-        };
-      }
-
-      function onFinished() {
-        var idx = activeUtterances.indexOf(u);
-        if (idx >= 0) activeUtterances.splice(idx, 1);
-        remaining--;
-        if (remaining <= 0 || activeUtterances.length === 0) {
-          isSpeakingState = false;
-          if (keepAliveTimer) {
-            clearTimer(keepAliveTimer);
-            keepAliveTimer = null;
-          }
-          if (FAB) FAB.classList.remove("speaking");
-          setSpeakingUI(false);
-          clearActivePlaying();
-          if (typeof onComplete === "function") onComplete();
-        }
-      }
-
-      u.onend = onFinished;
-      u.onerror = function () {
-        onFinished();
-      };
-
-      try {
-        if (syn.paused && syn.resume) syn.resume();
-        syn.speak(u);
-      } catch (err) {
-        onFinished();
-      }
-    });
+    if (delay) after(function () { playNext(my, onComplete); }, delay);
+    else playNext(my, onComplete);
   }
 
   function handlePlayClick(btn, text) {
-    if (activePlayingElement === btn && isSpeakingState) {
+    if (activePlayingElement === btn && speaking()) {
       stop();
       return;
     }
@@ -388,6 +521,20 @@
      stays clean and the reader can be centred in its own module.
      ------------------------------------------------------------------ */
   function el(id) { return documentRef.getElementById(id); }
+
+  /* Messages shown in the panel's footnote. The reader is silent about
+     anything it cannot fix, so these say what to do next, not what broke. */
+  var NOTE_DEFAULT = "Reads with the voice your device provides, so you can hear a word or sentence spoken. Works offline with browser speech synthesis. Select any text on a worksheet to read it aloud.";
+  var NOTE_SILENT = "Nothing came out. Check that the device is not muted and that its volume is up, then press Speak again.";
+  var NOTE_UNSUPPORTED = "This browser has no speech engine, so the voice reader cannot speak here. The packs, printing and Word export all still work.";
+
+  /* The panel's footnote doubles as the reader's status line. */
+  function setNote(msg) {
+    var n = el("vrNote");
+    if (!n) return;
+    n.textContent = msg || NOTE_DEFAULT;
+    if (n.classList) n.classList.toggle("vr-note-warn", !!msg);
+  }
 
   var panelHTML =
     '<button class="vr-fab" id="vrFab" type="button" aria-label="Open voice reader" aria-expanded="false">' +
@@ -458,7 +605,7 @@
           '<p class="vr-note" id="vrPackNote"></p>' +
         '</div>' +
 
-        '<p class="vr-note" id="vrNote">Reads with the voice your device provides, so you can hear a word or sentence spoken. Works offline with browser speech synthesis. Select any text on a worksheet to read it aloud.</p>' +
+        '<p class="vr-note" id="vrNote">' + NOTE_DEFAULT + '</p>' +
       '</div>' +
     '</div>';
 
@@ -497,7 +644,7 @@
     }
 
     wire();
-    loadVoices();
+    primeVoices();
     renderList();
   }
 
@@ -837,7 +984,7 @@
       };
     }
     el("vrTest").onclick = function () {
-      if (activePlayingElement === el("vrTest") && isSpeakingState) {
+      if (activePlayingElement === el("vrTest") && speaking()) {
         stop();
         return;
       }
@@ -997,7 +1144,7 @@
     }
     if (open) {
       /* refresh the voice list in case voices arrived late */
-      loadVoices();
+      primeVoices();
       updateVoiceUsed();
       var sel = getSelectedText();
       var input = el("vrInput");
