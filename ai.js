@@ -113,7 +113,7 @@
      hosting, keys and deployment, which is the site owner's business and
      nobody else's. A failed turn simply disappears again.
      ------------------------------------------------------------------- */
-  function callGroq(messages, checkToken, onChunk, onDone, onFail) {
+  function callGroq(messages, checkToken, ctrl, onChunk, onDone, onFail) {
     if (!proxyUrl) { onFail({ code: "no_proxy" }); return; }
     var body = {
       model: MODEL,
@@ -128,9 +128,6 @@
       body.turnstile = checkToken;
       if (window.HUMAN_CHECK && window.HUMAN_CHECK.consume) window.HUMAN_CHECK.consume(checkToken);
     }
-    var ctrl = new AbortController();
-    window._aiAbort = ctrl;
-
     fetch(proxyUrl, {
       method: "POST",
       headers: {
@@ -182,6 +179,65 @@
       if (e.name === "AbortError") { onDone(); return; }
       onFail({ code: "" });
     });
+  }
+
+  /* ---- one question at a time ----------------------------------------
+     Every path out of a question — a finished answer, a failure, the
+     visitor pressing stop, or a watchdog giving up — goes through
+     endTurn(). That is what keeps the composer usable: a turn that is
+     already over can never answer twice, and nothing can leave the panel
+     stuck on "Thinking..." with no way back.
+     ------------------------------------------------------------------- */
+  var active = null;              /* the turn in flight, or null when idle */
+
+  var FIRST_TOKEN_WAIT = 30000;   /* nothing at all came back by now */
+  var IDLE_WAIT = 45000;          /* the stream dried up mid-answer */
+  var TOTAL_WAIT = 240000;        /* hard ceiling on one answer */
+  var CHECK_WAIT = 6000;          /* how long the human check may hold us */
+
+  /* What the visitor is told when a question cannot be answered. None of
+     it mentions hosting, keys or status codes — that is the site owner's
+     business, not theirs — and it always offers a way forward. */
+  var NOTE_FAIL = "I couldn't reply just now. Please check your connection and try again.";
+  var NOTE_EMPTY = "I didn't catch that. Please ask me again.";
+  var NOTE_SLOW = "That was taking too long, so I stopped waiting. Please try again.";
+  var NOTE_CHECK = "Please complete the \"Are you human?\" check, then try again.";
+  var NOTE_OFFLINE = "The AI tutor is not connected in this copy of the platform. The packs, printing and voice reader all still work offline.";
+
+  function noteFor(info) {
+    var code = (info && info.code) || "";
+    if (code === "no_proxy") return NOTE_OFFLINE;
+    if (code === "turnstile_required") return NOTE_CHECK;
+    return NOTE_FAIL;
+  }
+
+  function newTurn(bubble, userText) {
+    return {
+      ctrl: null, timers: [], bubble: bubble, userText: userText,
+      dead: false, retried: false
+    };
+  }
+
+  function clearTurnTimers(turn) {
+    if (!turn) return;
+    for (var i = 0; i < turn.timers.length; i++) clearTimeout(turn.timers[i]);
+    turn.timers = [];
+  }
+
+  function endTurn(turn) {
+    if (turn) { turn.dead = true; clearTurnTimers(turn); }
+    isStreaming = false;
+    showStreaming(false);
+    setStatus("");
+    if (active === turn) active = null;
+    window._aiAbort = null;
+  }
+
+  /* Keep whatever the tutor managed to say before the turn ended. */
+  function keepAnswer(turn) {
+    if (!turn || !turn.bubble || !turn.bubble._raw) return;
+    chatHistory.push({ role: "assistant", content: turn.bubble._raw });
+    if (chatHistory.length > 20) chatHistory = chatHistory.slice(-16);
   }
 
   /* ---- markdown-lite renderer ---- */
@@ -322,7 +378,11 @@
     var inp = $("#aiInput");
     if (!inp) return;
     var text = inp.value.trim();
-    if (!text || isStreaming) return;
+    if (!text) return;
+    if (isStreaming) {
+      setStatus("Wait for the reply to finish — or press Stop to ask something else.");
+      return;
+    }
     inp.value = "";
     inp.style.height = "auto";
     submit(text, false);
@@ -331,6 +391,8 @@
   /* Sends one message. `retry` re-sends after the visitor has passed the
      human check again, so their question is not shown or logged twice. */
   function submit(text, retry) {
+    if (isStreaming) return;
+
     if (!retry) addMessage("user", text);
     chatHistory.push({ role: "user", content: text });
 
@@ -341,50 +403,114 @@
     showStreaming(true);
     setStatus("Thinking...");
 
-    withHumanCheck(function (checkToken) {
-      callGroq(msgs, checkToken,
-        function (chunk) {
-          setStatus("Typing...");
-          appendToBubble(bubble, chunk);
-        },
-        function () {
-          isStreaming = false;
-          showStreaming(false);
-          setStatus("");
-          if (bubble && bubble._raw) {
-            chatHistory.push({ role: "assistant", content: bubble._raw });
-          }
-          /* Keep history manageable */
-          if (chatHistory.length > 20) chatHistory = chatHistory.slice(-16);
-        },
-        function (info) {
-          isStreaming = false;
-          showStreaming(false);
-          setStatus("");
-          /* Nothing is said: no keys, no hosting, no status codes. A reply
-             that never started is taken back; one that got part-way through
-             is simply left where it stopped. The owner can still read the
-             code in the browser console. */
-          if (bubble && bubble._raw) {
-            chatHistory.push({ role: "assistant", content: bubble._raw });
-          } else if (bubble && bubble.parentNode) {
-            var row = bubble.parentNode;
-            if (row.parentNode) row.parentNode.removeChild(row);
-            dropLastUserMessage(text);
-          }
-          if (window.console && console.warn) {
-            console.warn("[Emmanuel] request failed:", (info && info.code) || "unknown");
-          }
-          /* An expired human check is worth one more attempt: ask the visitor
-             to confirm themselves, then send the question again. */
-          if (info && info.code === "turnstile_required" && !retry && canReverify()) {
-            window.HUMAN_CHECK.verify(
-              "Please confirm you're human to keep chatting with " + MODEL_NAME + "."
-            ).then(function () { submit(text, true); }, function () {});
-          }
+    var turn = newTurn(bubble, text);
+    active = turn;
+
+    var handedOff = false;
+    function go(token) {
+      if (handedOff || turn.dead) return;
+      handedOff = true;
+      startRequest(msgs, token || "", turn);
+    }
+    /* The human check gets a moment to answer. When the widget is slow or
+       blocked the question goes out anyway — waiting on a widget that is
+       never coming back is what used to leave the tutor silent for good. */
+    withHumanCheck(go);
+    turn.timers.push(setTimeout(function () { go(""); }, CHECK_WAIT));
+  }
+
+  /* Sends the request and watches it. Three watchdogs, one timer: if
+     nothing arrives at all, if the stream dries up half way through, or
+     if the whole answer simply takes too long, the turn is ended and the
+     visitor is told — the panel can no longer sit on "Thinking...". */
+  function startRequest(msgs, token, turn) {
+    if (turn.dead) return;
+    var ctrl = new AbortController();
+    turn.ctrl = ctrl;
+    window._aiAbort = ctrl;
+
+    var idle = null;
+    function armIdle(ms) {
+      if (idle) clearTimeout(idle);
+      idle = setTimeout(function () { giveUp(NOTE_SLOW); }, ms);
+    }
+    function giveUp(note) {
+      if (turn.dead) return;
+      if (idle) { clearTimeout(idle); idle = null; }
+      try { ctrl.abort(); } catch (e) {}
+      endTurn(turn);
+      /* Whatever arrived before we gave up is worth keeping. */
+      if (turn.bubble && turn.bubble._raw) keepAnswer(turn);
+      else if (note) showFailure(turn, note, true);
+    }
+
+    armIdle(FIRST_TOKEN_WAIT);
+    turn.timers.push(setTimeout(function () { giveUp(""); }, TOTAL_WAIT));
+
+    callGroq(msgs, token, ctrl,
+      function (chunk) {
+        if (turn.dead) return;
+        setStatus("Typing...");
+        appendToBubble(turn.bubble, chunk);
+        armIdle(IDLE_WAIT);
+      },
+      function () {
+        if (turn.dead) return;
+        if (idle) { clearTimeout(idle); idle = null; }
+        endTurn(turn);
+        if (turn.bubble && turn.bubble._raw) keepAnswer(turn);
+        else showFailure(turn, NOTE_EMPTY, true);
+      },
+      function (info) {
+        if (turn.dead) return;
+        if (idle) { clearTimeout(idle); idle = null; }
+        endTurn(turn);
+        if (turn.bubble && turn.bubble._raw) { keepAnswer(turn); return; }
+        if (window.console && console.warn) {
+          console.warn("[Emmanuel] request failed:", (info && info.code) || "unknown");
         }
-      );
-    });
+        /* An expired human check is worth one more attempt: ask the visitor
+           to confirm themselves, then send the question again. */
+        if (info && info.code === "turnstile_required" && !turn.retried && canReverify()) {
+          turn.retried = true;
+          dropLastUserMessage(turn.userText);
+          window.HUMAN_CHECK.verify(
+            "Please confirm you're human to keep chatting with " + MODEL_NAME + "."
+          ).then(function () { submit(turn.userText, true); },
+                 function () { showFailure(turn, noteFor(info), true); });
+          return;
+        }
+        showFailure(turn, noteFor(info), info && info.code !== "no_proxy");
+      }
+    );
+  }
+
+  /* A question that got no answer is answered with a short note and a way
+     to try again, instead of the reply quietly disappearing. */
+  function showFailure(turn, note, retryable) {
+    var bubble = turn && turn.bubble;
+    if (turn) dropLastUserMessage(turn.userText);
+    if (!bubble) return;
+    bubble.className = "ai-bubble ai-err";
+    bubble.innerHTML = "";
+    var txt = document.createElement("span");
+    txt.textContent = note || NOTE_FAIL;
+    bubble.appendChild(txt);
+    if (retryable !== false) {
+      var again = document.createElement("button");
+      again.className = "ai-retry";
+      again.type = "button";
+      again.textContent = "Try again";
+      again.onclick = function () {
+        if (isStreaming) return;
+        var row = bubble.parentNode;
+        if (row && row.parentNode) row.parentNode.removeChild(row);
+        submit(turn.userText, true);
+      };
+      bubble.appendChild(again);
+    }
+    var body = $("#aiBody");
+    if (body) body.scrollTop = body.scrollHeight;
   }
 
   /* A question the tutor never answered should not linger in its memory. */
@@ -407,13 +533,28 @@
   }
 
   function stopStream() {
-    if (window._aiAbort) {
-      window._aiAbort.abort();
-      window._aiAbort = null;
+    var turn = active;
+    if (turn) {
+      try { if (turn.ctrl) turn.ctrl.abort(); } catch (e) {}
     }
+    if (window._aiAbort) {
+      try { window._aiAbort.abort(); } catch (e) {}
+    }
+    /* Whatever had already been written stays on screen; the composer
+       comes back whether or not the browser ever reports the abort. */
+    if (turn) keepAnswer(turn);
+    endTurn(turn);
+    setStatus("Stopped.");
   }
 
   function newChat() {
+    /* A turn that is still running would carry its answer into the fresh
+       chat, so end it first — this also frees the composer. */
+    var turn = active;
+    if (turn) {
+      try { if (turn.ctrl) turn.ctrl.abort(); } catch (e) {}
+      endTurn(turn);
+    }
     chatHistory = [];
     var body = $("#aiBody");
     if (body) {
