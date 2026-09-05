@@ -12,10 +12,6 @@
        type  = Secret (encrypted)
      then Deployments → Redeploy (or just push to GitHub).
 
-   Add a second secret — TURNSTILE_SECRET_KEY — to enforce the site's
-   "Are you human?" check here as well. Until it exists, tokens are not
-   required and nothing changes for existing deployments.
-
    No Worker, no URL to configure, no CORS setup: ai.js calls
    /api/chat on the same domain automatically.
 
@@ -24,7 +20,6 @@
    ============================================================ */
 
 var GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
-var TURNSTILE_ENDPOINT = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 /* Keep in sync with MODEL in ai.js. A public proxy should not become a
    general-purpose Groq relay. */
@@ -60,37 +55,13 @@ function jsonError(message, status, origin, code) {
   var headers = { "Content-Type": "application/json" };
   if (origin) headers["Access-Control-Allow-Origin"] = origin;
   var payload = { error: { message: message } };
-  /* Codes are machine-readable shorthand for the page ("turnstile_required"
-     makes it ask the visitor to check in again). Messages are deliberately
+  /* Codes are machine-readable shorthand for the page. Messages are deliberately
      vague: nothing about hosting, keys or deployment reaches the browser. */
   if (code) payload.error.code = code;
   return new Response(JSON.stringify(payload), {
     status: status,
     headers: headers
   });
-}
-
-/* "Are you human?" — verifies the token the page's Turnstile widget issued.
-   Only enforced when the TURNSTILE_SECRET_KEY secret exists on the project;
-   without it the proxy behaves exactly as it always has. */
-async function humanOk(env, response, ip) {
-  if (!env || !env.TURNSTILE_SECRET_KEY) return true;
-  if (!response) return false;
-  try {
-    var form = new URLSearchParams();
-    form.set("secret", String(env.TURNSTILE_SECRET_KEY));
-    form.set("response", String(response));
-    if (ip && ip !== "unknown") form.set("remoteip", String(ip));
-    var res = await fetch(TURNSTILE_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: form
-    });
-    var data = await res.json();
-    return !!(data && data.success);
-  } catch (e) {
-    return false;   /* could not confirm it — do not spend the quota */
-  }
 }
 
 /* Same-origin browser calls send an Origin matching this site; curl and
@@ -140,9 +111,6 @@ async function handle(request, env) {
   }
   if (JSON.stringify(payload.messages).length > 100000) {
     return jsonError("Conversation too long", 413, origin);
-  }
-  if (!(await humanOk(env, payload.turnstile, ip))) {
-    return jsonError("Human check required.", 403, origin, "turnstile_required");
   }
 
   var forward = {

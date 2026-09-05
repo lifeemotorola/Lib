@@ -81,6 +81,18 @@ await check("missing GROQ_API_KEY → 500", async () => {
   assert.equal(r.status, 500);
 });
 
+await check("request without turnstile is allowed (never blocks Emmanuel)", async () => {
+  const r = await worker.fetch(
+    new Request("https://proxy.example/", {
+      method: "POST",
+      headers: { Origin: ORIGIN_OK, "Content-Type": "application/json" },
+      body: JSON.stringify({ model: "openai/gpt-oss-120b", messages: [{ role: "user", content: "hi" }] })
+    }),
+    ENV
+  );
+  assert.equal(r.status, 200);
+});
+
 await check("invalid JSON → 400", async () => {
   const r = await call("POST", "not json{", { "Content-Type": "application/json" });
   assert.equal(r.status, 400);

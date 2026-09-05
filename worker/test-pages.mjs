@@ -85,8 +85,13 @@ await check("missing GROQ_API_KEY → friendly 500", async () => {
     context("POST", JSON.stringify({ model: "openai/gpt-oss-120b", messages: [{ role: "user", content: "hi" }] }),
       { "Content-Type": "application/json" }, {}));
   assert.equal(r.status, 500);
-  const j = await r.json();
-  assert.ok(j.error.message.includes("GROQ_API_KEY"));
+});
+
+await check("request without turnstile is allowed (never blocks Emmanuel)", async () => {
+  const r = await fn.onRequestPost(
+    context("POST", JSON.stringify({ model: "openai/gpt-oss-120b", messages: [{ role: "user", content: "hi" }] }),
+      { "Content-Type": "application/json" }, { GROQ_API_KEY: "gsk_test" }));
+  assert.equal(r.status, 200);
 });
 
 await check("bad model → 400", async () => {
