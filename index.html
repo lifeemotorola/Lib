@@ -96,6 +96,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .mini button{flex:1;font-size:.74rem;padding:5px;border:1px solid var(--line);background:#f5f9ff;
   color:var(--bleu);border-radius:7px;cursor:pointer}
 .mini button:hover{background:#e8f0ff}
+.mini button.lp-p.on{background:var(--bleu);border-color:var(--bleu);color:#fff}
 .btn{width:100%;padding:11px;border:none;border-radius:11px;font-weight:700;font-size:.94rem;cursor:pointer;margin-top:12px}
 .btn-p{background:var(--bleu);color:#fff}
 .btn-p:hover{background:var(--bleu-l)}
@@ -146,6 +147,10 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .page th,.page td{border:1px solid #9ab3d9;padding:5px 8px;text-align:left;vertical-align:top}
 .page th{background:#dce6f5;font-weight:700}
 .page td:first-child{font-weight:600}
+/* form-style table (teacher's lesson plan): no header row, no default bold */
+.ftable td:first-child{font-weight:400}
+.ftable td.b{font-weight:700}
+.ftable td.ctr{text-align:center}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}
 .cols ol,.cols ul{list-style:none;margin:6px 0;padding:0}
 .cols li{margin:7px 0}
@@ -998,6 +1003,15 @@ img.ai-msg-img{width:26px;height:26px}
       </section>
 
       <section class="grp grp-key">
+        <div class="grp-lab">Document</div>
+        <div class="sesstabs" id="dtype">
+          <button class="sess on" data-d="pack"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span>Course pack</button>
+          <button class="sess" data-d="lp"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-teacher"/></svg></span>Lesson plan</button>
+        </div>
+        <p class="hint" id="dtypeNote">Course pack: study notes, worksheets, period tests and examinations for the selected periods.</p>
+      </section>
+
+      <section class="grp grp-key">
         <div class="grp-lab">Subject</div>
         <div class="subtabs" id="subjects"></div>
       </section>
@@ -1011,6 +1025,21 @@ img.ai-msg-img{width:26px;height:26px}
         <div class="grp-lab">Grade</div>
         <div class="row row-sel"><select id="grade" aria-label="Grade"></select></div>
         <p class="hint" id="jhNote" style="display:none"></p>
+      </section>
+
+      <section class="grp grp-key" id="lpWrap" style="display:none">
+        <div class="grp-lab">Lesson duration</div>
+        <div class="mini" id="lpPresets">
+          <button type="button" class="lp-p" data-m="30">30</button>
+          <button type="button" class="lp-p on" data-m="40">40</button>
+          <button type="button" class="lp-p" data-m="45">45</button>
+          <button type="button" class="lp-p" data-m="60">60</button>
+          <button type="button" class="lp-p" data-m="90">90</button>
+          <button type="button" class="lp-p" data-m="120">120</button>
+        </div>
+        <div class="row"><label for="lpMin">Minutes per lesson</label>
+          <input type="number" id="lpMin" value="40" min="15" max="240" step="5"></div>
+        <p class="hint">One lesson plan is generated for each selected period, timed to this duration. Introduction, main activities, summary and evaluation are allotted minutes that add up to the full lesson. Choose the lessons to plan in &ldquo;Periods to include&rdquo; below.</p>
       </section>
 
       <!-- ============ COLLAPSIBLE SECTIONS ============ -->
@@ -82123,6 +82152,336 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 })();
 </script>
 <script>
+/* Teacher's Lesson Plan builder.
+   Fills the standard Liberian "TEACHER'S LESSON PLAN" form for each selected
+   period, from the curriculum data the platform already carries (objectives,
+   key ideas, worked examples, the unit's questions) and the lesson duration
+   the teacher sets. One plan per selected period; the duration splits into
+   Introduction / Main activities / Summary / Evaluation, and the minutes are
+   written into each stage so they add up to the whole lesson.
+
+   Emits the SAME block model as the gen-*.js engines (so the screen renderer,
+   the print layout and the .docx exporter are shared) plus one new block kind,
+   "formtable": a bordered table with no header row, for the form fields.
+   Registered on window.LESSON_PLAN; called by app.js when the Document type
+   is "Lesson plan". */
+(function () {
+  "use strict";
+
+  function rng(seed) {
+    var a = (seed || 1) >>> 0;
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function shuffle(arr, r) {
+    var a = (arr || []).slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(r() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  /* curriculum prose carries <b> tags and **bold** markup; the form is plain */
+  function plain(x) {
+    return String(x == null ? "" : x)
+      .replace(/<[^>]+>/g, "")
+      .replace(/\*\*/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  function firstSentence(s) {
+    s = plain(s);
+    if (!s) return "";
+    var m = s.match(/^[^.!?]+[.!?]?/);
+    return m ? m[0].trim() : s;
+  }
+  function joinList(a) {
+    if (!a.length) return "";
+    if (a.length === 1) return a[0];
+    if (a.length === 2) return a[0] + " and " + a[1];
+    return a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
+  }
+
+  /* ---------------- unit field access (every subject, defensive) ---------------- */
+  function objList(t) {
+    if (t.objectives && t.objectives.length) return t.objectives.map(plain);
+    if (t.outcomes && t.outcomes.length) return t.outcomes.map(plain);
+    return [];
+  }
+  function termNames(t) {
+    var out = [];
+    (t.terms || t.words || []).forEach(function (v) {
+      var n = v.t || v.w;
+      if (n && out.indexOf(n) < 0) out.push(n);
+    });
+    (t.vocab || []).forEach(function (v) {
+      if (v.fr && out.indexOf(v.fr) < 0) out.push(v.fr);
+    });
+    return out;
+  }
+  function studyHeads(t) {
+    var out = [];
+    (t.study || []).forEach(function (b) {
+      if ((b.k === "h3" || b.k === "h2") && b.t && out.indexOf(b.t) < 0) out.push(b.t);
+    });
+    return out;
+  }
+  function hasStudyTable(t) {
+    return (t.study || []).some(function (b) { return b.k === "table"; });
+  }
+  function opener(t) {
+    var p = "";
+    (t.study || []).forEach(function (b) { if (!p && b.k === "p") p = plain(b.t); });
+    return p || plain(t.note);
+  }
+  function neighbor(t, SRC, dir) {
+    var g = (SRC || []).filter(function (u) { return u.grade === t.grade; });
+    var i = -1;
+    for (var k = 0; k < g.length; k++) if (g[k].period === t.period) { i = k; break; }
+    if (i < 0) return null;
+    return g[i + dir] || null;
+  }
+  function firstWorked(t) {
+    var v = (t.worked && t.worked[0]) || (t.apply && t.apply[0]) || (t.grammar && t.grammar[0]);
+    return v ? plain(v.q) : "";
+  }
+  /* a question for the assignment that the plan has not already used */
+  function homeQuestion(t, used) {
+    var cands = [];
+    ["apply", "short", "worked", "mcq", "facts", "grammar"].forEach(function (k) {
+      (t[k] || []).forEach(function (v) { if (v.q) cands.push(plain(v.q)); });
+    });
+    for (var i = 0; i < cands.length; i++) {
+      if (!used[cands[i]]) return cands[i];
+    }
+    return "";   /* every question is already on the plan: don't repeat one */
+  }
+
+  /* ---------------- time split: the minutes the teacher set ----------------
+     Introduction and summary hold a tenth each, evaluation a little more
+     (questions must be answerable in the time left), main activities take
+     whatever remains. Everything rounds to 5-minute marks. */
+  function round5(x) { return Math.max(5, Math.round(x / 5) * 5); }
+  function splitTime(D) {
+    D = Math.max(15, Math.min(240, Math.round(+D || 40)));
+    var intro = Math.min(10, round5(D * 0.10));
+    var sum = Math.min(10, round5(D * 0.10));
+    var ev = Math.min(15, round5(D * 0.15));
+    var main = D - intro - sum - ev;
+    if (main < 15) { intro = 5; sum = 5; ev = 5; main = D - 15; }
+    return { total: D, intro: intro, main: main, sum: sum, ev: ev };
+  }
+
+  /* ---------------- stage content, mined from the unit ---------------- */
+  var METHOD_POOL = {
+    en: ["Question and answer (oral)", "Reading aloud and modelling", "Guided practice", "Pair and group work", "Drill and repetition", "Examples from the pupils' own lives"],
+    eg: ["Question and answer", "Analysis of example sentences", "Guided practice", "Pair work", "Drill and correction"],
+    pho: ["Choral reading and drill", "Listening and speaking", "Modelling and repetition", "Guided practice", "Rhythm and games"],
+    fr: ["Question and answer (dialogue)", "Choral repetition", "Listening and speaking", "Guided practice", "Use of pictures and real objects"],
+    sc: ["Demonstration and experiment", "Question and answer", "Guided discovery", "Group work", "Use of real objects and pictures"],
+    bi: ["Demonstration and experiment", "Question and answer", "Use of specimens and models", "Guided discovery", "Group work"],
+    ch: ["Demonstration and experiment", "Question and answer", "Guided practice", "Group work", "Use of real objects and apparatus"],
+    ph: ["Demonstration and experiment", "Question and answer", "Guided practice", "Group work", "Use of real objects and apparatus"],
+    ma: ["Guided practice and drill", "Modelling worked examples on the board", "Question and answer", "Pair and group work", "Real-life problems"],
+    ss: ["Discussion and class debate", "Case study and problem solving", "Use of maps, pictures and real examples", "Question and answer", "Group work"],
+    ec: ["Discussion and class debate", "Problem solving with real examples", "Use of maps, pictures and tables", "Question and answer", "Group work"],
+    gg: ["Use of maps, pictures and the globe", "Question and answer", "Guided practice", "Group work", "Observation of the environment"],
+    rm: ["Discussion", "Storytelling and role play", "Question and answer", "Group work", "Personal reflection"],
+    pe: ["Demonstration", "Practical performance", "Question and answer", "Group and pair work", "Use of simple equipment"],
+    li: ["Reading and discussion", "Question and answer", "Role play", "Group work", "Guided analysis of the text"],
+    wa: ["Question and answer", "Guided practice and drill", "Modelling solved examples on the board", "Pair and group work", "Examination-style practice"]
+  };
+  function methodFor(subjId, r) {
+    var pool = METHOD_POOL[subjId] || METHOD_POOL.wa;
+    return shuffle(pool, r).slice(0, 4);
+  }
+  function aidsFor(t) {
+    var a = ["Textbook and lesson notes", "Blackboard, chalk and duster"];
+    var names = termNames(t);
+    if (names.length) a.push("Word cards / flashcards \u2014 " + names.slice(0, 3).join(", "));
+    if (hasStudyTable(t)) a.push("Charts, tables and diagrams drawn from the course text");
+    if (t.experiment && t.experiment.length) a.push("Practical materials for the class investigation");
+    if (t.passage && t.passage.text) a.push("Printed reading passage");
+    if (t.phonics && t.phonics.length) a.push("Letter cards and sound-pattern charts");
+    if (t.map || t.mapwork) a.push("Outline map of Liberia and place names");
+    if (t.devices && t.devices.length) a.push("Excerpts from the set text");
+    return a.slice(0, 6);
+  }
+  function exerciseNames(t) {
+    var e = [];
+    if (t.terms || t.words) e.push("the key-terms table");
+    if (t.phonics && t.phonics.length) e.push("sound and pattern practice");
+    if (t.grammar && t.grammar.length) e.push("the grammar items");
+    if (t.cloze && t.cloze.length) e.push("fill-in-the-blank sentences");
+    if (t.passage && t.passage.text) e.push("the reading passage and its questions");
+    if (t.match && t.match.length) e.push("matching the terms to their meanings");
+    if (t.pairs && t.pairs.length) e.push("the word pairs (synonyms, antonyms)");
+    if (t.mcq && t.mcq.length) e.push("multiple-choice questions");
+    if (t.tf && t.tf.length) e.push("the true and false statements");
+    if (t.worked && t.worked.length) e.push("the worked examples");
+    if (t.drills || t.drills2) e.push("the practice questions");
+    if (t.short || t.apply) e.push("short-answer questions");
+    if (t.sort && t.sort.length) e.push("sorting the examples into groups");
+    if (t.casestudy && t.casestudy.length) e.push("the case study");
+    if (t.map || t.mapwork) e.push("the map work");
+    if (t.experiment && t.experiment.length) e.push("the practical investigation");
+    if (t.devices && t.devices.length) e.push("the quotation questions");
+    return e.slice(0, 4);
+  }
+
+  /* three evaluation questions, one of each kind when the unit offers it;
+     used[] keeps them away from a question the plan already works on */
+  function evalItems(t, r, used) {
+    used = used || {};
+    var kinds = { mcq: [], tf: [], worked: [], short: [], apply: [], grammar: [], facts: [], pass: [] };
+    (t.mcq || []).forEach(function (v) {
+      kinds.mcq.push({ q: plain(v.q), a: plain(v.o[v.a]) + (v.why ? " (" + plain(v.why) + ")" : "") });
+    });
+    (t.tf || []).forEach(function (v) {
+      kinds.tf.push({ q: "State whether this is true or false, and correct it if it is false: " + plain(v.s),
+                      a: plain(v.a) + (v.why ? " \u2014 " + plain(v.why) : "") });
+    });
+    ["worked", "short", "apply", "grammar", "facts"].forEach(function (k) {
+      (t[k] || []).forEach(function (v) {
+        if (!v.q) return;
+        kinds[k].push({ q: plain(v.q), a: plain(v.a) + (v.why ? " (" + plain(v.why) + ")" : "") });
+      });
+    });
+    if (t.passage && t.passage.qs) (t.passage.qs || []).forEach(function (v) {
+      if (!v.q) return;
+      kinds.pass.push({ q: plain(v.q), a: plain(v.a) });
+    });
+    var order = ["mcq", "tf", "worked", "short", "apply", "grammar", "facts", "pass"];
+    var chosen = [];
+    order.forEach(function (k) {
+      if (!kinds[k].length || chosen.length >= 3) return;
+      var list = shuffle(kinds[k], r);
+      for (var i = 0; i < list.length; i++) {
+        if (!used[list[i].q]) { chosen.push(list[i]); break; }
+      }
+    });
+    var all = [];
+    order.forEach(function (k) { all = all.concat(kinds[k]); });
+    if (chosen.length < 3) {
+      shuffle(all, r).forEach(function (v) {
+        if (chosen.length >= 3) return;
+        if (chosen.indexOf(v) < 0 && !used[v.q]) chosen.push(v);
+      });
+    }
+    return chosen.slice(0, 3);
+  }
+
+  /* ---------------- the form itself ---------------- */
+  function build(opts) {
+    var r = rng(opts.seed || 1);
+    var SRC = opts.curriculum || [];
+    var topics = SRC.filter(function (t) {
+      return t.grade === opts.grade && (!opts.topics || opts.topics.indexOf(t.period) >= 0);
+    });
+    var D = Math.max(15, Math.min(240, Math.round(+opts.lpMin || 40)));
+    var time = splitTime(D);
+    var subj = plain(opts.subjectLine || opts.subjectName || "Lesson");
+    var gradeTxt = opts.wa ? "Grade 12 (WASSCE)" : "Grade " + opts.grade;
+    var teacher = plain(opts.teacherName) || "____________________";
+    var doc = [];
+
+    topics.forEach(function (t, i) {
+      var objs = objList(t);
+      var nObj = D <= 45 ? 2 : D <= 75 ? 3 : D <= 110 ? 4 : 5;
+      var names = termNames(t);
+      var heads = studyHeads(t);
+      var open = opener(t);
+      var prev = neighbor(t, SRC, -1), next = neighbor(t, SRC, 1);
+
+      /* ---- header fields of the form ---- */
+      doc.push({ k: "h1", t: "TEACHER\u2019S LESSON PLAN", c: true, per: t.period });
+      doc.push({ k: "formtable", rows: [
+        [{ t: "Teacher: " + teacher }, { t: "Date: ____________________" }],
+        [{ t: "Grade: " + gradeTxt }, { t: "Subject: " + subj }],
+        [{ t: "Duration: " + D + " minutes" }, { t: "Topic: " + plain(t.title) }]
+      ] });
+
+      doc.push({ k: "h3", t: "Instructional Objectives" });
+      doc.push({ k: "num", items: objs.slice(0, Math.max(1, Math.min(nObj, objs.length))) });
+
+      doc.push({ k: "formtable", rows: [
+        [{ t: "Teacher Aids", b: 1, c: 1 }, { t: "Teaching Method", b: 1, c: 1 }],
+        [{ t: aidsFor(t).map(function (a) { return "\u2022 " + a; }).join("\n") },
+         { t: methodFor(opts.subjectId || "", r).map(function (m) { return "\u2022 " + m; }).join("\n") }]
+      ] });
+
+      /* ---- Presentation & Procedures (Classroom Activities) ---- */
+      doc.push({ k: "h2", t: "Presentation & Procedures (Classroom Activities)" });
+
+      var intro = ["Greeting and attendance. The teacher greets the class, takes attendance and settles the pupils into mixed-ability groups."];
+      if (prev) intro.push("Review of the previous period (" + plain(prev.title) + "). The teacher asks two or three recall questions; the pupils answer orally and gaps are corrected on the spot.");
+      else intro.push("Starter. The teacher sets a short question to check what the pupils already know about the topic.");
+      intro.push("Introducing the lesson. The teacher writes the topic on the board, reads the objectives and tells the pupils exactly what they will be able to do by the end of the period.");
+      if (open) intro.push("Advance organiser. The teacher raises the idea that opens the period: " + firstSentence(open));
+      doc.push({ k: "h3", t: "Initial Activities / Introduction (" + time.intro + " min)" });
+      doc.push({ k: "num", items: intro });
+
+      var main = [];
+      var head = heads.length ? heads.slice(0, 2).join("; ") : plain(t.subtitle || t.title);
+      var pres = "Presentation of the new content. The teacher explains the key points of the period (" + head + ") using examples from the course text; pupils listen, ask questions and note the main points.";
+      if (names.length) pres += " Key terms are defined on the board: " + names.slice(0, 3).join(", ") + ".";
+      main.push(pres);
+      var gw = firstWorked(t);
+      if (gw) main.push("Guided practice. The teacher and pupils work through \u201c" + gw + "\u201d together, step by step; the pupils give the answer at each step and the teacher corrects.");
+      var ex = exerciseNames(t);
+      if (ex.length) main.push("Pupil practice. In their groups the pupils do " + joinList(ex) + "; the teacher circulates, listens, answers questions and notes the mistakes to correct later.");
+      if (D > 90) main.push("Correction and feedback. Each group gives one answer; the teacher marks it, explains the wrong ones with reasons, and repeats the part that was difficult.");
+      doc.push({ k: "h3", t: "Developmental Activities (Main Activities) (" + time.main + " min)" });
+      doc.push({ k: "num", items: main });
+
+      var sum = [];
+      sum.push("Recap. The pupils state, in their own words, what the period taught" + (names.length ? " and name the key terms: " + names.slice(0, 3).join(", ") : "") + ".");
+      if (objs.length) sum.push("The teacher summarises the lesson: by now the pupils can " +
+        joinList(objs.slice(0, 2).map(function (o) { return o.charAt(0).toLowerCase() + o.slice(1); })) + ".");
+      sum.push("Correction. The pupils copy the corrected points into their exercise books.");
+      sum.push("The teacher gives the assignment and announces the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ".");
+      doc.push({ k: "h3", t: "Summary Conclusion (" + time.sum + " min)" });
+      doc.push({ k: "num", items: sum });
+
+      /* ---- Evaluation ---- */
+      var evUsed = {};
+      if (gw) evUsed[gw] = 1;
+      var ev = evalItems(t, r, evUsed);
+      doc.push({ k: "h2", t: "Evaluation (" + time.ev + " min)" });
+      if (ev.length) {
+        doc.push({ k: "num", items: ev.map(function (e) { return e.q; }) });
+        doc.push({ k: "p", t: "Model answers (for the teacher):" });
+        doc.push({ k: "num", items: ev.map(function (e) { return e.a; }) });
+      } else {
+        doc.push({ k: "p", t: "The teacher asks three oral questions drawn from the objectives; the pupils answer in complete sentences." });
+      }
+
+      /* ---- Assignment ---- */
+      var asg = [];
+      if (names.length) asg.push("Copy the key terms and their meanings into your exercise book: " + names.slice(0, 4).join(", ") + ".");
+      var used = {};
+      if (gw) used[gw] = 1;
+      ev.forEach(function (e) { used[e.q] = 1; });
+      var hq = homeQuestion(t, used);
+      if (hq) asg.push("Answer in your exercise book: " + hq.replace(/\.\s*$/, "") + ".");
+      asg.push("Preview the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ": read the course text and bring one question.");
+      doc.push({ k: "h3", t: "Assignment" });
+      doc.push({ k: "num", items: asg });
+
+      if (i < topics.length - 1) doc.push({ k: "pagebreak" });
+    });
+
+    return { blocks: doc, topics: topics };
+  }
+
+  window.LESSON_PLAN = { build: build, splitTime: splitTime };
+})();
+</script>
+<script>
 /* Unified platform: subject switching (English / French), shared renderer + .docx export. */
 (function () {
   "use strict";
@@ -82653,6 +83012,14 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   function isTeacher() { return MODE === "teacher"; }
   window.PACK_MODE = function () { return MODE; };
 
+  /* ---------------- document type: course pack | teacher's lesson plan ----------------
+     "pack" is the usual course pack (notes, worksheets, tests, examinations).
+     "lp" fills the standard Teacher's Lesson Plan form for the selected
+     periods, timed to the duration set in the panel (lesson.js). */
+  var DOCTYPE = "pack";
+  function isLP() { return DOCTYPE === "lp"; }
+  window.PACK_DOC_TYPE = function () { return DOCTYPE; };
+
   /* ---------------- customizable cover page ----------------
      COVER holds user-entered details. PACK_COVER() is called by every gen-*.js
      engine to build the opening pages of the pack. */
@@ -82889,7 +83256,12 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       tests: $("#tests").checked,
       exam: $("#exam").checked,
       keys: isTeacher() ? $("#keys").checked : false,
-      teacher: isTeacher()
+      teacher: isTeacher(),
+      dtype: DOCTYPE,
+      lpMin: +$("#lpMin").value || 40,
+      subjectId: cur,
+      teacherName: (COVER.teacher || "").trim(),
+      school: (COVER.school || "").trim()
     };
   }
 
@@ -83110,6 +83482,16 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         b.rows.map(function (r) {
           return "<tr>" + r.map(function (c) { return "<td>" + (c ? esc(c) : "&nbsp;") + "</td>"; }).join("") + "</tr>";
         }).join("") + "</tbody></table>";
+      /* the teacher's lesson plan form: a bordered table with no header row;
+         cells are strings or {t, b(old), c(entre)} */
+      case "formtable": return '<table class="ftable"><tbody>' +
+        b.rows.map(function (row) {
+          return "<tr>" + row.map(function (c) {
+            var cell = (typeof c === "object" && c) ? c : { t: c };
+            var cls = (cell.b ? "b " : "") + (cell.c ? "ctr" : "");
+            return '<td' + (cls ? ' class="' + cls.replace(/\s+$/, "") + '"' : "") + ">" + nl(cell.t || "") + "</td>";
+          }).join("") + "</tr>";
+        }).join("") + "</tbody></table>";
       case "lines": { var o = ""; for (var i = 0; i < b.n; i++) o += '<div class="wl"></div>'; return o; }
       case "space": return '<div class="sp"></div>';
       case "rule": return "<hr>";
@@ -83156,15 +83538,19 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     var bnd = bandOf(o.grade);
     runhead.left = S().label + " \u00b7 " +
       (bnd.id === "el" ? "Grade " : bnd.label + " Grade ") + o.grade;
-    runhead.right = isTeacher() ? "Teacher's Copy \u00b7 Answer Keys Included" : "Pupil Workbook & Assessment Pack";
+    runhead.right = isLP()
+      ? "Teacher's Lesson Plan"
+      : isTeacher() ? "Teacher's Copy \u00b7 Answer Keys Included" : "Pupil Workbook & Assessment Pack";
     /* name the grade actually being generated, not the whole band. WASSCE
        packs name the WAEC examination instead of the national curriculum. */
     var band = S().wa
       ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
       : "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
-    runhead.foot = isTeacher()
-      ? band + "   |   TEACHER'S COPY \u2014 not for pupil distribution"
-      : band + "   |   Name: ____________________   School: ____________________";
+    runhead.foot = isLP()
+      ? band + "   |   TEACHER'S LESSON PLAN \u2014 for the teacher only"
+      : isTeacher()
+        ? band + "   |   TEACHER'S COPY \u2014 not for pupil distribution"
+        : band + "   |   Name: ____________________   School: ____________________";
   }
   function bandTop(per) {
     var left = runhead.left + (per ? " \u00b7 " + periodLabel(per) : "");
@@ -83374,6 +83760,24 @@ window.WA_SUBJECTS.crs = window.WA_crs;
           body += tableXml(["Word", "Meaning"], rows, FILL); break;
         }
         case "table": body += tableXml(b.head, b.rows, FILL); break;
+        case "formtable": {
+          /* lesson plan form fields: bordered rows, no header shading,
+             columns sized to the widest row so labels and values line up */
+          var fx = '<w:tbl><w:tblPr><w:tblW w:w="10206" w:type="dxa"/><w:tblBorders>' +
+            ["top", "left", "bottom", "right", "insideH", "insideV"].map(function (s) {
+              return "<w:" + s + ' w:val="single" w:sz="6" w:color="9AB3D9"/>';
+            }).join("") + "</w:tblBorders></w:tblPr>";
+          b.rows.forEach(function (row) {
+            var w = Math.floor(10206 / row.length);
+            fx += "<w:tr>" + row.map(function (c) {
+              var cell = (typeof c === "object" && c) ? c : { t: c };
+              return '<w:tc><w:tcPr><w:tcW w:w="' + w + '" w:type="dxa"/></w:tcPr>' +
+                para(cell.t || " ", { b: !!cell.b, sz: 26, after: 40, align: cell.c ? "center" : null }) +
+                "</w:tc>";
+            }).join("") + "</w:tr>";
+          });
+          body += fx + "</w:tbl>" + para("", { after: 80, sz: 8 }); break;
+        }
         case "lines": for (var j = 0; j < b.n; j++) body += para("_______________________________________________________________", { sz: 28, after: 160, color: "AAAAAA" }); break;
         case "space": body += para("", { sz: 18 }); break;
         case "rule": body += para("", { border: true, sz: 10 }); break;
@@ -83557,7 +83961,12 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     o.subjectName = (sj.packName || sj.label).toUpperCase();
     o.subjectLine = sj.packName || sj.label;
     o.bandName = bandOf(o.grade).label;
-    pack = sj.engine().buildPack(o);
+    if (isLP() && window.LESSON_PLAN) {
+      /* the lesson plan is a teacher's document whatever the session is */
+      pack = window.LESSON_PLAN.build(o);
+    } else {
+      pack = sj.engine().buildPack(o);
+    }
     setRunning(o);
     render(pack.blocks);
     /* expose context for Emmanuel, the AI tutor */
@@ -83565,8 +83974,11 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     window.PACK_CUR_GRADE = o.grade;
     /* feed the voice reader this pack's difficult words and sentences */
     if (window.VOICE_READER) window.VOICE_READER.loadFromPack(pack, cur, sj.label, o.grade);
-    $("#meta").textContent = S().label + " · Grade " + o.grade + " · " + pack.topics.length +
-      " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
+    $("#meta").textContent = isLP()
+      ? S().label + " · Grade " + o.grade + " · " + pack.topics.length +
+        " lesson plan(s) · " + o.lpMin + " min each · seed " + o.seed
+      : S().label + " · Grade " + o.grade + " · " + pack.topics.length +
+        " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
     $("#exportbar").style.display = "flex";
   }
 
@@ -83649,6 +84061,12 @@ window.WA_SUBJECTS.crs = window.WA_crs;
        the Word export, so the teacher's saved PDF is named after the pack
        instead of the platform. */
     function packFileBase() {
+      if (isLP()) {
+        /* the lesson plan is always the teacher's document */
+        return S().file(opts().grade)
+          .replace(/\.docx$/, "")
+          .replace(/_Workbook|_Pack$/, "_Lesson_Plan") + "_Teacher_Copy";
+      }
       return S().file(opts().grade).replace(/\.docx$/, isTeacher() ? "_Teacher_Copy" : "_Student");
     }
     $("#print").onclick = function () {
@@ -83763,6 +84181,55 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       b.onclick = function () { setTrack(b.getAttribute("data-t")); };
     });
     paintSession();
+
+    /* ---- document type: course pack | teacher's lesson plan ----
+       The lesson plan hides the exercise-type and pack-contents sections
+       (the plan is built from the curriculum data, not from worksheets)
+       and shows the lesson-duration controls instead. */
+    function paintDocType() {
+      document.querySelectorAll("#dtype .sess").forEach(function (b) {
+        b.className = "sess" + (b.getAttribute("data-d") === DOCTYPE ? " on" : "");
+      });
+      var lp = isLP();
+      var sh = $("#ddSheets"), pa = $("#ddParts"), lw = $("#lpWrap");
+      if (sh) sh.style.display = lp ? "none" : "";
+      if (pa) pa.style.display = lp ? "none" : "";
+      if (lw) lw.style.display = lp ? "" : "none";
+      var n = $("#dtypeNote");
+      if (n) n.textContent = lp
+        ? "Lesson plan: the standard teacher's lesson plan form, filled in for each selected period and timed to the duration below. The Teacher name from Customization is printed on every plan; the designed cover is not used."
+        : "Course pack: study notes, worksheets, period tests and examinations for the selected periods.";
+    }
+    document.querySelectorAll("#dtype .sess").forEach(function (b) {
+      b.onclick = function () {
+        var d = b.getAttribute("data-d");
+        if (d === DOCTYPE) return;
+        DOCTYPE = d;
+        paintDocType();
+        generate();
+      };
+    });
+    /* lesson duration: preset minutes, or a custom number 15-240 */
+    var lpIn = $("#lpMin");
+    function paintLpPresets() {
+      var v = +lpIn.value || 40;
+      document.querySelectorAll("#lpPresets .lp-p").forEach(function (b) {
+        b.className = "lp-p" + (+b.getAttribute("data-m") === v ? " on" : "");
+      });
+    }
+    document.querySelectorAll("#lpPresets .lp-p").forEach(function (b) {
+      b.onclick = function () {
+        lpIn.value = b.getAttribute("data-m");
+        paintLpPresets();
+        generate();
+      };
+    });
+    if (lpIn) lpIn.onchange = function () {
+      lpIn.value = Math.max(15, Math.min(240, +lpIn.value || 40));
+      paintLpPresets();
+      generate();
+    };
+    paintDocType();
 
     /* cover page fields -> COVER, applied at generate time */
     var CVMAP = { cvSchool: "school", cvMotto: "motto", cvPupil: "pupil", cvTeacher: "teacher",

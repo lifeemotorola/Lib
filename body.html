@@ -37,6 +37,15 @@
       </section>
 
       <section class="grp grp-key">
+        <div class="grp-lab">Document</div>
+        <div class="sesstabs" id="dtype">
+          <button class="sess on" data-d="pack"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span>Course pack</button>
+          <button class="sess" data-d="lp"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-teacher"/></svg></span>Lesson plan</button>
+        </div>
+        <p class="hint" id="dtypeNote">Course pack: study notes, worksheets, period tests and examinations for the selected periods.</p>
+      </section>
+
+      <section class="grp grp-key">
         <div class="grp-lab">Subject</div>
         <div class="subtabs" id="subjects"></div>
       </section>
@@ -50,6 +59,21 @@
         <div class="grp-lab">Grade</div>
         <div class="row row-sel"><select id="grade" aria-label="Grade"></select></div>
         <p class="hint" id="jhNote" style="display:none"></p>
+      </section>
+
+      <section class="grp grp-key" id="lpWrap" style="display:none">
+        <div class="grp-lab">Lesson duration</div>
+        <div class="mini" id="lpPresets">
+          <button type="button" class="lp-p" data-m="30">30</button>
+          <button type="button" class="lp-p on" data-m="40">40</button>
+          <button type="button" class="lp-p" data-m="45">45</button>
+          <button type="button" class="lp-p" data-m="60">60</button>
+          <button type="button" class="lp-p" data-m="90">90</button>
+          <button type="button" class="lp-p" data-m="120">120</button>
+        </div>
+        <div class="row"><label for="lpMin">Minutes per lesson</label>
+          <input type="number" id="lpMin" value="40" min="15" max="240" step="5"></div>
+        <p class="hint">One lesson plan is generated for each selected period, timed to this duration. Introduction, main activities, summary and evaluation are allotted minutes that add up to the full lesson. Choose the lessons to plan in &ldquo;Periods to include&rdquo; below.</p>
       </section>
 
       <!-- ============ COLLAPSIBLE SECTIONS ============ -->
