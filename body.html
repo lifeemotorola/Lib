@@ -62,7 +62,22 @@
       </section>
 
       <section class="grp grp-key" id="lpWrap" style="display:none">
-        <div class="grp-lab">Lesson duration</div>
+        <div class="grp-lab">Planning format</div>
+        <div class="sesstabs" id="lpPlanTabs">
+          <button type="button" class="sess on" data-pt="daily"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-pencil"/></svg></span>Daily plan</button>
+          <button type="button" class="sess" data-pt="weekly"><span class="fl"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span>Weekly plan</button>
+        </div>
+
+        <div class="grp-lab" style="margin-top:10px">Unit duration (Liberia sector)</div>
+        <div class="mini" id="lpWeekPresets">
+          <button type="button" class="lp-w" data-w="3">3 weeks</button>
+          <button type="button" class="lp-w on" data-w="4">4 weeks</button>
+        </div>
+        <div class="row" style="margin-top:4px"><label for="lpWeeks">Weeks per unit</label>
+          <input type="number" id="lpWeeks" value="4" min="1" max="6" step="1"></div>
+        <p class="hint">In the Liberian school curriculum, each unit / marking period runs for 3 or 4 weeks until completed.</p>
+
+        <div class="grp-lab" style="margin-top:10px">Lesson duration</div>
         <div class="mini" id="lpPresets">
           <button type="button" class="lp-p" data-m="30">30</button>
           <button type="button" class="lp-p on" data-m="40">40</button>
@@ -73,7 +88,24 @@
         </div>
         <div class="row"><label for="lpMin">Minutes per lesson</label>
           <input type="number" id="lpMin" value="40" min="15" max="240" step="5"></div>
-        <p class="hint">One lesson plan is generated for each selected period, timed to this duration. Introduction, main activities, summary and evaluation are allotted minutes that add up to the full lesson. Choose the lessons to plan in &ldquo;Periods to include&rdquo; below.</p>
+        <div class="row"><label for="lpDays">Teaching days / week</label>
+          <select id="lpDays">
+            <option value="3">3 days / week</option>
+            <option value="4">4 days / week</option>
+            <option value="5" selected>5 days / week</option>
+          </select></div>
+
+        <div class="grp-lab" style="margin-top:10px">Weekly plan adjustment</div>
+        <div class="row row-sel">
+          <select id="lpAdjMode">
+            <option value="standard" selected>Standard progression (Balanced weekly pacing)</option>
+            <option value="remedial">Remedial &amp; reinforcement (Diagnostic &amp; extra support)</option>
+            <option value="accelerated">Accelerated / Exam prep (Intensive practice &amp; test prep)</option>
+          </select>
+        </div>
+        <div class="row" style="margin-top:6px;margin-bottom:2px"><label for="lpAdjNote">Weekly adjustment notes (optional)</label></div>
+        <input type="text" id="lpAdjNote" placeholder="e.g. Remedial focus on vocabulary; Friday review quiz" style="width:100%">
+        <p class="hint" id="lpHpHint">Weekly plan adjustments are placed across the 3 or 4 weeks until the unit is done, whether planning daily lessons or a weekly unit plan.</p>
       </section>
 
       <!-- ============ COLLAPSIBLE SECTIONS ============ -->
