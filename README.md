@@ -23,13 +23,20 @@ so the whole thing stays self-contained.
   short answer, MCQ, diagrams, experiments, word problems, challenges, ...),
   each backed by a deterministic generator with a **variant seed** — Test A /
   Test B share the same questions, just shuffled
-- **Teacher's Lesson Plan** — a Document switch (Course pack / Lesson plan)
-  fills the standard printed *Teacher's Lesson Plan* form — header fields,
-  instructional objectives, teacher aids and teaching method, Presentation &
-  Procedures with Initial/Developmental/Summary stages, Evaluation and
-  Assignment — for every selected period, written out from the lesson's own
-  content and timed to the duration you set (30–240 min, presets included;
-  the stage minutes always add up to the whole lesson)
+- **Teacher's Lesson & Weekly Unit Plans** — a Document switch (Course pack /
+  Lesson plan) supports both **Daily Lesson Plans** and **Weekly Unit Plans**
+  calibrated to the regular Liberian school sector where each unit runs for **3 or 4 weeks**
+  until completion. Includes **Weekly Plan Adjustments** tailored to teacher planning:
+  - **Planning format**: choose between a **Daily Plan** (timed day-by-day lesson
+    plans with weekly adjustment milestones and 4 timed stages summing to the exact duration)
+    or a **Weekly Plan** (week-by-week unit scheme covering Week 1, Week 2, Week 3, Week 4
+    with weekly objectives, procedures, aids, methods, formative evaluations, assignments,
+    and period culmination).
+  - **Unit duration**: quick presets for **3 weeks** or **4 weeks** (the Liberian standard)
+    or custom week counts.
+  - **Weekly plan adjustments**: customizable adjustment strategies (**Standard progression**,
+    **Remedial & reinforcement** with diagnostic scaffolding, and **Accelerated / Exam prep**),
+    plus custom teacher adjustment notes embedded directly on every weekly and daily plan.
 - **Study notes** for every unit: key ideas, worked examples and common
   mistakes — and for Social Studies, General Science, English, Mathematics,
   French, Religious & Moral Education and Physical Education Grades 1–9

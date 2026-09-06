@@ -535,6 +535,8 @@
   var DOCTYPE = "pack";
   function isLP() { return DOCTYPE === "lp"; }
   window.PACK_DOC_TYPE = function () { return DOCTYPE; };
+  var LP_PLAN_TYPE = "daily";
+  window.PACK_LP_PLAN_TYPE = function () { return LP_PLAN_TYPE; };
 
   /* ---------------- customizable cover page ----------------
      COVER holds user-entered details. PACK_COVER() is called by every gen-*.js
@@ -774,6 +776,11 @@
       keys: isTeacher() ? $("#keys").checked : false,
       teacher: isTeacher(),
       dtype: DOCTYPE,
+      lpPlanType: LP_PLAN_TYPE,
+      lpWeeks: ($("#lpWeeks") && +$("#lpWeeks").value) || 4,
+      lpDays: ($("#lpDays") && +$("#lpDays").value) || 5,
+      lpAdjMode: ($("#lpAdjMode") && $("#lpAdjMode").value) || "standard",
+      lpAdjNote: ($("#lpAdjNote") && $("#lpAdjNote").value || "").trim(),
       lpMin: +$("#lpMin").value || 40,
       subjectId: cur,
       teacherName: (COVER.teacher || "").trim(),
@@ -1055,7 +1062,7 @@
     runhead.left = S().label + " \u00b7 " +
       (bnd.id === "el" ? "Grade " : bnd.label + " Grade ") + o.grade;
     runhead.right = isLP()
-      ? "Teacher's Lesson Plan"
+      ? (o.lpPlanType === "weekly" ? "Teacher's Weekly Unit Plan" : "Teacher's Lesson Plan")
       : isTeacher() ? "Teacher's Copy \u00b7 Answer Keys Included" : "Pupil Workbook & Assessment Pack";
     /* name the grade actually being generated, not the whole band. WASSCE
        packs name the WAEC examination instead of the national curriculum. */
@@ -1063,7 +1070,7 @@
       ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
       : "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
     runhead.foot = isLP()
-      ? band + "   |   TEACHER'S LESSON PLAN \u2014 for the teacher only"
+      ? band + "   |   " + (o.lpPlanType === "weekly" ? "TEACHER'S WEEKLY UNIT PLAN" : "TEACHER'S LESSON PLAN") + " \u2014 " + (o.lpWeeks || 4) + " WEEKS/UNIT \u2014 for the teacher only"
       : isTeacher()
         ? band + "   |   TEACHER'S COPY \u2014 not for pupil distribution"
         : band + "   |   Name: ____________________   School: ____________________";
@@ -1492,7 +1499,8 @@
     if (window.VOICE_READER) window.VOICE_READER.loadFromPack(pack, cur, sj.label, o.grade);
     $("#meta").textContent = isLP()
       ? S().label + " · Grade " + o.grade + " · " + pack.topics.length +
-        " lesson plan(s) · " + o.lpMin + " min each · seed " + o.seed
+        (o.lpPlanType === "weekly" ? " weekly lesson plan(s) · " : " lesson plan(s) · ") +
+        o.lpWeeks + " weeks/unit · " + (o.lpPlanType === "weekly" ? ((o.lpDays || 5) * o.lpMin) + " min/wk" : o.lpMin + " min/lesson") + " · seed " + o.seed
       : S().label + " · Grade " + o.grade + " · " + pack.topics.length +
         " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
     $("#exportbar").style.display = "flex";
@@ -1579,9 +1587,10 @@
     function packFileBase() {
       if (isLP()) {
         /* the lesson plan is always the teacher's document */
+        var pType = (opts().lpPlanType === "weekly") ? "_Weekly_Plan" : "_Lesson_Plan";
         return S().file(opts().grade)
           .replace(/\.docx$/, "")
-          .replace(/_Workbook|_Pack$/, "_Lesson_Plan") + "_Teacher_Copy";
+          .replace(/_Workbook|_Pack$/, "") + pType + "_Teacher_Copy";
       }
       return S().file(opts().grade).replace(/\.docx$/, isTeacher() ? "_Teacher_Copy" : "_Student");
     }
@@ -1713,7 +1722,7 @@
       if (lw) lw.style.display = lp ? "" : "none";
       var n = $("#dtypeNote");
       if (n) n.textContent = lp
-        ? "Lesson plan: the standard teacher's lesson plan form, filled in for each selected period and timed to the duration below. The Teacher name from Customization is printed on every plan; the designed cover is not used."
+        ? "Lesson plan: standard Liberian lesson and unit plans calibrated to 3 or 4 weeks per unit with weekly plan adjustments, instructional objectives, procedures, evaluation, and assignments."
         : "Course pack: study notes, worksheets, period tests and examinations for the selected periods.";
     }
     document.querySelectorAll("#dtype .sess").forEach(function (b) {
@@ -1725,6 +1734,44 @@
         generate();
       };
     });
+
+    /* planning format tabs: daily plan | weekly plan */
+    function paintLpPlanTabs() {
+      document.querySelectorAll("#lpPlanTabs .sess").forEach(function (b) {
+        b.className = "sess" + (b.getAttribute("data-pt") === LP_PLAN_TYPE ? " on" : "");
+      });
+    }
+    document.querySelectorAll("#lpPlanTabs .sess").forEach(function (b) {
+      b.onclick = function () {
+        var pt = b.getAttribute("data-pt");
+        if (pt === LP_PLAN_TYPE) return;
+        LP_PLAN_TYPE = pt;
+        paintLpPlanTabs();
+        generate();
+      };
+    });
+
+    /* unit duration in weeks (Liberia regular school sector: 3 or 4 weeks) */
+    var lpWeeksIn = $("#lpWeeks");
+    function paintLpWeeks() {
+      var v = lpWeeksIn ? (+lpWeeksIn.value || 4) : 4;
+      document.querySelectorAll("#lpWeekPresets .lp-w").forEach(function (b) {
+        b.className = "lp-w" + (+b.getAttribute("data-w") === v ? " on" : "");
+      });
+    }
+    document.querySelectorAll("#lpWeekPresets .lp-w").forEach(function (b) {
+      b.onclick = function () {
+        if (lpWeeksIn) lpWeeksIn.value = b.getAttribute("data-w");
+        paintLpWeeks();
+        generate();
+      };
+    });
+    if (lpWeeksIn) lpWeeksIn.onchange = function () {
+      lpWeeksIn.value = Math.max(1, Math.min(6, +lpWeeksIn.value || 4));
+      paintLpWeeks();
+      generate();
+    };
+
     /* lesson duration: preset minutes, or a custom number 15-240 */
     var lpIn = $("#lpMin");
     function paintLpPresets() {
@@ -1745,7 +1792,21 @@
       paintLpPresets();
       generate();
     };
+
+    var lpDaysIn = $("#lpDays");
+    if (lpDaysIn) lpDaysIn.onchange = function () { generate(); };
+    var lpAdjModeIn = $("#lpAdjMode");
+    if (lpAdjModeIn) lpAdjModeIn.onchange = function () { generate(); };
+    var lpAdjNoteIn = $("#lpAdjNote");
+    if (lpAdjNoteIn) {
+      lpAdjNoteIn.oninput = function () { generate(); };
+      lpAdjNoteIn.onchange = function () { generate(); };
+    }
+
     paintDocType();
+    paintLpPlanTabs();
+    paintLpWeeks();
+    paintLpPresets();
 
     /* cover page fields -> COVER, applied at generate time */
     var CVMAP = { cvSchool: "school", cvMotto: "motto", cvPupil: "pupil", cvTeacher: "teacher",

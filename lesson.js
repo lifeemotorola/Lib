@@ -1,10 +1,13 @@
-/* Teacher's Lesson Plan builder.
-   Fills the standard Liberian "TEACHER'S LESSON PLAN" form for each selected
-   period, from the curriculum data the platform already carries (objectives,
-   key ideas, worked examples, the unit's questions) and the lesson duration
-   the teacher sets. One plan per selected period; the duration splits into
-   Introduction / Main activities / Summary / Evaluation, and the minutes are
-   written into each stage so they add up to the whole lesson.
+/* Teacher's Lesson Plan and Weekly Unit Plan builder.
+   Fills the standard Liberian lesson and weekly unit plans for each selected
+   period, according to the regular Liberia school sector unit duration (3 or 4 weeks).
+   Supports both:
+     1. Daily Plan: Day-by-day lesson plans across the unit's 3 or 4 weeks until completed,
+        with weekly plan adjustments, stage timings (Introduction / Main activities / Summary /
+        Evaluation summing to the lesson duration), aids, methods, evaluation and assignments.
+     2. Weekly Plan: Comprehensive Teacher's Weekly Unit Plan with week-by-week unit breakdown
+        (Week 1, Week 2, Week 3, Week 4 / until unit completion), weekly objectives, procedures,
+        teacher aids, methods, weekly plan adjustments, evaluations, and period culmination.
 
    Emits the SAME block model as the gen-*.js engines (so the screen renderer,
    the print layout and the .docx exporter are shared) plus one new block kind,
@@ -221,15 +224,207 @@
     return chosen.slice(0, 3);
   }
 
-  /* ---------------- the form itself ---------------- */
-  function build(opts) {
+  /* ---------------- weekly plan adjustment generator ----------------
+     In the regular Liberia school sector, every unit runs for 3 or 4 weeks.
+     This helper calculates the weekly adjustment instructions and remedial
+     pacing for Week w of W weeks (3 or 4 weeks). */
+  function weeklyAdjustment(w, W, adjMode, customAdjNote, t) {
+    var terms = termNames(t);
+    var kw = terms.slice(0, 2).join(", ") || "core vocabulary";
+    var adj = "";
+    if (adjMode === "remedial") {
+      if (w === 1) {
+        adj = "Diagnostic Baseline & Scaffolding: Screen pupils for prerequisite skill gaps in " + kw + "; use word cards and concrete visual demonstrations; allot 10 min on Day 3 for small-group reading & handwriting support.";
+      } else if (w === 2) {
+        adj = "Step-by-Step Guided Reinforcement: Break multi-step exercises into single guided drills; monitor exercise books continuously; run a dedicated 15-minute remedial clinic on Day 4 for pupils struggling with foundational concepts.";
+      } else if (w === 3 && W >= 4) {
+        adj = "Targeted Error Correction: Review errors from Week 2 assignments; re-explain difficult concepts using peer study partners and concrete models before moving to application tasks.";
+      } else {
+        adj = "Mastery Catch-up & Scaffolded Assessment: Conduct targeted re-checks on remedial objectives prior to the unit test; provide extra thinking time and oral clarification of assessment questions for struggling readers.";
+      }
+    } else if (adjMode === "accelerated") {
+      if (w === 1) {
+        adj = "Fast-Track Foundation & Enrichment: Rapid diagnostic check on Day 1; fast-track basic definitions to allow early engagement with challenging concepts; provide extension problems for early finishers.";
+      } else if (w === 2) {
+        adj = "Intensive Practice & Higher-Order Thinking: Introduce complex multi-step problems and WASSCE/Liberian curriculum standard questions; encourage pupil-led chalkboard demonstrations.";
+      } else if (w === 3 && W >= 4) {
+        adj = "Real-World Application & Speed Drills: Set timed exercise sets and practical case study investigations; emphasize precision, rapid computation, and concise written explanation.";
+      } else {
+        adj = "Unit Mastery Period Examination: Administer full-length timed unit evaluation; conduct immediate rubric-based feedback and exam technique coaching; preview upcoming unit topics.";
+      }
+    } else {
+      /* standard progression */
+      if (w === 1) {
+        adj = "Baseline Diagnostic & Orientation: Administer a 5-min diagnostic starter on prerequisite knowledge on Day 1; pre-teach key terms (" + kw + ") on chalkboard; pace introduction to ensure firm grasp of foundational definitions.";
+      } else if (w === 2) {
+        adj = "Mid-Unit Formative Check & Guided Practice: Inspect exercise books on Day 3 to identify common misconceptions in core principles; pair struggling learners with study partners during guided practice; adjust pacing if additional modelling is required.";
+      } else if (w === 3 && W >= 4) {
+        adj = "Application & Practical Scaffolding: Form mixed-ability groups for practical investigations / case studies; check group understanding before independent work; provide guided hints for application tasks.";
+      } else {
+        adj = "Consolidation, Remedial Review & Unit Assessment: Dedicate Days 1–2 to reviewing unit objectives and addressing outstanding pupil questions; administer the Unit Period Assessment on Day 3/4; conduct item analysis and record post-assessment remedial actions.";
+      }
+    }
+    if (customAdjNote) {
+      adj += " \u2014 Teacher's Note: " + plain(customAdjNote);
+    }
+    return adj;
+  }
+
+  /* ---------------- weekly plan builder (Unit Scheme & Weekly Plans) ---------------- */
+  function buildWeeklyPlan(opts, SRC, topics) {
     var r = rng(opts.seed || 1);
-    var SRC = opts.curriculum || [];
-    var topics = SRC.filter(function (t) {
-      return t.grade === opts.grade && (!opts.topics || opts.topics.indexOf(t.period) >= 0);
+    var W = Math.max(1, Math.min(6, Math.round(+opts.lpWeeks || 4)));
+    var D = Math.max(15, Math.min(240, Math.round(+opts.lpMin || 40)));
+    var daysPerWeek = Math.max(1, Math.min(7, Math.round(+opts.lpDays || 5)));
+    var weeklyMin = daysPerWeek * D;
+    var adjMode = opts.lpAdjMode || "standard";
+    var customAdjNote = plain(opts.lpAdjNote);
+    var subj = plain(opts.subjectLine || opts.subjectName || "Lesson");
+    var gradeTxt = opts.wa ? "Grade 12 (WASSCE)" : "Grade " + opts.grade;
+    var teacher = plain(opts.teacherName) || "____________________";
+    var doc = [];
+
+    topics.forEach(function (t, i) {
+      var objs = objList(t);
+      var names = termNames(t);
+      var heads = studyHeads(t);
+      var open = opener(t);
+      var prev = neighbor(t, SRC, -1), next = neighbor(t, SRC, 1);
+      var evAll = evalItems(t, r, {});
+
+      /* Header: Teacher's Weekly Unit Plan */
+      doc.push({ k: "h1", t: "TEACHER\u2019S LESSON PLAN", c: true, per: t.period });
+      doc.push({ k: "formtable", rows: [
+        [{ t: "Teacher: " + teacher }, { t: "Date: ____________________" }],
+        [{ t: "Grade: " + gradeTxt }, { t: "Subject: " + subj }],
+        [{ t: "Duration: " + daysPerWeek + " days \u00d7 " + D + " min (" + weeklyMin + " min/week)" }, { t: "Topic: " + plain(t.title) }],
+        [{ t: "Unit Duration: " + W + " Weeks (Liberia School Sector)" },
+         { t: "Plan Format: Teacher's Weekly Unit Plan (Weeks 1 to " + W + ")" }]
+      ] });
+
+      doc.push({ k: "h3", t: "Instructional Objectives" });
+      doc.push({ k: "num", items: objs.length ? objs : ["Master the core concepts, skills and applications of " + plain(t.title) + "."] });
+
+      doc.push({ k: "formtable", rows: [
+        [{ t: "Teacher Aids", b: 1, c: 1 }, { t: "Teaching Method", b: 1, c: 1 }],
+        [{ t: aidsFor(t).map(function (a) { return "\u2022 " + a; }).join("\n") },
+         { t: methodFor(opts.subjectId || "", r).map(function (m) { return "\u2022 " + m; }).join("\n") }]
+      ] });
+
+      /* Master Weekly Plan Adjustment Table */
+      doc.push({ k: "h2", t: "Weekly Plan Adjustment & Progression Scheme (Weeks 1 to " + W + " Until Unit Completion)" });
+      var adjRows = [
+        [{ t: "Week", b: 1, c: 1 }, { t: "Weekly Focus / Subtopic", b: 1, c: 1 }, { t: "Weekly Plan Adjustment & Remedial Strategy", b: 1, c: 1 }]
+      ];
+      for (var w = 1; w <= W; w++) {
+        var wFocus = "";
+        if (w === 1) wFocus = heads[0] || "Foundations & Key Vocabulary";
+        else if (w === 2) wFocus = heads[1] || "Core Developmental Skills & Principles";
+        else if (w === 3 && W >= 4) wFocus = heads[2] || "Applied Investigations & Practice";
+        else wFocus = "Consolidation, Remedial Review & Unit Assessment";
+        var wAdj = weeklyAdjustment(w, W, adjMode, customAdjNote, t);
+        adjRows.push([
+          { t: "Week " + w, b: 1, c: 1 },
+          { t: wFocus },
+          { t: wAdj }
+        ]);
+      }
+      doc.push({ k: "formtable", rows: adjRows });
+
+      /* Week-by-Week Detailed Instructional Plan */
+      for (var wk = 1; wk <= W; wk++) {
+        var isLast = (wk === W);
+        var subhead = "";
+        if (wk === 1) subhead = heads[0] || "Foundations & Key Vocabulary";
+        else if (wk === 2) subhead = heads[1] || "Core Developmental Skills & Guided Practice";
+        else if (wk === 3 && W >= 4) subhead = heads[2] || "Applied Practice, Investigation & Case Study";
+        else subhead = "Consolidation, Remedial Review & Unit Period Assessment";
+
+        var wObjs = [];
+        if (objs.length >= W) {
+          var sIdx = Math.floor((wk - 1) * objs.length / W);
+          var eIdx = Math.floor(wk * objs.length / W);
+          wObjs = objs.slice(sIdx, Math.max(sIdx + 1, eIdx));
+        } else {
+          if (wk === 1) wObjs = [objs[0] || ("Identify foundational concepts and vocabulary of " + plain(t.title))];
+          else if (wk === 2) wObjs = [objs[1] || objs[0] || ("Apply principles and solve practice problems in " + plain(t.title))];
+          else if (wk === 3 && W >= 4) wObjs = [objs[2] || objs[1] || objs[0] || ("Investigate real-world applications in " + plain(t.title))];
+          else wObjs = ["Synthesise all unit concepts, correct learning errors, and demonstrate mastery on the unit period assessment."];
+        }
+
+        doc.push({ k: "h2", t: "Week " + wk + " of " + W + ": " + subhead });
+
+        var wAdjText = weeklyAdjustment(wk, W, adjMode, customAdjNote, t);
+        doc.push({ k: "formtable", rows: [
+          [{ t: "Week: " + wk + " of " + W + " (" + weeklyMin + " min / " + daysPerWeek + " periods)" }, { t: "Subtopic: " + subhead }],
+          [{ t: "Weekly Objectives:\n" + wObjs.map(function (o, idx) { return (idx + 1) + ". " + o; }).join("\n") },
+           { t: "Weekly Plan Adjustment & Remedial Strategy:\n\u2022 " + wAdjText }]
+        ] });
+
+        /* Classroom Procedures across the week */
+        doc.push({ k: "h3", t: "Classroom Procedures & Activities across Week " + wk });
+        var proc = [];
+        if (wk === 1) {
+          proc.push("Starter & Orientation (Days 1–2): Teacher introduces " + plain(t.title) + " and conducts diagnostic checks on prerequisite knowledge; writes key terms (" + (names.slice(0, 3).join(", ") || "core terms") + ") on the chalkboard.");
+          proc.push("Developmental Instruction (Days 2–4): Teacher explains core concepts with textbook examples; pupils engage in choral repetition, vocabulary drills, and guided workbook exercises.");
+          proc.push("Weekly Consolidation (Day " + daysPerWeek + "): Pupils review weekly terms in pairs; teacher administers weekly formative check and sets home assignment.");
+        } else if (wk === 2) {
+          proc.push("Review & Introduction (Day 1): Review Week 1 foundational concepts and check homework; teacher introduces developmental subtopic (" + subhead + ").");
+          proc.push("Guided Practice & Group Work (Days 2–4): Teacher models step-by-step worked examples on the chalkboard; pupils work in mixed-ability pairs solving textbook drills while teacher corrects misconceptions.");
+          proc.push("Weekly Formative Check (Day " + daysPerWeek + "): Oral quiz and formative written drill; teacher marks exercise books and assigns remedial practice.");
+        } else if (wk === 3 && W >= 4) {
+          proc.push("Advance Organiser (Day 1): Teacher connects previous skills to real-world applications and investigation tasks.");
+          proc.push("Practical Exploration & Problem Solving (Days 2–4): Pupils work in small groups on case studies, practical investigations, or multi-step problem sets; group presentations at the board.");
+          proc.push("Weekly Review (Day " + daysPerWeek + "): Synthesis of group findings; teacher highlights common errors and reviews assignment.");
+        } else {
+          proc.push("Comprehensive Unit Review (Days 1–2): Teacher reviews all instructional objectives of the unit (" + plain(t.title) + "); targeted remedial clinic for struggling pupils.");
+          proc.push("Unit Period Assessment (Day 3/4): Teacher administers the unit evaluation / period test; pupils work independently.");
+          proc.push("Post-Assessment Feedback & Reflection (Day " + daysPerWeek + "): Model answers shared on the chalkboard; pupils record corrections; teacher notes outcomes for the next unit (" + (next ? plain(next.title) : "Semester Review") + ").");
+        }
+        doc.push({ k: "num", items: proc });
+
+        /* Evaluation for the week */
+        var wEv = evAll.slice((wk - 1) % evAll.length, ((wk - 1) % evAll.length) + 2);
+        if (!wEv.length && evAll.length) wEv = [evAll[0]];
+        doc.push({ k: "h3", t: "Weekly Evaluation (Week " + wk + ")" });
+        if (wEv.length) {
+          doc.push({ k: "num", items: wEv.map(function (e) { return e.q; }) });
+          doc.push({ k: "p", t: "Model answers (for the teacher):" });
+          doc.push({ k: "num", items: wEv.map(function (e) { return e.a; }) });
+        } else {
+          doc.push({ k: "p", t: "The teacher administers three oral and written questions based on the week's objectives." });
+        }
+
+        /* Assignment for the week */
+        doc.push({ k: "h3", t: "Weekly Assignment (Week " + wk + ")" });
+        var wAsg = [];
+        if (names.length && wk === 1) wAsg.push("Copy and define the key terms in your exercise book: " + names.slice(0, 4).join(", ") + ".");
+        wAsg.push("Complete the weekly review exercises in the pupil workbook for " + subhead + ".");
+        if (isLast) wAsg.push("Prepare for the marking period assessment: review all study notes for " + plain(t.title) + ".");
+        else wAsg.push("Preview next week's subtopic and bring one written question to class.");
+        doc.push({ k: "num", items: wAsg });
+
+        if (wk < W) doc.push({ k: "rule" });
+      }
+
+      /* End-of-Unit Period Culmination */
+      doc.push({ k: "h2", t: "End-of-Unit Culmination & Period Assessment (Unit Complete)" });
+      doc.push({ k: "p", t: "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". All instructional objectives have been taught, adjusted weekly for pupil pacing, evaluated through formative checks, and consolidated with the marking period assessment." });
+
+      if (i < topics.length - 1) doc.push({ k: "pagebreak" });
     });
+
+    return { blocks: doc, topics: topics };
+  }
+
+  /* ---------------- daily lesson plan builder (with weekly adjustment) ---------------- */
+  function buildDailyPlan(opts, SRC, topics) {
+    var r = rng(opts.seed || 1);
+    var W = Math.max(1, Math.min(6, Math.round(+opts.lpWeeks || 4)));
     var D = Math.max(15, Math.min(240, Math.round(+opts.lpMin || 40)));
     var time = splitTime(D);
+    var adjMode = opts.lpAdjMode || "standard";
+    var customAdjNote = plain(opts.lpAdjNote);
     var subj = plain(opts.subjectLine || opts.subjectName || "Lesson");
     var gradeTxt = opts.wa ? "Grade 12 (WASSCE)" : "Grade " + opts.grade;
     var teacher = plain(opts.teacherName) || "____________________";
@@ -248,7 +443,9 @@
       doc.push({ k: "formtable", rows: [
         [{ t: "Teacher: " + teacher }, { t: "Date: ____________________" }],
         [{ t: "Grade: " + gradeTxt }, { t: "Subject: " + subj }],
-        [{ t: "Duration: " + D + " minutes" }, { t: "Topic: " + plain(t.title) }]
+        [{ t: "Duration: " + D + " minutes" }, { t: "Topic: " + plain(t.title) }],
+        [{ t: "Unit Duration: " + W + " Weeks (Liberia Sector)" },
+         { t: "Plan Scope: Daily Lesson Plan (Weekly Adjustments Applied)" }]
       ] });
 
       doc.push({ k: "h3", t: "Instructional Objectives" });
@@ -318,11 +515,41 @@
       doc.push({ k: "h3", t: "Assignment" });
       doc.push({ k: "num", items: asg });
 
+      /* ---- Weekly Plan Adjustment & Remedial Section across the 3 or 4 weeks ---- */
+      var wAdjRows = [
+        [{ t: "Week", b: 1, c: 1 }, { t: "Weekly Plan Adjustment & Remedial Pacing (" + W + " Weeks Total)", b: 1, c: 1 }]
+      ];
+      for (var w = 1; w <= W; w++) {
+        wAdjRows.push([
+          { t: "Week " + w, b: 1, c: 1 },
+          { t: weeklyAdjustment(w, W, adjMode, customAdjNote, t) }
+        ]);
+      }
+      doc.push({ k: "h3", t: "Weekly Plan Adjustment & Remedial Scheme (Unit Duration: " + W + " Weeks)" });
+      doc.push({ k: "formtable", rows: wAdjRows });
+
       if (i < topics.length - 1) doc.push({ k: "pagebreak" });
     });
 
     return { blocks: doc, topics: topics };
   }
 
-  window.LESSON_PLAN = { build: build, splitTime: splitTime };
+  /* ---------------- main dispatch ---------------- */
+  function build(opts) {
+    opts = opts || {};
+    var SRC = opts.curriculum || [];
+    var topics = SRC.filter(function (t) {
+      return t.grade === opts.grade && (!opts.topics || opts.topics.indexOf(t.period) >= 0);
+    });
+    if (opts.lpPlanType === "weekly") {
+      return buildWeeklyPlan(opts, SRC, topics);
+    }
+    return buildDailyPlan(opts, SRC, topics);
+  }
+
+  window.LESSON_PLAN = {
+    build: build,
+    splitTime: splitTime,
+    weeklyAdjustment: weeklyAdjustment
+  };
 })();
