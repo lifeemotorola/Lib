@@ -23,6 +23,13 @@ so the whole thing stays self-contained.
   short answer, MCQ, diagrams, experiments, word problems, challenges, ...),
   each backed by a deterministic generator with a **variant seed** — Test A /
   Test B share the same questions, just shuffled
+- **Teacher's Lesson Plan** — a Document switch (Course pack / Lesson plan)
+  fills the standard printed *Teacher's Lesson Plan* form — header fields,
+  instructional objectives, teacher aids and teaching method, Presentation &
+  Procedures with Initial/Developmental/Summary stages, Evaluation and
+  Assignment — for every selected period, written out from the lesson's own
+  content and timed to the duration you set (30–240 min, presets included;
+  the stage minutes always add up to the whole lesson)
 - **Study notes** for every unit: key ideas, worked examples and common
   mistakes — and for Social Studies, General Science, English, Mathematics,
   French, Religious & Moral Education and Physical Education Grades 1–9

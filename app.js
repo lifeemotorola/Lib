@@ -528,6 +528,14 @@
   function isTeacher() { return MODE === "teacher"; }
   window.PACK_MODE = function () { return MODE; };
 
+  /* ---------------- document type: course pack | teacher's lesson plan ----------------
+     "pack" is the usual course pack (notes, worksheets, tests, examinations).
+     "lp" fills the standard Teacher's Lesson Plan form for the selected
+     periods, timed to the duration set in the panel (lesson.js). */
+  var DOCTYPE = "pack";
+  function isLP() { return DOCTYPE === "lp"; }
+  window.PACK_DOC_TYPE = function () { return DOCTYPE; };
+
   /* ---------------- customizable cover page ----------------
      COVER holds user-entered details. PACK_COVER() is called by every gen-*.js
      engine to build the opening pages of the pack. */
@@ -764,7 +772,12 @@
       tests: $("#tests").checked,
       exam: $("#exam").checked,
       keys: isTeacher() ? $("#keys").checked : false,
-      teacher: isTeacher()
+      teacher: isTeacher(),
+      dtype: DOCTYPE,
+      lpMin: +$("#lpMin").value || 40,
+      subjectId: cur,
+      teacherName: (COVER.teacher || "").trim(),
+      school: (COVER.school || "").trim()
     };
   }
 
@@ -985,6 +998,16 @@
         b.rows.map(function (r) {
           return "<tr>" + r.map(function (c) { return "<td>" + (c ? esc(c) : "&nbsp;") + "</td>"; }).join("") + "</tr>";
         }).join("") + "</tbody></table>";
+      /* the teacher's lesson plan form: a bordered table with no header row;
+         cells are strings or {t, b(old), c(entre)} */
+      case "formtable": return '<table class="ftable"><tbody>' +
+        b.rows.map(function (row) {
+          return "<tr>" + row.map(function (c) {
+            var cell = (typeof c === "object" && c) ? c : { t: c };
+            var cls = (cell.b ? "b " : "") + (cell.c ? "ctr" : "");
+            return '<td' + (cls ? ' class="' + cls.replace(/\s+$/, "") + '"' : "") + ">" + nl(cell.t || "") + "</td>";
+          }).join("") + "</tr>";
+        }).join("") + "</tbody></table>";
       case "lines": { var o = ""; for (var i = 0; i < b.n; i++) o += '<div class="wl"></div>'; return o; }
       case "space": return '<div class="sp"></div>';
       case "rule": return "<hr>";
@@ -1031,15 +1054,19 @@
     var bnd = bandOf(o.grade);
     runhead.left = S().label + " \u00b7 " +
       (bnd.id === "el" ? "Grade " : bnd.label + " Grade ") + o.grade;
-    runhead.right = isTeacher() ? "Teacher's Copy \u00b7 Answer Keys Included" : "Pupil Workbook & Assessment Pack";
+    runhead.right = isLP()
+      ? "Teacher's Lesson Plan"
+      : isTeacher() ? "Teacher's Copy \u00b7 Answer Keys Included" : "Pupil Workbook & Assessment Pack";
     /* name the grade actually being generated, not the whole band. WASSCE
        packs name the WAEC examination instead of the national curriculum. */
     var band = S().wa
       ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
       : "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
-    runhead.foot = isTeacher()
-      ? band + "   |   TEACHER'S COPY \u2014 not for pupil distribution"
-      : band + "   |   Name: ____________________   School: ____________________";
+    runhead.foot = isLP()
+      ? band + "   |   TEACHER'S LESSON PLAN \u2014 for the teacher only"
+      : isTeacher()
+        ? band + "   |   TEACHER'S COPY \u2014 not for pupil distribution"
+        : band + "   |   Name: ____________________   School: ____________________";
   }
   function bandTop(per) {
     var left = runhead.left + (per ? " \u00b7 " + periodLabel(per) : "");
@@ -1249,6 +1276,24 @@
           body += tableXml(["Word", "Meaning"], rows, FILL); break;
         }
         case "table": body += tableXml(b.head, b.rows, FILL); break;
+        case "formtable": {
+          /* lesson plan form fields: bordered rows, no header shading,
+             columns sized to the widest row so labels and values line up */
+          var fx = '<w:tbl><w:tblPr><w:tblW w:w="10206" w:type="dxa"/><w:tblBorders>' +
+            ["top", "left", "bottom", "right", "insideH", "insideV"].map(function (s) {
+              return "<w:" + s + ' w:val="single" w:sz="6" w:color="9AB3D9"/>';
+            }).join("") + "</w:tblBorders></w:tblPr>";
+          b.rows.forEach(function (row) {
+            var w = Math.floor(10206 / row.length);
+            fx += "<w:tr>" + row.map(function (c) {
+              var cell = (typeof c === "object" && c) ? c : { t: c };
+              return '<w:tc><w:tcPr><w:tcW w:w="' + w + '" w:type="dxa"/></w:tcPr>' +
+                para(cell.t || " ", { b: !!cell.b, sz: 26, after: 40, align: cell.c ? "center" : null }) +
+                "</w:tc>";
+            }).join("") + "</w:tr>";
+          });
+          body += fx + "</w:tbl>" + para("", { after: 80, sz: 8 }); break;
+        }
         case "lines": for (var j = 0; j < b.n; j++) body += para("_______________________________________________________________", { sz: 28, after: 160, color: "AAAAAA" }); break;
         case "space": body += para("", { sz: 18 }); break;
         case "rule": body += para("", { border: true, sz: 10 }); break;
@@ -1432,7 +1477,12 @@
     o.subjectName = (sj.packName || sj.label).toUpperCase();
     o.subjectLine = sj.packName || sj.label;
     o.bandName = bandOf(o.grade).label;
-    pack = sj.engine().buildPack(o);
+    if (isLP() && window.LESSON_PLAN) {
+      /* the lesson plan is a teacher's document whatever the session is */
+      pack = window.LESSON_PLAN.build(o);
+    } else {
+      pack = sj.engine().buildPack(o);
+    }
     setRunning(o);
     render(pack.blocks);
     /* expose context for Emmanuel, the AI tutor */
@@ -1440,8 +1490,11 @@
     window.PACK_CUR_GRADE = o.grade;
     /* feed the voice reader this pack's difficult words and sentences */
     if (window.VOICE_READER) window.VOICE_READER.loadFromPack(pack, cur, sj.label, o.grade);
-    $("#meta").textContent = S().label + " · Grade " + o.grade + " · " + pack.topics.length +
-      " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
+    $("#meta").textContent = isLP()
+      ? S().label + " · Grade " + o.grade + " · " + pack.topics.length +
+        " lesson plan(s) · " + o.lpMin + " min each · seed " + o.seed
+      : S().label + " · Grade " + o.grade + " · " + pack.topics.length +
+        " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
     $("#exportbar").style.display = "flex";
   }
 
@@ -1524,6 +1577,12 @@
        the Word export, so the teacher's saved PDF is named after the pack
        instead of the platform. */
     function packFileBase() {
+      if (isLP()) {
+        /* the lesson plan is always the teacher's document */
+        return S().file(opts().grade)
+          .replace(/\.docx$/, "")
+          .replace(/_Workbook|_Pack$/, "_Lesson_Plan") + "_Teacher_Copy";
+      }
       return S().file(opts().grade).replace(/\.docx$/, isTeacher() ? "_Teacher_Copy" : "_Student");
     }
     $("#print").onclick = function () {
@@ -1638,6 +1697,55 @@
       b.onclick = function () { setTrack(b.getAttribute("data-t")); };
     });
     paintSession();
+
+    /* ---- document type: course pack | teacher's lesson plan ----
+       The lesson plan hides the exercise-type and pack-contents sections
+       (the plan is built from the curriculum data, not from worksheets)
+       and shows the lesson-duration controls instead. */
+    function paintDocType() {
+      document.querySelectorAll("#dtype .sess").forEach(function (b) {
+        b.className = "sess" + (b.getAttribute("data-d") === DOCTYPE ? " on" : "");
+      });
+      var lp = isLP();
+      var sh = $("#ddSheets"), pa = $("#ddParts"), lw = $("#lpWrap");
+      if (sh) sh.style.display = lp ? "none" : "";
+      if (pa) pa.style.display = lp ? "none" : "";
+      if (lw) lw.style.display = lp ? "" : "none";
+      var n = $("#dtypeNote");
+      if (n) n.textContent = lp
+        ? "Lesson plan: the standard teacher's lesson plan form, filled in for each selected period and timed to the duration below. The Teacher name from Customization is printed on every plan; the designed cover is not used."
+        : "Course pack: study notes, worksheets, period tests and examinations for the selected periods.";
+    }
+    document.querySelectorAll("#dtype .sess").forEach(function (b) {
+      b.onclick = function () {
+        var d = b.getAttribute("data-d");
+        if (d === DOCTYPE) return;
+        DOCTYPE = d;
+        paintDocType();
+        generate();
+      };
+    });
+    /* lesson duration: preset minutes, or a custom number 15-240 */
+    var lpIn = $("#lpMin");
+    function paintLpPresets() {
+      var v = +lpIn.value || 40;
+      document.querySelectorAll("#lpPresets .lp-p").forEach(function (b) {
+        b.className = "lp-p" + (+b.getAttribute("data-m") === v ? " on" : "");
+      });
+    }
+    document.querySelectorAll("#lpPresets .lp-p").forEach(function (b) {
+      b.onclick = function () {
+        lpIn.value = b.getAttribute("data-m");
+        paintLpPresets();
+        generate();
+      };
+    });
+    if (lpIn) lpIn.onchange = function () {
+      lpIn.value = Math.max(15, Math.min(240, +lpIn.value || 40));
+      paintLpPresets();
+      generate();
+    };
+    paintDocType();
 
     /* cover page fields -> COVER, applied at generate time */
     var CVMAP = { cvSchool: "school", cvMotto: "motto", cvPupil: "pupil", cvTeacher: "teacher",

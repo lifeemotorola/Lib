@@ -83,6 +83,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .mini button{flex:1;font-size:.74rem;padding:5px;border:1px solid var(--line);background:#f5f9ff;
   color:var(--bleu);border-radius:7px;cursor:pointer}
 .mini button:hover{background:#e8f0ff}
+.mini button.lp-p.on{background:var(--bleu);border-color:var(--bleu);color:#fff}
 .btn{width:100%;padding:11px;border:none;border-radius:11px;font-weight:700;font-size:.94rem;cursor:pointer;margin-top:12px}
 .btn-p{background:var(--bleu);color:#fff}
 .btn-p:hover{background:var(--bleu-l)}
@@ -133,6 +134,10 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .page th,.page td{border:1px solid #9ab3d9;padding:5px 8px;text-align:left;vertical-align:top}
 .page th{background:#dce6f5;font-weight:700}
 .page td:first-child{font-weight:600}
+/* form-style table (teacher's lesson plan): no header row, no default bold */
+.ftable td:first-child{font-weight:400}
+.ftable td.b{font-weight:700}
+.ftable td.ctr{text-align:center}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}
 .cols ol,.cols ul{list-style:none;margin:6px 0;padding:0}
 .cols li{margin:7px 0}
