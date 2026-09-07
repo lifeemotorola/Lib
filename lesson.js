@@ -138,6 +138,7 @@
     ma: ["Guided practice and drill", "Modelling worked examples on the board", "Question and answer", "Pair and group work", "Real-life problems"],
     ss: ["Discussion and class debate", "Case study and problem solving", "Use of maps, pictures and real examples", "Question and answer", "Group work"],
     ec: ["Discussion and class debate", "Problem solving with real examples", "Use of maps, pictures and tables", "Question and answer", "Group work"],
+    hi: ["Analysis and comparison of historical sources", "Use of maps and timelines", "Evidence-based discussion", "Question and answer", "Pair and group enquiry"],
     gg: ["Use of maps, pictures and the globe", "Question and answer", "Guided practice", "Group work", "Observation of the environment"],
     rm: ["Discussion", "Storytelling and role play", "Question and answer", "Group work", "Personal reflection"],
     pe: ["Demonstration", "Practical performance", "Question and answer", "Group and pair work", "Use of simple equipment"],
@@ -156,7 +157,7 @@
     if (t.experiment && t.experiment.length) a.push("Practical materials for the class investigation");
     if (t.passage && t.passage.text) a.push("Printed reading passage");
     if (t.phonics && t.phonics.length) a.push("Letter cards and sound-pattern charts");
-    if (t.map || t.mapwork) a.push("Outline map of Liberia and place names");
+    if (t.map || t.mapwork) a.push("Outline maps, timelines and place names for the topic");
     if (t.devices && t.devices.length) a.push("Excerpts from the set text");
     return a.slice(0, 6);
   }

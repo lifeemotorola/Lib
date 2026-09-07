@@ -5,7 +5,7 @@ Liberian National Curriculum: pupil workbooks, period tests, semester
 examinations and teacher's answer keys — in **English, Phonics, French, General
 Science, Mathematics, Social Studies, Religious & Moral Education, Physical
 Education, Biology, Chemistry, Physics, Economics, English Grammar,
-Geography and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
+Geography, History and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
 
 Everything runs from one HTML file with **no server and no internet**
 (`index.html`, about 3.5 MB). It has no dependencies at runtime — the
@@ -14,7 +14,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **15 subjects** with real curriculum content (6 units per grade per subject)
+- **16 National Curriculum subjects** with real curriculum content (6 units per grade per subject)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -42,7 +42,9 @@ so the whole thing stays self-contained.
   French, Religious & Moral Education and Physical Education Grades 1–9
   (Mathematics, French and Phonics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
-  transcribed verbatim from the official curriculum guide
+  transcribed verbatim from the official curriculum guide. **Senior High
+  History (Grades 10–12)** includes explanatory study notes and exercises
+  aligned to the uploaded History guide, with source pages recorded per unit
 - **Voice reader (offline)** — a floating "voice reader" that pronounces the
   difficult words of the current subject or reads any sentence aloud, using the
   browser's built-in speech engine (no internet, no key, works from a USB
@@ -107,7 +109,7 @@ not allow service workers from a `file://` URL.
 | Control | What it does |
 |---|---|
 | **Session** | `Student` or `Teacher`. Teacher adds the answer-key pack contents. |
-| **Subject** | One of the 15 subjects; Biology/Chemistry/Physics reuse the Science engine, and Economics/Geography reuse the Social Studies engine, and Literature and Phonics have their own engines. |
+| **Subject** | One of the 16 National Curriculum subjects; Biology/Chemistry/Physics reuse the Science engine, and Economics/Geography/History reuse the Social Studies engine, and Literature and Phonics have their own engines. |
 | **Level / Grade** | Education band (Elementary, Junior High, Senior High) and grade; a subject only shows the bands it covers. |
 | **Units to include** | Select the curriculum periods per grade. |
 | **Exercise types** | Which worksheets each unit gets. |
@@ -151,12 +153,40 @@ same tool lives in `book.html`.
 | Economics (`ec`) | 10–12 | 6 | 18 |
 | English Grammar (`eg`) | 10–12 | 6 | 18 |
 | Geography (`gg`) | 10–12 | 6 | 18 |
+| History (`hi`) | 10–12 | 6 | 18 |
 | Literature (`li`) | 10–12 | 6 | 18 |
 
 > **Coverage:** Mathematics, French and **Phonics** span Grades 1–12, and
-> Biology, Chemistry, Physics, Economics, English Grammar, Geography and
+> Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and
 > Literature cover Grades 10–12; the other elementary and junior-high
 > subjects stop at Grade 9.
+
+### Senior High History
+
+Choose **National Curriculum → History → Grade 10, 11 or 12**. History is
+separate from **WASSCE → WASSCE History**, which remains the Grade 12 exam track.
+All six periods per grade support student and teacher course packs, study
+notes, worksheets, period tests, semester exams, daily/weekly lesson plans,
+Word export and Print/PDF, including offline use.
+
+- **Grade 10:** African historical evidence; Ethiopia and Swahili civilization;
+  Liberian state and society; Ghana, Mali and Songhai; other African states;
+  the slave trade, exploration and colonization.
+- **Grade 11:** early foundations of European history; Greece, Macedonia and
+  Rome; Christianity and the Reformations; medieval society; industrialization
+  and the Enlightenment; imperialism, revolutions and the world wars.
+- **Grade 12:** Liberia's civil war and peace process; foreign policy; seven
+  selected presidents; economic history; Africa and the UN; eastern African
+  independence struggles.
+
+`data-hi.js` follows `uploads/History 10-12.pdf`, pp. 2–34. Ghana, Mali and
+Songhai are combined in Grade 10 Period IV, as in the guide. The study notes
+and practice questions are **original explanatory material aligned to the
+guide**, not a verbatim transcription or official examination questions.
+The guide's election-list typo is clarified as 2005 rather than 2000, and
+later medieval universities are distinguished from its 500–1000 heading.
+History reuses the existing world-history classroom cover image, so no
+additional download or runtime service is needed.
 
 ## Emmanuel, the AI tutor — a key that never touches the browser
 
@@ -266,7 +296,7 @@ packs must never be locked out by it.
 | `styles.css` | All styling, including A4 sheet geometry and `@media print` rules. |
 | `app.js` | The platform: subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence. |
 | `data-*.js` | Curriculum content per subject (`data-en.js`, `data-pho.js` = Phonics Grades 1–12, `data-ma79.js` = Junior High part, `data-bi.js`, ...). |
-| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg` use `gen-ss.js`; Literature has its own, `gen-li.js`, and Phonics its own, `gen-pho.js`). |
+| `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg`/`hi` use `gen-ss.js`; Literature has its own, `gen-li.js`, and Phonics its own, `gen-pho.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `ai.js` | The Emmanuel AI tutor: chat panel, streaming answers, and the quiet failure handling described below. |
@@ -279,7 +309,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Two dependency-free Node checks sit alongside them: `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Two dependency-free Node checks sit alongside them: `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -304,15 +334,19 @@ packs must never be locked out by it.
   `**bold**` markup (converted to `<b>`), used for key terms throughout the
   course text — but not inside `table` cells, which are escaped, not
   rendered. Single `*asterisks*` are not converted, so example words and
-  sentences are quoted instead of italicised. All 15 subjects now carry full
-  verbatim notes derived from their curriculum guides — Social Studies,
+  sentences are quoted instead of italicised. The original 15 subjects carry
+  notes derived from their curriculum guides — Social Studies,
   General Science, English, Mathematics, French, Religious & Moral Education
   and Physical Education, Grades 1–9 (54 units each, plus the 42 Senior High
   Mathematics units, the 18 Senior High French units and the 72 Phonics units
   covering Grades 1–12), and Biology,
   Chemistry, Physics, Economics, English
   Grammar, Geography and Literature, Grades 10–12 (18 units each) — with the
-  guide page range of each unit recorded in a comment above its list.
+  guide page range of each unit recorded in a comment above its list. History
+  adds 18 units of original explanatory notes aligned to the uploaded guide,
+  with machine-readable `source.file` and `source.pages` fields. The renderer
+  preserves these authored blocks as-is too; the rendering test does not claim
+  that authored explanations are verbatim text from the PDF.
 - Generators emit a **uniform block model**
   (`{k:"h3"|"p"|"table"|"num"|"bul"|"mcq"|..., t/head/rows/...}`), so one
   renderer handles pagination and one exporter builds Word for every subject.
@@ -339,6 +373,9 @@ node tests/book.js
 # UNIT_NOTES/blockHtml/rich sources against the data files
 node tests/notes-verbatim.js
 
+# Senior High History coverage, worksheets, keys and lesson plans (no dependencies)
+node tests/history.js
+
 # voice reader and AI tutor (no dependencies)
 node tests/voice.js
 node tests/ai.js
@@ -348,6 +385,7 @@ python3 -m pip install -r requirements.txt
 python3 -m playwright install chromium
 python3 tests/ui.py          # panel, covers, uploads, duplex helper, responsive
 python3 tests/regress.py     # every subject/grade/session, font sizes, devices
+python3 tests/history.py     # History track/grade controls, packs, plans, exports
 ```
 
 `tests/ui.py` guards the settings panel, cover templates, image uploads,

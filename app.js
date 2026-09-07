@@ -118,6 +118,14 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Geography_Grade" + g + "_Workbook.docx"; }
     },
+    hi: {
+      label: "History", icon: "sub-his", accent: "#8a5a00", coverArt: "ss",
+      curriculum: function () { return HI_CURRICULUM; },
+      engine: function () { return GEN_SS; },
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "sort", "map", "casestudy", "project", "apply"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "History_Grade" + g + "_Workbook.docx"; }
+    },
     li: {
       label: "Literature", icon: "sub-li", accent: "#4a2f7a",
       curriculum: function () { return LI_CURRICULUM; },
@@ -594,12 +602,13 @@
      The whole WASSCE track shares one authentic cover — the WAEC objective
      answer sheet (assets/covers/wa.png) — so every WASSCE subject (Maths,
      English, History, Biology, …) shows the real examination cover. National
-     curriculum subjects keep their own subject-matched artwork by id. */
+     curriculum subjects use their own artwork by id or a registered coverArt
+     alias (History shares the Social Studies world-history classroom). */
   function activeCoverBg() {
     if (COVER_IMG.bg) return COVER_IMG.bg;
     if (!COVER.useSubjectArt) return null;
     if (S() && S().wa) return SUBJECT_COVER_ART.wa || null;
-    return SUBJECT_COVER_ART[cur] || null;
+    return SUBJECT_COVER_ART[S().coverArt || cur] || null;
   }
 
   var IMG_MAX = { logo: 520, bg: 1400 };          /* longest edge, pixels */
@@ -876,7 +885,7 @@
 
     /* Grades outside the elementary band come from their own curriculum guide,
        so name the subject as that guide actually titles it. */
-    var JH_NAME = { en: "English &mdash; Language Arts", pho: "Phonics &mdash; Word Study", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography", li: "Literature" };
+    var JH_NAME = { en: "English &mdash; Language Arts", pho: "Phonics &mdash; Word Study", sc: "General Science", ma: "Mathematics", ss: "Social Studies", fr: "French", pe: "Physical Education", rm: "Religious &amp; Moral Education", bi: "Biology", ch: "Chemistry", ph: "Physics", ec: "Economics", eg: "English Grammar", gg: "Geography", hi: "History", li: "Literature" };
     var jh = $("#jhNote");
     if (jh) {
       if (S().wa) {
@@ -1652,6 +1661,7 @@
         ec: { h1: "1F5F7A", h2: "2E86A8", fill: "DCEDF5" },
         eg: { h1: "7A4A12", h2: "A8681E", fill: "F7E8D2" },
         gg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" },
+        hi: { h1: "8A5A00", h2: "B8860B", fill: "F7EBD0" },
         li: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" },
         wma: { h1: "5B2A86", h2: "8247B5", fill: "EBDFF7" },
         wen: { h1: "0B6B3A", h2: "12864B", fill: "DCF0E4" },
