@@ -439,6 +439,18 @@ const SUBJECTS = [
               facts: ["the iron-ore railway to Buchanan", "Mount Coffee"] },
             { grade: 12, period: "VI",
               facts: ["Mano, St Paul, St John, Cestos, Cavally and Lofa", "Sapo"] }] },
+  /* History's notes are authored explanations aligned to the PDF outline;
+     this check verifies unchanged rendering, not verbatim PDF transcription. */
+  { name: "History", global: "HI_CURRICULUM",
+    files: ["data-hi.js"],
+    grades: { from: 10, to: 12 },
+    spots: [{ grade: 10, period: "I", facts: ["Kush", "Napata", "Meroe"] },
+            { grade: 10, period: "IV", facts: ["Ghana", "Sundiata Keita", "Mansa Musa", "1591"] },
+            { grade: 11, period: "II", facts: ["Athens", "Sparta", "Alexander", "476 CE"] },
+            { grade: 11, period: "IV", facts: ["Paris and Oxford", "Thomas Aquinas", "after 1000"] },
+            { grade: 12, period: "I", facts: ["1997, 2005, 2011 and 2017", "Ruth Perry"] },
+            { grade: 12, period: "III", facts: ["Joseph Jenkins Roberts", "Charles D. B. King", "1986–1990"] },
+            { grade: 12, period: "VI", facts: ["Tanganyika", "Zanzibar", "1964"] }] },
   { name: "Literature", global: "LI_CURRICULUM",
     files: ["data-li.js"],
     grades: { from: 10, to: 12 },   /* Senior High band: every unit from Grade 10 to Grade 12 must carry study[] */

@@ -210,6 +210,12 @@ body[data-subject="pe"] .top{background:linear-gradient(135deg,#1f7a3d,#2e9e55)}
 body[data-subject="pe"] .page th{background:#def2e4}
 body[data-subject="pe"] .page th,body[data-subject="pe"] .page td{border-color:#8ccaa2}
 
+/* Senior High History shares the warm archive palette, not the WASSCE track. */
+body[data-subject="hi"]{--bleu:#8a5a00;--bleu-l:#b8860b;--rouge:#0b3b8c}
+body[data-subject="hi"] .top{background:linear-gradient(135deg,#8a5a00,#b8860b)}
+body[data-subject="hi"] .page th{background:#f7ebd0}
+body[data-subject="hi"] .page th,body[data-subject="hi"] .page td{border-color:#d8bb77}
+
 body[data-subject="gg"]{--bleu:#1f6b4f;--bleu-l:#2e8b6a;--rouge:#8a5a00}
 body[data-subject="gg"] .top{background:linear-gradient(135deg,#1f6b4f,#2e8b6a)}
 body[data-subject="gg"] .page th{background:#dcf0e7}
