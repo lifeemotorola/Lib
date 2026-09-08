@@ -3,10 +3,13 @@
 Not part of the suite; added to find a CI-only failure and removed afterwards.
 """
 import json
+import sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-URL = Path(__file__).resolve().parent.parent.joinpath("index.html").as_uri()
+TARGET = sys.argv[1] if len(sys.argv) > 1 else str(
+    Path(__file__).resolve().parent.parent.joinpath("index.html"))
+URL = Path(TARGET).as_uri()
 
 with sync_playwright() as pw:
     b = pw.chromium.launch(args=["--no-sandbox", "--disable-dev-shm-usage"])
@@ -53,4 +56,5 @@ with sync_playwright() as pw:
              const i = t.indexOf('SENIOR HIGH'); return i < 0 ? 'none' : t.slice(i-40, i+60); }""")
     out["pageerrors"] = errs[:3]
     b.close()
+out["target"] = Path(TARGET).name
 print("DIAG " + json.dumps(out, ensure_ascii=False))
