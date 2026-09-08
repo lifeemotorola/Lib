@@ -107,8 +107,8 @@ with sync_playwright() as p:
     art = pg.evaluate("""()=>{const a=window.SUBJECT_COVER_ART||{};
         return {ids:Object.keys(a), png:Object.values(a).every(x=>x.url.startsWith('data:image/png;base64,')),
                 unique:new Set(Object.values(a).map(x=>x.url)).size};}""")
-    expected_art = {"en", "pho", "fr", "sc", "ma", "ss", "rm", "pe", "bi", "ch", "ph", "ec", "eg", "gg", "li"}
-    if set(art["ids"]) != expected_art or not art["png"] or art["unique"] != 15:
+    expected_art = {"en", "pho", "fr", "sc", "ma", "ss", "rm", "pe", "bi", "ch", "ph", "ec", "eg", "gg", "li", "wa", "kg"}
+    if set(art["ids"]) != expected_art or not art["png"] or art["unique"] != 17:
         bad.append(f"subject cover artwork incomplete or duplicated: {art}")
     pg.eval_on_selector("#ddCover>summary", "e=>e.click()"); pg.wait_for_timeout(150)
     tpls = pg.eval_on_selector_all(".tplbtn", "e=>e.map(x=>x.dataset.tpl)")
@@ -291,8 +291,9 @@ with sync_playwright() as p:
     pg.close()
 
     # --- 7. kindergarten cover-page levels and the cover designer ---
-    # KG-I / KG-II carry no transcribed curriculum, so they must produce the
-    # customizable cover sheet alone, and the designer must drive it live.
+    # Outside the Kindergarten subject's lesson plans, KG-I / KG-II carry no
+    # transcribed curriculum, so they must produce the customizable cover
+    # sheet alone, and the designer must drive it live.
     pg = b.new_page(viewport={"width": 1366, "height": 900})
     pg.goto(HTML); pg.wait_for_timeout(800)
     if pg.locator("#bands .bandtab[data-b='kg']").count() != 1:
@@ -378,6 +379,26 @@ with sync_playwright() as p:
     over = pg.evaluate("()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1")
     if over:
         bad.append("cover designer causes horizontal overflow on a small handset")
+    # --- 7b. the Kindergarten subject plans real ECD lessons on KG-I / KG-II ---
+    pg.set_viewport_size({"width": 1366, "height": 900}); pg.wait_for_timeout(300)
+    pg.eval_on_selector(".subtab[data-s='kg']", "e=>e.click()"); pg.wait_for_timeout(400)
+    pg.eval_on_selector("#dtype .sess[data-d='lp']", "e=>e.click()"); pg.wait_for_timeout(300)
+    kg_grades = pg.locator("#grade option").evaluate_all("els => els.map(el => el.value)")
+    if kg_grades != ["kg1", "kg2"]:
+        bad.append(f"Kindergarten lesson plans should offer KG-I and KG-II, got {kg_grades}")
+    if pg.locator("#periods .pk").count() != 2:
+        bad.append("the KG-I theme units must be offered for the plan")
+    pg.eval_on_selector("#gen", "e=>e.click()"); pg.wait_for_timeout(900)
+    kg_text = pg.locator("#doc").inner_text()
+    if "TEACHER" not in kg_text or "LESSON PLAN" not in kg_text:
+        bad.append("no lesson plan generated for the Kindergarten subject")
+    if "Welcome song" not in kg_text or "exercise book" in kg_text:
+        bad.append("the KG plan is not ECD-worded (song in, exercise books out)")
+    if "KG-I" not in kg_text:
+        bad.append("the KG plan does not name its level")
+    if "lesson plan(s)" not in pg.locator("#meta").inner_text():
+        bad.append("the KG plan metadata is wrong")
+    print("  kindergarten lesson plan: KG-I daily plan ECD-worded ok")
     print(f"  kindergarten cover: 1 sheet, designer {ncol} colours / {nshow} switches ok")
     pg.close()
 

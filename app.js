@@ -142,6 +142,21 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Literature_Grade" + g + "_Workbook.docx"; }
     },
+    /* ---------------- Kindergarten (ECD) ----------------
+       The national Early Childhood Development theme units for KG-I and
+       KG-II (data-kg.js). Kindergarten plans teacher's lesson plans from the
+       official ECD planners; in course-pack mode a KG level still produces
+       the customizable cover sheet alone. The sheet engine is reused from
+       Social Studies so the sheet list, save/restore validation and the
+       teaching hooks keep working — KG packs never reach it. */
+    kg: {
+      label: "Kindergarten", icon: "sub-kg", accent: "#b3541e",
+      curriculum: function () { return KG_CURRICULUM; },
+      engine: function () { return GEN_SS; },
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Kindergarten_" + gradeText(g).replace(/\s+/g, "_") + "_Plans.docx"; }
+    },
     /* ---------------- WASSCE session ----------------
      WASSCE = West African Senior School Certificate Examination (WAEC).
      One entry per subject of the WASSCE syllabus the school keeps in
@@ -254,7 +269,8 @@
      filters the level dropdown; a subject only shows the bands it covers.
 
      Kindergarten sits below Grade 1 and carries the two levels KG-I and KG-II.
-     No kindergarten syllabus is transcribed on this platform, so those two are
+     The transcribed ECD theme units (data-kg.js) are planned behind the
+     Kindergarten subject's lesson plans; everywhere else the two levels stay
      **cover-page levels**: choosing one produces the customizable cover sheet
      on its own, never invented worksheets. They exist so a school can print a
      proper KG-I / KG-II cover for work it prepares itself. */
@@ -962,7 +978,8 @@
   /* the grade list is taken from the subject's own curriculum, so English
      offers Grades 1-9 while the other subjects offer Grades 1-6. The two
      kindergarten levels are offered on every national-curriculum subject
-     because they produce a cover page, which any subject can carry. */
+     because they produce a cover page, which any subject can carry; the
+     Kindergarten subject additionally plans real ECD lessons on them. */
   function refreshGrades() {
     var sel = $("#grade"), prev = sel.value;
     var gs = [];
@@ -971,10 +988,10 @@
 
     /* which bands does this subject actually cover? Kindergarten is offered
        throughout the national curriculum track but not in the WASSCE track,
-       which is a Grade 12 examination, and not for a lesson plan either: a KG
-       level has no units, so there is nothing to plan a lesson around. */
+       which is a Grade 12 examination. Lesson plans hide it on every subject
+       except Kindergarten: only the transcribed ECD units can fill a plan. */
     var avail = BANDS.filter(function (b) {
-      if (b.kg) return TRACK !== "wa" && !isLP();
+      if (b.kg) return TRACK !== "wa" && (!isLP() || cur === "kg");
       return gs.some(function (g) { return g >= b.lo && g <= b.hi; });
     });
     /* Kindergarten is only ever entered by clicking its band tab, never by
@@ -1042,7 +1059,9 @@
         jh.textContent = "Civics Grades 7\u201312: original supplementary teaching material, not an official syllabus transcription. Review against your school\u2019s scheme of work.";
       } else if (band.kg) {
         jh.style.display = "";
-        jh.innerHTML = "<b>KG-I and KG-II are cover-page levels.</b> No kindergarten curriculum is transcribed here, so the document is the customizable cover sheet alone &mdash; design it in <b>Customization</b> and print or export it for your own KG work.";
+        jh.innerHTML = cur === "kg" && isLP()
+          ? "<b>KG-I and KG-II lesson plans</b> are built from the transcribed national ECD theme units. Set <b>Weeks/unit</b> to 2 &mdash; each planner section runs 1&ndash;2 weeks &mdash; and pick the periods to plan."
+          : "<b>KG-I and KG-II are cover-page levels.</b> No kindergarten curriculum is transcribed here, so the document is the customizable cover sheet alone &mdash; design it in <b>Customization</b> and print or export it for your own KG work.";
       } else if (curBand === "el") {
         jh.style.display = "none";
       } else {
@@ -1056,9 +1075,10 @@
   function refreshPeriods() {
     var g = gradeVal(), box = $("#periods");
     box.innerHTML = "";
-    /* a kindergarten level carries no transcribed units, so there is nothing
-       to tick: the generated document is the cover page alone */
-    if (isKG(g)) {
+    /* a kindergarten level carries no transcribed units outside the
+       Kindergarten subject's lesson plans, so there is nothing to tick: the
+       generated document is the cover page alone */
+    if (isKG(g) && !(cur === "kg" && isLP())) {
       var kgNote = document.createElement("p");
       kgNote.className = "hint";
       kgNote.innerHTML = "<b>" + gradeText(g) + "</b> carries no transcribed units, so there is nothing to tick. The generated document is the cover page you design in <b>Customization</b>.";
@@ -1281,7 +1301,7 @@
     var band = cur === "ci" ? "Civics · Original supplementary material · Grade " + o.grade : S().wa
       ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
       : bnd.kg
-      ? o.levelName + " \u00b7 " + (o.subjectLine || S().label) + " \u00b7 Cover page"
+      ? o.levelName + " \u00b7 " + (o.subjectLine || S().label) + (isLP() ? " \u00b7 Lesson Plans" : " \u00b7 Cover page")
       : "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
     runhead.foot = isLP()
       ? band + "   |   " + (o.lpPlanType === "weekly" ? "TEACHER'S WEEKLY UNIT PLAN" : "TEACHER'S LESSON PLAN") + " \u2014 " + (o.lpWeeks || 4) + " WEEKS/UNIT \u2014 for the teacher only"
@@ -1789,8 +1809,10 @@
     o.bandName = bandOf(o.grade).label;
 
     /* kindergarten levels bypass the worksheet machinery entirely: there are
-       no units, no exercises and no answer keys to edit, only a cover */
-    if (o.kg) {
+       no units, no exercises and no answer keys to edit, only a cover — the
+       one exception is the Kindergarten subject's lesson plans, which plan
+       the transcribed ECD units like any other subject */
+    if (o.kg && !(cur === "kg" && isLP())) {
       pack = kgCoverPack(o, sj);
       setRunning(o);
       render(pack.blocks);
@@ -1815,11 +1837,11 @@
     render(pack.blocks);
     /* expose context for Emmanuel, the AI tutor */
     window.PACK_CUR_SUBJECT = sj.label;
-    window.PACK_CUR_GRADE = o.grade;
+    window.PACK_CUR_GRADE = o.kg ? o.levelLabel : o.grade;
     /* feed the voice reader this pack's difficult words and sentences */
     if (window.VOICE_READER) window.VOICE_READER.loadFromPack(pack, cur, sj.label, o.grade);
     $("#meta").textContent = isLP()
-      ? S().label + " · Grade " + o.grade + " · " + pack.topics.length +
+      ? S().label + " · " + (o.kg ? o.levelLabel : "Grade " + o.grade) + " · " + pack.topics.length +
         (o.lpPlanType === "weekly" ? " weekly lesson plan(s) · " : " lesson plan(s) · ") +
         o.lpWeeks + " weeks/unit · " + (o.lpPlanType === "weekly" ? ((o.lpDays || 5) * o.lpMin) + " min/wk" : o.lpMin + " min/lesson") + " · seed " + o.seed
       : S().label + " · Grade " + o.grade + " · " + pack.topics.length +
@@ -1940,8 +1962,9 @@
        instead of the platform. */
     function packFileBase() {
       /* a kindergarten level has no workbook template, so name the cover by
-         subject and level instead of forcing it through S().file() */
-      if (opts().kg) {
+         subject and level instead of forcing it through S().file() — except
+         the Kindergarten subject's lesson plans, which are real documents */
+      if (opts().kg && !(cur === "kg" && isLP())) {
         return (S().packName || S().label).replace(/\s+/g, "_") +
           "_" + opts().levelLabel + "_Cover" +
           (isTeacher() ? "_Teacher_Copy" : "_Student");
@@ -1951,7 +1974,7 @@
         var pType = (opts().lpPlanType === "weekly") ? "_Weekly_Plan" : "_Lesson_Plan";
         return S().file(opts().grade)
           .replace(/\.docx$/, "")
-          .replace(/_Workbook|_Pack$/, "") + pType + "_Teacher_Copy";
+          .replace(/_Workbook|_Pack|_Plans$/, "") + pType + "_Teacher_Copy";
       }
       return S().file(opts().grade).replace(/\.docx$/, (TEACHING.isAssessment() ? "_Assessment" : "") + (isTeacher() ? "_Teacher_Copy" : "_Student"));
     }
@@ -1973,7 +1996,7 @@
     function openBookTool() {
       if (!bmask) return;
       var n = parseInt(($("#pageN") || {}).textContent, 10) || 0;
-      var nm = n > 0 ? (opts().kg ? S().label + " " + opts().levelLabel + " cover" : S().label + " Grade " + opts().grade + " workbook") : "";
+      var nm = n > 0 ? (opts().kg ? S().label + " " + opts().levelLabel + (isLP() ? " lesson plan" : " cover") : S().label + " Grade " + opts().grade + " workbook") : "";
       if (btool) btool.open(n, nm);
       bmask.hidden = false;
       document.body.classList.add("book-open");
@@ -2015,6 +2038,7 @@
         gg: { h1: "1F6B4F", h2: "2E8B6A", fill: "DCF0E7" },
         hi: { h1: "8A5A00", h2: "B8860B", fill: "F7EBD0" },
         li: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" },
+        kg: { h1: "B3541E", h2: "D3762A", fill: "F7E8D2" },
         wma: { h1: "5B2A86", h2: "8247B5", fill: "EBDFF7" },
         wen: { h1: "0B6B3A", h2: "12864B", fill: "DCF0E4" },
         wbio: { h1: "0F5132", h2: "1A7A4C", fill: "D9EFE2" },
@@ -2094,8 +2118,8 @@
         DOCTYPE = d;
         paintDocType();
         /* the level list depends on the document: a lesson plan cannot be made
-           for a kindergarten level, so those levels appear and disappear with
-           the document switch */
+           for a kindergarten level except on the Kindergarten subject, so
+           those levels appear and disappear with the document switch */
         refreshGrades(); refreshPeriods();
         generate();
       };
@@ -2616,10 +2640,12 @@
         /* the designer is optional on older saves; when present it must be a
            plain object so normalizeDesign can safely fill it in */
         if (s.cover.design !== undefined && (typeof s.cover.design !== "object" || s.cover.design === null || Array.isArray(s.cover.design))) throw new Error("Invalid cover design");
-        /* a kindergarten level has no periods at all, so any saved period list
-           must be empty for it */
-        var periods = isKG(s.controls.grade) ? []
-          : SUBJECTS[s.subject].curriculum().filter(function (t) { return t.grade === +s.controls.grade; }).map(function (t) { return t.period; });
+        /* a kindergarten level has no periods at all outside the Kindergarten
+           subject's lesson plans, so any other saved period list must be
+           empty for it; the ECD units match by their string grade instead */
+        var kgLP = isKG(s.controls.grade) && s.subject === "kg" && s.dtype === "lp";
+        var periods = (isKG(s.controls.grade) && !kgLP) ? []
+          : SUBJECTS[s.subject].curriculum().filter(function (t) { return kgLP ? t.grade === s.controls.grade : t.grade === +s.controls.grade; }).map(function (t) { return t.period; });
         if (!s.periods.every(function (id) { return periods.includes(id); }) || !s.sheets.every(function (id) { return Object.prototype.hasOwnProperty.call(SUBJECTS[s.subject].engine().SHEETS, id); })) throw new Error("Invalid unit or worksheet selection");
         if (s.cover.text && Object.values(s.cover.text).some(function (v) { return typeof v !== "string" || v.length > 240; })) throw new Error("Invalid cover text");
       },
