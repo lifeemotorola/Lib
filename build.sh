@@ -55,9 +55,10 @@ cd "$(dirname "$0")"
   fi
   # Real, subject-matched cover photographs/artwork. Keep these in the page so
   # a Mathematics cover still shows mathematics when opened from a USB stick.
+  # kg.png backs both kindergarten levels (KG-I and KG-II).
   echo '<script>window.SUBJECT_COVER_ART={'
   first=1
-  for id in en pho fr sc ma ss rm pe bi ch ph ec eg gg li wa; do
+  for id in en pho fr sc ma ss rm pe bi ch ph ec eg gg li wa kg; do
     img="assets/covers/$id.png"
     [ -f "$img" ] || continue
     if [ "$first" -eq 0 ]; then printf ','; fi

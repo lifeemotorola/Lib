@@ -6,6 +6,8 @@ examinations and teacher's answer keys — in **English, Phonics, French, Genera
 Science, Mathematics, Social Studies, Religious & Moral Education, Physical
 Education, Biology, Chemistry, Physics, Economics, English Grammar,
 Geography, History, Civics and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
+It also designs **KG-I and KG-II cover pages** — the two kindergarten levels are
+cover-page levels, because no kindergarten syllabus is transcribed here.
 
 Everything runs from one HTML file with **no server and no internet**
 (`index.html`, about 11 MB). It has no dependencies at runtime — the
@@ -54,10 +56,25 @@ so the whole thing stays self-contained.
   French subject — plus reading **speed** and **pitch**. It lives entirely
   outside the printable session: the button and panel are hidden in print and
   never appear on a generated sheet
-- **Customizable cover**: template choice, 15 built-in subject-matched PNG
+- **Customizable cover**: template choice, 16 built-in subject-matched PNG
   backgrounds (equations for Mathematics, laboratory imagery for Science,
   books for Literature, and so on), school name (persisted), uploaded logo or
-  replacement background, pupil/teacher/term/year fields, and emoji crest
+  replacement background, pupil/teacher/term/year fields, and emoji crest — plus
+  a full **cover designer**: five colour pickers (border band, title ink,
+  accent, paper, warm bar) each with an *Auto* button that hands the colour back
+  to the chosen template, a choice of **eight drawn emblems**, a **title size**
+  slider (60–150%), a retypable **level line**, and **eleven show/hide switches**
+  for every element of the sheet (school name, motto, emblem, rule, level line,
+  details panel, colour strip, corner leaves, corner dots, footer note,
+  organization line). The designer is saved on the device, travels with any
+  document saved in the teaching library, and is applied on screen, in print and
+  in the `.docx` export as far as Word allows
+- **Kindergarten cover pages — KG-I and KG-II**: a Kindergarten level band lists
+  both kindergarten levels for every national-curriculum subject, with its own
+  generated `kg.png` artwork and a bright Kindergarten cover template. These are
+  **cover-page levels**: no kindergarten curriculum is transcribed on the
+  platform, so choosing one produces the customizable cover sheet alone — never
+  invented worksheets
 - **Pagination engineered for A4** (794 × 1123 px sheets, fixed geometry),
   with a responsive preview that scales the sheet instead of resizing it
 - **Export**: `.docx` (student or teacher copy) and **Print / PDF** with
@@ -141,6 +158,51 @@ Overrides are remembered locally and included in saved documents and Word/print
 exports. Designed covers combine term/year on one row; the Simple List template
 uses separately customizable Term and Year labels. Long cover text wraps and the
 on-screen/printed cover content scales down to remain within its A4 sheet.
+
+### The cover designer
+
+Open **Customization**. Under the template picker the **Cover designer** tunes the
+chosen template without changing the A4 geometry:
+
+| Control | What it does |
+|---|---|
+| **Cover colours** | Five pickers — border band, title ink, accent, paper and warm bar. **Auto** returns one colour to the template; *Use the template's colours* returns all five. |
+| **Emblem** | Any of eight drawn emblems (apple, building blocks, pencil, star, sun, plant, book, Liberian flag) instead of the template's own. An uploaded logo still wins, then a typed crest. |
+| **Title size** | 60–150% of the template's title, scaled on screen, in print and in Word. |
+| **Level line** | The italic line under the title. Blank prints the automatic curriculum and level line. |
+| **Show on the cover** | Eleven switches: school name, motto, emblem/logo, rule & book icon, level line, details panel, colour strip, corner leaves, corner dots, footer note, organization line. |
+
+Every setting is validated on load — a bad colour, an unknown emblem or an
+out-of-range scale falls back to the template — is stored on the device with the
+school's details, and is carried inside any document saved in the teaching
+library. The colours, emblem, title size and switches apply to the five designed
+templates; the Simple List template is plain text.
+
+### Kindergarten cover pages — KG-I and KG-II
+
+**Kindergarten** appears as a level band alongside Elementary, Junior High and
+Senior High, and lists **KG-I** and **KG-II**. Its band tab reads **KG** so the
+level row stays narrow on a handset. Pick a subject, pick the level,
+design the cover, then **Print / PDF** or **Word (.docx)** — the file is named
+after the subject and level, for example `English_KG-II_Cover_Student.docx`.
+
+These two levels are deliberately **cover-page levels**. No kindergarten
+curriculum is transcribed on this platform, so the platform will not invent
+worksheets for them: the generated document is the cover sheet alone, the unit
+list is empty with a note saying so, the cover's Class row reads `KG-I` or
+`KG-II`, its subtitle reads *Kindergarten I Cover Page*, and its footer reads
+*Kindergarten · Liberian National Curriculum* rather than claiming curriculum
+content.
+
+The Kindergarten band is offered only where it produces something:
+
+- in the **National Curriculum** track — never in the WASSCE track, which is a
+  Grade 12 examination;
+- for a **Course pack** — not for a **Lesson plan**, because a KG level has no
+  units to plan around, so the band and its two levels disappear from the level
+  picker the moment the document switch moves to Lesson plan and return when it
+  moves back;
+- and never by default, so every subject still opens on its own lowest grade.
 
 ## Quick start
 
@@ -410,7 +472,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Two dependency-free Node checks sit alongside them: `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -477,6 +539,9 @@ node tests/notes-verbatim.js
 # Senior High History coverage, worksheets, keys and lesson plans (no dependencies)
 node tests/history.js
 
+# KG-I / KG-II cover-page levels and the cover designer (no dependencies)
+node tests/cover-kg.js
+
 # voice reader and AI tutor (no dependencies)
 node tests/voice.js
 node tests/ai.js
@@ -490,7 +555,8 @@ python3 tests/history.py     # History track/grade controls, packs, plans, expor
 ```
 
 `tests/ui.py` guards the settings panel, cover templates, image uploads,
-A4 sheet geometry, and the duplex dialog. `tests/regress.py` walks every
+A4 sheet geometry, the duplex dialog, and the kindergarten cover-page levels with
+the cover designer driving the sheet live. `tests/regress.py` walks every
 subject × grade × session at several font sizes and viewports and asserts the
 A4 sheet never changes size, pages never leak answer keys in student mode, and
 no horizontal scrollbar appears.

@@ -22,6 +22,7 @@ jobs:
           bash build.sh
           node tests/history.js
           node tests/notes-verbatim.js
+          node tests/cover-kg.js
           node tests/book.js
           node tests/voice.js
           node tests/ai.js
@@ -33,4 +34,14 @@ jobs:
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
       - name: Check History controls, course packs, lesson plans and exports offline
-        run: python tests/history.py
+        run: |
+          set +e
+          python tests/history.py 2>&1 | tee /tmp/hist.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" -ne 0 ]; then
+            # Mirror the traceback as a check annotation: the raw log endpoint
+            # is not always reachable, and annotations always are.
+            tail -n 25 /tmp/hist.log | tr -d '\r' | sed 's/%/%25/g' > /tmp/hist.msg
+            echo "::error title=history.py failed::$(tr '\n' '|' < /tmp/hist.msg)"
+          fi
+          exit "$code"
