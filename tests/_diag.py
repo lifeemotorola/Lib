@@ -61,7 +61,7 @@ with sync_playwright() as pw:
                    phExists: !!ph,
                    phDisplay: ph ? getComputedStyle(ph).display : null,
                    phH: ph ? ph.offsetHeight : null,
-                   phText: ph ? ph.innerText.replace(/\n/g, '/') : null };
+                   phText: ph ? ph.innerText.split(String.fromCharCode(10)).join('/') : null };
         })""")
     out["measure_left"] = pg.locator("#doc .page.measure").count()
     out["phead_count"] = pg.locator("#doc .phead").count()
