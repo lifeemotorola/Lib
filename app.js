@@ -1191,7 +1191,17 @@
       case "h3": return "<h3" + (b.c ? ' class="ctr"' : "") + ">" + esc(b.t) + "</h3>";
       case "p": return "<p class=\"" + (b.i ? "it " : "") + (b.c ? "ctr " : "") + (b.big ? "cbig" : "") + "\">" + rich(b.t) + "</p>";
       case "instr": return '<p class="instr">' + rich(b.t) + "</p>";
-      case "bul": return "<ul>" + b.items.map(function (x) { return "<li>" + rich(x) + "</li>"; }).join("") + "</ul>";
+      /* A contents list whose entries carry a page number (see toc.js) is laid
+         out as a table of contents: the entry on the left, dotted leaders
+         running to the number of the page it begins on, in the right margin. */
+      case "bul": {
+        var tcl = !!(b.pg && b.pg.some(function (n) { return !!n; }));
+        return "<ul" + (tcl ? ' class="toc"' : "") + ">" + b.items.map(function (x, i) {
+          var p = tcl ? b.pg[i] : null;
+          return "<li>" + (p ? '<span class="toc-l">' + rich(x) + '</span><span class="toc-d"></span><span class="toc-p">' + p + "</span>"
+                            : rich(x)) + "</li>";
+        }).join("") + "</ul>";
+      }
       case "num": return "<ol" + (b.start ? ' start="' + b.start + '"' : "") + ">" +
         b.items.map(function (x) { return "<li>" + rich(x) + "</li>"; }).join("") + "</ol>";
       case "cols": return '<div class="cols"><ol class="ca">' +
@@ -1227,6 +1237,9 @@
       if (n >= b.items.length) return null;
       var head = { k: b.k, items: b.items.slice(0, n), start: b.start };
       var tail = { k: b.k, items: b.items.slice(n), start: (b.start || 1) + n };
+      /* a contents list long enough to break keeps the page number of every
+         line that survives onto either half (see toc.js) */
+      if (b.pg) { head.pg = b.pg.slice(0, n); tail.pg = b.pg.slice(n); }
       return [head, tail];
     }
     if (b.k === "lines") {
@@ -1284,19 +1297,19 @@
     return '<div class="pfoot"><span>' + esc(runhead.foot) + '</span><span>Page ' + n + " of " + total + "</span></div>";
   }
 
-  function render(blocks) {
+  /* ---------------- pagination ----------------
+     An off-screen A4 sheet decides where the page breaks fall. The sheet and the
+     measured height of every block live as long as one render does: a contents
+     list can only be told which page each part is on once the pack is laid out,
+     and writing the numbers down can reflow the page that carries them, so a
+     render lays out, decorates, and lays out again. Measured heights are
+     cached, which makes every pass after the first nearly free. */
+  function paginator() {
     var doc = $("#doc");
-    /* Pagination must be viewport-independent: measuring while the preview is
-       transform-scaled mixes scaled rects with unscaled layout heights and
-       produces different page breaks per device. Neutralise the scale for the
-       duration of the measuring pass, then restore it via fitPreview(). */
-    var prevPs = document.documentElement.style.getPropertyValue("--ps");
-    document.documentElement.style.setProperty("--ps", "1");
     /* off-screen A4 sheet used only to measure how much fits */
     var probe = document.createElement("div");
     probe.className = "page measure";
     probe.innerHTML = bandTop() + '<div class="pbody"></div>' + bandBottom(1, 1);
-    doc.innerHTML = "";
     doc.appendChild(probe);
     var pbody = probe.querySelector(".pbody");
     /* usable height = full A4 sheet minus padding and the header / footer bands */
@@ -1307,59 +1320,95 @@
       - probe.querySelector(".pfoot").offsetHeight
       - 16;
     if (!budget || budget < 100) budget = 900;   /* fallback if hidden or unstyled */
+    var hcache = [], split = {};
 
-    var pages = [], cur = [], used = 0;
-    var queue = blocks.slice();
-    /* the period a sheet belongs to, carried forward until a new unit starts */
-    var curPer = "", pagePer = [];
-
-    function flush() { pages.push(cur); pagePer.push(curPer); cur = []; used = 0; }
-
-    function measure(b) {
+    function measure(b, i) {
+      var c = hcache[i];
+      /* _rev marks a block the contents pass rewrote: measure that one again */
+      if (c && c.rev === (b._rev || 0) && !split[i]) return c.h;
       pbody.innerHTML = blockHtml(b);
       /* offsetHeight is layout px, unaffected by any ancestor transform */
-      return pbody.offsetHeight;
+      var h = pbody.offsetHeight;
+      if (!split[i]) hcache[i] = { rev: b._rev || 0, h: h };
+      return h;
     }
 
-    while (queue.length) {
-      var b = queue.shift();
-      if (b.per) curPer = b.per;          /* a new unit, test or section begins */
-      if (b.k === "pagebreak") { flush(); continue; }
-      if (b.k === "covart") {           /* a designed cover owns a whole sheet */
-        if (cur.length) flush();
-        cur.push(b); flush();
-        continue;
-      }
-      var h = measure(b);
-      if (used + h <= budget || !cur.length && h > budget) {
-        /* fits, or is a single oversized block that must start its own sheet */
-        if (used + h <= budget) { cur.push(b); used += h; continue; }
-      }
-      if (used + h > budget) {
-        var room = budget - used;
-        var parts = room > 60 ? splitBlock(b, room / h) : null;
-        if (parts) {
-          cur.push(parts[0]);
-          flush();
-          queue.unshift(parts[1]);
+    return function layout(blocks) {
+      var pages = [], cur = [], used = 0;
+      /* every block keeps its index in the pack, so the page a heading landed
+         on can be handed back to the contents list */
+      var queue = blocks.map(function (b, i) { return { b: b, i: i }; });
+      var pageOf = [];
+      /* the period a sheet belongs to, carried forward until a new unit starts */
+      var curPer = "", pagePer = [];
+
+      function mark(i) { if (pageOf[i] == null) pageOf[i] = pages.length + 1; }
+      function flush() { pages.push(cur); pagePer.push(curPer); cur = []; used = 0; }
+
+      while (queue.length) {
+        var e = queue.shift(), b = e.b;
+        if (b.per) curPer = b.per;          /* a new unit, test or section begins */
+        if (b.k === "pagebreak") { flush(); continue; }
+        if (b.k === "covart") {           /* a designed cover owns a whole sheet */
+          if (cur.length) flush();
+          cur.push(b); mark(e.i); flush();
           continue;
         }
-        if (cur.length) { flush(); queue.unshift(b); continue; }
-        /* single block taller than one sheet and unsplittable: let it overflow its own sheet */
-        cur.push(b); flush();
+        var h = measure(b, e.i);
+        if (used + h <= budget || !cur.length && h > budget) {
+          /* fits, or is a single oversized block that must start its own sheet */
+          if (used + h <= budget) { cur.push(b); mark(e.i); used += h; continue; }
+        }
+        if (used + h > budget) {
+          var room = budget - used;
+          var parts = room > 60 ? splitBlock(b, room / h) : null;
+          if (parts) {
+            split[e.i] = true;              /* two different blocks share one index now */
+            cur.push(parts[0]); mark(e.i);
+            flush();
+            queue.unshift({ b: parts[1], i: e.i });
+            continue;
+          }
+          if (cur.length) { flush(); queue.unshift(e); continue; }
+          /* single block taller than one sheet and unsplittable: let it overflow its own sheet */
+          cur.push(b); mark(e.i); flush();
+        }
+      }
+      if (cur.length) flush();
+      if (!pages.length) { pages = [[]]; pagePer = [""]; }
+      return { pages: pages, pagePer: pagePer, pageOf: pageOf };
+    };
+  }
+
+  function render(blocks) {
+    var doc = $("#doc");
+    /* Pagination must be viewport-independent: measuring while the preview is
+       transform-scaled mixes scaled rects with unscaled layout heights and
+       produces different page breaks per device. Neutralise the scale for the
+       duration of the measuring pass, then restore it via fitPreview(). */
+    var prevPs = document.documentElement.style.getPropertyValue("--ps");
+    document.documentElement.style.setProperty("--ps", "1");
+    doc.innerHTML = "";
+    var layout = paginator();
+    var out = layout(blocks);
+    /* Contents page numbers: alternate between laying the pack out and writing
+       the numbers onto its contents list until the numbers describe the sheets
+       that are actually on screen. Two passes settle almost every pack. */
+    if (window.PACK_TOC) {
+      for (var pass = 0; pass < 4; pass++) {
+        if (!window.PACK_TOC.decorate(blocks, function (i) { return out.pageOf[i] || 0; })) break;
+        out = layout(blocks);
       }
     }
-    if (cur.length) flush();
-    if (!pages.length) { pages = [[]]; pagePer = [""]; }
 
-    var total = pages.length;
-    doc.innerHTML = pages.map(function (bl, i) {
+    var total = out.pages.length;
+    doc.innerHTML = out.pages.map(function (bl, i) {
       var isCover = bl.length === 1 && bl[0].k === "covart";
       if (isCover) {
         return '<div class="page coverpage"><div class="pbody">' +
           blockHtml(bl[0]) + "</div></div>";
       }
-      return '<div class="page">' + bandTop(pagePer[i]) + '<div class="pbody">' +
+      return '<div class="page">' + bandTop(out.pagePer[i]) + '<div class="pbody">' +
         bl.map(blockHtml).join("") + "</div>" + bandBottom(i + 1, total) + "</div>";
     }).join("");
     document.querySelectorAll("#doc .cv-content").forEach(function (content) {
@@ -1395,6 +1444,16 @@
       (opt.border ? '<w:pBdr><w:bottom w:val="single" w:sz="8" w:color="' + (opt.bc || "1F4E9C") + '"/></w:pBdr>' : "") +
       (opt.pageBreak ? "<w:pageBreakBefore/>" : "") + "</w:pPr>";
     return "<w:p>" + pPr + runs(text, opt) + "</w:p>";
+  }
+  /* one line of a printed table of contents: the entry, dotted leaders running
+     to a right tab at the margin, and the page number it begins on */
+  function tocPara(text, page) {
+    return "<w:p><w:pPr>" +
+      '<w:tabs><w:tab w:val="right" w:leader="dot" w:pos="10206"/></w:tabs>' +
+      '<w:spacing w:before="0" w:after="40"/>' +
+      '<w:ind w:left="200"/>' +
+      "</w:pPr>" + runs(text, { sz: 28 }) +
+      "<w:r><w:tab/></w:r>" + runs(String(page), { sz: 28, b: true }) + "</w:p>";
   }
   function tableXml(head, rows, hdrFill) {
     var w = Math.floor(10206 / head.length);
@@ -1479,7 +1538,14 @@
         case "h3": body += para(b.t, { b: true, sz: 30, color: "12203A", before: 140, after: 70, align: b.c ? "center" : null }); break;
         case "p": body += para(b.t, { sz: b.big ? 34 : 28, i: !!b.i, b: !!b.big, align: b.c ? "center" : null }); break;
         case "instr": body += para(b.t, { sz: 26, i: true, color: "44546A", shade: "F2F6FC" }); break;
-        case "bul": b.items.forEach(function (x) { body += para("•  " + x, { sz: 28, ind: 260 }); }); break;
+        case "bul":
+          /* a contents list carrying page numbers (see toc.js) exports as a real
+             table of contents; every other bullet list keeps its plain bullet */
+          b.items.forEach(function (x, i) {
+            body += (b.pg && b.pg[i]) ? tocPara(x, b.pg[i])
+                                      : para("•  " + x, { sz: 28, ind: 260 });
+          });
+          break;
         case "num": b.items.forEach(function (x, i) {
           body += para(((b.start || 1) + i) + ".  " + x, { sz: 28, ind: 260, after: 90 }); }); break;
         case "cols": {

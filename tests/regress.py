@@ -16,6 +16,27 @@ DEV=[("Smart TV 4K",3840,2160),("Desktop 1440p",2560,1440),("Laptop 1366",1366,7
      ("iPad portrait",768,1024),("Tablet small",600,960),("iPhone SE",375,667),
      ("Small handset",320,568)]
 bad=[]
+
+# the number printed beside a Contents line must be the number at the foot of
+# the page that line begins on (toc.js reads it off the finished layout)
+TOC = """
+  function contentsMatch(){
+    const pages=[...document.querySelectorAll('.page')];
+    const key=x=>String(x).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    let bad=0;
+    for (const li of document.querySelectorAll('ul.toc li')) {
+      const p=li.querySelector('.toc-p'); if(!p) continue;
+      const k=key(li.querySelector('.toc-l').textContent);
+      const at=pages.findIndex(q=>[...q.querySelectorAll('h1,h2,h3')].some(h=>{
+        const t=key(h.textContent); return t.length>1 && t.startsWith(k);}));
+      if (at<0) continue;
+      const n=/page (\\d+)/.exec(key(pages[at].querySelector('.pfoot span:last-child').textContent));
+      if (!n || n[1] !== p.textContent.trim()) bad++;
+    }
+    return bad;
+  }
+"""
+
 with sync_playwright() as p:
     b=p.chromium.launch(args=['--no-sandbox'],
                         **({"executable_path":PW_CHROMIUM} if PW_CHROMIUM else {}))
@@ -44,14 +65,16 @@ with sync_playwright() as p:
                 pg.eval_on_selector("#grade",f"e=>{{e.value='{g}';e.dispatchEvent(new Event('change',{{bubbles:true}}));}}")
                 pg.wait_for_timeout(200)
                 pg.eval_on_selector("#gen","e=>e.click()"); pg.wait_for_timeout(900)
-                r=pg.evaluate("""()=>{const ps=[...document.querySelectorAll('.page')];
+                r=pg.evaluate("()=>{" + TOC + """const ps=[...document.querySelectorAll('.page')];
                   return {n:ps.length,w:ps[0].offsetWidth,h:ps[0].offsetHeight,
                           fs:getComputedStyle(ps[0]).fontSize,
-                          keys:document.body.innerText.includes('Answer Key')};}""")
+                          keys:document.body.innerText.includes('Answer Key'),
+                          toc:contentsMatch()};}""")
                 if r['w']!=794 or r['h']!=1123: bad.append((sess,s,g,"A4",r))
                 if r['fs']!="16px": bad.append((sess,s,g,"fs",r['fs']))
                 if not r['n']: bad.append((sess,s,g,"empty",r))
                 if sess=="student" and r['keys']: bad.append((sess,s,g,"keys leaked",1))
+                if r['toc']: bad.append((sess,s,g,"contents page numbers",r['toc']))
     print("packs done, page errors:",errs[:3])
     ctx.close()
 
@@ -70,14 +93,16 @@ with sync_playwright() as p:
                 pg.eval_on_selector("#grade",f"e=>{{e.value='{g}';e.dispatchEvent(new Event('change',{{bubbles:true}}));}}")
                 pg.wait_for_timeout(200)
                 pg.eval_on_selector("#gen","e=>e.click()"); pg.wait_for_timeout(900)
-                r=pg.evaluate("""()=>{const ps=[...document.querySelectorAll('.page')];
+                r=pg.evaluate("()=>{" + TOC + """const ps=[...document.querySelectorAll('.page')];
                   return {n:ps.length,w:ps[0].offsetWidth,h:ps[0].offsetHeight,
                           fs:getComputedStyle(ps[0]).fontSize,
-                          keys:document.body.innerText.includes('Answer Key')};}""")
+                          keys:document.body.innerText.includes('Answer Key'),
+                          toc:contentsMatch()};}""")
                 if r['w']!=794 or r['h']!=1123: bad.append((sess,s,g,"A4",r))
                 if r['fs']!="16px": bad.append((sess,s,g,"fs",r['fs']))
                 if not r['n']: bad.append((sess,s,g,"empty",r))
                 if sess=="student" and r['keys']: bad.append((sess,s,g,"keys leaked",1))
+                if r['toc']: bad.append((sess,s,g,"contents page numbers",r['toc']))
     print("wassce done, page errors:",errs[:3])
     # back to the National Curriculum track
     pg.eval_on_selector("#tracks .track[data-t='curr']","e=>e.click()"); pg.wait_for_timeout(300)

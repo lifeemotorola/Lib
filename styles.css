@@ -138,6 +138,15 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
   font-style:italic;color:#3d4a63;font-size:.93em;border-radius:0 6px 6px 0}
 .page ol,.page ul{margin:7px 0 7px 22px;padding:0}
 .page li{margin:5px 0}
+/* ---- contents with page numbers ----
+   A Contents list that the layout pass stamped with page numbers (see toc.js)
+   reads like a printed table of contents: no bullets, the entry on the left,
+   dotted leaders running across to the number of the page it begins on. */
+.page ul.toc{list-style:none;margin:9px 0;padding:0}
+.page ul.toc li{display:flex;align-items:baseline;gap:.45em;margin:4px 0}
+.page ul.toc li .toc-l{flex:0 1 auto;min-width:0}
+.page ul.toc li .toc-d{flex:1 0 1.2em;min-width:1.2em;border-bottom:1px dotted #8fa0ba;transform:translateY(-.26em)}
+.page ul.toc li .toc-p{flex:0 0 auto;font-weight:700;color:var(--bleu);font-variant-numeric:tabular-nums}
 .page table{width:100%;border-collapse:collapse;margin:9px 0;font-size:.93em}
 .page th,.page td{border:1px solid #9ab3d9;padding:5px 8px;text-align:left;vertical-align:top}
 .page th{background:#dce6f5;font-weight:700}
