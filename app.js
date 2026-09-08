@@ -263,7 +263,9 @@
     { id: "kg2", label: "KG-II", name: "Kindergarten II" }
   ];
   var BANDS = [
-    { id: "kg", label: "Kindergarten", short: "Kindergarten", lo: 0, hi: 0, kg: true },
+    /* `short` is what the level tab prints: "KG" keeps the tab narrow enough
+       that the band row never overflows a small handset's panel. */
+    { id: "kg", label: "Kindergarten", short: "KG", lo: 0, hi: 0, kg: true },
     { id: "el", label: "Elementary", short: "Elementary", lo: 1, hi: 6 },
     { id: "jh", label: "Junior High", short: "Junior High", lo: 7, hi: 9 },
     { id: "sh", label: "Senior High", short: "Senior High", lo: 10, hi: 12 }

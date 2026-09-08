@@ -248,7 +248,10 @@ body[data-subject="gg"] .page th,body[data-subject="gg"] .page td{border-color:#
 /* session switch (student / teacher) */
 /* level (band) selector */
 .bandtabs{display:flex;gap:6px}
-.bandtabs .bandtab{flex:1;padding:8px 6px;border:1px solid var(--line);background:#f7faff;
+/* flex:1 1 0 with min-width:0 lets every tab shrink below its content, so a
+   long band name can never push the row wider than the panel on a handset. */
+.bandtabs .bandtab{flex:1 1 0;min-width:0;overflow-wrap:anywhere;padding:8px 6px;
+  border:1px solid var(--line);background:#f7faff;
   color:var(--muted);font-weight:700;font-size:.8rem;border-radius:9px;cursor:pointer;
   transition:.15s;min-height:40px}
 .bandtabs .bandtab:hover{background:#eef4ff;color:var(--ink)}

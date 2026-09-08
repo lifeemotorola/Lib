@@ -181,7 +181,8 @@ templates; the Simple List template is plain text.
 ### Kindergarten cover pages — KG-I and KG-II
 
 **Kindergarten** appears as a level band alongside Elementary, Junior High and
-Senior High, and lists **KG-I** and **KG-II**. Pick a subject, pick the level,
+Senior High, and lists **KG-I** and **KG-II**. Its band tab reads **KG** so the
+level row stays narrow on a handset. Pick a subject, pick the level,
 design the cover, then **Print / PDF** or **Word (.docx)** — the file is named
 after the subject and level, for example `English_KG-II_Cover_Student.docx`.
 

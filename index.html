@@ -261,7 +261,10 @@ body[data-subject="gg"] .page th,body[data-subject="gg"] .page td{border-color:#
 /* session switch (student / teacher) */
 /* level (band) selector */
 .bandtabs{display:flex;gap:6px}
-.bandtabs .bandtab{flex:1;padding:8px 6px;border:1px solid var(--line);background:#f7faff;
+/* flex:1 1 0 with min-width:0 lets every tab shrink below its content, so a
+   long band name can never push the row wider than the panel on a handset. */
+.bandtabs .bandtab{flex:1 1 0;min-width:0;overflow-wrap:anywhere;padding:8px 6px;
+  border:1px solid var(--line);background:#f7faff;
   color:var(--muted);font-weight:700;font-size:.8rem;border-radius:9px;cursor:pointer;
   transition:.15s;min-height:40px}
 .bandtabs .bandtab:hover{background:#eef4ff;color:var(--ink)}
@@ -85473,7 +85476,9 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     { id: "kg2", label: "KG-II", name: "Kindergarten II" }
   ];
   var BANDS = [
-    { id: "kg", label: "Kindergarten", short: "Kindergarten", lo: 0, hi: 0, kg: true },
+    /* `short` is what the level tab prints: "KG" keeps the tab narrow enough
+       that the band row never overflows a small handset's panel. */
+    { id: "kg", label: "Kindergarten", short: "KG", lo: 0, hi: 0, kg: true },
     { id: "el", label: "Elementary", short: "Elementary", lo: 1, hi: 6 },
     { id: "jh", label: "Junior High", short: "Junior High", lo: 7, hi: 9 },
     { id: "sh", label: "Senior High", short: "Senior High", lo: 10, hi: 12 }
