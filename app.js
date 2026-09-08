@@ -1175,7 +1175,11 @@
         '<i style="height:16mm;background:var(--cv-ink);opacity:.8"></i>' +
         '<i style="height:12mm;background:var(--cv-warm);opacity:.7"></i>' +
       "</div>" : "") +
-      foot + "</div>";
+      /* foot, then close .cv-content and finally .cvart itself. Leaving the
+         outer sheet open makes the browser adopt every later page as a child
+         of the cover, where .page.coverpage .phead{display:none} hides all of
+         their running heads. */
+      foot + "</div></div>";
   }
 
   /* Renders to real A4 sheets. Content is measured and flowed so nothing is clipped:

@@ -353,6 +353,26 @@ with sync_playwright() as p:
     pg.eval_on_selector("#dtype .sess[data-d='pack']", "e=>e.click()"); pg.wait_for_timeout(300)
     if pg.locator("#bands .bandtab[data-b='kg']").count() != 1:
         bad.append("the Kindergarten band should return for a course pack")
+    # every sheet has to be a direct child of #doc. An unclosed tag in the
+    # cover markup makes the browser adopt the rest of the pack as children of
+    # the cover, and .page.coverpage .phead{display:none} — a descendant
+    # selector — then hides the running head on every single page.
+    pg.eval_on_selector("#bands .bandtab[data-b='el']", "e=>e.click()"); pg.wait_for_timeout(300)
+    pg.eval_on_selector("#gen", "e=>e.click()"); pg.wait_for_timeout(1200)
+    kids, allp = pg.evaluate("""() => {
+        const doc = document.querySelector('#doc');
+        return [Array.from(doc.children).filter(e => e.classList.contains('page')).length,
+                doc.querySelectorAll('.page').length];
+    }""")
+    if kids != allp or allp < 2:
+        bad.append(f"the cover markup is not closed: {kids} of {allp} sheets are direct children of #doc")
+    heads = pg.locator("#doc .page:not(.coverpage) .phead span:first-child")
+    if heads.count() == 0:
+        bad.append("no running head is rendered on any content sheet")
+    else:
+        first = heads.first.inner_text()
+        if not first.strip() or first != first.upper():
+            bad.append(f"a content sheet's running head is not laid out and upper-cased: {first!r}")
     # the designer must not make the sidebar overflow on a narrow screen
     pg.set_viewport_size({"width": 375, "height": 800}); pg.wait_for_timeout(300)
     over = pg.evaluate("()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1")

@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -38,17 +36,12 @@ jobs:
       - name: Check History controls, course packs, lesson plans and exports offline
         run: |
           set +e
-          git show 5fbab61:index.html > /tmp/base-index.html
-          echo "base bytes: $(wc -c < /tmp/base-index.html)" > /tmp/diag.log
-          { python tests/_diag.py /tmp/base-index.html
-            python tests/_diag.py index.html; } >> /tmp/diag.log 2>&1
           python tests/history.py 2>&1 | tee /tmp/hist.log
           code=${PIPESTATUS[0]}
           if [ "$code" -ne 0 ]; then
-            # Report the tail of the traceback as a check annotation, which is
-            # readable through the API when the raw log endpoint is unavailable.
-            { tail -n 12 /tmp/hist.log; echo '--- DIAG ---'; cat /tmp/diag.log; } \
-              | tr -d '\r' | sed 's/%/%25/g' > /tmp/hist.msg
+            # Mirror the traceback as a check annotation: the raw log endpoint
+            # is not always reachable, and annotations always are.
+            tail -n 25 /tmp/hist.log | tr -d '\r' | sed 's/%/%25/g' > /tmp/hist.msg
             echo "::error title=history.py failed::$(tr '\n' '|' < /tmp/hist.msg)"
           fi
           exit "$code"

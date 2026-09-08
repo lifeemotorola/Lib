@@ -153,6 +153,58 @@ ok(K.designVars(K.defaultDesign()) === "",
    "an untouched design writes no inline style, so the template is pixel-identical");
 
 /* ------------------------------------------------------------------ */
+console.log("\n-- cover markup is well formed --");
+/* The cover sheet is injected straight into #doc as markup. A single unclosed
+   tag makes the browser adopt every later sheet as a child of the cover, and
+   `.page.coverpage .phead{display:none}` — a descendant selector — then hides
+   the running head on every page in the pack. So the fragment must balance. */
+const VOID = { area: 1, base: 1, br: 1, col: 1, embed: 1, hr: 1, img: 1, input: 1,
+               link: 1, meta: 1, param: 1, source: 1, track: 1, wbr: 1 };
+function unbalanced(fragment) {
+  const stack = [];
+  const re = /<!--[\s\S]*?-->|<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)(\/?)>/g;
+  let m;
+  while ((m = re.exec(fragment))) {
+    if (m[0].slice(0, 4) === "<!--") continue;
+    const tag = m[2].toLowerCase();
+    if (m[1]) {
+      if (stack.pop() !== tag) return `</${tag}> closes the wrong element`;
+    } else if (!m[4] && !VOID[tag]) {
+      stack.push(tag);
+    }
+  }
+  return stack.length ? `<${stack[stack.length - 1]}> is never closed` : "";
+}
+ok(unbalanced("<div class=\"a\"><div class=\"b\"></div>") === "<div> is never closed",
+   "the balance check really does catch an unclosed div");
+
+const SHOW_KEYS = Object.keys(K.defaultDesign().show);
+const combos = [{}].concat(SHOW_KEYS.map(function (k) { const o = {}; o[k] = false; return o; }))
+  .concat([SHOW_KEYS.reduce(function (o, k) { o[k] = false; return o; }, {})]);
+const bad = [];
+let cases = 0;
+Object.keys(K.COVER_TPL).forEach(function (id) {
+  combos.forEach(function (show) {
+    cases++;
+    /* exercise both artwork paths too: a background image and an uploaded logo */
+    [{}, { bg: "data:image/png;base64,AAAA", bgFade: 62 }, { logo: "data:image/png;base64,BBBB" },
+     { crest: "L N C" }].forEach(function (extra) {
+      cases++;
+      const frag = K.coverArtHtml(Object.assign({}, kgBlock, extra, {
+        tpl: id,
+        design: K.normalizeDesign(Object.assign({ show: show },
+          extra.crest ? { emblem: "em-apple" } : {})),
+      }));
+      const err = unbalanced(frag);
+      if (err) bad.push(`${id} ${JSON.stringify(show)} ${Object.keys(extra)}: ${err}`);
+    });
+  });
+});
+ok(bad.length === 0,
+   `cover markup balances for all ${cases} template / show / artwork combinations` +
+   (bad.length ? " — " + bad.slice(0, 4).join("; ") : ""));
+
+/* ------------------------------------------------------------------ */
 console.log("\n-- kindergarten cover wording (cover-text.js) --");
 const text = COVER_TEXT.prepare(
   { kg: true, levelName: "Kindergarten I", levelLabel: "KG-I", grade: "kg1", subjectId: "en" },
