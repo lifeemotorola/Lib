@@ -34,4 +34,16 @@ jobs:
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
       - name: Check History controls, course packs, lesson plans and exports offline
-        run: python tests/history.py
+        run: |
+          set +e
+          python tests/history.py 2>&1 | tee /tmp/hist.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" -ne 0 ]; then
+            {
+              echo "### tests/history.py failed (exit $code)"
+              echo '```'
+              tail -n 45 /tmp/hist.log
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+          exit "$code"
