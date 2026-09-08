@@ -5,16 +5,16 @@ Liberian National Curriculum: pupil workbooks, period tests, semester
 examinations and teacher's answer keys — in **English, Phonics, French, General
 Science, Mathematics, Social Studies, Religious & Moral Education, Physical
 Education, Biology, Chemistry, Physics, Economics, English Grammar,
-Geography, History and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
+Geography, History, Civics and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
 
 Everything runs from one HTML file with **no server and no internet**
-(`index.html`, about 3.5 MB). It has no dependencies at runtime — the
+(`index.html`, about 11 MB). It has no dependencies at runtime — the
 `.docx` exporter is built by hand and images are resized in a canvas
 so the whole thing stays self-contained.
 
 ## Features
 
-- **16 National Curriculum subjects** with real curriculum content (6 units per grade per subject)
+- **16 National Curriculum subjects**, plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -67,6 +67,80 @@ so the whole thing stays self-contained.
 - Settings persist in `localStorage` (subject, grade, cover details, images)
 - **Installable on Android and PC** as a Progressive Web App, with the Liberia
   flag-map favicon and offline app icon
+
+## Teaching workspace: library, editing and assessment
+
+Use the **Your teaching workspace** toolbar above the document preview. All
+three tools work offline, including from the single-file USB copy. Switch to
+**Teacher** session to manage teaching documents or edit answers.
+
+### Saved teaching library
+
+- Save a named copy of the current course pack, assessment or daily/weekly
+  lesson plan, including settings, question edits, answer keys, cover text and
+  uploaded artwork. Saving creates a new copy; it does not overwrite earlier work.
+- Search by name, subject, grade, class or term; open, duplicate, rename or delete
+  saved copies. Documents are kept locally in **IndexedDB**, not on a server.
+- **Export library backup** produces a JSON file for another device or USB.
+  **Export current document backup** also works when device storage is unavailable.
+  Import accepts versioned `.json` backups up to **25 MB / 100 documents**, validates
+  every record before writing, and adds new copies without replacing existing work.
+- **Backups may contain teacher answer keys and personal cover details. Do not
+  distribute them to pupils.** Student Word/print exports omit the answer-key
+  section; the Teacher/Student switch is a document-format choice, not authentication.
+- Clearing browser/site data deletes the library. A `file://` copy and a hosted
+  copy may have separate browser storage, so use backups to move between them.
+
+### Worksheet question editor
+
+Choose **Edit questions**, then a worksheet. For numbered worksheets with a
+one-to-one answer key, change questions, answers and optional marks; reorder or
+remove paired questions; replace a question with an unused generated alternative;
+or add teacher-written questions. Shared headings, instructions and passages
+are editable too. Replacements do not change the rest of the pack or its seed.
+
+Word banks, matching tables and other complex worksheets use a whole-worksheet
+editor with a companion key. Automatic question movement/replacement is disabled
+when correspondence cannot be established safely. Teachers must review both the
+question content and key after changing shared material. Existing fixed-format
+period/semester tests are unchanged; use **Assessment builder** for an editable
+marked test. Lesson-plan prose can still be edited after Word export.
+
+Click **Apply** to put form edits into the preview. Applied changes survive cover,
+font-size and Teacher/Student changes and feed both Word and Print/PDF. Edited
+selections are retained as drafts during the current session, but **save to the
+library or export a backup before closing/reloading** to retain them permanently.
+
+### Assessment builder
+
+Choose topics, a title, duration, target total and a blueprint of multiple-choice,
+true/false, short-answer and essay questions. Each type has a question count,
+marks per question and optional suggested thinking level (Recall, Understanding,
+Application). The builder checks totals and available unique questions; it never
+silently duplicates questions to fill a shortage. Availability varies by subject
+and topic; select more topics, lower counts, or start a blank assessment when needed.
+
+Edit each question, expected answer, marks and partial-credit/essay rubric;
+add, remove or reorder questions. Printed scores and totals follow the actual
+questions. Teacher exports include the marking scheme; student exports do not.
+Save an assessment before **Return to course pack** if you want to keep it.
+All papers are **original practice assessments**, not official WAEC past papers.
+Thinking levels and marking suggestions require teacher review.
+
+### Customizable auto-filled covers
+
+Open **Customization → Customize all cover titles & labels**. Main title,
+subtitle, curriculum/level line, subject value, detail labels, default message,
+and organization footer can all be overridden. Fields initially show the
+subject/session defaults. Once edited, an override remains fixed; **Auto** resets
+one field, and **Reset all cover text to automatic** resets all title/label overrides.
+A custom blank suppresses that text. School, class, pupil, teacher, term, year,
+motto and note remain editable in the existing cover fields above.
+
+Overrides are remembered locally and included in saved documents and Word/print
+exports. Designed covers combine term/year on one row; the Simple List template
+uses separately customizable Term and Year labels. Long cover text wraps and the
+on-screen/printed cover content scales down to remain within its A4 sheet.
 
 ## Quick start
 
@@ -154,12 +228,39 @@ same tool lives in `book.html`.
 | English Grammar (`eg`) | 10–12 | 6 | 18 |
 | Geography (`gg`) | 10–12 | 6 | 18 |
 | History (`hi`) | 10–12 | 6 | 18 |
+| Civics (`ci`, supplementary) | 7–12 | 6 | 36 |
 | Literature (`li`) | 10–12 | 6 | 18 |
 
 > **Coverage:** Mathematics, French and **Phonics** span Grades 1–12, and
 > Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and
 > Literature cover Grades 10–12; the other elementary and junior-high
 > subjects stop at Grade 9.
+
+### Civics — Grades 7–12
+
+Choose **National Curriculum → Civics**, then Junior High or Senior High.
+There are six original supplementary units per grade:
+
+| Grade | Focus |
+|---|---|
+| 7 | Belonging, fair rules, diversity, national symbols, peaceful conflict resolution, service |
+| 8 | Government, three branches, local administration, elections, rights, public budgets |
+| 9 | Media literacy, safe schools, disability inclusion, integrity, environment, advocacy |
+| 10 | Liberia's constitutional framework, rule of law, rights, oversight, constitutional change, reconciliation |
+| 11 | Public service, procurement, accounts, policy evaluation, development, disaster readiness |
+| 12 | International cooperation, regional peace, migration, trade, digital citizenship, civic inquiry |
+
+`data-ci.js` supplies study notes, glossary terms, worked scenario reasoning,
+worksheets, tests, teacher keys, projects and daily/weekly lesson-plan inputs.
+It reuses the Social Studies exercise engine and bundled artwork. No new network
+service or download is needed.
+
+**Source status:** no dedicated Civics syllabus was supplied in this repository.
+These units are original teaching resources, **not an official Liberian Civics
+syllabus transcription or WASSCE examination material**. Compare them with the
+school's approved scheme of work before classroom use. Scenarios are fictional;
+activities do not require learners to disclose political affiliations, private
+information or traumatic experiences.
 
 ### Senior High History
 
@@ -393,6 +494,21 @@ A4 sheet geometry, and the duplex dialog. `tests/regress.py` walks every
 subject × grade × session at several font sizes and viewports and asserts the
 A4 sheet never changes size, pages never leak answer keys in student mode, and
 no horizontal scrollbar appears.
+
+### Teaching-workspace regression checks
+
+```bash
+node tests/civics-teaching.js
+python3 tests/teaching.py
+```
+
+The dependency-free Node test covers all 36 Civics units, default worksheets,
+period/semester tests, daily/weekly plans, deterministic generation, linked keys,
+student filtering and assessment pools. The Playwright test covers offline
+IndexedDB save/reopen, duplicate/delete/import/export, malformed-backup rejection,
+question/key pairing and replacement, assessment edits/totals, teacher/student
+Word exports, saved lesson plans, automatic/custom cover text, print visibility
+and mobile layout. Set `PW_CHROMIUM` to use a non-default Chromium executable.
 
 ## License
 

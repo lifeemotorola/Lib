@@ -4,7 +4,7 @@
     <div class="crest"><svg class="ic" aria-hidden="true"><use href="#i-crest"/></svg></div>
     <div class="top-txt">
       <h1>Liberian National Curriculum &middot; Course Pack Generator</h1>
-      <p>English &middot; Phonics &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Physics &middot; Economics &middot; English Grammar &middot; Geography &middot; History &middot; Literature<br>
+      <p>English &middot; Phonics &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Physics &middot; Economics &middot; English Grammar &middot; Geography &middot; History &middot; Civics &middot; Literature<br>
          <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> Emmanuel AI tutor &middot; works offline</span></p>
     </div>
     <button type="button" class="install-app" id="installApp" hidden><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Install app</button>
@@ -207,6 +207,12 @@
             <input type="text" id="cvNote" placeholder="Note shown on the cover (optional)">
             <label class="chk" style="display:none"><input type="checkbox" id="cvBreak" checked><span>Cover on its own page</span></label>
             <p class="hint"><b>Subject</b> and <b>Class</b> are printed on every cover automatically. Leave any other field blank to print a ruled space to fill in by hand.</p>
+            <details class="cover-text-options">
+              <summary>Customize all cover titles &amp; labels</summary>
+              <p class="hint">Fields auto-fill for the selected subject and session until you edit them. Your overrides stay fixed; use <b>Auto</b> to restore any field. A custom blank hides that text. Existing school, class and name fields above remain editable.</p>
+              <div id="coverTextFields"></div>
+              <button type="button" id="coverTextReset">Reset all cover text to automatic</button>
+            </details>
             <div class="mini"><button type="button" id="cvSave">Save school details</button><button type="button" id="cvClear">Clear</button></div>
           </div>
         </div>
@@ -248,6 +254,12 @@
       <button class="b2" id="dup"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Duplex print</button>
       <button class="b1" id="print"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg> Print / PDF</button>
     </div>
+    <nav class="teaching-toolbar" aria-label="Teaching tools">
+      <div><strong>Your teaching workspace</strong><span>Save, refine and assess — works offline</span></div>
+      <button type="button" class="b2" data-tw-open="library">Teaching library</button>
+      <button type="button" class="b2" data-tw-open="editor">Edit questions</button>
+      <button type="button" class="b2" data-tw-open="assessment">Build assessment</button>
+    </nav>
     <div id="doc"></div>
   </main>
 </div>
@@ -329,3 +341,14 @@
     </div>
   </div>
 </div>
+
+<dialog id="teachingDialog" class="teaching-dialog" aria-labelledby="twTitle">
+  <div class="tw-header"><div><p class="tw-eyebrow">LIBERIA PACKS · TEACHER TOOLS</p><h2 id="twTitle">Teaching library</h2></div><button type="button" id="twClose" class="b2" aria-label="Close teaching tools">Close</button></div>
+  <nav class="tw-tabs" aria-label="Teaching workspace">
+    <button type="button" class="b2" data-tw-tab="library">Library</button>
+    <button type="button" class="b2" data-tw-tab="editor">Question editor</button>
+    <button type="button" class="b2" data-tw-tab="assessment">Assessment builder</button>
+  </nav>
+  <p id="twStatus" class="tw-status" role="status" aria-live="polite">Local-first tools. No account or internet required.</p>
+  <div id="twBody"></div>
+</dialog>

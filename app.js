@@ -118,6 +118,14 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Geography_Grade" + g + "_Workbook.docx"; }
     },
+    ci: {
+      label: "Civics", icon: "sub-ss", accent: "#16665a", coverArt: "ss",
+      curriculum: function () { return CI_CURRICULUM; },
+      engine: function () { return GEN_SS; },
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "casestudy", "apply", "project"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Civics_Grade" + g + "_Workbook.docx"; }
+    },
     hi: {
       label: "History", icon: "sub-his", accent: "#8a5a00", coverArt: "ss",
       curriculum: function () { return HI_CURRICULUM; },
@@ -660,22 +668,27 @@
 
   window.PACK_COVER = function (opts, d) {
     var out = [];
+    function finishCover() { out.forEach(function (b) { b._cover = true; }); return out; }
 
     /* Class and subject always appear on a cover, whatever the user typed.
        d.title is like "ECONOMICS \u2014 GRADE 11"; take the subject from before
        the dash so the cover names the subject on its own line. */
-    var subject = String(d.title || "").split("\u2014")[0].trim() || "Course Pack";
+    var text = window.COVER_TEXT.prepare(opts, d, COVER, isTeacher());
+    var subject = text.subject;
+    function lab(key) { return text[key + "Label"]; }
+    var mainTitle = text.title + (text.title === String(d.title || "").split("—")[0].trim() ? " — GRADE " + opts.grade : "");
+    var subTitle = text.subtitle;
     var klass = COVER.classname || ("Grade " + opts.grade);
 
     if (!COVER.on) {
-      out.push({ k: "h1", t: d.title });
-      out.push({ k: "h2", t: isTeacher() ? "Teacher's Copy \u00b7 Worksheets & Answer Keys" : d.sub });
-      out.push({ k: "p", t: d.line, i: true });
+      out.push({ k: "h1", t: mainTitle });
+      out.push({ k: "h2", t: subTitle });
+      out.push({ k: "p", t: text.line, i: true });
       out.push({ k: "space" });
-      out.push({ k: "table", head: ["Pupil's name", "School", "Class", "Subject"],
+      out.push({ k: "table", head: [lab("pupil"), lab("school"), lab("class"), lab("subject")],
         rows: [["", COVER.school || "", klass, subject]] });
       out.push({ k: "space" });
-      return out;
+      return finishCover();
     }
 
     /* ---- plain table cover (the original behaviour, kept as a choice) ---- */
@@ -684,24 +697,25 @@
       if (COVER.motto) out.push({ k: "p", t: COVER.motto, c: true, i: true });
       out.push({ k: "rule" });
       out.push({ k: "space" });
-      out.push({ k: "h1", t: d.title, c: true });
-      out.push({ k: "h2", t: isTeacher() ? "Teacher's Copy \u00b7 Worksheets & Answer Keys" : d.sub, c: true });
-      out.push({ k: "p", t: d.line, c: true, i: true });
+      out.push({ k: "h1", t: mainTitle, c: true });
+      out.push({ k: "h2", t: subTitle, c: true });
+      out.push({ k: "p", t: text.line, c: true, i: true });
       out.push({ k: "space" });
       var rows = [];
-      if (isTeacher()) rows.push(coverRow("Teacher", COVER.teacher));
-      else rows.push(coverRow("Pupil's name", COVER.pupil));
-      rows.push(coverRow("Subject", subject));
-      rows.push(coverRow("Class", klass));
-      rows.push(coverRow("School", COVER.school));
-      if (!isTeacher()) rows.push(coverRow("Teacher", COVER.teacher));
-      rows.push(coverRow("Term", COVER.term));
-      rows.push(coverRow("Year", COVER.year));
-      out.push({ k: "table", head: ["Detail", "Entry"], rows: rows });
+      if (isTeacher()) rows.push(coverRow(lab("teacher"), COVER.teacher));
+      else rows.push(coverRow(lab("pupil"), COVER.pupil));
+      rows.push(coverRow(lab("subject"), subject));
+      rows.push(coverRow(lab("class"), klass));
+      rows.push(coverRow(lab("school"), COVER.school));
+      if (!isTeacher()) rows.push(coverRow(lab("teacher"), COVER.teacher));
+      rows.push(coverRow(lab("term"), COVER.term));
+      rows.push(coverRow(lab("year"), COVER.year));
+      out.push({ k: "table", head: [lab("detail"), lab("entry")], rows: rows });
       out.push({ k: "space" });
-      if (COVER.note) { out.push({ k: "p", t: COVER.note, c: true, i: true }); out.push({ k: "space" }); }
+      out.push({ k: "p", t: COVER.note ? text.noteLabel + ": " + COVER.note : text.inspireLabel + ": " + text.inspireText, c: true, i: true });
+      out.push({ k: "p", t: text.organization, c: true });
       if (COVER.ownPage) out.push({ k: "pagebreak" });
-      return out;
+      return finishCover();
     }
 
     /* ---- designed cover: one block occupying a whole sheet ---- */
@@ -711,9 +725,10 @@
       tpl: COVER.tpl,
       school: COVER.school,
       motto: COVER.motto,
-      title1: subject,
-      title2: isTeacher() ? "Teacher's Lesson Book" : "Pupil Workbook",
-      line: d.line,
+      title1: text.title,
+      labels: text,
+      title2: text.subtitle,
+      line: text.line,
       subject: subject,
       klass: klass,
       teacher: COVER.teacher,
@@ -729,7 +744,7 @@
       teacherCopy: isTeacher()
     });
     out.push({ k: "pagebreak" });
-    return out;
+    return finishCover();
   };
 
   var cur = "en";
@@ -891,6 +906,9 @@
       if (S().wa) {
         jh.style.display = "";
         jh.innerHTML = "Grade 12 follows the <b>WASSCE</b> examination syllabus (West African Examinations Council) \u2014 the final national certificate examination in West Africa.";
+      } else if (cur === "ci") {
+        jh.style.display = "";
+        jh.textContent = "Civics Grades 7–12: original supplementary teaching material, not an official syllabus transcription. Review against your school’s scheme of work.";
       } else if (curBand === "el") {
         jh.style.display = "none";
       } else {
@@ -924,27 +942,28 @@
      Builds a full-sheet cover from the chosen template. Everything is inline
      CSS and SVG, so it renders identically offline and in print. */
   function coverArtHtml(b) {
+    function label(key, fallback) { return COVER_TEXT.label(b, key, fallback); }
     var t = COVER_TPL[b.tpl] || COVER_TPL.classic;
     /* The printed booklet the platform is modelled on writes each detail as a
        plain LABEL: ______ ruled line, with no icon before the label. */
     function row(label, value) {
       return '<div class="cv-row">' +
-        '<span class="cv-lab">' + esc(label) + ':</span>' +
+        '<span class="cv-lab">' + esc(label) + (label ? ':' : '') + '</span>' +
         '<span class="cv-val">' + esc(value || "") + "</span></div>";
     }
     var rows = "";
-    rows += row("School", b.school);
-    rows += row("Subject", b.subject);
-    rows += row("Class", b.klass);
+    rows += row(label("schoolLabel", "School"), b.school);
+    rows += row(label("subjectLabel", "Subject"), b.subject);
+    rows += row(label("classLabel", "Class"), b.klass);
     rows += b.teacherCopy
-      ? row("Teacher", b.teacher)
-      : row("Name", b.pupil);
-    rows += row(b.term ? "Term" : "Term / Year",
+      ? row(label("teacherLabel", "Teacher"), b.teacher)
+      : row(label("pupilLabel", "Name"), b.pupil);
+    rows += row(label("termYearLabel", b.term ? "Term" : "Term / Year"),
                 [b.term, b.year].filter(Boolean).join("   \u00b7   "));
 
     var note = b.note
-      ? '<div class="cv-note"><b>Note</b>' + esc(b.note) + "</div>"
-      : '<div class="cv-note"><b>Inspire</b>Teach \u00b7 Encourage \u00b7 Achieve</div>';
+      ? '<div class="cv-note"><b>' + esc(label("noteLabel", "Note")) + '</b>' + esc(b.note) + "</div>"
+      : '<div class="cv-note"><b>' + esc(label("inspireLabel", "Inspire")) + '</b>' + esc(label("inspireText", "Teach · Encourage · Achieve")) + '</div>';
 
     /* long subject names step down in size so the title never overflows */
     var n = String(b.title1 || "").length;
@@ -970,7 +989,7 @@
       '<div class="cv-leaf cv-lt">' + leafSvg(t.leaf) + "</div>" +
       '<div class="cv-leaf cv-rb">' + leafSvg(t.leaf) + "</div>" +
       '<div class="cv-dots cv-dtr"><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
-      '<div class="cv-head">' +
+      '<div class="cv-content"><div class="cv-head">' +
         (b.school ? '<div class="cv-school">' + esc(b.school) + "</div>" : "") +
         (b.motto ? '<div class="cv-motto">' + esc(b.motto) + "</div>" : "") +
         emblem +
@@ -990,7 +1009,7 @@
         '<i style="height:12mm;background:var(--cv-warm);opacity:.7"></i>' +
       "</div>" +
       '<div class="cv-foot">' + note +
-        '<div class="cv-org">Liberian National Curriculum</div></div>' +
+        '<div class="cv-org">' + esc(label("organization", "Liberian National Curriculum")) + '</div></div></div>' +
       "</div>";
   }
 
@@ -1061,7 +1080,7 @@
   var PERIOD_NO = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6 };
   function periodLabel(p) {
     if (!p) return "";
-    if (p === "exam") return "Semester Examinations";
+    if (p === "exam") return TEACHING.isAssessment() ? "Practice Assessment" : "Semester Examinations";
     if (p === "keys") return "Answer Keys";
     return "Period " + (PERIOD_NO[p] || p);
   }
@@ -1070,12 +1089,14 @@
     var bnd = bandOf(o.grade);
     runhead.left = S().label + " \u00b7 " +
       (bnd.id === "el" ? "Grade " : bnd.label + " Grade ") + o.grade;
-    runhead.right = isLP()
+    runhead.right = TEACHING.isAssessment()
+      ? (isTeacher() ? "Teacher's Assessment" : "Student Assessment") + (o.keys ? " · Marking Scheme" : "")
+      : isLP()
       ? (o.lpPlanType === "weekly" ? "Teacher's Weekly Unit Plan" : "Teacher's Lesson Plan")
-      : isTeacher() ? "Teacher's Copy \u00b7 Answer Keys Included" : "Pupil Workbook & Assessment Pack";
+      : isTeacher() ? "Teacher's Copy" + (o.keys ? " · Answer Keys Included" : "") : "Pupil Workbook & Assessment Pack";
     /* name the grade actually being generated, not the whole band. WASSCE
        packs name the WAEC examination instead of the national curriculum. */
-    var band = S().wa
+    var band = cur === "ci" ? "Civics · Original supplementary material · Grade " + o.grade : S().wa
       ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
       : "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
     runhead.foot = isLP()
@@ -1170,6 +1191,10 @@
       return '<div class="page">' + bandTop(pagePer[i]) + '<div class="pbody">' +
         bl.map(blockHtml).join("") + "</div>" + bandBottom(i + 1, total) + "</div>";
     }).join("");
+    document.querySelectorAll("#doc .cv-content").forEach(function (content) {
+      var height = content.clientHeight;
+      if (height && content.scrollHeight > height) content.style.transform = "scale(" + (height / content.scrollHeight).toFixed(4) + ")";
+    });
     $("#pageN").textContent = total;
     fitPreview();
   }
@@ -1330,18 +1355,18 @@
           if (b.school) body += para(b.school, { b: true, sz: 40, color: C1, align: "center", after: 40 });
           if (b.motto) body += para(b.motto, { i: true, sz: 26, align: "center", after: 120 });
           body += para("", { border: true, sz: 10 });
-          body += para(b.title1.toUpperCase(), { b: true, sz: 64, color: C1, align: "center", before: 220, after: 60 });
+          body += para(b.title1, { b: true, sz: 64, color: C1, align: "center", before: 220, after: 60 });
           body += para(b.title2, { b: true, sz: 38, color: C2, align: "center", after: 60 });
           if (b.line) body += para(b.line, { i: true, sz: 26, align: "center", after: 200 });
           var cr = [];
-          cr.push(["School", b.school || ""]);
-          cr.push(["Subject", b.subject || ""]);
-          cr.push(["Class", b.klass || ""]);
-          cr.push(b.teacherCopy ? ["Teacher", b.teacher || ""] : ["Name", b.pupil || ""]);
-          cr.push(["Term", b.term || ""]);
-          cr.push(["Year", b.year || ""]);
-          body += tableXml(["Detail", "Entry"], cr, FILL);
-          if (b.note) body += para(b.note, { i: true, sz: 26, align: "center", before: 200 });
+          cr.push([COVER_TEXT.label(b, "schoolLabel", "School"), b.school || ""]);
+          cr.push([COVER_TEXT.label(b, "subjectLabel", "Subject"), b.subject || ""]);
+          cr.push([COVER_TEXT.label(b, "classLabel", "Class"), b.klass || ""]);
+          cr.push(b.teacherCopy ? [COVER_TEXT.label(b, "teacherLabel", "Teacher"), b.teacher || ""] : [COVER_TEXT.label(b, "pupilLabel", "Name"), b.pupil || ""]);
+          cr.push([COVER_TEXT.label(b, "termYearLabel", b.term ? "Term" : "Term / Year"), [b.term, b.year].filter(Boolean).join(" · ")]);
+          body += tableXml([COVER_TEXT.label(b, "detailLabel", "Detail"), COVER_TEXT.label(b, "entryLabel", "Entry")], cr, FILL);
+          body += para(b.note ? COVER_TEXT.label(b, "noteLabel", "Note") + ": " + b.note : COVER_TEXT.label(b, "inspireLabel", "Inspire") + ": " + COVER_TEXT.label(b, "inspireText", "Teach · Encourage · Achieve"), { i: true, sz: 26, align: "center", before: 200 });
+          body += para(COVER_TEXT.label(b, "organization", "Liberian National Curriculum"), { sz: 22, align: "center" });
           break;
         }
         case "pagebreak": body += "<w:p><w:pPr><w:pageBreakBefore/></w:pPr></w:p>"; break;
@@ -1485,6 +1510,10 @@
   /* ---------------- actions ---------------- */
   function generate() {
     var o = opts();
+    var signatureOptions = Object.assign({}, o);
+    ["teacher", "keys", "fsz"].forEach(function (k) { delete signatureOptions[k]; });
+    if (!isLP()) { delete signatureOptions.teacherName; delete signatureOptions.school; }
+    var signature = JSON.stringify(signatureOptions) + "|notes:" + NOTES_ON;
     /* subjects that share another subject's engine supply their own data
        and cover wording */
     var sj = S();
@@ -1493,12 +1522,14 @@
     o.subjectName = (sj.packName || sj.label).toUpperCase();
     o.subjectLine = sj.packName || sj.label;
     o.bandName = bandOf(o.grade).label;
+    window.TEACHING.begin(sj.engine(), signature);
     if (isLP() && window.LESSON_PLAN) {
       /* the lesson plan is a teacher's document whatever the session is */
       pack = window.LESSON_PLAN.build(o);
     } else {
-      pack = sj.engine().buildPack(o);
+      pack = sj.engine().buildPack(Object.assign({}, o, { keys: true }));
     }
+    pack.blocks = window.TEACHING.accept(pack, signature);
     setRunning(o);
     render(pack.blocks);
     /* expose context for Emmanuel, the AI tutor */
@@ -1512,6 +1543,7 @@
         o.lpWeeks + " weeks/unit · " + (o.lpPlanType === "weekly" ? ((o.lpDays || 5) * o.lpMin) + " min/wk" : o.lpMin + " min/lesson") + " · seed " + o.seed
       : S().label + " · Grade " + o.grade + " · " + pack.topics.length +
         " unit(s) · " + o.sheets.length + " exercise type(s) · seed " + o.seed;
+    if (TEACHING.isAssessment()) $("#meta").textContent = TEACHING.assessmentInfo();
     $("#exportbar").style.display = "flex";
   }
 
@@ -1601,7 +1633,7 @@
           .replace(/\.docx$/, "")
           .replace(/_Workbook|_Pack$/, "") + pType + "_Teacher_Copy";
       }
-      return S().file(opts().grade).replace(/\.docx$/, isTeacher() ? "_Teacher_Copy" : "_Student");
+      return S().file(opts().grade).replace(/\.docx$/, (TEACHING.isAssessment() ? "_Assessment" : "") + (isTeacher() ? "_Teacher_Copy" : "_Student"));
     }
     $("#print").onclick = function () {
       var old = document.title;
@@ -1836,7 +1868,7 @@
     Object.keys(CVMAP).concat(["cvOn", "cvBreak", "cvSubjectBg"]).forEach(function (id) {
       var el = $("#" + id);
       if (el) el.addEventListener("input", readCover);
-      if (el) el.addEventListener("change", readCover);
+      if (el) el.addEventListener("change", function () { readCover(); generate(); });
     });
     if ($("#cvYear") && !$("#cvYear").value) $("#cvYear").value = COVER.year;
 
@@ -1883,7 +1915,7 @@
 
     /* ---- persistence: the school's details are remembered on this device ---- */
     var STORE = "lncpg.cover.v1";
-    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade", "useSubjectArt"];
+    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade", "useSubjectArt", "text"];
     function saveCover() {
       try {
         var o = {};
@@ -1912,6 +1944,7 @@
     }
     loadCover();
     renderTplGrid();
+    COVER_TEXT.init(COVER, saveCover, generate);
 
     /* ---- logo and background uploads ---- */
     function paintImgPrev() {
@@ -2010,7 +2043,7 @@
     if (cl) cl.onclick = function () {
       ["cvSchool", "cvMotto", "cvPupil", "cvTeacher", "cvClass", "cvTerm", "cvNote"]
         .forEach(function (id) { var el = $("#" + id); if (el) el.value = ""; });
-      COVER_IMG.logo = null; COVER_IMG.bg = null;
+      COVER_IMG.logo = null; COVER_IMG.bg = null; COVER.text = {}; COVER_TEXT.set({});
       try { localStorage.removeItem(STORE); localStorage.removeItem(ISTORE); } catch (e) {}
       paintImgPrev(); upMsg("");
       readCover(); generate();
@@ -2030,6 +2063,58 @@
     document.addEventListener("input", syncBadges);
     syncBadges();
 
+    var savedControlIds = ["grade", "perEx", "fsz", "seed", "notes", "tests", "exam", "keys", "lpWeeks", "lpDays", "lpAdjMode", "lpAdjNote", "lpMin"];
+    TEACHING.init({
+      options: opts, subject: S, cover: function () { return COVER; },
+      subjectLabel: function (id) { return SUBJECTS[id] ? SUBJECTS[id].label : id; },
+      hasSubject: function (id) { return Object.prototype.hasOwnProperty.call(SUBJECTS, id); },
+      validateSettings: function (s) {
+        if (!s || !Object.prototype.hasOwnProperty.call(SUBJECTS, s.subject) || !["teacher", "student"].includes(s.mode) ||
+            !["pack", "lp"].includes(s.dtype) || !["daily", "weekly"].includes(s.lpType) || !s.controls || !s.cover || !s.images ||
+            !Array.isArray(s.periods) || !Array.isArray(s.sheets) ||
+            !SUBJECTS[s.subject].curriculum().some(function (t) { return t.grade === +s.controls.grade; })) throw new Error("Invalid document settings");
+        var limits = { perEx: [1, 50], fsz: [8, 20], seed: [0, 1000000000], lpWeeks: [1, 6], lpDays: [1, 7], lpMin: [15, 240] };
+        Object.keys(limits).forEach(function (k) { var n = Number(s.controls[k]); if (!Number.isFinite(n) || n < limits[k][0] || n > limits[k][1]) throw new Error("Invalid " + k + " setting"); });
+        if (["notes", "tests", "exam", "keys"].some(function (k) { return typeof s.controls[k] !== "boolean"; }) ||
+            !["standard", "remedial", "accelerated"].includes(s.controls.lpAdjMode)) throw new Error("Invalid document controls");
+        if (["on", "ownPage", "useSubjectArt"].some(function (k) { return typeof s.cover[k] !== "boolean"; }) ||
+            ["school", "motto", "pupil", "teacher", "classname", "term", "year", "crest", "note"].some(function (k) { return typeof s.cover[k] !== "string" || s.cover[k].length > 12000; }) ||
+            !(Object.prototype.hasOwnProperty.call(COVER_TPL, s.cover.tpl) || s.cover.tpl === "table") ||
+            !Number.isFinite(s.cover.bgFade) || s.cover.bgFade < 0 || s.cover.bgFade > 100) throw new Error("Invalid cover settings");
+        var periods = SUBJECTS[s.subject].curriculum().filter(function (t) { return t.grade === +s.controls.grade; }).map(function (t) { return t.period; });
+        if (!s.periods.every(function (id) { return periods.includes(id); }) || !s.sheets.every(function (id) { return Object.prototype.hasOwnProperty.call(SUBJECTS[s.subject].engine().SHEETS, id); })) throw new Error("Invalid unit or worksheet selection");
+        if (s.cover.text && Object.values(s.cover.text).some(function (v) { return typeof v !== "string" || v.length > 240; })) throw new Error("Invalid cover text");
+      },
+      settings: function () {
+        var controls = {}; savedControlIds.forEach(function (id) { var e = $("#" + id); controls[id] = e.type === "checkbox" ? e.checked : e.value; });
+        return { subject: cur, mode: MODE, dtype: DOCTYPE, lpType: LP_PLAN_TYPE, controls: controls,
+          periods: Array.from(document.querySelectorAll(".pk:checked"), function (c) { return c.value; }),
+          sheets: Array.from(document.querySelectorAll(".sh:checked"), function (c) { return c.value; }),
+          cover: JSON.parse(JSON.stringify(COVER)), images: JSON.parse(JSON.stringify(COVER_IMG)) };
+      },
+      restore: function (s) {
+        cur = s.subject; TRACK = S().wa ? "wa" : "curr"; MODE = s.mode; DOCTYPE = s.dtype; LP_PLAN_TYPE = s.lpType;
+        curBand = bandOf(+s.controls.grade).id;
+        document.body.setAttribute("data-subject", cur);
+        document.querySelectorAll("#tracks .track").forEach(function (b) { b.classList.toggle("on", b.dataset.t === TRACK); });
+        renderSubjectTabs(); buildSheetList(); refreshGrades();
+        savedControlIds.forEach(function (id) { var e = $("#" + id); if (e.type === "checkbox") e.checked = !!s.controls[id]; else e.value = s.controls[id]; });
+        refreshPeriods();
+        document.querySelectorAll(".pk").forEach(function (c) { c.checked = s.periods.includes(c.value); });
+        document.querySelectorAll(".sh").forEach(function (c) { c.checked = s.sheets.includes(c.value); });
+        Object.keys(COVER).forEach(function (k) { if (s.cover[k] !== undefined) COVER[k] = s.cover[k]; });
+        COVER.text = s.cover.text || {}; COVER_TEXT.set(COVER.text);
+        COVER_IMG.logo = s.images.logo || null; COVER_IMG.bg = s.images.bg || null;
+        Object.keys(CVMAP).forEach(function (id) { $("#" + id).value = COVER[CVMAP[id]] || ""; });
+        $("#cvOn").checked = COVER.on; $("#cvBreak").checked = COVER.ownPage; $("#cvSubjectBg").checked = COVER.useSubjectArt;
+        $("#cvFade").value = COVER.bgFade; $("#fadeVal").textContent = COVER.bgFade + "%";
+        $("#cvBox").style.display = COVER.on ? "" : "none";
+        NOTES_ON = $("#notes").checked;
+        paintSession(); paintDocType(); paintLpPlanTabs(); paintLpWeeks(); paintLpPresets(); renderTplGrid(); paintImgPrev(); applyFontSize(); syncBadges();
+        generate();
+      },
+      redraw: function () { generate(); }
+    });
     generate();
   });
 
