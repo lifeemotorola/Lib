@@ -143,7 +143,7 @@ async function generateDoc() {
   ok(text.includes(customNote), "Custom weekly adjustment note rendered in the plan");
 
   console.log("\n=== 5. Testing Multi-Subject Support ===");
-  const testSubjects = ["ma", "sc", "ss", "fr", "bi"];
+  const testSubjects = ["ma", "sc", "ss", "fr", "bi", "kg"];
   for (const s of testSubjects) {
     const btn = $(`#subjects .subtab[data-s='${s}']`);
     if (btn) {
@@ -173,6 +173,10 @@ async function generateDoc() {
   }
 
   console.log("\n=== 7. Regression check: Course Pack mode ===");
+  /* section 5 ends on the Kindergarten subject, whose packs are cover-only;
+     step back to a graded subject for the full-pack regression check */
+  const backBtn = $(`#subjects .subtab[data-s='ma']`);
+  if (backBtn) { backBtn.click(); await sleep(30); }
   $("#dtype .sess[data-d='pack']").click();
   await sleep(30);
   ok($("#lpWrap").style.display === "none", "lpWrap hidden in course pack mode");

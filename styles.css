@@ -237,6 +237,12 @@ body[data-subject="gg"] .top{background:linear-gradient(135deg,#1f6b4f,#2e8b6a)}
 body[data-subject="gg"] .page th{background:#dcf0e7}
 body[data-subject="gg"] .page th,body[data-subject="gg"] .page td{border-color:#8fc7ab}
 
+/* --- Kindergarten subject theme --- */
+body[data-subject="kg"]{--bleu:#b3541e;--bleu-l:#d3762a;--rouge:#0b6b3a}
+body[data-subject="kg"] .top{background:linear-gradient(135deg,#b3541e,#d3762a)}
+body[data-subject="kg"] .page th{background:#f7e8d2}
+body[data-subject="kg"] .page th,body[data-subject="kg"] .page td{border-color:#dfb380}
+
 /* cover page controls */
 #cvBox input[type=text]{width:100%;box-sizing:border-box;margin:0 0 6px;padding:6px 8px;
   border:1px solid #c9d3e2;border-radius:6px;font:inherit;font-size:.85rem}

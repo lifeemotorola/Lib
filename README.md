@@ -5,9 +5,10 @@ Liberian National Curriculum: pupil workbooks, period tests, semester
 examinations and teacher's answer keys — in **English, Phonics, French, General
 Science, Mathematics, Social Studies, Religious & Moral Education, Physical
 Education, Biology, Chemistry, Physics, Economics, English Grammar,
-Geography, History, Civics and Literature**, Grades 1–12, all A4-exact on screen, in print and in Word.
-It also designs **KG-I and KG-II cover pages** — the two kindergarten levels are
-cover-page levels, because no kindergarten syllabus is transcribed here.
+Geography, History, Civics, Literature and Kindergarten**, Grades 1–12, all A4-exact on screen, in print and in Word.
+It also plans **KG-I and KG-II teacher's lesson plans** from the national ECD
+theme planners, and designs **KG-I and KG-II cover pages** for work the school
+prepares itself.
 
 Everything runs from one HTML file with **no server and no internet**
 (`index.html`, about 11 MB). It has no dependencies at runtime — the
@@ -16,7 +17,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **16 National Curriculum subjects**, plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
+- **17 National Curriculum subjects** (the 16 graded subjects plus **Kindergarten**, which plans ECD lessons on KG-I and KG-II), plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -56,7 +57,7 @@ so the whole thing stays self-contained.
   French subject — plus reading **speed** and **pitch**. It lives entirely
   outside the printable session: the button and panel are hidden in print and
   never appear on a generated sheet
-- **Customizable cover**: template choice, 16 built-in subject-matched PNG
+- **Customizable cover**: template choice, 17 built-in subject-matched PNG
   backgrounds (equations for Mathematics, laboratory imagery for Science,
   books for Literature, and so on), school name (persisted), uploaded logo or
   replacement background, pupil/teacher/term/year fields, and emoji crest — plus
@@ -69,12 +70,13 @@ so the whole thing stays self-contained.
   organization line). The designer is saved on the device, travels with any
   document saved in the teaching library, and is applied on screen, in print and
   in the `.docx` export as far as Word allows
-- **Kindergarten cover pages — KG-I and KG-II**: a Kindergarten level band lists
-  both kindergarten levels for every national-curriculum subject, with its own
-  generated `kg.png` artwork and a bright Kindergarten cover template. These are
-  **cover-page levels**: no kindergarten curriculum is transcribed on the
-  platform, so choosing one produces the customizable cover sheet alone — never
-  invented worksheets
+- **Kindergarten — KG-I and KG-II lesson plans and cover pages**: a Kindergarten
+  level band lists both kindergarten levels for every national-curriculum
+  subject, with its own generated `kg.png` artwork and a bright Kindergarten
+  cover template. On the **Kindergarten** subject a lesson plan is built from
+  the transcribed national ECD theme units (`data-kg.js`); everywhere else the
+  two levels stay **cover-page levels**, so choosing one produces the
+  customizable cover sheet alone — never invented worksheets
 - **Pagination engineered for A4** (794 × 1123 px sheets, fixed geometry),
   with a responsive preview that scales the sheet instead of resizing it
 - **A Contents page that names the page**: every pack lists its periods, its
@@ -185,31 +187,42 @@ school's details, and is carried inside any document saved in the teaching
 library. The colours, emblem, title size and switches apply to the five designed
 templates; the Simple List template is plain text.
 
-### Kindergarten cover pages — KG-I and KG-II
+### Kindergarten — KG-I and KG-II lesson plans and cover pages
 
 **Kindergarten** appears as a level band alongside Elementary, Junior High and
 Senior High, and lists **KG-I** and **KG-II**. Its band tab reads **KG** so the
-level row stays narrow on a handset. Pick a subject, pick the level,
-design the cover, then **Print / PDF** or **Word (.docx)** — the file is named
-after the subject and level, for example `English_KG-II_Cover_Student.docx`.
+level row stays narrow on a handset. It is also a subject of its own: pick
+**National Curriculum → Kindergarten**, pick the level, tick the theme units
+and generate a **Lesson plan** — daily or weekly, 2 weeks per unit — built from
+the transcribed ECD planners, with songs, learning centers, small groups and
+observation checkpoints instead of exercise books. The plan file is named after
+the level, for example `Kindergarten_KG-I_Lesson_Plan_Teacher_Copy.docx`.
 
-These two levels are deliberately **cover-page levels**. No kindergarten
-curriculum is transcribed on this platform, so the platform will not invent
-worksheets for them: the generated document is the cover sheet alone, the unit
-list is empty with a note saying so, the cover's Class row reads `KG-I` or
-`KG-II`, its subtitle reads *Kindergarten I Cover Page*, and its footer reads
-*Kindergarten · Liberian National Curriculum* rather than claiming curriculum
-content.
+Outside those lesson plans the two levels are deliberately **cover-page
+levels**. No other kindergarten material is transcribed on this platform, so the
+platform will not invent worksheets for them: pick any other subject, pick the
+level, design the cover, then **Print / PDF** or **Word (.docx)** — the file is
+named after the subject and level, for example
+`English_KG-II_Cover_Student.docx`. The unit list is empty with a note saying
+so, the cover's Class row reads `KG-I` or `KG-II`, its subtitle reads
+*Kindergarten I Cover Page*, and its footer reads *Kindergarten · Liberian
+National Curriculum* rather than claiming curriculum content.
 
 The Kindergarten band is offered only where it produces something:
 
 - in the **National Curriculum** track — never in the WASSCE track, which is a
   Grade 12 examination;
-- for a **Course pack** — not for a **Lesson plan**, because a KG level has no
-  units to plan around, so the band and its two levels disappear from the level
-  picker the moment the document switch moves to Lesson plan and return when it
-  moves back;
+- for a **Course pack** on any subject — and for a **Lesson plan** only on the
+  **Kindergarten** subject, whose ECD units fill the plan; on every other
+  subject the band and its two levels disappear from the level picker the
+  moment the document switch moves to Lesson plan and return when it moves
+  back;
 - and never by default, so every subject still opens on its own lowest grade.
+
+The printed companion lessons live in `kg-lessons/`: a complete 4-week
+`KG-1-Staying-Healthy-and-Safe-Lessons.md` and
+`KG-2-Staying-Healthy-and-Safe-Lessons.md` for the model theme, written from
+the same planners.
 
 ## Quick start
 
@@ -299,11 +312,13 @@ same tool lives in `book.html`.
 | History (`hi`) | 10–12 | 6 | 18 |
 | Civics (`ci`, supplementary) | 7–12 | 6 | 36 |
 | Literature (`li`) | 10–12 | 6 | 18 |
+| Kindergarten (`kg`, lesson plans) | KG-I–KG-II | 2 theme units | 4 |
 
 > **Coverage:** Mathematics, French and **Phonics** span Grades 1–12, and
 > Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and
 > Literature cover Grades 10–12; the other elementary and junior-high
-> subjects stop at Grade 9.
+> subjects stop at Grade 9. **Kindergarten** spans KG-I–KG-II with 2 ECD theme
+> units per level (lesson plans only; packs stay cover-only).
 
 ### Civics — Grades 7–12
 
@@ -465,7 +480,7 @@ packs must never be locked out by it.
 | `body.html` | Page markup (header, settings panel, action bar, duplex-print dialog). |
 | `styles.css` | All styling, including A4 sheet geometry and `@media print` rules. |
 | `app.js` | The platform: subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence. |
-| `data-*.js` | Curriculum content per subject (`data-en.js`, `data-pho.js` = Phonics Grades 1–12, `data-ma79.js` = Junior High part, `data-bi.js`, ...). |
+| `data-*.js` | Curriculum content per subject (`data-en.js`, `data-pho.js` = Phonics Grades 1–12, `data-ma79.js` = Junior High part, `data-bi.js`, `data-kg.js` = Kindergarten ECD units, ...). |
 | `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg`/`hi` use `gen-ss.js`; Literature has its own, `gen-li.js`, and Phonics its own, `gen-pho.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
@@ -479,7 +494,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -548,6 +563,9 @@ node tests/history.js
 
 # KG-I / KG-II cover-page levels and the cover designer (no dependencies)
 node tests/cover-kg.js
+
+# Kindergarten ECD units and lesson-plan wording (no dependencies)
+node tests/kg-lesson.js
 
 # contents page numbers: the matcher that tells each Contents line which page
 # its part begins on (no dependencies)

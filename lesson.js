@@ -143,6 +143,8 @@
     rm: ["Discussion", "Storytelling and role play", "Question and answer", "Group work", "Personal reflection"],
     pe: ["Demonstration", "Practical performance", "Question and answer", "Group and pair work", "Use of simple equipment"],
     li: ["Reading and discussion", "Question and answer", "Role play", "Group work", "Guided analysis of the text"],
+    /* ECD methods are play-based: nothing here asks 4 to 6-year-olds to sit with books. */
+    kg: ["Songs, chants and finger plays", "Learning centers and small-group play", "Demonstration with real objects and pictures", "Outdoor games and movement", "Storytelling, role play and dramatization", "Question and answer with pictures and objects"],
     wa: ["Question and answer", "Guided practice and drill", "Modelling solved examples on the board", "Pair and group work", "Examination-style practice"]
   };
   function methodFor(subjId, r) {
@@ -150,6 +152,9 @@
     return shuffle(pool, r).slice(0, 4);
   }
   function aidsFor(t) {
+    /* Kindergarten units name their own concrete aids (real objects, cards,
+       charts) - no textbooks or chalkboards for 4 to 6-year-olds. */
+    if (t.aids && t.aids.length) return t.aids.slice(0, 6).map(plain);
     var a = ["Textbook and lesson notes", "Blackboard, chalk and duster"];
     var names = termNames(t);
     if (names.length) a.push("Word cards / flashcards \u2014 " + names.slice(0, 3).join(", "));
@@ -162,6 +167,8 @@
     return a.slice(0, 6);
   }
   function exerciseNames(t) {
+    /* ECD practice is hands-on play, songs and games - never worksheets. */
+    if (t.kgPlan) return ["hands-on practice at the learning centers", "the theme song, chant or game"];
     var e = [];
     if (t.terms || t.words) e.push("the key-terms table");
     if (t.phonics && t.phonics.length) e.push("sound and pattern practice");
@@ -230,6 +237,27 @@
      This helper calculates the weekly adjustment instructions and remedial
      pacing for Week w of W weeks (3 or 4 weeks). */
   function weeklyAdjustment(w, W, adjMode, customAdjNote, t) {
+    /* Kindergarten adjustments are play-based and observation-driven: model,
+       sing, play and watch - no exercise books or written drills. */
+    if (t && t.kgPlan) {
+      var kw0 = termNames(t).slice(0, 2).join(", ") || "key words";
+      var kg = "";
+      if (adjMode === "remedial") {
+        if (w === 1) kg = "Gentle Start & Extra Modeling: demonstrate each step of " + kw0 + " one move at a time; pair every young child with a buddy; accept pointing, naming and one-word answers; sing the theme song daily.";
+        else if (w < W) kg = "Step-by-Step Play Support: keep small groups tiny; re-model difficult steps with real objects; note each child's tries on the observation sheet; ask parents to repeat one game at home.";
+        else kg = "Celebration & Observation Check: revisit every objective through play stations; observe and record each child against the checkpoints; praise each mastered skill by name.";
+      } else if (adjMode === "accelerated") {
+        if (w === 1) kg = "Young Leaders From Day One: quick baseline through play; confident children demonstrate steps, lead songs and hold word cards while others copy.";
+        else if (w < W) kg = "Extension Play & Child Jobs: add charting, story dictation and rule-based games; rotate leader jobs (song, line, materials, checker) daily.";
+        else kg = "Show What You Know: children present one piece of work, teach a game to visitors, and run the final review stations themselves.";
+      } else {
+        if (w === 1) kg = "First Steps & Baseline Play: introduce " + kw0 + " with real objects and the theme song; watch how each child joins in and note starting points.";
+        else if (w < W) kg = "Growing Independence: children lead more of the chant and routines; small groups try the next activity while the teacher observes and supports.";
+        else kg = "Consolidation Through Celebration: repeat favourite stations, finish class charts and books, observe every child, and exhibit the work to parents.";
+      }
+      if (customAdjNote) kg += " - Teacher's Note: " + plain(customAdjNote);
+      return kg;
+    }
     var terms = termNames(t);
     var kw = terms.slice(0, 2).join(", ") || "core vocabulary";
     var adj = "";
@@ -281,7 +309,7 @@
     var adjMode = opts.lpAdjMode || "standard";
     var customAdjNote = plain(opts.lpAdjNote);
     var subj = plain(opts.subjectLine || opts.subjectName || "Lesson");
-    var gradeTxt = opts.wa ? "Grade 12 (WASSCE)" : "Grade " + opts.grade;
+    var gradeTxt = opts.wa ? "Grade 12 (WASSCE)" : opts.kg ? plain(opts.levelName || "Kindergarten") : "Grade " + opts.grade;
     var teacher = plain(opts.teacherName) || "____________________";
     var doc = [];
 
@@ -319,7 +347,10 @@
       ];
       for (var w = 1; w <= W; w++) {
         var wFocus = "";
-        if (w === 1) wFocus = heads[0] || "Foundations & Key Vocabulary";
+        /* ECD units carry one study focus per week (2-week rhythm); weeks past
+           the last focus consolidate, celebrate and observe. */
+        if (t.kgPlan) wFocus = heads[w - 1] || "Consolidation, Celebration and Observation Check";
+        else if (w === 1) wFocus = heads[0] || "Foundations & Key Vocabulary";
         else if (w === 2) wFocus = heads[1] || "Core Developmental Skills & Principles";
         else if (w === 3 && W >= 4) wFocus = heads[2] || "Applied Investigations & Practice";
         else wFocus = "Consolidation, Remedial Review & Unit Assessment";
@@ -336,7 +367,8 @@
       for (var wk = 1; wk <= W; wk++) {
         var isLast = (wk === W);
         var subhead = "";
-        if (wk === 1) subhead = heads[0] || "Foundations & Key Vocabulary";
+        if (t.kgPlan) subhead = heads[wk - 1] || "Consolidation, Celebration and Observation Check";
+        else if (wk === 1) subhead = heads[0] || "Foundations & Key Vocabulary";
         else if (wk === 2) subhead = heads[1] || "Core Developmental Skills & Guided Practice";
         else if (wk === 3 && W >= 4) subhead = heads[2] || "Applied Practice, Investigation & Case Study";
         else subhead = "Consolidation, Remedial Review & Unit Period Assessment";
@@ -365,7 +397,17 @@
         /* Classroom Procedures across the week */
         doc.push({ k: "h3", t: "Classroom Procedures & Activities across Week " + wk });
         var proc = [];
-        if (wk === 1) {
+        /* ECD weeks follow the national daily routine - Morning Meeting,
+           Learning Centers with teacher-led Small Groups, Outdoor Time,
+           Story Time and Closing - with the week's focus woven through. */
+        if (t.kgPlan) {
+          var kgActs = (t.activities || []).slice((wk - 1) * 3, (wk - 1) * 3 + 3);
+          var kgActTxt = kgActs.length ? joinList(kgActs.map(plain)) : "favourite songs, sorting games and center play";
+          proc.push("Morning Meeting (15 min daily): welcome song, greetings and the week's topic; the teacher presents " + subhead + " with real objects and pictures, and the class practises the theme song and key words (" + (names.slice(0, 3).join(", ") || "theme vocabulary") + ").");
+          proc.push("Learning Centers & Small Groups (daily): children choose Art, Block, Drama, Literacy and Manipulative centers while the teacher leads small groups in " + kgActTxt + ".");
+          if (isLast) proc.push("Outdoor, Story & Closing plus consolidation: outdoor games and the week's walk; story time with dramatization; closing review where each child says one new thing learned; favourite stations repeat and the teacher observes every child against the checkpoints.");
+          else proc.push("Outdoor, Story & Closing (daily): outdoor games and water/sand play; story time with songs and finger plays; closing review of the day and a look at tomorrow.");
+        } else if (wk === 1) {
           proc.push("Starter & Orientation (Days 1–2): Teacher introduces " + plain(t.title) + " and conducts diagnostic checks on prerequisite knowledge; writes key terms (" + (names.slice(0, 3).join(", ") || "core terms") + ") on the chalkboard.");
           proc.push("Developmental Instruction (Days 2–4): Teacher explains core concepts with textbook examples; pupils engage in choral repetition, vocabulary drills, and guided workbook exercises.");
           proc.push("Weekly Consolidation (Day " + daysPerWeek + "): Pupils review weekly terms in pairs; teacher administers weekly formative check and sets home assignment.");
@@ -399,18 +441,28 @@
         /* Assignment for the week */
         doc.push({ k: "h3", t: "Weekly Assignment (Week " + wk + ")" });
         var wAsg = [];
-        if (names.length && wk === 1) wAsg.push("Copy and define the key terms in your exercise book: " + names.slice(0, 4).join(", ") + ".");
-        wAsg.push("Complete the weekly review exercises in the pupil workbook for " + subhead + ".");
-        if (isLast) wAsg.push("Prepare for the marking period assessment: review all study notes for " + plain(t.title) + ".");
-        else wAsg.push("Preview next week's subtopic and bring one written question to class.");
+        /* ECD home activities are done WITH parents - practice, not homework. */
+        if (t.kgPlan && t.home && t.home.length) {
+          wAsg.push(t.home[(wk - 1) % t.home.length]);
+          wAsg.push(t.home[wk % t.home.length]);
+          if (isLast) wAsg.push("Celebrate the unit: the child shows the family one piece of work and says what it teaches.");
+          else wAsg.push("Ask the family about next week's focus (" + (heads[wk] || "the next steps") + ") and bring one idea to class.");
+        } else {
+          if (names.length && wk === 1) wAsg.push("Copy and define the key terms in your exercise book: " + names.slice(0, 4).join(", ") + ".");
+          wAsg.push("Complete the weekly review exercises in the pupil workbook for " + subhead + ".");
+          if (isLast) wAsg.push("Prepare for the marking period assessment: review all study notes for " + plain(t.title) + ".");
+          else wAsg.push("Preview next week's subtopic and bring one written question to class.");
+        }
         doc.push({ k: "num", items: wAsg });
 
         if (wk < W) doc.push({ k: "rule" });
       }
 
       /* End-of-Unit Period Culmination */
-      doc.push({ k: "h2", t: "End-of-Unit Culmination & Period Assessment (Unit Complete)" });
-      doc.push({ k: "p", t: "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". All instructional objectives have been taught, adjusted weekly for pupil pacing, evaluated through formative checks, and consolidated with the marking period assessment." });
+      doc.push({ k: "h2", t: t.kgPlan ? "End-of-Unit Celebration & Observation Review (Unit Complete)" : "End-of-Unit Culmination & Period Assessment (Unit Complete)" });
+      doc.push({ k: "p", t: t.kgPlan
+        ? "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". Every objective has been taught through play, practised in centers and outdoors, observed against the checkpoints, and celebrated with an exhibition of the children's work."
+        : "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". All instructional objectives have been taught, adjusted weekly for pupil pacing, evaluated through formative checks, and consolidated with the marking period assessment." });
 
       if (i < topics.length - 1) doc.push({ k: "pagebreak" });
     });
@@ -427,7 +479,7 @@
     var adjMode = opts.lpAdjMode || "standard";
     var customAdjNote = plain(opts.lpAdjNote);
     var subj = plain(opts.subjectLine || opts.subjectName || "Lesson");
-    var gradeTxt = opts.wa ? "Grade 12 (WASSCE)" : "Grade " + opts.grade;
+    var gradeTxt = opts.wa ? "Grade 12 (WASSCE)" : opts.kg ? plain(opts.levelName || "Kindergarten") : "Grade " + opts.grade;
     var teacher = plain(opts.teacherName) || "____________________";
     var doc = [];
 
@@ -461,24 +513,35 @@
       /* ---- Presentation & Procedures (Classroom Activities) ---- */
       doc.push({ k: "h2", t: "Presentation & Procedures (Classroom Activities)" });
 
-      var intro = ["Greeting and attendance. The teacher greets the class, takes attendance and settles the pupils into mixed-ability groups."];
+      /* ECD mornings open with song on the mat, not rows and groups. */
+      var intro = [t.kgPlan
+        ? "Welcome song and attendance. The teacher welcomes the children with the theme song, takes attendance and settles them on the mat."
+        : "Greeting and attendance. The teacher greets the class, takes attendance and settles the pupils into mixed-ability groups."];
       if (prev) intro.push("Review of the previous period (" + plain(prev.title) + "). The teacher asks two or three recall questions; the pupils answer orally and gaps are corrected on the spot.");
       else intro.push("Starter. The teacher sets a short question to check what the pupils already know about the topic.");
-      intro.push("Introducing the lesson. The teacher writes the topic on the board, reads the objectives and tells the pupils exactly what they will be able to do by the end of the period.");
+      intro.push(t.kgPlan
+        ? "Introducing the lesson. The teacher shows the topic with a real object or picture and tells the children what they will do, sing, play and learn today."
+        : "Introducing the lesson. The teacher writes the topic on the board, reads the objectives and tells the pupils exactly what they will be able to do by the end of the period.");
       if (open) intro.push("Advance organiser. The teacher raises the idea that opens the period: " + firstSentence(open));
       doc.push({ k: "h3", t: "Initial Activities / Introduction (" + time.intro + " min)" });
       doc.push({ k: "num", items: intro });
 
       var main = [];
       var head = heads.length ? heads.slice(0, 2).join("; ") : plain(t.subtitle || t.title);
-      var pres = "Presentation of the new content. The teacher explains the key points of the period (" + head + ") using examples from the course text; pupils listen, ask questions and note the main points.";
-      if (names.length) pres += " Key terms are defined on the board: " + names.slice(0, 3).join(", ") + ".";
+      var pres = t.kgPlan
+        ? "Presentation of the new idea. The teacher shows and demonstrates (" + head + ") with real objects and pictures; the children watch, handle, name and try each step with the teacher."
+        : "Presentation of the new content. The teacher explains the key points of the period (" + head + ") using examples from the course text; pupils listen, ask questions and note the main points.";
+      if (names.length) pres += t.kgPlan
+        ? " Key words are said, clapped and shown on word cards: " + names.slice(0, 3).join(", ") + "."
+        : " Key terms are defined on the board: " + names.slice(0, 3).join(", ") + ".";
       main.push(pres);
       var gw = firstWorked(t);
       if (gw) main.push("Guided practice. The teacher and pupils work through \u201c" + gw + "\u201d together, step by step; the pupils give the answer at each step and the teacher corrects.");
       var ex = exerciseNames(t);
       if (ex.length) main.push("Pupil practice. In their groups the pupils do " + joinList(ex) + "; the teacher circulates, listens, answers questions and notes the mistakes to correct later.");
-      if (D > 90) main.push("Correction and feedback. Each group gives one answer; the teacher marks it, explains the wrong ones with reasons, and repeats the part that was difficult.");
+      if (D > 90) main.push(t.kgPlan
+        ? "Sharing and praise. Each small group shows what it made or did; the teacher praises each effort by name and re-models any step the children found hard."
+        : "Correction and feedback. Each group gives one answer; the teacher marks it, explains the wrong ones with reasons, and repeats the part that was difficult.");
       doc.push({ k: "h3", t: "Developmental Activities (Main Activities) (" + time.main + " min)" });
       doc.push({ k: "num", items: main });
 
@@ -486,7 +549,9 @@
       sum.push("Recap. The pupils state, in their own words, what the period taught" + (names.length ? " and name the key terms: " + names.slice(0, 3).join(", ") : "") + ".");
       if (objs.length) sum.push("The teacher summarises the lesson: by now the pupils can " +
         joinList(objs.slice(0, 2).map(function (o) { return o.charAt(0).toLowerCase() + o.slice(1); })) + ".");
-      sum.push("Correction. The pupils copy the corrected points into their exercise books.");
+      sum.push(t.kgPlan
+        ? "Show and celebrate. The children show their work, each says one new thing learned, and the teacher displays the work on the wall."
+        : "Correction. The pupils copy the corrected points into their exercise books.");
       sum.push("The teacher gives the assignment and announces the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ".");
       doc.push({ k: "h3", t: "Summary Conclusion (" + time.sum + " min)" });
       doc.push({ k: "num", items: sum });
@@ -501,18 +566,27 @@
         doc.push({ k: "p", t: "Model answers (for the teacher):" });
         doc.push({ k: "num", items: ev.map(function (e) { return e.a; }) });
       } else {
-        doc.push({ k: "p", t: "The teacher asks three oral questions drawn from the objectives; the pupils answer in complete sentences." });
+        doc.push({ k: "p", t: t.kgPlan
+          ? "The teacher asks three oral questions drawn from the objectives; the children answer by saying, showing or pointing, and the teacher notes each answer on the observation sheet."
+          : "The teacher asks three oral questions drawn from the objectives; the pupils answer in complete sentences." });
       }
 
       /* ---- Assignment ---- */
       var asg = [];
-      if (names.length) asg.push("Copy the key terms and their meanings into your exercise book: " + names.slice(0, 4).join(", ") + ".");
+      /* ECD assignments are home activities done with parents - never books. */
+      if (t.kgPlan && t.home && t.home.length) {
+        asg.push(t.home[0]);
+        if (t.home[1]) asg.push(t.home[1]);
+        asg.push("Tell your family one new thing you learned today" + (next ? " and ask them about " + plain(next.title) : "") + ".");
+      } else {
+        if (names.length) asg.push("Copy the key terms and their meanings into your exercise book: " + names.slice(0, 4).join(", ") + ".");
       var used = {};
       if (gw) used[gw] = 1;
       ev.forEach(function (e) { used[e.q] = 1; });
       var hq = homeQuestion(t, used);
       if (hq) asg.push("Answer in your exercise book: " + hq.replace(/\.\s*$/, "") + ".");
       asg.push("Preview the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ": read the course text and bring one question.");
+      }
       doc.push({ k: "h3", t: "Assignment" });
       doc.push({ k: "num", items: asg });
 

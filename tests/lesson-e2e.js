@@ -137,7 +137,7 @@ async function matrix(trackId) {
   ok($("#lpWrap").style.display !== "none", "lpWrap not shown in LP mode");
   ok($("#ddSheets").style.display === "none", "sheets still shown in LP mode");
   ok($("#ddParts").style.display === "none", "parts still shown in LP mode");
-  ok($("#dtypeNote").textContent.includes("lesson plan"), "dtype note not updated");
+  ok($("#dtypeNote").textContent.includes("Lesson plan"), "dtype note not updated");
   ok($("#dtype .sess[data-d='lp']").className.includes("on"), "lp tab not marked on");
 
   /* ---- 2. national curriculum matrix, all durations ---- */
