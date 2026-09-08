@@ -36,6 +36,8 @@ jobs:
       - name: Check History controls, course packs, lesson plans and exports offline
         run: |
           set +e
+          python tests/_diag.py 2>&1 | tee /tmp/diag.log
+          echo "::notice title=diag::$(grep '^DIAG ' /tmp/diag.log | head -1 | cut -c6- | tr '\n' '|' | sed 's/%/%25/g')"
           python tests/history.py 2>&1 | tee /tmp/hist.log
           code=${PIPESTATUS[0]}
           if [ "$code" -ne 0 ]; then
