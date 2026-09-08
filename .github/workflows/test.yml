@@ -39,7 +39,9 @@ jobs:
           git show 5fbab61:index.html > /tmp/base-index.html
           for f in /tmp/base-index.html index.html; do
             python tests/_diag.py "$f" 2>&1 | tee /tmp/diag.log
-            echo "::notice title=diag-$f::$(grep '^DIAG ' /tmp/diag.log | head -1 | cut -c6- | tr '\n' '|' | sed 's/%/%25/g')"
+            tag=CUR
+            case "$f" in /tmp/*) tag=BASE ;; esac
+            echo "::error title=diag-$tag::$(grep '^DIAG ' /tmp/diag.log | head -1 | cut -c6- | tr '\n' '|' | sed 's/%/%25/g')"
           done
           python tests/history.py 2>&1 | tee /tmp/hist.log
           code=${PIPESTATUS[0]}
