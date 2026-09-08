@@ -77,6 +77,13 @@ so the whole thing stays self-contained.
   invented worksheets
 - **Pagination engineered for A4** (794 × 1123 px sheets, fixed geometry),
   with a responsive preview that scales the sheet instead of resizing it
+- **A Contents page that names the page**: every pack lists its periods, its
+  period tests, its examination papers and its answer keys with the number of
+  the page each of them begins on — entry on the left, dotted leaders across,
+  the number in the right margin — in the preview, on paper and in the `.docx`.
+  The numbers are read off the finished layout, so they stay true when
+  something re-flowes the pack: another font size, study notes switched off, a
+  worksheet edited in the teaching workspace
 - **Export**: `.docx` (student or teacher copy) and **Print / PDF** with
   print-specific CSS
 - **Duplex print helper** — odd/even page sequences so an A4 workbook can be
@@ -541,6 +548,10 @@ node tests/history.js
 
 # KG-I / KG-II cover-page levels and the cover designer (no dependencies)
 node tests/cover-kg.js
+
+# contents page numbers: the matcher that tells each Contents line which page
+# its part begins on (no dependencies)
+node tests/toc.js
 
 # voice reader and AI tutor (no dependencies)
 node tests/voice.js
