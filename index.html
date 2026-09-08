@@ -29,6 +29,13 @@ button,select,input{font-family:inherit}
 .top-sub{display:inline-block;margin-top:2px;font-size:.78rem;opacity:.8}
 .crest{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.16);
   display:grid;place-items:center;font-size:24px;border:1px solid rgba(255,255,255,.28)}
+/* hamburger: arranges the whole layout — collapses the settings sidebar on
+   desktop so the pack uses the full width, and opens the drawer on touch */
+.menu-btn{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff;
+  cursor:pointer;transition:background .15s,border-color .15s}
+.menu-btn:hover{background:rgba(255,255,255,.3)}
+.menu-btn .ic{width:1.45rem;height:1.45rem}
 .install-app{flex:none;border:1px solid rgba(255,255,255,.55);border-radius:10px;
   padding:9px 13px;background:#fff;color:#0b3b8c;font-weight:800;cursor:pointer;
   box-shadow:0 3px 12px rgba(0,0,0,.14)}
@@ -985,11 +992,30 @@ img.ai-msg-img{width:26px;height:26px}
 .teaching-toolbar .b2:hover,.teaching-dialog .b2:hover{background:#edf6f1;border-color:#8eb5a6;filter:none}.teaching-dialog .tw-tabs .b2[aria-pressed=true],.teaching-dialog .b2.tw-primary{background:#195e4c;border-color:#195e4c;color:#fff}.teaching-dialog .b2.tw-primary:hover{background:#104d3d}.teaching-toolbar button:focus-visible,.teaching-dialog button:focus-visible{outline:2px solid #347566;outline-offset:3px}.tw-header{position:sticky;top:-24px;background:#fbfcfe;z-index:4;padding:8px 0}.tw-header #twClose{flex-shrink:0}.tw-tabs{gap:8px}
 .page .cv-t1{font-size:21mm;line-height:1.08;border:0;padding:0;margin:0;color:var(--cv-ink)}.page .cv-t1.long{font-size:14mm}.page .cv-t1.xlong{font-size:10.5mm}
 @media(max-width:600px){.tw-header{top:-16px}.teaching-dialog .b2{font-size:12px;padding:9px 11px}.teaching-toolbar .b2{padding:10px;font-size:12px}}
+
+/* ============================================================
+   HAMBURGER LAYOUT CONTROL
+   The header hamburger arranges the layout on every screen.
+   Desktop / laptop: collapsing hides the settings sidebar and
+   lets the pack stretch across the full width; opening restores
+   the two-column arrangement. On touch the panel already slides
+   open via `body.panel-open`, so this only applies above 980px.
+   ============================================================ */
+@media (min-width:981px){
+  body.panel-closed .wrap{grid-template-columns:1fr}
+  body.panel-closed .panel{display:none}
+}
+@media (max-width:640px){
+  .menu-btn{width:40px;height:40px;border-radius:10px}
+}
 </style>
 </head>
 <body data-subject="en">
 <header class="top">
   <div class="top-in">
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="true" aria-controls="panel" aria-label="Hide course pack settings">
+      <svg class="ic" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
     <div class="crest"><svg class="ic" aria-hidden="true"><use href="#i-crest"/></svg></div>
     <div class="top-txt">
       <h1>Liberian National Curriculum &middot; Course Pack Generator</h1>
@@ -1371,6 +1397,7 @@ img.ai-msg-img{width:26px;height:26px}
   <symbol id="i-teacher" viewBox="0 0 24 24"><rect x="3" y="3.5" width="12.5" height="9" rx="1.6"/><path d="M6 7h6.5M6 9.7h4"/><circle cx="17.2" cy="14.6" r="2.2"/><path d="M13 21c0-2.2 1.9-3.6 4.2-3.6S21.4 18.8 21.4 21"/></symbol>
   <symbol id="i-student" viewBox="0 0 24 24"><path d="M12 3.8 2.6 8.4 12 13l9.4-4.6z"/><path d="M6.6 10.5v5.1c0 1.5 2.4 2.9 5.4 2.9s5.4-1.4 5.4-2.9v-5.1"/><path d="M21.4 8.4v5.2"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6.5 9.5 12 15l5.5-5.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></symbol>
 
   <!-- ---- subjects ---- -->
   <symbol id="i-sub-en" viewBox="0 0 24 24"><path d="M5.6 3.5h11.2a1.8 1.8 0 0 1 1.8 1.8v15.2H7.4a1.8 1.8 0 0 1-1.8-1.8z"/><path d="M5.6 17.1h13"/><path d="M10.6 3.5v6l2-1.4 2 1.4v-6"/></symbol>
@@ -86713,21 +86740,53 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     window.addEventListener("orientationchange", fitSoon);
     fitPreview();
 
-    /* collapsible settings panel on tablet and phone */
+    /* collapsible settings panel — the header hamburger arranges the whole
+       layout: on tablet/phone it slides the panel open and shut, and on wider
+       screens it collapses the settings sidebar so the pack uses the full
+       width. The on-screen "Course pack settings" bar stays for touch. */
     var pt = $("#panelToggle");
+    var menuBtn = $("#menuBtn");
+    function panelIsOpen() {
+      return window.matchMedia("(max-width:980px)").matches
+        ? document.body.classList.contains("panel-open")
+        : !document.body.classList.contains("panel-closed");
+    }
+    function paintMenu() {
+      var open = panelIsOpen();
+      if (menuBtn) {
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        menuBtn.setAttribute("aria-label", open ? "Hide course pack settings" : "Show course pack settings");
+        var u = menuBtn.querySelector("use");
+        if (u) u.setAttribute("href", open ? "#i-close" : "#i-menu");
+      }
+      if (pt) pt.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    function togglePanel() {
+      if (window.matchMedia("(max-width:980px)").matches) {
+        document.body.classList.toggle("panel-open");
+      } else {
+        document.body.classList.toggle("panel-closed");
+      }
+      paintMenu();
+      fitSoon();
+    }
+    if (menuBtn) menuBtn.onclick = togglePanel;
     if (pt) {
       pt.onclick = function () {
-        var open = document.body.classList.toggle("panel-open");
-        pt.setAttribute("aria-expanded", open ? "true" : "false");
+        document.body.classList.toggle("panel-open");
+        paintMenu();
         fitSoon();
       };
     }
+    window.addEventListener("resize", paintMenu);
+    window.addEventListener("orientationchange", paintMenu);
+    paintMenu();
     /* after generating on a small screen, collapse the panel so the
        pack is what the user actually sees */
     function collapseIfNarrow() {
       if (window.matchMedia("(max-width:980px)").matches) {
         document.body.classList.remove("panel-open");
-        if (pt) pt.setAttribute("aria-expanded", "false");
+        paintMenu();
       }
     }
 
