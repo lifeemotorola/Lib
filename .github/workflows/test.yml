@@ -39,11 +39,9 @@ jobs:
           python tests/history.py 2>&1 | tee /tmp/hist.log
           code=${PIPESTATUS[0]}
           if [ "$code" -ne 0 ]; then
-            {
-              echo "### tests/history.py failed (exit $code)"
-              echo '```'
-              tail -n 45 /tmp/hist.log
-              echo '```'
-            } >> "$GITHUB_STEP_SUMMARY"
+            # Report the tail of the traceback as a check annotation, which is
+            # readable through the API when the raw log endpoint is unavailable.
+            tail -n 25 /tmp/hist.log | tr -d '\r' | sed 's/%/%25/g;s/\r/%0D/g;s/\n/%0A/g' > /tmp/hist.msg
+            echo "::error title=history.py failed::$(tr '\n' '|' < /tmp/hist.msg)"
           fi
           exit "$code"
