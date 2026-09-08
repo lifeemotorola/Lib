@@ -39,6 +39,18 @@ with sync_playwright() as pw:
     txt = pg.locator("#doc").inner_text()
     out["has_expected"] = "HISTORY \u00b7 SENIOR HIGH GRADE 10" in txt
     out["doc_head"] = txt[:260].replace("\n", " / ")
+    out["noncover_pages"] = pg.locator("#doc .page:not(.coverpage)").count()
+    out["phead_content_first"] = pg.locator(
+        "#doc .page:not(.coverpage) .phead").first.inner_text().replace("\n", " | ")
+    out["phead_transform"] = pg.locator(
+        "#doc .page:not(.coverpage) .phead span").first.evaluate(
+        "e=>getComputedStyle(e).textTransform")
+    out["inner_len"] = len(txt)
+    out["inner_has_upper_senior"] = "SENIOR HIGH" in txt
+    out["textcontent_has_plain"] = "Senior High Grade 10" in pg.eval_on_selector("#doc", "e=>e.textContent")
+    out["upper_hits"] = pg.evaluate(
+        """() => { const t = document.querySelector('#doc').innerText.toUpperCase();
+             const i = t.indexOf('SENIOR HIGH'); return i < 0 ? 'none' : t.slice(i-40, i+60); }""")
     out["pageerrors"] = errs[:3]
     b.close()
 print("DIAG " + json.dumps(out, ensure_ascii=False))
