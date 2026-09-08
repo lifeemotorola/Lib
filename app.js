@@ -249,18 +249,48 @@
     }
   };
 
-  /* ---------------- education bands ----------------
+  /* ---------------- education bands and levels ----------------
      Grades map to the three bands of the Liberian system. The band selector
-     filters the grade dropdown; a subject only shows the bands it covers. */
+     filters the level dropdown; a subject only shows the bands it covers.
+
+     Kindergarten sits below Grade 1 and carries the two levels KG-I and KG-II.
+     No kindergarten syllabus is transcribed on this platform, so those two are
+     **cover-page levels**: choosing one produces the customizable cover sheet
+     on its own, never invented worksheets. They exist so a school can print a
+     proper KG-I / KG-II cover for work it prepares itself. */
+  var KG_LEVELS = [
+    { id: "kg1", label: "KG-I",  name: "Kindergarten I"  },
+    { id: "kg2", label: "KG-II", name: "Kindergarten II" }
+  ];
   var BANDS = [
+    { id: "kg", label: "Kindergarten", short: "Kindergarten", lo: 0, hi: 0, kg: true },
     { id: "el", label: "Elementary", short: "Elementary", lo: 1, hi: 6 },
     { id: "jh", label: "Junior High", short: "Junior High", lo: 7, hi: 9 },
     { id: "sh", label: "Senior High", short: "Senior High", lo: 10, hi: 12 }
   ];
-  function bandOf(g) {
-    for (var i = 0; i < BANDS.length; i++) if (g >= BANDS[i].lo && g <= BANDS[i].hi) return BANDS[i];
-    return BANDS[0];
+  function kgOf(v) {
+    for (var i = 0; i < KG_LEVELS.length; i++) if (KG_LEVELS[i].id === String(v)) return KG_LEVELS[i];
+    return null;
   }
+  function isKG(v) { return !!kgOf(v); }
+  /* "kg1" -> "KG-I", 3 -> "Grade 3": the short name printed on a cover. */
+  function gradeText(v) { var k = kgOf(v); return k ? k.label : "Grade " + v; }
+  /* "kg1" -> "Kindergarten I", 3 -> "Grade 3": the long name for running heads. */
+  function levelName(v) { var k = kgOf(v); return k ? k.name : "Grade " + v; }
+  function bandOf(g) {
+    if (isKG(g)) return BANDS[0];
+    for (var i = 0; i < BANDS.length; i++) if (g >= BANDS[i].lo && g <= BANDS[i].hi) return BANDS[i];
+    return BANDS[1];
+  }
+  /* The level dropdown lists real grades as numbers and the kindergarten
+     levels as ids, so every read of it goes through this one helper. */
+  function gradeVal() {
+    var v = ($("#grade") || {}).value;
+    return isKG(v) ? String(v) : (+v || 1);
+  }
+  window.PACK_LEVELS = {
+    kg: KG_LEVELS, isKG: isKG, text: gradeText, name: levelName, band: bandOf
+  };
   var curBand = "el";
 
   /* ---------------- responsive preview ----------------
@@ -556,7 +586,54 @@
 
   /* ---------------- customizable cover page ----------------
      COVER holds user-entered details. PACK_COVER() is called by every gen-*.js
-     engine to build the opening pages of the pack. */
+     engine to build the opening pages of the pack.
+
+     COVER.design is the cover *designer*: colour overrides, emblem choice,
+     title scale and the show/hide switches for every element of the designed
+     cover. An empty colour or emblem means "use the template's own". */
+  function defaultDesign() {
+    return {
+      band: "", ink: "", accent: "", paper: "", warm: "",
+      emblem: "",            /* "" = the template's own drawn emblem */
+      titleScale: 100,       /* % of the template's title size, 60-150 */
+      levelLine: "",         /* "" = automatic level / curriculum line */
+      show: { school: true, motto: true, emblem: true, rule: true, level: true,
+              panel: true, strip: true, leaf: true, dots: true, note: true, org: true }
+    };
+  }
+  /* The five colours that actually paint the designed cover. (--cv-soft is set
+     by each template but no cover rule consumes it, so it is not offered here
+     rather than exposing a control that changes nothing.) */
+  var DESIGN_COLORS = ["band", "ink", "accent", "paper", "warm"];
+  var DESIGN_SHOWS = [
+    ["school", "School name"], ["motto", "School motto"], ["emblem", "Emblem / logo"],
+    ["rule", "Rule & book icon"], ["level", "Level line"], ["panel", "Details panel"],
+    ["strip", "Colour strip"], ["leaf", "Corner leaves"], ["dots", "Corner dots"],
+    ["note", "Footer note"], ["org", "Organization line"]
+  ];
+  /* Fill in anything a stored or imported design is missing, and clamp the
+     values, so an older localStorage copy still loads safely. */
+  function normalizeDesign(d) {
+    var base = defaultDesign();
+    if (!d || typeof d !== "object") return base;
+    DESIGN_COLORS.forEach(function (k) {
+      var v = d[k];
+      base[k] = (typeof v === "string" && /^#[0-9a-fA-F]{6}$/.test(v)) ? v.toLowerCase() : "";
+    });
+    base.emblem = (typeof d.emblem === "string" && EMBLEMS.some(function (e) { return e.id === d.emblem; }))
+      ? d.emblem : "";
+    var sc = Number(d.titleScale);
+    base.titleScale = Number.isFinite(sc) ? Math.min(150, Math.max(60, Math.round(sc))) : 100;
+    base.levelLine = (typeof d.levelLine === "string") ? d.levelLine.slice(0, 220) : "";
+    if (d.show && typeof d.show === "object") {
+      Object.keys(base.show).forEach(function (k) {
+        if (typeof d.show[k] === "boolean") base.show[k] = d.show[k];
+      });
+    }
+    return base;
+  }
+  window.PACK_DESIGNS = { colors: DESIGN_COLORS, shows: DESIGN_SHOWS, normalize: normalizeDesign, blank: defaultDesign };
+
   var COVER = {
     on: true,
     tpl: "classic",          /* designed template id, or "table" for the plain list */
@@ -571,7 +648,8 @@
     year: String(new Date().getFullYear()),
     crest: "",                 /* optional user-typed character; blank = the template's drawn emblem */
     note: "",
-    ownPage: true
+    ownPage: true,
+    design: defaultDesign()
   };
   window.PACK_COVER_STATE = COVER;
 
@@ -582,9 +660,25 @@
     liberia: { label: "Liberian Blue",  cls: "cv-liberia", emblem: "em-flag", leaf: "#7d93bf", dash: false },
     forest:  { label: "Forest Green",   cls: "cv-forest",  emblem: "em-plant", leaf: "#4f9a76", dash: true  },
     sunrise: { label: "Sunrise Warm",   cls: "cv-sunrise", emblem: "em-sun", leaf: "#dba05a", dash: false },
+    kg:      { label: "Kindergarten",   cls: "cv-kg",      emblem: "em-blocks", leaf: "#f0b429", dash: true  },
     plain:   { label: "Plain / Ink Saver", cls: "cv-plain", emblem: "em-book", leaf: "#9aa3ad", dash: false }
   };
   window.PACK_COVER_TPL = COVER_TPL;
+
+  /* Emblems a cover can carry instead of the template's own. They are drawn
+     SVG symbols, so they stay crisp in print and cost nothing to bundle. */
+  var EMBLEMS = [
+    { id: "em-apple",  label: "Apple" },
+    { id: "em-blocks", label: "Building blocks" },
+    { id: "em-pencil", label: "Pencil" },
+    { id: "em-star",   label: "Star" },
+    { id: "em-sun",    label: "Sun" },
+    { id: "em-plant",  label: "Plant" },
+    { id: "em-book",   label: "Book" },
+    { id: "em-flag",   label: "Liberian flag" }
+  ];
+  window.PACK_COVER_EMBLEMS = EMBLEMS;
+
 
   function leafSvg(color) {
     return '<svg width="86" height="74" viewBox="0 0 86 74" fill="none">' +
@@ -611,11 +705,14 @@
      answer sheet (assets/covers/wa.png) — so every WASSCE subject (Maths,
      English, History, Biology, …) shows the real examination cover. National
      curriculum subjects use their own artwork by id or a registered coverArt
-     alias (History shares the Social Studies world-history classroom). */
-  function activeCoverBg() {
+     alias (History shares the Social Studies world-history classroom), and
+     both kindergarten levels share the kindergarten artwork (kg.png). */
+  function activeCoverBg(opts) {
     if (COVER_IMG.bg) return COVER_IMG.bg;
     if (!COVER.useSubjectArt) return null;
     if (S() && S().wa) return SUBJECT_COVER_ART.wa || null;
+    /* a kindergarten cover always carries the kindergarten artwork */
+    if (opts ? opts.kg : isKG(gradeVal())) return SUBJECT_COVER_ART.kg || null;
     return SUBJECT_COVER_ART[S().coverArt || cur] || null;
   }
 
@@ -675,10 +772,17 @@
        the dash so the cover names the subject on its own line. */
     var text = window.COVER_TEXT.prepare(opts, d, COVER, isTeacher());
     var subject = text.subject;
+    var design = normalizeDesign(COVER.design);
     function lab(key) { return text[key + "Label"]; }
-    var mainTitle = text.title + (text.title === String(d.title || "").split("—")[0].trim() ? " — GRADE " + opts.grade : "");
+    /* the level suffix: "— GRADE 3" for a curriculum grade, "— KG-II" for a
+       kindergarten level. Never added when the teacher retyped the title. */
+    var autoTitle = String(d.title || "").split("\u2014")[0].trim();
+    var levelSuffix = opts.kg ? " \u2014 " + opts.levelLabel : " \u2014 GRADE " + opts.grade;
+    var mainTitle = text.title + (text.title === autoTitle ? levelSuffix : "");
     var subTitle = text.subtitle;
-    var klass = COVER.classname || ("Grade " + opts.grade);
+    var klass = COVER.classname || (opts.kg ? opts.levelLabel : "Grade " + opts.grade);
+    /* the designer can retype the level line; blank means the automatic one */
+    var levelLine = design.levelLine ? design.levelLine : text.line;
 
     if (!COVER.on) {
       out.push({ k: "h1", t: mainTitle });
@@ -719,7 +823,7 @@
     }
 
     /* ---- designed cover: one block occupying a whole sheet ---- */
-    var coverBg = activeCoverBg();
+    var coverBg = activeCoverBg(opts);
     out.push({
       k: "covart",
       tpl: COVER.tpl,
@@ -728,7 +832,7 @@
       title1: text.title,
       labels: text,
       title2: text.subtitle,
-      line: text.line,
+      line: levelLine,
       subject: subject,
       klass: klass,
       teacher: COVER.teacher,
@@ -741,6 +845,8 @@
       bg: coverBg ? coverBg.url : "",
       bgMime: coverBg ? (coverBg.mime || "image/png") : "",
       bgFade: COVER.bgFade,
+      design: design,
+      kg: !!opts.kg,
       teacherCopy: isTeacher()
     });
     out.push({ k: "pagebreak" });
@@ -789,7 +895,10 @@
     document.querySelectorAll(".pk:checked").forEach(function (c) { per.push(c.value); });
     document.querySelectorAll(".sh:checked").forEach(function (c) { sh.push(c.value); });
     return {
-      grade: +$("#grade").value,
+      grade: gradeVal(),
+      kg: isKG(gradeVal()),
+      levelLabel: gradeText(gradeVal()),
+      levelName: levelName(gradeVal()),
       topics: per.length ? per : null,
       sheets: sh.length ? sh : [S().defaults[0]],
       perEx: +$("#perEx").value,
@@ -849,20 +958,31 @@
   }
 
   /* the grade list is taken from the subject's own curriculum, so English
-     offers Grades 1-9 while the other subjects offer Grades 1-6 */
+     offers Grades 1-9 while the other subjects offer Grades 1-6. The two
+     kindergarten levels are offered on every national-curriculum subject
+     because they produce a cover page, which any subject can carry. */
   function refreshGrades() {
-    var sel = $("#grade"), prev = +sel.value || 1;
+    var sel = $("#grade"), prev = sel.value;
     var gs = [];
     S().curriculum().forEach(function (t) { if (gs.indexOf(t.grade) < 0) gs.push(t.grade); });
     gs.sort(function (a, b) { return a - b; });
 
-    /* which bands does this subject actually cover? */
+    /* which bands does this subject actually cover? Kindergarten is offered
+       throughout the national curriculum track but not in the WASSCE track,
+       which is a Grade 12 examination, and not for a lesson plan either: a KG
+       level has no units, so there is nothing to plan a lesson around. */
     var avail = BANDS.filter(function (b) {
+      if (b.kg) return TRACK !== "wa" && !isLP();
       return gs.some(function (g) { return g >= b.lo && g <= b.hi; });
     });
-    if (!avail.some(function (b) { return b.id === curBand; })) curBand = avail[0].id;
+    /* Kindergarten is only ever entered by clicking its band tab, never by
+       default: a subject keeps opening on the lowest grade band it teaches. */
+    if (!avail.some(function (b) { return b.id === curBand; })) {
+      var graded = avail.filter(function (b) { return !b.kg; });
+      curBand = (graded[0] || avail[0]).id;
+    }
 
-    /* band selector: shown only when the subject spans more than one band */
+    /* band selector: shown whenever the subject spans more than one band */
     var bw = $("#bandwrap"), bb = $("#bands");
     if (bw && bb) {
       if (avail.length > 1) {
@@ -882,21 +1002,30 @@
           bb.appendChild(el);
         });
       } else {
+        /* a single band needs no selector; clear it so switching tracks does
+           not leave the previous track's bands behind in the markup */
         bw.style.display = "none";
+        bb.innerHTML = "";
       }
     }
 
-    var band = BANDS.filter(function (b) { return b.id === curBand; })[0] || BANDS[0];
-    var shown = gs.filter(function (g) { return g >= band.lo && g <= band.hi; });
-    if (!shown.length) shown = gs;
+    var band = BANDS.filter(function (b) { return b.id === curBand; })[0] || BANDS[1];
+    var ids = [], names = {};
+    if (band.kg) {
+      KG_LEVELS.forEach(function (k) { ids.push(k.id); names[k.id] = k.label; });
+    } else {
+      var shown = gs.filter(function (g) { return g >= band.lo && g <= band.hi; });
+      if (!shown.length) shown = gs;
+      shown.forEach(function (g) { ids.push(String(g)); names[String(g)] = "Grade " + g; });
+    }
 
     sel.innerHTML = "";
-    shown.forEach(function (g) {
+    ids.forEach(function (id) {
       var o = document.createElement("option");
-      o.value = g; o.textContent = "Grade " + g;
+      o.value = id; o.textContent = names[id];
       sel.appendChild(o);
     });
-    sel.value = shown.indexOf(prev) >= 0 ? prev : shown[0];
+    sel.value = ids.indexOf(String(prev)) >= 0 ? String(prev) : ids[0];
 
     /* Grades outside the elementary band come from their own curriculum guide,
        so name the subject as that guide actually titles it. */
@@ -905,10 +1034,13 @@
     if (jh) {
       if (S().wa) {
         jh.style.display = "";
-        jh.innerHTML = "Grade 12 follows the <b>WASSCE</b> examination syllabus (West African Examinations Council) \u2014 the final national certificate examination in West Africa.";
+        jh.innerHTML = "Grade 12 follows the <b>WASSCE</b> examination syllabus (West African Examinations Council) &mdash; the final national certificate examination in West Africa.";
       } else if (cur === "ci") {
         jh.style.display = "";
-        jh.textContent = "Civics Grades 7–12: original supplementary teaching material, not an official syllabus transcription. Review against your school’s scheme of work.";
+        jh.textContent = "Civics Grades 7\u201312: original supplementary teaching material, not an official syllabus transcription. Review against your school\u2019s scheme of work.";
+      } else if (band.kg) {
+        jh.style.display = "";
+        jh.innerHTML = "<b>KG-I and KG-II are cover-page levels.</b> No kindergarten curriculum is transcribed here, so the document is the customizable cover sheet alone &mdash; design it in <b>Customization</b> and print or export it for your own KG work.";
       } else if (curBand === "el") {
         jh.style.display = "none";
       } else {
@@ -920,8 +1052,18 @@
   }
 
   function refreshPeriods() {
-    var g = +$("#grade").value, box = $("#periods");
+    var g = gradeVal(), box = $("#periods");
     box.innerHTML = "";
+    /* a kindergarten level carries no transcribed units, so there is nothing
+       to tick: the generated document is the cover page alone */
+    if (isKG(g)) {
+      var kgNote = document.createElement("p");
+      kgNote.className = "hint";
+      kgNote.innerHTML = "<b>" + gradeText(g) + "</b> carries no transcribed units, so there is nothing to tick. The generated document is the cover page you design in <b>Customization</b>.";
+      box.appendChild(kgNote);
+      syncBadges();
+      return;
+    }
     S().curriculum().filter(function (t) { return t.grade === g; }).forEach(function (t) {
       var lab = document.createElement("label");
       lab.className = "chk";
@@ -940,10 +1082,25 @@
 
   /* ---- designed cover artwork ----
      Builds a full-sheet cover from the chosen template. Everything is inline
-     CSS and SVG, so it renders identically offline and in print. */
+     CSS and SVG, so it renders identically offline and in print. The cover
+     designer's overrides arrive on the block as b.design: colour variables,
+     emblem choice, a title scale and a show/hide switch per element. */
+  function designVars(ds) {
+    var map = { band: "--cv-band", ink: "--cv-ink", accent: "--cv-accent",
+                paper: "--cv-bg", soft: "--cv-soft", warm: "--cv-warm" };
+    var out = [];
+    Object.keys(map).forEach(function (k) {
+      if (ds[k]) out.push(map[k] + ":" + ds[k]);
+    });
+    if (ds.titleScale && ds.titleScale !== 100) out.push("--cv-ts:" + (ds.titleScale / 100).toFixed(3));
+    return out.length ? ' style="' + out.join(";") + '"' : "";
+  }
+
   function coverArtHtml(b) {
     function label(key, fallback) { return COVER_TEXT.label(b, key, fallback); }
     var t = COVER_TPL[b.tpl] || COVER_TPL.classic;
+    var ds = normalizeDesign(b.design);
+    function on(k) { return ds.show[k] !== false; }
     /* The printed booklet the platform is modelled on writes each detail as a
        plain LABEL: ______ ruled line, with no icon before the label. */
     function row(label, value) {
@@ -961,9 +1118,9 @@
     rows += row(label("termYearLabel", b.term ? "Term" : "Term / Year"),
                 [b.term, b.year].filter(Boolean).join("   \u00b7   "));
 
-    var note = b.note
+    var note = !on("note") ? "" : b.note
       ? '<div class="cv-note"><b>' + esc(label("noteLabel", "Note")) + '</b>' + esc(b.note) + "</div>"
-      : '<div class="cv-note"><b>' + esc(label("inspireLabel", "Inspire")) + '</b>' + esc(label("inspireText", "Teach · Encourage · Achieve")) + '</div>';
+      : '<div class="cv-note"><b>' + esc(label("inspireLabel", "Inspire")) + '</b>' + esc(label("inspireText", "Teach \u00b7 Encourage \u00b7 Achieve")) + '</div>';
 
     /* long subject names step down in size so the title never overflows */
     var n = String(b.title1 || "").length;
@@ -977,40 +1134,46 @@
         '<div class="cv-bg" style="background-image:url(' + b.bg + ')"></div>' +
         '<div class="cv-veil" style="opacity:' + fade.toFixed(2) + '"></div>';
     }
-    var emblem = b.logo
+    /* an uploaded logo wins over a crest, which wins over the chosen emblem */
+    var emblemId = ds.emblem || t.emblem;
+    var emblem = !on("emblem") ? "" : b.logo
       ? '<div class="cv-logo"><img src="' + b.logo + '" alt=""></div>'
       : '<div class="cv-emblem">' + (b.crest
           ? esc(b.crest)
-          : '<svg class="ic cv-em-svg" aria-hidden="true"><use href="#i-' + t.emblem + '"/></svg>') +
+          : '<svg class="ic cv-em-svg" aria-hidden="true"><use href="#i-' + emblemId + '"/></svg>') +
         "</div>";
 
-    return '<div class="cvart ' + t.cls + (b.bg ? " hasbg" : "") + '">' +
+    var foot = (note || on("org"))
+      ? '<div class="cv-foot">' + note +
+        (on("org") ? '<div class="cv-org">' + esc(label("organization", "Liberian National Curriculum")) + '</div>' : "") +
+        "</div>"
+      : "";
+
+    return '<div class="cvart ' + t.cls + (b.bg ? " hasbg" : "") + '"' + designVars(ds) + '>' +
       bgLayer +
-      '<div class="cv-leaf cv-lt">' + leafSvg(t.leaf) + "</div>" +
-      '<div class="cv-leaf cv-rb">' + leafSvg(t.leaf) + "</div>" +
-      '<div class="cv-dots cv-dtr"><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
+      (on("leaf") ? '<div class="cv-leaf cv-lt">' + leafSvg(t.leaf) + "</div>" +
+        '<div class="cv-leaf cv-rb">' + leafSvg(t.leaf) + "</div>" : "") +
+      (on("dots") ? '<div class="cv-dots cv-dtr"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : "") +
       '<div class="cv-content"><div class="cv-head">' +
-        (b.school ? '<div class="cv-school">' + esc(b.school) + "</div>" : "") +
-        (b.motto ? '<div class="cv-motto">' + esc(b.motto) + "</div>" : "") +
+        (b.school && on("school") ? '<div class="cv-school">' + esc(b.school) + "</div>" : "") +
+        (b.motto && on("motto") ? '<div class="cv-motto">' + esc(b.motto) + "</div>" : "") +
         emblem +
         '<h1 class="cv-t1' + sizeCls + '">' + esc(b.title1) + "</h1>" +
         '<div class="cv-t2">' + esc(b.title2) + "</div>" +
-        '<div class="cv-rule"><span></span>' +
+        (on("rule") ? '<div class="cv-rule"><span></span>' +
           '<b><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg></b>' +
-        '<span></span></div>' +
-        '<p class="cv-sub">' + esc(b.line || "") + "</p>" +
+        "<span></span></div>" : "") +
+        (on("level") ? '<p class="cv-sub">' + esc(b.line || "") + "</p>" : "") +
       "</div>" +
-      '<div class="cv-panel' + (t.dash ? " dash" : "") + '">' + rows + "</div>" +
-      '<div class="cv-strip">' +
+      (on("panel") ? '<div class="cv-panel' + (t.dash ? " dash" : "") + '">' + rows + "</div>" : "") +
+      (on("strip") ? '<div class="cv-strip">' +
         '<i style="height:13mm;background:' + t.leaf + '"></i>' +
         '<i style="height:18mm;background:var(--cv-warm)"></i>' +
         '<i style="height:10mm;background:var(--cv-accent)"></i>' +
         '<i style="height:16mm;background:var(--cv-ink);opacity:.8"></i>' +
         '<i style="height:12mm;background:var(--cv-warm);opacity:.7"></i>' +
-      "</div>" +
-      '<div class="cv-foot">' + note +
-        '<div class="cv-org">' + esc(label("organization", "Liberian National Curriculum")) + '</div></div></div>' +
-      "</div>";
+      "</div>" : "") +
+      foot + "</div>";
   }
 
   /* Renders to real A4 sheets. Content is measured and flowed so nothing is clipped:
@@ -1088,7 +1251,7 @@
   function setRunning(o) {
     var bnd = bandOf(o.grade);
     runhead.left = S().label + " \u00b7 " +
-      (bnd.id === "el" ? "Grade " : bnd.label + " Grade ") + o.grade;
+      (bnd.id === "el" || bnd.kg ? gradeText(o.grade) : bnd.label + " Grade " + o.grade);
     runhead.right = TEACHING.isAssessment()
       ? (isTeacher() ? "Teacher's Assessment" : "Student Assessment") + (o.keys ? " · Marking Scheme" : "")
       : isLP()
@@ -1098,6 +1261,8 @@
        packs name the WAEC examination instead of the national curriculum. */
     var band = cur === "ci" ? "Civics · Original supplementary material · Grade " + o.grade : S().wa
       ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
+      : bnd.kg
+      ? o.levelName + " \u00b7 " + (o.subjectLine || S().label) + " \u00b7 Cover page"
       : "Liberian " + bnd.label + " Curriculum \u00b7 Grade " + o.grade;
     runhead.foot = isLP()
       ? band + "   |   " + (o.lpPlanType === "weekly" ? "TEACHER'S WEEKLY UNIT PLAN" : "TEACHER'S LESSON PLAN") + " \u2014 " + (o.lpWeeks || 4) + " WEEKS/UNIT \u2014 for the teacher only"
@@ -1340,7 +1505,12 @@
         case "rule": body += para("", { border: true, sz: 10 }); break;
         case "covart": {
           /* Word cannot reproduce the CSS artwork, so the same information is
-             laid out as a formal centred title block with a details table. */
+             laid out as a formal centred title block with a details table.
+             The cover designer's colours, emblem choice and show/hide
+             switches are honoured as far as Word allows. */
+          var cds = normalizeDesign(b.design);
+          function con(k) { return cds.show[k] !== false; }
+          function col(k, fallback) { return cds[k] ? cds[k].replace("#", "").toUpperCase() : fallback; }
           body += para("", { sz: 40 });
           var bgId = b.bg ? addImage(b.bg, b.bgMime || "image/jpeg") : null;
           if (bgId) {
@@ -1350,23 +1520,28 @@
             body += para("", { sz: 20 });
           }
           var logoId = b.logo ? addImage(b.logo, "image/png") : null;
-          if (logoId) body += picXml(logoId, 520, 260, 55);
-          else if (b.crest) body += para(b.crest, { sz: 72, align: "center", after: 60 });
-          if (b.school) body += para(b.school, { b: true, sz: 40, color: C1, align: "center", after: 40 });
-          if (b.motto) body += para(b.motto, { i: true, sz: 26, align: "center", after: 120 });
-          body += para("", { border: true, sz: 10 });
-          body += para(b.title1, { b: true, sz: 64, color: C1, align: "center", before: 220, after: 60 });
-          body += para(b.title2, { b: true, sz: 38, color: C2, align: "center", after: 60 });
-          if (b.line) body += para(b.line, { i: true, sz: 26, align: "center", after: 200 });
-          var cr = [];
-          cr.push([COVER_TEXT.label(b, "schoolLabel", "School"), b.school || ""]);
-          cr.push([COVER_TEXT.label(b, "subjectLabel", "Subject"), b.subject || ""]);
-          cr.push([COVER_TEXT.label(b, "classLabel", "Class"), b.klass || ""]);
-          cr.push(b.teacherCopy ? [COVER_TEXT.label(b, "teacherLabel", "Teacher"), b.teacher || ""] : [COVER_TEXT.label(b, "pupilLabel", "Name"), b.pupil || ""]);
-          cr.push([COVER_TEXT.label(b, "termYearLabel", b.term ? "Term" : "Term / Year"), [b.term, b.year].filter(Boolean).join(" · ")]);
-          body += tableXml([COVER_TEXT.label(b, "detailLabel", "Detail"), COVER_TEXT.label(b, "entryLabel", "Entry")], cr, FILL);
-          body += para(b.note ? COVER_TEXT.label(b, "noteLabel", "Note") + ": " + b.note : COVER_TEXT.label(b, "inspireLabel", "Inspire") + ": " + COVER_TEXT.label(b, "inspireText", "Teach · Encourage · Achieve"), { i: true, sz: 26, align: "center", before: 200 });
-          body += para(COVER_TEXT.label(b, "organization", "Liberian National Curriculum"), { sz: 22, align: "center" });
+          if (con("emblem")) {
+            if (logoId) body += picXml(logoId, 520, 260, 55);
+            else if (b.crest) body += para(b.crest, { sz: 72, align: "center", after: 60 });
+          }
+          if (b.school && con("school")) body += para(b.school, { b: true, sz: 40, color: col("ink", C1), align: "center", after: 40 });
+          if (b.motto && con("motto")) body += para(b.motto, { i: true, sz: 26, align: "center", after: 120 });
+          if (con("rule")) body += para("", { border: true, sz: 10 });
+          var tscale = Math.round((cds.titleScale || 100) / 100);
+          body += para(b.title1, { b: true, sz: 64 * tscale, color: col("ink", C1), align: "center", before: 220, after: 60 });
+          body += para(b.title2, { b: true, sz: 38 * tscale, color: col("accent", C2), align: "center", after: 60 });
+          if (b.line && con("level")) body += para(b.line, { i: true, sz: 26, align: "center", after: 200 });
+          if (con("panel")) {
+            var cr = [];
+            cr.push([COVER_TEXT.label(b, "schoolLabel", "School"), b.school || ""]);
+            cr.push([COVER_TEXT.label(b, "subjectLabel", "Subject"), b.subject || ""]);
+            cr.push([COVER_TEXT.label(b, "classLabel", "Class"), b.klass || ""]);
+            cr.push(b.teacherCopy ? [COVER_TEXT.label(b, "teacherLabel", "Teacher"), b.teacher || ""] : [COVER_TEXT.label(b, "pupilLabel", "Name"), b.pupil || ""]);
+            cr.push([COVER_TEXT.label(b, "termYearLabel", b.term ? "Term" : "Term / Year"), [b.term, b.year].filter(Boolean).join(" \u00b7 ")]);
+            body += tableXml([COVER_TEXT.label(b, "detailLabel", "Detail"), COVER_TEXT.label(b, "entryLabel", "Entry")], cr, FILL);
+          }
+          if (con("note")) body += para(b.note ? COVER_TEXT.label(b, "noteLabel", "Note") + ": " + b.note : COVER_TEXT.label(b, "inspireLabel", "Inspire") + ": " + COVER_TEXT.label(b, "inspireText", "Teach \u00b7 Encourage \u00b7 Achieve"), { i: true, sz: 26, align: "center", before: 200 });
+          if (con("org")) body += para(COVER_TEXT.label(b, "organization", "Liberian National Curriculum"), { sz: 22, align: "center" });
           break;
         }
         case "pagebreak": body += "<w:p><w:pPr><w:pageBreakBefore/></w:pPr></w:p>"; break;
@@ -1508,6 +1683,24 @@
   }
 
   /* ---------------- actions ---------------- */
+  /* A kindergarten level has no transcribed curriculum, so its document is the
+     cover sheet itself. Everything a cover needs is derived from the selected
+     subject and level, and the whole Customization panel still applies. */
+  function kgCoverPack(o, sj) {
+    var name = (sj.packName || sj.label).toUpperCase();
+    var d = {
+      title: name + " \u2014 " + o.levelLabel,
+      sub: o.levelName + " cover page",
+      line: o.levelName + " \u00b7 " + (sj.packName || sj.label) + " \u00b7 Liberian National Curriculum"
+    };
+    /* PACK_COVER ends with a page break so a workbook starts on a fresh
+       sheet; a cover-only document has nothing after it, and a trailing break
+       would leave a blank second page. */
+    var blocks = window.PACK_COVER(o, d);
+    while (blocks.length && blocks[blocks.length - 1].k === "pagebreak") blocks.pop();
+    return { topics: [], sheets: [], blocks: blocks, kg: true };
+  }
+
   function generate() {
     var o = opts();
     var signatureOptions = Object.assign({}, o);
@@ -1522,6 +1715,22 @@
     o.subjectName = (sj.packName || sj.label).toUpperCase();
     o.subjectLine = sj.packName || sj.label;
     o.bandName = bandOf(o.grade).label;
+
+    /* kindergarten levels bypass the worksheet machinery entirely: there are
+       no units, no exercises and no answer keys to edit, only a cover */
+    if (o.kg) {
+      pack = kgCoverPack(o, sj);
+      setRunning(o);
+      render(pack.blocks);
+      window.PACK_CUR_SUBJECT = sj.label;
+      window.PACK_CUR_GRADE = o.levelLabel;
+      if (window.VOICE_READER) window.VOICE_READER.loadFromPack(pack, cur, sj.label, o.levelLabel);
+      $("#meta").textContent = sj.label + " \u00b7 " + o.levelLabel +
+        " \u00b7 cover page (" + (COVER.on ? (COVER_TPL[COVER.tpl] ? COVER_TPL[COVER.tpl].label : "Simple List") : "no cover art") + ")";
+      $("#exportbar").style.display = "flex";
+      return;
+    }
+
     window.TEACHING.begin(sj.engine(), signature);
     if (isLP() && window.LESSON_PLAN) {
       /* the lesson plan is a teacher's document whatever the session is */
@@ -1658,6 +1867,13 @@
        the Word export, so the teacher's saved PDF is named after the pack
        instead of the platform. */
     function packFileBase() {
+      /* a kindergarten level has no workbook template, so name the cover by
+         subject and level instead of forcing it through S().file() */
+      if (opts().kg) {
+        return (S().packName || S().label).replace(/\s+/g, "_") +
+          "_" + opts().levelLabel + "_Cover" +
+          (isTeacher() ? "_Teacher_Copy" : "_Student");
+      }
       if (isLP()) {
         /* the lesson plan is always the teacher's document */
         var pType = (opts().lpPlanType === "weekly") ? "_Weekly_Plan" : "_Lesson_Plan";
@@ -1685,7 +1901,7 @@
     function openBookTool() {
       if (!bmask) return;
       var n = parseInt(($("#pageN") || {}).textContent, 10) || 0;
-      var nm = n > 0 ? S().label + " Grade " + opts().grade + " workbook" : "";
+      var nm = n > 0 ? (opts().kg ? S().label + " " + opts().levelLabel + " cover" : S().label + " Grade " + opts().grade + " workbook") : "";
       if (btool) btool.open(n, nm);
       bmask.hidden = false;
       document.body.classList.add("book-open");
@@ -1805,6 +2021,10 @@
         if (d === DOCTYPE) return;
         DOCTYPE = d;
         paintDocType();
+        /* the level list depends on the document: a lesson plan cannot be made
+           for a kindergarten level, so those levels appear and disappear with
+           the document switch */
+        refreshGrades(); refreshPeriods();
         generate();
       };
     });
@@ -1905,14 +2125,27 @@
     if ($("#cvYear") && !$("#cvYear").value) $("#cvYear").value = COVER.year;
 
     /* ---- template picker ---- */
-    var TPL_SW = {
-      classic: ["#1b2a52", "#fdf6e9", "#5a9367"],
-      liberia: ["#0d2c6b", "#fbfaf6", "#c8102e"],
-      forest:  ["#12403a", "#f2f9f4", "#2f8f6d"],
-      sunrise: ["#b35c1e", "#fff7ec", "#d98324"],
-      plain:   ["#1f2937", "#ffffff", "#4b5563"],
-      table:   ["#5d6b85", "#ffffff", "#9aa3ad"]
+    /* Every template's palette in one place: the picker swatch reads it, and
+       the cover designer uses it as the "Auto" fallback behind each colour.
+       These values must match the .cv-* rules in styles.css. */
+    var TPL_COLORS = {
+      classic: { band: "#1b2a52", ink: "#1b2a52", accent: "#5a9367", paper: "#fdf6e9", soft: "#e9eff8", warm: "#e8a33d" },
+      liberia: { band: "#0d2c6b", ink: "#0d2c6b", accent: "#c8102e", paper: "#fbfaf6", soft: "#e6ecf7", warm: "#e8a33d" },
+      forest:  { band: "#12403a", ink: "#12403a", accent: "#2f8f6d", paper: "#f2f9f4", soft: "#dff0e6", warm: "#e8a33d" },
+      sunrise: { band: "#b35c1e", ink: "#6b3410", accent: "#d98324", paper: "#fff7ec", soft: "#fbe6cd", warm: "#e8a33d" },
+      kg:      { band: "#2f6f4f", ink: "#1f4d3a", accent: "#e0662b", paper: "#fffaf0", soft: "#fdeecf", warm: "#f0b429" },
+      plain:   { band: "#1f2937", ink: "#1f2937", accent: "#4b5563", paper: "#ffffff", soft: "#eef1f4", warm: "#e8a33d" },
+      table:   { band: "#5d6b85", ink: "#1f2937", accent: "#4b5563", paper: "#ffffff", soft: "#eef1f4", warm: "#e8a33d" }
     };
+    window.PACK_COVER_COLORS = TPL_COLORS;
+    function tplColor(key) {
+      var c = TPL_COLORS[COVER_TPL[COVER.tpl] ? COVER.tpl : "classic"];
+      return (c && c[key]) || "#1f2937";
+    }
+    function TPL_SW(id) {
+      var c = TPL_COLORS[COVER_TPL[id] ? id : "classic"] || TPL_COLORS.plain;
+      return [c.band, c.paper, c.accent];
+    }
     function renderTplGrid() {
       var g = $("#tplGrid");
       if (!g) return;
@@ -1920,7 +2153,7 @@
       var ids = Object.keys(COVER_TPL).concat(["table"]);
       ids.forEach(function (id) {
         var label = id === "table" ? "Simple List" : COVER_TPL[id].label;
-        var c = TPL_SW[id] || TPL_SW.plain;
+        var c = TPL_SW(id);
         var btn = document.createElement("button");
         btn.type = "button";
         btn.className = "tplbtn" + (COVER.tpl === id ? " on" : "");
@@ -1934,6 +2167,7 @@
           COVER.tpl = id;
           saveCover();
           renderTplGrid();
+          renderDesigner();
           syncBadges();
           generate();
         };
@@ -1941,13 +2175,201 @@
       });
       var h = $("#tplHint");
       if (h) h.textContent = COVER.tpl === "table"
-        ? "A plain details table \u2014 fastest to print and uses least ink."
-        : "A full designed cover sheet. Subject and Class are filled in automatically.";
+        ? "A plain details table \u2014 fastest to print and uses least ink. The colour, emblem and show/hide designer below applies to the five designed templates."
+        : "A full designed cover sheet. Subject and Class are filled in automatically. Retune its colours, emblem, title size and elements in the Cover designer below.";
     }
+
+    /* ---- cover designer: colours, emblem, title size, show/hide ----
+       Every control writes straight into COVER.design, is persisted with the
+       school's details, and re-renders the preview. "Auto" hands a setting
+       back to the chosen template. */
+    var DES_COLOR_LABEL = { band: "Border band", ink: "Title ink", accent: "Accent",
+                            paper: "Paper", warm: "Warm bar" };
+    function renderDesigner() {
+      var box = $("#cvDesigner");
+      if (!box) return;
+      var ds = COVER.design = normalizeDesign(COVER.design);
+      var usable = COVER.tpl !== "table";
+      box.innerHTML = "";
+
+      /* -- colours -- */
+      var cap = document.createElement("div");
+      cap.className = "cvsec";
+      cap.textContent = "Cover colours";
+      box.appendChild(cap);
+      var grid = document.createElement("div");
+      grid.className = "des-cols";
+      window.PACK_DESIGNS.colors.forEach(function (key) {
+        var name = DES_COLOR_LABEL[key] || key;
+        var cell = document.createElement("label");
+        cell.className = "des-col" + (usable ? "" : " off");
+        var t1 = document.createElement("span");
+        t1.textContent = name;
+        var sw = document.createElement("span");
+        sw.className = "des-sw";
+        var inp = document.createElement("input");
+        inp.type = "color";
+        inp.id = "cvCol-" + key;
+        inp.value = ds[key] || tplColor(key);
+        inp.dataset.automatic = ds[key] ? "false" : "true";
+        inp.title = ds[key] ? "Custom colour \u2014 Auto restores the template's" : "Template colour \u2014 change to override";
+        inp.disabled = !usable;
+        inp.oninput = function () {
+          ds[key] = inp.value.toLowerCase();
+          saveCover();
+          inp.dataset.automatic = "false";
+          inp.title = "Custom colour \u2014 Auto restores the template's";
+          generate();
+        };
+        var auto = document.createElement("button");
+        auto.type = "button";
+        auto.textContent = "Auto";
+        auto.disabled = !usable;
+        auto.setAttribute("aria-label", "Use the template's " + name + " colour");
+        auto.onclick = function () {
+          ds[key] = "";
+          saveCover();
+          renderDesigner();
+          generate();
+        };
+        sw.append(inp, auto);
+        cell.append(t1, sw);
+        grid.appendChild(cell);
+      });
+      box.appendChild(grid);
+      var cReset = document.createElement("button");
+      cReset.type = "button";
+      cReset.className = "des-reset";
+      cReset.textContent = "Use the template's colours";
+      cReset.onclick = function () {
+        window.PACK_DESIGNS.colors.forEach(function (k) { ds[k] = ""; });
+        saveCover(); renderDesigner(); generate();
+      };
+      box.appendChild(cReset);
+
+      /* -- emblem -- */
+      var cap2 = document.createElement("div");
+      cap2.className = "cvsec";
+      cap2.textContent = "Emblem & title";
+      box.appendChild(cap2);
+      var erow = document.createElement("div");
+      erow.className = "row row-sel";
+      var elab = document.createElement("label");
+      elab.setAttribute("for", "cvEmblem");
+      elab.textContent = "Emblem";
+      var esel = document.createElement("select");
+      esel.id = "cvEmblem";
+      var dOpt = document.createElement("option");
+      dOpt.value = "";
+      dOpt.textContent = "Template default (" + ((COVER_TPL[COVER.tpl] || {}).emblem || "em-apple").replace("em-", "") + ")";
+      esel.appendChild(dOpt);
+      EMBLEMS.forEach(function (e) {
+        var o = document.createElement("option");
+        o.value = e.id; o.textContent = e.label;
+        esel.appendChild(o);
+      });
+      esel.value = ds.emblem;
+      esel.onchange = function () {
+        ds.emblem = esel.value;
+        saveCover(); generate();
+      };
+      erow.append(elab, esel);
+      box.appendChild(erow);
+
+      /* -- title size -- */
+      var trow = document.createElement("div");
+      trow.className = "row";
+      var tlab = document.createElement("label");
+      tlab.setAttribute("for", "cvTScale");
+      tlab.textContent = "Title size";
+      var trng = document.createElement("input");
+      trng.type = "range";
+      trng.id = "cvTScale";
+      trng.min = "60"; trng.max = "150"; trng.step = "5";
+      trng.value = String(ds.titleScale);
+      var tval = document.createElement("b");
+      tval.className = "fadeval";
+      tval.textContent = ds.titleScale + "%";
+      trng.oninput = function () {
+        ds.titleScale = +trng.value;
+        tval.textContent = ds.titleScale + "%";
+        saveCover(); generate();
+      };
+      trow.append(tlab, trng, tval);
+      box.appendChild(trow);
+
+      /* -- level line -- */
+      var lrow = document.createElement("div");
+      lrow.className = "row";
+      var llab = document.createElement("label");
+      llab.setAttribute("for", "cvLevelLine");
+      llab.textContent = "Level line";
+      var linp = document.createElement("input");
+      linp.type = "text";
+      linp.id = "cvLevelLine";
+      linp.maxLength = 220;
+      linp.placeholder = opts().kg ? opts().levelName : "Automatic \u2014 e.g. Kindergarten II \u00b7 English";
+      linp.value = ds.levelLine;
+      linp.oninput = function () {
+        ds.levelLine = linp.value;
+        saveCover(); generate();
+      };
+      lrow.append(llab, linp);
+      box.appendChild(lrow);
+      var lhint = document.createElement("p");
+      lhint.className = "hint";
+      lhint.textContent = "The italic line under the title. Leave blank to print the automatic curriculum and level line.";
+      box.appendChild(lhint);
+
+      /* -- show / hide every element -- */
+      var cap3 = document.createElement("div");
+      cap3.className = "cvsec";
+      cap3.textContent = "Show on the cover";
+      box.appendChild(cap3);
+      var chks = document.createElement("div");
+      chks.className = "des-chks";
+      window.PACK_DESIGNS.shows.forEach(function (pair) {
+        var key = pair[0], text = pair[1];
+        var lab = document.createElement("label");
+        lab.className = "chk" + (usable ? "" : " off");
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.id = "cvShow-" + key;
+        cb.checked = ds.show[key] !== false;
+        cb.disabled = !usable;
+        cb.onchange = function () {
+          ds.show[key] = cb.checked;
+          saveCover(); generate();
+        };
+        var sp = document.createElement("span");
+        sp.textContent = text;
+        lab.append(cb, sp);
+        chks.appendChild(lab);
+      });
+      box.appendChild(chks);
+
+      var dReset = document.createElement("button");
+      dReset.type = "button";
+      dReset.id = "cvDesignReset";
+      dReset.className = "des-reset";
+      dReset.textContent = "Reset the whole cover design";
+      dReset.onclick = function () {
+        COVER.design = defaultDesign();
+        saveCover(); renderDesigner(); generate();
+      };
+      box.appendChild(dReset);
+      var dNote = document.createElement("p");
+      dNote.className = "hint";
+      dNote.textContent = usable
+        ? "Colours, emblem, title size and these switches are saved on this device and travel with any saved document in your teaching library."
+        : "The Simple List template is plain text, so the designer applies to the five designed templates.";
+      box.appendChild(dNote);
+    }
+    window.PACK_PAINT_DESIGNER = renderDesigner;
 
     /* ---- persistence: the school's details are remembered on this device ---- */
     var STORE = "lncpg.cover.v1";
-    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade", "useSubjectArt", "text"];
+    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade", "useSubjectArt", "text", "design"];
     function saveCover() {
       try {
         var o = {};
@@ -1964,6 +2386,8 @@
           if (o[k] !== undefined && o[k] !== null) COVER[k] = o[k];
         });
         if (!COVER_TPL[COVER.tpl] && COVER.tpl !== "table") COVER.tpl = "classic";
+        /* a design saved by an older build may be missing keys */
+        COVER.design = normalizeDesign(COVER.design);
         var back = { school: "cvSchool", motto: "cvMotto", crest: "cvCrest",
                      teacher: "cvTeacher", term: "cvTerm", year: "cvYear" };
         Object.keys(back).forEach(function (k) {
@@ -1976,6 +2400,7 @@
     }
     loadCover();
     renderTplGrid();
+    renderDesigner();
     COVER_TEXT.init(COVER, saveCover, generate);
 
     /* ---- logo and background uploads ---- */
@@ -2076,8 +2501,10 @@
       ["cvSchool", "cvMotto", "cvPupil", "cvTeacher", "cvClass", "cvTerm", "cvNote"]
         .forEach(function (id) { var el = $("#" + id); if (el) el.value = ""; });
       COVER_IMG.logo = null; COVER_IMG.bg = null; COVER.text = {}; COVER_TEXT.set({});
+      COVER.design = defaultDesign();
       try { localStorage.removeItem(STORE); localStorage.removeItem(ISTORE); } catch (e) {}
       paintImgPrev(); upMsg("");
+      renderDesigner();
       readCover(); generate();
     };
 
@@ -2104,7 +2531,8 @@
         if (!s || !Object.prototype.hasOwnProperty.call(SUBJECTS, s.subject) || !["teacher", "student"].includes(s.mode) ||
             !["pack", "lp"].includes(s.dtype) || !["daily", "weekly"].includes(s.lpType) || !s.controls || !s.cover || !s.images ||
             !Array.isArray(s.periods) || !Array.isArray(s.sheets) ||
-            !SUBJECTS[s.subject].curriculum().some(function (t) { return t.grade === +s.controls.grade; })) throw new Error("Invalid document settings");
+            !(isKG(s.controls.grade) ||
+              SUBJECTS[s.subject].curriculum().some(function (t) { return t.grade === +s.controls.grade; }))) throw new Error("Invalid document settings");
         var limits = { perEx: [1, 50], fsz: [8, 20], seed: [0, 1000000000], lpWeeks: [1, 6], lpDays: [1, 7], lpMin: [15, 240] };
         Object.keys(limits).forEach(function (k) { var n = Number(s.controls[k]); if (!Number.isFinite(n) || n < limits[k][0] || n > limits[k][1]) throw new Error("Invalid " + k + " setting"); });
         if (["notes", "tests", "exam", "keys"].some(function (k) { return typeof s.controls[k] !== "boolean"; }) ||
@@ -2113,7 +2541,13 @@
             ["school", "motto", "pupil", "teacher", "classname", "term", "year", "crest", "note"].some(function (k) { return typeof s.cover[k] !== "string" || s.cover[k].length > 12000; }) ||
             !(Object.prototype.hasOwnProperty.call(COVER_TPL, s.cover.tpl) || s.cover.tpl === "table") ||
             !Number.isFinite(s.cover.bgFade) || s.cover.bgFade < 0 || s.cover.bgFade > 100) throw new Error("Invalid cover settings");
-        var periods = SUBJECTS[s.subject].curriculum().filter(function (t) { return t.grade === +s.controls.grade; }).map(function (t) { return t.period; });
+        /* the designer is optional on older saves; when present it must be a
+           plain object so normalizeDesign can safely fill it in */
+        if (s.cover.design !== undefined && (typeof s.cover.design !== "object" || s.cover.design === null || Array.isArray(s.cover.design))) throw new Error("Invalid cover design");
+        /* a kindergarten level has no periods at all, so any saved period list
+           must be empty for it */
+        var periods = isKG(s.controls.grade) ? []
+          : SUBJECTS[s.subject].curriculum().filter(function (t) { return t.grade === +s.controls.grade; }).map(function (t) { return t.period; });
         if (!s.periods.every(function (id) { return periods.includes(id); }) || !s.sheets.every(function (id) { return Object.prototype.hasOwnProperty.call(SUBJECTS[s.subject].engine().SHEETS, id); })) throw new Error("Invalid unit or worksheet selection");
         if (s.cover.text && Object.values(s.cover.text).some(function (v) { return typeof v !== "string" || v.length > 240; })) throw new Error("Invalid cover text");
       },
@@ -2126,7 +2560,7 @@
       },
       restore: function (s) {
         cur = s.subject; TRACK = S().wa ? "wa" : "curr"; MODE = s.mode; DOCTYPE = s.dtype; LP_PLAN_TYPE = s.lpType;
-        curBand = bandOf(+s.controls.grade).id;
+        curBand = bandOf(s.controls.grade).id;
         document.body.setAttribute("data-subject", cur);
         document.querySelectorAll("#tracks .track").forEach(function (b) { b.classList.toggle("on", b.dataset.t === TRACK); });
         renderSubjectTabs(); buildSheetList(); refreshGrades();
@@ -2135,6 +2569,7 @@
         document.querySelectorAll(".pk").forEach(function (c) { c.checked = s.periods.includes(c.value); });
         document.querySelectorAll(".sh").forEach(function (c) { c.checked = s.sheets.includes(c.value); });
         Object.keys(COVER).forEach(function (k) { if (s.cover[k] !== undefined) COVER[k] = s.cover[k]; });
+        COVER.design = normalizeDesign(s.cover.design);
         COVER.text = s.cover.text || {}; COVER_TEXT.set(COVER.text);
         COVER_IMG.logo = s.images.logo || null; COVER_IMG.bg = s.images.bg || null;
         Object.keys(CVMAP).forEach(function (id) { $("#" + id).value = COVER[CVMAP[id]] || ""; });
@@ -2142,7 +2577,7 @@
         $("#cvFade").value = COVER.bgFade; $("#fadeVal").textContent = COVER.bgFade + "%";
         $("#cvBox").style.display = COVER.on ? "" : "none";
         NOTES_ON = $("#notes").checked;
-        paintSession(); paintDocType(); paintLpPlanTabs(); paintLpWeeks(); paintLpPresets(); renderTplGrid(); paintImgPrev(); applyFontSize(); syncBadges();
+        paintSession(); paintDocType(); paintLpPlanTabs(); paintLpWeeks(); paintLpPresets(); renderTplGrid(); renderDesigner(); paintImgPrev(); applyFontSize(); syncBadges();
         generate();
       },
       redraw: function () { generate(); }

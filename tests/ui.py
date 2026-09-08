@@ -290,6 +290,77 @@ with sync_playwright() as p:
     print(f"  duplex helper: pack pages={n} odd/even ok")
     pg.close()
 
+    # --- 7. kindergarten cover-page levels and the cover designer ---
+    # KG-I / KG-II carry no transcribed curriculum, so they must produce the
+    # customizable cover sheet alone, and the designer must drive it live.
+    pg = b.new_page(viewport={"width": 1366, "height": 900})
+    pg.goto(HTML); pg.wait_for_timeout(800)
+    if pg.locator("#bands .bandtab[data-b='kg']").count() != 1:
+        bad.append("no Kindergarten band tab in the national curriculum track")
+    # a subject still opens on its own grades, never on Kindergarten
+    first = pg.locator("#grade option").evaluate_all("els => els.map(el => el.value)")
+    if first != ["1", "2", "3", "4", "5", "6"]:
+        bad.append(f"English should still default to Grades 1-6, got {first}")
+    pg.eval_on_selector("#bands .bandtab[data-b='kg']", "e=>e.click()"); pg.wait_for_timeout(400)
+    kg = pg.locator("#grade option").evaluate_all("els => els.map(el => [el.value, el.textContent])")
+    if kg != [["kg1", "KG-I"], ["kg2", "KG-II"]]:
+        bad.append(f"kindergarten band should list KG-I and KG-II, got {kg}")
+    if pg.locator("#periods .pk").count() != 0:
+        bad.append("a kindergarten level must not offer unit checkboxes")
+    pages = pg.locator("#doc .page").count()
+    if pages != 1:
+        bad.append(f"a kindergarten level should be one cover sheet, got {pages} pages")
+    if pg.locator("#doc .page.coverpage .cvart").count() != 1:
+        bad.append("the kindergarten document is not the designed cover")
+    if not pg.evaluate("""() => document.querySelector('#doc .cv-bg')
+            .style.backgroundImage.includes(window.SUBJECT_COVER_ART.kg.url)"""):
+        bad.append("the kindergarten cover is not using the kindergarten artwork")
+    if "KG-I" not in pg.locator("#doc .cv-panel .cv-val").evaluate_all(
+            "els => els.map(el => el.textContent)"):
+        bad.append("the kindergarten cover does not name its level in the Class row")
+
+    pg.eval_on_selector("#ddCover>summary", "e=>e.click()"); pg.wait_for_timeout(200)
+    ncol = pg.locator("#cvDesigner input[type=color]").count()
+    nshow = pg.locator("#cvDesigner .des-chks .chk").count()
+    if ncol != 5:
+        bad.append(f"cover designer should offer 5 colours, got {ncol}")
+    if nshow != 11:
+        bad.append(f"cover designer should offer 11 show/hide switches, got {nshow}")
+    if pg.locator("#cvDesigner #cvEmblem option").count() != 9:
+        bad.append("emblem select should offer the template default plus 8 emblems")
+    if pg.locator('#tplGrid .tplbtn[data-tpl="kg"]').count() != 1:
+        bad.append("no Kindergarten cover template in the picker")
+    # a designer change must reach the sheet immediately
+    pg.eval_on_selector("#cvCol-band",
+                        "e=>{e.value='#a11b1b';e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    pg.wait_for_timeout(350)
+    style = pg.eval_on_selector("#doc .cvart", "e=>e.getAttribute('style') || ''")
+    if "--cv-band:#a11b1b" not in style:
+        bad.append(f"custom border band did not reach the cover: {style!r}")
+    pg.eval_on_selector("#cvShow-panel",
+                        "e=>{e.checked=false;e.dispatchEvent(new Event('change',{bubbles:true}))}")
+    pg.wait_for_timeout(350)
+    if pg.locator("#doc .cv-panel").count() != 0:
+        bad.append("unticking the details panel did not remove it from the cover")
+    # a lesson plan cannot be made for a level with no units, so the
+    # kindergarten band must leave the picker and come back again
+    pg.eval_on_selector("#dtype .sess[data-d='lp']", "e=>e.click()"); pg.wait_for_timeout(300)
+    if pg.locator("#bands .bandtab[data-b='kg']").count() != 0:
+        bad.append("the Kindergarten band must not be offered for a lesson plan")
+    if not pg.locator("#grade option").evaluate_all(
+            "els => els.every(el => /^[0-9]+$/.test(el.value))"):
+        bad.append("the level list should be numeric again in lesson-plan mode")
+    pg.eval_on_selector("#dtype .sess[data-d='pack']", "e=>e.click()"); pg.wait_for_timeout(300)
+    if pg.locator("#bands .bandtab[data-b='kg']").count() != 1:
+        bad.append("the Kindergarten band should return for a course pack")
+    # the designer must not make the sidebar overflow on a narrow screen
+    pg.set_viewport_size({"width": 375, "height": 800}); pg.wait_for_timeout(300)
+    over = pg.evaluate("()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1")
+    if over:
+        bad.append("cover designer causes horizontal overflow on a small handset")
+    print(f"  kindergarten cover: 1 sheet, designer {ncol} colours / {nshow} switches ok")
+    pg.close()
+
     b.close()
 
 print("\nBAD:", bad)

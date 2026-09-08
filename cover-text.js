@@ -39,6 +39,12 @@
       organization: opts.subjectId === "ci" ? "Civics · Original teaching resource" : opts.subjectId && opts.subjectId.charAt(0) === "w" ? "WASSCE · Syllabus-aligned practice" : "Liberian National Curriculum",
       detailLabel: "Detail", entryLabel: "Entry" };
     if (opts.subjectId === "ci") defaults.line = "Civics · Grade " + opts.grade + " · Original teaching resource; teacher review required";
+    /* A kindergarten level has no transcribed syllabus, so its cover names the
+       level instead of a workbook and never claims curriculum content. */
+    if (opts.kg) {
+      defaults.subtitle = (opts.levelName || "Kindergarten") + " Cover Page";
+      defaults.organization = "Kindergarten · Liberian National Curriculum";
+    }
     if (root.TEACHING && root.TEACHING.isAssessment()) defaults.subtitle = "Practice Assessment";
     paint();
     var result = {}; Object.keys(fields).forEach(function (key) { result[key] = get(key); }); return result;

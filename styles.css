@@ -995,3 +995,51 @@ img.ai-msg-img{width:26px;height:26px}
 @media (max-width:640px){
   .menu-btn{width:40px;height:40px;border-radius:10px}
 }
+
+/* ============================================================
+   COVER DESIGNER
+   Colours, emblem, title scale and the show/hide switches for
+   the designed cover, plus the Kindergarten template and its
+   artwork. Everything here is additive: a template that is left
+   alone looks exactly as it did before.
+   ============================================================ */
+.cvart{--cv-ts:1}
+.cv-t1,.page .cv-t1{font-size:calc(21mm * var(--cv-ts))}
+.cv-t1.long,.page .cv-t1.long{font-size:calc(14mm * var(--cv-ts))}
+.cv-t1.xlong,.page .cv-t1.xlong{font-size:calc(10.5mm * var(--cv-ts))}
+.cv-t2{font-size:calc(11mm * var(--cv-ts))}
+
+/* Kindergarten: bright, warm and rounded, to sit with the KG cover artwork */
+.cv-kg { --cv-ink:#1f4d3a; --cv-accent:#e0662b; --cv-bg:#fffaf0; --cv-band:#2f6f4f; --cv-soft:#fdeecf; }
+.cv-kg::after{border-radius:6mm;opacity:.6}
+.cv-kg .cv-t1{letter-spacing:.2mm}
+.cv-kg .cv-panel{border-radius:7mm;border-width:1.8px}
+.cv-kg .cv-emblem{font-size:19mm}
+.cv-kg .cv-em-svg{width:17mm;height:17mm}
+.cv-kg .cv-note{background:#fff1d6}
+
+/* colour pickers: one cell per colour, with an Auto button that hands the
+   colour back to the chosen template */
+.des-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:6px}
+.des-col{display:block;font-size:.72rem;font-weight:700;color:var(--ink)}
+.des-col>span:first-child{display:block;margin-bottom:3px}
+.des-col.off{opacity:.5}
+.des-sw{display:flex;align-items:center;gap:5px}
+.des-sw input[type=color]{flex:none;width:38px;height:32px;padding:2px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;cursor:pointer}
+.des-sw input[type=color]:disabled{cursor:not-allowed}
+.des-sw input[data-automatic=false]{border-color:#347566;box-shadow:0 0 0 2px rgba(52,117,102,.18)}
+.des-sw button{flex:1;min-width:0;padding:7px 4px;border:1px solid #ccd8d4;border-radius:6px;
+  background:#eef5f1;color:#245d4e;font-size:.66rem;font-weight:700;cursor:pointer}
+.des-sw button:hover{background:#e2f0e9}
+.des-sw button:disabled{cursor:not-allowed;opacity:.5}
+.des-reset{display:block;width:100%;margin:8px 0 2px;padding:9px 10px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;color:var(--bleu);font-size:.72rem;font-weight:700;cursor:pointer}
+.des-reset:hover{background:#f0f6ff}
+
+/* show / hide switches for each cover element */
+.des-chks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 8px;margin-bottom:2px}
+.des-chks .chk{margin:0}
+.des-chks .chk.off{opacity:.5}
+.des-chks .chk span{font-size:.72rem}
+@media (max-width:420px){ .des-cols,.des-chks{grid-template-columns:1fr} }

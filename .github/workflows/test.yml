@@ -22,6 +22,7 @@ jobs:
           bash build.sh
           node tests/history.js
           node tests/notes-verbatim.js
+          node tests/cover-kg.js
           node tests/book.js
           node tests/voice.js
           node tests/ai.js

@@ -8,7 +8,7 @@
     <div class="top-txt">
       <h1>Liberian National Curriculum &middot; Course Pack Generator</h1>
       <p>English &middot; Phonics &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Physics &middot; Economics &middot; English Grammar &middot; Geography &middot; History &middot; Civics &middot; Literature<br>
-         <span class="top-sub">Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> Emmanuel AI tutor &middot; works offline</span></p>
+         <span class="top-sub">KG-I &amp; KG-II cover pages &middot; Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> Emmanuel AI tutor &middot; works offline</span></p>
     </div>
     <button type="button" class="install-app" id="installApp" hidden><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Install app</button>
     <span class="install-status" id="installStatus" role="status" aria-live="polite"></span>
@@ -59,8 +59,8 @@
       </section>
 
       <section class="grp grp-key">
-        <div class="grp-lab">Grade</div>
-        <div class="row row-sel"><select id="grade" aria-label="Grade"></select></div>
+        <div class="grp-lab">Grade / level</div>
+        <div class="row row-sel"><select id="grade" aria-label="Grade or kindergarten level"></select></div>
         <p class="hint" id="jhNote" style="display:none"></p>
       </section>
 
@@ -170,6 +170,10 @@
             <div class="tplgrid" id="tplGrid"></div>
             <p class="hint" id="tplHint"></p>
 
+            <!-- the cover designer (colours, emblem, title size, show/hide)
+                 is built by renderDesigner() in app.js -->
+            <div id="cvDesigner"></div>
+
             <div class="cvsec">Your school</div>
             <input type="text" id="cvSchool" placeholder="School name">
             <input type="text" id="cvMotto" placeholder="School motto (optional)">
@@ -197,10 +201,10 @@
             </div>
             <div class="row"><label for="cvCrest">Crest character (optional)</label>
               <input type="text" id="cvCrest" value="" maxlength="4" class="crest-in" placeholder="drawn emblem"></div>
-            <p class="hint">Leave the crest blank to use the cover template's drawn emblem, or upload a school logo above. Each subject includes its own real PNG artwork (mathematics shows equations, science shows laboratory imagery, and so on). Uploading a background overrides it. Everything is stored inside this page for offline use.</p>
+            <p class="hint">Leave the crest blank to use the cover template's drawn emblem, or upload a school logo above. Each subject includes its own real PNG artwork (mathematics shows equations, science shows laboratory imagery, and so on), and <b>KG-I and KG-II</b> share the kindergarten artwork. Uploading a background overrides it. Everything is stored inside this page for offline use.</p>
 
             <div class="cvsec">This pack</div>
-            <input type="text" id="cvClass" placeholder="Class (blank = Grade from above)">
+            <input type="text" id="cvClass" placeholder="Class (blank = grade or KG level from above)">
             <input type="text" id="cvPupil" placeholder="Pupil's name (student copy)">
             <input type="text" id="cvTeacher" placeholder="Teacher's name">
             <div class="row2">
