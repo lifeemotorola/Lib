@@ -1591,21 +1591,53 @@
     window.addEventListener("orientationchange", fitSoon);
     fitPreview();
 
-    /* collapsible settings panel on tablet and phone */
+    /* collapsible settings panel — the header hamburger arranges the whole
+       layout: on tablet/phone it slides the panel open and shut, and on wider
+       screens it collapses the settings sidebar so the pack uses the full
+       width. The on-screen "Course pack settings" bar stays for touch. */
     var pt = $("#panelToggle");
+    var menuBtn = $("#menuBtn");
+    function panelIsOpen() {
+      return window.matchMedia("(max-width:980px)").matches
+        ? document.body.classList.contains("panel-open")
+        : !document.body.classList.contains("panel-closed");
+    }
+    function paintMenu() {
+      var open = panelIsOpen();
+      if (menuBtn) {
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        menuBtn.setAttribute("aria-label", open ? "Hide course pack settings" : "Show course pack settings");
+        var u = menuBtn.querySelector("use");
+        if (u) u.setAttribute("href", open ? "#i-close" : "#i-menu");
+      }
+      if (pt) pt.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    function togglePanel() {
+      if (window.matchMedia("(max-width:980px)").matches) {
+        document.body.classList.toggle("panel-open");
+      } else {
+        document.body.classList.toggle("panel-closed");
+      }
+      paintMenu();
+      fitSoon();
+    }
+    if (menuBtn) menuBtn.onclick = togglePanel;
     if (pt) {
       pt.onclick = function () {
-        var open = document.body.classList.toggle("panel-open");
-        pt.setAttribute("aria-expanded", open ? "true" : "false");
+        document.body.classList.toggle("panel-open");
+        paintMenu();
         fitSoon();
       };
     }
+    window.addEventListener("resize", paintMenu);
+    window.addEventListener("orientationchange", paintMenu);
+    paintMenu();
     /* after generating on a small screen, collapse the panel so the
        pack is what the user actually sees */
     function collapseIfNarrow() {
       if (window.matchMedia("(max-width:980px)").matches) {
         document.body.classList.remove("panel-open");
-        if (pt) pt.setAttribute("aria-expanded", "false");
+        paintMenu();
       }
     }
 
