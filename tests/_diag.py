@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 
 TARGET = sys.argv[1] if len(sys.argv) > 1 else str(
     Path(__file__).resolve().parent.parent.joinpath("index.html"))
-URL = Path(TARGET).as_uri()
+URL = Path(TARGET).resolve().as_uri()
 
 with sync_playwright() as pw:
     b = pw.chromium.launch(args=["--no-sandbox", "--disable-dev-shm-usage"])
@@ -54,6 +54,17 @@ with sync_playwright() as pw:
     out["upper_hits"] = pg.evaluate(
         """() => { const t = document.querySelector('#doc').innerText.toUpperCase();
              const i = t.indexOf('SENIOR HIGH'); return i < 0 ? 'none' : t.slice(i-40, i+60); }""")
+    out["doc_kids"] = pg.evaluate("""() => Array.from(document.querySelector('#doc').children)
+        .slice(0, 4).map(function (el) {
+          var ph = el.querySelector && el.querySelector('.phead');
+          return { tag: el.tagName, cls: el.className, h: el.offsetHeight,
+                   phExists: !!ph,
+                   phDisplay: ph ? getComputedStyle(ph).display : null,
+                   phH: ph ? ph.offsetHeight : null,
+                   phText: ph ? ph.innerText.replace(/\n/g, '/') : null };
+        })""")
+    out["measure_left"] = pg.locator("#doc .page.measure").count()
+    out["phead_count"] = pg.locator("#doc .phead").count()
     out["pageerrors"] = errs[:3]
     b.close()
 out["target"] = Path(TARGET).name
