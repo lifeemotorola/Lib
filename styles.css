@@ -121,14 +121,23 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
   height:297mm;display:flex;flex-direction:column}
 .page.measure .pbody{flex:0 0 auto;height:auto}
 .pbody{flex:1 0 auto}
-/* ---- running header & footer on every sheet ---- */
+/* ---- running header & footer on every sheet ----
+   Font size, colour and bold come from --sh-hf-* variables written by
+   applyHF(); the per-element show/hide is driven by data attributes on
+   <body>. A section left at its defaults reproduces the original look
+   exactly: 9pt, #666666, left header bold, full visibility. */
 .phead,.pfoot{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
-  font-size:9pt;color:#666;letter-spacing:.02em;flex:0 0 auto}
-.phead{border-bottom:1px solid var(--bleu-l);padding-bottom:5px;margin-bottom:14px}
-.phead span:first-child{font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:.05em}
-.pfoot{border-top:1px solid var(--bleu-l);padding-top:5px;margin-top:12px}
-.pfoot span:first-child,.phead span:last-child{white-space:nowrap;overflow:hidden;text-overflow:clip}
-.pfoot span:last-child{white-space:nowrap;font-weight:700;color:var(--bleu)}
+  font-size:var(--sh-hf-hdr-fs, 9pt);color:var(--sh-hf-hdr-col, #666666);
+  letter-spacing:.02em;flex:0 0 auto}
+.phead{border-bottom:1px solid var(--bleu-l);padding-bottom:5px;margin-bottom:14px;
+  font-size:var(--sh-hf-hdr-fs, 9pt);color:var(--sh-hf-hdr-col, #666666)}
+.phead .phdr-l{font-weight:var(--sh-hf-hdr-bold, 700);color:var(--bleu);text-transform:uppercase;letter-spacing:.05em}
+.phead .phdr-r{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.pfoot{border-top:1px solid var(--bleu-l);padding-top:5px;margin-top:12px;
+  font-size:var(--sh-hf-ftr-fs, 9pt);color:var(--sh-hf-ftr-col, #666666)}
+.pfoot .pftr-l{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.pfoot .pftr-r{white-space:nowrap;font-weight:700;color:var(--bleu)}
+.pfoot .pftr-pg{white-space:nowrap;font-weight:700;color:var(--bleu)}
 .page h1{font-size:1.43em;color:var(--bleu);border-bottom:2px solid var(--bleu);padding-bottom:6px;margin:18px 0 10px}
 .page h2{font-size:1.21em;color:var(--bleu-l);margin:16px 0 8px}
 .page h3{font-size:1.07em;margin:15px 0 7px;color:#12203a}
@@ -1061,3 +1070,119 @@ img.ai-msg-img{width:26px;height:26px}
 .des-chks .chk.off{opacity:.5}
 .des-chks .chk span{font-size:.72rem}
 @media (max-width:420px){ .des-cols,.des-chks{grid-template-columns:1fr} }
+
+/* ============================================================
+   HEADER & FOOTER CUSTOMIZATION
+   Two surfaces share the same control pattern:
+
+   1) The PRINTED sheet header & footer (.phead / .pfoot) — the
+      running head and the page-numbered footer that appear on
+      every A4 sheet, in print, in PDF and in the Word export.
+
+   2) The PLATFORM chrome header (.top) — the blue bar at the top
+      of the page — and the new PLATFORM footer (.botfoot) sitting
+      below the .wrap.
+
+   Each control writes into the same shape (on/off + show/hide per
+   element + custom text + font size + colour), so a section that
+   is left alone renders exactly as it did before.
+   ============================================================ */
+
+/* --- platform footer --- */
+.botfoot{background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff;
+  padding:10px 20px;font-size:.78rem;position:relative}
+.botfoot::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--bleu) 33%,#fff 33% 66%,var(--rouge) 66%)}
+.botfoot-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.botfoot-l,.botfoot-r{opacity:.92}
+.botfoot-l b{font-weight:800;letter-spacing:.4px}
+.botfoot-r{font-size:.72rem;opacity:.8}
+@media(max-width:640px){.botfoot-in{flex-direction:column;align-items:flex-start;gap:3px}.botfoot-r{font-size:.68rem}}
+
+/* the chrome header can be hidden entirely: the platform still works
+   because the panel toggle and the export bar live inside the .wrap */
+body.plat-hd-off .top{display:none!important}
+
+/* the new chrome footer is hidden by default; toggled on by the
+   Platform header & footer designer */
+body.plat-ft-off .botfoot{display:none!important}
+body.plat-hd-off .menu-btn{display:none!important}
+
+/* master enable/disable of the printed sheet header/footer */
+body.sheet-hf-off .page .phead,
+body.sheet-hf-off .page .pfoot{display:none!important}
+
+/* finer per-element switches on the printed sheet: an element is hidden
+   if its data attribute reads "false". JS sets the attribute on <body>. */
+body[data-phdr="false"] .page .phead{display:none!important}
+body[data-pftr="false"] .page .pfoot{display:none!important}
+body[data-phdr-l="false"] .page .phead .phdr-l{display:none!important}
+body[data-phdr-r="false"] .page .phead .phdr-r{display:none!important}
+body[data-pftr-l="false"] .page .pfoot .pftr-l{display:none!important}
+body[data-pftr-r="false"] .page .pfoot .pftr-r{display:none!important}
+body[data-pftr-pg="false"] .page .pfoot .pftr-pg{display:none!important}
+
+/* the per-element switches in the designer: a section "off" dims and
+   disables its controls so the user can see what is currently active */
+.hf-row.off{opacity:.5}
+.hf-row.off input,.hf-row.off select,.hf-row.off button{pointer-events:none}
+
+/* designer panel layout — reuses des-* classes where possible */
+.hf-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:6px}
+.hf-grid .row{margin-bottom:4px}
+.hf-grid .row label{font-size:.82rem;color:var(--ink);font-weight:600}
+.hf-grid .row input[type=text]{width:100%;box-sizing:border-box;padding:7px 9px;
+  border:1px solid var(--line);border-radius:8px;background:#f8fbff;color:var(--ink);font-size:.85rem}
+.hf-grid .row input[type=text]:focus{outline:2px solid #bcd3fb;outline-offset:0;border-color:#9dbcf0}
+.hf-grid .row input[type=range]{flex:1;accent-color:var(--bleu)}
+.hf-grid .row select{padding:7px 9px;border:1px solid var(--line);border-radius:8px;
+  background:#f8fbff;color:var(--ink);font-size:.85rem;width:100%}
+.hf-grid .row input[type=color]{width:38px;height:32px;padding:2px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;cursor:pointer;flex:none}
+.hf-grid .row b{font-size:.75rem;color:var(--bleu);min-width:40px;text-align:right;flex:none}
+
+.hf-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+@media (max-width:420px){.hf-pair{grid-template-columns:1fr}}
+
+.hf-sec-cap{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 4px}
+.hf-sec-cap b{font-size:.86rem;color:var(--ink)}
+.hf-sec-cap .hf-onoff{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted)}
+
+.hf-tog{display:inline-flex;align-items:center;gap:6px;cursor:pointer;user-select:none;font-size:.82rem;font-weight:700;color:var(--ink)}
+.hf-tog input{accent-color:var(--bleu);width:16px;height:16px}
+
+.hf-auto{flex:1;min-width:0;padding:7px 4px;border:1px solid #ccd8d4;border-radius:6px;
+  background:#eef5f1;color:#245d4e;font-size:.72rem;font-weight:700;cursor:pointer}
+.hf-auto:hover{background:#e2f0e9}
+
+/* a small "preview" of the running header/footer so the user can see
+   what their choices produce before they click Generate */
+.hf-preview{background:#f4f7fd;border:1px solid var(--line);border-radius:9px;padding:10px 12px;
+  font-size:.72rem;color:var(--ink);margin:6px 0 4px;line-height:1.45}
+.hf-preview .pv-row{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.hf-preview .pv-hd{border-bottom:1px solid var(--bleu-l);padding-bottom:4px;margin-bottom:4px}
+.hf-preview .pv-hd span:first-child{color:var(--bleu);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.hf-preview .pv-ft{border-top:1px solid var(--bleu-l);padding-top:4px;margin-top:4px}
+.hf-preview .pv-ft span:last-child{color:var(--bleu);font-weight:700}
+.hf-preview.dim{opacity:.45}
+
+.hf-saved-tag{display:inline-block;font-size:.66rem;color:#0d6b3a;background:#d9f4e2;
+  border-radius:20px;padding:2px 8px;font-weight:700;margin-left:6px;vertical-align:middle}
+
+/* hide the platform chrome footer / header elements via the new
+   designer-driven switches as well as the body classes above */
+body[data-phdr-on="false"] .top{display:none!important}
+body[data-pftr-on="false"] .botfoot{display:none!important}
+
+/* the live preview blocks inside the platform designer: they mirror the
+   on-screen chrome so a colour or font-size change is visible immediately.
+   The top preview takes the same gradient + font size as the real .top,
+   and the bottom preview mirrors #botFoot. */
+.plat-preview{background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff;
+  padding:9px 12px;border-radius:9px;margin:6px 0 4px;font-size:.85rem;line-height:1.35}
+.plat-preview.bot{font-size:.78rem}
+.plat-pv-inner{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.plat-pv-title{font-size:.95rem;font-weight:800}
+.plat-pv-sub{font-size:.72rem;opacity:.86}
+.plat-pv-l b{font-weight:800;letter-spacing:.3px}
+.plat-pv-r{font-size:.72rem;opacity:.8}

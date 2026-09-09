@@ -244,6 +244,147 @@
         </div>
       </details>
 
+      <details class="dd" id="ddSheetHF">
+        <summary>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-layout"/></svg></span>
+          <span class="dd-t">Sheet header &amp; footer</span>
+          <span class="dd-n" id="nSheetHF"></span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+        </summary>
+        <div class="dd-b">
+          <label class="hf-tog"><input type="checkbox" id="shHfOn" checked> Show on every sheet</label>
+          <p class="hint">The running head (subject &middot; grade on the left, session on the right) and the footer (curriculum line on the left, page number on the right) that appear on every A4 sheet, in print, in PDF and in the Word export.</p>
+
+          <div id="shHfBox">
+            <!-- Header -->
+            <div class="hf-sec-cap">
+              <b>Running header</b>
+              <span class="hf-onoff"><input type="checkbox" id="shHfHdrOn" checked> show</span>
+            </div>
+            <div class="hf-grid" id="shHfHdrRow">
+              <div class="hf-pair">
+                <div class="row"><label for="shHfHdrL">Left text</label>
+                  <input type="text" id="shHfHdrL" maxlength="120" placeholder="auto: subject \u00b7 grade"></div>
+                <div class="row"><label for="shHfHdrR">Right text</label>
+                  <input type="text" id="shHfHdrR" maxlength="120" placeholder="auto: session"></div>
+              </div>
+              <div class="row"><label for="shHfHdrFs">Text size (pt)</label>
+                <input type="range" id="shHfHdrFs" min="7" max="14" step="0.5" value="9">
+                <b id="shHfHdrFsVal">9pt</b></div>
+              <div class="row"><label for="shHfHdrCol">Text colour</label>
+                <input type="color" id="shHfHdrCol" value="#666666">
+                <button type="button" id="shHfHdrColAuto" class="hf-auto">Auto</button></div>
+              <label class="chk"><input type="checkbox" id="shHfHdrBold" checked> Bold left text</label>
+            </div>
+
+            <!-- Footer -->
+            <div class="hf-sec-cap">
+              <b>Page footer</b>
+              <span class="hf-onoff"><input type="checkbox" id="shHfFtrOn" checked> show</span>
+            </div>
+            <div class="hf-grid" id="shHfFtrRow">
+              <div class="hf-pair">
+                <div class="row"><label for="shHfFtrL">Left text</label>
+                  <input type="text" id="shHfFtrL" maxlength="240" placeholder="auto: curriculum line"></div>
+                <div class="row"><label for="shHfFtrR">Right text</label>
+                  <input type="text" id="shHfFtrR" maxlength="60" placeholder="auto: \u201cPage n of total\u201d"></div>
+              </div>
+              <div class="row"><label for="shHfFtrFs">Text size (pt)</label>
+                <input type="range" id="shHfFtrFs" min="7" max="14" step="0.5" value="9">
+                <b id="shHfFtrFsVal">9pt</b></div>
+              <div class="row"><label for="shHfFtrCol">Text colour</label>
+                <input type="color" id="shHfFtrCol" value="#666666">
+                <button type="button" id="shHfFtrColAuto" class="hf-auto">Auto</button></div>
+              <label class="chk"><input type="checkbox" id="shHfPgNum" checked> Show page number on the right</label>
+            </div>
+
+            <!-- live preview of the running header & footer -->
+            <div class="cvsec">Preview</div>
+            <div class="hf-preview" id="shHfPrev">
+              <div class="pv-row pv-hd"><span class="phdr-l" id="shHfPrevHL">SUBJECT \u00b7 GRADE 5</span><span class="phdr-r" id="shHfPrevHR">Teacher's Copy</span></div>
+              <p style="margin:6px 0 4px;color:#888;font-size:.68rem;">A4 sheet content sits here, in the chosen font size and subject colour.</p>
+              <div class="pv-row pv-ft"><span class="pftr-l" id="shHfPrevFL">Liberian Elementary Curriculum \u00b7 Grade 5</span><span><span class="pftr-r" id="shHfPrevFR">Liberian Course Pack Generator</span> <span class="pftr-pg" id="shHfPrevPG">Page 3 of 12</span></span></div>
+            </div>
+
+            <button type="button" id="shHfReset" class="des-reset" style="margin-top:6px">Reset sheet header &amp; footer</button>
+            <p class="hint">Custom text overrides the auto-generated subject &middot; grade and curriculum line. Blank fields fall back to the automatic text. Save lives on this device only.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="dd" id="ddPlatHF">
+        <summary>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-banner"/></svg></span>
+          <span class="dd-t">Platform header &amp; footer</span>
+          <span class="dd-n" id="nPlatHF"></span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+        </summary>
+        <div class="dd-b">
+          <p class="hint">The blue title bar at the top of the platform page and the matching strip below the document. Both can be enabled, disabled, or have their text and colour changed here. They do not appear on the printed sheets &mdash; the Sheet header &amp; footer above controls the printed look.</p>
+
+          <!-- Top blue bar -->
+          <div class="hf-sec-cap">
+            <b>Top header bar</b>
+            <span class="hf-onoff"><input type="checkbox" id="platHdOn" checked> show</span>
+          </div>
+          <!-- live preview of the top header bar: shows the colour and font-size
+               change immediately, mirroring the on-screen .top -->
+          <div class="plat-preview" id="platHdPreview">
+            <div class="plat-pv-inner">
+              <div class="plat-pv-title">Liberian National Curriculum &middot; Course Pack Generator</div>
+              <div class="plat-pv-sub">English &middot; Phonics &middot; French &middot; ...</div>
+            </div>
+          </div>
+          <div class="hf-grid" id="platHdRow">
+            <div class="row"><label for="platHdTitle">Title</label>
+              <input type="text" id="platHdTitle" maxlength="160" placeholder="Liberian National Curriculum \u00b7 Course Pack Generator"></div>
+            <div class="row"><label for="platHdSub">Subtitle / list of subjects</label>
+              <input type="text" id="platHdSub" maxlength="600" placeholder="English \u00b7 Phonics \u00b7 French \u00b7 ..."></div>
+            <div class="row"><label for="platHdNote">Small line under the subtitle</label>
+              <input type="text" id="platHdNote" maxlength="240" placeholder="KG-I &amp; KG-II lesson plans &amp; cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks ..."></div>
+            <div class="row"><label for="platHdFs">Title text size</label>
+              <input type="range" id="platHdFs" min="0.9" max="2.2" step="0.05" value="1.35">
+              <b id="platHdFsVal">1.35rem</b></div>
+            <div class="row"><label for="platHdBg">Bar colour</label>
+              <input type="color" id="platHdBg" value="#0b3b8c">
+              <button type="button" id="platHdBgAuto" class="hf-auto">Subject theme</button></div>
+            <label class="chk"><input type="checkbox" id="platHdCrestOn" checked> Show the crest / Liberia flag emblem</label>
+            <label class="chk"><input type="checkbox" id="platHdInstall" checked> Show the &ldquo;Install app&rdquo; button</label>
+          </div>
+
+          <!-- Bottom platform footer (new) -->
+          <div class="hf-sec-cap">
+            <b>Platform footer (new)</b>
+            <span class="hf-onoff"><input type="checkbox" id="platFtOn"> show</span>
+          </div>
+          <!-- live preview of the bottom footer: shows text + colour changes
+               immediately, mirroring the on-screen #botFoot -->
+          <div class="plat-preview bot" id="platFtPreview">
+            <div class="plat-pv-inner">
+              <span class="plat-pv-l">Liberian National Curriculum</span>
+              <span class="plat-pv-r">Course Pack Generator</span>
+            </div>
+          </div>
+          <div class="hf-grid" id="platFtRow">
+            <div class="hf-pair">
+              <div class="row"><label for="platFtL">Left text</label>
+                <input type="text" id="platFtL" maxlength="160" placeholder="Liberian National Curriculum"></div>
+              <div class="row"><label for="platFtR">Right text</label>
+                <input type="text" id="platFtR" maxlength="160" placeholder="Course Pack Generator"></div>
+            </div>
+            <div class="row"><label for="platFtFs">Text size</label>
+              <input type="range" id="platFtFs" min="0.6" max="1.2" step="0.05" value="0.78">
+              <b id="platFtFsVal">0.78rem</b></div>
+            <div class="row"><label for="platFtBg">Bar colour</label>
+              <input type="color" id="platFtBg" value="#0b3b8c">
+              <button type="button" id="platFtBgAuto" class="hf-auto">Subject theme</button></div>
+          </div>
+
+          <button type="button" id="platHfReset" class="des-reset" style="margin-top:8px">Reset platform header &amp; footer</button>
+          <p class="hint">Settings save on this device only. Hiding the top header bar removes it on screen but never affects the printable session (the Sheet header &amp; footer above still controls that).</p>
+        </div>
+      </details>
+
     </div><!-- /panel-scroll -->
 
     <!-- ============ STICKY ACTION BAR: always reachable ============ -->
@@ -270,6 +411,14 @@
     <div id="doc"></div>
   </main>
 </div>
+
+<!-- ============ PLATFORM FOOTER (customizable) ============ -->
+<footer class="botfoot" id="botFoot" hidden>
+  <div class="botfoot-in">
+    <span class="botfoot-l"><b id="botFootL">Liberian National Curriculum</b></span>
+    <span class="botfoot-r" id="botFootR">Course Pack Generator</span>
+  </div>
+</footer>
 
 <!-- ============ DUPLEX PRINT HELPER ============ -->
 <div class="bookmask" id="bookMask" hidden>
