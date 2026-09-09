@@ -6,6 +6,15 @@
    High half of the same subject). `**bold**` marks the key terms; table cells
    take no markup because the renderer escapes them.
 
+   Units are ordered by the guide's own grade/period split, and each unit's
+   `study[]` must teach that unit's own topic. Grade 4 is the guide's pp. 38-49
+   (Energy · Force · Measurement · Satellites · Skin/Soil/Malaria · Health and
+   Personal Hygiene) and Grade 5 is pp. 50-63 (Simple Machines · Sound and
+   Light · Health Lessons · Organization of Life · Structure of Matter ·
+   Weather and Climate) — keep the `grade:` field, the guide page comment and
+   the notes in step when editing, and see the spot facts in
+   tests/notes-verbatim.js, which pin them.
+
    Science is a CONCEPT + INQUIRY subject, so each topic carries:
      terms[]     {t, d, x}                 key term, definition, example/where seen
      facts[]     {q, a}                    short-answer recall questions
@@ -1694,7 +1703,7 @@ const SC_CURRICULUM = [
 
 /* ================= GRADE 4 ================= */
 {
-  grade:5, period:"I", sem:"One", icon:"⚡",
+  grade:4, period:"I", sem:"One", icon:"⚡",
   title:"Energy",
   subtitle:"Meaning, properties, types and forms of energy",
   outcomes:["State the properties, types and forms of energy as well as its usefulness"],
@@ -1702,33 +1711,39 @@ const SC_CURRICULUM = [
   note:"<b>Energy</b> is the ability to do work. The two types are <b>potential</b> (stored) and <b>kinetic</b> (moving). Energy <b>cannot be created or destroyed</b> — it only changes from one form to another.",
   study:[
     /* ---- course text: Semester One, Period I (guide pp. 38-39) ---- */
-    {k:"h3", t:"Light Travels"},
-    {k:"p", t:"**Light** is a form of energy that makes things visible. It travels in a **straight line** at enormous speed – about 300,000 kilometres in a second – so the flash of lightning reaches the eye long before the thunder reaches the ear."},
-    {k:"bul", items:["Light from the sun and a flame goes out in every direction.","We see a thing only when light from it enters the eye: a lamp or the sun is a **luminous body**; a table or the moon, which only throws back light, is **illuminated**.","Straight travel is shown by a line of men each behind another, by a torch beam through dusty air, and by a small-hole camera."]},
+    {k:"h3", t:"Energy"},
+    {k:"p", t:"**Energy** is the ability to do work. Work is done whenever a force moves an object, and energy is what makes it possible. Energy is measured in **joules (J)**; a kilogram of rice lifted a metre needs about ten joules."},
+    {k:"p", t:"Matter and energy go together, and the greater proof of it is that a little mass changed wholly to energy gives enormous power: the sun shines because it keeps changing some of its matter to light and heat."},
     {k:"rule"},
-    {k:"h3", t:"Reflection"},
-    {k:"p", t:"**Reflection** is light bouncing back from a surface. A smooth bright surface throws back an image; a rough surface scatters it, so white wall and chalk reflect without showing your face. Shadows and eclipses are the other side of reflection: light that cannot pass leaves a dark shape behind."},
-    {k:"bul", items:["Periscope, mirror and the rear-view glass serve by reflection.","**Lateral inversion** – the mirror puts the left hand on the right side – is why an ambulance writes its name backward."]},
-    {k:"p", t:"Hold a mirror in sunlight and throw the patch of light about the wall; then bend the mirror and the patch moves – the law of reflection is being obeyed under your hand."},
-    {k:"rule"},
-    {k:"h3", t:"Refraction"},
-    {k:"p", t:"**Refraction** is the bending of light as it passes from one transparent material into another, so a stick in water looks bent and a coin in a basin seems to rise when the water is poured in."},
-    {k:"bul", items:["A **lens** is shaped glass that refracts: a **convex** lens is thicker in the middle and brings light together to a point; a **concave** lens is thinner in the middle and spreads it out.","The eye is a convex-lens camera: the lens throws an inverted image on the **retina** at the back, and the brain reads it upright.","Glasses correct an eye whose lens cannot bend the light enough or bends too much; a magnifying glass, a telescope and a camera are convex lenses at work.","A **prism** splits white light into the seven colours of the **spectrum** – red, orange, yellow, green, blue, indigo, violet – which the rainbow shows in the sky."]},
-    {k:"rule"},
-    {k:"h3", t:"Colours of Light"},
-    {k:"bul", items:["White light is a mixture of colours; a thing looks red because it returns the red and takes in the rest.","**Primary colours of pigment** are red, yellow and blue; **secondary** are orange, green and purple. Mixing all the pigments gives black; mixing all the lights gives white.","**Colour blindness** – not telling red from green – runs in families, is commoner in boys, and matters in choosing a trade such as pilot, driver or electrician; it is tested with dotted plates."]},
-    {k:"p", t:"Cut coloured paper into **patterns** – symmetrical and repeating, as the loom and the dye pit do – and hang the work in the class; a mirror makes one half of the pattern into a whole."},
-    {k:"rule"},
-    {k:"h3", t:"The Human Eye"},
-    {k:"table", head:["Part","Its work"], rows:[
-      ["Cornea","The clear window at the front; admits and bends the light"],
-      ["Iris and pupil","The coloured ring with the hole that widens in the dark and narrows in bright light"],
-      ["Lens","Focuses the light on the back of the eye"],
-      ["Retina","Receives the image and sends the news along the optic nerve"],
-      ["Optic nerve","Carries the message to the brain"]
+    {k:"h3", t:"Forms of Energy"},
+    {k:"table", head:["Form","Where it lives","What it does"], rows:[
+      ["Light (radiant)","Sun, flame, lamp, torch","Makes things visible; lets the leaf cook its food"],
+      ["Heat (thermal)","Fire, sun, a rubbing, a hot pot","Raises temperature; melts, boils and dries"],
+      ["Sound","Voice, drum, engine","Carries speech and music; warns"],
+      ["Electrical","Moving charge in a wire, lightning, battery","Runs the lamp, the radio, the iron and the mill"],
+      ["Magnetic","The field of a magnet, an electromagnet","Lifts, holds, points and drives the motor"],
+      ["Chemical","Food, fuel, battery, the powder in a match","Released as heat when burned or digested"],
+      ["Mechanical","A moving body, a lifted load, a stretched band","The energy of motion (kinetic) and of position (potential)"],
+      ["Nuclear","The heart of the atom","Sets free in the sun and in the reactor"]
     ]},
-    {k:"bul", items:["Read and write in good light, and hold the book about 25 cm from the eye.","Do not rub the eye, and do not put dirt, fingers or a shared cloth into it.","Go at once for a **red eye**, running water, swelling or a white film on the pupil; wash hands before touching the face.","Wear a shade or goggles at welding, at chemical work and on bright water or sand.","Wear only glasses given after an examination, and go back for the check; tell the teacher if the board has become blurred.","Never look straight at the sun, and never at the sun or an eclipse through a lens or glass."]},
-    {k:"p", t:"Cover one eye and then the other and the picture still stands – **binocular vision** gives size and nearness, the sense the driver and the catcher depend on."}
+    {k:"rule"},
+    {k:"h3", t:"The Law of Conservation of Energy"},
+    {k:"p", t:"**Energy is never created and never destroyed: it only passes from one form to another. The total stays the same.** This is the **law of conservation of energy**."},
+    {k:"bul", items:["A falling stone: **potential** energy of height becomes **kinetic** energy of motion; hitting the ground it becomes sound and heat.","A torch: **chemical** energy of the cell becomes **electrical**, then **light** and heat.","A radio or a television: electrical energy becomes sound, light and heat.","Your body: the **chemical** energy of rice and oil becomes motion, warmth and growth.","A **generator** changes mechanical energy to electrical; a **motor** goes the other way.","In every change part of the useful energy leaks out as **waste heat** – which is why the lamp, the phone and the engine all get warm, and why no machine gives back all it takes."]},
+    {k:"p", t:"Test it: drop a ball from one metre and it rebounds less than one metre – the height it lost became heat and sound. A machine that gives more than it takes is impossible, and a person who sells you one is cheating."},
+    {k:"rule"},
+    {k:"h3", t:"Sources and Uses of Energy"},
+    {k:"bul", items:["Almost every source is the **sun**: today by light and warmth, and long ago as the coal, oil and gas stored in ancient living things.","**Fuel** – firewood, charcoal, kerosene, petrol, diesel and gas – releases chemical energy as heat.","**Food** is the fuel of the body.","**Moving water and wind** drive the mill, the pump and the turbine; falling water at Mount Coffee turns the **generator** that gives Monrovia its light.","**Solar cells** change light to electricity; **solar water heaters** warm the water; **biogas** from dung and rubbish gives clean cooking gas and manure.","**Geothermal** heat comes up from the hot rock deep down, **nuclear** power from the atom's heart – both used for electricity elsewhere."]},
+    {k:"rule"},
+    {k:"h3", t:"Renewable and Non-renewable Energy"},
+    {k:"table", head:["Renewable – replaced as we use it","Non-renewable – finished and gone"], rows:[
+      ["Sunlight, wind, falling and flowing water, wave and tide, the heat of the earth's inside, wood and crop waste and biogas from what is replanted","Petrol, diesel and kerosene from crude oil, coal, natural gas, and the minerals dug out of the ground"]
+    ]},
+    {k:"p", t:"A source is renewable when it is replaced as fast as it is taken, so a forest cut faster than it regrows is being used as a non-renewable. The world's work is mostly still done by the non-renewables, which run short and raise the price of everything – and burn to the gases that warm the sky."},
+    {k:"rule"},
+    {k:"h3", t:"Conservation and Safety"},
+    {k:"bul", items:["**Conservation of energy** – using less and wasting none – keeps the light and the fuel for those who come after: switch off, use efficient lamp and stove, cook with the pot covered, dry in sun and wind, insulate the hot drum, use the biogas digester, ride together and walk, plant and shade the house, and never leave a heater or iron on.","Never burn charcoal or wood inside a closed room, for the smoke takes the life quietly; cook where the air moves.","Do not overload a socket or a line, and keep the frayed cord and the wet switch away from a hand.","Store petrol and kerosene in a labelled closed container away from the house, with no flame or smoke near; it is **flammable**.","Handle a hot pot with a holder; wear a glove and goggles at the flame, and keep the long hair and loose clothing from the fire."]},
+    {k:"p", t:"Keep the day's log: every form of energy the house met, what each was changed into, where it was wasted, and one change that would save it."}
   ],
   focus:["Meaning of energy","Properties of energy","Potential and kinetic energy","Forms: mechanical, electrical, light, heat, sound","Energy transformation"],
   terms:[
@@ -1789,7 +1804,7 @@ const SC_CURRICULUM = [
   assessment:["Quizzes","Science journal","Class and homework","Test"]
 },
 {
-  grade:5, period:"II", sem:"One", icon:"🧲",
+  grade:4, period:"II", sem:"One", icon:"🧲",
   title:"Force and Its Kinds",
   subtitle:"Contact and non-contact forces, friction, gravity and magnetism",
   outcomes:["Identify the kinds of force and describe their effects on objects"],
@@ -1797,6 +1812,30 @@ const SC_CURRICULUM = [
   note:"A <b>contact force</b> acts only when objects touch (friction, muscular force). A <b>non-contact force</b> acts at a distance (gravity, magnetism). Force is measured in <b>newtons (N)</b>.",
   study:[
     /* ---- course text: Semester One, Period II (guide pp. 40-41) ---- */
+    {k:"h3", t:"Force and Motion"},
+    {k:"p", t:"A **force** is a push or a pull. It is measured in **newtons (N)** with a **spring balance**, and shown by an arrow whose length is the size of the force and whose head is its direction. A force can start a thing moving, stop it, speed or slow it, change its direction, or change its shape."},
+    {k:"rule"},
+    {k:"h3", t:"Types of Force"},
+    {k:"table", head:["Type","How it acts","Examples"], rows:[
+      ["Muscular","The pull of muscle, needing contact","Carrying, pushing the wheelbarrow, pedalling, digging"],
+      ["Friction","Between rubbing surfaces, opposing motion","The shoe gripping the ground; the wear of the sole; the heat of rubbing the hands"],
+      ["Gravitational (gravity)","The pull of the earth on every body, no contact needed","The falling stone; the weight you feel; water running down; your mass held to the ground"],
+      ["Magnetic","The field of a magnet; acts at a distance","A nail pulled, a pole repelled, the compass turning"],
+      ["Elastic","A stretched thing springing back","Bowstring, catapult, rubber band, the mattress"],
+      ["Electric","Between charges; acts at a distance","The combed rubber attracting paper; lightning"],
+      ["Air resistance and water resistance","The drag of the fluid a body moves through; needs contact","The swimmer slowed, the parachute opening, the bike rider leaning forward"],
+      ["Applied by a machine","Force changed in size or direction","Pulley, lever, wedge, wheel and axle"]
+    ]},
+    {k:"p", t:"Forces may **balance** (a book lying still: gravity down, table up) or be **unbalanced** (the same book pushed – it moves). Only an unbalanced force changes motion. Force also acts in fluids: water **pushes up** with **buoyancy**, and an object floats when it pushes aside water as heavy as itself."},
+    {k:"rule"},
+    {k:"h3", t:"Effects and Measurement of Force"},
+    {k:"bul", items:["Motion changes in **speed** and in **direction**; the **momentum** of a body (mass × velocity) is why a loaded, fast lorry cannot stop at once and why a ball is hard to catch.","The unit of force, the newton, is the force that gives a kilogram an acceleration of one metre per second every second.","**Mass** is the quantity of matter (kg) and stays the same; **weight** is the pull of the earth on it (N) and changes with where you are. Weight = mass × gravity (about 10 N per kg on the earth). A 5 kg basin weighs about 50 N; on the moon, with one-sixth the pull, the mass is still 5 kg but the weight is only about 8 N.","Measure weight with a **spring balance** or scale and mass with a **balance**; the two are confused because we commonly give the weight in the name of the kilogram."]},
+    {k:"rule"},
+    {k:"h3", t:"Friction: Enemy and Friend"},
+    {k:"p", t:"**Friction** is the force between two surfaces in contact that opposes their moving over each other; it always acts against the motion, and how great it is depends on the nature of the surfaces and on how hard they are pressed together."},
+    {k:"bul", items:["**Useful** – walking and running without slipping, writing with chalk, holding a basin, the nail and the knot and the screw that hold, the brake that stops, the match that lights, and the tyre that grips the road.","**Harmful** – it wears the sole, the tyre, the gear and the shaft; it wastes work as heat and noise, and it heats the engine.","**Reducing it** – polish, **lubricate** with oil or grease, use ball bearing or roller, and stream-line the body of car and plane.","**Increasing it** – tread on tyre and sole, sand or salt on a slippery floor, rosin on the hand, and a rough handle."]},
+    {k:"p", t:"Test it fairly: pull the same brick with the spring balance on smooth wood, on sandpaper, and with a cloth under it – keep the brick and the pulling the same and change only the surface, then say which variable you changed and which you kept."},
+    {k:"rule"},
     {k:"h3", t:"Magnetic Materials and Magnets"},
     {k:"p", t:"A **magnet** is a body that pulls **magnetic materials** towards it and, when it can swing freely, sets itself north and south. The chief magnetic materials are **iron and steel**, with cobalt and nickel beside them."},
     {k:"bul", items:["**Magnetic**: nail, pin, needle, razor blade, paper clip, the tin can, a door hinge – anything plated with tin is still steel or iron under the coat.","**Non-magnetic**: wood, plastic, glass, rubber, cloth, paper, copper, aluminium, brass, gold, water, and the human body – none is pulled.","Test it with the same magnet at the same distance, and sort the objects into two rows."]},
@@ -1874,7 +1913,7 @@ const SC_CURRICULUM = [
   assessment:["Investigation report","Quizzes","Science journal","Test"]
 },
 {
-  grade:5, period:"III", sem:"One", icon:"📏",
+  grade:4, period:"III", sem:"One", icon:"📏",
   title:"Measurement of Physical Properties of Matter",
   subtitle:"Metric units, instruments and reading measurements",
   outcomes:["Read units of measurement in the metric system"],
@@ -1882,37 +1921,32 @@ const SC_CURRICULUM = [
   note:"The <b>metric system</b> uses metres, grams and litres and counts in tens. The <b>imperial system</b> uses feet, pounds and gallons. Scientists everywhere use the metric system.",
   study:[
     /* ---- course text: Semester One, Period III (guide pp. 42-43) ---- */
-    {k:"h3", t:"The Green Plant"},
-    {k:"p", t:"A green plant **makes its own food**. This is called **photosynthesis**: ‘photo’ means light, ‘synthesis’ means putting together. It is the greatest workshop on the earth, for everything that lives, ourselves included, eats either a plant or an animal that ate a plant."},
+    {k:"h3", t:"Measurement"},
+    {k:"p", t:"To **measure** is to find how big a quantity is by comparing it with an agreed standard unit. A measurement is worthless without its **unit**, and rough work is helped by an **estimate** made first and tested after."},
     {k:"rule"},
-    {k:"h3", t:"How Photosynthesis Goes On"},
-    {k:"bul", items:["The **roots** take up water with the plant foods dissolved in it.","The **stomata** – tiny openings, mostly under the leaf – let in **carbon dioxide** from the air and let out oxygen and vapour.","The **chlorophyll**, the green matter in the leaf, traps the energy of **sunlight**.","With that energy the leaf builds **glucose**, a sugar, from carbon dioxide and water; **oxygen** is set free as the plant throws out what it does not need.","The sugar is used at once for energy, stored as **starch** in root, stem, seed or fruit, or turned into fibre for building."]},
-    {k:"p", t:"Word equation: **carbon dioxide + water → (sunlight, chlorophyll) glucose + oxygen**. Balanced: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Show that a leaf needs light by covering part of it with paper for two days and testing with iodine: only the exposed part turns blue-black with starch."},
+    {k:"h3", t:"Units: Customary and SI"},
+    {k:"bul", items:["Liberia uses both systems: the customary in the market and on the land (inch, foot, mile, pound, gallon, cup, basin, bag, ‘one tie of wood’), and the **Système International (SI)** – the metric system – in school, trade, medicine and government.","The **SI** (metric) units: **metre (m)** for length, **kilogram (kg)** for mass, **second (s)** for time, with the **litre (L)** for volume and **degree Celsius (°C)** for temperature.","**Why SI is better**: it grows by tens (1 km = 1,000 m; 1 kg = 1,000 g; 1 L = 1,000 mL), so its arithmetic is easy, and one unit serves for length, mass and volume, while the old units change their factor at every step.","Use **standard units**, not the span of a hand, because people differ; keep a ruler, scale, clock and measure in the store, and use the same unit in the comparison."]},
     {k:"rule"},
-    {k:"h3", t:"Plant Parts and Their Functions"},
-    {k:"table", head:["Part","Function","Special forms to notice"], rows:[
-      ["Root","Holds the plant, takes up water and salts, stores food","Tap root with a main (carrot, cassava); fibrous root in a bundle (rice, grass)"],
-      ["Stem","Carries water up and food down, holds the leaves to the light, stores and is used for food","Underground stem of cocoyam and ginger; sugarcane stores sugar"],
-      ["Leaf","Photosynthesis, breathing, and the loss of water vapour","Broad leaf of cassava; spine of the cactus; the insect-trapping pitcher"],
-      ["Flower","Makes the seed; the reproductive part","Petals attract the insect; the stamen and pistil are its male and female parts"],
-      ["Fruit","Protects the ripe seed and carries it away","Mango, pod, burr, the winged seed, the coconut that floats"],
-      ["Seed","Carries the young plant and its store; rests until it is wanted","Wing, hook or sweet flesh – all are ways of spreading"]
+    {k:"h3", t:"Measuring the Common Quantities"},
+    {k:"table", head:["Quantity","SI unit","Instruments and method"], rows:[
+      ["Length","metre (m)","Ruler, tape, metre stick, caliper; read at right angles and from a marked end, not a worn one"],
+      ["Mass","kilogram (kg)","Beam balance, platform scale, spring scale; zero first, weigh a dry container for the bag"],
+      ["Volume of liquid","litre (L), mL","Measuring cylinder, beaker, pipette; read the lowest point of the curve with the eye level"],
+      ["Volume of regular solid","cm³ or m³","Length × breadth × height; 1 cm³ = 1 mL"],
+      ["Temperature","degree Celsius (°C)","Thermometer; do not touch the bulb; read in the shade at eye level"],
+      ["Time","second (s)","Clock, watch, stopwatch; start and stop at the same event"],
+      ["Area","m²","Length × breadth; for the field take it with a tape or a measured pace, and pace a strip to the tree line"],
+      ["Force","newton (N)","Spring balance"],
+      ["Speed","metre per second (m/s)","Distance ÷ time"]
     ]},
     {k:"rule"},
-    {k:"h3", t:"Reproduction in Flowering Plants"},
-    {k:"p", t:"A flower has the **stamen** (the male part: filament and anther, which makes the **pollen**) and the **pistil** (the female part: stigma, style and ovary, with the **ovules** inside). Pollen carried from anther to stigma is **pollination**; insects, wind, birds and water carry it, and the bright or sweet-smelling petal is the advertisement."},
-    {k:"num", items:["The pollen lands on the sticky **stigma** and grows a **pollen tube** down the style.","The **male nucleus** travels the tube to the **ovule** in the ovary.","There the male nucleus joins the egg cell – **fertilisation** occurs.","The fertilised ovule becomes a **seed**; the ovary wall thickens and becomes the **fruit**.","The flower fades; the fruit ripens and the seed is sown by wind, water, animal or by people."]},
-    {k:"p", t:"The seed then **germinates**: it takes in water, the **radicle** comes out first downwards and becomes the root, and the **plumule** rises to become the shoot and the first leaves. Test germination with beans in wet cotton: one warm and wet, one dry, one shut from air, one boiled dead – only the first grows."},
+    {k:"h3", t:"Conversion, Area and Volume"},
+    {k:"bul", items:["Length: 1 cm = 10 mm, 1 m = 100 cm, 1 km = 1,000 m; 1 in = 2.54 cm, 1 ft = 30.48 cm, 1 yd = 0.9144 m, 1 mi = 1.609 km.","Mass: 1 kg = 1,000 g; 1 lb = 0.4536 kg, so a 100 lb bag of rice is about 45 kg.","Volume: 1 L = 1,000 mL; 1 gal = 3.785 L, so a 5-gallon jerry is about 19 litres.","Area of the rectangle or square = length × breadth; of the triangle = ½ × base × height; of the circle = π × radius² (π ≈ 3.14).","Volume of the box = length × breadth × height; of the cylinder = πr² × height.","A compound unit is a unit made of two: **speed** is m/s or km/h (1 m/s = 3.6 km/h), and a **rate** such as so many L per hour."]},
+    {k:"p", t:"Convert as you go: the farmer sells a 45 kg bag and calls it 100 lb; a sign of ‘10 km’ is about 6 miles; the tin that holds 5 gallons holds about 19 L."},
     {k:"rule"},
-    {k:"h3", t:"Plant Habitats"},
-    {k:"table", head:["Habitat","How the plant is fitted","Examples"], rows:[
-      ["Dry land (xerophyte)","Thick skin, wax, spine, small or rolled leaf, deep root – all to save water","Cactus, coconut, melon, the baobab"],
-      ["Water (hydrophyte)","Soft, thin, hollow leaf; air bags; roots that grip in mud","Water lily, the floating fern"],
-      ["Swamp and shore","Breathing roots that rise above the water; props against the mud","Mangrove with its pneumatophores, and the rice plant"],
-      ["Shaded forest floor","Broad thin leaf to catch the faint light","Cocoyam, ginger, the young cocoa under the shade tree"],
-      ["Other plants","Roots in air and rain, not in soil","Orchid, fern, and the plant that strangles its tree"]
-    ]},
-    {k:"p", t:"Note how the plant of one habitat fails in another – the coconut drowns in a bucket and the cactus rots in the swamp: each is fitted to its own place."}
+    {k:"h3", t:"Accuracy, Error and Recording"},
+    {k:"bul", items:["**Zero error** – the instrument does not read zero when empty; always check before use.","**Parallax error** – the eye not level with the mark, so a cylinder or a scale is misread.","Not the same instrument, or not read the same way, between one measurement and the next.","**Least count** – the smallest division the instrument can show; a ruler marks millimetres, so a length is read to the nearest millimetre.","**Repeating** – take the measurement three times and record the mean; take the same quantity with the same care each time.","**Fair test** – in an investigation change only one thing (the variable you are testing), keep all else the same, and use the same method and instrument for both parts."]},
+    {k:"p", t:"Record as a number with its unit and the instrument used, and note what was estimated; a table with the unit in its heading is the way of science and of the good trader."}
   ],
   focus:["Metric and imperial systems","Measuring length, mass, volume, temperature and time","Instruments and units","Recording measurements"],
   terms:[
@@ -1974,7 +2008,7 @@ const SC_CURRICULUM = [
   assessment:["Measurement table","Practical test","Quizzes","Science journal"]
 },
 {
-  grade:5, period:"IV", sem:"Two", icon:"🛰️",
+  grade:4, period:"IV", sem:"Two", icon:"🛰️",
   title:"The Satellites and the Stars",
   subtitle:"Natural and artificial satellites, stars and galaxies",
   outcomes:["Express appreciation for scientific advancement, particularly artificial satellites"],
@@ -1982,32 +2016,20 @@ const SC_CURRICULUM = [
   note:"A <b>satellite</b> is any body that moves round a larger body. The <b>moon</b> is earth's <b>natural satellite</b>. Machines we send up, like communication satellites, are <b>artificial satellites</b>.",
   study:[
     /* ---- course text: Semester Two, Period IV (guide pp. 44-45) ---- */
-    {k:"h3", t:"Feeding in Animals"},
-    {k:"p", t:"An animal must take in food, for it cannot make its own like the green plant. What an animal eats is told by its teeth, its jaws and its stomach, and this gives the three groups:"},
-    {k:"table", head:["Group","Mouth and teeth","Food and manner of eating","Examples"], rows:[
-      ["Herbivore","Flat grinding molars, a hard dental pad in front, no canine; wide jaw","Grass and leaf bitten off and ground long; a big belly with chambers or a long bowel for the cellulose","Cow, goat, sheep, rabbit, grasscutter, tortoise"],
-      ["Carnivore","Sharp pointed canine and tearing teeth, strong jaw that only opens up and down","Kills and tears flesh; swallows large pieces","Lion, leopard, dog, cat, crocodile"],
-      ["Omnivore","A mixture of cutting, tearing and grinding teeth","Eats plants and animals, and stores what it finds","Pig, rat, monkey, fowl, ant, human being"]
-    ]},
-    {k:"p", t:"Special feeders: the **filter feeder** (fish, tadpole, earthworm) takes the tiny food from mud or water; the **sucker and licker** (butterfly, housefly, mosquito) draws or laps liquid food. Each mouth is a tool shaped for the work."},
+    {k:"h3", t:"Earth Satellites"},
+    {k:"p", t:"A **satellite** is any body that moves round a larger body. The moon is the earth's **natural satellite**; a machine put in orbit by people is an **artificial satellite**. Once launched, a satellite keeps falling round the earth: its forward speed is so great that the ground curves away beneath it as fast as it drops, and with almost no air at that height to slow it, it circles for years."},
+    {k:"bul", items:["The **orbit** is the path; a **low orbit** runs a few hundred kilometres up, a **geostationary orbit** about 36,000 km over the equator, where the satellite goes once a day and hangs above the same place – the orbit chosen for the television and weather satellite.","**Communication satellites** carry telephone, radio and television across ocean and continent.","**Weather satellites** photograph the cloud and the storm so the warning can go ahead of it.","**Navigation satellites** tell the ship, the plane and the road the position to a few metres.","**Earth-observation satellites** map forest, farm and coast, find water, and count what has been cut.","**Research and space-station satellites** carry the scientist's instruments and crew; they need oxygen, water, food, and protection from the heat of the sun and the cold of shadow."]},
     {k:"rule"},
-    {k:"h3", t:"Locomotion"},
-    {k:"p", t:"**Locomotion** is the moving of an animal from place to place to find food, water, mate or shelter, and to escape danger. The limb and the habitat agree with each other."},
-    {k:"bul", items:["**Walking and running** on four or two feet – dog, goat, ant, human being; the hoof for open ground, the claw for grip.","**Swimming** – fish with fins and tail, frog with webbed feet, the bird that dives; the body is smooth and shaped to slip through.","**Flying and gliding** – bird, bat and insect; hollow light bone, feather or membrane, and great chest muscles.","**Jumping and leaping** – long hind limb of frog, grasshopper and rabbit.","**Crawling and slithering** – snake with its scales, earthworm with its rings, the snail on its foot."]},
+    {k:"h3", t:"Stars"},
+    {k:"p", t:"A **star** is a huge ball of very hot gas, chiefly hydrogen and helium, that gives out its **own** light and heat. The **sun** is a star – an ordinary middle-sized one, and the nearest by far; everything else we see at night is beyond the solar system."},
+    {k:"bul", items:["A star **shines because of nuclear change** in its heart, where hydrogen is joined into helium and a little mass becomes energy.","**Colour tells the heat**: a blue-white star is hottest, yellow like the sun is middle, and red is coolest.","**Constellations** are the known patterns of stars, used for the seasons and the road for thousands of years.","A **light-year** is the distance light travels in a year – about 9.5 trillion km – and it measures how far, not how long; the faint star may be dozens or thousands of years away.","A star seems to move across the sky because the earth turns; the **North Star** stands still, above the turning point, and is the guide of the north.","**Distance from the sun**: Mercury about 58 million km, Venus 108, the earth 150 (one **astronomical unit**), Mars 228; the moon only about 384,000 km – a rocket reaches it in days, the nearest star would take tens of thousands of years."]},
     {k:"rule"},
-    {k:"h3", t:"Respiration"},
-    {k:"p", t:"**Respiration** is the taking in of air and the releasing of energy from food inside the body – not the same as breathing, though breathing serves it."},
-    {k:"table", head:["Animal","Organ by which it breathes","How it works"], rows:[
-      ["Fish and tadpole","Gills","Water passes over the feathery gill, and the small blood vessels take out the air it holds"],
-      ["Insect (grasshopper, ant, fly)","Spiracles and tracheae","Air enters the side openings and runs in tubes to every part"],
-      ["Frog","Skin and lungs","Breathes through the moist skin in water and with lungs on land"],
-      ["Earthworm","Moist skin","The skin must stay wet or the worm suffocates"],
-      ["Bird, reptile, mammal","Lungs","Air goes down the windpipe into the lungs and the blood carries it round"]
-    ]},
+    {k:"h3", t:"Life of a Star"},
+    {k:"num", items:["A star is born in a **nebula**, a great cloud of gas and dust, pulled together by its own gravity.","When the heart is hot enough, hydrogen begins to join into helium and the star shines steadily; our sun has been in this stage about 4.6 billion years and will stay so billions more.","When the hydrogen gives out the star swells into a **red giant**; a big star may burn through heavier fuels and stand as a **supergiant**.","The outer matter goes off into space, enriching the clouds from which new stars and planets form.","What is left is a small dense **white dwarf**, which cools through long ages; the greatest stars end in a **supernova**, and may leave a **neutron star** or a **black hole** whose pull light itself cannot leave."]},
     {k:"rule"},
-    {k:"h3", t:"Reproduction and Home Care in Animals"},
-    {k:"bul", items:["**Asexual** – one parent only; a new animal grows from a part of the body (hydra budding) or an unfertilised egg develops (some insects). **Sexual** – a male cell and a female cell join; most animals do this.","Fertilisation is **internal** in birds, reptiles and mammals, and **external** where fish and frogs shed egg and spawn together in the water.","Some young are **born alive** and are suckled – the **mammals**; others are **hatched from eggs** – birds, reptiles, fish and insects.","**Parental care** – nest, warmth, feeding, guarding, and teaching the young to hunt, fly or forage – is greatest in birds and mammals and little or none in fish and frogs.","Care of domestic stock: shelter, clean dry bedding, water, food on time, ticks and worms treated, the sick one separated, and the young kept from dog and snatcher."]},
-    {k:"p", t:"Set the animals in the right place: goat and cow **walk**, snake **crawls**, fish **swims**, bird **flies**, frog **jumps and swims** – and match the mouth: cow **grazes**, dog **tears**, fowl **picks**, ant **carries off** and stores."}
+    {k:"h3", t:"Galaxies and the Reach of Science"},
+    {k:"bul", items:["A **galaxy** is a vast company of stars with their gas and dust, held together by gravity; our own is the **Milky Way**, a spinning disc of some hundred billion stars.","Beyond it lie other galaxies, some near, most unimaginably far, rushing apart as the space between them stretches: this is the expanding universe.","The **telescope** grew into the giant glass on the mountain and the mirror satellite above the air, which sees farther and farther back toward the beginning.","The **space programme** has put people on the moon, kept crews in orbit, and sent machines to every planet; satellites give the weather, the telephone and the map, and the same work opens the questions of life, the origin of the elements, and the fate of the world's climate."]},
+    {k:"p", t:"The sky above Liberia on a clear night is a science lesson free of cost: find the North Star, watch where the moon and the brightest planets sit among the constellations, and plot the movement each night in the same hour."}
   ],
   focus:["Earth's orbit","Natural and artificial satellites","Uses of satellites","Stars and galaxies","Giant stars"],
   terms:[
@@ -2069,7 +2091,7 @@ const SC_CURRICULUM = [
   assessment:["Satellite model and presentation","Quizzes","Science journal","Test"]
 },
 {
-  grade:5, period:"V", sem:"Two", icon:"🩹",
+  grade:4, period:"V", sem:"Two", icon:"🩹",
   title:"Skin Profile and Soil Profile; Malaria",
   subtitle:"Layers of the skin, layers of the soil and preventing malaria",
   outcomes:["Appreciate the organisation of the skin and compare it to that of soil","Identify the benefits of keeping the environment clean to prevent malaria"],
@@ -2077,28 +2099,39 @@ const SC_CURRICULUM = [
   note:"Both the skin and the soil are arranged in <b>layers</b> called a <b>profile</b>. Malaria is caused by a parasite carried by the <b>female anopheles mosquito</b>, which pierces the skin to feed on blood.",
   study:[
     /* ---- course text: Semester Two, Period V (guide pp. 46-47) ---- */
-    {k:"h3", t:"States of Matter"},
-    {k:"p", t:"Matter exists in three common states, and its state depends on how the particles are packed and how fast they move."},
-    {k:"table", head:["State","Shape and volume","The particles","What it shows"], rows:[
-      ["Solid","Keeps its own shape and size","Close in a fixed order, only vibrating","Chalk, wood, stone; may bend or break; cannot be poured"],
-      ["Liquid","Takes the shape of the vessel, size the same","Close but sliding freely","Water, palm oil; pours; has a level surface; hard to squeeze"],
-      ["Gas","Spreads to fill every part of the vessel","Far apart and moving fast","Air, steam; can be squeezed into less room; presses the wall"]
+    {k:"h3", t:"The Skin"},
+    {k:"p", t:"The **skin** is the largest organ of the body: it covers about 2 square metres and weighs about 5 kg. It is made of two chief layers – the thin outer **epidermis** and the thick inner **dermis** – with the fat and muscle beneath."},
+    {k:"table", head:["Part of the skin","Its work"], rows:[
+      ["Epidermis (outer layer)","Protects against dirt, germs and rubbing; the dead outer cells are worn off and made good continually; its melanin gives colour and shields from the sun"],
+      ["Dermis (true skin)","Strong and elastic; holds the blood vessels, the nerves, the hair roots, the sweat glands and the oil glands"],
+      ["Receptors in the dermis","Report touch, pressure, heat, cold and pain to the brain"],
+      ["Hair and its root","Keeps out dust from nose and ear, shades the eye, and warms"],
+      ["Sweat gland and pore","Sends sweat out to cool the body and carry off waste"],
+      ["Oil gland and fat layer","Keeps the skin soft, saves warmth, and pads the body"],
+      ["Nails","Guard the tips of fingers and toes and serve as tools"]
     ]},
-    {k:"bul", items:["**Melting** – a solid becomes a liquid (ice, butter, wax, the tin in the ladle).","**Boiling and evaporation** – a liquid becomes gas; boiling happens fast throughout, evaporation slowly at the surface.","**Condensation** – a gas becomes a liquid (drops on a cold tin, dew on the grass, the steam on the lid).","**Freezing, solidification, sublimation** – liquid to solid, and a solid that goes straight to gas (the mothball, dry ice).","A change of state is a **physical change**: the substance stays itself, and the change can be undone."]},
+    {k:"p", t:"The five works of the skin are **protection, sensation, temperature control, excretion, and storage**. Sweating cools: as the water on the skin evaporates it takes the heat away – the same law that dries the washing, and the reason the humid day feels harder than the hot dry day."},
     {k:"rule"},
-    {k:"h3", t:"Elements, Compounds and Mixtures"},
-    {k:"bul", items:["An **element** is a substance that cannot be split into anything simpler; it is made of one kind of **atom**. Oxygen, iron, carbon, gold, aluminium and copper are elements, and the **periodic table** keeps the 118 known elements in order.","A **compound** is two or more elements joined in fixed proportion by chemical means: **water** (H₂O), **salt** (NaCl), carbon dioxide, sand (silicon and oxygen). Its properties are not those of the parts; salt is safe to eat though sodium burns and chlorine poisons.","A **mixture** is two or more substances merely mixed, in no fixed proportion: air, sea water, soil, sand and salt, the nut and the rice. The parts keep their own nature and are separated by physical means – picking, sieving, settling, filtering, evaporating, magnetism.","Elements may be **metals** (shiny, heavy, draw to wire, hammer thin, carry heat and current) or **non-metals** (dull, light, brittle, and poor conductors)."]},
-    {k:"table", head:["","Element","Compound","Mixture"], rows:[
-      ["Made of","One kind of atom","Two or more elements chemically joined in fixed ratio","Two or more substances merely mixed"],
-      ["Can be split by","Chemical process only; not to anything simpler","Chemical process (electrolysis, burning)","Physical means: pick, sieve, filter, settle, evaporate"],
-      ["Properties of parts","One nature only","New nature, different from the parts","Each part keeps its own nature"],
-      ["Examples","Oxygen, iron, gold, carbon, aluminium","Water H₂O, salt NaCl, carbon dioxide, sand","Air, sea water, soil, pepper and salt, blood"]
+    {k:"h3", t:"Care of the Skin"},
+    {k:"bul", items:["Bathe daily with soap and clean water, washing the neck, armpits, between the fingers and toes and the private parts; dry well, for damp skin cracks and breeds itch.","Wear clean, loose clothing that lets the air through, and change what the sweat has wet; put on a shade or a hat at the noon sun and protect the skin with clothing at work.","Eat the protective foods (fruit, vegetable, liver, egg, groundnut) and drink enough water; a dry dull skin tells of short water and poor food.","Do not squeeze a pimple, scratch a mosquito bite or pick a scab; wash the scratch and cover it, and let the cut heal – a small sore left dirty may open wide.","Never share a razor, towel or comb; ringworm, itch and scab spread by the shared cloth.","Keep the skin from strong soap and unguent that is not for the body; do not put chemical, kerosene or ash on a sore, and tell an adult of a sore that will not close.","Never scratch the eye; bathe the burned skin in running cool water for ten minutes – never oil, butter or toothpaste – and cover with clean cloth.","See the health worker for rash, itch that keeps you from sleeping, the spreading red and hot line, the running ringworm, and the burn that blisters wide."]},
+    {k:"p", t:"The **sweat test** after exercise: weigh the dry towel, wipe the arm, weigh again; the weight gained is what the skin sent out, and the skin left the salt behind."},
+    {k:"rule"},
+    {k:"h3", t:"Soil"},
+    {k:"p", t:"**Soil** is the loose material on the surface of the land in which plants grow. It is made of weathered rock, **humus** (the decayed remains of plants and animals), water, air, and living things such as worm, ant, termite and bacteria."},
+    {k:"bul", items:["**Weathering** – the breaking of rock in place – is **physical** (heat and cool, frost, roots, rain and wind, the rubbing of moving water), **chemical** (rain water with its weak acid dissolving and rusting), and **biological** (root, burrowing animal and the acids of decay).","**Soil formation** goes from bare rock to weathered rubble, to soil with the first humus from moss and lichen, and then to deep fertile soil, in hundreds or thousands of years – so fertile soil is a treasure to be treated as a treasure.","**Soil profile**: topsoil (A) – dark, rich and where the plants feed; subsoil (B) – paler, more compact and where roots go deep; weathered rock (C); and the solid **parent rock** below – a spade hole left standing for a day shows the four.","**Horizon O** – the leaf mould on top of a forest soil – is the layer that feeds the whole; this is why the forest soil is black and soft and the bare hill's is thin and pale.","Texture by rubbing a moist pinch: **sandy** (gritty, falls apart), **clayey** (smooth, sticky, rolls to a ribbon), **loamy** (soft and crumbly, the best for the garden). Structure – the crumbs a good soil falls into; porosity – the open space holding the air and water; drainage and water-holding – the two opposite powers a soil must balance; fertility – the store of plant food and humus."]},
+    {k:"table", head:["Type of soil","Its particles","How it behaves","Best use"], rows:[
+      ["Sandy","Large grains","Water runs straight through; little water or food held; warms early; poor","Melon, cassava and the sweet potato, with manure"],
+      ["Clayey","Very fine","Holds water; drains badly; sticky when wet and hard when dry; rich in mineral food but root finds it hard","The rice swamp, and pots, brick and plaster"],
+      ["Loamy","Mixed, with humus","Holds enough moisture and still drains; warm, easy and full of plant food","The garden and most farm crops – the farmer's aim"],
+      ["Humus / organic","Mostly decayed matter","Dark and spongy; water and nutrient store; a dressing that improves any soil","Digged into the bed, and spread on top"]
     ]},
+    {k:"p", t:"**Why soil must be conserved** – it is the base of food, home and life, and once washed or used up it takes centuries to return. The enemies are **erosion** (sheet, rill, gully, and wind erosion in the bare dry season), **loss of fertility** from continuous cropping without rest, and **pollution** from chemical, rubbish, oil, and the human waste left on the ground."},
+    {k:"bul", items:["Protect it with a cover of crop, grass or mulch; plant on the contour, ridge or tie, dig the **terraces** and the grass waterway; leave the trees and the strip of vegetation along the stream; rotate and intercrop, and rest the land with legume.","Add the humus – compost, manure and the turned-in refuse, plus crop residue instead of burning.","Clear the drain, plant at the start of the rain, and never leave the hill slope bare.","At school: keep a terrace, a **compost pit** and a shade; test the soils of the compound and the bank with water and with cloth; keep the rat and the bush fire out; report the gully beginning before it eats the road.","Liberia's soil is mostly the old, deeply weathered, red and yellow **laterite** of the forest zone – leached and acid, fertile only while the forest stands. The lime and phosphate it lacks come back only with organic matter, ash or fertiliser."]},
     {k:"rule"},
-    {k:"h3", t:"Burning, Rusting and Rotting"},
-    {k:"p", t:"A **chemical change** (chemical reaction) makes a new substance: it may give out heat and light, colour, smell or gas, and it is not easily undone. A **physical change** alters form or state only and can be reversed – melting, dissolving, cutting, bending, evaporation."},
-    {k:"bul", items:["**Burning (combustion)** needs three things – **fuel, air (oxygen) and heat to start it** (the fire triangle); take away one and the fire dies.","**Rusting** – iron with air and moisture becomes the brown **rust**, which crumbles and lets more rust in; paint, oil or a cover prevents it.","**Rotting and souring** – decay and fermentation by tiny living things; food kept cool, dry, salted, smoked or sealed resists them.","Other reactions: milk turning, dough rising with yeast, the candle burning, an egg boiled, wood burnt, and a nail left in the rain.","**Conservation of mass** – in a closed vessel nothing is lost, only changed: the wax of a candle weighed before and after burning, with the smoke and vapour caught, weighs the same. This is the first law of chemistry."]},
-    {k:"p", t:"Sort these as physical or chemical: melting ice, burning firewood, dissolving salt in water, rusting cutlass, tearing paper, souring milk, boiling an egg, drying washing."}
+    {k:"h3", t:"Malaria"},
+    {k:"p", t:"**Malaria** is a fever sickness caused by the **plasmodium**, a tiny one-celled creature carried from person to person by the bite of the female **Anopheles mosquito**, which bites chiefly from evening to morning. It is the greatest killer among our sicknesses, especially of children under five, of pregnant women and of the weak; Liberia's heat, rain and standing water give it every chance."},
+    {k:"bul", items:["**Signs** – fever and shaking chills, headache, vomiting and body pain, sweating as the fever falls; the child may feed badly, grow weak or fall into convulsion. **Severe malaria** – drowsiness or unconsciousness, breathing trouble, jaundice, blood in the urine – is an emergency: go at once to the health centre.","**Diagnosis and treatment** – the rapid test or the blood film, then the full dose of the combination medicine the health worker gives, finished even after the fever is gone. Never take an unknown injection from a trader; never save the packet of someone else, and never buy the wrong dose of the packet.","**Prevention** – sleep under an insecticide-treated net with it tucked; keep the house screened and spray at fogging time; empty every vessel that holds water, cover the drum, fill the footprint, and clear the grass and the gutter so no water stands for the mosquito to breed in; use the repellent on the exposed skin in the evening; remove the old tire, the tin and the blocked roof channel.","**School and home** – keep the compound clean and cut, drain the standing water, screen the window and net the bed; report the absence from fever; and support the net campaign, the spraying, and the teaching that a clean compound is medicine before the disease.","In pregnancy, take the preventive doses the clinic gives, and treat the fever the same day it shows."]},
+    {k:"p", t:"The **mosphere hunt** in the compound: find and tip out every water-holding thing, and put the record on the wall; a covered drain and a cut grass mean more than a spray that reaches only the room."}
   ],
   focus:["Layers of the skin","Layers of the soil","Comparing skin and soil profiles","Malaria transmission","Malaria prevention"],
   terms:[
@@ -2160,7 +2193,7 @@ const SC_CURRICULUM = [
   assessment:["Labelled profile diagrams","Malaria prevention plan","Quizzes","Test"]
 },
 {
-  grade:5, period:"VI", sem:"Two", icon:"🧴",
+  grade:4, period:"VI", sem:"Two", icon:"🧴",
   title:"Health and Personal Hygiene",
   subtitle:"Puberty, body changes and personal safety",
   outcomes:["Explain the importance of changes that occur during puberty","Recognise inappropriate touching and act to protect oneself"],
@@ -2168,29 +2201,37 @@ const SC_CURRICULUM = [
   note:"<b>Puberty</b> is the time when a child's body changes into an adult body. These changes are <b>normal and healthy</b>. Every person has the right to say <b>no</b> to any touch that makes them uncomfortable.",
   study:[
     /* ---- course text: Semester Two, Period VI (guide pp. 48-49) ---- */
-    {k:"h3", t:"The Water Cycle"},
-    {k:"p", t:"Water is always going round between the sea, the land and the sky, driven by the heat of the sun; the supply never runs out though it changes its place and its cleanliness."},
-    {k:"num", items:["The sun **evaporates** water from sea, river, pond and the wet ground; the vapour rises.","Plants add vapour from their leaves (**transpiration**).","In the colder upper air the vapour **condenses** on dust to make the cloud.","Currents carry the cloud; the drops grow heavy by more condensation and collide.","**Precipitation** falls as rain, and at the cold heights as hail, sleet or snow.","**Runoff** fills stream and river; part **infiltrates** the soil to the **ground water**, the wet layer below, which feeds well and spring.","The sea, the lake and the ground hold the water until the sun lifts it again – a never-ending circle."]},
-    {k:"p", t:"Prove condensation with a tin of ice water: drops form on the outside, and the water came from the air."},
-    {k:"rule"},
-    {k:"h3", t:"Rain, Flood and Drought"},
-    {k:"bul", items:["**Rain** comes when moist air is lifted and cooled – over a hill, along a front, or in the great rising of the thunderstorm. The coast and the southwest of Liberia get the heaviest fall.","A **flood** is water overflowing its banks; causes: long heavy rain, a river swollen from the whole inland, blocked or filthy drains, a choked gutter, bush burned so the soil sheds, a house built on the flood plain, silt filling the channel, and the destruction of the mangrove and the bank vegetation.","**Flood management**: clean the drain before the rainy season, plant and protect trees, keep off the flood plain, line and clear the channel, keep an emergency bag and a higher place to go to, and mind the warning of the meteorological office.","**Drought** is a long failure of rain; the crops wither, the well falls, animals die. Its causes include the failure of the rainy season, cutting the forest and the grass that keep moisture in the land, poor soil, overgrazing, and the shifting of the climate."]},
-    {k:"p", t:"In a drought store water, mulch the beds to keep the damp, plant what needs little, dig the **retention ditch** and the small dam, keep a covered tank, and repair the hand pump before it fails. In a flood move the family, the food and the medicine early: the water takes the roof last and the life first."},
-    {k:"rule"},
-    {k:"h3", t:"Waterborne and Other Diseases"},
-    {k:"p", t:"A **waterborne disease** is a sickness carried chiefly by water fouled with human waste: **cholera**, **typhoid**, **hepatitis A**, **dysentery**, **diarrhoea**, and **guinea worm** from water holding the infected tiny creature. **Mosquito-borne** sickness – **malaria**, dengue and yellow fever – comes from clean-looking water standing in the tire, the tin and the roof gutter, where the insect breeds."},
-    {k:"table", head:["Disease","Chief sign","How to prevent it"], rows:[
-      ["Diarrhoea and cholera","Loose watery stool, vomiting, quick wasting","Boil or treat the water, wash hands with soap, use a latrine, keep flies off food, take ORS early and get help"],
-      ["Typhoid","Long fever, headache, weakness, sometimes spots","Safe water and food, vaccination when offered, fly control, hand washing"],
-      ["Guinea worm","Blister and burning pain; the worm comes out","Filter every drinking water through cloth; never drink from a pond with a worm case"],
-      ["Schistosomiasis (bilharzia)","Itching after wading, then belly or urine trouble","Do not bathe or wash in still water; use a clean tap, and get treatment"],
-      ["Malaria","Fever, headache, vomiting, chills; danger for the child and the pregnant woman","Sleep under an insecticide-treated net, clear grass and standing water, screen, spray at fogging time, take the test and finish the full medicine"]
+    {k:"h3", t:"The Stages of Human Growth"},
+    {k:"table", head:["Stage","About what it covers","What it does"], rows:[
+      ["Infancy","Birth to 2 years","The fastest growth; rolls, sits, crawls, walks, and learns speech"],
+      ["Early childhood","3 to 5 years","Play and speech grow; runs and jumps, and the first learning"],
+      ["Middle and late childhood","6 to 10 years","The school years; slow steady growth; reading, writing and the skill of hand"],
+      ["Adolescence","about 10 to 19 years","Puberty and the adult form; the mind and feelings change; the search for who one is"],
+      ["Adulthood","from about 20 years","Full growth, marriage and work, and bringing up a family"],
+      ["Old age","later years","Wrinkled skin and grey hair, less speed, weaker eye and ear, and failing bone; the old carry wisdom and should be honoured and cared for"]
     ]},
-    {k:"p", t:"**Safe water for the home**: take it from a safe source; **boil** it and let it cool in the covered pot; or treat it with chlorine drops; or pour it through a clean cloth and a ceramic filter; store it in a covered vessel with a tap and never dip a cup into it."},
+    {k:"p", t:"Growth is the increase in size (measured by height and weight); **development** is becoming able to do new things. Growth is fastest in the baby and at adolescence, slow in between; the girl's adolescent spurt begins about two years before the boy's; and a baby is born with the bones of an adult partly in cartilage."},
+    {k:"rule"},
+    {k:"h3", t:"Adolescence and Puberty"},
+    {k:"p", t:"**Adolescence** is the time of growing from child to adult, and **puberty** is when the body becomes able to have a child – the girl about 10–14 and the boy about 11–16. Both grow by the messages of **hormones** carried in the blood from glands, chiefly the pituitary ‘master gland’ in the brain."},
+    {k:"bul", items:["**In the girl** – the breasts grow; the hips widen; the skin and hair oilier; **the monthly period** (menstruation), bleeding from the womb about every 28 days, in the flow 3–7 days; a small brownish discharge is common and clean; the eggs already made begin to ripen.","**In the boy** – the penis and testicles grow; the hair comes on the face, underarm and body; the voice breaks and deepens; the muscles thicken; a nocturnal emission (wetting in sleep) is common and not a disease.","**In both** – the height and weight rise quickly; armpit and pubic hair; sweat and smell; the skin acne and blackheads; the feelings swing and the interest in the other sex wakes; the need for sleep is greater."]},
+    {k:"p", t:"These changes are normal, they come to every one at a different time, and no one is improved by teasing or hiding. Care: wash the body daily, change the face cloth, and wash the face and keep the hair clean; leave the acne unscratched and seek the skin trouble if it swells and pain; at the monthly flow put on a pad or clean folded cloth, change it often, wash the body and put the used one out of sight."},
+    {k:"rule"},
+    {k:"h3", t:"Adolescent Health"},
+    {k:"p", t:"The adolescent body is being built: **nutrition** needs food from every group and iron – beans, groundnut, dark green leaf, liver, egg and fish – and enough clean water; **exercise** daily for the muscle, the heart, the bone, the sleep and the calm mind; **rest** about 8–10 hours and a time to oneself; **cleanliness**, soap and water and a dry change; a **regular habit of emptying the bowel and the bladder** and never holding it; and **mental and emotional health** – a person, a family, a club or a pastor to talk to, and one trusted adult to ask anything without fear of shame."},
+    {k:"bul", items:["**HIV** is the virus that weakens the body's power to fight; it passes only from an infected mother to her baby, through blood entering a wound, and by sex with an infected person; the untreated infection may end in **AIDS**.","**STIs** – such as gonorrhoea, syphilis and herpes – pass mostly by sex; some show discharge, smarting or sore, and some show nothing at all; all need treatment for both partners from a health worker, and an untreated one can blind a baby or hurt the internal organs.","**Prevention** – keep off sex while young; refuse every offer without apology or argument; never share a blade, a needle, a toothbrush or anything that draws blood; see that the cut is dressed; go to the clinic for a sore, running or itching; and never believe that washing, herb or a charm clears a disease from the body.","**Body changes that are not a disease**: the late starter, the early developer, and the acne – all pass in time.","**The harm of substance use and of the crowd** – the cigarette, the bottle, the sniffed glue and the tablet taken for fun – begin at this age; the pupil learns to say NO and to walk away.","**The law is on the side of the child**: any sex act with a person under 16 is a crime (statutory rape), no adult may touch you sexually, and marriage or sex forced upon a girl is a crime. The victim is never the wrongdoer.","**Safety for the girl on the way to and from school** – go with others, and tell an adult if anyone follows, waits, offers a lift or asks for secrecy; keep the route near houses and light and avoid the shortcut through the bush – and report the same day, because a person who does this to one will do it to another."]},
+    {k:"p", t:"Where to go with a question: the parent or auntie, the teacher, the school health or the **family health** worker, the **youth friendly service** at the clinic, the counsellor or trusted pastor, the government health line, and the woman and child protection desk of the police."},
+    {k:"rule"},
+    {k:"h3", t:"Food, Water and Waste"},
+    {k:"bul", items:["Eat from every group daily – the body-building (fish, meat, egg, bean, groundnut, milk), the energy (rice, cassava, yam, bread, oil) and the protective (fruit, leafy vegetable); wash the fruit and vegetable; cook the meat well; and take only safe water.","Wash the hands with soap before eating and after the toilet; cover the food and keep the fly off it; keep raw and cooked food apart.","Sleep 8–10 hours; be active daily; keep off the bottle, the cigarette and the drug; avoid too much tea and coffee; rest the eye from the screen and hold the phone at arm's length; and eat little of the sweet and soda that spoil the tooth."]},
     {k:"rule"},
     {k:"h3", t:"Personal and Environmental Hygiene"},
     {k:"bul", items:["**Personal**: bathe and wash the hair; wash the hands with soap before eating and after the toilet; wear and change clean dry clothing; bathe after sweating; keep the nails cut; brush the teeth; wash under the arms and between the toes daily, especially after sport.","**Menstrual**: use clean cloth or a pad, change it often, wash the body, rest, take a warm drink, and record the date; the monthly course is normal and no one is teased for it. A very heavy flow with faintness or pain that stops work is shown to a health worker.","**Home and school**: cover and empty the rubbish and burn or bury what can; clear the bush round the house; keep stagnant water out of the tin and the tire; use a latrine with a slab and a door and keep it clean; keep the drain clear to carry water away; separate the drinking water from the waste water; rat-proof the store and keep food covered; sleep under a net.","**Environment**: protect the well and the spring from latrine and soak-away; never let water stand indoors or near the home; report a broken pipe or a blocked drain; keep animals away from the house and the water course."]},
-    {k:"p", t:"The **sanitation calendar** of the village: clean the compound and dig the drain in the dry season, before the rain falls; clear the gutter each month in the rainy season; burn the refuse weekly; empty and wash the water vessel weekly; keep the latrine covered with ash or lime after each use."}
+    {k:"p", t:"The **sanitation calendar** of the village: clean the compound and dig the drain in the dry season, before the rain falls; clear the gutter each month in the rainy season; burn the refuse weekly; empty and wash the water vessel weekly; keep the latrine covered with ash or lime after each use."},
+    {k:"rule"},
+    {k:"h3", t:"Safety at Home, on the Road and at Work"},
+    {k:"num", items:["Keep matches, paraffin, medicine and poison in the locked place, marked with a label and never in a bottle that holds drink; light the candle on a stand away from the curtain and blow it out.","Use a dry cloth on the hot pot, put the pot handle in, and keep the oil from water in the pan, for it boils over.","In a gas or kerosene fire: smother it with a cloth or sand – never pour water on burning oil; carry a burn under running cool water and cover it with clean cloth; get help at once.","Switch off at the point, never with a wet hand or a wet foot; report the bare or broken wire and the cracked plug; keep one plug to one socket and never join the lamps with a twisted link; keep the cord away from the stove, the water and the rat; never work at the line, never climb a pole and stay off the street where a line has fallen; call the authority and keep everyone away.","Put the earth wire to a metal box and casing, and keep the lamp and its oil away from the mattress.","On the road and in the water: look both ways, cross where people can see, wear the helmet on the bike, never ride on a load or a fender, obey the zebra and the light and never chase a ball into the road, and never swim in deep, fast or strange water or alone.","At work and in the workshop: wear the shoe, goggle and glove, tie the hair and loose clothing; keep the blade from you and the guard on; report the cut, the ache and the noise in the ear; use the ladder with the foot held; lift with the knees and not the bent back.","Weather and disaster: keep off the big tree, pole and wall in storm; move to high ground before the water rises; and keep the emergency bag and the plan."]},
+    {k:"p", t:"**First aid**: wash the hands, stop the bleeding with clean pressure, wash the cut with clean running water, cover it, and raise the part; burn under running cool water; the faint person laid flat with the feet raised; the broken limb kept still, not pulled straight; for **choking** the abdominal thrusts; and send for the health worker or move to the clinic – the dressing on the way, not the excuse to wait."}
   ],
   focus:["Body changes at puberty","Physical, mental and social changes","Personal hygiene during puberty","Good and bad touches","Personal safety and reporting"],
   terms:[
@@ -2254,7 +2295,7 @@ const SC_CURRICULUM = [
 
 /* ================= GRADE 5 ================= */
 {
-  grade:4, period:"I", sem:"One", icon:"🔧",
+  grade:5, period:"I", sem:"One", icon:"🔧",
   title:"Simple Machines and Work",
   subtitle:"The six simple machines and how they make work easier",
   outcomes:["Recognise the importance of using machines to do work","Recognise that energy exists in different forms"],
@@ -2262,39 +2303,39 @@ const SC_CURRICULUM = [
   note:"<b>Work = force × distance</b>. A machine does not reduce the total work — it lets you use a <b>smaller force over a longer distance</b>, which makes the job easier.",
   study:[
     /* ---- course text: Semester One, Period I (guide pp. 50-51) ---- */
-    {k:"h3", t:"Energy"},
-    {k:"p", t:"**Energy** is the ability to do work. Work is done whenever a force moves an object, and energy is what makes it possible. Energy is measured in **joules (J)**; a kilogram of rice lifted a metre needs about ten joules."},
-    {k:"p", t:"Matter and energy go together, and the greater proof of it is that a little mass changed wholly to energy gives enormous power: the sun shines because it keeps changing some of its matter to light and heat."},
+    {k:"h3", t:"Work"},
+    {k:"p", t:"**Work** is done when a **force moves an object through a distance**. If you push a wall until you sweat and the wall does not move, no work has been done in science, however tired you are. Work is found by **work = force × distance**, the force in **newtons (N)** and the distance in **metres (m)**, and the answer in **joules (J)**."},
+    {k:"bul", items:["Lifting a 10 N bucket of water 2 m up the well rope: work = 10 × 2 = **20 J**.","Pushing a wheelbarrow with a force of 50 N for 8 m along the path: work = 50 × 8 = **400 J**.","Carrying a load on the head along a level road does little work against gravity, because the load is not being raised — but it still costs the body energy to hold it up."]},
+    {k:"p", t:"**Energy** is the ability to do work, so work and energy are measured in the same unit. A machine cannot make energy; it can only pass it on, and some is always lost on the way."},
     {k:"rule"},
-    {k:"h3", t:"Forms of Energy"},
-    {k:"table", head:["Form","Where it lives","What it does"], rows:[
-      ["Light (radiant)","Sun, flame, lamp, torch","Makes things visible; lets the leaf cook its food"],
-      ["Heat (thermal)","Fire, sun, a rubbing, a hot pot","Raises temperature; melts, boils and dries"],
-      ["Sound","Voice, drum, engine","Carries speech and music; warns"],
-      ["Electrical","Moving charge in a wire, lightning, battery","Runs the lamp, the radio, the iron and the mill"],
-      ["Magnetic","The field of a magnet, an electromagnet","Lifts, holds, points and drives the motor"],
-      ["Chemical","Food, fuel, battery, the powder in a match","Released as heat when burned or digested"],
-      ["Mechanical","A moving body, a lifted load, a stretched band","The energy of motion (kinetic) and of position (potential)"],
-      ["Nuclear","The heart of the atom","Sets free in the sun and in the reactor"]
+    {k:"h3", t:"What a Machine Is"},
+    {k:"p", t:"A **machine** is any device that makes work easier. A **simple machine** has few or no moving parts and does its work in one movement. The **effort** is the force you put in, the **load** is the force you overcome, and the **fulcrum** is the fixed point a lever turns about."},
+    {k:"p", t:"A machine does **not** reduce the work that must be done. It lets you use a **smaller effort over a longer distance**, or change the **direction** of the force, or work faster and more steadily than the bare hand could."},
+    {k:"rule"},
+    {k:"h3", t:"The Six Simple Machines"},
+    {k:"table", head:["Simple machine","How it works","Where you see it in Liberia"], rows:[
+      ["Lever","A bar turning about a fulcrum; effort at one place, load at another","Crowbar lifting a crate, wheelbarrow, scissors, pliers, the see-saw, a broom, the human forearm"],
+      ["Pulley","A grooved wheel with a rope; changes the direction of the pull, and several together share the load","Well bucket, hoisting block at the port, the flag rope, a crane"],
+      ["Wheel and axle","A large wheel fixed to a small shaft; a small turn of the rim gives a strong turn of the axle","Motorcar wheel, steering wheel, door knob, bicycle, the grinding mill handle, a windlass"],
+      ["Inclined plane","A slope; the load is raised gradually with less effort over a longer path","Plank for rolling a drum onto a truck, the ramp, a hill road that winds instead of climbing straight"],
+      ["Wedge","Two inclined planes back to back; it moves and splits or cuts","Cutlass, knife, axe, nail, chisel, the teeth, a pin"],
+      ["Screw","An inclined plane wound round a shaft; turning it gives a strong straight push","Bolt and nut, screw jack under a car, the bottle cap, a vice, the palm-oil press"]
     ]},
+    {k:"p", t:"A **compound (complex) machine** is two or more simple machines working together: the bicycle joins wheel-and-axle, lever and screw; the wheelbarrow joins lever and wheel-and-axle; the grinding mill, the sewing machine and the motorcar join many."},
     {k:"rule"},
-    {k:"h3", t:"The Law of Conservation of Energy"},
-    {k:"p", t:"**Energy is never created and never destroyed: it only passes from one form to another. The total stays the same.** This is the **law of conservation of energy**."},
-    {k:"bul", items:["A falling stone: **potential** energy of height becomes **kinetic** energy of motion; hitting the ground it becomes sound and heat.","A torch: **chemical** energy of the cell becomes **electrical**, then **light** and heat.","A radio or a television: electrical energy becomes sound, light and heat.","Your body: the **chemical** energy of rice and oil becomes motion, warmth and growth.","A **generator** changes mechanical energy to electrical; a **motor** goes the other way.","In every change part of the useful energy leaks out as **waste heat** – which is why the lamp, the phone and the engine all get warm, and why no machine gives back all it takes."]},
-    {k:"p", t:"Test it: drop a ball from one metre and it rebounds less than one metre – the height it lost became heat and sound. A machine that gives more than it takes is impossible, and a person who sells you one is cheating."},
+    {k:"h3", t:"Mechanical Advantage"},
+    {k:"p", t:"**Mechanical advantage (MA)** tells how many times a machine multiplies your effort: **MA = load ÷ effort**. It is a plain number and carries no unit. A pulley system that lifts a 200 N drum with an effort of 50 N has MA = 200 ÷ 50 = **4**."},
+    {k:"bul", items:["An MA greater than 1 means the machine multiplies force — the crowbar and the screw jack.","An MA of about 1 means the machine only changes the direction of the force — the single fixed pulley on the flagpole.","With a lever, the **longer the effort arm** compared with the load arm, the greater the advantage: this is why a long crowbar shifts what a short one cannot.","No machine gives out more work than is put in. What is gained in force is paid for in distance."]},
+    {k:"p", t:"Test it on the see-saw: a small child far from the fulcrum balances a big one sitting close to it — measure the two distances and see the rule for yourself."},
     {k:"rule"},
-    {k:"h3", t:"Sources and Uses of Energy"},
-    {k:"bul", items:["Almost every source is the **sun**: today by light and warmth, and long ago as the coal, oil and gas stored in ancient living things.","**Fuel** – firewood, charcoal, kerosene, petrol, diesel and gas – releases chemical energy as heat.","**Food** is the fuel of the body.","**Moving water and wind** drive the mill, the pump and the turbine; falling water at Mount Coffee turns the **generator** that gives Monrovia its light.","**Solar cells** change light to electricity; **solar water heaters** warm the water; **biogas** from dung and rubbish gives clean cooking gas and manure.","**Geothermal** heat comes up from the hot rock deep down, **nuclear** power from the atom's heart – both used for electricity elsewhere."]},
+    {k:"h3", t:"Machines, Energy and Force"},
+    {k:"p", t:"Every machine needs a force to work it, and every force is supplied by some store of energy — the muscles of the arm, the fuel in the engine, the water falling at Mount Coffee, the wind, or the current in the wire."},
+    {k:"bul", items:["**Muscular force** works the hoe, the cutlass, the pestle and the bicycle; the energy comes from the food we eat.","**Frictional force** rubs between surfaces and always opposes motion. It is a friend — the shoe grips the ground, the brake stops the wheel, the nail holds the plank — and an enemy, for it wears the tool and wastes work as heat.","**Gravitational force** is the pull of the earth on every body. It is what a machine works against whenever a load is lifted, and it is what brings the pestle down and turns the water wheel."],},
+    {k:"p", t:"Reduce harmful friction with **oil, grease and ball bearings**, and by keeping the moving parts smooth; increase useful friction with tread, a rough handle and a dry grip."},
     {k:"rule"},
-    {k:"h3", t:"Renewable and Non-renewable Energy"},
-    {k:"table", head:["Renewable – replaced as we use it","Non-renewable – finished and gone"], rows:[
-      ["Sunlight, wind, falling and flowing water, wave and tide, the heat of the earth's inside, wood and crop waste and biogas from what is replanted","Petrol, diesel and kerosene from crude oil, coal, natural gas, and the minerals dug out of the ground"]
-    ]},
-    {k:"p", t:"A source is renewable when it is replaced as fast as it is taken, so a forest cut faster than it regrows is being used as a non-renewable. The world's work is mostly still done by the non-renewables, which run short and raise the price of everything – and burn to the gases that warm the sky."},
-    {k:"rule"},
-    {k:"h3", t:"Conservation and Safety"},
-    {k:"bul", items:["**Conservation of energy** – using less and wasting none – keeps the light and the fuel for those who come after: switch off, use efficient lamp and stove, cook with the pot covered, dry in sun and wind, insulate the hot drum, use the biogas digester, ride together and walk, plant and shade the house, and never leave a heater or iron on.","Never burn charcoal or wood inside a closed room, for the smoke takes the life quietly; cook where the air moves.","Do not overload a socket or a line, and keep the frayed cord and the wet switch away from a hand.","Store petrol and kerosene in a labelled closed container away from the house, with no flame or smoke near; it is **flammable**.","Handle a hot pot with a holder; wear a glove and goggles at the flame, and keep the long hair and loose clothing from the fire."]},
-    {k:"p", t:"Keep the day's log: every form of energy the house met, what each was changed into, where it was wasted, and one change that would save it."}
+    {k:"h3", t:"Care and Safety with Machines"},
+    {k:"bul", items:["Oil the moving parts, keep the blade sharp, and clean and dry a tool before storing it so it does not rust.","Use the right machine for the job, and never overload a rope, a jack or a plank.","Keep hands, hair and loose clothing away from turning parts; put the guard back after cleaning.","Carry a cutlass or knife with the edge turned away from the body, and pass it handle first.","Stand clear of a load being lifted, and never work under a car held only by a jack — block it as well.","Report a cracked handle, a frayed rope or a loose head at once, and never mend a machine while it is running."]},
+    {k:"p", t:"Make a class collection: bring one simple machine from home, name it, say what its effort and its load are, and show the class the work it makes easier."}
   ],
   focus:["Meaning of machine","The six simple machines","Effort and load","Work done","Uses in daily life"],
   terms:[
@@ -2357,7 +2398,7 @@ const SC_CURRICULUM = [
   assessment:["Investigation report","Calculation exercise","Quizzes","Test"]
 },
 {
-  grade:4, period:"II", sem:"One", icon:"🔊",
+  grade:5, period:"II", sem:"One", icon:"🔊",
   title:"Sound and Light Energy",
   subtitle:"How sound is produced and travels; sources and behaviour of light",
   outcomes:["Show interest in making use of science ideas and technology"],
@@ -2365,29 +2406,63 @@ const SC_CURRICULUM = [
   note:"<b>Sound</b> is produced by <b>vibration</b> and needs a material (solid, liquid or gas) to travel through — it cannot travel through a vacuum. <b>Light</b> travels in <b>straight lines</b> and much faster than sound.",
   study:[
     /* ---- course text: Semester One, Period II (guide pp. 52-53) ---- */
-    {k:"h3", t:"Force and Motion"},
-    {k:"p", t:"A **force** is a push or a pull. It is measured in **newtons (N)** with a **spring balance**, and shown by an arrow whose length is the size of the force and whose head is its direction. A force can start a thing moving, stop it, speed or slow it, change its direction, or change its shape."},
+    {k:"h3", t:"Energy in Different Forms"},
+    {k:"p", t:"**Energy** is the ability to do work, and it is met in many forms — light, heat, sound, electrical, chemical, mechanical and nuclear. Energy is never made and never destroyed; it only **changes from one form into another**, and in every change a little escapes as waste heat."},
+    {k:"p", t:"**Sound** and **light** are two forms of energy that travel out from their source and reach us at a distance. Both carry information, which is why we use them to talk, to warn, to teach and to find our way."},
     {k:"rule"},
-    {k:"h3", t:"Types of Force"},
-    {k:"table", head:["Type","How it acts","Examples"], rows:[
-      ["Muscular","The pull of muscle, needing contact","Carrying, pushing the wheelbarrow, pedalling, digging"],
-      ["Friction","Between rubbing surfaces, opposing motion","The shoe gripping the ground; the wear of the sole; the heat of rubbing the hands"],
-      ["Gravitational (gravity)","The pull of the earth on every body, no contact needed","The falling stone; the weight you feel; water running down; your mass held to the ground"],
-      ["Magnetic","The field of a magnet; acts at a distance","A nail pulled, a pole repelled, the compass turning"],
-      ["Elastic","A stretched thing springing back","Bowstring, catapult, rubber band, the mattress"],
-      ["Electric","Between charges; acts at a distance","The combed rubber attracting paper; lightning"],
-      ["Air resistance and water resistance","The drag of the fluid a body moves through; needs contact","The swimmer slowed, the parachute opening, the bike rider leaning forward"],
-      ["Applied by a machine","Force changed in size or direction","Pulley, lever, wedge, wheel and axle"]
+    {k:"h3", t:"Sound Is a Form of Energy"},
+    {k:"p", t:"**Sound is produced by vibration** — by something moving quickly to and fro. The vibrating body shakes the air around it, the shaking passes from particle to particle as a wave, and when it reaches the ear the eardrum is set vibrating and we hear."},
+    {k:"bul", items:["Touch your throat while you speak and feel the **vocal cords** vibrating; stop the vibration and the sound stops.","Sprinkle grains of rice on a drum skin and beat the drum: the grains jump, showing that the skin is vibrating.","Pluck a stretched rubber band or a guitar string and watch it blur as it vibrates.","Sound needs a **medium** — a solid, a liquid or a gas — to travel through. It **cannot travel through a vacuum**, which is why there is no sound in outer space."]},
+    {k:"p", t:"Sound travels **fastest in solids**, less fast in liquids, and slowest in gases, because the particles of a solid are packed close and pass the shaking on quickly. Put your ear to the ground or to a long iron rail and you hear a knock long before it reaches you through the air."},
+    {k:"rule"},
+    {k:"h3", t:"Properties of Sound"},
+    {k:"table", head:["Property","What it means","What it depends on"], rows:[
+      ["Loudness (volume)","How strong or faint the sound is","The size of the vibration — beat the drum harder and it sounds louder"],
+      ["Pitch","How high or low the note is","How fast the vibration is — a short, thin, tight string gives a high note; a long, thick, slack one gives a low note"],
+      ["Quality (timbre)","What makes one voice or instrument different from another sounding the same note","The shape of the vibrating body and the way it is made"],
+      ["Speed","About 340 metres in a second in air","The medium and its temperature; far slower than light"]
     ]},
-    {k:"p", t:"Forces may **balance** (a book lying still: gravity down, table up) or be **unbalanced** (the same book pushed – it moves). Only an unbalanced force changes motion. Force also acts in fluids: water **pushes up** with **buoyancy**, and an object floats when it pushes aside water as heavy as itself."},
+    {k:"p", t:"**An echo** is sound reflected back from a hard surface such as a wall, a cliff or the far bank of a river. Because sound is slow, you hear the echo a moment after you shout. Ships find the depth of the sea, and doctors see an unborn baby, by sending sound out and timing the echo back."},
+    {k:"p", t:"Light travels about **300,000 kilometres in a second** and sound only about **340 metres**, so the flash of lightning is seen long before the thunder is heard, and the cutlass of a distant farmer is seen to fall before the sound arrives."},
     {k:"rule"},
-    {k:"h3", t:"Effects and Measurement of Force"},
-    {k:"bul", items:["Motion changes in **speed** and in **direction**; the **momentum** of a body (mass × velocity) is why a loaded, fast lorry cannot stop at once and why a ball is hard to catch.","The unit of force, the newton, is the force that gives a kilogram an acceleration of one metre per second every second.","**Mass** is the quantity of matter (kg) and stays the same; **weight** is the pull of the earth on it (N) and changes with where you are. Weight = mass × gravity (about 10 N per kg on the earth). A 5 kg basin weighs about 50 N; on the moon, with one-sixth the pull, the mass is still 5 kg but the weight is only about 8 N.","Measure weight with a **spring balance** or scale and mass with a **balance**; the two are confused because we commonly give the weight in the name of the kilogram."]},
+    {k:"h3", t:"Instruments That Produce Sound"},
+    {k:"bul", items:["**Percussion** — the sound comes from a skin or a body that is struck: drum, gbema, sasaa, bell, xylophone, the tin and the hand clap.","**String** — a stretched string is plucked or bowed: guitar, kora, the one-string fiddle, the piano.","**Wind** — a column of air is set vibrating: flute, horn, whistle, trumpet, the reed pipe.","**The human voice** — air from the lungs sets the vocal cords vibrating, and the mouth, tongue and nose shape it into speech and song."]},
+    {k:"p", t:"Change the sound of an instrument by changing the **size, the tightness or the shape** of the vibrating part: tighten the drum skin over a fire and its note rises; shorten the string by pressing it and the note rises; fill a bottle with more water and the note it gives when blown across changes."},
+    {k:"p", t:"**Sound in communication**: the talking drum and the horn carried news from town to town long before the telephone; today the radio, the telephone, the loudspeaker and the siren all turn sound into an electrical signal and back into sound again. A **string telephone** made from two tins and a tight string shows the whole idea — the sound travels along the taut string as a vibration."},
     {k:"rule"},
-    {k:"h3", t:"Friction: Enemy and Friend"},
-    {k:"p", t:"**Friction** is the force between two surfaces in contact that opposes their moving over each other; it always acts against the motion, and how great it is depends on the nature of the surfaces and on how hard they are pressed together."},
-    {k:"bul", items:["**Useful** – walking and running without slipping, writing with chalk, holding a basin, the nail and the knot and the screw that hold, the brake that stops, the match that lights, and the tyre that grips the road.","**Harmful** – it wears the sole, the tyre, the gear and the shaft; it wastes work as heat and noise, and it heats the engine.","**Reducing it** – polish, **lubricate** with oil or grease, use ball bearing or roller, and stream-line the body of car and plane.","**Increasing it** – tread on tyre and sole, sand or salt on a slippery floor, rosin on the hand, and a rough handle."]},
-    {k:"p", t:"Test it fairly: pull the same brick with the spring balance on smooth wood, on sandpaper, and with a cloth under it – keep the brick and the pulling the same and change only the surface, then say which variable you changed and which you kept."}
+    {k:"h3", t:"Light Travels"},
+    {k:"p", t:"**Light** is a form of energy that makes things visible. It travels in a **straight line** at enormous speed – about 300,000 kilometres in a second – so the flash of lightning reaches the eye long before the thunder reaches the ear."},
+    {k:"bul", items:["Light from the sun and a flame goes out in every direction.","We see a thing only when light from it enters the eye: a lamp or the sun is a **luminous body**; a table or the moon, which only throws back light, is **illuminated**.","Straight travel is shown by a line of men each behind another, by a torch beam through dusty air, and by a small-hole camera."]},
+    {k:"rule"},
+    {k:"h3", t:"Reflection"},
+    {k:"p", t:"**Reflection** is light bouncing back from a surface. A smooth bright surface throws back an image; a rough surface scatters it, so white wall and chalk reflect without showing your face. Shadows and eclipses are the other side of reflection: light that cannot pass leaves a dark shape behind."},
+    {k:"bul", items:["Periscope, mirror and the rear-view glass serve by reflection.","**Lateral inversion** – the mirror puts the left hand on the right side – is why an ambulance writes its name backward."]},
+    {k:"p", t:"Hold a mirror in sunlight and throw the patch of light about the wall; then bend the mirror and the patch moves – the law of reflection is being obeyed under your hand."},
+    {k:"rule"},
+    {k:"h3", t:"Refraction"},
+    {k:"p", t:"**Refraction** is the bending of light as it passes from one transparent material into another, so a stick in water looks bent and a coin in a basin seems to rise when the water is poured in."},
+    {k:"bul", items:["A **lens** is shaped glass that refracts: a **convex** lens is thicker in the middle and brings light together to a point; a **concave** lens is thinner in the middle and spreads it out.","The eye is a convex-lens camera: the lens throws an inverted image on the **retina** at the back, and the brain reads it upright.","Glasses correct an eye whose lens cannot bend the light enough or bends too much; a magnifying glass, a telescope and a camera are convex lenses at work.","A **prism** splits white light into the seven colours of the **spectrum** – red, orange, yellow, green, blue, indigo, violet – which the rainbow shows in the sky."]},
+    {k:"rule"},
+    {k:"h3", t:"Colours of Light"},
+    {k:"bul", items:["White light is a mixture of colours; a thing looks red because it returns the red and takes in the rest.","**Primary colours of pigment** are red, yellow and blue; **secondary** are orange, green and purple. Mixing all the pigments gives black; mixing all the lights gives white.","**Colour blindness** – not telling red from green – runs in families, is commoner in boys, and matters in choosing a trade such as pilot, driver or electrician; it is tested with dotted plates."]},
+    {k:"p", t:"Cut coloured paper into **patterns** – symmetrical and repeating, as the loom and the dye pit do – and hang the work in the class; a mirror makes one half of the pattern into a whole."},
+    {k:"rule"},
+    {k:"h3", t:"The Human Eye"},
+    {k:"table", head:["Part","Its work"], rows:[
+      ["Cornea","The clear window at the front; admits and bends the light"],
+      ["Iris and pupil","The coloured ring with the hole that widens in the dark and narrows in bright light"],
+      ["Lens","Focuses the light on the back of the eye"],
+      ["Retina","Receives the image and sends the news along the optic nerve"],
+      ["Optic nerve","Carries the message to the brain"]
+    ]},
+    {k:"bul", items:["Read and write in good light, and hold the book about 25 cm from the eye.","Do not rub the eye, and do not put dirt, fingers or a shared cloth into it.","Go at once for a **red eye**, running water, swelling or a white film on the pupil; wash hands before touching the face.","Wear a shade or goggles at welding, at chemical work and on bright water or sand.","Wear only glasses given after an examination, and go back for the check; tell the teacher if the board has become blurred.","Never look straight at the sun, and never at the sun or an eclipse through a lens or glass."]},
+    {k:"p", t:"Cover one eye and then the other and the picture still stands – **binocular vision** gives size and nearness, the sense the driver and the catcher depend on."},
+    {k:"rule"},
+    {k:"h3", t:"Turning Sound Energy into Light Energy and Back"},
+    {k:"p", t:"Energy changes readily from one form to another, and the machines we use every day depend on it."},
+    {k:"num", items:["In a **microphone**, sound energy shakes a thin plate and is changed into **electrical energy**.","The electrical energy travels along a wire, or is sent out by a radio transmitter.","In a **loudspeaker or earphone**, the electrical energy is changed back into **sound energy** by a coil and a magnet.","In a **torch or a lamp**, the **chemical** energy of the dry cell becomes electrical energy and then **light** and heat.","In a **solar cell**, light energy is changed into electrical energy, which can then be made to give sound in a radio."]},
+    {k:"p", t:"So sound can be turned into electricity, electricity into light, and light back into electricity — and the chain can be followed round. Set it up in class with a dry cell, a bulb, wire and a small speaker, and name the form of energy at each step."},
+    {k:"bul", items:["**Care of the ear**: never push a stick, a match or a pin into the ear; keep away from very loud noise and from earphones turned high, for loud sound destroys hearing and it does not come back; report a discharging or painful ear.","**Noise pollution** — the generator, the loud speaker and the horn at night — spoils sleep, study and health. Keep the volume down, especially near a clinic, a school or at night."]},
   ],
   focus:["Sound production and vibration","Properties of sound","Instruments producing sound","Sound in communication","Sources and characteristics of light"],
   terms:[
@@ -2449,7 +2524,7 @@ const SC_CURRICULUM = [
   assessment:["Practical investigation report","Quizzes","Science journal","Test"]
 },
 {
-  grade:4, period:"III", sem:"One", icon:"🍎",
+  grade:5, period:"III", sem:"One", icon:"🍎",
   title:"Health Lessons",
   subtitle:"Nutrition, the immune system and community health services",
   outcomes:["Understand that good nutrition helps people living with HIV live longer","Understand the body's immune system and how it keeps us healthy"],
@@ -2457,32 +2532,48 @@ const SC_CURRICULUM = [
   note:"The <b>immune system</b> is the body's defence against germs. Good <b>nutrition</b> — a balanced diet — keeps the immune system strong. HIV weakens the immune system, so good food helps a person living with HIV stay healthier for longer.",
   study:[
     /* ---- course text: Semester One, Period III (guide pp. 54-55) ---- */
-    {k:"h3", t:"Measurement"},
-    {k:"p", t:"To **measure** is to find how big a quantity is by comparing it with an agreed standard unit. A measurement is worthless without its **unit**, and rough work is helped by an **estimate** made first and tested after."},
-    {k:"rule"},
-    {k:"h3", t:"Units: Customary and SI"},
-    {k:"bul", items:["Liberia uses both systems: the customary in the market and on the land (inch, foot, mile, pound, gallon, cup, basin, bag, ‘one tie of wood’), and the **Système International (SI)** – the metric system – in school, trade, medicine and government.","The **SI** (metric) units: **metre (m)** for length, **kilogram (kg)** for mass, **second (s)** for time, with the **litre (L)** for volume and **degree Celsius (°C)** for temperature.","**Why SI is better**: it grows by tens (1 km = 1,000 m; 1 kg = 1,000 g; 1 L = 1,000 mL), so its arithmetic is easy, and one unit serves for length, mass and volume, while the old units change their factor at every step.","Use **standard units**, not the span of a hand, because people differ; keep a ruler, scale, clock and measure in the store, and use the same unit in the comparison."]},
-    {k:"rule"},
-    {k:"h3", t:"Measuring the Common Quantities"},
-    {k:"table", head:["Quantity","SI unit","Instruments and method"], rows:[
-      ["Length","metre (m)","Ruler, tape, metre stick, caliper; read at right angles and from a marked end, not a worn one"],
-      ["Mass","kilogram (kg)","Beam balance, platform scale, spring scale; zero first, weigh a dry container for the bag"],
-      ["Volume of liquid","litre (L), mL","Measuring cylinder, beaker, pipette; read the lowest point of the curve with the eye level"],
-      ["Volume of regular solid","cm³ or m³","Length × breadth × height; 1 cm³ = 1 mL"],
-      ["Temperature","degree Celsius (°C)","Thermometer; do not touch the bulb; read in the shade at eye level"],
-      ["Time","second (s)","Clock, watch, stopwatch; start and stop at the same event"],
-      ["Area","m²","Length × breadth; for the field take it with a tape or a measured pace, and pace a strip to the tree line"],
-      ["Force","newton (N)","Spring balance"],
-      ["Speed","metre per second (m/s)","Distance ÷ time"]
+    {k:"h3", t:"Nutrients and the Three Food Groups"},
+    {k:"p", t:"A **nutrient** is the useful substance in food that the body takes in to grow, to work and to stay well. No single food holds every nutrient, so a **balanced diet** takes something from each group every day, with clean water beside it."},
+    {k:"table", head:["Food group","What it does","Local examples"], rows:[
+      ["Energy-giving (carbohydrates and fats)","Gives the body power to work, walk and keep warm","Rice, cassava, yam, eddoes, plantain, bread, palm oil, coconut, groundnut oil, sugar"],
+      ["Body-building (proteins)","Builds and repairs the body; makes a child grow","Fish, meat, chicken, egg, beans, groundnut, milk, bushmeat, crab and shrimp"],
+      ["Protective (vitamins and minerals)","Guards the body against disease and keeps the eyes, skin, blood and bones sound","Potato greens, cassava leaf, pumpkin, okra, pepper, mango, orange, pawpaw, banana, pineapple"]
     ]},
+    {k:"bul", items:["**Water** is needed by every part of the body; drink safe water often, and more when it is hot or after work.","**Iron** in dark green leaf, liver, bean and fish keeps the blood strong and prevents the weakness of anaemia.","**Malnutrition** comes of eating too little, or of eating from only one group. A child short of protein grows slowly, the belly swells, the hair reddens and the body wastes.","Wash fruit and vegetables, cook meat and fish well, keep food covered from flies, and wash the hands with soap before eating."]},
     {k:"rule"},
-    {k:"h3", t:"Conversion, Area and Volume"},
-    {k:"bul", items:["Length: 1 cm = 10 mm, 1 m = 100 cm, 1 km = 1,000 m; 1 in = 2.54 cm, 1 ft = 30.48 cm, 1 yd = 0.9144 m, 1 mi = 1.609 km.","Mass: 1 kg = 1,000 g; 1 lb = 0.4536 kg, so a 100 lb bag of rice is about 45 kg.","Volume: 1 L = 1,000 mL; 1 gal = 3.785 L, so a 5-gallon jerry is about 19 litres.","Area of the rectangle or square = length × breadth; of the triangle = ½ × base × height; of the circle = π × radius² (π ≈ 3.14).","Volume of the box = length × breadth × height; of the cylinder = πr² × height.","A compound unit is a unit made of two: **speed** is m/s or km/h (1 m/s = 3.6 km/h), and a **rate** such as so many L per hour."]},
-    {k:"p", t:"Convert as you go: the farmer sells a 45 kg bag and calls it 100 lb; a sign of ‘10 km’ is about 6 miles; the tin that holds 5 gallons holds about 19 L."},
+    {k:"h3", t:"The Body's Immune System"},
+    {k:"p", t:"The **immune system** is the body's own army against germs. It is not one organ but many working together: the skin and the lining of the nose and gut keep germs out; the **white blood cells** hunt and destroy those that get in; the lymph nodes, the spleen and the bone marrow make and store the defenders."},
+    {k:"bul", items:["When a germ enters, white blood cells surround and swallow it, and others make **antibodies** — substances shaped to fight that one germ.","After the fight the body remembers the germ, so the same sickness does not easily return. This is **immunity**.","A **vaccine** teaches the immune system beforehand, with a killed or weakened germ, so the child is protected before the disease ever comes. Measles, polio, tetanus and yellow fever are all held back this way — take the child for every dose on the card.","Fever, swelling and pus are signs that the immune system is at work; rest, fluids and clean care help it."]},
+    {k:"p", t:"The immune system is weakened by poor food, by too little sleep and rest, by heavy alcohol and drugs, by long stress, and by diseases such as HIV. It is strengthened by a balanced diet, clean water, exercise, sleep, immunisation and a clean home."},
     {k:"rule"},
-    {k:"h3", t:"Accuracy, Error and Recording"},
-    {k:"bul", items:["**Zero error** – the instrument does not read zero when empty; always check before use.","**Parallax error** – the eye not level with the mark, so a cylinder or a scale is misread.","Not the same instrument, or not read the same way, between one measurement and the next.","**Least count** – the smallest division the instrument can show; a ruler marks millimetres, so a length is read to the nearest millimetre.","**Repeating** – take the measurement three times and record the mean; take the same quantity with the same care each time.","**Fair test** – in an investigation change only one thing (the variable you are testing), keep all else the same, and use the same method and instrument for both parts."]},
-    {k:"p", t:"Record as a number with its unit and the instrument used, and note what was estimated; a table with the unit in its heading is the way of science and of the good trader."}
+    {k:"h3", t:"Waterborne and Other Diseases"},
+    {k:"p", t:"A **waterborne disease** is a sickness carried chiefly by water fouled with human waste: **cholera**, **typhoid**, **hepatitis A**, **dysentery**, **diarrhoea**, and **guinea worm** from water holding the infected tiny creature. **Mosquito-borne** sickness – **malaria**, dengue and yellow fever – comes from clean-looking water standing in the tire, the tin and the roof gutter, where the insect breeds."},
+    {k:"table", head:["Disease","Chief sign","How to prevent it"], rows:[
+      ["Diarrhoea and cholera","Loose watery stool, vomiting, quick wasting","Boil or treat the water, wash hands with soap, use a latrine, keep flies off food, take ORS early and get help"],
+      ["Typhoid","Long fever, headache, weakness, sometimes spots","Safe water and food, vaccination when offered, fly control, hand washing"],
+      ["Guinea worm","Blister and burning pain; the worm comes out","Filter every drinking water through cloth; never drink from a pond with a worm case"],
+      ["Schistosomiasis (bilharzia)","Itching after wading, then belly or urine trouble","Do not bathe or wash in still water; use a clean tap, and get treatment"],
+      ["Malaria","Fever, headache, vomiting, chills; danger for the child and the pregnant woman","Sleep under an insecticide-treated net, clear grass and standing water, screen, spray at fogging time, take the test and finish the full medicine"]
+    ]},
+    {k:"p", t:"**Safe water for the home**: take it from a safe source; **boil** it and let it cool in the covered pot; or treat it with chlorine drops; or pour it through a clean cloth and a ceramic filter; store it in a covered vessel with a tap and never dip a cup into it."},
+    {k:"rule"},
+    {k:"h3", t:"HIV and Nutrition"},
+    {k:"p", t:"**HIV** is the virus that attacks the very white blood cells that defend the body. As those cells are destroyed the immune system grows weak, and sicknesses the body would once have thrown off take hold; the advanced stage of the infection is called **AIDS**."},
+    {k:"p", t:"**Good nutrition helps a person living with HIV to live longer and better.** It cannot cure the infection and it does not take the place of the medicine, but a well-fed body keeps more of its strength to resist other diseases and recovers from them faster."},
+    {k:"bul", items:["Eat more often — small meals several times a day are easier than one large one when the appetite is poor.","Take enough **body-building** food (fish, egg, bean, groundnut) because the body is repairing itself, and plenty of **protective** fruits and vegetables.","Use safe water and well-cooked food: a weakened body suffers badly from diarrhoea and food poisoning.","Take the **antiretroviral medicine** exactly as the health worker directs, every day, and never stop because the person feels better.","**HIV spreads only** by unprotected sex with an infected person, by infected blood entering the body (a shared blade, needle or unscreened transfusion), and from an infected mother to her baby in pregnancy, birth or breast-feeding — a mother on treatment can have a baby free of it.","**HIV does not spread** by sharing food, a cup, a bench, a latrine or a handshake, by hugging, or by a mosquito bite. A person living with HIV belongs in the school, the class and the family, and must never be shunned or shamed."]},
+    {k:"rule"},
+    {k:"h3", t:"Conception and Pregnancy"},
+    {k:"p", t:"**Conception** happens when a **sperm** cell from the man joins an **egg (ovum)** from the woman — this joining is **fertilisation**. The fertilised egg travels to the **womb (uterus)**, fastens to its wall and grows there into a baby for about **nine months** before birth."},
+    {k:"bul", items:["A girl's body releases one ripe egg about once a month; this is **ovulation**. If it is not fertilised, the lining of the womb is shed as the monthly period, or **menstruation**.","A girl can become pregnant as soon as she begins to ovulate — even before her first period, and even the first time she has sex.","**Signs of pregnancy** include a missed period, tender breasts, tiredness, sickness in the morning and, later, a growing belly.","**Teenage pregnancy** is dangerous: the girl's body is not finished growing, so labour is harder and both mother and baby are more at risk. It also ends schooling for many girls, and it changes every plan she had for her life."]},
+    {k:"rule"},
+    {k:"h3", t:"Abstinence, Preventing Pregnancy and Refusal Skills"},
+    {k:"p", t:"**Abstinence** — choosing not to have sex — is the only method that is completely certain. It prevents pregnancy, it prevents HIV and other sexually transmitted infections, and it leaves a young person free to finish school and choose a life. It is the right choice at your age, and it is a strength, not a weakness."},
+    {k:"bul", items:["**Contraceptives** are the methods grown people use to prevent pregnancy — the condom (which alone also guards against HIV and other infections), the pill, the injection, the implant and others. Each has its strengths and its side effects, and a trained health worker at the clinic explains and provides them.","**Risky situations** to keep out of: being alone with someone who pressures you, going to a dark or empty place, taking gifts, money or a lift in return for 'friendship', drinking alcohol or using drugs, and going where there is no adult you trust.","**Refusal skills**: say **no** clearly and look the person in the eye; say it again without arguing or apologising; give your reason once; suggest something else; and then **leave**. No means no, whoever is asking.","Tell a **trusted adult** at once about anyone who presses, threatens, follows or offers to keep a secret. Sex with a person under 16 is a **crime**, whoever does it, and the young person is never the one at fault."]},
+    {k:"p", t:"**Healthy relationships** are built on respect, honesty, kindness and trust; each person can speak freely, keep their own friends and say no without fear. An **unhealthy** one has pressure, jealousy, insults, secrecy, threats or beating — and it must be reported and left. Friendship and love can be shown in a hundred ways that carry no risk at all: helping, listening, sharing, working and studying together."},
+    {k:"rule"},
+    {k:"h3", t:"Community Health Services"},
+    {k:"bul", items:["The **clinic and health centre** — treatment, testing, immunisation, antenatal care and youth-friendly services.","The **hospital** for serious illness, surgery and difficult childbirth.","The **community health worker** and the **trained midwife** who visit and advise in the town.","The **pharmacy** for medicine that has been properly prescribed — never buy an unknown injection or a loose tablet from a trader.","**School health services**, the counsellor and the teacher you trust.","Health education and outreach — the net campaign, the vaccination round, the radio programme, and the woman and child protection desk of the police."]},
+    {k:"p", t:"Know where the nearest clinic is, what days it opens and what it offers; make a class map of the health services in your community, and learn the number to call in an emergency."}
   ],
   focus:["Balanced diet and nutrients","The immune system","Nutrition and HIV","Community health services"],
   terms:[
@@ -2544,7 +2635,7 @@ const SC_CURRICULUM = [
   assessment:["Meal plan","Quizzes","Science journal","Test"]
 },
 {
-  grade:4, period:"IV", sem:"Two", icon:"🧬",
+  grade:5, period:"IV", sem:"Two", icon:"🧬",
   title:"Organization of Life",
   subtitle:"Cells, tissues, organs and systems",
   outcomes:["Practise health care behaviour to prevent diseases","Encourage gender equity in our society"],
@@ -2552,20 +2643,93 @@ const SC_CURRICULUM = [
   note:"Life is organised in levels: <b>cell → tissue → organ → system → organism</b>. The <b>cell</b> is the basic building block of all living things.",
   study:[
     /* ---- course text: Semester Two, Period IV (guide pp. 56-57) ---- */
-    {k:"h3", t:"Earth Satellites"},
-    {k:"p", t:"A **satellite** is any body that moves round a larger body. The moon is the earth's **natural satellite**; a machine put in orbit by people is an **artificial satellite**. Once launched, a satellite keeps falling round the earth: its forward speed is so great that the ground curves away beneath it as fast as it drops, and with almost no air at that height to slow it, it circles for years."},
-    {k:"bul", items:["The **orbit** is the path; a **low orbit** runs a few hundred kilometres up, a **geostationary orbit** about 36,000 km over the equator, where the satellite goes once a day and hangs above the same place – the orbit chosen for the television and weather satellite.","**Communication satellites** carry telephone, radio and television across ocean and continent.","**Weather satellites** photograph the cloud and the storm so the warning can go ahead of it.","**Navigation satellites** tell the ship, the plane and the road the position to a few metres.","**Earth-observation satellites** map forest, farm and coast, find water, and count what has been cut.","**Research and space-station satellites** carry the scientist's instruments and crew; they need oxygen, water, food, and protection from the heat of the sun and the cold of shadow."]},
+    {k:"h3", t:"Life Starts with the Cell"},
+    {k:"p", t:"The **cell** is the smallest unit of life and the building block from which every living thing is made. Some living things — the amoeba, the bacterium — are a single cell; a human being is made of many millions of them. Cells are far too small to see, so we use a **microscope**."},
+    {k:"table", head:["Part of the cell","Its work","Found in"], rows:[
+      ["Cell membrane","The thin skin that holds the cell together and lets food in and waste out","Plant and animal cells"],
+      ["Cytoplasm","The jelly in which the work of the cell is done","Plant and animal cells"],
+      ["Nucleus","The control room; it directs the cell and carries what is inherited","Plant and animal cells"],
+      ["Cell wall","A stiff outer coat that gives the plant its firm shape","Plant cells only"],
+      ["Chloroplast","Holds the green chlorophyll that traps sunlight for making food","Plant cells only"],
+      ["Vacuole","A bag of cell sap that stores water and keeps the cell swollen","Large in plant cells, small in animal cells"]
+    ]},
+    {k:"p", t:"Look at cells for yourself: peel the thin skin from an onion, lay it flat in a drop of water and view it under the microscope — the box-shaped cells with their walls stand out plainly."},
     {k:"rule"},
-    {k:"h3", t:"Stars"},
-    {k:"p", t:"A **star** is a huge ball of very hot gas, chiefly hydrogen and helium, that gives out its **own** light and heat. The **sun** is a star – an ordinary middle-sized one, and the nearest by far; everything else we see at night is beyond the solar system."},
-    {k:"bul", items:["A star **shines because of nuclear change** in its heart, where hydrogen is joined into helium and a little mass becomes energy.","**Colour tells the heat**: a blue-white star is hottest, yellow like the sun is middle, and red is coolest.","**Constellations** are the known patterns of stars, used for the seasons and the road for thousands of years.","A **light-year** is the distance light travels in a year – about 9.5 trillion km – and it measures how far, not how long; the faint star may be dozens or thousands of years away.","A star seems to move across the sky because the earth turns; the **North Star** stands still, above the turning point, and is the guide of the north.","**Distance from the sun**: Mercury about 58 million km, Venus 108, the earth 150 (one **astronomical unit**), Mars 228; the moon only about 384,000 km – a rocket reaches it in days, the nearest star would take tens of thousands of years."]},
+    {k:"h3", t:"From Cell to Organism"},
+    {k:"p", t:"Living things are built up in levels, each made of the one before it: **cell → tissue → organ → system → organism**."},
+    {k:"bul", items:["A **tissue** is a group of similar cells doing the same work — muscle tissue, nerve tissue, blood, bone; in the plant, the tissue that carries water and the tissue that stores food.","An **organ** is several tissues working together at one task — the heart, the lung, the stomach, the kidney, the eye, the brain; in the plant, the root, the stem, the leaf and the flower.","A **system** is a group of organs working together — the digestive, the circulatory, the excretory, the respiratory, the nervous, the skeletal and the reproductive systems.","An **organism** is the whole living thing, all its systems working as one."]},
     {k:"rule"},
-    {k:"h3", t:"Life of a Star"},
-    {k:"num", items:["A star is born in a **nebula**, a great cloud of gas and dust, pulled together by its own gravity.","When the heart is hot enough, hydrogen begins to join into helium and the star shines steadily; our sun has been in this stage about 4.6 billion years and will stay so billions more.","When the hydrogen gives out the star swells into a **red giant**; a big star may burn through heavier fuels and stand as a **supergiant**.","The outer matter goes off into space, enriching the clouds from which new stars and planets form.","What is left is a small dense **white dwarf**, which cools through long ages; the greatest stars end in a **supernova**, and may leave a **neutron star** or a **black hole** whose pull light itself cannot leave."]},
+    {k:"h3", t:"What Happens to My Rice? — The Digestive System"},
+    {k:"p", t:"**Digestion** is the breaking down of food into pieces small enough to pass into the blood and be used by the body. Follow a mouthful of rice and soup on its journey:"},
+    {k:"num", items:["**Mouth** — the teeth cut and grind the rice, and the saliva wets it and begins to break the starch into sugar; the tongue rolls it into a ball and swallows it.","**Gullet (oesophagus)** — the tube pushes the food down to the stomach by squeezing waves.","**Stomach** — a muscular bag that churns the food and mixes it with acid and juices; the acid also kills many germs, and here the proteins begin to be broken down.","**Small intestine** — a long coiled tube where digestion is completed with juices from the **liver** and the **pancreas**; the digested food passes through its walls into the blood. This taking-in is called **absorption**.","**Large intestine** — takes back the water from what is left.","**Rectum and anus** — the undigested remainder is passed out as faeces."]},
+    {k:"p", t:"Care of the digestive system: chew slowly, eat at regular times, wash the hands and the food, drink enough clean water, eat fruit and leafy vegetables for **roughage** so the bowel works easily, and empty the bowel when the body asks. Deworm as the clinic advises, and never eat food that has been left uncovered for flies."},
     {k:"rule"},
-    {k:"h3", t:"Galaxies and the Reach of Science"},
-    {k:"bul", items:["A **galaxy** is a vast company of stars with their gas and dust, held together by gravity; our own is the **Milky Way**, a spinning disc of some hundred billion stars.","Beyond it lie other galaxies, some near, most unimaginably far, rushing apart as the space between them stretches: this is the expanding universe.","The **telescope** grew into the giant glass on the mountain and the mirror satellite above the air, which sees farther and farther back toward the beginning.","The **space programme** has put people on the moon, kept crews in orbit, and sent machines to every planet; satellites give the weather, the telephone and the map, and the same work opens the questions of life, the origin of the elements, and the fate of the world's climate."]},
-    {k:"p", t:"The sky above Liberia on a clear night is a science lesson free of cost: find the North Star, watch where the moon and the brightest planets sit among the constellations, and plot the movement each night in the same hour."}
+    {k:"h3", t:"The Circulatory and Excretory Systems"},
+    {k:"p", t:"The **circulatory system** carries food, oxygen and warmth to every cell and takes away waste. Its organs are the **heart**, a muscular pump that beats about 70 times a minute without rest, the **blood vessels** — arteries carrying blood away from the heart, veins bringing it back, and the fine capillaries between them — and the **blood** itself, with its red cells for oxygen, white cells for defence, platelets for clotting and liquid plasma."},
+    {k:"p", t:"The **excretory system** removes the waste the body makes. The **kidneys** filter the blood and pass out **urine** through the bladder; the **skin** sends out sweat; the **lungs** breathe out carbon dioxide and water vapour; the **liver** breaks down what is poisonous. Waste kept in the body poisons it, so these organs work every hour of life."},
+    {k:"bul", items:["Care of the heart and blood: exercise daily, eat little salt and fat, plenty of fruit and vegetables, keep off tobacco and alcohol, and rest well.","Care of the kidneys: drink enough safe water, do not hold the urine, and treat any burning or bloody urine at the clinic.","Feel your own pulse at the wrist, count the beats for a minute, then run in the yard and count again — the heart is answering the body's call for more oxygen."]},
+    {k:"rule"},
+    {k:"h3", t:"Do Plants Breathe? — Respiration and Photosynthesis in Plants"},
+    {k:"p", t:"Plants **do** breathe. Like every living thing, a plant **respires** day and night, taking in oxygen and releasing carbon dioxide to free the energy in its food. The air passes in and out through the **stomata**, tiny openings mostly on the underside of the leaf, and through openings in stem and root."},
+    {k:"p", t:"In the daytime the green plant also does something no animal can do: it **makes its own food**. Prove that a plant gives off gas by standing a green water weed under an upturned glass in the sunlight — bubbles collect at the top."},
+    {k:"rule"},
+    {k:"h3", t:"The Green Plant"},
+    {k:"p", t:"A green plant **makes its own food**. This is called **photosynthesis**: ‘photo’ means light, ‘synthesis’ means putting together. It is the greatest workshop on the earth, for everything that lives, ourselves included, eats either a plant or an animal that ate a plant."},
+    {k:"rule"},
+    {k:"h3", t:"How Photosynthesis Goes On"},
+    {k:"bul", items:["The **roots** take up water with the plant foods dissolved in it.","The **stomata** – tiny openings, mostly under the leaf – let in **carbon dioxide** from the air and let out oxygen and vapour.","The **chlorophyll**, the green matter in the leaf, traps the energy of **sunlight**.","With that energy the leaf builds **glucose**, a sugar, from carbon dioxide and water; **oxygen** is set free as the plant throws out what it does not need.","The sugar is used at once for energy, stored as **starch** in root, stem, seed or fruit, or turned into fibre for building."]},
+    {k:"p", t:"Word equation: **carbon dioxide + water → (sunlight, chlorophyll) glucose + oxygen**. Balanced: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Show that a leaf needs light by covering part of it with paper for two days and testing with iodine: only the exposed part turns blue-black with starch."},
+    {k:"rule"},
+    {k:"h3", t:"Plant Parts and Their Functions"},
+    {k:"table", head:["Part","Function","Special forms to notice"], rows:[
+      ["Root","Holds the plant, takes up water and salts, stores food","Tap root with a main (carrot, cassava); fibrous root in a bundle (rice, grass)"],
+      ["Stem","Carries water up and food down, holds the leaves to the light, stores and is used for food","Underground stem of cocoyam and ginger; sugarcane stores sugar"],
+      ["Leaf","Photosynthesis, breathing, and the loss of water vapour","Broad leaf of cassava; spine of the cactus; the insect-trapping pitcher"],
+      ["Flower","Makes the seed; the reproductive part","Petals attract the insect; the stamen and pistil are its male and female parts"],
+      ["Fruit","Protects the ripe seed and carries it away","Mango, pod, burr, the winged seed, the coconut that floats"],
+      ["Seed","Carries the young plant and its store; rests until it is wanted","Wing, hook or sweet flesh – all are ways of spreading"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Reproduction in Flowering Plants"},
+    {k:"p", t:"A flower has the **stamen** (the male part: filament and anther, which makes the **pollen**) and the **pistil** (the female part: stigma, style and ovary, with the **ovules** inside). Pollen carried from anther to stigma is **pollination**; insects, wind, birds and water carry it, and the bright or sweet-smelling petal is the advertisement."},
+    {k:"num", items:["The pollen lands on the sticky **stigma** and grows a **pollen tube** down the style.","The **male nucleus** travels the tube to the **ovule** in the ovary.","There the male nucleus joins the egg cell – **fertilisation** occurs.","The fertilised ovule becomes a **seed**; the ovary wall thickens and becomes the **fruit**.","The flower fades; the fruit ripens and the seed is sown by wind, water, animal or by people."]},
+    {k:"p", t:"The seed then **germinates**: it takes in water, the **radicle** comes out first downwards and becomes the root, and the **plumule** rises to become the shoot and the first leaves. Test germination with beans in wet cotton: one warm and wet, one dry, one shut from air, one boiled dead – only the first grows."},
+    {k:"rule"},
+    {k:"h3", t:"Feeding in Animals"},
+    {k:"p", t:"An animal must take in food, for it cannot make its own like the green plant. What an animal eats is told by its teeth, its jaws and its stomach, and this gives the three groups:"},
+    {k:"table", head:["Group","Mouth and teeth","Food and manner of eating","Examples"], rows:[
+      ["Herbivore","Flat grinding molars, a hard dental pad in front, no canine; wide jaw","Grass and leaf bitten off and ground long; a big belly with chambers or a long bowel for the cellulose","Cow, goat, sheep, rabbit, grasscutter, tortoise"],
+      ["Carnivore","Sharp pointed canine and tearing teeth, strong jaw that only opens up and down","Kills and tears flesh; swallows large pieces","Lion, leopard, dog, cat, crocodile"],
+      ["Omnivore","A mixture of cutting, tearing and grinding teeth","Eats plants and animals, and stores what it finds","Pig, rat, monkey, fowl, ant, human being"]
+    ]},
+    {k:"p", t:"Special feeders: the **filter feeder** (fish, tadpole, earthworm) takes the tiny food from mud or water; the **sucker and licker** (butterfly, housefly, mosquito) draws or laps liquid food. Each mouth is a tool shaped for the work."},
+    {k:"rule"},
+    {k:"h3", t:"Locomotion"},
+    {k:"p", t:"**Locomotion** is the moving of an animal from place to place to find food, water, mate or shelter, and to escape danger. The limb and the habitat agree with each other."},
+    {k:"bul", items:["**Walking and running** on four or two feet – dog, goat, ant, human being; the hoof for open ground, the claw for grip.","**Swimming** – fish with fins and tail, frog with webbed feet, the bird that dives; the body is smooth and shaped to slip through.","**Flying and gliding** – bird, bat and insect; hollow light bone, feather or membrane, and great chest muscles.","**Jumping and leaping** – long hind limb of frog, grasshopper and rabbit.","**Crawling and slithering** – snake with its scales, earthworm with its rings, the snail on its foot."]},
+    {k:"rule"},
+    {k:"h3", t:"Respiration"},
+    {k:"p", t:"**Respiration** is the taking in of air and the releasing of energy from food inside the body – not the same as breathing, though breathing serves it."},
+    {k:"table", head:["Animal","Organ by which it breathes","How it works"], rows:[
+      ["Fish and tadpole","Gills","Water passes over the feathery gill, and the small blood vessels take out the air it holds"],
+      ["Insect (grasshopper, ant, fly)","Spiracles and tracheae","Air enters the side openings and runs in tubes to every part"],
+      ["Frog","Skin and lungs","Breathes through the moist skin in water and with lungs on land"],
+      ["Earthworm","Moist skin","The skin must stay wet or the worm suffocates"],
+      ["Bird, reptile, mammal","Lungs","Air goes down the windpipe into the lungs and the blood carries it round"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Reproduction and Home Care in Animals"},
+    {k:"bul", items:["**Asexual** – one parent only; a new animal grows from a part of the body (hydra budding) or an unfertilised egg develops (some insects). **Sexual** – a male cell and a female cell join; most animals do this.","Fertilisation is **internal** in birds, reptiles and mammals, and **external** where fish and frogs shed egg and spawn together in the water.","Some young are **born alive** and are suckled – the **mammals**; others are **hatched from eggs** – birds, reptiles, fish and insects.","**Parental care** – nest, warmth, feeding, guarding, and teaching the young to hunt, fly or forage – is greatest in birds and mammals and little or none in fish and frogs.","Care of domestic stock: shelter, clean dry bedding, water, food on time, ticks and worms treated, the sick one separated, and the young kept from dog and snatcher."]},
+    {k:"p", t:"Set the animals in the right place: goat and cow **walk**, snake **crawls**, fish **swims**, bird **flies**, frog **jumps and swims** – and match the mouth: cow **grazes**, dog **tears**, fowl **picks**, ant **carries off** and stores."},
+    {k:"rule"},
+    {k:"h3", t:"The Reproductive System and Adolescent Development"},
+    {k:"p", t:"The **reproductive system** is the system by which a new life is begun. Its external parts differ in the boy and the girl, and each person should know the correct names, keep those parts clean, and know that they are private."},
+    {k:"table", head:["System","Chief external parts","Chief work"], rows:[
+      ["Male","Penis and the scrotum holding the two testes","The testes make the sperm cells and the male hormone"],
+      ["Female","The vulva, which guards the opening of the vagina","The internal ovaries hold and release the egg cells; the womb carries the baby"]
+    ]},
+    {k:"p", t:"At **puberty** the body of a child changes into the body of an adult, driven by **hormones** carried in the blood. In the girl the breasts grow, the hips widen and **menstruation** begins; in the boy the voice deepens, hair grows on the face and body, and the shoulders broaden. Both grow taller quickly, sweat more, and may get pimples; feelings swing, and the interest in the other sex wakes."},
+    {k:"bul", items:["**Ovulation** is the release of a ripe egg from the ovary about once a month; **menstruation** is the shedding of the womb lining, lasting about 3 to 7 days, when that egg is not fertilised.","At the monthly flow use a clean pad or folded cloth, change it often, bathe daily, and dispose of the used one properly. The period is normal and healthy, and no girl should be teased or kept from school for it.","These changes come to everyone, but at different times. The early developer and the late one are both normal.","A girl who has begun to ovulate can become pregnant. **Teenage pregnancy** endangers her health and ends her schooling — abstinence keeps her future open.","Care of the genitals: wash daily with clean water, dry well, wear clean underclothing, and tell a trusted adult about any sore, discharge, itching or pain.","Your body is your own. No one may touch your private parts. Refuse, get away and **report at once** to a parent, a teacher or a health worker — and keep telling until someone acts."]}
   ],
   focus:["The cell as the basic unit","Tissues","Organs","Body systems","Digestive, circulatory and excretory systems"],
   terms:[
@@ -2627,7 +2791,7 @@ const SC_CURRICULUM = [
   assessment:["Labelled system diagrams","Group presentation","Quizzes","Test"]
 },
 {
-  grade:4, period:"V", sem:"Two", icon:"⚛️",
+  grade:5, period:"V", sem:"Two", icon:"⚛️",
   title:"Structure of Matter",
   subtitle:"Atoms, molecules, elements and changes in matter",
   outcomes:["Create a model to demonstrate atomic movement in the different states of matter"],
@@ -2635,39 +2799,41 @@ const SC_CURRICULUM = [
   note:"An <b>atom</b> is the smallest particle of an element. A <b>molecule</b> is formed when two or more atoms join. A <b>physical change</b> can be reversed (ice melting); a <b>chemical change</b> makes a new substance and usually cannot be reversed (burning).",
   study:[
     /* ---- course text: Semester Two, Period V (guide pp. 58-59) ---- */
-    {k:"h3", t:"The Skin"},
-    {k:"p", t:"The **skin** is the largest organ of the body: it covers about 2 square metres and weighs about 5 kg. It is made of two chief layers – the thin outer **epidermis** and the thick inner **dermis** – with the fat and muscle beneath."},
-    {k:"table", head:["Part of the skin","Its work"], rows:[
-      ["Epidermis (outer layer)","Protects against dirt, germs and rubbing; the dead outer cells are worn off and made good continually; its melanin gives colour and shields from the sun"],
-      ["Dermis (true skin)","Strong and elastic; holds the blood vessels, the nerves, the hair roots, the sweat glands and the oil glands"],
-      ["Receptors in the dermis","Report touch, pressure, heat, cold and pain to the brain"],
-      ["Hair and its root","Keeps out dust from nose and ear, shades the eye, and warms"],
-      ["Sweat gland and pore","Sends sweat out to cool the body and carry off waste"],
-      ["Oil gland and fat layer","Keeps the skin soft, saves warmth, and pads the body"],
-      ["Nails","Guard the tips of fingers and toes and serve as tools"]
+    {k:"h3", t:"The Structure of Matter"},
+    {k:"p", t:"**Matter** is anything that has mass and takes up space — the desk, the water, the air, your own body. Everything you can touch or weigh is matter, and all of it is built of particles far too small to see."},
+    {k:"p", t:"**All matter is made up of atoms, and the atoms are always moving.** No one has ever seen an atom with the eye, but we know they are there because of what matter does: a drop of perfume spreads across the room, sugar disappears into water, and a balloon can be squeezed smaller."},
+    {k:"rule"},
+    {k:"h3", t:"Atoms and Molecules"},
+    {k:"p", t:"An **atom** is the smallest particle of an element that still has the nature of that element. A **molecule** is formed when **two or more atoms join together**; it is the smallest particle of a substance that can exist on its own."},
+    {k:"table", head:["","Atom","Molecule"], rows:[
+      ["What it is","The smallest particle of an element","Two or more atoms joined together"],
+      ["Can it stand alone?","Mostly not; it joins with others","Yes, it is the smallest particle that exists freely"],
+      ["Examples","One atom of oxygen (O), of iron (Fe), of carbon (C)","Oxygen gas O₂ (two atoms), water H₂O (two hydrogen and one oxygen), carbon dioxide CO₂"]
     ]},
-    {k:"p", t:"The five works of the skin are **protection, sensation, temperature control, excretion, and storage**. Sweating cools: as the water on the skin evaporates it takes the heat away – the same law that dries the washing, and the reason the humid day feels harder than the hot dry day."},
+    {k:"bul", items:["The atom itself has a heavy centre, the **nucleus**, holding **protons** and **neutrons**, with light **electrons** moving around it.","A molecule of an **element** holds atoms of one kind only (O₂, N₂); a molecule of a **compound** holds atoms of different kinds (H₂O, CO₂, NaCl).","The atoms in a solid vibrate in place; in a liquid they slide past one another; in a gas they fly apart freely. **Heat makes them move faster** — this is why a solid melts and a liquid boils.","Model it in class with squares and dots, or let the class stand as particles: packed tight and shivering for a solid, sliding gently for a liquid, running apart for a gas."]},
     {k:"rule"},
-    {k:"h3", t:"Care of the Skin"},
-    {k:"bul", items:["Bathe daily with soap and clean water, washing the neck, armpits, between the fingers and toes and the private parts; dry well, for damp skin cracks and breeds itch.","Wear clean, loose clothing that lets the air through, and change what the sweat has wet; put on a shade or a hat at the noon sun and protect the skin with clothing at work.","Eat the protective foods (fruit, vegetable, liver, egg, groundnut) and drink enough water; a dry dull skin tells of short water and poor food.","Do not squeeze a pimple, scratch a mosquito bite or pick a scab; wash the scratch and cover it, and let the cut heal – a small sore left dirty may open wide.","Never share a razor, towel or comb; ringworm, itch and scab spread by the shared cloth.","Keep the skin from strong soap and unguent that is not for the body; do not put chemical, kerosene or ash on a sore, and tell an adult of a sore that will not close.","Never scratch the eye; bathe the burned skin in running cool water for ten minutes – never oil, butter or toothpaste – and cover with clean cloth.","See the health worker for rash, itch that keeps you from sleeping, the spreading red and hot line, the running ringworm, and the burn that blisters wide."]},
-    {k:"p", t:"The **sweat test** after exercise: weigh the dry towel, wipe the arm, weigh again; the weight gained is what the skin sent out, and the skin left the salt behind."},
-    {k:"rule"},
-    {k:"h3", t:"Soil"},
-    {k:"p", t:"**Soil** is the loose material on the surface of the land in which plants grow. It is made of weathered rock, **humus** (the decayed remains of plants and animals), water, air, and living things such as worm, ant, termite and bacteria."},
-    {k:"bul", items:["**Weathering** – the breaking of rock in place – is **physical** (heat and cool, frost, roots, rain and wind, the rubbing of moving water), **chemical** (rain water with its weak acid dissolving and rusting), and **biological** (root, burrowing animal and the acids of decay).","**Soil formation** goes from bare rock to weathered rubble, to soil with the first humus from moss and lichen, and then to deep fertile soil, in hundreds or thousands of years – so fertile soil is a treasure to be treated as a treasure.","**Soil profile**: topsoil (A) – dark, rich and where the plants feed; subsoil (B) – paler, more compact and where roots go deep; weathered rock (C); and the solid **parent rock** below – a spade hole left standing for a day shows the four.","**Horizon O** – the leaf mould on top of a forest soil – is the layer that feeds the whole; this is why the forest soil is black and soft and the bare hill's is thin and pale.","Texture by rubbing a moist pinch: **sandy** (gritty, falls apart), **clayey** (smooth, sticky, rolls to a ribbon), **loamy** (soft and crumbly, the best for the garden). Structure – the crumbs a good soil falls into; porosity – the open space holding the air and water; drainage and water-holding – the two opposite powers a soil must balance; fertility – the store of plant food and humus."]},
-    {k:"table", head:["Type of soil","Its particles","How it behaves","Best use"], rows:[
-      ["Sandy","Large grains","Water runs straight through; little water or food held; warms early; poor","Melon, cassava and the sweet potato, with manure"],
-      ["Clayey","Very fine","Holds water; drains badly; sticky when wet and hard when dry; rich in mineral food but root finds it hard","The rice swamp, and pots, brick and plaster"],
-      ["Loamy","Mixed, with humus","Holds enough moisture and still drains; warm, easy and full of plant food","The garden and most farm crops – the farmer's aim"],
-      ["Humus / organic","Mostly decayed matter","Dark and spongy; water and nutrient store; a dressing that improves any soil","Digged into the bed, and spread on top"]
+    {k:"h3", t:"States of Matter"},
+    {k:"p", t:"Matter exists in three common states, and its state depends on how the particles are packed and how fast they move."},
+    {k:"table", head:["State","Shape and volume","The particles","What it shows"], rows:[
+      ["Solid","Keeps its own shape and size","Close in a fixed order, only vibrating","Chalk, wood, stone; may bend or break; cannot be poured"],
+      ["Liquid","Takes the shape of the vessel, size the same","Close but sliding freely","Water, palm oil; pours; has a level surface; hard to squeeze"],
+      ["Gas","Spreads to fill every part of the vessel","Far apart and moving fast","Air, steam; can be squeezed into less room; presses the wall"]
     ]},
-    {k:"p", t:"**Why soil must be conserved** – it is the base of food, home and life, and once washed or used up it takes centuries to return. The enemies are **erosion** (sheet, rill, gully, and wind erosion in the bare dry season), **loss of fertility** from continuous cropping without rest, and **pollution** from chemical, rubbish, oil, and the human waste left on the ground."},
-    {k:"bul", items:["Protect it with a cover of crop, grass or mulch; plant on the contour, ridge or tie, dig the **terraces** and the grass waterway; leave the trees and the strip of vegetation along the stream; rotate and intercrop, and rest the land with legume.","Add the humus – compost, manure and the turned-in refuse, plus crop residue instead of burning.","Clear the drain, plant at the start of the rain, and never leave the hill slope bare.","At school: keep a terrace, a **compost pit** and a shade; test the soils of the compound and the bank with water and with cloth; keep the rat and the bush fire out; report the gully beginning before it eats the road.","Liberia's soil is mostly the old, deeply weathered, red and yellow **laterite** of the forest zone – leached and acid, fertile only while the forest stands. The lime and phosphate it lacks come back only with organic matter, ash or fertiliser."]},
+    {k:"bul", items:["**Melting** – a solid becomes a liquid (ice, butter, wax, the tin in the ladle).","**Boiling and evaporation** – a liquid becomes gas; boiling happens fast throughout, evaporation slowly at the surface.","**Condensation** – a gas becomes a liquid (drops on a cold tin, dew on the grass, the steam on the lid).","**Freezing, solidification, sublimation** – liquid to solid, and a solid that goes straight to gas (the mothball, dry ice).","A change of state is a **physical change**: the substance stays itself, and the change can be undone."]},
     {k:"rule"},
-    {k:"h3", t:"Malaria"},
-    {k:"p", t:"**Malaria** is a fever sickness caused by the **plasmodium**, a tiny one-celled creature carried from person to person by the bite of the female **Anopheles mosquito**, which bites chiefly from evening to morning. It is the greatest killer among our sicknesses, especially of children under five, of pregnant women and of the weak; Liberia's heat, rain and standing water give it every chance."},
-    {k:"bul", items:["**Signs** – fever and shaking chills, headache, vomiting and body pain, sweating as the fever falls; the child may feed badly, grow weak or fall into convulsion. **Severe malaria** – drowsiness or unconsciousness, breathing trouble, jaundice, blood in the urine – is an emergency: go at once to the health centre.","**Diagnosis and treatment** – the rapid test or the blood film, then the full dose of the combination medicine the health worker gives, finished even after the fever is gone. Never take an unknown injection from a trader; never save the packet of someone else, and never buy the wrong dose of the packet.","**Prevention** – sleep under an insecticide-treated net with it tucked; keep the house screened and spray at fogging time; empty every vessel that holds water, cover the drum, fill the footprint, and clear the grass and the gutter so no water stands for the mosquito to breed in; use the repellent on the exposed skin in the evening; remove the old tire, the tin and the blocked roof channel.","**School and home** – keep the compound clean and cut, drain the standing water, screen the window and net the bed; report the absence from fever; and support the net campaign, the spraying, and the teaching that a clean compound is medicine before the disease.","In pregnancy, take the preventive doses the clinic gives, and treat the fever the same day it shows."]},
-    {k:"p", t:"The **mosphere hunt** in the compound: find and tip out every water-holding thing, and put the record on the wall; a covered drain and a cut grass mean more than a spray that reaches only the room."}
+    {k:"h3", t:"Elements, Compounds and Mixtures"},
+    {k:"bul", items:["An **element** is a substance that cannot be split into anything simpler; it is made of one kind of **atom**. Oxygen, iron, carbon, gold, aluminium and copper are elements, and the **periodic table** keeps the 118 known elements in order.","A **compound** is two or more elements joined in fixed proportion by chemical means: **water** (H₂O), **salt** (NaCl), carbon dioxide, sand (silicon and oxygen). Its properties are not those of the parts; salt is safe to eat though sodium burns and chlorine poisons.","A **mixture** is two or more substances merely mixed, in no fixed proportion: air, sea water, soil, sand and salt, the nut and the rice. The parts keep their own nature and are separated by physical means – picking, sieving, settling, filtering, evaporating, magnetism.","Elements may be **metals** (shiny, heavy, draw to wire, hammer thin, carry heat and current) or **non-metals** (dull, light, brittle, and poor conductors)."]},
+    {k:"table", head:["","Element","Compound","Mixture"], rows:[
+      ["Made of","One kind of atom","Two or more elements chemically joined in fixed ratio","Two or more substances merely mixed"],
+      ["Can be split by","Chemical process only; not to anything simpler","Chemical process (electrolysis, burning)","Physical means: pick, sieve, filter, settle, evaporate"],
+      ["Properties of parts","One nature only","New nature, different from the parts","Each part keeps its own nature"],
+      ["Examples","Oxygen, iron, gold, carbon, aluminium","Water H₂O, salt NaCl, carbon dioxide, sand","Air, sea water, soil, pepper and salt, blood"]
+    ]},
+    {k:"rule"},
+    {k:"h3", t:"Burning, Rusting and Rotting"},
+    {k:"p", t:"A **chemical change** (chemical reaction) makes a new substance: it may give out heat and light, colour, smell or gas, and it is not easily undone. A **physical change** alters form or state only and can be reversed – melting, dissolving, cutting, bending, evaporation."},
+    {k:"bul", items:["**Burning (combustion)** needs three things – **fuel, air (oxygen) and heat to start it** (the fire triangle); take away one and the fire dies.","**Rusting** – iron with air and moisture becomes the brown **rust**, which crumbles and lets more rust in; paint, oil or a cover prevents it.","**Rotting and souring** – decay and fermentation by tiny living things; food kept cool, dry, salted, smoked or sealed resists them.","Other reactions: milk turning, dough rising with yeast, the candle burning, an egg boiled, wood burnt, and a nail left in the rain.","**Conservation of mass** – in a closed vessel nothing is lost, only changed: the wax of a candle weighed before and after burning, with the smoke and vapour caught, weighs the same. This is the first law of chemistry."]},
+    {k:"p", t:"Sort these as physical or chemical: melting ice, burning firewood, dissolving salt in water, rusting cutlass, tearing paper, souring milk, boiling an egg, drying washing."},
   ],
   focus:["Structure of matter","Elements, atoms and molecules","Arrangement of particles in solids, liquids and gases","Physical and chemical changes"],
   terms:[
@@ -2728,7 +2894,7 @@ const SC_CURRICULUM = [
   assessment:["Particle diagrams","Classification exercise","Quizzes","Test"]
 },
 {
-  grade:4, period:"VI", sem:"Two", icon:"🌡️",
+  grade:5, period:"VI", sem:"Two", icon:"🌡️",
   title:"Weather and Climate of the Earth",
   subtitle:"Causes and effects of weather, and global climate change",
   outcomes:["Connect learning to solving global climate change problems"],
@@ -2736,33 +2902,31 @@ const SC_CURRICULUM = [
   note:"<b>Weather</b> changes daily; <b>climate</b> is the average weather over many years. <b>Global warming</b> is caused mainly by <b>greenhouse gases</b> from burning fuel and cutting forests.",
   study:[
     /* ---- course text: Semester Two, Period VI (guide pp. 60-63) ---- */
-    {k:"h3", t:"The Stages of Human Growth"},
-    {k:"table", head:["Stage","About what it covers","What it does"], rows:[
-      ["Infancy","Birth to 2 years","The fastest growth; rolls, sits, crawls, walks, and learns speech"],
-      ["Early childhood","3 to 5 years","Play and speech grow; runs and jumps, and the first learning"],
-      ["Middle and late childhood","6 to 10 years","The school years; slow steady growth; reading, writing and the skill of hand"],
-      ["Adolescence","about 10 to 19 years","Puberty and the adult form; the mind and feelings change; the search for who one is"],
-      ["Adulthood","from about 20 years","Full growth, marriage and work, and bringing up a family"],
-      ["Old age","later years","Wrinkled skin and grey hair, less speed, weaker eye and ear, and failing bone; the old carry wisdom and should be honoured and cared for"]
-    ]},
-    {k:"p", t:"Growth is the increase in size (measured by height and weight); **development** is becoming able to do new things. Growth is fastest in the baby and at adolescence, slow in between; the girl's adolescent spurt begins about two years before the boy's; and a baby is born with the bones of an adult partly in cartilage."},
+    {k:"h3", t:"Weather and Climate: The Difference"},
+    {k:"p", t:"**Weather** is the condition of the atmosphere at one place at one time — whether today is hot or cool, wet or dry, still or windy. It changes from hour to hour. **Climate** is the average weather of a place taken over many years, thirty or more, and it changes only slowly."},
+    {k:"p", t:"Weather is what you dress for this morning; climate is what you plant for. Liberia's climate is **tropical**: hot all year, with a **rainy season** from about May to October and a **dry season** from November to April, and one of the heaviest rainfalls in the whole of Africa."},
+    {k:"bul", items:["The **elements of weather** are temperature, rainfall, humidity, wind, cloud cover, sunshine and air pressure.","They are measured with the **thermometer** (temperature), the **rain gauge** (rainfall), the **hygrometer** (humidity), the **wind vane** and **anemometer** (wind direction and speed) and the **barometer** (pressure).","**How life depends on climate**: the climate decides which crops will grow and when they are planted and harvested, what animals and forests live in a place, how houses are built, what clothes are worn, where water is found, and which diseases are common."]},
     {k:"rule"},
-    {k:"h3", t:"Adolescence and Puberty"},
-    {k:"p", t:"**Adolescence** is the time of growing from child to adult, and **puberty** is when the body becomes able to have a child – the girl about 10–14 and the boy about 11–16. Both grow by the messages of **hormones** carried in the blood from glands, chiefly the pituitary ‘master gland’ in the brain."},
-    {k:"bul", items:["**In the girl** – the breasts grow; the hips widen; the skin and hair oilier; **the monthly period** (menstruation), bleeding from the womb about every 28 days, in the flow 3–7 days; a small brownish discharge is common and clean; the eggs already made begin to ripen.","**In the boy** – the penis and testicles grow; the hair comes on the face, underarm and body; the voice breaks and deepens; the muscles thicken; a nocturnal emission (wetting in sleep) is common and not a disease.","**In both** – the height and weight rise quickly; armpit and pubic hair; sweat and smell; the skin acne and blackheads; the feelings swing and the interest in the other sex wakes; the need for sleep is greater."]},
-    {k:"p", t:"These changes are normal, they come to every one at a different time, and no one is improved by teasing or hiding. Care: wash the body daily, change the face cloth, and wash the face and keep the hair clean; leave the acne unscratched and seek the skin trouble if it swells and pain; at the monthly flow put on a pad or clean folded cloth, change it often, wash the body and put the used one out of sight."},
+    {k:"h3", t:"The Water Cycle"},
+    {k:"p", t:"Water is always going round between the sea, the land and the sky, driven by the heat of the sun; the supply never runs out though it changes its place and its cleanliness."},
+    {k:"num", items:["The sun **evaporates** water from sea, river, pond and the wet ground; the vapour rises.","Plants add vapour from their leaves (**transpiration**).","In the colder upper air the vapour **condenses** on dust to make the cloud.","Currents carry the cloud; the drops grow heavy by more condensation and collide.","**Precipitation** falls as rain, and at the cold heights as hail, sleet or snow.","**Runoff** fills stream and river; part **infiltrates** the soil to the **ground water**, the wet layer below, which feeds well and spring.","The sea, the lake and the ground hold the water until the sun lifts it again – a never-ending circle."]},
+    {k:"p", t:"Prove condensation with a tin of ice water: drops form on the outside, and the water came from the air."},
     {k:"rule"},
-    {k:"h3", t:"Adolescent Health"},
-    {k:"p", t:"The adolescent body is being built: **nutrition** needs food from every group and iron – beans, groundnut, dark green leaf, liver, egg and fish – and enough clean water; **exercise** daily for the muscle, the heart, the bone, the sleep and the calm mind; **rest** about 8–10 hours and a time to oneself; **cleanliness**, soap and water and a dry change; a **regular habit of emptying the bowel and the bladder** and never holding it; and **mental and emotional health** – a person, a family, a club or a pastor to talk to, and one trusted adult to ask anything without fear of shame."},
-    {k:"bul", items:["**HIV** is the virus that weakens the body's power to fight; it passes only from an infected mother to her baby, through blood entering a wound, and by sex with an infected person; the untreated infection may end in **AIDS**.","**STIs** – such as gonorrhoea, syphilis and herpes – pass mostly by sex; some show discharge, smarting or sore, and some show nothing at all; all need treatment for both partners from a health worker, and an untreated one can blind a baby or hurt the internal organs.","**Prevention** – keep off sex while young; refuse every offer without apology or argument; never share a blade, a needle, a toothbrush or anything that draws blood; see that the cut is dressed; go to the clinic for a sore, running or itching; and never believe that washing, herb or a charm clears a disease from the body.","**Body changes that are not a disease**: the late starter, the early developer, and the acne – all pass in time.","**The harm of substance use and of the crowd** – the cigarette, the bottle, the sniffed glue and the tablet taken for fun – begin at this age; the pupil learns to say NO and to walk away.","**The law is on the side of the child**: any sex act with a person under 16 is a crime (statutory rape), no adult may touch you sexually, and marriage or sex forced upon a girl is a crime. The victim is never the wrongdoer.","**Safety for the girl on the way to and from school** – go with others, and tell an adult if anyone follows, waits, offers a lift or asks for secrecy; keep the route near houses and light and avoid the shortcut through the bush – and report the same day, because a person who does this to one will do it to another."]},
-    {k:"p", t:"Where to go with a question: the parent or auntie, the teacher, the school health or the **family health** worker, the **youth friendly service** at the clinic, the counsellor or trusted pastor, the government health line, and the woman and child protection desk of the police."},
+    {k:"h3", t:"Rain, Flood and Drought"},
+    {k:"bul", items:["**Rain** comes when moist air is lifted and cooled – over a hill, along a front, or in the great rising of the thunderstorm. The coast and the southwest of Liberia get the heaviest fall.","A **flood** is water overflowing its banks; causes: long heavy rain, a river swollen from the whole inland, blocked or filthy drains, a choked gutter, bush burned so the soil sheds, a house built on the flood plain, silt filling the channel, and the destruction of the mangrove and the bank vegetation.","**Flood management**: clean the drain before the rainy season, plant and protect trees, keep off the flood plain, line and clear the channel, keep an emergency bag and a higher place to go to, and mind the warning of the meteorological office.","**Drought** is a long failure of rain; the crops wither, the well falls, animals die. Its causes include the failure of the rainy season, cutting the forest and the grass that keep moisture in the land, poor soil, overgrazing, and the shifting of the climate."]},
+    {k:"p", t:"In a drought store water, mulch the beds to keep the damp, plant what needs little, dig the **retention ditch** and the small dam, keep a covered tank, and repair the hand pump before it fails. In a flood move the family, the food and the medicine early: the water takes the roof last and the life first."},
     {k:"rule"},
-    {k:"h3", t:"Food, Water and Waste"},
-    {k:"bul", items:["Eat from every group daily – the body-building (fish, meat, egg, bean, groundnut, milk), the energy (rice, cassava, yam, bread, oil) and the protective (fruit, leafy vegetable); wash the fruit and vegetable; cook the meat well; and take only safe water.","Wash the hands with soap before eating and after the toilet; cover the food and keep the fly off it; keep raw and cooked food apart.","Sleep 8–10 hours; be active daily; keep off the bottle, the cigarette and the drug; avoid too much tea and coffee; rest the eye from the screen and hold the phone at arm's length; and eat little of the sweet and soda that spoil the tooth."]},
+    {k:"h3", t:"Causes of Climate Change"},
+    {k:"p", t:"**Climate change** is the lasting change in the earth's usual weather pattern. The earth is growing warmer, and this warming is called **global warming**. Its main cause is human activity that puts extra **greenhouse gases** into the air."},
+    {k:"p", t:"The **greenhouse effect** is natural and necessary: gases in the atmosphere hold in some of the sun's warmth, as the glass of a greenhouse or the closed car does, and without it the earth would be frozen. The trouble is that we have thickened that blanket, so too much heat is held in."},
+    {k:"bul", items:["The chief greenhouse gases are **carbon dioxide (CO₂)**, **methane**, nitrous oxide and water vapour.","**Burning fossil fuels** — petrol, diesel, kerosene, coal and gas in cars, generators, factories and power stations — is the largest source of carbon dioxide.","**Deforestation** doubles the harm: burning or rotting trees release their carbon, and the forest that would have absorbed carbon dioxide is gone. Liberia holds much of what is left of the Upper Guinean forest, so our trees matter to the whole world.","**Bush burning and charcoal making**, rubbish burning, and the burning of farm waste all add carbon dioxide and smoke.","**Methane** comes from cattle, from rice swamps, and from rubbish rotting in open dumps.","Factories, mining and heavy industry add gases and dust of their own."]},
     {k:"rule"},
-    {k:"h3", t:"Safety at Home, on the Road and at Work"},
-    {k:"num", items:["Keep matches, paraffin, medicine and poison in the locked place, marked with a label and never in a bottle that holds drink; light the candle on a stand away from the curtain and blow it out.","Use a dry cloth on the hot pot, put the pot handle in, and keep the oil from water in the pan, for it boils over.","In a gas or kerosene fire: smother it with a cloth or sand – never pour water on burning oil; carry a burn under running cool water and cover it with clean cloth; get help at once.","Switch off at the point, never with a wet hand or a wet foot; report the bare or broken wire and the cracked plug; keep one plug to one socket and never join the lamps with a twisted link; keep the cord away from the stove, the water and the rat; never work at the line, never climb a pole and stay off the street where a line has fallen; call the authority and keep everyone away.","Put the earth wire to a metal box and casing, and keep the lamp and its oil away from the mattress.","On the road and in the water: look both ways, cross where people can see, wear the helmet on the bike, never ride on a load or a fender, obey the zebra and the light and never chase a ball into the road, and never swim in deep, fast or strange water or alone.","At work and in the workshop: wear the shoe, goggle and glove, tie the hair and loose clothing; keep the blade from you and the guard on; report the cut, the ache and the noise in the ear; use the ladder with the foot held; lift with the knees and not the bent back.","Weather and disaster: keep off the big tree, pole and wall in storm; move to high ground before the water rises; and keep the emergency bag and the plan."]},
-    {k:"p", t:"**First aid**: wash the hands, stop the bleeding with clean pressure, wash the cut with clean running water, cover it, and raise the part; burn under running cool water; the faint person laid flat with the feet raised; the broken limb kept still, not pulled straight; for **choking** the abdominal thrusts; and send for the health worker or move to the clinic – the dressing on the way, not the excuse to wait."}
+    {k:"h3", t:"Consequences of the Earth's Changing Climate"},
+    {k:"bul", items:["**Higher temperatures** — hotter days, more heat sickness, and harder work in the field.","**Rainfall becomes unreliable** — the rains come late or early, fall too heavily at once, or fail altogether, so the farmer cannot judge the planting season.","**More flooding** in Monrovia and along the rivers, and longer dry spells inland; wells and streams run low.","**The sea level rises** as ice melts and warm water swells. Liberia's coast is low: West Point, Buchanan, Robertsport and Greenville lose land to **coastal erosion**, and salt water spoils wells and rice swamps.","**Crops and fishing suffer** — poor harvests, pests that spread into new places, and fish moving away — so food costs more and hunger grows.","**Habitats and wildlife are lost**; plants and animals that cannot move or adapt die out.","**Disease spreads** — mosquitoes breed over a longer season and reach new areas, and floods carry cholera and other waterborne sickness.","**People are displaced** when the farm, the fishing or the home is lost."]},
+    {k:"rule"},
+    {k:"h3", t:"What Responsible Citizens Can Do"},
+    {k:"num", items:["**Plant trees and protect the forest** — a growing tree takes carbon dioxide out of the air, holds the soil and shades the ground. Keep a school nursery and plant every year.","**Stop bush burning** and use fuel-saving stoves; use less charcoal, and let the wood come from what is replanted.","**Save energy** — switch off the lamp, the fan and the generator when not needed; use efficient bulbs; cook with the pot covered; dry clothes in the sun.","**Use clean energy** where you can — solar lamps and panels, and the country's hydro power.","**Walk, ride together or use public transport**; keep the engine serviced so it burns less fuel.","**Reduce, reuse and recycle**; do not burn rubbish, and compost the food waste instead of dumping it.","**Keep drains clear and do not build on the flood plain**, so heavy rain does less damage; protect the mangroves that hold the coast.","**Teach others** — tell the family and the town what you have learned, join a clean-up or tree-planting club, and support the leaders and laws that protect the forest and the coast."]},
+    {k:"p", t:"Liberia adds very little to the world's greenhouse gases, yet it suffers much from what others have added. That is why we both **adapt** — building further from the sea, storing water, planting hardier crops, warning of floods — and **speak up**, so that those who pollute most take responsibility. Keep a class weather chart for a month, and ask the oldest people in your town whether the rains today come as they did when they were young."},
   ],
   focus:["Weather versus climate","Causes of weather","Climate zones","Global warming and greenhouse gases","Reducing climate change"],
   terms:[
