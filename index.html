@@ -134,14 +134,23 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
   height:297mm;display:flex;flex-direction:column}
 .page.measure .pbody{flex:0 0 auto;height:auto}
 .pbody{flex:1 0 auto}
-/* ---- running header & footer on every sheet ---- */
+/* ---- running header & footer on every sheet ----
+   Font size, colour and bold come from --sh-hf-* variables written by
+   applyHF(); the per-element show/hide is driven by data attributes on
+   <body>. A section left at its defaults reproduces the original look
+   exactly: 9pt, #666666, left header bold, full visibility. */
 .phead,.pfoot{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
-  font-size:9pt;color:#666;letter-spacing:.02em;flex:0 0 auto}
-.phead{border-bottom:1px solid var(--bleu-l);padding-bottom:5px;margin-bottom:14px}
-.phead span:first-child{font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:.05em}
-.pfoot{border-top:1px solid var(--bleu-l);padding-top:5px;margin-top:12px}
-.pfoot span:first-child,.phead span:last-child{white-space:nowrap;overflow:hidden;text-overflow:clip}
-.pfoot span:last-child{white-space:nowrap;font-weight:700;color:var(--bleu)}
+  font-size:var(--sh-hf-hdr-fs, 9pt);color:var(--sh-hf-hdr-col, #666666);
+  letter-spacing:.02em;flex:0 0 auto}
+.phead{border-bottom:1px solid var(--bleu-l);padding-bottom:5px;margin-bottom:14px;
+  font-size:var(--sh-hf-hdr-fs, 9pt);color:var(--sh-hf-hdr-col, #666666)}
+.phead .phdr-l{font-weight:var(--sh-hf-hdr-bold, 700);color:var(--bleu);text-transform:uppercase;letter-spacing:.05em}
+.phead .phdr-r{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.pfoot{border-top:1px solid var(--bleu-l);padding-top:5px;margin-top:12px;
+  font-size:var(--sh-hf-ftr-fs, 9pt);color:var(--sh-hf-ftr-col, #666666)}
+.pfoot .pftr-l{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.pfoot .pftr-r{white-space:nowrap;font-weight:700;color:var(--bleu)}
+.pfoot .pftr-pg{white-space:nowrap;font-weight:700;color:var(--bleu)}
 .page h1{font-size:1.43em;color:var(--bleu);border-bottom:2px solid var(--bleu);padding-bottom:6px;margin:18px 0 10px}
 .page h2{font-size:1.21em;color:var(--bleu-l);margin:16px 0 8px}
 .page h3{font-size:1.07em;margin:15px 0 7px;color:#12203a}
@@ -1074,6 +1083,122 @@ img.ai-msg-img{width:26px;height:26px}
 .des-chks .chk.off{opacity:.5}
 .des-chks .chk span{font-size:.72rem}
 @media (max-width:420px){ .des-cols,.des-chks{grid-template-columns:1fr} }
+
+/* ============================================================
+   HEADER & FOOTER CUSTOMIZATION
+   Two surfaces share the same control pattern:
+
+   1) The PRINTED sheet header & footer (.phead / .pfoot) — the
+      running head and the page-numbered footer that appear on
+      every A4 sheet, in print, in PDF and in the Word export.
+
+   2) The PLATFORM chrome header (.top) — the blue bar at the top
+      of the page — and the new PLATFORM footer (.botfoot) sitting
+      below the .wrap.
+
+   Each control writes into the same shape (on/off + show/hide per
+   element + custom text + font size + colour), so a section that
+   is left alone renders exactly as it did before.
+   ============================================================ */
+
+/* --- platform footer --- */
+.botfoot{background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff;
+  padding:10px 20px;font-size:.78rem;position:relative}
+.botfoot::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--bleu) 33%,#fff 33% 66%,var(--rouge) 66%)}
+.botfoot-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.botfoot-l,.botfoot-r{opacity:.92}
+.botfoot-l b{font-weight:800;letter-spacing:.4px}
+.botfoot-r{font-size:.72rem;opacity:.8}
+@media(max-width:640px){.botfoot-in{flex-direction:column;align-items:flex-start;gap:3px}.botfoot-r{font-size:.68rem}}
+
+/* the chrome header can be hidden entirely: the platform still works
+   because the panel toggle and the export bar live inside the .wrap */
+body.plat-hd-off .top{display:none!important}
+
+/* the new chrome footer is hidden by default; toggled on by the
+   Platform header & footer designer */
+body.plat-ft-off .botfoot{display:none!important}
+body.plat-hd-off .menu-btn{display:none!important}
+
+/* master enable/disable of the printed sheet header/footer */
+body.sheet-hf-off .page .phead,
+body.sheet-hf-off .page .pfoot{display:none!important}
+
+/* finer per-element switches on the printed sheet: an element is hidden
+   if its data attribute reads "false". JS sets the attribute on <body>. */
+body[data-phdr="false"] .page .phead{display:none!important}
+body[data-pftr="false"] .page .pfoot{display:none!important}
+body[data-phdr-l="false"] .page .phead .phdr-l{display:none!important}
+body[data-phdr-r="false"] .page .phead .phdr-r{display:none!important}
+body[data-pftr-l="false"] .page .pfoot .pftr-l{display:none!important}
+body[data-pftr-r="false"] .page .pfoot .pftr-r{display:none!important}
+body[data-pftr-pg="false"] .page .pfoot .pftr-pg{display:none!important}
+
+/* the per-element switches in the designer: a section "off" dims and
+   disables its controls so the user can see what is currently active */
+.hf-row.off{opacity:.5}
+.hf-row.off input,.hf-row.off select,.hf-row.off button{pointer-events:none}
+
+/* designer panel layout — reuses des-* classes where possible */
+.hf-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:6px}
+.hf-grid .row{margin-bottom:4px}
+.hf-grid .row label{font-size:.82rem;color:var(--ink);font-weight:600}
+.hf-grid .row input[type=text]{width:100%;box-sizing:border-box;padding:7px 9px;
+  border:1px solid var(--line);border-radius:8px;background:#f8fbff;color:var(--ink);font-size:.85rem}
+.hf-grid .row input[type=text]:focus{outline:2px solid #bcd3fb;outline-offset:0;border-color:#9dbcf0}
+.hf-grid .row input[type=range]{flex:1;accent-color:var(--bleu)}
+.hf-grid .row select{padding:7px 9px;border:1px solid var(--line);border-radius:8px;
+  background:#f8fbff;color:var(--ink);font-size:.85rem;width:100%}
+.hf-grid .row input[type=color]{width:38px;height:32px;padding:2px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;cursor:pointer;flex:none}
+.hf-grid .row b{font-size:.75rem;color:var(--bleu);min-width:40px;text-align:right;flex:none}
+
+.hf-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+@media (max-width:420px){.hf-pair{grid-template-columns:1fr}}
+
+.hf-sec-cap{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 4px}
+.hf-sec-cap b{font-size:.86rem;color:var(--ink)}
+.hf-sec-cap .hf-onoff{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted)}
+
+.hf-tog{display:inline-flex;align-items:center;gap:6px;cursor:pointer;user-select:none;font-size:.82rem;font-weight:700;color:var(--ink)}
+.hf-tog input{accent-color:var(--bleu);width:16px;height:16px}
+
+.hf-auto{flex:1;min-width:0;padding:7px 4px;border:1px solid #ccd8d4;border-radius:6px;
+  background:#eef5f1;color:#245d4e;font-size:.72rem;font-weight:700;cursor:pointer}
+.hf-auto:hover{background:#e2f0e9}
+
+/* a small "preview" of the running header/footer so the user can see
+   what their choices produce before they click Generate */
+.hf-preview{background:#f4f7fd;border:1px solid var(--line);border-radius:9px;padding:10px 12px;
+  font-size:.72rem;color:var(--ink);margin:6px 0 4px;line-height:1.45}
+.hf-preview .pv-row{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.hf-preview .pv-hd{border-bottom:1px solid var(--bleu-l);padding-bottom:4px;margin-bottom:4px}
+.hf-preview .pv-hd span:first-child{color:var(--bleu);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.hf-preview .pv-ft{border-top:1px solid var(--bleu-l);padding-top:4px;margin-top:4px}
+.hf-preview .pv-ft span:last-child{color:var(--bleu);font-weight:700}
+.hf-preview.dim{opacity:.45}
+
+.hf-saved-tag{display:inline-block;font-size:.66rem;color:#0d6b3a;background:#d9f4e2;
+  border-radius:20px;padding:2px 8px;font-weight:700;margin-left:6px;vertical-align:middle}
+
+/* hide the platform chrome footer / header elements via the new
+   designer-driven switches as well as the body classes above */
+body[data-phdr-on="false"] .top{display:none!important}
+body[data-pftr-on="false"] .botfoot{display:none!important}
+
+/* the live preview blocks inside the platform designer: they mirror the
+   on-screen chrome so a colour or font-size change is visible immediately.
+   The top preview takes the same gradient + font size as the real .top,
+   and the bottom preview mirrors #botFoot. */
+.plat-preview{background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff;
+  padding:9px 12px;border-radius:9px;margin:6px 0 4px;font-size:.85rem;line-height:1.35}
+.plat-preview.bot{font-size:.78rem}
+.plat-pv-inner{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.plat-pv-title{font-size:.95rem;font-weight:800}
+.plat-pv-sub{font-size:.72rem;opacity:.86}
+.plat-pv-l b{font-weight:800;letter-spacing:.3px}
+.plat-pv-r{font-size:.72rem;opacity:.8}
 </style>
 </head>
 <body data-subject="en">
@@ -1322,6 +1447,147 @@ img.ai-msg-img{width:26px;height:26px}
         </div>
       </details>
 
+      <details class="dd" id="ddSheetHF">
+        <summary>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-layout"/></svg></span>
+          <span class="dd-t">Sheet header &amp; footer</span>
+          <span class="dd-n" id="nSheetHF"></span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+        </summary>
+        <div class="dd-b">
+          <label class="hf-tog"><input type="checkbox" id="shHfOn" checked> Show on every sheet</label>
+          <p class="hint">The running head (subject &middot; grade on the left, session on the right) and the footer (curriculum line on the left, page number on the right) that appear on every A4 sheet, in print, in PDF and in the Word export.</p>
+
+          <div id="shHfBox">
+            <!-- Header -->
+            <div class="hf-sec-cap">
+              <b>Running header</b>
+              <span class="hf-onoff"><input type="checkbox" id="shHfHdrOn" checked> show</span>
+            </div>
+            <div class="hf-grid" id="shHfHdrRow">
+              <div class="hf-pair">
+                <div class="row"><label for="shHfHdrL">Left text</label>
+                  <input type="text" id="shHfHdrL" maxlength="120" placeholder="auto: subject \u00b7 grade"></div>
+                <div class="row"><label for="shHfHdrR">Right text</label>
+                  <input type="text" id="shHfHdrR" maxlength="120" placeholder="auto: session"></div>
+              </div>
+              <div class="row"><label for="shHfHdrFs">Text size (pt)</label>
+                <input type="range" id="shHfHdrFs" min="7" max="14" step="0.5" value="9">
+                <b id="shHfHdrFsVal">9pt</b></div>
+              <div class="row"><label for="shHfHdrCol">Text colour</label>
+                <input type="color" id="shHfHdrCol" value="#666666">
+                <button type="button" id="shHfHdrColAuto" class="hf-auto">Auto</button></div>
+              <label class="chk"><input type="checkbox" id="shHfHdrBold" checked> Bold left text</label>
+            </div>
+
+            <!-- Footer -->
+            <div class="hf-sec-cap">
+              <b>Page footer</b>
+              <span class="hf-onoff"><input type="checkbox" id="shHfFtrOn" checked> show</span>
+            </div>
+            <div class="hf-grid" id="shHfFtrRow">
+              <div class="hf-pair">
+                <div class="row"><label for="shHfFtrL">Left text</label>
+                  <input type="text" id="shHfFtrL" maxlength="240" placeholder="auto: curriculum line"></div>
+                <div class="row"><label for="shHfFtrR">Right text</label>
+                  <input type="text" id="shHfFtrR" maxlength="60" placeholder="auto: \u201cPage n of total\u201d"></div>
+              </div>
+              <div class="row"><label for="shHfFtrFs">Text size (pt)</label>
+                <input type="range" id="shHfFtrFs" min="7" max="14" step="0.5" value="9">
+                <b id="shHfFtrFsVal">9pt</b></div>
+              <div class="row"><label for="shHfFtrCol">Text colour</label>
+                <input type="color" id="shHfFtrCol" value="#666666">
+                <button type="button" id="shHfFtrColAuto" class="hf-auto">Auto</button></div>
+              <label class="chk"><input type="checkbox" id="shHfPgNum" checked> Show page number on the right</label>
+            </div>
+
+            <!-- live preview of the running header & footer -->
+            <div class="cvsec">Preview</div>
+            <div class="hf-preview" id="shHfPrev">
+              <div class="pv-row pv-hd"><span class="phdr-l" id="shHfPrevHL">SUBJECT \u00b7 GRADE 5</span><span class="phdr-r" id="shHfPrevHR">Teacher's Copy</span></div>
+              <p style="margin:6px 0 4px;color:#888;font-size:.68rem;">A4 sheet content sits here, in the chosen font size and subject colour.</p>
+              <div class="pv-row pv-ft"><span class="pftr-l" id="shHfPrevFL">Liberian Elementary Curriculum \u00b7 Grade 5</span><span><span class="pftr-r" id="shHfPrevFR">Liberian Course Pack Generator</span> <span class="pftr-pg" id="shHfPrevPG">Page 3 of 12</span></span></div>
+            </div>
+
+            <button type="button" id="shHfReset" class="des-reset" style="margin-top:6px">Reset sheet header &amp; footer</button>
+            <p class="hint">Custom text overrides the auto-generated subject &middot; grade and curriculum line. Blank fields fall back to the automatic text. Save lives on this device only.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="dd" id="ddPlatHF">
+        <summary>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-banner"/></svg></span>
+          <span class="dd-t">Platform header &amp; footer</span>
+          <span class="dd-n" id="nPlatHF"></span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+        </summary>
+        <div class="dd-b">
+          <p class="hint">The blue title bar at the top of the platform page and the matching strip below the document. Both can be enabled, disabled, or have their text and colour changed here. They do not appear on the printed sheets &mdash; the Sheet header &amp; footer above controls the printed look.</p>
+
+          <!-- Top blue bar -->
+          <div class="hf-sec-cap">
+            <b>Top header bar</b>
+            <span class="hf-onoff"><input type="checkbox" id="platHdOn" checked> show</span>
+          </div>
+          <!-- live preview of the top header bar: shows the colour and font-size
+               change immediately, mirroring the on-screen .top -->
+          <div class="plat-preview" id="platHdPreview">
+            <div class="plat-pv-inner">
+              <div class="plat-pv-title">Liberian National Curriculum &middot; Course Pack Generator</div>
+              <div class="plat-pv-sub">English &middot; Phonics &middot; French &middot; ...</div>
+            </div>
+          </div>
+          <div class="hf-grid" id="platHdRow">
+            <div class="row"><label for="platHdTitle">Title</label>
+              <input type="text" id="platHdTitle" maxlength="160" placeholder="Liberian National Curriculum \u00b7 Course Pack Generator"></div>
+            <div class="row"><label for="platHdSub">Subtitle / list of subjects</label>
+              <input type="text" id="platHdSub" maxlength="600" placeholder="English \u00b7 Phonics \u00b7 French \u00b7 ..."></div>
+            <div class="row"><label for="platHdNote">Small line under the subtitle</label>
+              <input type="text" id="platHdNote" maxlength="240" placeholder="KG-I &amp; KG-II lesson plans &amp; cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks ..."></div>
+            <div class="row"><label for="platHdFs">Title text size</label>
+              <input type="range" id="platHdFs" min="0.9" max="2.2" step="0.05" value="1.35">
+              <b id="platHdFsVal">1.35rem</b></div>
+            <div class="row"><label for="platHdBg">Bar colour</label>
+              <input type="color" id="platHdBg" value="#0b3b8c">
+              <button type="button" id="platHdBgAuto" class="hf-auto">Subject theme</button></div>
+            <label class="chk"><input type="checkbox" id="platHdCrestOn" checked> Show the crest / Liberia flag emblem</label>
+            <label class="chk"><input type="checkbox" id="platHdInstall" checked> Show the &ldquo;Install app&rdquo; button</label>
+          </div>
+
+          <!-- Bottom platform footer (new) -->
+          <div class="hf-sec-cap">
+            <b>Platform footer (new)</b>
+            <span class="hf-onoff"><input type="checkbox" id="platFtOn"> show</span>
+          </div>
+          <!-- live preview of the bottom footer: shows text + colour changes
+               immediately, mirroring the on-screen #botFoot -->
+          <div class="plat-preview bot" id="platFtPreview">
+            <div class="plat-pv-inner">
+              <span class="plat-pv-l">Liberian National Curriculum</span>
+              <span class="plat-pv-r">Course Pack Generator</span>
+            </div>
+          </div>
+          <div class="hf-grid" id="platFtRow">
+            <div class="hf-pair">
+              <div class="row"><label for="platFtL">Left text</label>
+                <input type="text" id="platFtL" maxlength="160" placeholder="Liberian National Curriculum"></div>
+              <div class="row"><label for="platFtR">Right text</label>
+                <input type="text" id="platFtR" maxlength="160" placeholder="Course Pack Generator"></div>
+            </div>
+            <div class="row"><label for="platFtFs">Text size</label>
+              <input type="range" id="platFtFs" min="0.6" max="1.2" step="0.05" value="0.78">
+              <b id="platFtFsVal">0.78rem</b></div>
+            <div class="row"><label for="platFtBg">Bar colour</label>
+              <input type="color" id="platFtBg" value="#0b3b8c">
+              <button type="button" id="platFtBgAuto" class="hf-auto">Subject theme</button></div>
+          </div>
+
+          <button type="button" id="platHfReset" class="des-reset" style="margin-top:8px">Reset platform header &amp; footer</button>
+          <p class="hint">Settings save on this device only. Hiding the top header bar removes it on screen but never affects the printable session (the Sheet header &amp; footer above still controls that).</p>
+        </div>
+      </details>
+
     </div><!-- /panel-scroll -->
 
     <!-- ============ STICKY ACTION BAR: always reachable ============ -->
@@ -1348,6 +1614,14 @@ img.ai-msg-img{width:26px;height:26px}
     <div id="doc"></div>
   </main>
 </div>
+
+<!-- ============ PLATFORM FOOTER (customizable) ============ -->
+<footer class="botfoot" id="botFoot" hidden>
+  <div class="botfoot-in">
+    <span class="botfoot-l"><b id="botFootL">Liberian National Curriculum</b></span>
+    <span class="botfoot-r" id="botFootR">Course Pack Generator</span>
+  </div>
+</footer>
 
 <!-- ============ DUPLEX PRINT HELPER ============ -->
 <div class="bookmask" id="bookMask" hidden>
@@ -1507,6 +1781,12 @@ img.ai-msg-img{width:26px;height:26px}
   <symbol id="i-voice" viewBox="0 0 24 24"><path d="M4 9.3h3.2l4.3-3.5v12.4l-4.3-3.5H4z"/><path d="M14.6 9.1a4.4 4.4 0 0 1 0 5.8M17.4 6.7a8.1 8.1 0 0 1 0 10.6"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M7.5 5.2v13.6L18.5 12z"/></symbol>
   <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="1.6"/></symbol>
+
+  <!-- ---- Header / footer customization ---- -->
+  <symbol id="i-banner" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="19" height="11" rx="1.8"/><path d="M2.5 6.5 12 13l9.5-6.5"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="5" rx="1"/><rect x="3.5" y="15.5" width="17" height="5" rx="1"/><path d="M12 8.5v7"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3.4 4.4 17.2 17.2"/><path d="M10.6 6.4c.9-.4 2-.6 3.4-.6 4.6 0 7.4 3.6 7.6 5-.2.6-1 1.8-2.6 2.9"/><path d="M6.3 8.2c-2.5 1.5-3.7 3.2-3.9 3.6.2.7 1.7 2.9 4.6 4.5 2.4 1.3 5 1.6 6.6 1.5"/></symbol>
+  <symbol id="i-eye-on" viewBox="0 0 24 24"><path d="M12 5c4.6 0 7.4 3.6 7.6 5-.2 1.4-3 5-7.6 5s-7.4-3.6-7.6-5C4.6 8.6 7.4 5 12 5z"/><circle cx="12" cy="10" r="2.4"/></symbol>
 
   <!-- ---- WASSCE-only subjects ---- -->
   <symbol id="i-sub-ag" viewBox="0 0 24 24"><path d="M3.4 20.5h17.2"/><path d="M6.2 20.5V10.8M9.8 20.5V9.2M13.4 20.5v-11M17 20.5V10.8"/><path d="M6.2 10.8c-1.6-1-2.3-2.6-2-4.4 1.8-.2 3.3.6 4.1 2.2M9.8 9.2c-1.3-1.5-1.6-3.3-.8-5 1.7.5 2.8 1.8 3.1 3.6M17 10.8c1.6-1 2.3-2.6 2-4.4-1.8-.2-3.3.6-4.1 2.2"/></symbol>
@@ -86287,6 +86567,99 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     fitTimer = setTimeout(fitPreview, 120);
   }
 
+  /* ---------------- header & footer live application ----------------
+     applyHF() reads HF.sheet and HF.plat and writes them into CSS variables
+     and body data-* attributes so the running head, footer, top bar and new
+     bottom bar render with the user's choices immediately. The sheet
+     switches are CSS-only: the rendered markup always carries .phdr-l,
+     .phdr-r, .pftr-l, .pftr-r and .pftr-pg, and the body attributes hide
+     whichever the user has switched off. */
+  function applyHF() {
+    var sh = HF.sheet;
+    var pl = HF.plat;
+    var body = document.body;
+    /* --- sheet header/footer on/off --- */
+    body.setAttribute("data-sheet-hf", sh.on ? "true" : "false");
+    body.setAttribute("data-phdr", (sh.on && sh.hdr && sh.hdr.on !== false) ? "true" : "false");
+    body.setAttribute("data-pftr", (sh.on && sh.ftr && sh.ftr.on !== false) ? "true" : "false");
+    body.setAttribute("data-phdr-l", sh.hdr && sh.hdr.on !== false ? "true" : "false");
+    body.setAttribute("data-phdr-r", sh.hdr && sh.hdr.on !== false ? "true" : "false");
+    body.setAttribute("data-pftr-l", sh.ftr && sh.ftr.on !== false ? "true" : "false");
+    body.setAttribute("data-pftr-r", sh.ftr && sh.ftr.on !== false ? "true" : "false");
+    body.setAttribute("data-pftr-pg", sh.ftr && sh.ftr.pg !== false ? "true" : "false");
+    /* the printed sheet font size and colour override the CSS defaults via
+       a single CSS variable on the document root so every .phead / .pfoot
+       element updates at once */
+    var hdrFs = (sh.hdr && sh.hdr.fs) ? sh.hdr.fs : 9;
+    var ftrFs = (sh.ftr && sh.ftr.fs) ? sh.ftr.fs : 9;
+    var hdrCol = (sh.hdr && sh.hdr.col) || "";
+    var ftrCol = (sh.ftr && sh.ftr.col) || "";
+    document.documentElement.style.setProperty("--sh-hf-hdr-fs", hdrFs + "pt");
+    document.documentElement.style.setProperty("--sh-hf-ftr-fs", ftrFs + "pt");
+    document.documentElement.style.setProperty("--sh-hf-hdr-col", hdrCol || "");
+    document.documentElement.style.setProperty("--sh-hf-ftr-col", ftrCol || "");
+    /* the user can opt out of the auto-bold on the left header text */
+    document.documentElement.style.setProperty("--sh-hf-hdr-bold",
+      sh.hdr && sh.hdr.bold === false ? "400" : "700");
+
+    /* --- platform chrome (top blue bar) --- */
+    body.setAttribute("data-plat-hd-on", pl.hdr.on !== false ? "true" : "false");
+    body.classList.toggle("plat-hd-off", pl.hdr.on === false);
+    /* write the user's text into the .top bar live so the preview matches the
+       designer without waiting for a Generate click */
+    var topTitle = $(".top-txt h1");
+    var topSub = $(".top-txt p");
+    if (topTitle) {
+      var h1 = document.createElement("span");
+      h1.innerHTML = topTitle.innerHTML;
+      topTitle.textContent = (pl.hdr.title && pl.hdr.title.trim()) ||
+        h1.textContent || "Liberian National Curriculum \u00b7 Course Pack Generator";
+    }
+    if (topSub) {
+      var defSub = "English \u00b7 Phonics \u00b7 French \u00b7 General Science \u00b7 Mathematics \u00b7 Social Studies \u00b7 Religious & Moral Education \u00b7 Physical Education \u00b7 Biology \u00b7 Chemistry \u00b7 Physics \u00b7 Economics \u00b7 English Grammar \u00b7 Geography \u00b7 History \u00b7 Civics \u00b7 Literature<br><span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks, tests and answer keys \u00b7 works offline</span>";
+      topSub.innerHTML = (pl.hdr.sub && pl.hdr.sub.trim()) || defSub;
+    }
+    var crest = document.querySelector(".crest");
+    if (crest) crest.style.display = pl.hdr.crest === false ? "none" : "";
+    var installBtn = $("#installApp");
+    if (installBtn) installBtn.style.display = pl.hdr.install === false ? "none" : "";
+    /* font size on the H1 */
+    var topBar = document.querySelector(".top");
+    if (topBar) {
+      topBar.style.fontSize = (pl.hdr.fs || 1) + "rem";
+      /* background colour override (blank = subject theme via CSS) */
+      if (pl.hdr.bg) {
+        topBar.style.background = "linear-gradient(135deg," + pl.hdr.bg + "," + pl.hdr.bg + ")";
+      } else {
+        topBar.style.background = "";
+      }
+    }
+
+    /* --- platform chrome (new bottom bar) --- */
+    body.setAttribute("data-pftr-on", pl.ftr.on ? "true" : "false");
+    body.classList.toggle("plat-ft-off", !pl.ftr.on);
+    var bot = $("#botFoot");
+    if (bot) {
+      bot.hidden = !pl.ftr.on;
+      var botL = $("#botFootL");
+      var botR = $("#botFootR");
+      if (botL) botL.textContent = pl.ftr.l || "Liberian National Curriculum";
+      if (botR) botR.textContent = pl.ftr.r || "Course Pack Generator";
+      bot.style.fontSize = (pl.ftr.fs || 0.78) + "rem";
+      if (pl.ftr.bg) {
+        bot.style.background = "linear-gradient(135deg," + pl.ftr.bg + "," + pl.ftr.bg + ")";
+      } else {
+        bot.style.background = "";
+      }
+    }
+
+    /* live preview block in the panel */
+    if (window.PACK_PAINT_HF_PREVIEW) window.PACK_PAINT_HF_PREVIEW();
+    /* the section-count badges at the top of the dropdowns */
+    syncBadges();
+  }
+  window.PACK_APPLY_HF = applyHF;
+
   /* ---------------- on-screen help ----------------
      Short plain-language description of every exercise type, shown under its
      checkbox so a teacher knows what each sheet actually produces. */
@@ -86599,6 +86972,81 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     plain:   { label: "Plain / Ink Saver", cls: "cv-plain", emblem: "em-book", leaf: "#9aa3ad", dash: false }
   };
   window.PACK_COVER_TPL = COVER_TPL;
+
+  /* ---------------- header & footer customization ----------------
+     Two surfaces share the same shape:
+
+     1) HF.sheet — the PRINTED sheet running header (.phead) and footer
+        (.pfoot). Custom text, font size, colour, per-element show/hide,
+        and a master on/off.
+
+     2) HF.plat — the PLATFORM chrome top bar (.top) and bottom bar
+        (.botfoot). Same shape; controls paint the screen.
+
+     Default values reproduce the existing behaviour exactly: no
+     custom text, font-size 9pt for the sheet and 1.35rem for the
+     platform title, the subject's `--bleu` colour, and every
+     element visible. Reset restores the defaults. */
+  function defaultSheetHF() {
+    return {
+      on: true,
+      hdr: { on: true, l: "", r: "", fs: 9, col: "", bold: true },
+      ftr: { on: true, l: "", r: "", fs: 9, col: "", pg: true }
+    };
+  }
+  function defaultPlatHF() {
+    return {
+      hdr: { on: true, title: "", sub: "", note: "", fs: 1.35, bg: "", crest: true, install: true },
+      ftr: { on: false, l: "Liberian National Curriculum", r: "Course Pack Generator", fs: 0.78, bg: "" }
+    };
+  }
+  function normalizeSheetHF(h) {
+    var base = defaultSheetHF();
+    if (!h || typeof h !== "object") return base;
+    if (typeof h.on === "boolean") base.on = h.on;
+    function normSide(s, fsMax) {
+      var o = { on: s.on !== false, l: "", r: "", fs: fsMax, col: "", bold: true, pg: true };
+      if (typeof s.l === "string") o.l = s.l.slice(0, 240);
+      if (typeof s.r === "string") o.r = s.r.slice(0, 240);
+      var fs = Number(s.fs);
+      if (Number.isFinite(fs)) o.fs = Math.min(14, Math.max(7, Math.round(fs * 2) / 2));
+      if (typeof s.col === "string" && /^#[0-9a-fA-F]{6}$/.test(s.col)) o.col = s.col.toLowerCase();
+      if (typeof s.bold === "boolean") o.bold = s.bold;
+      if (typeof s.pg === "boolean") o.pg = s.pg;
+      return o;
+    }
+    if (h.hdr) base.hdr = Object.assign(base.hdr, normSide(h.hdr, 9));
+    if (h.ftr) base.ftr = Object.assign(base.ftr, normSide(h.ftr, 9));
+    return base;
+  }
+  function normalizePlatHF(h) {
+    var base = defaultPlatHF();
+    if (!h || typeof h !== "object") return base;
+    if (h.hdr) {
+      var H = h.hdr;
+      if (typeof H.on === "boolean") base.hdr.on = H.on;
+      if (typeof H.title === "string") base.hdr.title = H.title.slice(0, 240);
+      if (typeof H.sub === "string") base.hdr.sub = H.sub.slice(0, 800);
+      if (typeof H.note === "string") base.hdr.note = H.note.slice(0, 400);
+      var fs = Number(H.fs);
+      if (Number.isFinite(fs)) base.hdr.fs = Math.min(2.4, Math.max(0.85, Math.round(fs * 20) / 20));
+      if (typeof H.bg === "string" && /^#[0-9a-fA-F]{6}$/.test(H.bg)) base.hdr.bg = H.bg.toLowerCase();
+      if (typeof H.crest === "boolean") base.hdr.crest = H.crest;
+      if (typeof H.install === "boolean") base.hdr.install = H.install;
+    }
+    if (h.ftr) {
+      var F = h.ftr;
+      if (typeof F.on === "boolean") base.ftr.on = F.on;
+      if (typeof F.l === "string") base.ftr.l = F.l.slice(0, 240);
+      if (typeof F.r === "string") base.ftr.r = F.r.slice(0, 240);
+      var ffs = Number(F.fs);
+      if (Number.isFinite(ffs)) base.ftr.fs = Math.min(1.4, Math.max(0.55, Math.round(ffs * 20) / 20));
+      if (typeof F.bg === "string" && /^#[0-9a-fA-F]{6}$/.test(F.bg)) base.ftr.bg = F.bg.toLowerCase();
+    }
+    return base;
+  }
+  var HF = { sheet: defaultSheetHF(), plat: defaultPlatHF() };
+  window.PACK_HF_STATE = HF;
 
   /* Emblems a cover can carry instead of the template's own. They are drawn
      SVG symbols, so they stay crisp in print and cost nothing to bundle. */
@@ -87227,11 +87675,35 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         : band + "   |   Name: ____________________   School: ____________________";
   }
   function bandTop(per) {
-    var left = runhead.left + (per ? " \u00b7 " + periodLabel(per) : "");
-    return '<div class="phead"><span>' + esc(left) + '</span><span>' + esc(runhead.right) + "</span></div>";
+    /* custom text overrides the auto-generated subject &middot; grade on the
+       left and the session on the right; blank falls back to the auto text.
+       The .phdr-l / .phdr-r wrappers carry the per-element show/hide switches
+       that the user's designer controls. */
+    var autoLeft = runhead.left + (per ? " \u00b7 " + periodLabel(per) : "");
+    var autoRight = runhead.right;
+    var sh = HF.sheet;
+    var l = (sh.hdr && sh.hdr.l) ? sh.hdr.l : autoLeft;
+    var r = (sh.hdr && sh.hdr.r) ? sh.hdr.r : autoRight;
+    return '<div class="phead">' +
+      '<span class="phdr-l">' + esc(l) + '</span>' +
+      '<span class="phdr-r">' + esc(r) + '</span>' +
+      '</div>';
   }
   function bandBottom(n, total) {
-    return '<div class="pfoot"><span>' + esc(runhead.foot) + '</span><span>Page ' + n + " of " + total + "</span></div>";
+    var sh = HF.sheet;
+    var autoFoot = runhead.foot;
+    var autoRight = "Page " + n + " of " + total;
+    var l = (sh.ftr && sh.ftr.l) ? sh.ftr.l : autoFoot;
+    var r = (sh.ftr && sh.ftr.r) ? sh.ftr.r : autoRight;
+    /* the page number sits in its own wrapper so it can be hidden without
+       losing the right-side custom text; if the user kept the right text as
+       the automatic one, hide the page number entirely */
+    var pgShown = sh.ftr && sh.ftr.pg !== false && !(sh.ftr && sh.ftr.r);
+    var pg = pgShown ? '<span class="pftr-pg">Page ' + n + ' of ' + total + '</span>' : '';
+    return '<div class="pfoot">' +
+      '<span class="pftr-l">' + esc(l) + '</span>' +
+      '<span><span class="pftr-r">' + esc(r) + '</span> ' + pg + '</span>' +
+      '</div>';
   }
 
   /* ---------------- pagination ----------------
@@ -88571,7 +89043,10 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         return { subject: cur, mode: MODE, dtype: DOCTYPE, lpType: LP_PLAN_TYPE, controls: controls,
           periods: Array.from(document.querySelectorAll(".pk:checked"), function (c) { return c.value; }),
           sheets: Array.from(document.querySelectorAll(".sh:checked"), function (c) { return c.value; }),
-          cover: JSON.parse(JSON.stringify(COVER)), images: JSON.parse(JSON.stringify(COVER_IMG)) };
+          cover: JSON.parse(JSON.stringify(COVER)), images: JSON.parse(JSON.stringify(COVER_IMG)),
+          /* HF is a parallel setting block: saved with the document so a
+             teacher who saves a custom header / footer keeps it on restore */
+          hf: { sheet: normalizeSheetHF(HF.sheet), plat: normalizePlatHF(HF.plat) } };
       },
       restore: function (s) {
         cur = s.subject; TRACK = S().wa ? "wa" : "curr"; MODE = s.mode; DOCTYPE = s.dtype; LP_PLAN_TYPE = s.lpType;
@@ -88592,6 +89067,16 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         $("#cvFade").value = COVER.bgFade; $("#fadeVal").textContent = COVER.bgFade + "%";
         $("#cvBox").style.display = COVER.on ? "" : "none";
         NOTES_ON = $("#notes").checked;
+        /* push the saved HF into the live designers and re-bind the controls
+           so every value reappears in its panel */
+        if (s.hf) {
+          if (window.PACK_HF_SET) window.PACK_HF_SET(s.hf);
+          else {
+            HF.sheet = normalizeSheetHF(s.hf.sheet);
+            HF.plat = normalizePlatHF(s.hf.plat);
+            renderSheetHF(); renderPlatHF(); bindSheetHF(); bindPlatHF(); applyHF();
+          }
+        }
         paintSession(); paintDocType(); paintLpPlanTabs(); paintLpWeeks(); paintLpPresets(); renderTplGrid(); renderDesigner(); paintImgPrev(); applyFontSize(); syncBadges();
         generate();
       },
@@ -88630,7 +89115,329 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 
     var f = document.getElementById("fsz");
     setb("nFmt", f ? (+f.value || 12) + "pt" : "");
+
+    /* sheet header/footer badge: "on" or "off" so a teacher can see at a
+       glance whether the customized running head will appear */
+    setb("nSheetHF", (HF.sheet.on) ? "on" : "off");
+    setb("nPlatHF", (HF.plat.hdr.on !== false || HF.plat.ftr.on) ? "on" : "off");
   }
+
+  /* ---------------- header & footer designer wiring ----------------
+     The two <details> blocks in body.html (ddSheetHF, ddPlatHF) carry every
+     control referenced in the patch doc. Every control writes into HF.sheet
+     or HF.plat immediately, persists to its own localStorage key, and asks
+     applyHF() to repaint the preview. The live preview block inside each
+     panel is rebuilt by paintSheetHFPreview / paintPlatHFPreview. */
+  function relHF() { try { applyHF(); } catch (e) {} }
+  /* every control is bound at most once; the data-hf-bound marker lets a
+     restore that calls bindSheetHF() again safely skip the rebinding */
+  function marked(el) { return el && el.dataset.hfBound === "1"; }
+  function bindBool(id, side, key, after) {
+    var el = document.getElementById(id);
+    if (!el || marked(el)) return;
+    el.dataset.hfBound = "1";
+    el.addEventListener("change", function () {
+      side[key] = el.checked;
+      if (typeof after === "function") after();
+      saveHF();
+      relHF();
+    });
+  }
+  function bindText(id, side, key, after) {
+    var el = document.getElementById(id);
+    if (!el || marked(el)) return;
+    el.dataset.hfBound = "1";
+    el.addEventListener("input", function () {
+      side[key] = el.value;
+      if (typeof after === "function") after();
+      saveHF();
+      relHF();
+    });
+  }
+  function bindRange(id, side, key, fvId, fmt, after) {
+    var el = document.getElementById(id);
+    if (!el || marked(el)) return;
+    el.dataset.hfBound = "1";
+    var fv = fvId ? document.getElementById(fvId) : null;
+    el.addEventListener("input", function () {
+      side[key] = parseFloat(el.value);
+      if (fv) fv.textContent = fmt ? fmt(el.value) : el.value;
+      if (typeof after === "function") after();
+      saveHF();
+      relHF();
+    });
+  }
+
+  function paintSheetHFPreview() {
+    /* Live preview for the printed sheet header/footer designers. Updates the
+       four preview lines (shHfPrevHL/HR/FL/FR/PG) with whatever HF holds
+       right now, and the page-number span is hidden when the user opts out. */
+    var sh = HF.sheet;
+    function txt(side, which, fallback) {
+      if (sh.on && side && side.on !== false && side[which]) return side[which];
+      return fallback;
+    }
+    var hl = document.getElementById("shHfPrevHL");
+    var hr = document.getElementById("shHfPrevHR");
+    var fl = document.getElementById("shHfPrevFL");
+    var fr = document.getElementById("shHfPrevFR");
+    var pg = document.getElementById("shHfPrevPG");
+    if (hl) hl.textContent = txt(sh.hdr, "l", "SUBJECT \u00b7 GRADE 5");
+    if (hr) hr.textContent = txt(sh.hdr, "r", "Teacher's Copy");
+    if (fl) fl.textContent = txt(sh.ftr, "l", "Liberian Elementary Curriculum \u00b7 Grade 5");
+    if (fr) fr.textContent = txt(sh.ftr, "r", "Liberian Course Pack Generator");
+    if (pg) pg.style.display = sh.on && sh.ftr && sh.ftr.pg !== false ? "" : "none";
+    /* per-section show/hide */
+    var box = document.getElementById("shHfBox");
+    var hdrRow = document.getElementById("shHfHdrRow");
+    var ftrRow = document.getElementById("shHfFtrRow");
+    if (box) box.style.display = sh.on ? "" : "none";
+    if (hdrRow) hdrRow.style.display = sh.on && sh.hdr && sh.hdr.on !== false ? "" : "none";
+    if (ftrRow) ftrRow.style.display = sh.on && sh.ftr && sh.ftr.on !== false ? "" : "none";
+  }
+  function paintPlatHFPreview() {
+    /* Live preview text of the platform chrome (top + bottom). The CSS in
+       styles.css handles the actual colour and visibility for the chrome
+       itself; this just rebuilds the preview area inside the panel. */
+    var pl = HF.plat;
+    var previewTop = document.getElementById("platHdPreview");
+    var previewBot = document.getElementById("platFtPreview");
+    if (previewTop) {
+      previewTop.style.display = pl.hdr.on !== false ? "" : "none";
+      var bg = pl.hdr.bg;
+      if (bg) previewTop.style.background = "linear-gradient(135deg," + bg + "," + bg + ")";
+      else previewTop.style.background = "";
+      var titleEl = previewTop.querySelector(".plat-pv-title");
+      if (titleEl) titleEl.style.fontSize = (pl.hdr.fs || 1.35) + "rem";
+    }
+    if (previewBot) {
+      previewBot.style.display = pl.ftr.on ? "" : "none";
+      var fbg = pl.ftr.bg;
+      if (fbg) previewBot.style.background = "linear-gradient(135deg," + fbg + "," + fbg + ")";
+      else previewBot.style.background = "";
+      previewBot.style.fontSize = (pl.ftr.fs || 0.78) + "rem";
+    }
+  }
+  window.PACK_PAINT_HF_PREVIEW = function () {
+    paintSheetHFPreview();
+    paintPlatHFPreview();
+  };
+
+  function bindSheetHF() {
+    var sh = HF.sheet;
+    function livePreview() { try { paintSheetHFPreview(); } catch (e) {} }
+    bindBool("shHfOn", sh, "on", livePreview);
+    bindBool("shHfHdrOn", sh.hdr, "on", livePreview);
+    bindBool("shHfHdrBold", sh.hdr, "bold", livePreview);
+    bindBool("shHfFtrOn", sh.ftr, "on", livePreview);
+    bindBool("shHfPgNum", sh.ftr, "pg", livePreview);
+    bindText("shHfHdrL", sh.hdr, "l", livePreview);
+    bindText("shHfHdrR", sh.hdr, "r", livePreview);
+    bindText("shHfFtrL", sh.ftr, "l", livePreview);
+    bindText("shHfFtrR", sh.ftr, "r", livePreview);
+    function setSwatch(id, side, key) {
+      var inp = document.getElementById(id);
+      if (!inp) return;
+      if (!inp.dataset.hfBound) {
+        inp.dataset.fallback = inp.value;
+        inp.dataset.hfBound = "1";
+        inp.addEventListener("input", function () {
+          side[key] = inp.value.toLowerCase();
+          saveHF();
+          relHF();
+          livePreview();
+        });
+        var auto = document.getElementById(id + "Auto");
+        if (auto) auto.onclick = function () {
+          side[key] = "";
+          inp.value = inp.dataset.fallback || "#666666";
+          saveHF();
+          relHF();
+          livePreview();
+        };
+      }
+      inp.value = side[key] || inp.dataset.fallback || "#666666";
+    }
+    setSwatch("shHfHdrCol", sh.hdr, "col");
+    setSwatch("shHfFtrCol", sh.ftr, "col");
+    bindRange("shHfHdrFs", sh.hdr, "fs", "shHfHdrFsVal", function (v) { return v + "pt"; }, livePreview);
+    bindRange("shHfFtrFs", sh.ftr, "fs", "shHfFtrFsVal", function (v) { return v + "pt"; }, livePreview);
+    livePreview();
+    var r = document.getElementById("shHfReset");
+    if (r) r.onclick = function () {
+      HF.sheet = defaultSheetHF();
+      saveHF();
+      renderSheetHF();
+      livePreview();
+      relHF();
+      syncBadges();
+    };
+  }
+
+  function bindPlatHF() {
+    var pl = HF.plat;
+    bindBool("platHdOn", pl.hdr, "on", paintPlatHFPreview);
+    bindBool("platHdCrestOn", pl.hdr, "crest", paintPlatHFPreview);
+    bindBool("platHdInstall", pl.hdr, "install", paintPlatHFPreview);
+    bindBool("platFtOn", pl.ftr, "on", paintPlatHFPreview);
+    bindText("platHdTitle", pl.hdr, "title", paintPlatHFPreview);
+    bindText("platHdSub", pl.hdr, "sub", paintPlatHFPreview);
+    bindText("platHdNote", pl.hdr, "note", paintPlatHFPreview);
+    bindText("platFtL", pl.ftr, "l", paintPlatHFPreview);
+    bindText("platFtR", pl.ftr, "r", paintPlatHFPreview);
+    bindRange("platHdFs", pl.hdr, "fs", "platHdFsVal", function (v) { return v.toFixed(2) + "rem"; }, paintPlatHFPreview);
+    bindRange("platFtFs", pl.ftr, "fs", "platFtFsVal", function (v) { return v.toFixed(2) + "rem"; }, paintPlatHFPreview);
+    function setSw(id, side, key, fallback) {
+      var inp = document.getElementById(id);
+      if (!inp) return;
+      if (!inp.dataset.hfBound) {
+        inp.dataset.hfBound = "1";
+        inp.addEventListener("input", function () {
+          side[key] = inp.value.toLowerCase();
+          saveHF();
+          relHF();
+          paintPlatHFPreview();
+        });
+        var auto = document.getElementById(id + "Auto");
+        if (auto) auto.onclick = function () {
+          side[key] = "";
+          inp.value = fallback;
+          saveHF();
+          relHF();
+          paintPlatHFPreview();
+        };
+      }
+      inp.value = side[key] || fallback;
+    }
+    setSw("platHdBg", pl.hdr, "bg", "#0b3b8c");
+    setSw("platFtBg", pl.ftr, "bg", "#0b3b8c");
+    var r = document.getElementById("platHfReset");
+    if (r) r.onclick = function () {
+      HF.plat = defaultPlatHF();
+      saveHF();
+      paintPlatHFPreview();
+      relHF();
+      syncBadges();
+    };
+  }
+
+  function renderSheetHF() {
+    /* the panel lives in body.html; this just re-binds every control after a
+       restore. Bindings are idempotent (re-running isn't harmful) but text
+       value is set from HF once on load and on reset. */
+    if (!document.getElementById("shHfOn")) return;
+    var sh = HF.sheet;
+    function setv(id, v, isCheck) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (isCheck) el.checked = !!v;
+      else el.value = v == null ? "" : String(v);
+    }
+    setv("shHfOn", sh.on, true);
+    setv("shHfHdrOn", sh.hdr.on !== false, true);
+    setv("shHfHdrBold", sh.hdr.bold !== false, true);
+    setv("shHfFtrOn", sh.ftr.on !== false, true);
+    setv("shHfPgNum", sh.ftr.pg !== false, true);
+    setv("shHfHdrL", sh.hdr.l);
+    setv("shHfHdrR", sh.hdr.r);
+    setv("shHfHdrFs", sh.hdr.fs || 9);
+    setv("shHfHdrFsVal", (sh.hdr.fs || 9) + "pt");
+    setv("shHfHdrCol", sh.hdr.col || "#666666");
+    setv("shHfFtrL", sh.ftr.l);
+    setv("shHfFtrR", sh.ftr.r);
+    setv("shHfFtrFs", sh.ftr.fs || 9);
+    setv("shHfFtrFsVal", (sh.ftr.fs || 9) + "pt");
+    setv("shHfFtrCol", sh.ftr.col || "#666666");
+  }
+  function renderPlatHF() {
+    if (!document.getElementById("platHdOn")) return;
+    var pl = HF.plat;
+    function setv(id, v, isCheck) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (isCheck) el.checked = !!v;
+      else el.value = v == null ? "" : String(v);
+    }
+    setv("platHdOn", pl.hdr.on !== false, true);
+    setv("platHdCrestOn", pl.hdr.crest !== false, true);
+    setv("platHdInstall", pl.hdr.install !== false, true);
+    setv("platFtOn", pl.ftr.on, true);
+    setv("platHdTitle", pl.hdr.title);
+    setv("platHdSub", pl.hdr.sub);
+    setv("platHdNote", pl.hdr.note);
+    setv("platHdFs", pl.hdr.fs || 1.35);
+    setv("platHdFsVal", (pl.hdr.fs || 1.35).toFixed(2) + "rem");
+    setv("platHdBg", pl.hdr.bg || "#0b3b8c");
+    setv("platFtL", pl.ftr.l);
+    setv("platFtR", pl.ftr.r);
+    setv("platFtFs", pl.ftr.fs || 0.78);
+    setv("platFtFsVal", (pl.ftr.fs || 0.78).toFixed(2) + "rem");
+    setv("platFtBg", pl.ftr.bg || "#0b3b8c");
+  }
+
+  /* persistence on its own key: HF is independent of COVER, so a user can
+     change one without losing the other */
+  var HF_STORE = "lncpg.hf.v1";
+  function saveHF() {
+    try {
+      HF.sheet = normalizeSheetHF(HF.sheet);
+      HF.plat = normalizePlatHF(HF.plat);
+      localStorage.setItem(HF_STORE, JSON.stringify(HF));
+    } catch (e) { /* private mode or storage disabled */ }
+  }
+  function loadHF() {
+    try {
+      var raw = localStorage.getItem(HF_STORE);
+      if (!raw) return;
+      var o = JSON.parse(raw);
+      if (o && typeof o === "object") {
+        HF.sheet = normalizeSheetHF(o.sheet);
+        HF.plat = normalizePlatHF(o.plat);
+      }
+    } catch (e) { /* corrupt: leave the defaults in place */ }
+  }
+
+  /* Initial render of the two header/footer designers happens before
+     TEACHING.init so saved-control persistence and the .docx header can be
+     written from the same HF state. */
+  loadHF();
+  renderSheetHF();
+  renderPlatHF();
+  bindSheetHF();
+  bindPlatHF();
+  paintSheetHFPreview();
+  paintPlatHFPreview();
+  /* applyHF() runs as soon as the DOM has read the platform chrome (.top,
+     .crest, installApp, the new botFoot). Until that point, every GET on a
+     vanilla selector would return null. */
+  if (document.body) applyHF();
+  document.addEventListener("DOMContentLoaded", function () { applyHF(); });
+
+  /* ---- integrate HF into the saved settings that TEACHING carries ---- */
+  document.addEventListener("DOMContentLoaded", function () {
+    /* when TEACHING fires its settings callback, also include the HF block;
+       when TEACHING restores a saved document, push HF back into the
+       designer controls. The are integrated as a separate key. */
+    /* expose HF to teaching.js so settings/restore can see it */
+    window.PACK_HF_GET = function () {
+      return { sheet: normalizeSheetHF(HF.sheet), plat: normalizePlatHF(HF.plat) };
+    };
+    window.PACK_HF_SET = function (hf) {
+      HF.sheet = normalizeSheetHF(hf && hf.sheet);
+      HF.plat = normalizePlatHF(hf && hf.plat);
+      saveHF();
+      renderSheetHF();
+      renderPlatHF();
+      bindSheetHF();
+      bindPlatHF();
+      applyHF();
+    };
+  });
+
+  /* if TEACHING is already loaded on this page, make HF available before its
+     DOMContentLoaded runs (this whole IIFE runs after all scripts are inlined
+     via build.sh, but the deferred call style keeps both orders happy) */
+  window.PACK_HF_GET = window.PACK_HF_GET || function () { return HF; };
 })();
 </script>
 </body>

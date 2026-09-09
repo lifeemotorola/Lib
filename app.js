@@ -370,6 +370,99 @@
     fitTimer = setTimeout(fitPreview, 120);
   }
 
+  /* ---------------- header & footer live application ----------------
+     applyHF() reads HF.sheet and HF.plat and writes them into CSS variables
+     and body data-* attributes so the running head, footer, top bar and new
+     bottom bar render with the user's choices immediately. The sheet
+     switches are CSS-only: the rendered markup always carries .phdr-l,
+     .phdr-r, .pftr-l, .pftr-r and .pftr-pg, and the body attributes hide
+     whichever the user has switched off. */
+  function applyHF() {
+    var sh = HF.sheet;
+    var pl = HF.plat;
+    var body = document.body;
+    /* --- sheet header/footer on/off --- */
+    body.setAttribute("data-sheet-hf", sh.on ? "true" : "false");
+    body.setAttribute("data-phdr", (sh.on && sh.hdr && sh.hdr.on !== false) ? "true" : "false");
+    body.setAttribute("data-pftr", (sh.on && sh.ftr && sh.ftr.on !== false) ? "true" : "false");
+    body.setAttribute("data-phdr-l", sh.hdr && sh.hdr.on !== false ? "true" : "false");
+    body.setAttribute("data-phdr-r", sh.hdr && sh.hdr.on !== false ? "true" : "false");
+    body.setAttribute("data-pftr-l", sh.ftr && sh.ftr.on !== false ? "true" : "false");
+    body.setAttribute("data-pftr-r", sh.ftr && sh.ftr.on !== false ? "true" : "false");
+    body.setAttribute("data-pftr-pg", sh.ftr && sh.ftr.pg !== false ? "true" : "false");
+    /* the printed sheet font size and colour override the CSS defaults via
+       a single CSS variable on the document root so every .phead / .pfoot
+       element updates at once */
+    var hdrFs = (sh.hdr && sh.hdr.fs) ? sh.hdr.fs : 9;
+    var ftrFs = (sh.ftr && sh.ftr.fs) ? sh.ftr.fs : 9;
+    var hdrCol = (sh.hdr && sh.hdr.col) || "";
+    var ftrCol = (sh.ftr && sh.ftr.col) || "";
+    document.documentElement.style.setProperty("--sh-hf-hdr-fs", hdrFs + "pt");
+    document.documentElement.style.setProperty("--sh-hf-ftr-fs", ftrFs + "pt");
+    document.documentElement.style.setProperty("--sh-hf-hdr-col", hdrCol || "");
+    document.documentElement.style.setProperty("--sh-hf-ftr-col", ftrCol || "");
+    /* the user can opt out of the auto-bold on the left header text */
+    document.documentElement.style.setProperty("--sh-hf-hdr-bold",
+      sh.hdr && sh.hdr.bold === false ? "400" : "700");
+
+    /* --- platform chrome (top blue bar) --- */
+    body.setAttribute("data-plat-hd-on", pl.hdr.on !== false ? "true" : "false");
+    body.classList.toggle("plat-hd-off", pl.hdr.on === false);
+    /* write the user's text into the .top bar live so the preview matches the
+       designer without waiting for a Generate click */
+    var topTitle = $(".top-txt h1");
+    var topSub = $(".top-txt p");
+    if (topTitle) {
+      var h1 = document.createElement("span");
+      h1.innerHTML = topTitle.innerHTML;
+      topTitle.textContent = (pl.hdr.title && pl.hdr.title.trim()) ||
+        h1.textContent || "Liberian National Curriculum \u00b7 Course Pack Generator";
+    }
+    if (topSub) {
+      var defSub = "English \u00b7 Phonics \u00b7 French \u00b7 General Science \u00b7 Mathematics \u00b7 Social Studies \u00b7 Religious & Moral Education \u00b7 Physical Education \u00b7 Biology \u00b7 Chemistry \u00b7 Physics \u00b7 Economics \u00b7 English Grammar \u00b7 Geography \u00b7 History \u00b7 Civics \u00b7 Literature<br><span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks, tests and answer keys \u00b7 works offline</span>";
+      topSub.innerHTML = (pl.hdr.sub && pl.hdr.sub.trim()) || defSub;
+    }
+    var crest = document.querySelector(".crest");
+    if (crest) crest.style.display = pl.hdr.crest === false ? "none" : "";
+    var installBtn = $("#installApp");
+    if (installBtn) installBtn.style.display = pl.hdr.install === false ? "none" : "";
+    /* font size on the H1 */
+    var topBar = document.querySelector(".top");
+    if (topBar) {
+      topBar.style.fontSize = (pl.hdr.fs || 1) + "rem";
+      /* background colour override (blank = subject theme via CSS) */
+      if (pl.hdr.bg) {
+        topBar.style.background = "linear-gradient(135deg," + pl.hdr.bg + "," + pl.hdr.bg + ")";
+      } else {
+        topBar.style.background = "";
+      }
+    }
+
+    /* --- platform chrome (new bottom bar) --- */
+    body.setAttribute("data-pftr-on", pl.ftr.on ? "true" : "false");
+    body.classList.toggle("plat-ft-off", !pl.ftr.on);
+    var bot = $("#botFoot");
+    if (bot) {
+      bot.hidden = !pl.ftr.on;
+      var botL = $("#botFootL");
+      var botR = $("#botFootR");
+      if (botL) botL.textContent = pl.ftr.l || "Liberian National Curriculum";
+      if (botR) botR.textContent = pl.ftr.r || "Course Pack Generator";
+      bot.style.fontSize = (pl.ftr.fs || 0.78) + "rem";
+      if (pl.ftr.bg) {
+        bot.style.background = "linear-gradient(135deg," + pl.ftr.bg + "," + pl.ftr.bg + ")";
+      } else {
+        bot.style.background = "";
+      }
+    }
+
+    /* live preview block in the panel */
+    if (window.PACK_PAINT_HF_PREVIEW) window.PACK_PAINT_HF_PREVIEW();
+    /* the section-count badges at the top of the dropdowns */
+    syncBadges();
+  }
+  window.PACK_APPLY_HF = applyHF;
+
   /* ---------------- on-screen help ----------------
      Short plain-language description of every exercise type, shown under its
      checkbox so a teacher knows what each sheet actually produces. */
@@ -682,6 +775,81 @@
     plain:   { label: "Plain / Ink Saver", cls: "cv-plain", emblem: "em-book", leaf: "#9aa3ad", dash: false }
   };
   window.PACK_COVER_TPL = COVER_TPL;
+
+  /* ---------------- header & footer customization ----------------
+     Two surfaces share the same shape:
+
+     1) HF.sheet — the PRINTED sheet running header (.phead) and footer
+        (.pfoot). Custom text, font size, colour, per-element show/hide,
+        and a master on/off.
+
+     2) HF.plat — the PLATFORM chrome top bar (.top) and bottom bar
+        (.botfoot). Same shape; controls paint the screen.
+
+     Default values reproduce the existing behaviour exactly: no
+     custom text, font-size 9pt for the sheet and 1.35rem for the
+     platform title, the subject's `--bleu` colour, and every
+     element visible. Reset restores the defaults. */
+  function defaultSheetHF() {
+    return {
+      on: true,
+      hdr: { on: true, l: "", r: "", fs: 9, col: "", bold: true },
+      ftr: { on: true, l: "", r: "", fs: 9, col: "", pg: true }
+    };
+  }
+  function defaultPlatHF() {
+    return {
+      hdr: { on: true, title: "", sub: "", note: "", fs: 1.35, bg: "", crest: true, install: true },
+      ftr: { on: false, l: "Liberian National Curriculum", r: "Course Pack Generator", fs: 0.78, bg: "" }
+    };
+  }
+  function normalizeSheetHF(h) {
+    var base = defaultSheetHF();
+    if (!h || typeof h !== "object") return base;
+    if (typeof h.on === "boolean") base.on = h.on;
+    function normSide(s, fsMax) {
+      var o = { on: s.on !== false, l: "", r: "", fs: fsMax, col: "", bold: true, pg: true };
+      if (typeof s.l === "string") o.l = s.l.slice(0, 240);
+      if (typeof s.r === "string") o.r = s.r.slice(0, 240);
+      var fs = Number(s.fs);
+      if (Number.isFinite(fs)) o.fs = Math.min(14, Math.max(7, Math.round(fs * 2) / 2));
+      if (typeof s.col === "string" && /^#[0-9a-fA-F]{6}$/.test(s.col)) o.col = s.col.toLowerCase();
+      if (typeof s.bold === "boolean") o.bold = s.bold;
+      if (typeof s.pg === "boolean") o.pg = s.pg;
+      return o;
+    }
+    if (h.hdr) base.hdr = Object.assign(base.hdr, normSide(h.hdr, 9));
+    if (h.ftr) base.ftr = Object.assign(base.ftr, normSide(h.ftr, 9));
+    return base;
+  }
+  function normalizePlatHF(h) {
+    var base = defaultPlatHF();
+    if (!h || typeof h !== "object") return base;
+    if (h.hdr) {
+      var H = h.hdr;
+      if (typeof H.on === "boolean") base.hdr.on = H.on;
+      if (typeof H.title === "string") base.hdr.title = H.title.slice(0, 240);
+      if (typeof H.sub === "string") base.hdr.sub = H.sub.slice(0, 800);
+      if (typeof H.note === "string") base.hdr.note = H.note.slice(0, 400);
+      var fs = Number(H.fs);
+      if (Number.isFinite(fs)) base.hdr.fs = Math.min(2.4, Math.max(0.85, Math.round(fs * 20) / 20));
+      if (typeof H.bg === "string" && /^#[0-9a-fA-F]{6}$/.test(H.bg)) base.hdr.bg = H.bg.toLowerCase();
+      if (typeof H.crest === "boolean") base.hdr.crest = H.crest;
+      if (typeof H.install === "boolean") base.hdr.install = H.install;
+    }
+    if (h.ftr) {
+      var F = h.ftr;
+      if (typeof F.on === "boolean") base.ftr.on = F.on;
+      if (typeof F.l === "string") base.ftr.l = F.l.slice(0, 240);
+      if (typeof F.r === "string") base.ftr.r = F.r.slice(0, 240);
+      var ffs = Number(F.fs);
+      if (Number.isFinite(ffs)) base.ftr.fs = Math.min(1.4, Math.max(0.55, Math.round(ffs * 20) / 20));
+      if (typeof F.bg === "string" && /^#[0-9a-fA-F]{6}$/.test(F.bg)) base.ftr.bg = F.bg.toLowerCase();
+    }
+    return base;
+  }
+  var HF = { sheet: defaultSheetHF(), plat: defaultPlatHF() };
+  window.PACK_HF_STATE = HF;
 
   /* Emblems a cover can carry instead of the template's own. They are drawn
      SVG symbols, so they stay crisp in print and cost nothing to bundle. */
@@ -1310,11 +1478,35 @@
         : band + "   |   Name: ____________________   School: ____________________";
   }
   function bandTop(per) {
-    var left = runhead.left + (per ? " \u00b7 " + periodLabel(per) : "");
-    return '<div class="phead"><span>' + esc(left) + '</span><span>' + esc(runhead.right) + "</span></div>";
+    /* custom text overrides the auto-generated subject &middot; grade on the
+       left and the session on the right; blank falls back to the auto text.
+       The .phdr-l / .phdr-r wrappers carry the per-element show/hide switches
+       that the user's designer controls. */
+    var autoLeft = runhead.left + (per ? " \u00b7 " + periodLabel(per) : "");
+    var autoRight = runhead.right;
+    var sh = HF.sheet;
+    var l = (sh.hdr && sh.hdr.l) ? sh.hdr.l : autoLeft;
+    var r = (sh.hdr && sh.hdr.r) ? sh.hdr.r : autoRight;
+    return '<div class="phead">' +
+      '<span class="phdr-l">' + esc(l) + '</span>' +
+      '<span class="phdr-r">' + esc(r) + '</span>' +
+      '</div>';
   }
   function bandBottom(n, total) {
-    return '<div class="pfoot"><span>' + esc(runhead.foot) + '</span><span>Page ' + n + " of " + total + "</span></div>";
+    var sh = HF.sheet;
+    var autoFoot = runhead.foot;
+    var autoRight = "Page " + n + " of " + total;
+    var l = (sh.ftr && sh.ftr.l) ? sh.ftr.l : autoFoot;
+    var r = (sh.ftr && sh.ftr.r) ? sh.ftr.r : autoRight;
+    /* the page number sits in its own wrapper so it can be hidden without
+       losing the right-side custom text; if the user kept the right text as
+       the automatic one, hide the page number entirely */
+    var pgShown = sh.ftr && sh.ftr.pg !== false && !(sh.ftr && sh.ftr.r);
+    var pg = pgShown ? '<span class="pftr-pg">Page ' + n + ' of ' + total + '</span>' : '';
+    return '<div class="pfoot">' +
+      '<span class="pftr-l">' + esc(l) + '</span>' +
+      '<span><span class="pftr-r">' + esc(r) + '</span> ' + pg + '</span>' +
+      '</div>';
   }
 
   /* ---------------- pagination ----------------
@@ -2654,7 +2846,10 @@
         return { subject: cur, mode: MODE, dtype: DOCTYPE, lpType: LP_PLAN_TYPE, controls: controls,
           periods: Array.from(document.querySelectorAll(".pk:checked"), function (c) { return c.value; }),
           sheets: Array.from(document.querySelectorAll(".sh:checked"), function (c) { return c.value; }),
-          cover: JSON.parse(JSON.stringify(COVER)), images: JSON.parse(JSON.stringify(COVER_IMG)) };
+          cover: JSON.parse(JSON.stringify(COVER)), images: JSON.parse(JSON.stringify(COVER_IMG)),
+          /* HF is a parallel setting block: saved with the document so a
+             teacher who saves a custom header / footer keeps it on restore */
+          hf: { sheet: normalizeSheetHF(HF.sheet), plat: normalizePlatHF(HF.plat) } };
       },
       restore: function (s) {
         cur = s.subject; TRACK = S().wa ? "wa" : "curr"; MODE = s.mode; DOCTYPE = s.dtype; LP_PLAN_TYPE = s.lpType;
@@ -2675,6 +2870,16 @@
         $("#cvFade").value = COVER.bgFade; $("#fadeVal").textContent = COVER.bgFade + "%";
         $("#cvBox").style.display = COVER.on ? "" : "none";
         NOTES_ON = $("#notes").checked;
+        /* push the saved HF into the live designers and re-bind the controls
+           so every value reappears in its panel */
+        if (s.hf) {
+          if (window.PACK_HF_SET) window.PACK_HF_SET(s.hf);
+          else {
+            HF.sheet = normalizeSheetHF(s.hf.sheet);
+            HF.plat = normalizePlatHF(s.hf.plat);
+            renderSheetHF(); renderPlatHF(); bindSheetHF(); bindPlatHF(); applyHF();
+          }
+        }
         paintSession(); paintDocType(); paintLpPlanTabs(); paintLpWeeks(); paintLpPresets(); renderTplGrid(); renderDesigner(); paintImgPrev(); applyFontSize(); syncBadges();
         generate();
       },
@@ -2713,5 +2918,327 @@
 
     var f = document.getElementById("fsz");
     setb("nFmt", f ? (+f.value || 12) + "pt" : "");
+
+    /* sheet header/footer badge: "on" or "off" so a teacher can see at a
+       glance whether the customized running head will appear */
+    setb("nSheetHF", (HF.sheet.on) ? "on" : "off");
+    setb("nPlatHF", (HF.plat.hdr.on !== false || HF.plat.ftr.on) ? "on" : "off");
   }
+
+  /* ---------------- header & footer designer wiring ----------------
+     The two <details> blocks in body.html (ddSheetHF, ddPlatHF) carry every
+     control referenced in the patch doc. Every control writes into HF.sheet
+     or HF.plat immediately, persists to its own localStorage key, and asks
+     applyHF() to repaint the preview. The live preview block inside each
+     panel is rebuilt by paintSheetHFPreview / paintPlatHFPreview. */
+  function relHF() { try { applyHF(); } catch (e) {} }
+  /* every control is bound at most once; the data-hf-bound marker lets a
+     restore that calls bindSheetHF() again safely skip the rebinding */
+  function marked(el) { return el && el.dataset.hfBound === "1"; }
+  function bindBool(id, side, key, after) {
+    var el = document.getElementById(id);
+    if (!el || marked(el)) return;
+    el.dataset.hfBound = "1";
+    el.addEventListener("change", function () {
+      side[key] = el.checked;
+      if (typeof after === "function") after();
+      saveHF();
+      relHF();
+    });
+  }
+  function bindText(id, side, key, after) {
+    var el = document.getElementById(id);
+    if (!el || marked(el)) return;
+    el.dataset.hfBound = "1";
+    el.addEventListener("input", function () {
+      side[key] = el.value;
+      if (typeof after === "function") after();
+      saveHF();
+      relHF();
+    });
+  }
+  function bindRange(id, side, key, fvId, fmt, after) {
+    var el = document.getElementById(id);
+    if (!el || marked(el)) return;
+    el.dataset.hfBound = "1";
+    var fv = fvId ? document.getElementById(fvId) : null;
+    el.addEventListener("input", function () {
+      side[key] = parseFloat(el.value);
+      if (fv) fv.textContent = fmt ? fmt(el.value) : el.value;
+      if (typeof after === "function") after();
+      saveHF();
+      relHF();
+    });
+  }
+
+  function paintSheetHFPreview() {
+    /* Live preview for the printed sheet header/footer designers. Updates the
+       four preview lines (shHfPrevHL/HR/FL/FR/PG) with whatever HF holds
+       right now, and the page-number span is hidden when the user opts out. */
+    var sh = HF.sheet;
+    function txt(side, which, fallback) {
+      if (sh.on && side && side.on !== false && side[which]) return side[which];
+      return fallback;
+    }
+    var hl = document.getElementById("shHfPrevHL");
+    var hr = document.getElementById("shHfPrevHR");
+    var fl = document.getElementById("shHfPrevFL");
+    var fr = document.getElementById("shHfPrevFR");
+    var pg = document.getElementById("shHfPrevPG");
+    if (hl) hl.textContent = txt(sh.hdr, "l", "SUBJECT \u00b7 GRADE 5");
+    if (hr) hr.textContent = txt(sh.hdr, "r", "Teacher's Copy");
+    if (fl) fl.textContent = txt(sh.ftr, "l", "Liberian Elementary Curriculum \u00b7 Grade 5");
+    if (fr) fr.textContent = txt(sh.ftr, "r", "Liberian Course Pack Generator");
+    if (pg) pg.style.display = sh.on && sh.ftr && sh.ftr.pg !== false ? "" : "none";
+    /* per-section show/hide */
+    var box = document.getElementById("shHfBox");
+    var hdrRow = document.getElementById("shHfHdrRow");
+    var ftrRow = document.getElementById("shHfFtrRow");
+    if (box) box.style.display = sh.on ? "" : "none";
+    if (hdrRow) hdrRow.style.display = sh.on && sh.hdr && sh.hdr.on !== false ? "" : "none";
+    if (ftrRow) ftrRow.style.display = sh.on && sh.ftr && sh.ftr.on !== false ? "" : "none";
+  }
+  function paintPlatHFPreview() {
+    /* Live preview text of the platform chrome (top + bottom). The CSS in
+       styles.css handles the actual colour and visibility for the chrome
+       itself; this just rebuilds the preview area inside the panel. */
+    var pl = HF.plat;
+    var previewTop = document.getElementById("platHdPreview");
+    var previewBot = document.getElementById("platFtPreview");
+    if (previewTop) {
+      previewTop.style.display = pl.hdr.on !== false ? "" : "none";
+      var bg = pl.hdr.bg;
+      if (bg) previewTop.style.background = "linear-gradient(135deg," + bg + "," + bg + ")";
+      else previewTop.style.background = "";
+      var titleEl = previewTop.querySelector(".plat-pv-title");
+      if (titleEl) titleEl.style.fontSize = (pl.hdr.fs || 1.35) + "rem";
+    }
+    if (previewBot) {
+      previewBot.style.display = pl.ftr.on ? "" : "none";
+      var fbg = pl.ftr.bg;
+      if (fbg) previewBot.style.background = "linear-gradient(135deg," + fbg + "," + fbg + ")";
+      else previewBot.style.background = "";
+      previewBot.style.fontSize = (pl.ftr.fs || 0.78) + "rem";
+    }
+  }
+  window.PACK_PAINT_HF_PREVIEW = function () {
+    paintSheetHFPreview();
+    paintPlatHFPreview();
+  };
+
+  function bindSheetHF() {
+    var sh = HF.sheet;
+    function livePreview() { try { paintSheetHFPreview(); } catch (e) {} }
+    bindBool("shHfOn", sh, "on", livePreview);
+    bindBool("shHfHdrOn", sh.hdr, "on", livePreview);
+    bindBool("shHfHdrBold", sh.hdr, "bold", livePreview);
+    bindBool("shHfFtrOn", sh.ftr, "on", livePreview);
+    bindBool("shHfPgNum", sh.ftr, "pg", livePreview);
+    bindText("shHfHdrL", sh.hdr, "l", livePreview);
+    bindText("shHfHdrR", sh.hdr, "r", livePreview);
+    bindText("shHfFtrL", sh.ftr, "l", livePreview);
+    bindText("shHfFtrR", sh.ftr, "r", livePreview);
+    function setSwatch(id, side, key) {
+      var inp = document.getElementById(id);
+      if (!inp) return;
+      if (!inp.dataset.hfBound) {
+        inp.dataset.fallback = inp.value;
+        inp.dataset.hfBound = "1";
+        inp.addEventListener("input", function () {
+          side[key] = inp.value.toLowerCase();
+          saveHF();
+          relHF();
+          livePreview();
+        });
+        var auto = document.getElementById(id + "Auto");
+        if (auto) auto.onclick = function () {
+          side[key] = "";
+          inp.value = inp.dataset.fallback || "#666666";
+          saveHF();
+          relHF();
+          livePreview();
+        };
+      }
+      inp.value = side[key] || inp.dataset.fallback || "#666666";
+    }
+    setSwatch("shHfHdrCol", sh.hdr, "col");
+    setSwatch("shHfFtrCol", sh.ftr, "col");
+    bindRange("shHfHdrFs", sh.hdr, "fs", "shHfHdrFsVal", function (v) { return v + "pt"; }, livePreview);
+    bindRange("shHfFtrFs", sh.ftr, "fs", "shHfFtrFsVal", function (v) { return v + "pt"; }, livePreview);
+    livePreview();
+    var r = document.getElementById("shHfReset");
+    if (r) r.onclick = function () {
+      HF.sheet = defaultSheetHF();
+      saveHF();
+      renderSheetHF();
+      livePreview();
+      relHF();
+      syncBadges();
+    };
+  }
+
+  function bindPlatHF() {
+    var pl = HF.plat;
+    bindBool("platHdOn", pl.hdr, "on", paintPlatHFPreview);
+    bindBool("platHdCrestOn", pl.hdr, "crest", paintPlatHFPreview);
+    bindBool("platHdInstall", pl.hdr, "install", paintPlatHFPreview);
+    bindBool("platFtOn", pl.ftr, "on", paintPlatHFPreview);
+    bindText("platHdTitle", pl.hdr, "title", paintPlatHFPreview);
+    bindText("platHdSub", pl.hdr, "sub", paintPlatHFPreview);
+    bindText("platHdNote", pl.hdr, "note", paintPlatHFPreview);
+    bindText("platFtL", pl.ftr, "l", paintPlatHFPreview);
+    bindText("platFtR", pl.ftr, "r", paintPlatHFPreview);
+    bindRange("platHdFs", pl.hdr, "fs", "platHdFsVal", function (v) { return v.toFixed(2) + "rem"; }, paintPlatHFPreview);
+    bindRange("platFtFs", pl.ftr, "fs", "platFtFsVal", function (v) { return v.toFixed(2) + "rem"; }, paintPlatHFPreview);
+    function setSw(id, side, key, fallback) {
+      var inp = document.getElementById(id);
+      if (!inp) return;
+      if (!inp.dataset.hfBound) {
+        inp.dataset.hfBound = "1";
+        inp.addEventListener("input", function () {
+          side[key] = inp.value.toLowerCase();
+          saveHF();
+          relHF();
+          paintPlatHFPreview();
+        });
+        var auto = document.getElementById(id + "Auto");
+        if (auto) auto.onclick = function () {
+          side[key] = "";
+          inp.value = fallback;
+          saveHF();
+          relHF();
+          paintPlatHFPreview();
+        };
+      }
+      inp.value = side[key] || fallback;
+    }
+    setSw("platHdBg", pl.hdr, "bg", "#0b3b8c");
+    setSw("platFtBg", pl.ftr, "bg", "#0b3b8c");
+    var r = document.getElementById("platHfReset");
+    if (r) r.onclick = function () {
+      HF.plat = defaultPlatHF();
+      saveHF();
+      paintPlatHFPreview();
+      relHF();
+      syncBadges();
+    };
+  }
+
+  function renderSheetHF() {
+    /* the panel lives in body.html; this just re-binds every control after a
+       restore. Bindings are idempotent (re-running isn't harmful) but text
+       value is set from HF once on load and on reset. */
+    if (!document.getElementById("shHfOn")) return;
+    var sh = HF.sheet;
+    function setv(id, v, isCheck) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (isCheck) el.checked = !!v;
+      else el.value = v == null ? "" : String(v);
+    }
+    setv("shHfOn", sh.on, true);
+    setv("shHfHdrOn", sh.hdr.on !== false, true);
+    setv("shHfHdrBold", sh.hdr.bold !== false, true);
+    setv("shHfFtrOn", sh.ftr.on !== false, true);
+    setv("shHfPgNum", sh.ftr.pg !== false, true);
+    setv("shHfHdrL", sh.hdr.l);
+    setv("shHfHdrR", sh.hdr.r);
+    setv("shHfHdrFs", sh.hdr.fs || 9);
+    setv("shHfHdrFsVal", (sh.hdr.fs || 9) + "pt");
+    setv("shHfHdrCol", sh.hdr.col || "#666666");
+    setv("shHfFtrL", sh.ftr.l);
+    setv("shHfFtrR", sh.ftr.r);
+    setv("shHfFtrFs", sh.ftr.fs || 9);
+    setv("shHfFtrFsVal", (sh.ftr.fs || 9) + "pt");
+    setv("shHfFtrCol", sh.ftr.col || "#666666");
+  }
+  function renderPlatHF() {
+    if (!document.getElementById("platHdOn")) return;
+    var pl = HF.plat;
+    function setv(id, v, isCheck) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (isCheck) el.checked = !!v;
+      else el.value = v == null ? "" : String(v);
+    }
+    setv("platHdOn", pl.hdr.on !== false, true);
+    setv("platHdCrestOn", pl.hdr.crest !== false, true);
+    setv("platHdInstall", pl.hdr.install !== false, true);
+    setv("platFtOn", pl.ftr.on, true);
+    setv("platHdTitle", pl.hdr.title);
+    setv("platHdSub", pl.hdr.sub);
+    setv("platHdNote", pl.hdr.note);
+    setv("platHdFs", pl.hdr.fs || 1.35);
+    setv("platHdFsVal", (pl.hdr.fs || 1.35).toFixed(2) + "rem");
+    setv("platHdBg", pl.hdr.bg || "#0b3b8c");
+    setv("platFtL", pl.ftr.l);
+    setv("platFtR", pl.ftr.r);
+    setv("platFtFs", pl.ftr.fs || 0.78);
+    setv("platFtFsVal", (pl.ftr.fs || 0.78).toFixed(2) + "rem");
+    setv("platFtBg", pl.ftr.bg || "#0b3b8c");
+  }
+
+  /* persistence on its own key: HF is independent of COVER, so a user can
+     change one without losing the other */
+  var HF_STORE = "lncpg.hf.v1";
+  function saveHF() {
+    try {
+      HF.sheet = normalizeSheetHF(HF.sheet);
+      HF.plat = normalizePlatHF(HF.plat);
+      localStorage.setItem(HF_STORE, JSON.stringify(HF));
+    } catch (e) { /* private mode or storage disabled */ }
+  }
+  function loadHF() {
+    try {
+      var raw = localStorage.getItem(HF_STORE);
+      if (!raw) return;
+      var o = JSON.parse(raw);
+      if (o && typeof o === "object") {
+        HF.sheet = normalizeSheetHF(o.sheet);
+        HF.plat = normalizePlatHF(o.plat);
+      }
+    } catch (e) { /* corrupt: leave the defaults in place */ }
+  }
+
+  /* Initial render of the two header/footer designers happens before
+     TEACHING.init so saved-control persistence and the .docx header can be
+     written from the same HF state. */
+  loadHF();
+  renderSheetHF();
+  renderPlatHF();
+  bindSheetHF();
+  bindPlatHF();
+  paintSheetHFPreview();
+  paintPlatHFPreview();
+  /* applyHF() runs as soon as the DOM has read the platform chrome (.top,
+     .crest, installApp, the new botFoot). Until that point, every GET on a
+     vanilla selector would return null. */
+  if (document.body) applyHF();
+  document.addEventListener("DOMContentLoaded", function () { applyHF(); });
+
+  /* ---- integrate HF into the saved settings that TEACHING carries ---- */
+  document.addEventListener("DOMContentLoaded", function () {
+    /* when TEACHING fires its settings callback, also include the HF block;
+       when TEACHING restores a saved document, push HF back into the
+       designer controls. The are integrated as a separate key. */
+    /* expose HF to teaching.js so settings/restore can see it */
+    window.PACK_HF_GET = function () {
+      return { sheet: normalizeSheetHF(HF.sheet), plat: normalizePlatHF(HF.plat) };
+    };
+    window.PACK_HF_SET = function (hf) {
+      HF.sheet = normalizeSheetHF(hf && hf.sheet);
+      HF.plat = normalizePlatHF(hf && hf.plat);
+      saveHF();
+      renderSheetHF();
+      renderPlatHF();
+      bindSheetHF();
+      bindPlatHF();
+      applyHF();
+    };
+  });
+
+  /* if TEACHING is already loaded on this page, make HF available before its
+     DOMContentLoaded runs (this whole IIFE runs after all scripts are inlined
+     via build.sh, but the deferred call style keeps both orders happy) */
+  window.PACK_HF_GET = window.PACK_HF_GET || function () { return HF; };
 })();
