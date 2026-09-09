@@ -1694,7 +1694,7 @@ const SC_CURRICULUM = [
 
 /* ================= GRADE 4 ================= */
 {
-  grade:4, period:"I", sem:"One", icon:"⚡",
+  grade:5, period:"I", sem:"One", icon:"⚡",
   title:"Energy",
   subtitle:"Meaning, properties, types and forms of energy",
   outcomes:["State the properties, types and forms of energy as well as its usefulness"],
@@ -1789,7 +1789,7 @@ const SC_CURRICULUM = [
   assessment:["Quizzes","Science journal","Class and homework","Test"]
 },
 {
-  grade:4, period:"II", sem:"One", icon:"🧲",
+  grade:5, period:"II", sem:"One", icon:"🧲",
   title:"Force and Its Kinds",
   subtitle:"Contact and non-contact forces, friction, gravity and magnetism",
   outcomes:["Identify the kinds of force and describe their effects on objects"],
@@ -1874,7 +1874,7 @@ const SC_CURRICULUM = [
   assessment:["Investigation report","Quizzes","Science journal","Test"]
 },
 {
-  grade:4, period:"III", sem:"One", icon:"📏",
+  grade:5, period:"III", sem:"One", icon:"📏",
   title:"Measurement of Physical Properties of Matter",
   subtitle:"Metric units, instruments and reading measurements",
   outcomes:["Read units of measurement in the metric system"],
@@ -1974,7 +1974,7 @@ const SC_CURRICULUM = [
   assessment:["Measurement table","Practical test","Quizzes","Science journal"]
 },
 {
-  grade:4, period:"IV", sem:"Two", icon:"🛰️",
+  grade:5, period:"IV", sem:"Two", icon:"🛰️",
   title:"The Satellites and the Stars",
   subtitle:"Natural and artificial satellites, stars and galaxies",
   outcomes:["Express appreciation for scientific advancement, particularly artificial satellites"],
@@ -2069,7 +2069,7 @@ const SC_CURRICULUM = [
   assessment:["Satellite model and presentation","Quizzes","Science journal","Test"]
 },
 {
-  grade:4, period:"V", sem:"Two", icon:"🩹",
+  grade:5, period:"V", sem:"Two", icon:"🩹",
   title:"Skin Profile and Soil Profile; Malaria",
   subtitle:"Layers of the skin, layers of the soil and preventing malaria",
   outcomes:["Appreciate the organisation of the skin and compare it to that of soil","Identify the benefits of keeping the environment clean to prevent malaria"],
@@ -2160,7 +2160,7 @@ const SC_CURRICULUM = [
   assessment:["Labelled profile diagrams","Malaria prevention plan","Quizzes","Test"]
 },
 {
-  grade:4, period:"VI", sem:"Two", icon:"🧴",
+  grade:5, period:"VI", sem:"Two", icon:"🧴",
   title:"Health and Personal Hygiene",
   subtitle:"Puberty, body changes and personal safety",
   outcomes:["Explain the importance of changes that occur during puberty","Recognise inappropriate touching and act to protect oneself"],
@@ -2254,7 +2254,7 @@ const SC_CURRICULUM = [
 
 /* ================= GRADE 5 ================= */
 {
-  grade:5, period:"I", sem:"One", icon:"🔧",
+  grade:4, period:"I", sem:"One", icon:"🔧",
   title:"Simple Machines and Work",
   subtitle:"The six simple machines and how they make work easier",
   outcomes:["Recognise the importance of using machines to do work","Recognise that energy exists in different forms"],
@@ -2357,7 +2357,7 @@ const SC_CURRICULUM = [
   assessment:["Investigation report","Calculation exercise","Quizzes","Test"]
 },
 {
-  grade:5, period:"II", sem:"One", icon:"🔊",
+  grade:4, period:"II", sem:"One", icon:"🔊",
   title:"Sound and Light Energy",
   subtitle:"How sound is produced and travels; sources and behaviour of light",
   outcomes:["Show interest in making use of science ideas and technology"],
@@ -2449,7 +2449,7 @@ const SC_CURRICULUM = [
   assessment:["Practical investigation report","Quizzes","Science journal","Test"]
 },
 {
-  grade:5, period:"III", sem:"One", icon:"🍎",
+  grade:4, period:"III", sem:"One", icon:"🍎",
   title:"Health Lessons",
   subtitle:"Nutrition, the immune system and community health services",
   outcomes:["Understand that good nutrition helps people living with HIV live longer","Understand the body's immune system and how it keeps us healthy"],
@@ -2544,7 +2544,7 @@ const SC_CURRICULUM = [
   assessment:["Meal plan","Quizzes","Science journal","Test"]
 },
 {
-  grade:5, period:"IV", sem:"Two", icon:"🧬",
+  grade:4, period:"IV", sem:"Two", icon:"🧬",
   title:"Organization of Life",
   subtitle:"Cells, tissues, organs and systems",
   outcomes:["Practise health care behaviour to prevent diseases","Encourage gender equity in our society"],
@@ -2627,7 +2627,7 @@ const SC_CURRICULUM = [
   assessment:["Labelled system diagrams","Group presentation","Quizzes","Test"]
 },
 {
-  grade:5, period:"V", sem:"Two", icon:"⚛️",
+  grade:4, period:"V", sem:"Two", icon:"⚛️",
   title:"Structure of Matter",
   subtitle:"Atoms, molecules, elements and changes in matter",
   outcomes:["Create a model to demonstrate atomic movement in the different states of matter"],
@@ -2728,7 +2728,7 @@ const SC_CURRICULUM = [
   assessment:["Particle diagrams","Classification exercise","Quizzes","Test"]
 },
 {
-  grade:5, period:"VI", sem:"Two", icon:"🌡️",
+  grade:4, period:"VI", sem:"Two", icon:"🌡️",
   title:"Weather and Climate of the Earth",
   subtitle:"Causes and effects of weather, and global climate change",
   outcomes:["Connect learning to solving global climate change problems"],
