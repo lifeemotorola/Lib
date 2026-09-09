@@ -27,6 +27,7 @@ jobs:
           node tests/book.js
           node tests/voice.js
           node tests/ai.js
+          node tests/header-footer.js
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'

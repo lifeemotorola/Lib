@@ -377,6 +377,20 @@
      switches are CSS-only: the rendered markup always carries .phdr-l,
      .phdr-r, .pftr-l, .pftr-r and .pftr-pg, and the body attributes hide
      whichever the user has switched off. */
+
+  /* The platform bar's factory wording lives in the page, but applyHF()
+     overwrites it — so the first pass has to remember what was there. Without
+     that, clearing the title (or pressing Reset) can never bring the default
+     back: the H1 would keep the last custom text for the rest of the session. */
+  var PLAT_FACTORY = { title: "", sub: "" };
+  function platDefaults() {
+    var t = $(".top-txt h1");
+    var p = $(".top-txt p");
+    if (!PLAT_FACTORY.title && t) PLAT_FACTORY.title = t.textContent;
+    if (!PLAT_FACTORY.sub && p) PLAT_FACTORY.sub = p.innerHTML;
+    return PLAT_FACTORY;
+  }
+
   function applyHF() {
     var sh = HF.sheet;
     var pl = HF.plat;
@@ -409,27 +423,43 @@
     body.setAttribute("data-plat-hd-on", pl.hdr.on !== false ? "true" : "false");
     body.classList.toggle("plat-hd-off", pl.hdr.on === false);
     /* write the user's text into the .top bar live so the preview matches the
-       designer without waiting for a Generate click */
+       designer without waiting for a Generate click. The factory wording is
+       captured on the first pass: applyHF() overwrites the H1 and the <p>, so
+       reading the default back off the page afterwards would make Reset — or
+       simply clearing the field — stick on the last custom text forever. */
     var topTitle = $(".top-txt h1");
     var topSub = $(".top-txt p");
+    var pd = platDefaults();
     if (topTitle) {
-      var h1 = document.createElement("span");
-      h1.innerHTML = topTitle.innerHTML;
-      topTitle.textContent = (pl.hdr.title && pl.hdr.title.trim()) ||
-        h1.textContent || "Liberian National Curriculum \u00b7 Course Pack Generator";
+      topTitle.textContent = (pl.hdr.title && pl.hdr.title.trim()) || pd.title ||
+        "Liberian National Curriculum \u00b7 Course Pack Generator";
     }
     if (topSub) {
       var defSub = "English \u00b7 Phonics \u00b7 French \u00b7 General Science \u00b7 Mathematics \u00b7 Social Studies \u00b7 Religious & Moral Education \u00b7 Physical Education \u00b7 Biology \u00b7 Chemistry \u00b7 Physics \u00b7 Economics \u00b7 English Grammar \u00b7 Geography \u00b7 History \u00b7 Civics \u00b7 Literature<br><span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks, tests and answer keys \u00b7 works offline</span>";
-      topSub.innerHTML = (pl.hdr.sub && pl.hdr.sub.trim()) || defSub;
+      topSub.innerHTML = (pl.hdr.sub && pl.hdr.sub.trim()) || pd.sub || defSub;
+      /* "Small line under the subtitle" replaces the .top-sub strip. Rebuilding
+         innerHTML above every pass is what puts the factory line back when the
+         user clears the field. */
+      if (pl.hdr.note && pl.hdr.note.trim()) {
+        var subLine = topSub.querySelector(".top-sub");
+        if (!subLine) {
+          subLine = document.createElement("span");
+          subLine.className = "top-sub";
+          topSub.appendChild(document.createElement("br"));
+          topSub.appendChild(subLine);
+        }
+        subLine.textContent = pl.hdr.note.trim();
+      }
     }
     var crest = document.querySelector(".crest");
     if (crest) crest.style.display = pl.hdr.crest === false ? "none" : "";
     var installBtn = $("#installApp");
     if (installBtn) installBtn.style.display = pl.hdr.install === false ? "none" : "";
-    /* font size on the H1 */
+    /* "Title text size" scales the H1 itself: .top h1 carries its own CSS
+       font-size, so writing the size on the bar never reached the title. */
+    if (topTitle) topTitle.style.fontSize = (pl.hdr.fs || 1.35) + "rem";
     var topBar = document.querySelector(".top");
     if (topBar) {
-      topBar.style.fontSize = (pl.hdr.fs || 1) + "rem";
       /* background colour override (blank = subject theme via CSS) */
       if (pl.hdr.bg) {
         topBar.style.background = "linear-gradient(135deg," + pl.hdr.bg + "," + pl.hdr.bg + ")";
@@ -2932,6 +2962,12 @@
      applyHF() to repaint the preview. The live preview block inside each
      panel is rebuilt by paintSheetHFPreview / paintPlatHFPreview. */
   function relHF() { try { applyHF(); } catch (e) {} }
+  /* saveHF() and both Reset buttons swap HF.sheet / HF.plat for a brand-new
+     normalized object, so a listener that captured the old one at bind time
+     would write into an orphan: the very first click in the designer worked
+     and every click after it was silently dropped. Every binding therefore
+     takes an accessor and resolves the live state object at event time. */
+  function sideOf(side) { return typeof side === "function" ? side() : side; }
   /* every control is bound at most once; the data-hf-bound marker lets a
      restore that calls bindSheetHF() again safely skip the rebinding */
   function marked(el) { return el && el.dataset.hfBound === "1"; }
@@ -2940,7 +2976,7 @@
     if (!el || marked(el)) return;
     el.dataset.hfBound = "1";
     el.addEventListener("change", function () {
-      side[key] = el.checked;
+      sideOf(side)[key] = el.checked;
       if (typeof after === "function") after();
       saveHF();
       relHF();
@@ -2951,7 +2987,7 @@
     if (!el || marked(el)) return;
     el.dataset.hfBound = "1";
     el.addEventListener("input", function () {
-      side[key] = el.value;
+      sideOf(side)[key] = el.value;
       if (typeof after === "function") after();
       saveHF();
       relHF();
@@ -2963,8 +2999,11 @@
     el.dataset.hfBound = "1";
     var fv = fvId ? document.getElementById(fvId) : null;
     el.addEventListener("input", function () {
-      side[key] = parseFloat(el.value);
-      if (fv) fv.textContent = fmt ? fmt(el.value) : el.value;
+      var num = parseFloat(el.value);
+      sideOf(side)[key] = num;
+      /* the read-out next to the slider is a <b>, and el.value is a string —
+         the formatters are handed the number so they can format it */
+      if (fv) fv.textContent = fmt ? fmt(num) : String(num);
       if (typeof after === "function") after();
       saveHF();
       relHF();
@@ -3027,17 +3066,21 @@
   };
 
   function bindSheetHF() {
-    var sh = HF.sheet;
     function livePreview() { try { paintSheetHFPreview(); } catch (e) {} }
-    bindBool("shHfOn", sh, "on", livePreview);
-    bindBool("shHfHdrOn", sh.hdr, "on", livePreview);
-    bindBool("shHfHdrBold", sh.hdr, "bold", livePreview);
-    bindBool("shHfFtrOn", sh.ftr, "on", livePreview);
-    bindBool("shHfPgNum", sh.ftr, "pg", livePreview);
-    bindText("shHfHdrL", sh.hdr, "l", livePreview);
-    bindText("shHfHdrR", sh.hdr, "r", livePreview);
-    bindText("shHfFtrL", sh.ftr, "l", livePreview);
-    bindText("shHfFtrR", sh.ftr, "r", livePreview);
+    /* accessors, not snapshots: HF.sheet is replaced by saveHF() and by the
+       Reset button, and the controls have to keep writing to the live one */
+    function S() { return HF.sheet; }
+    function SH() { return HF.sheet.hdr; }
+    function SF() { return HF.sheet.ftr; }
+    bindBool("shHfOn", S, "on", livePreview);
+    bindBool("shHfHdrOn", SH, "on", livePreview);
+    bindBool("shHfHdrBold", SH, "bold", livePreview);
+    bindBool("shHfFtrOn", SF, "on", livePreview);
+    bindBool("shHfPgNum", SF, "pg", livePreview);
+    bindText("shHfHdrL", SH, "l", livePreview);
+    bindText("shHfHdrR", SH, "r", livePreview);
+    bindText("shHfFtrL", SF, "l", livePreview);
+    bindText("shHfFtrR", SF, "r", livePreview);
     function setSwatch(id, side, key) {
       var inp = document.getElementById(id);
       if (!inp) return;
@@ -3045,26 +3088,26 @@
         inp.dataset.fallback = inp.value;
         inp.dataset.hfBound = "1";
         inp.addEventListener("input", function () {
-          side[key] = inp.value.toLowerCase();
+          sideOf(side)[key] = inp.value.toLowerCase();
           saveHF();
           relHF();
           livePreview();
         });
         var auto = document.getElementById(id + "Auto");
         if (auto) auto.onclick = function () {
-          side[key] = "";
+          sideOf(side)[key] = "";
           inp.value = inp.dataset.fallback || "#666666";
           saveHF();
           relHF();
           livePreview();
         };
       }
-      inp.value = side[key] || inp.dataset.fallback || "#666666";
+      inp.value = sideOf(side)[key] || inp.dataset.fallback || "#666666";
     }
-    setSwatch("shHfHdrCol", sh.hdr, "col");
-    setSwatch("shHfFtrCol", sh.ftr, "col");
-    bindRange("shHfHdrFs", sh.hdr, "fs", "shHfHdrFsVal", function (v) { return v + "pt"; }, livePreview);
-    bindRange("shHfFtrFs", sh.ftr, "fs", "shHfFtrFsVal", function (v) { return v + "pt"; }, livePreview);
+    setSwatch("shHfHdrCol", SH, "col");
+    setSwatch("shHfFtrCol", SF, "col");
+    bindRange("shHfHdrFs", SH, "fs", "shHfHdrFsVal", function (v) { return v + "pt"; }, livePreview);
+    bindRange("shHfFtrFs", SF, "fs", "shHfFtrFsVal", function (v) { return v + "pt"; }, livePreview);
     livePreview();
     var r = document.getElementById("shHfReset");
     if (r) r.onclick = function () {
@@ -3078,50 +3121,69 @@
   }
 
   function bindPlatHF() {
-    var pl = HF.plat;
-    bindBool("platHdOn", pl.hdr, "on", paintPlatHFPreview);
-    bindBool("platHdCrestOn", pl.hdr, "crest", paintPlatHFPreview);
-    bindBool("platHdInstall", pl.hdr, "install", paintPlatHFPreview);
-    bindBool("platFtOn", pl.ftr, "on", paintPlatHFPreview);
-    bindText("platHdTitle", pl.hdr, "title", paintPlatHFPreview);
-    bindText("platHdSub", pl.hdr, "sub", paintPlatHFPreview);
-    bindText("platHdNote", pl.hdr, "note", paintPlatHFPreview);
-    bindText("platFtL", pl.ftr, "l", paintPlatHFPreview);
-    bindText("platFtR", pl.ftr, "r", paintPlatHFPreview);
-    bindRange("platHdFs", pl.hdr, "fs", "platHdFsVal", function (v) { return v.toFixed(2) + "rem"; }, paintPlatHFPreview);
-    bindRange("platFtFs", pl.ftr, "fs", "platFtFsVal", function (v) { return v.toFixed(2) + "rem"; }, paintPlatHFPreview);
+    /* same accessor pattern as bindSheetHF — HF.plat is replaced by saveHF()
+       and by the platform Reset button */
+    function PH() { return HF.plat.hdr; }
+    function PF() { return HF.plat.ftr; }
+    bindBool("platHdOn", PH, "on", paintPlatHFPreview);
+    bindBool("platHdCrestOn", PH, "crest", paintPlatHFPreview);
+    bindBool("platHdInstall", PH, "install", paintPlatHFPreview);
+    bindBool("platFtOn", PF, "on", paintPlatHFPreview);
+    bindText("platHdTitle", PH, "title", paintPlatHFPreview);
+    bindText("platHdSub", PH, "sub", paintPlatHFPreview);
+    bindText("platHdNote", PH, "note", paintPlatHFPreview);
+    bindText("platFtL", PF, "l", paintPlatHFPreview);
+    bindText("platFtR", PF, "r", paintPlatHFPreview);
+    bindRange("platHdFs", PH, "fs", "platHdFsVal", function (v) { return (Number(v) || 0).toFixed(2) + "rem"; }, paintPlatHFPreview);
+    bindRange("platFtFs", PF, "fs", "platFtFsVal", function (v) { return (Number(v) || 0).toFixed(2) + "rem"; }, paintPlatHFPreview);
     function setSw(id, side, key, fallback) {
       var inp = document.getElementById(id);
       if (!inp) return;
       if (!inp.dataset.hfBound) {
         inp.dataset.hfBound = "1";
         inp.addEventListener("input", function () {
-          side[key] = inp.value.toLowerCase();
+          sideOf(side)[key] = inp.value.toLowerCase();
           saveHF();
           relHF();
           paintPlatHFPreview();
         });
         var auto = document.getElementById(id + "Auto");
         if (auto) auto.onclick = function () {
-          side[key] = "";
+          sideOf(side)[key] = "";
           inp.value = fallback;
           saveHF();
           relHF();
           paintPlatHFPreview();
         };
       }
-      inp.value = side[key] || fallback;
+      inp.value = sideOf(side)[key] || fallback;
     }
-    setSw("platHdBg", pl.hdr, "bg", "#0b3b8c");
-    setSw("platFtBg", pl.ftr, "bg", "#0b3b8c");
+    setSw("platHdBg", PH, "bg", "#0b3b8c");
+    setSw("platFtBg", PF, "bg", "#0b3b8c");
     var r = document.getElementById("platHfReset");
     if (r) r.onclick = function () {
       HF.plat = defaultPlatHF();
       saveHF();
+      /* without this the panel keeps showing the text and colour the user
+         just reset, so the button looks like it did nothing */
+      renderPlatHF();
       paintPlatHFPreview();
       relHF();
       syncBadges();
     };
+  }
+
+  /* Push one HF value back into its control. The size read-outs next to the
+     sliders (shHfHdrFsVal, platHdFsVal …) are plain <b> elements, so writing
+     .value on them is a no-op that leaves the old number on screen after a
+     load, a restore or a Reset. Anything that is not a form control gets its
+     text instead. */
+  function setHFControl(id, v, isCheck) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (isCheck) el.checked = !!v;
+    else if ("value" in el) el.value = v == null ? "" : String(v);
+    else el.textContent = v == null ? "" : String(v);
   }
 
   function renderSheetHF() {
@@ -3130,12 +3192,7 @@
        value is set from HF once on load and on reset. */
     if (!document.getElementById("shHfOn")) return;
     var sh = HF.sheet;
-    function setv(id, v, isCheck) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      if (isCheck) el.checked = !!v;
-      else el.value = v == null ? "" : String(v);
-    }
+    var setv = setHFControl;
     setv("shHfOn", sh.on, true);
     setv("shHfHdrOn", sh.hdr.on !== false, true);
     setv("shHfHdrBold", sh.hdr.bold !== false, true);
@@ -3155,12 +3212,7 @@
   function renderPlatHF() {
     if (!document.getElementById("platHdOn")) return;
     var pl = HF.plat;
-    function setv(id, v, isCheck) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      if (isCheck) el.checked = !!v;
-      else el.value = v == null ? "" : String(v);
-    }
+    var setv = setHFControl;
     setv("platHdOn", pl.hdr.on !== false, true);
     setv("platHdCrestOn", pl.hdr.crest !== false, true);
     setv("platHdInstall", pl.hdr.install !== false, true);
