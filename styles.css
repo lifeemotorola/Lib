@@ -133,7 +133,11 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
   font-size:var(--sh-hf-hdr-fs, 9pt);color:var(--sh-hf-hdr-col, #666666)}
 .phead .phdr-l{font-weight:var(--sh-hf-hdr-bold, 700);color:var(--bleu);text-transform:uppercase;letter-spacing:.05em}
 .phead .phdr-r{white-space:nowrap;overflow:hidden;text-overflow:clip}
-.pfoot{border-top:1px solid var(--bleu-l);padding-top:5px;margin-top:12px;
+/* Repositioned sheet footer: centred and lifted clear of the sheet's bottom
+   edge. The page number lives in the right-hand .pftr-pg span (the footer's
+   last child, see tests/regress.py), so it stays put when the footer moves. */
+.pfoot{border-top:1px solid var(--bleu-l);padding-top:5px;margin-top:12px;margin-bottom:8mm;
+  justify-content:center;gap:10px;
   font-size:var(--sh-hf-ftr-fs, 9pt);color:var(--sh-hf-ftr-col, #666666)}
 .pfoot .pftr-l{white-space:nowrap;overflow:hidden;text-overflow:clip}
 .pfoot .pftr-r{white-space:nowrap;font-weight:700;color:var(--bleu)}
