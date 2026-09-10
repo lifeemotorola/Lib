@@ -1259,13 +1259,25 @@
         jh.style.display = "";
         jh.innerHTML = cur === "kg" && isLP()
           ? "<b>KG-I and KG-II lesson plans</b> are built from the transcribed national ECD theme units. Set <b>Weeks/unit</b> to 2 &mdash; each planner section runs 1&ndash;2 weeks &mdash; and pick the periods to plan."
-          : "<b>KG-I and KG-II are cover-page levels.</b> No kindergarten curriculum is transcribed here, so the document is the customizable cover sheet alone &mdash; design it in <b>Customization</b> and print or export it for your own KG work.";
+          : cur === "kg"
+            ? "<b>KG-I and KG-II are cover-page levels in Course pack mode.</b> Switch to <b>Lesson plan</b> to display the transcribed ECD units.<br><button type=\"button\" class=\"kg-lesson-link\" id=\"openKgLesson\">Open Kindergarten lesson plans</button>"
+            : "<b>KG-I and KG-II are cover-page levels.</b> No kindergarten curriculum is transcribed here for this subject, so the document is the customizable cover sheet alone &mdash; design it in <b>Customization</b> and print or export it for your own KG work. For ECD lessons, choose the <b>Kindergarten</b> subject and <b>Lesson plan</b>.";
       } else if (curBand === "el") {
         jh.style.display = "none";
       } else {
         jh.style.display = "";
         jh.innerHTML = "Grades " + band.lo + "&ndash;" + band.hi + " follow the " +
           band.label + " <b>" + (JH_NAME[cur] || S().label) + "</b> curriculum.";
+      }
+      /* A KG level in Course pack mode deliberately renders only its cover.
+         Give teachers who came here for the lesson plan a one-click route to
+         the document type instead of leaving the ECD units looking missing. */
+      var kgLessonLink = document.getElementById("openKgLesson");
+      if (kgLessonLink) {
+        kgLessonLink.onclick = function () {
+          var lessonTab = document.querySelector("#dtype .sess[data-d='lp']");
+          if (lessonTab) lessonTab.click();
+        };
       }
     }
   }
