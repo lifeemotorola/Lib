@@ -98,6 +98,8 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .btn-s{background:var(--gold);color:#3b2c00}
 .btn-s:hover{filter:brightness(1.07)}
 .hint{font-size:.75rem;color:var(--muted);margin:6px 0 0}
+.kg-lesson-link{margin-top:8px;padding:6px 10px;border:1px solid #b3541e;border-radius:6px;background:#fff8ef;color:#8a3f16;font:inherit;font-weight:700;cursor:pointer}
+.kg-lesson-link:hover,.kg-lesson-link:focus-visible{background:#b3541e;color:#fff}
 
 /* ---- export bar ---- */
 .bar{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);
