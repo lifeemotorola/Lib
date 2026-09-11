@@ -6,9 +6,9 @@
     </button>
     <div class="crest"><svg class="ic" aria-hidden="true"><use href="#i-crest"/></svg></div>
     <div class="top-txt">
-      <h1>Liberian National Curriculum &middot; Course Pack Generator</h1>
+      <h1 data-brand="product">Liberian National Curriculum &middot; Course Pack Generator</h1>
       <p>English &middot; Phonics &middot; French &middot; General Science &middot; Mathematics &middot; Social Studies &middot; Religious &amp; Moral Education &middot; Physical Education &middot; Biology &middot; Chemistry &middot; Physics &middot; Economics &middot; English Grammar &middot; Geography &middot; History &middot; Civics &middot; Literature<br>
-         <span class="top-sub">KG-I &amp; KG-II lesson plans &amp; cover pages &middot; Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> Emmanuel AI tutor &middot; works offline</span></p>
+         <span class="top-sub">KG-I &amp; KG-II lesson plans &amp; cover pages &middot; Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> <span data-brand="tutor">Emmanuel</span> AI tutor &middot; works offline</span></p>
     </div>
     <button type="button" class="install-app" id="installApp" hidden><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Install app</button>
     <span class="install-status" id="installStatus" role="status" aria-live="polite"></span>
@@ -382,6 +382,39 @@
 
           <button type="button" id="platHfReset" class="des-reset" style="margin-top:8px">Reset platform header &amp; footer</button>
           <p class="hint">Settings save on this device only. Hiding the top header bar removes it on screen but never affects the printable session (the Sheet header &amp; footer above still controls that).</p>
+        </div>
+      </details>
+
+      <details class="dd" id="ddUsage">
+        <summary>
+          <span class="dd-ic"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span>
+          <span class="dd-t">Usage &amp; privacy</span>
+          <span class="dd-n" id="nUsage"></span>
+          <span class="dd-c"><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+        </summary>
+        <div class="dd-b">
+          <p class="hint"><b>Nothing is uploaded.</b> The platform has no analytics and makes no
+          network request of its own. If you switch counting on, it keeps a small tally in this
+          browser's storage only &mdash; how many packs, plans, Word files and print runs this
+          device produced. It is useful for a school that must report to a principal, a sponsor or
+          a ministry, and it is the only evidence a buyer or donor will ever see that the platform
+          is used. The tally leaves the device only when you click <b>Export usage report</b>,
+          which downloads a file you decide what to do with.</p>
+
+          <div class="row"><label for="usgOrg">School / organisation</label>
+            <input type="text" id="usgOrg" maxlength="120" placeholder="Optional — appears on the exported report"></div>
+
+          <label class="chk"><input type="checkbox" id="usgOn"><span>Count my usage on this device (stays here, nothing is sent)</span></label>
+
+          <div id="usgSummary" class="usg-summary">Counting is off.</div>
+
+          <div class="row usg-row">
+            <button type="button" class="b2" id="usgExport"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Export usage report (.json)</button>
+            <button type="button" class="b2" id="usgReset">Reset counters</button>
+          </div>
+          <p class="hint">Turning counting off, or clearing this browser's site data, deletes the
+          tally. Nothing else on the platform changes: course packs, printing, the teaching
+          library and the AI tutor work the same either way.</p>
         </div>
       </details>
 

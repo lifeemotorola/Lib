@@ -198,6 +198,8 @@
       try {
         var record = { version: 1, id: uid(), name: name.value.trim(), folder: className.value.trim(), updated: new Date().toISOString(), settings: api.settings(), state: clone(state) };
         await storage("put", record); dirty = false; show("library"); message("Saved on this device. Use Export backup to move your library to another device.");
+        /* optional on-device counter — see usage.js; no network call */
+        try { if (window.USAGE) window.USAGE.track("save_library", { subject: (api.settings() || {}).subject }); } catch (ue) { /* never block saving */ }
       } catch (e) { fail(e); }
     }));
     var tools = el("div", null, "tw-actions"); box.appendChild(tools);

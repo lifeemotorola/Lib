@@ -17,7 +17,10 @@
      Origin allowlist and a per-visitor rate limit.
   */
   var MODEL = "openai/gpt-oss-120b";     /* API identifier */
-  var MODEL_NAME = "Emmanuel";           /* name shown to users */
+  /* The name shown to users comes from the white-label configuration
+     (brand.js), so a licensee can rename the tutor without editing this
+     file. It falls back to the original name when brand.js is absent. */
+  var MODEL_NAME = (window.APP_BRAND && window.APP_BRAND.tutor) || "Emmanuel";
 
   /* Emmanuel's portrait. build.sh inlines assets/emmanuel.png as a data URI in
      window.EMMANUEL_AVATAR so the single-file deliverable stays offline; when

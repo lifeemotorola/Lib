@@ -485,6 +485,8 @@ packs must never be locked out by it.
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
 | `ai.js` | The Emmanuel AI tutor: chat panel, streaming answers, and the quiet failure handling described below. |
+| `usage.js` | Optional **on-device usage counters** (Settings → *Usage & privacy*). Off by default, stored in `localStorage`, and **no network call of any kind** — `tests/usage.js` fails the build if one is ever added. Exports a `.json` report a school can hand to a principal, sponsor or ministry. |
+| `brand.js` | White-label configuration. One object (`window.APP_BRAND`) sets the product name, short name, the AI tutor's name, the support address and the footer text, so a licensee can rebrand without touching the code. |
 | `voice.js` | The offline voice reader: a floating button + panel (built with the browser's `speechSynthesis`) that pronounces the pack's difficult words or any typed sentence, with person (Man/Woman/Auto), African/other accents, speed and pitch controls. `app.js` feeds it the generated pack via `window.VOICE_READER.loadFromPack(pack, subjectId, label, grade)`. Hidden in print. |
 | `humancheck.js` | "Are you human?" — the Cloudflare Turnstile card that covers the platform until the visitor passes it. Switched off unless a `TURNSTILE_SITE_KEY` is baked in by `build.sh`. |
 | `manifest.webmanifest` / `sw.js` | Android/desktop installation metadata and offline app shell. |
@@ -604,6 +606,30 @@ IndexedDB save/reopen, duplicate/delete/import/export, malformed-backup rejectio
 question/key pairing and replacement, assessment edits/totals, teacher/student
 Word exports, saved lesson plans, automatic/custom cover text, print visibility
 and mobile layout. Set `PW_CHROMIUM` to use a non-default Chromium executable.
+
+## Commercial, legal and handover documents
+
+For anyone evaluating, buying, licensing or inheriting the platform:
+
+| File | What it is |
+|---|---|
+| [`SALE-READINESS.md`](SALE-READINESS.md) | The checklist for getting the platform ready to sell, in priority order. |
+| [`PRICING.md`](PRICING.md) | Licence tiers, the print-and-deliver model, and what the IP is worth today vs. with traction. |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | How the platform is built, how to run it, and how to add a subject — the handover document. |
+| [`PRIVACY.md`](PRIVACY.md) | Plain-language privacy statement for schools, parents and ministries. |
+| [`SECURITY.md`](SECURITY.md) | Security posture and vulnerability disclosure. |
+| [`NOTICE.md`](NOTICE.md) | What is original, what is transcribed Ministry of Education material, and third-party marks. |
+| [`LICENSE`](LICENSE) | MIT for the **code only**; see `NOTICE.md` for content and third-party material. |
+
+Two short notes that recur in all of them:
+
+- **Nothing is uploaded.** The platform has no analytics. Counting, when
+  switched on, stays in the browser; the AI tutor is the only feature that
+  sends anything (the question text, to your own proxy).
+- **The curriculum is the Ministry's.** Fifteen subjects' notes are
+  transcribed from official Liberian guides. The transcription and the platform
+  are yours; the underlying curriculum is not, and no sale can make it
+  exclusive.
 
 ## License
 

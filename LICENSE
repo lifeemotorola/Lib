@@ -1,0 +1,43 @@
+MIT License — SOFTWARE ONLY
+
+Copyright (c) 2026 [OWNER LEGAL NAME — REPLACE BEFORE PUBLISHING]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the SOFTWARE in this repository (the application code: app.js, gen-*.js,
+book.js, ai.js, voice.js, lesson.js, teaching.js, toc.js, cover-text.js,
+humancheck.js, brand.js, usage.js, build.sh, styles.css, body.html and the
+test suite), to deal in the SOFTWARE without restriction, including without
+limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies, and to permit persons to whom the SOFTWARE is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the SOFTWARE.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------
+WHAT THIS LICENCE DOES *NOT* COVER
+--------------------------------------------------------------------------
+This licence covers code only. It does NOT licence:
+
+  1. The curriculum content in data-*.js and the printed packs the platform
+     produces. Some of that text is transcribed from official Liberian
+     Ministry of Education curriculum guides, which remain the Ministry's
+     material; the rest is original authored content. See NOTICE.md.
+
+  2. Third-party material: the "WASSCE" / "WAEC" name, the PDFs under
+     uploads/, and any brand assets. See NOTICE.md.
+
+  3. Any trade mark or trade dress in the product name, logos or icons.
+
+The repository owner may offer the software under other terms (for example a
+commercial or exclusive licence) in addition to this one. If you intend to
+sell, rebrand or embed this platform commercially, read NOTICE.md first and
+contact the owner: a commercial licence is separate from this MIT grant.

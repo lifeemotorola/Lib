@@ -1192,3 +1192,16 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
 .plat-pv-sub{font-size:.72rem;opacity:.86}
 .plat-pv-l b{font-weight:800;letter-spacing:.3px}
 .plat-pv-r{font-size:.72rem;opacity:.8}
+
+/* ============================================================
+   Usage & privacy panel (usage.js) — a small local tally that
+   proves the platform is used. Kept deliberately plain: it sits
+   inside the settings dropdowns and prints nothing.
+   ============================================================ */
+.usg-summary{margin:8px 0 6px;padding:8px 10px;border:1px solid #dbe4f2;border-radius:10px;background:#f7faff;font-size:.8rem}
+.usg-summary .usg-off{color:#6b7280;margin:0}
+.usg-tbl{width:100%;border-collapse:collapse;font-size:.8rem}
+.usg-tbl td{padding:3px 0;border-bottom:1px dashed #e3eaf6}
+.usg-tbl td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.usg-meta{margin:6px 0 0;color:#6b7280;font-size:.72rem}
+.usg-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
