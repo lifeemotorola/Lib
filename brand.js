@@ -32,7 +32,12 @@
     tutor: "Emmanuel",
     support: "",
     footerLeft: "Liberian National Curriculum",
-    footerRight: "Course Pack Generator"
+    footerRight: "Course Pack Generator",
+    /* docTitle is deliberately empty by default. The page's <title> is not
+       decoration: it lists every subject (which the tests rely on) and the
+       platform rewrites it with the document name when printing. Only set
+       docTitle when a licensee really wants their own wording there. */
+    docTitle: ""
   };
 
   function str(v, fallback, max) {
@@ -46,7 +51,8 @@
     tutor: str(over.tutor, DEFAULTS.tutor, 60),
     support: str(over.support, DEFAULTS.support, 160),
     footerLeft: str(over.footerLeft, DEFAULTS.footerLeft, 160),
-    footerRight: str(over.footerRight, DEFAULTS.footerRight, 160)
+    footerRight: str(over.footerRight, DEFAULTS.footerRight, 160),
+    docTitle: str(over.docTitle, DEFAULTS.docTitle, 240)
   };
 
   /* Publish the merged configuration so every module reads the same object. */
@@ -58,10 +64,9 @@
      and impossible to get wrong: a missing attribute is simply skipped. */
   function apply() {
     try {
-      if (cfg.product && document.title) {
-        var plain = textOf(cfg.product);
-        if (plain && plain !== document.title) document.title = plain;
-      }
+      /* Only a licensee who explicitly sets docTitle gets a different
+         browser title. The default is to leave it alone. */
+      if (cfg.docTitle && document.title) document.title = textOf(cfg.docTitle);
       var nodes = document.querySelectorAll("[data-brand]");
       Array.prototype.forEach.call(nodes, function (el) {
         var key = el.getAttribute("data-brand");
