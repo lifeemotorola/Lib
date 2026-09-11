@@ -3,3 +3,13 @@ node_modules/
 
 .venv/
 .cache/
+
+# build output / local artefacts
+_site/
+dist/
+*.log
+*.key
+.env
+.env.*
+.DS_Store
+Thumbs.db

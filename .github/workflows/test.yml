@@ -28,6 +28,9 @@ jobs:
           node tests/voice.js
           node tests/ai.js
           node tests/header-footer.js
+          node tests/kg-lesson.js
+          node tests/civics-teaching.js
+          node tests/usage.js
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'

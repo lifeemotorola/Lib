@@ -2029,6 +2029,15 @@
 
   function generate() {
     var o = opts();
+    /* Optional on-device counter — see usage.js. Stored in this browser,
+       never uploaded; a no-op until the visitor switches counting on. */
+    try {
+      if (window.USAGE) {
+        window.USAGE.track(isLP() ? "generate_plan" : "generate_pack", {
+          subject: cur, grade: o.grade, session: isTeacher() ? "teacher" : "student"
+        });
+      }
+    } catch (e) { /* counting must never break generation */ }
     var signatureOptions = Object.assign({}, o);
     ["teacher", "keys", "fsz"].forEach(function (k) { delete signatureOptions[k]; });
     if (!isLP()) { delete signatureOptions.teacherName; delete signatureOptions.school; }
@@ -2220,6 +2229,7 @@
       };
       document.title = packFileBase();
       window.addEventListener("afterprint", restore);
+      try { if (window.USAGE) window.USAGE.track("print", { subject: cur, grade: opts().grade }); } catch (e) { /* ignore */ }
       window.print();
       setTimeout(restore, 3000);   /* fallback when afterprint never fires */
     };
@@ -2288,6 +2298,7 @@
       var theme = THEMES[cur] || THEMES.en;
       var fn = packFileBase() + ".docx";
       download(toDocx(pack.blocks, theme, runhead), fn);
+      try { if (window.USAGE) window.USAGE.track("export_docx", { subject: cur, grade: opts().grade }); } catch (e) { /* ignore */ }
     };
     /* study-notes toggle */
     var nb = $("#notes");
@@ -3305,4 +3316,12 @@
      DOMContentLoaded runs (this whole IIFE runs after all scripts are inlined
      via build.sh, but the deferred call style keeps both orders happy) */
   window.PACK_HF_GET = window.PACK_HF_GET || function () { return HF; };
+
+  /* ---- optional usage counting (usage.js) and white-label branding (brand.js)
+     Both are strictly additive: if either file is missing, or storage is
+     blocked, the platform behaves exactly as it did before. ---- */
+  document.addEventListener("DOMContentLoaded", function () {
+    try { if (window.USAGE) window.USAGE.init(); } catch (e) { /* ignore */ }
+    try { if (window.BRAND) window.BRAND.apply(); } catch (e) { /* ignore */ }
+  });
 })();
