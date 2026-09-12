@@ -95,7 +95,12 @@ and never in `index.html`. The proxy enforces an origin allowlist, a model
 allow-list and a rate limit; Turnstile (`humancheck.js`) is optional and is
 automatically skipped on `file://` copies. When the proxy is unreachable the
 tutor says nothing (no error text, no key details) and everything else keeps
-working — `tests/ai.js` guards that behaviour.
+working — `tests/ai.js` guards that behaviour. When the device is offline
+(`navigator.onLine === false`, plus the browser's `online`/`offline` events)
+the tutor also hides itself: the floating button and panel disappear, a
+question still in flight is ended (whatever already arrived is kept, an
+empty answer becomes a connection note), and the button returns when the
+connection does — `tests/ai.js` guards this too.
 
 **At handover:** the buyer must create their own Groq account and set their own
 secret. The seller should revoke the old key.

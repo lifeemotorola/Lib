@@ -753,6 +753,7 @@ body.hc-locked{overflow:hidden}
   background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff;border:none;border-radius:50px;
   padding:12px 20px;font-size:.92rem;font-weight:700;cursor:pointer;
   box-shadow:0 6px 24px rgba(11,59,140,.35);transition:all .2s;font-family:inherit}
+.ai-fab[hidden]{display:none}
 .ai-fab:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(11,59,140,.45)}
 .ai-fab.open{background:linear-gradient(135deg,#d3242e,#e84057);box-shadow:0 6px 24px rgba(211,36,46,.35)}
 .ai-fab-ico{font-size:1.3rem;line-height:1}

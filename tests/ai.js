@@ -71,10 +71,26 @@ function pick(key, map) {
   bySel[sel] = el;
 });
 
+/* The floating button and the panel are created at run time by
+   buildPanel() and appended to document.body, so the mock resolves them
+   by walking the body's children instead of pre-seeding them. */
+function findById(node, id) {
+  if (!node) return null;
+  if (node.id === id) return node;
+  for (const child of node.children || []) {
+    const found = findById(child, id);
+    if (found) return found;
+  }
+  return null;
+}
+
 const mockDoc = {
   readyState: "complete",
   createElement: function (tag) { return element(tag); },
-  querySelector: function (sel) { return pick(sel, bySel); },
+  querySelector: function (sel) {
+    if (sel && sel.charAt(0) === "#") return pick(sel, bySel) || findById(mockDoc.body, sel.slice(1));
+    return pick(sel, bySel);
+  },
   querySelectorAll: function () { return []; },
   addEventListener: function () {},
   body: element("body")
@@ -215,6 +231,45 @@ function ask(text) {
   const helperBubble = helperRow.children.find((c) => /ai-bubble/.test(c.className));
   assert.strictEqual(helperBubble._raw, "Emmanuel works instantly.");
   assert.strictEqual(humanCheckTokenChecked, true, "Checked token synchronously without blocking");
+
+  /* ---------- 6. offline hides the whole AI feature ---------- */
+  const fab = () => mockDoc.querySelector("#aiFab");
+  const panel = () => mockDoc.querySelector("#aiPanel");
+  assert(fab(), "The floating tutor button must exist before going offline");
+  assert.strictEqual(fab().hidden, false, "Online, the button must be visible");
+  sandbox.navigator = { onLine: false };
+  sandbox.window._aiSetOnline(false);
+  assert.strictEqual(fab().hidden, true, "The AI button must disappear while offline");
+  assert.strictEqual(panel().hidden, true, "The AI panel must close while offline");
+
+  /* the programmatic entry points stay silent while offline */
+  const fetchBefore = fetchCalls;
+  sandbox.window.AI_EXPLAIN("photosynthesis");
+  assert.strictEqual(bySel["#aiInput"].value, "", "Offline AI_EXPLAIN must not queue a question");
+  assert.strictEqual(fetchCalls, fetchBefore, "Offline AI_EXPLAIN must not reach the proxy");
+
+  /* ---------- 7. an in-flight question ends when the connection drops ---------- */
+  sandbox.navigator = { onLine: true };
+  sandbox.window._aiSetOnline(true);
+  assert.strictEqual(fab().hidden, false, "Back online, the button must return");
+  fetchImpl = () => new Promise(() => {});        /* streams nothing */
+  ask("What causes tides?");
+  assert.strictEqual(composerFree(), false, "A turn must be running before the drop");
+  sandbox.navigator = { onLine: false };
+  sandbox.window._aiSetOnline(false);
+  await wait(150);
+  assert.strictEqual(composerFree(), true, "A dropped connection must free the composer");
+  const tideRow = body().children[body().children.length - 1];
+  const tideBubble = tideRow.children.find((c) => /ai-bubble/.test(c.className));
+  assert(/connection|online/i.test(deepText(tideBubble)),
+    "An in-flight answer that arrives at nothing must end with a connection note: " +
+    deepText(tideBubble));
+  assert.strictEqual(fab().hidden, true, "Still offline, the button stays hidden");
+
+  /* ---------- 8. back online, the feature comes back ---------- */
+  sandbox.navigator = { onLine: true };
+  sandbox.window._aiSetOnline(true);
+  assert.strictEqual(fab().hidden, false, "Reconnecting must bring the button back");
 
   console.log("OK: AI tutor (Emmanuel) tests passed.");
 })().catch((err) => {

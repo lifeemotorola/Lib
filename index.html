@@ -766,6 +766,7 @@ body.hc-locked{overflow:hidden}
   background:linear-gradient(135deg,#0b3b8c,#1e5fd0);color:#fff;border:none;border-radius:50px;
   padding:12px 20px;font-size:.92rem;font-weight:700;cursor:pointer;
   box-shadow:0 6px 24px rgba(11,59,140,.35);transition:all .2s;font-family:inherit}
+.ai-fab[hidden]{display:none}
 .ai-fab:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(11,59,140,.45)}
 .ai-fab.open{background:linear-gradient(135deg,#d3242e,#e84057);box-shadow:0 6px 24px rgba(211,36,46,.35)}
 .ai-fab-ico{font-size:1.3rem;line-height:1}
@@ -83934,6 +83935,58 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     return NOTE_FAIL;
   }
 
+  /* ---- online / offline ----------------------------------------------
+     Emmanuel is the one part of the platform that needs the internet.
+     When the device reports it is offline the tutor hides itself — the
+     floating button disappears and the panel closes — and every other
+     part of the platform keeps working. The button comes back the moment
+     the connection returns. A question still in flight when the
+     connection drops is ended: whatever has already arrived is kept, an
+     empty answer is replaced with a note, and nothing may sit on
+     "Thinking...".
+     -------------------------------------------------------------------- */
+  var NOTE_CONN = "The connection dropped while I was replying. I'll be back when you're online — the packs, printing and voice reader all still work.";
+
+  function isOnline() {
+    if (typeof navigator === "undefined") return true;  /* e.g. the unit-test sandbox */
+    return navigator.onLine !== false;
+  }
+
+  function setOnlineUI(online) {
+    var fab = $("#aiFab"), p = $("#aiPanel");
+    if (online) {
+      if (fab) fab.hidden = false;
+      return;
+    }
+    /* a turn still in flight must end before the tutor hides itself */
+    var turn = active;
+    if (turn) {
+      var had = !!(turn.bubble && turn.bubble._raw);
+      try { if (turn.ctrl) turn.ctrl.abort(); } catch (e) {}
+      if (had) keepAnswer(turn);
+      endTurn(turn);
+      if (!had && turn.bubble) {
+        var b = turn.bubble;
+        b.className = "ai-bubble ai-err";
+        b.innerHTML = "";
+        var t = document.createElement("span");
+        t.textContent = NOTE_CONN;
+        b.appendChild(t);
+        var body = $("#aiBody");
+        if (body) body.scrollTop = body.scrollHeight;
+      }
+    }
+    isOpen = false;
+    if (p) p.hidden = true;
+    if (fab) { fab.hidden = true; fab.classList.remove("open"); }
+  }
+
+  function wireOnlineEvents() {
+    if (typeof window.addEventListener !== "function") return;
+    window.addEventListener("offline", function () { setOnlineUI(false); });
+    window.addEventListener("online", function () { setOnlineUI(true); });
+  }
+
   function newTurn(bubble, userText) {
     return {
       ctrl: null, timers: [], bubble: bubble, userText: userText,
@@ -84310,8 +84363,11 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     });
   }
 
-  /* ---- explain / generate / quiz helpers, callable from anywhere ---- */
+  /* ---- explain / generate / quiz helpers, callable from anywhere ----
+     While the device is offline the tutor is hidden, so these entry
+     points stay silent instead of opening a panel that cannot answer. */
   window.AI_EXPLAIN = function (text) {
+    if (!isOnline()) return;
     if (!isOpen) togglePanel();
     var inp = $("#aiInput");
     if (inp) {
@@ -84322,6 +84378,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 
   /* ---- "Generate Questions" — called from rendered pages ---- */
   window.AI_GENERATE_QUESTIONS = function (subject, grade, topic, count) {
+    if (!isOnline()) return;
     if (!isOpen) togglePanel();
     var inp = $("#aiInput");
     if (inp) {
@@ -84334,6 +84391,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 
   /* ---- "Quiz Me" ---- */
   window.AI_QUIZ = function (subject, grade, topic) {
+    if (!isOnline()) return;
     if (!isOpen) togglePanel();
     var inp = $("#aiInput");
     if (inp) {
@@ -84344,9 +84402,14 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     }
   };
 
+  /* mirrors what the browser's offline event does — exposed for tests */
+  window._aiSetOnline = function (online) { setOnlineUI(!!online); };
+
   /* ---- init ---- */
   function init() {
     buildPanel();
+    wireOnlineEvents();
+    if (!isOnline()) setOnlineUI(false);  /* start offline: the tutor stays hidden */
   }
 
   if (document.readyState === "loading") {

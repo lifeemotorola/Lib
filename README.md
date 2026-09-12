@@ -470,7 +470,11 @@ packs must never be locked out by it.
 
 > **Offline note:** the curriculum content, books and printing work fully
 > offline; the AI tutor needs an internet connection (it calls an online
-> model), as it always did — only the key handling changed.
+> model), as it always did — only the key handling changed. When the device
+> is offline the tutor hides itself — the floating button disappears, the
+> panel closes and a reply still in flight is ended gracefully — and the
+> button returns the moment the connection does. Everything else on the
+> platform is unaffected.
 
 ## Project layout
 
