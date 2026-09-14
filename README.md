@@ -256,9 +256,17 @@ python3 -m http.server 8000
 - **Windows/macOS/Linux:** open the site in Chrome or Edge, click **Install
   app**, then confirm. It opens in its own window and remains available offline.
 
-A service worker stores the generated single-file app and its icons after the
-first successful visit. Installation requires HTTP/HTTPS because browsers do
-not allow service workers from a `file://` URL.
+A service worker stores the offline shell (the single-file app, the
+duplex-print tool and its icons) **on each device** after the first successful
+visit — so every device must be opened once while online. The status line next
+to the **Install app** button says so: it shows **“Saved on this device —
+works without internet.”** once that device's offline copy is complete. Each
+shell file is cached independently, so a single failed download (a weak
+connection, a full cache) can no longer leave a device with no offline copy
+at all, and every page is cached under its own URL so the app and the
+duplex-print tool each come back correctly offline. Browsers only allow
+service workers over HTTP/HTTPS — not from a `file://` URL — so a USB copy
+opens directly in the browser instead of installing.
 
 ## Using the generator
 

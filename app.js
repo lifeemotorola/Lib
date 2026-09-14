@@ -2126,8 +2126,31 @@
       };
     }
     if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
-      navigator.serviceWorker.register("./sw.js").catch(function () {
+      /* The offline shell is stored per device, so say plainly when THIS
+         device has it — the only way a teacher can tell which tablets are
+         ready to be taken somewhere without internet. */
+      var swStatus = $("installStatus");
+      if (swStatus && !deferredInstallPrompt) {
+        swStatus.textContent = "Preparing this device for offline use\u2026";
+      }
+      /* updateViaCache: "none" asks the browser to re-check sw.js itself,
+         so a fixed worker reaches devices that cached an older one. */
+      navigator.serviceWorker.register("./sw.js", { updateViaCache: "none" }).then(function () {
+        function swReady() {
+          var status = $("installStatus");
+          if (status && !deferredInstallPrompt) {
+            status.textContent = "Saved on this device \u2014 works without internet.";
+          }
+        }
+        if (navigator.serviceWorker.controller) swReady();
+        navigator.serviceWorker.addEventListener("controllerchange", swReady);
+        if (navigator.serviceWorker.ready && navigator.serviceWorker.ready.then) {
+          navigator.serviceWorker.ready.then(swReady);
+        }
+      }).catch(function () {
         /* The original single-file, file:// workflow still works without PWA support. */
+        var status = $("installStatus");
+        if (status) status.textContent = "";
       });
     }
     renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods();
