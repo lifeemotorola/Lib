@@ -18,6 +18,15 @@ Deployment (GitHub Pages today, Cloudflare Pages optional) copies
 `index.html`, `manifest.webmanifest`, `sw.js`, `book.html`, `book.js` and
 `assets/`. See `.github/workflows/deploy.yml`.
 
+Offline is **per device**: the first successful visit stores the app shell in
+that browser's cache via `sw.js`. Every shell entry is cached independently
+(one flaky asset can no longer void the whole install, as `cache.addAll`
+did), pages are cached under their own URL with the app shell as the final
+fallback (an earlier build stored every navigation under `./index.html`, so
+a device that had once opened the duplex book tool could get the wrong page
+back offline), and the header status line reports when the device is
+offline-ready. `tests/sw.js` guards all of this.
+
 ## 2. Module map
 
 | Layer | Files | Responsibility |
@@ -121,6 +130,7 @@ node tests/history.js           # Senior High History
 node tests/kg-lesson.js         # Kindergarten ECD lesson plans
 node tests/civics-teaching.js   # all 36 Civics units
 node tests/usage.js             # usage counters and the no-network guarantee
+node tests/sw.js                # offline shell: resilient install, per-page caching, fallbacks
 ```
 
 Browser tests (Playwright; `pip install -r requirements.txt`):
