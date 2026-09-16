@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Liberian National Curriculum Breakdown",
-  "short_name": "Curriculum Break Down",
+  "name": "Easy School Liberia",
+  "short_name": "Easy School",
   "description": "Create printable Liberian curriculum workbooks, tests, examinations and teacher answer keys for Grades 1–12.",
   "start_url": "./index.html",
   "scope": "./",

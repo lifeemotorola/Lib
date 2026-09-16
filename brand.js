@@ -27,8 +27,8 @@
   "use strict";
 
   var DEFAULTS = {
-    product: "Liberian National Curriculum &middot; Course Pack Generator",
-    short: "Liberia Packs",
+    product: "Easy School Liberia &middot; Course Pack Generator",
+    short: "Easy School Liberia",
     tutor: "Emmanuel",
     support: "",
     footerLeft: "Liberian National Curriculum",

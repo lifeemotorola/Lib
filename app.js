@@ -448,7 +448,7 @@
     var pd = platDefaults();
     if (topTitle) {
       topTitle.textContent = (pl.hdr.title && pl.hdr.title.trim()) || pd.title ||
-        "Liberian National Curriculum \u00b7 Course Pack Generator";
+        "Easy School Liberia \u00b7 Course Pack Generator";
     }
     if (topSub) {
       var defSub = "English \u00b7 Phonics \u00b7 French \u00b7 General Science \u00b7 Mathematics \u00b7 Social Studies \u00b7 Religious & Moral Education \u00b7 Physical Education \u00b7 Biology \u00b7 Chemistry \u00b7 Physics \u00b7 Economics \u00b7 English Grammar \u00b7 Geography \u00b7 History \u00b7 Civics \u00b7 Literature<br><span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks, tests and answer keys \u00b7 works offline</span>";
@@ -3089,7 +3089,7 @@
     if (hl) hl.textContent = txt(sh.hdr, "l", "SUBJECT \u00b7 GRADE 5");
     if (hr) hr.textContent = txt(sh.hdr, "r", "Teacher's Copy");
     if (fl) fl.textContent = txt(sh.ftr, "l", "Liberian Elementary Curriculum \u00b7 Grade 5");
-    if (fr) fr.textContent = txt(sh.ftr, "r", "Liberian Course Pack Generator");
+    if (fr) fr.textContent = txt(sh.ftr, "r", "Easy School Liberia");
     if (pg) pg.style.display = sh.on && sh.ftr && sh.ftr.pg !== false ? "" : "none";
     /* per-section show/hide */
     var box = document.getElementById("shHfBox");
