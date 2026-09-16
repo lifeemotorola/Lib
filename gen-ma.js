@@ -760,6 +760,26 @@
     };
   }
 
+  /* A2 · Worked example for every new term (the worked example baked into
+     each unit's terms[] — problem, numbered steps, answer) */
+  function wsTermEx(t) {
+    var sel = (t.terms || []).filter(function (v) {
+      return v.ex && v.ex.q && (v.ex.steps || []).length >= 2 && v.ex.a;
+    });
+    if (!sel.length) return null;
+    var b = [
+      { k: "h3", t: "A2 · Worked Examples — Every New Term" },
+      { k: "instr", t: "Read each worked example with your teacher. Then solve it again in your exercise book, step by step, without looking." }
+    ];
+    sel.forEach(function (v) {
+      b.push({ k: "p", t: "**" + v.t + "** — " + v.ex.q });
+      b.push({ k: "num", items: v.ex.steps });
+      b.push({ k: "instr", t: "Answer: " + v.ex.a });
+      b.push({ k: "space" });
+    });
+    return { blocks: b, key: sel.map(function (v) { return v.t + " — " + v.ex.a; }) };
+  }
+
   /* B · Match term to meaning */
   function wsMatch(t, n, r) {
     var sel = pick(t.terms, n, r);
@@ -958,6 +978,7 @@
 
   var SHEETS = {
     terms:     { label: "Mathematics vocabulary",   fn: function (t) { return wsTerms(t); } },
+    wordex:    { label: "Worked examples — every new term", fn: wsTermEx },
     match:     { label: "Match term to meaning",    fn: wsMatch },
     worked:    { label: "Worked examples",          fn: function (t) { return wsWorked(t); } },
     drills:    { label: "Practice exercise",        fn: wsDrills },
@@ -1123,7 +1144,7 @@
     topics.forEach(function (t, i) {
       doc.push({ k: "h1", t: "PERIOD " + periodNo(t.period) + " · " + t.title, per: t.period });
       doc.push({ k: "p", t: t.subtitle + "   ·   Semester " + t.sem });
-      doc.push.apply(doc, UNIT_NOTES(t, periodNo(t.period)));
+      doc.push.apply(doc, UNIT_NOTES(t, periodNo(t.period), "ma"));
       doc.push({ k: "space" });
 
       var ukey = [];

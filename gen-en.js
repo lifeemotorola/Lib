@@ -82,6 +82,47 @@
     };
   }
 
+  /* Build a worked example for one word: a cloze problem made from the word's
+     own sentence — the word is blanked, the learner reasons from its meaning
+     and writes it back in. Returns null when the word does not appear in its
+     own example sentence (same filter as wsCloze). */
+  function wordExample(v) {
+    if (!v || !v.w || !v.x) return null;
+    var esc = String(v.w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    var re = new RegExp(esc, "i");
+    if (!re.test(v.x)) return null;
+    var blank = v.x.replace(re, "__________");
+    var d = String(v.d == null ? "" : v.d).replace(/<[^>]+>/g, "");
+    return {
+      q: "Complete the sentence using the new word (meaning: " + d + "):  \u201c" + blank + "\u201d",
+      steps: [
+        "Remember what the new word \u201c" + v.w + "\u201d means: " + d,
+        "Read the sentence with the blank: \u201c" + blank + "\u201d",
+        "The blank needs a word meaning \u201c" + d + "\u201d \u2014 the word \u201c" + v.w + "\u201d fits.",
+        "Write \u201c" + v.w + "\u201d in the blank and read the finished sentence aloud."
+      ],
+      a: v.x
+    };
+  }
+
+  /* C2 · Worked example for every new word */
+  function wsWordEx(t) {
+    var sel = (t.words || []).map(function (v) { return { v: v, e: wordExample(v) }; })
+      .filter(function (x) { return x.e; });
+    if (!sel.length) return null;
+    var b = [
+      { k: "h3", t: "C2 · Worked Examples — Every New Word" },
+      { k: "instr", t: "For each new word, complete the sentence in your exercise book. Show your thinking step by step, then read the finished sentence aloud." }
+    ];
+    sel.forEach(function (x) {
+      b.push({ k: "p", t: "**" + x.v.w + "** — " + x.e.q });
+      b.push({ k: "num", items: x.e.steps });
+      b.push({ k: "instr", t: "Answer: " + x.e.a });
+      b.push({ k: "space" });
+    });
+    return { blocks: b, key: sel.map(function (x) { return x.v.w + " — " + x.e.a; }) };
+  }
+
   /* D · Phonics / word families */
   function wsPhonics(t, n, r) {
     if (!t.phonics || !t.phonics.length) return null;
@@ -235,6 +276,7 @@
 
   var SHEETS = {
     words:    { label: "Vocabulary word list",       fn: function (t) { return wsWords(t); } },
+    wordex:   { label: "Worked examples — every new word", fn: wsWordEx },
     match:    { label: "Match word to meaning",      fn: wsMatch },
     cloze:    { label: "Fill in the blanks",         fn: wsCloze },
     phonics:  { label: "Phonics & word building",    fn: wsPhonics },
@@ -386,7 +428,7 @@
     topics.forEach(function (t, i) {
       doc.push({ k: "h1", t: "PERIOD " + periodNo(t.period) + " · " + t.title, per: t.period });
       doc.push({ k: "p", t: t.subtitle + "   ·   Semester " + t.sem });
-      doc.push.apply(doc, UNIT_NOTES(t, periodNo(t.period)));
+      doc.push.apply(doc, UNIT_NOTES(t, periodNo(t.period), "en"));
       doc.push({ k: "space" });
 
       var ukey = [];
@@ -438,5 +480,5 @@
     return { blocks: doc, topics: topics };
   }
 
-  root.GEN_EN = { buildPack: buildPack, SHEETS: SHEETS };
+  root.GEN_EN = { buildPack: buildPack, SHEETS: SHEETS, wordExample: wordExample };
 })(window);
