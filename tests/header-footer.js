@@ -323,7 +323,7 @@ function fire(id, type, mutate) {
 }
 
 /* the platform bar, as body.html ships it */
-const FACTORY_TITLE = "Liberian National Curriculum \u00b7 Course Pack Generator";
+const FACTORY_TITLE = "Easy School Liberia \u00b7 Course Pack Generator";
 const FACTORY_SUB = 'English \u00b7 Phonics \u00b7 French<br><span class="top-sub">KG-I &amp; KG-II lesson plans &amp; cover pages</span>';
 const topH1 = { tagName: "H1", textContent: FACTORY_TITLE, innerHTML: FACTORY_TITLE, style: {} };
 const topStrip = { tagName: "SPAN", textContent: "KG-I &amp; KG-II lesson plans &amp; cover pages", style: {} };

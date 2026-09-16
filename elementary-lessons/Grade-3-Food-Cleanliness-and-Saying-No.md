@@ -2,13 +2,38 @@
 
 **Level:** Grade 3 (Elementary, ≈ ages 8–9)
 **Strand:** Health · taught inside **General Science**, here planned as its own unit
-**Unit:** Grade 3, Period IV (Semester Two) · **Duration:** 4 weeks · 40-minute periods
+**Units:** Grade 3, Periods I–VI (three in Semester One, three in Semester Two) ·
+**Duration:** 4 weeks per unit · 40-minute periods
 **Source:** *Liberia National Curriculum — General Science, Grades 1–6*, Ministry of
 Education (`uploads/General Science1-6.pdf`), **Guide pp. 32–33**: “INVESTIGATING MORE
 USES OF PLANTS · INVESTIGATING HOW WE CARE FOR OUR BODIES”. (“Guide p. N” = the printed
 guide page.)
 
 ---
+
+## The six periods of Grade 3 at a glance
+
+Health Science in Grade 3 is planned as six units of four weeks — Periods I to
+VI — so the health content the guide gives this grade is taught across the
+year instead of in one block. Periods II and IV are the guide's own health
+periods for this grade; the other periods teach the same grade's outcomes,
+objectives, contents and activities again, one unit at a time, in the order a
+child meets them. Every unit carries its own outcomes, key terms, questions,
+investigation and home practice in `data-hs.js`, and every one plans and
+exports from the app.
+
+| Period | Semester | Unit | Guide page |
+|---|---|---|---|
+| I | One | A Catalog of Local Plants | Guide p. 32 |
+| II | One | Growing Up: Puberty and Where Babies Come From | Guide pp. 28–29 |
+| III | One | Nutrients from Liberian Plants | Guide p. 32 |
+| IV | Two | Caring for Our Bodies: Personal Hygiene | Guide p. 33 |
+| V | Two | Bad Substances: How They Enter and How We Avoid Them | Guide pp. 32–33 |
+| VI | Two | How STIs Get In, How They Do Not, and Refusal Skills | Guide p. 33 |
+
+This file works up the **Period IV** unit in full: the guide's own
+requirements, the four-week scheme, and one model lesson in the sector's four
+stages.
 
 ## How to teach this unit in Grade 3
 

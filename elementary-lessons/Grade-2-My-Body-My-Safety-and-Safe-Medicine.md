@@ -2,14 +2,38 @@
 
 **Level:** Grade 2 (Elementary, ≈ ages 7–8)
 **Strand:** Health · taught inside **General Science**, here planned as its own unit
-**Unit:** Grade 2, Period VI (Semester Two), drawing also on Period III (Semester One) ·
-**Duration:** 4 weeks · 40-minute periods
+**Units:** Grade 2, Periods I–VI (three in Semester One, three in Semester Two) ·
+**Duration:** 4 weeks per unit · 40-minute periods
 **Source:** *Liberia National Curriculum — General Science, Grades 1–6*, Ministry of
 Education (`uploads/General Science1-6.pdf`): **Guide pp. 24–25** “EXPLORING DRUGS ·
 EXPLORING MY BODY” and **Guide pp. 18–19** “EXPLORING HUMAN BODY”. (“Guide p. N” = the
 printed guide page.)
 
 ---
+
+## The six periods of Grade 2 at a glance
+
+Health Science in Grade 2 is planned as six units of four weeks — Periods I to
+VI — so the health content the guide gives this grade is taught across the
+year instead of in one block. Periods III and VI are the guide's own health
+periods for this grade; the other periods teach the same grade's outcomes,
+objectives, contents and activities again, one unit at a time, in the order a
+child meets them. Every unit carries its own outcomes, key terms, questions,
+investigation and home practice in `data-hs.js`, and every one plans and
+exports from the app.
+
+| Period | Semester | Unit | Guide page |
+|---|---|---|---|
+| I | One | The Major Parts of the Human Body | Guide p. 18 |
+| II | One | My Senses and How They Keep Me Safe | Guide p. 18 |
+| III | One | Boys' Bodies and Girls' Bodies | Guide pp. 18–19 |
+| IV | Two | Good Touches, Bad Touches and Reporting | Guide p. 19 |
+| V | Two | Drugs: What They Are and What They Do | Guide p. 24 |
+| VI | Two | Saying No: Peer Pressure, Safe Medicine and Body Respect | Guide pp. 24–25 |
+
+This file works up the **Period VI** unit in full: the guide's own
+requirements, the four-week scheme, and one model lesson in the sector's four
+stages.
 
 ## How to teach this unit in Grade 2
 

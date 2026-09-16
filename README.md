@@ -73,10 +73,16 @@ so the whole thing stays self-contained.
   in the `.docx` export as far as Word allows
 - **Health Science — Elementary Grades 1–6**: the health strand of the national
   Elementary General Science guide, planned as a subject of its own (`data-hs.js`):
-  one 4-week unit per grade — body parts and handwashing (G1), body safety and
-  safe medicine (G2), food, hygiene and refusal (G3), puberty and protecting
-  myself (G4), nutrition, germs and the health services near us (G5), body
-  systems, disease and healthy living (G6). It generates **lesson plans** (daily
+  **six 4-week units per grade — Periods I to VI** (three in Semester One, three
+  in Semester Two), so the health content the guide gives each grade is taught
+  across the year: body parts, handwashing and body safety (G1), my body, my
+  safety and safe medicine (G2), food, cleanliness and saying no (G3), puberty,
+  hygiene and protecting myself (G4), nutrition, germs and the health services
+  near us (G5), body systems, disease and healthy living (G6). The period the
+  guide itself places the health content in keeps the guide's own outcomes
+  (G1 VI, G2 III & VI, G3 II & IV, G4 V & VI, G5 III & IV, G6 II & IV); the
+  other periods spiral the same grade's own outcomes, objectives, contents and
+  activities. It generates **lesson plans** (daily
   and weekly, 40-minute four-stage periods, with a safeguarding note printed on
   every plan) **and course packs** (workbook, period test, semester exam and
   teacher's key) on the General Science engine
@@ -239,9 +245,16 @@ the same planners.
 **Health Science** is the health strand of the national Elementary **General
 Science** guide (grades 1–6), transcribed as a subject of its own in
 `data-hs.js`. Pick **National Curriculum → Health Science → Grade 1 … Grade 6**:
-each grade carries one 4-week health unit keyed to the period the guide places it
-in (G1 Part VI, G2 Part VI, G3 Part IV, G4 Part VI, G5 Part III, G6 Part IV), and
-the same tab icon and `hs.png` cover artwork mark it everywhere else in the app.
+each grade carries **six 4-week health units, Period I to Period VI** (Periods
+I–III in Semester One, IV–VI in Semester Two), and the same tab icon and
+`hs.png` cover artwork mark it everywhere else in the app. The periods that hold
+the guide's own health content — G1 VI, G2 III and VI, G3 II and IV, G4 V and
+VI, G5 III and IV, G6 II and IV — keep it at that period number; the rest teach
+the same grade's outcomes, objectives, contents and activities again, one unit
+at a time, in the order a child meets them. Every unit is a full unit of its
+own: outcomes, objectives, contents, activities, aids, key terms, oral
+questions, true/false, sorting, diagram, investigation, apply-it, home practice
+and assessment.
 
 - **Lesson plan** (daily or weekly, 40-minute periods, the sector's four stages):
   the lesson opens in the **health circle** with the two rules (*everything is
@@ -265,12 +278,13 @@ the same tab icon and `hs.png` cover artwork mark it everywhere else in the app.
   subject's guide.
 
 The printed companion lessons live in `elementary-lessons/`: one file per grade,
-each carrying the whole unit (the guide's own outcomes/objectives/contents/
-activities/materials/assessment block, the four-week scheme, the master materials
-list, the assessment plan and the appendices) **and one fully worked 40-minute
-model lesson** with board plan, expected answers, common mistakes,
-differentiation and home practice — `Grade-1-Care-of-the-Body.md` …
-`Grade-6-Body-Systems-Disease-and-Healthy-Living.md`.
+each opening with **the six periods of that grade at a glance** (period, semester,
+unit title and the guide page it comes from) and then working up one period in
+full — the guide's own outcomes/objectives/contents/activities/materials/
+assessment block, the four-week scheme, the master materials list, the assessment
+plan, the appendices and a fully worked 40-minute **model lesson** with board
+plan, expected answers, common mistakes, differentiation and home practice —
+`Grade-1-Care-of-the-Body.md` … `Grade-6-Body-Systems-Disease-and-Healthy-Living.md`.
 
 ## Quick start
 
@@ -355,7 +369,7 @@ same tool lives in `book.html`.
 | Phonics (`pho`) | 1–12 | 6 | 72 |
 | French (`fr`) | 1–12 | 6 | 72 |
 | General Science (`sc`) | 1–9 | 6 | 54 |
-| Health Science (`hs`) | 1–6 | 1 health unit per grade | 6 |
+| Health Science (`hs`) | 1–6 | 6 (Periods I–VI) | 36 |
 | Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
 | Social Studies (`ss`) | 1–9 | 6 | 54 |
 | Religious & Moral Education (`rm`) | 1–9 | 6 | 54 |
@@ -374,8 +388,10 @@ same tool lives in `book.html`.
 > **Coverage:** Mathematics, French and **Phonics** span Grades 1–12, and
 > Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and
 > Literature cover Grades 10–12; the other elementary and junior-high
-> subjects stop at Grade 9. **Health Science** covers Grades 1–6 with one 4-week
-> health unit per grade, taken from that guide's own health periods.
+> subjects stop at Grade 9. **Health Science** covers Grades 1–6 with **six 4-week
+> health units per grade — Periods I to VI**; the periods the guide gives health
+> content to keep it at the guide's own period number, and the rest spiral that
+> grade's own outcomes, objectives, contents and activities.
 > **Kindergarten** spans KG-I–KG-II with 2 ECD theme
 > units per level (lesson plans only; packs stay cover-only).
 

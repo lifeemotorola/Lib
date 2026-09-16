@@ -2,12 +2,37 @@
 
 **Level:** Grade 1 (Elementary, ≈ ages 6–7)
 **Strand:** Health · taught inside **General Science**, here planned as its own unit
-**Unit:** Grade 1, Period VI (Semester Two) · **Duration:** 4 weeks · 40-minute periods
+**Units:** Grade 1, Periods I–VI (three in Semester One, three in Semester Two) ·
+**Duration:** 4 weeks per unit · 40-minute periods
 **Source:** *Liberia National Curriculum — General Science, Grades 1–6*, Ministry of
 Education (`uploads/General Science1-6.pdf`), **Guide pp. 12–13**: “CARE OF THE BODY ·
 HIV/AIDS · SUBSTANCE ABUSE”. Page numbers below (“Guide p. N”) are the printed guide pages.
 
 ---
+
+## The six periods of Grade 1 at a glance
+
+Health Science in Grade 1 is planned as six units of four weeks — Periods I to
+VI — so the health content the guide gives this grade is taught across the
+year instead of in one block. Period VI is the guide's own health period for
+this grade; the other periods teach the same grade's outcomes, objectives,
+contents and activities again, one unit at a time, in the order a child meets
+them. Every unit carries its own outcomes, key terms, questions, investigation
+and home practice in `data-hs.js`, and every one plans and exports from the
+app.
+
+| Period | Semester | Unit | Guide page |
+|---|---|---|---|
+| I | One | Getting to Know My Body | Guide p. 12 |
+| II | One | Caring for Each Part of My Body | Guide p. 12 |
+| III | One | Washing My Hands | Guide pp. 12–13 |
+| IV | Two | My Body Belongs to Me | Guide p. 12 |
+| V | Two | Good Substances and Bad Substances | Guide pp. 12–13 |
+| VI | Two | HIV, AIDS and Caring for People Who Are Sick | Guide p. 13 |
+
+This file works up the **Period VI** unit in full: the guide's own
+requirements, the four-week scheme, and one model lesson in the sector's four
+stages.
 
 ## How to teach this unit in Grade 1
 

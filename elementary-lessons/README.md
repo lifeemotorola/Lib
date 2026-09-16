@@ -25,12 +25,14 @@ printed page number inside the guide, which is also the PDF page number).
 | `Grade-5-Nutrition-Germs-and-Health-Services.md` | Grade 5 | pp. 54–55 (Health Lessons) |
 | `Grade-6-Body-Systems-Disease-and-Healthy-Living.md` | Grade 6 | pp. 70–73 (The Human Body: Health Lessons) · pp. 66–67 (Ecosystem, HIV prevention) |
 
-Each file carries the **whole unit** for that grade — what the guide demands,
-the four-week scheme, the master materials list, the assessment plan with the
-guide's own strategies, the appendices (key terms, songs and slogans, parent
-letter, page cross-reference) — and **one fully worked model lesson**: timed
-four-stage 40-minute period, board plan, questions with expected answers,
-common mistakes, differentiation and the home practice.
+Each file opens with **the six periods of that grade at a glance** — period,
+semester, unit title and the guide page it comes from — and then works one
+period up in full: what the guide demands, the four-week scheme, the master
+materials list, the assessment plan with the guide's own strategies, the
+appendices (key terms, songs and slogans, parent letter, page
+cross-reference) and **one fully worked model lesson** — timed four-stage
+40-minute period, board plan, questions with expected answers, common
+mistakes, differentiation and the home practice.
 
 ## What the guide actually asks for (the strand at a glance)
 
@@ -38,7 +40,15 @@ The guide does not have a separate "Health" subject: health content sits inside
 General Science, in one or two units per grade, and it spirals — the same idea
 comes back harder each year.
 
-| Grade | Unit (guide) | The health ideas the guide puts in it |
+These files plan that content as **six units per grade — Health Science Periods
+I to VI** (Periods I–III in Semester One, IV–VI in Semester Two), four weeks
+each. The period the guide gives the health content to keeps it at that period
+number; the other periods teach the same grade's own outcomes, objectives,
+contents and activities again, one unit at a time. Nothing here is invented
+outside the guide — every unit's subtitle cites the guide page it is taken
+from.
+
+| Grade | Periods (guide) | The health ideas the guide puts in it |
 |---|---|---|
 | 1 | Part VI — Care of the Body | body parts and their work · hygiene · **handwashing** · private parts · good and bad substances · what a small child should know about HIV |
 | 2 | Part III / Part VI | major body parts, male and female, **sensitive parts**, good and bad touch · what a drug is, **addiction**, medicine safety, refusal |
@@ -105,8 +115,9 @@ choose *National Curriculum → Health Science → Grade 1 … Grade 6*.
   cloze, true/false, short answer, MCQ, sorting, label-the-diagram,
   investigation write-up and apply-it questions, plus the period test, the
   semester examination and the teacher's answer key with reasons.
-- Tick **two or three units** (Grades 1–6 units are numbered with the guide's own
-  period number, e.g. Grade 1 Period VI) and export to Word or print as A4.
+- Tick **two or three units** (Grades 1–6 units are numbered Period I to Period
+  VI, e.g. Grade 1 Period III — Washing My Hands) and export to Word or print
+  as A4.
 
 Kindergarten's `Staying Healthy and Safe` lessons live in `../kg-lessons/`; the
 Elementary files here are the same strand grown up — from "wash your hands

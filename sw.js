@@ -1,8 +1,8 @@
-/* Offline shell for the installable Liberian Course Pack Generator. */
+/* Offline shell for the installable Easy School Liberia platform. */
 /* Bump on every release that changes index.html/scripts — old cached
    shells (including the pre-proxy build that contained a baked-in key)
    are flushed on activate. */
-var CACHE_NAME = "liberia-course-packs-v10";
+var CACHE_NAME = "easy-school-liberia-v11";
 var APP_SHELL = [
   "./index.html",
   "./book.html",

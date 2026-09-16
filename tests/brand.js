@@ -31,7 +31,7 @@ function makeDom(attrs) {
     };
   });
   return {
-    title: "Liberian Course Pack Generator &middot; English, Phonics, ..., History, ...",
+    title: "Easy School Liberia &middot; English, Phonics, ..., History, ...",
     readyState: "complete",
     listeners: {},
     addEventListener: function (e, fn) { this.listeners[e] = fn; },
@@ -60,8 +60,8 @@ function load(override, dom) {
   const dom = makeDom(["product", "short", "tutor", "support", "footerLeft", "footerRight"]);
   const { cfg } = load(undefined, dom);
   assert.strictEqual(cfg.tutor, "Emmanuel", "the default tutor name is unchanged");
-  assert.strictEqual(cfg.short, "Liberia Packs");
-  assert.ok(cfg.product.indexOf("Liberian National Curriculum") === 0);
+  assert.strictEqual(cfg.short, "Easy School Liberia");
+  assert.ok(cfg.product.indexOf("Easy School Liberia") === 0);
   assert.strictEqual(cfg.docTitle, "", "docTitle is empty by default");
   assert.strictEqual(dom.title.indexOf("History") >= 0, true,
     "the default build must NOT rewrite the document title — tests and printing depend on it");
@@ -101,9 +101,9 @@ function load(override, dom) {
 {
   const { cfg } = load({ tutor: 42, product: null, support: {}, short: "   " });
   assert.strictEqual(cfg.tutor, "Emmanuel", "a non-string tutor falls back to the default");
-  assert.ok(cfg.product.indexOf("Liberian National Curriculum") === 0);
+  assert.ok(cfg.product.indexOf("Easy School Liberia") === 0);
   assert.strictEqual(cfg.support, "");
-  assert.strictEqual(cfg.short, "Liberia Packs");
+  assert.strictEqual(cfg.short, "Easy School Liberia");
 }
 {
   /* a DOM with no branded elements at all must not throw */
