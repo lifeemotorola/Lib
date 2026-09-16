@@ -121,13 +121,15 @@ const SUBJECTS = [
               facts: ["plurals", "commands", "connectives"] }] },
   { name: "Health Science (Elementary)", global: "HS_CURRICULUM",
     files: ["data-hs.js"],
-    grades: 6,                     /* every Grade 1-6 health unit carries study[] */
-    spots: [{ grade: 1, period: "VI",
-              facts: ["between the fingers", "Soap and clean water wash germs away"] },
-            { grade: 4, period: "VI",
-              facts: ["Anopheles mosquito", "three to five days"] },
-            { grade: 6, period: "IV",
-              facts: ["fallopian tube", "first aid"] }] },
+    grades: 6,                     /* every Grade 1-6 health unit, all six periods, carries study[] */
+    spots: [{ grade: 1, period: "III",    /* the handwashing unit */
+              facts: ["between the fingers", "Water alone moves the dirt you can see"] },
+            { grade: 4, period: "V",      /* the skin, soil and malaria unit */
+              facts: ["insecticide-treated net", "pushes her mouth through", "topsoil"] },
+            { grade: 6, period: "IV",     /* the reproductive system, puberty and sexual identity unit */
+              facts: ["fallopian tube", "heterosexual"] },
+            { grade: 6, period: "VI",     /* the healthy living, first aid and health services unit */
+              facts: ["First Aid", "eight to ten hours", "cool running water"] }] },
   { name: "Mathematics", global: "MA_CURRICULUM",
     files: ["data-ma.js", "data-ma79.js", "data-ma-sh.js"],
     grades: { from: 1, to: 12 },  /* every unit from Grade 1 to Grade 12 must carry study[] */

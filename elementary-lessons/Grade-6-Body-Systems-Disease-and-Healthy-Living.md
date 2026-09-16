@@ -2,8 +2,8 @@
 
 **Level:** Grade 6 (Elementary, ≈ ages 11–12)
 **Strand:** Health · taught inside **General Science**, here planned as its own unit
-**Unit:** Grade 6, Period IV (Semester Two), with Week 1 drawing on Period II ·
-**Duration:** 4 weeks · 40-minute periods
+**Units:** Grade 6, Periods I–VI (three in Semester One, three in Semester Two) ·
+**Duration:** 4 weeks per unit · 40-minute periods
 **Source:** *Liberia National Curriculum — General Science, Grades 1–6*, Ministry of
 Education (`uploads/General Science1-6.pdf`): **Guide pp. 70–73** “THE HUMAN BODY ·
 HEALTH LESSONS” and **Guide pp. 66–67** (ecosystem and the HIV-prevention activity).
@@ -12,6 +12,30 @@ The guide names its own text for this unit: Darsaw Arthur & Fischer-Buder Karin,
 (“Guide p. N” = the printed guide page.)
 
 ---
+
+## The six periods of Grade 6 at a glance
+
+Health Science in Grade 6 is planned as six units of four weeks — Periods I to
+VI — so the health content the guide gives this grade is taught across the
+year instead of in one block. Periods II and IV are the guide's own health
+periods for this grade; the other periods teach the same grade's outcomes,
+objectives, contents and activities again, one unit at a time, in the order a
+child meets them. Every unit carries its own outcomes, key terms, questions,
+investigation and home practice in `data-hs.js`, and every one plans and
+exports from the app.
+
+| Period | Semester | Unit | Guide page |
+|---|---|---|---|
+| I | One | The Systems of the Human Body | Guide p. 70 |
+| II | One | Preventing HIV and AIDS; Human Reproduction | Guide p. 66 |
+| III | One | Communicable and Non-Communicable Disease | Guide p. 66 |
+| IV | Two | The Reproductive System, Puberty and Sexual Identity | Guide pp. 70–73 |
+| V | Two | Risky Behaviour, STIs and Getting Out of Dangerous Situations | Guide pp. 70–73 |
+| VI | Two | Healthy Living: Food, Exercise, Rest, First Aid and Health Services | Guide pp. 70–73 |
+
+This file works up the **Period IV** unit in full: the guide's own
+requirements, the four-week scheme, and one model lesson in the sector's four
+stages.
 
 ## How to teach this unit in Grade 6
 

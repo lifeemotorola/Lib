@@ -69,10 +69,24 @@ function hasTitle(blocks, s) {
 
 /* ------------------------------------------------------------------ */
 console.log("\n-- HS_CURRICULUM shape --");
-ok(Array.isArray(units) && units.length === 6, "six health units, one per Elementary grade");
+const PERIODS = ["I", "II", "III", "IV", "V", "VI"];
+ok(Array.isArray(units) && units.length === 36,
+  "thirty-six health units: Periods I-VI in every Elementary grade");
 [1, 2, 3, 4, 5, 6].forEach((g) => {
-  ok(units.some((u) => u.grade === g), "grade " + g + " carries a health unit");
+  const gUnits = units.filter((u) => u.grade === g);
+  ok(gUnits.length === 6, "grade " + g + " carries six health units, one per period");
+  PERIODS.forEach((p) => {
+    const one = units.filter((u) => u.grade === g && u.period === p);
+    ok(one.length === 1,
+      "grade " + g + " period " + p + " carries exactly one unit (" +
+      (one[0] ? one[0].title : "none") + ")");
+  });
+  ok(gUnits.filter((u) => u.sem === "One").map((u) => u.period).join(",") === "I,II,III",
+    "grade " + g + " Periods I-III are Semester One");
+  ok(gUnits.filter((u) => u.sem === "Two").map((u) => u.period).join(",") === "IV,V,VI",
+    "grade " + g + " Periods IV-VI are Semester Two");
 });
+ok(units.every((u) => PERIODS.indexOf(u.period) >= 0), "every unit sits in a real period");
 ok(units.every((u) => u.healthPlan === true), "every unit is flagged healthPlan");
 ok(units.every((u) => (u.objectives || []).length >= 5), "every unit carries 5+ objectives");
 ok(units.every((u) => (u.terms || []).length >= 10), "every unit carries 10+ key terms");
@@ -92,20 +106,20 @@ ok(units.every((u) => (u.study || []).filter((b) => b.k === "h3").length >= 4),
   "every unit carries a study focus for each week of the 4-week unit");
 ok(units.every((u) => !u.worked && !u.drills && !u.drills2),
   "no calculation banks: health is not drilled with sums");
-ok(units.every((u) => /guide pp\./.test(u.subtitle || "")),
+ok(units.every((u) => /guide pp?\./.test(u.subtitle || "")),
   "every unit cites its page in the national General Science guide");
 ok(units.every((u) => /report|head teacher|trusted adult/i.test(u.safeguard)),
   "every safeguarding note tells the teacher where a disclosure goes");
 
 /* ------------------------------------------------------------------ */
-console.log("\n-- Grade 1 daily plan (Period VI) --");
-const daily = LP.build(baseOpts({ lpPlanType: "daily" }));
+console.log("\n-- Grade 1 daily plan (Period III: Washing My Hands) --");
+const daily = LP.build(baseOpts({ topics: ["III"], lpPlanType: "daily" }));
 const dt = textOf(daily.blocks);
 ok(dt.indexOf("Health Science - Elementary") >= 0, "the subject line is the health strand");
 ok(dt.indexOf("Grade 1") >= 0, "the grade label reads Grade 1");
 ok(dt.indexOf("Health circle and attendance") >= 0, "the health lesson opens in the circle");
 ok(dt.indexOf("no pupil is laughed at or named") >= 0, "the two rules of a health lesson are read out");
-ok(dt.indexOf("Caring for My Body") >= 0, "the topic is the unit title");
+ok(dt.indexOf("Washing My Hands") >= 0, "the topic is the unit title");
 ok(/Demonstration and modelling of the healthy habit|Question and answer on the pupils' own lives|Small-group discussion and case study|Role play and refusal-skills practice|Chart, poster and pledge making with peer teaching/.test(dt),
   "health methods are used for the health subject");
 ok(dt.indexOf("Drill and repetition") < 0 && dt.indexOf("Modelling worked examples on the board") < 0,
@@ -141,9 +155,9 @@ const weekly = LP.build(baseOpts({ grade: 6, topics: ["IV"], levelName: "Grade 6
   lpPlanType: "weekly" }));
 const wt = textOf(weekly.blocks);
 ok(wt.indexOf("Weekly Plan Adjustment") >= 0, "adjustment table kept");
-ok(wt.indexOf("The Body Systems and Their Work") >= 0, "week-1 study focus");
-ok(wt.indexOf("Week 3 of 4: Sexual Identity, Orientation and Respect") >= 0 &&
-   wt.indexOf("Week 4 of 4: Risky Behaviour, STIs and HIV") >= 0,
+ok(wt.indexOf("Week 1 of 4: The Organs and Their Functions") >= 0, "week-1 study focus");
+ok(wt.indexOf("Week 3 of 4: The Treatment of Boys and Girls") >= 0 &&
+   wt.indexOf("Week 4 of 4: Sexual Identity and Sexual Orientation") >= 0,
   "the later weeks keep their own study focus from the unit's study notes");
 ok(wt.indexOf("Consolidation, Remedial Review & Unit Period Assessment") < 0,
   "a health week is never labelled with the generic maths drill consolidation line");
@@ -180,21 +194,27 @@ const w3 = LP.build(baseOpts({ grade: 2, topics: ["VI"], lpPlanType: "weekly", l
 ok(textOf(w3.blocks).indexOf("Habit Strengthening") >= 0, "a 3-week unit still paces the habit");
 
 /* ------------------------------------------------------------------ */
-console.log("\n-- every grade plans, and every grade prints its own content --");
-[1, 2, 3, 4, 5, 6].forEach((g) => {
-  const u = units.filter((x) => x.grade === g)[0];
-  const p = LP.build(baseOpts({ grade: g, topics: [u.period],
-    lpPlanType: "daily" }));
+console.log("\n-- every one of the thirty-six units plans, and prints its own content --");
+units.forEach((u) => {
+  const g = u.grade, per = u.period;
+  const p = LP.build(baseOpts({ grade: g, topics: [per], lpPlanType: "daily" }));
   const t = textOf(p.blocks);
-  ok(t.indexOf(u.title) >= 0, "grade " + g + ": the plan teaches \u201c" + u.title + "\u201d");
+  const w = textOf(LP.build(baseOpts({ grade: g, topics: [per],
+    lpPlanType: "weekly" })).blocks);
+  ok(t.indexOf(u.title) >= 0,
+    "grade " + g + " " + per + ": the plan teaches \u201c" + u.title + "\u201d");
   ok(t.indexOf("Health circle") >= 0 && t.indexOf("Home practice:") >= 0,
-    "grade " + g + ": circle opening and home practice");
+    "grade " + g + " " + per + ": circle opening and home practice");
   ok(t.indexOf("Safeguarding & Sensitive-Content Note") >= 0,
-    "grade " + g + ": safeguarding note printed");
+    "grade " + g + " " + per + ": safeguarding note printed");
+  ok(w.indexOf("Health Fair & Habit Check") >= 0 && w.indexOf("Opening Circle") >= 0,
+    "grade " + g + " " + per + ": the weekly plan keeps the health cycle and closes with the health fair");
 });
-ok(units.some((u) => /menstruation/i.test(JSON.stringify(u.study))) &&
-   units.some((u) => /abstinence/i.test(JSON.stringify(u.study))),
-  "the puberty and abstinence content of the guide is carried, not dropped");
+["menstruation", "abstinence", "contraceptive", "stigma", "front to back",
+ "Anopheles", "trusted adult", "the three food groups"].forEach((word) => {
+  ok(units.some((u) => new RegExp(word, "i").test(JSON.stringify(u.study))),
+    "the guide's own content is carried, not dropped: " + word);
+});
 
 /* ------------------------------------------------------------------ */
 console.log("\n-- other subjects are untouched --");

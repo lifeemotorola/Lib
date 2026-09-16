@@ -2,8 +2,8 @@
 
 **Level:** Grade 4 (Elementary, ≈ ages 9–10)
 **Strand:** Health · taught inside **General Science**, here planned as its own unit
-**Unit:** Grade 4, Period VI (Semester Two), with Week 4 drawing on Period V ·
-**Duration:** 4 weeks · 40-minute periods
+**Units:** Grade 4, Periods I–VI (three in Semester One, three in Semester Two) ·
+**Duration:** 4 weeks per unit · 40-minute periods
 **Source:** *Liberia National Curriculum — General Science, Grades 1–6*, Ministry of
 Education (`uploads/General Science1-6.pdf`): **Guide pp. 48–49** “HEALTH AND PERSONAL
 HYGIENE” and **Guide pp. 46–47** “EXPLORING SKIN, SOIL AND SOIL CONSERVATION”. The skin
@@ -12,6 +12,30 @@ lessons keep referring to skin, sweat and “itchy” complaints. (“Guide p. N
 printed guide page.)
 
 ---
+
+## The six periods of Grade 4 at a glance
+
+Health Science in Grade 4 is planned as six units of four weeks — Periods I to
+VI — so the health content the guide gives this grade is taught across the
+year instead of in one block. Periods V and VI are the guide's own health
+periods for this grade; the other periods teach the same grade's outcomes,
+objectives, contents and activities again, one unit at a time, in the order a
+child meets them. Every unit carries its own outcomes, key terms, questions,
+investigation and home practice in `data-hs.js`, and every one plans and
+exports from the app.
+
+| Period | Semester | Unit | Guide page |
+|---|---|---|---|
+| I | One | The Skin: Layers, Functions and Care | Guide p. 46 |
+| II | One | Cleanliness and Personal Hygiene | Guide p. 48 |
+| III | One | Growing and Changing: What Puberty Does to the Body | Guide p. 48 |
+| IV | Two | Feelings, Friends and Fair Treatment | Guide p. 48 |
+| V | Two | The Skin, the Soil and Malaria | Guide pp. 46–47 |
+| VI | Two | Protecting Myself: Body Safety, Pregnancy Facts and Acting Early | Guide pp. 48–49 |
+
+This file works up the **Period VI** unit in full: the guide's own
+requirements, the four-week scheme, and one model lesson in the sector's four
+stages.
 
 ## How to teach this unit in Grade 4
 

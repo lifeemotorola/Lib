@@ -2,7 +2,8 @@
 
 **Level:** Grade 5 (Elementary, ≈ ages 10–11)
 **Strand:** Health · taught inside **General Science**, here planned as its own unit
-**Unit:** Grade 5, Period III (Semester One) · **Duration:** 4 weeks · 40-minute periods
+**Units:** Grade 5, Periods I–VI (three in Semester One, three in Semester Two) ·
+**Duration:** 4 weeks per unit · 40-minute periods
 **Source:** *Liberia National Curriculum — General Science, Grades 1–6*, Ministry of
 Education (`uploads/General Science1-6.pdf`), **Guide pp. 54–55**: the Grade 5 “HEALTH
 LESSONS” unit (food and nutrition, how germs enter, HIV/AIDS, how a baby is born,
@@ -10,6 +11,30 @@ contraception, risky situations, the health services of the community). (“Guid
 the printed guide page.)
 
 ---
+
+## The six periods of Grade 5 at a glance
+
+Health Science in Grade 5 is planned as six units of four weeks — Periods I to
+VI — so the health content the guide gives this grade is taught across the
+year instead of in one block. Periods III and IV are the guide's own health
+periods for this grade; the other periods teach the same grade's outcomes,
+objectives, contents and activities again, one unit at a time, in the order a
+child meets them. Every unit carries its own outcomes, key terms, questions,
+investigation and home practice in `data-hs.js`, and every one plans and
+exports from the app.
+
+| Period | Semester | Unit | Guide page |
+|---|---|---|---|
+| I | One | Food and the Three Food Groups | Guide p. 54 |
+| II | One | The Immune System: The Body's Defence | Guide p. 54 |
+| III | One | Health Lessons: HIV, Contraception, Abstinence and Healthy Relationships | Guide pp. 54–56 |
+| IV | Two | Personal Hygiene, Sanitation and Caring for Our Surroundings | Guide p. 58 |
+| V | Two | Adolescent Development: Body Changes, Menstruation and Ovulation | Guide pp. 57–59 |
+| VI | Two | Community Health Services and the Class Health Campaign | Guide p. 54 |
+
+This file works up the **Period III** unit in full: the guide's own
+requirements, the four-week scheme, and one model lesson in the sector's four
+stages.
 
 ## How to teach this unit in Grade 5
 
