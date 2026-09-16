@@ -29,6 +29,7 @@ jobs:
           node tests/ai.js
           node tests/header-footer.js
           node tests/kg-lesson.js
+          node tests/health-lesson.js
           node tests/civics-teaching.js
           node tests/usage.js
           node tests/sw.js

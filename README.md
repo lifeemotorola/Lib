@@ -3,9 +3,10 @@
 An **offline, single-file web app** that generates printable course packs for the
 Liberian National Curriculum: pupil workbooks, period tests, semester
 examinations and teacher's answer keys — in **English, Phonics, French, General
-Science, Mathematics, Social Studies, Religious & Moral Education, Physical
-Education, Biology, Chemistry, Physics, Economics, English Grammar,
-Geography, History, Civics, Literature and Kindergarten**, Grades 1–12, all A4-exact on screen, in print and in Word.
+Science, **Health Science**, Mathematics, Social Studies, Religious & Moral
+Education, Physical Education, Biology, Chemistry, Physics, Economics, English
+Grammar, Geography, History, Civics, Literature and Kindergarten**, Grades 1–12,
+all A4-exact on screen, in print and in Word.
 It also plans **KG-I and KG-II teacher's lesson plans** from the national ECD
 theme planners, and designs **KG-I and KG-II cover pages** for work the school
 prepares itself.
@@ -17,7 +18,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **17 National Curriculum subjects** (the 16 graded subjects plus **Kindergarten**, which plans ECD lessons on KG-I and KG-II), plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
+- **18 National Curriculum subjects** (the 16 graded subjects plus **Health Science**, which carries the Elementary health strand for Grades 1–6, and **Kindergarten**, which plans ECD lessons on KG-I and KG-II), plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -57,7 +58,7 @@ so the whole thing stays self-contained.
   French subject — plus reading **speed** and **pitch**. It lives entirely
   outside the printable session: the button and panel are hidden in print and
   never appear on a generated sheet
-- **Customizable cover**: template choice, 17 built-in subject-matched PNG
+- **Customizable cover**: template choice, 18 built-in subject-matched PNG
   backgrounds (equations for Mathematics, laboratory imagery for Science,
   books for Literature, and so on), school name (persisted), uploaded logo or
   replacement background, pupil/teacher/term/year fields, and emoji crest — plus
@@ -70,6 +71,15 @@ so the whole thing stays self-contained.
   organization line). The designer is saved on the device, travels with any
   document saved in the teaching library, and is applied on screen, in print and
   in the `.docx` export as far as Word allows
+- **Health Science — Elementary Grades 1–6**: the health strand of the national
+  Elementary General Science guide, planned as a subject of its own (`data-hs.js`):
+  one 4-week unit per grade — body parts and handwashing (G1), body safety and
+  safe medicine (G2), food, hygiene and refusal (G3), puberty and protecting
+  myself (G4), nutrition, germs and the health services near us (G5), body
+  systems, disease and healthy living (G6). It generates **lesson plans** (daily
+  and weekly, 40-minute four-stage periods, with a safeguarding note printed on
+  every plan) **and course packs** (workbook, period test, semester exam and
+  teacher's key) on the General Science engine
 - **Kindergarten — KG-I and KG-II lesson plans and cover pages**: a Kindergarten
   level band lists both kindergarten levels for every national-curriculum
   subject, with its own generated `kg.png` artwork and a bright Kindergarten
@@ -224,6 +234,44 @@ The printed companion lessons live in `kg-lessons/`: a complete 4-week
 `KG-2-Staying-Healthy-and-Safe-Lessons.md` for the model theme, written from
 the same planners.
 
+### Health Science — Elementary Grades 1–6
+
+**Health Science** is the health strand of the national Elementary **General
+Science** guide (grades 1–6), transcribed as a subject of its own in
+`data-hs.js`. Pick **National Curriculum → Health Science → Grade 1 … Grade 6**:
+each grade carries one 4-week health unit keyed to the period the guide places it
+in (G1 Part VI, G2 Part VI, G3 Part IV, G4 Part VI, G5 Part III, G6 Part IV), and
+the same tab icon and `hs.png` cover artwork mark it everywhere else in the app.
+
+- **Lesson plan** (daily or weekly, 40-minute periods, the sector's four stages):
+  the lesson opens in the **health circle** with the two rules (*everything is
+  answered honestly, no pupil is laughed at or named*), the habit is
+  **demonstrated and then practised by every pupil**, the summary says the class
+  health rule or slogan, the evaluation is oral plus the practice chart, and the
+  assignment ends with **home practice**. Weekly plans give each week its own study
+  focus from the unit's study notes, the class health chart, the remedial
+  pacing that never blames a pupil's home or body, and an **end-of-unit health
+  fair**. A **Safeguarding & Sensitive-Content Note** is printed on every health
+  plan: charts and correct names only, same-sex small groups for the body-change
+  talks, parent notice beforehand, invented characters for case studies, no
+  shaming, and the referral route for a disclosure (head teacher and carer the
+  same day; in Liberia the police Women and Children Protection Unit and the
+  Ministry of Gender, Children and Social Protection; a recent assault to a health
+  facility at once).
+- **Course pack**: the unit's key terms, matching, cloze, true/false, short
+  answer, MCQ, sorting, label-the-diagram, the investigation write-up and the
+  apply-it questions, plus the period test and the teacher's key — generated by
+  `GEN_SC`, the General Science engine, since the health content belongs to that
+  subject's guide.
+
+The printed companion lessons live in `elementary-lessons/`: one file per grade,
+each carrying the whole unit (the guide's own outcomes/objectives/contents/
+activities/materials/assessment block, the four-week scheme, the master materials
+list, the assessment plan and the appendices) **and one fully worked 40-minute
+model lesson** with board plan, expected answers, common mistakes,
+differentiation and home practice — `Grade-1-Care-of-the-Body.md` …
+`Grade-6-Body-Systems-Disease-and-Healthy-Living.md`.
+
 ## Quick start
 
 1. **Open `index.html`** in any modern browser (Chrome/Edge/Firefox). That's it —
@@ -307,6 +355,7 @@ same tool lives in `book.html`.
 | Phonics (`pho`) | 1–12 | 6 | 72 |
 | French (`fr`) | 1–12 | 6 | 72 |
 | General Science (`sc`) | 1–9 | 6 | 54 |
+| Health Science (`hs`) | 1–6 | 1 health unit per grade | 6 |
 | Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
 | Social Studies (`ss`) | 1–9 | 6 | 54 |
 | Religious & Moral Education (`rm`) | 1–9 | 6 | 54 |
@@ -325,7 +374,9 @@ same tool lives in `book.html`.
 > **Coverage:** Mathematics, French and **Phonics** span Grades 1–12, and
 > Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and
 > Literature cover Grades 10–12; the other elementary and junior-high
-> subjects stop at Grade 9. **Kindergarten** spans KG-I–KG-II with 2 ECD theme
+> subjects stop at Grade 9. **Health Science** covers Grades 1–6 with one 4-week
+> health unit per grade, taken from that guide's own health periods.
+> **Kindergarten** spans KG-I–KG-II with 2 ECD theme
 > units per level (lesson plans only; packs stay cover-only).
 
 ### Civics — Grades 7–12
@@ -492,7 +543,7 @@ packs must never be locked out by it.
 | `body.html` | Page markup (header, settings panel, action bar, duplex-print dialog). |
 | `styles.css` | All styling, including A4 sheet geometry and `@media print` rules. |
 | `app.js` | The platform: subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence. |
-| `data-*.js` | Curriculum content per subject (`data-en.js`, `data-pho.js` = Phonics Grades 1–12, `data-ma79.js` = Junior High part, `data-bi.js`, `data-kg.js` = Kindergarten ECD units, ...). |
+| `data-*.js` | Curriculum content per subject (`data-en.js`, `data-pho.js` = Phonics Grades 1–12, `data-ma79.js` = Junior High part, `data-bi.js`, `data-kg.js` = Kindergarten ECD units, `data-hs.js` = Elementary health units for Grades 1–6, ...). |
 | `gen-*.js` | Exercise-generation engines per subject (some share an engine, e.g. `bi`/`ch`/`ph` use `gen-sc.js`, and `ec`/`gg`/`hi` use `gen-ss.js`; Literature has its own, `gen-li.js`, and Phonics its own, `gen-pho.js`). |
 | `book.js` | Duplex print sequence helper — shared by the built-in dialog **and** `book.html`. |
 | `book.html` | Standalone version of the duplex print helper (dark theme), loads `book.js`. |
@@ -508,7 +559,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -580,6 +631,9 @@ node tests/cover-kg.js
 
 # Kindergarten ECD units and lesson-plan wording (no dependencies)
 node tests/kg-lesson.js
+
+# Elementary health units and health lesson-plan wording (no dependencies)
+node tests/health-lesson.js
 
 # contents page numbers: the matcher that tells each Contents line which page
 # its part begins on (no dependencies)

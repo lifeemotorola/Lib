@@ -119,6 +119,15 @@ const SUBJECTS = [
               facts: ["-ness", "-ment", "-tion", "-ship"] },
             { grade: 12, period: "VI",
               facts: ["plurals", "commands", "connectives"] }] },
+  { name: "Health Science (Elementary)", global: "HS_CURRICULUM",
+    files: ["data-hs.js"],
+    grades: 6,                     /* every Grade 1-6 health unit carries study[] */
+    spots: [{ grade: 1, period: "VI",
+              facts: ["between the fingers", "Soap and clean water wash germs away"] },
+            { grade: 4, period: "VI",
+              facts: ["Anopheles mosquito", "three to five days"] },
+            { grade: 6, period: "IV",
+              facts: ["fallopian tube", "first aid"] }] },
   { name: "Mathematics", global: "MA_CURRICULUM",
     files: ["data-ma.js", "data-ma79.js", "data-ma-sh.js"],
     grades: { from: 1, to: 12 },  /* every unit from Grade 1 to Grade 12 must carry study[] */

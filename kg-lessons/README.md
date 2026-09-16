@@ -62,6 +62,14 @@ KG-I / KG-II*, tick the Staying Healthy and Safe units, set **2 weeks per
 unit** (the planner’s rhythm), and generate Daily or Weekly plans to print or
 export to Word. Course packs for KG remain cover pages only, as before.
 
+## The Elementary companion
+
+The same health strand, grown up, lives in **`../elementary-lessons/`**: one file
+per grade for **Grades 1–6**, written from the health units of the national
+*General Science, Grades 1–6* guide (body care and handwashing, body safety, food
+and hygiene, puberty, germs and health services, body systems and healthy living),
+each with the four-week scheme and a fully worked 40-minute model lesson.
+
 ## Notes on the source
 
 - Planner page numbers cited in the lessons (e.g. “Planner p. 5”) are the
