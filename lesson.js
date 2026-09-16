@@ -145,6 +145,9 @@
     li: ["Reading and discussion", "Question and answer", "Role play", "Group work", "Guided analysis of the text"],
     /* ECD methods are play-based: nothing here asks 4 to 6-year-olds to sit with books. */
     kg: ["Songs, chants and finger plays", "Learning centers and small-group play", "Demonstration with real objects and pictures", "Outdoor games and movement", "Storytelling, role play and dramatization", "Question and answer with pictures and objects"],
+    /* The Elementary health strand is taught by demonstration, discussion and
+       practice — a habit performed, not only a fact copied. */
+    hs: ["Demonstration and modelling of the healthy habit", "Question and answer on the pupils' own lives", "Small-group discussion and case study", "Role play and refusal-skills practice", "Chart, poster and pledge making with peer teaching"],
     wa: ["Question and answer", "Guided practice and drill", "Modelling solved examples on the board", "Pair and group work", "Examination-style practice"]
   };
   function methodFor(subjId, r) {
@@ -169,6 +172,11 @@
   function exerciseNames(t) {
     /* ECD practice is hands-on play, songs and games - never worksheets. */
     if (t.kgPlan) return ["hands-on practice at the learning centers", "the theme song, chant or game"];
+    /* Health practice is a habit performed and defended, not only answered. */
+    if (t.healthPlan) return ["the health habit demonstrated and then practised by every pupil",
+                              "the key-term and true-or-false health questions",
+                              "sorting safe and unsafe practices into the class chart",
+                              "the refusal, reporting or first-aid role play in pairs"];
     var e = [];
     if (t.terms || t.words) e.push("the key-terms table");
     if (t.phonics && t.phonics.length) e.push("sound and pattern practice");
@@ -257,6 +265,27 @@
       }
       if (customAdjNote) kg += " - Teacher's Note: " + plain(customAdjNote);
       return kg;
+    }
+    /* Health-strand pacing is habit-driven: the weeks build a practice, not a
+       syllabus, and the last week is a health fair with an oral assessment. */
+    if (t && t.healthPlan) {
+      var hkw = termNames(t).slice(0, 2).join(", ") || "the health key words";
+      var hh = "";
+      if (adjMode === "remedial") {
+        if (w === 1) hh = "Habit Baseline and No-Blame Start: ask what each pupil already does at home, re-demonstrate " + hkw + " with the real aid, and accept oral and pointed answers; never name a pupil's home, body or family in front of the class.";
+        else if (w < W) hh = "Extra Practice Stations: repeat the demonstration in pairs with the aid in hand, keep the class chart running, and re-teach the safety rule line by line; check the exercise books for copied answers rather than understood ones.";
+        else hh = "Every Objective Re-practised and Recorded: run the practice stations once more, test orally, and record each pupil against the checkpoints; refer any disclosure or welfare worry to the head teacher the same day.";
+      } else if (adjMode === "accelerated") {
+        if (w === 1) hh = "Peer Teachers From Day One: quick oral baseline; confident pupils lead the demonstration, hold the chart and define " + hkw + " while the teacher checks what they say.";
+        else if (w < W) hh = "Extension and Campaign Work: pupils write the letter, poster or jingle, run the investigation and report to another class; the teacher edits for accuracy and for safeguarding.";
+        else hh = "The Class Runs the Health Fair: pupils present the stands, mark the younger classes' demonstrations, and answer the questions without the teacher's prompt.";
+      } else {
+        if (w === 1) hh = "First Contact and Baseline: introduce " + hkw + " with the real object or chart, take the pupils' own answers, and note what the class already practises at home.";
+        else if (w < W) hh = "Habit Strengthening: the pupils lead more of the demonstration and the discussion; the weekly chart or log is updated and the difficult vocabulary is repeated in use.";
+        else hh = "Consolidation and Health Fair: repeat the favourite practice, finish the posters and the campaign, assess orally and in writing, and record each pupil against the checkpoints.";
+      }
+      if (customAdjNote) hh += " - Teacher's Note: " + plain(customAdjNote);
+      return hh;
     }
     var terms = termNames(t);
     var kw = terms.slice(0, 2).join(", ") || "core vocabulary";
@@ -350,6 +379,7 @@
         /* ECD units carry one study focus per week (2-week rhythm); weeks past
            the last focus consolidate, celebrate and observe. */
         if (t.kgPlan) wFocus = heads[w - 1] || "Consolidation, Celebration and Observation Check";
+        else if (t.healthPlan) wFocus = heads[w - 1] || "Consolidation, Health Fair and Habit Check";
         else if (w === 1) wFocus = heads[0] || "Foundations & Key Vocabulary";
         else if (w === 2) wFocus = heads[1] || "Core Developmental Skills & Principles";
         else if (w === 3 && W >= 4) wFocus = heads[2] || "Applied Investigations & Practice";
@@ -368,6 +398,10 @@
         var isLast = (wk === W);
         var subhead = "";
         if (t.kgPlan) subhead = heads[wk - 1] || "Consolidation, Celebration and Observation Check";
+        /* Health units keep one study focus per week, so the week headings agree
+           with the adjustment table above; the last week of a short unit closes
+           with the health fair and the habit check. */
+        else if (t.healthPlan) subhead = heads[wk - 1] || "Consolidation, Health Fair and Habit Check";
         else if (wk === 1) subhead = heads[0] || "Foundations & Key Vocabulary";
         else if (wk === 2) subhead = heads[1] || "Core Developmental Skills & Guided Practice";
         else if (wk === 3 && W >= 4) subhead = heads[2] || "Applied Practice, Investigation & Case Study";
@@ -407,6 +441,17 @@
           proc.push("Learning Centers & Small Groups (daily): children choose Art, Block, Drama, Literacy and Manipulative centers while the teacher leads small groups in " + kgActTxt + ".");
           if (isLast) proc.push("Outdoor, Story & Closing plus consolidation: outdoor games and the week's walk; story time with dramatization; closing review where each child says one new thing learned; favourite stations repeat and the teacher observes every child against the checkpoints.");
           else proc.push("Outdoor, Story & Closing (daily): outdoor games and water/sand play; story time with songs and finger plays; closing review of the day and a look at tomorrow.");
+        } else if (t.healthPlan) {
+          /* Health weeks run on the habit cycle: talk, demonstrate, practise,
+             record - and the last week answers the community, not only the class. */
+          var hActs = (t.activities || []).slice((wk - 1) * 3, (wk - 1) * 3 + 3);
+          var hActTxt = hActs.length ? joinList(hActs.map(plain)) : "the demonstration, the group talk and the class chart for this week";
+          var hNames = names.slice(0, 3).join(", ") || "the health key words";
+          proc.push("Opening Circle (Days 1, 3 and 5): the class greets the week's topic (" + subhead + "), repeats " + hNames + " aloud and answers one recall question from the last lesson; the teacher notes who cannot yet explain it.");
+          proc.push("Demonstration & Guided Practice (Days 1–3): the teacher models " + hActTxt + " with the real aid or chart; pupils then perform the habit themselves in pairs while the teacher circulates and corrects.");
+          proc.push("Group Enquiry & Class Chart (Days 3–4): mixed-ability groups discuss the case study or situation cards, record the findings on the class health chart, and prepare one refusal line or slogan to say out loud.");
+          if (isLast) proc.push("Health Fair & Habit Check (Day " + daysPerWeek + "): every objective is re-practised at the stands, the class presents its poster or pledge to another class, and the teacher records each pupil against the checkpoints before the written test.");
+          else proc.push("Habit Check & Home Practice (Day " + daysPerWeek + "): pupils show the week's habit, the class updates the chart, and the home practice is agreed with a parent signature.");
         } else if (wk === 1) {
           proc.push("Starter & Orientation (Days 1–2): Teacher introduces " + plain(t.title) + " and conducts diagnostic checks on prerequisite knowledge; writes key terms (" + (names.slice(0, 3).join(", ") || "core terms") + ") on the chalkboard.");
           proc.push("Developmental Instruction (Days 2–4): Teacher explains core concepts with textbook examples; pupils engage in choral repetition, vocabulary drills, and guided workbook exercises.");
@@ -447,6 +492,12 @@
           wAsg.push(t.home[wk % t.home.length]);
           if (isLast) wAsg.push("Celebrate the unit: the child shows the family one piece of work and says what it teaches.");
           else wAsg.push("Ask the family about next week's focus (" + (heads[wk] || "the next steps") + ") and bring one idea to class.");
+        } else if (t.healthPlan && t.home && t.home.length) {
+          /* Health is only learned when it is also practised at home. */
+          wAsg.push("Home practice: " + t.home[(wk - 1) % t.home.length]);
+          if (names.length) wAsg.push("Copy and define this week's key terms in the exercise book: " + names.slice((wk - 1) * 2, (wk - 1) * 2 + 4).join(", ") + ".");
+          if (isLast) wAsg.push("Prepare the unit's health stand: the group presents its chart, poster or demonstration to another class.");
+          else wAsg.push("Preview next week's focus (" + (heads[wk] || "the next steps") + ") and bring one question the family could not answer.");
         } else {
           if (names.length && wk === 1) wAsg.push("Copy and define the key terms in your exercise book: " + names.slice(0, 4).join(", ") + ".");
           wAsg.push("Complete the weekly review exercises in the pupil workbook for " + subhead + ".");
@@ -459,10 +510,18 @@
       }
 
       /* End-of-Unit Period Culmination */
-      doc.push({ k: "h2", t: t.kgPlan ? "End-of-Unit Celebration & Observation Review (Unit Complete)" : "End-of-Unit Culmination & Period Assessment (Unit Complete)" });
+      doc.push({ k: "h2", t: t.kgPlan ? "End-of-Unit Celebration & Observation Review (Unit Complete)"
+        : t.healthPlan ? "End-of-Unit Health Fair & Habit Review (Unit Complete)"
+        : "End-of-Unit Culmination & Period Assessment (Unit Complete)" });
       doc.push({ k: "p", t: t.kgPlan
         ? "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". Every objective has been taught through play, practised in centers and outdoors, observed against the checkpoints, and celebrated with an exhibition of the children's work."
+        : t.healthPlan
+        ? "The teacher completes the " + W + "-week health unit on " + plain(t.title) + ". Every objective has been demonstrated, practised until it was performed correctly without a prompt, recorded on the class chart, and carried into the home; the unit closes with the health fair and the period assessment."
         : "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". All instructional objectives have been taught, adjusted weekly for pupil pacing, evaluated through formative checks, and consolidated with the marking period assessment." });
+      if (t.safeguard) {
+        doc.push({ k: "h3", t: "Safeguarding & Sensitive-Content Note (Teacher)" });
+        doc.push({ k: "p", t: plain(t.safeguard) });
+      }
 
       if (i < topics.length - 1) doc.push({ k: "pagebreak" });
     });
@@ -516,11 +575,17 @@
       /* ECD mornings open with song on the mat, not rows and groups. */
       var intro = [t.kgPlan
         ? "Welcome song and attendance. The teacher welcomes the children with the theme song, takes attendance and settles them on the mat."
+        : t.healthPlan
+        ? "Health circle and attendance. The teacher greets the class, takes attendance, and sets the two rules of a health lesson: everything said here is answered honestly, and no pupil is laughed at or named."
         : "Greeting and attendance. The teacher greets the class, takes attendance and settles the pupils into mixed-ability groups."];
       if (prev) intro.push("Review of the previous period (" + plain(prev.title) + "). The teacher asks two or three recall questions; the pupils answer orally and gaps are corrected on the spot.");
-      else intro.push("Starter. The teacher sets a short question to check what the pupils already know about the topic.");
+      else intro.push(t.healthPlan
+        ? "Starter. The teacher asks what the pupils already do at home with this habit, and takes four or five answers without judging any of them."
+        : "Starter. The teacher sets a short question to check what the pupils already know about the topic.");
       intro.push(t.kgPlan
         ? "Introducing the lesson. The teacher shows the topic with a real object or picture and tells the children what they will do, sing, play and learn today."
+        : t.healthPlan
+        ? "Introducing the lesson. The teacher writes the topic on the board, reads the objectives, and tells the pupils the habit or the safety rule they will be able to perform and explain by the end of the period."
         : "Introducing the lesson. The teacher writes the topic on the board, reads the objectives and tells the pupils exactly what they will be able to do by the end of the period.");
       if (open) intro.push("Advance organiser. The teacher raises the idea that opens the period: " + firstSentence(open));
       doc.push({ k: "h3", t: "Initial Activities / Introduction (" + time.intro + " min)" });
@@ -530,27 +595,40 @@
       var head = heads.length ? heads.slice(0, 2).join("; ") : plain(t.subtitle || t.title);
       var pres = t.kgPlan
         ? "Presentation of the new idea. The teacher shows and demonstrates (" + head + ") with real objects and pictures; the children watch, handle, name and try each step with the teacher."
+        : t.healthPlan
+        ? "Presentation of the new content. The teacher explains and demonstrates (" + head + ") with the chart, the real aid and the pupils' own answers; the reason behind every rule is given, because a habit without a reason does not survive the playground."
         : "Presentation of the new content. The teacher explains the key points of the period (" + head + ") using examples from the course text; pupils listen, ask questions and note the main points.";
       if (names.length) pres += t.kgPlan
         ? " Key words are said, clapped and shown on word cards: " + names.slice(0, 3).join(", ") + "."
+        : t.healthPlan
+        ? " Key terms are defined and used in a sentence each: " + names.slice(0, 3).join(", ") + "."
         : " Key terms are defined on the board: " + names.slice(0, 3).join(", ") + ".";
       main.push(pres);
       var gw = firstWorked(t);
       if (gw) main.push("Guided practice. The teacher and pupils work through \u201c" + gw + "\u201d together, step by step; the pupils give the answer at each step and the teacher corrects.");
+      if (t.healthPlan && (t.experiment || t.diagram)) {
+        main.push((t.experiment ? "Investigation or demonstration. The class carries out " + plain(t.experiment.title) + ": " + joinList(((t.experiment.steps || []).slice(0, 3)).map(plain)) + "; pupils record what they saw in the science journal." : "Investigation or demonstration. The class works through the chart and the picture evidence for this topic and records what they see in the science journal.") + (t.diagram ? " The diagram \u201c" + plain(t.diagram.title) + "\u201d is copied, labelled and kept." : ""));
+      }
       var ex = exerciseNames(t);
       if (ex.length) main.push("Pupil practice. In their groups the pupils do " + joinList(ex) + "; the teacher circulates, listens, answers questions and notes the mistakes to correct later.");
+      if (t.healthPlan) main.push("Practice in pairs. Each pupil performs the habit or says the refusal line to a partner while the partner checks it against the class chart; the teacher listens in and corrects gently, without asking any pupil to speak about their own home or body in public.");
       if (D > 90) main.push(t.kgPlan
         ? "Sharing and praise. Each small group shows what it made or did; the teacher praises each effort by name and re-models any step the children found hard."
+        : t.healthPlan
+        ? "Group report and the class chart. Each group puts its finding on the chart, presents one poster panel or slogan, and the class asks one question to each group."
         : "Correction and feedback. Each group gives one answer; the teacher marks it, explains the wrong ones with reasons, and repeats the part that was difficult.");
       doc.push({ k: "h3", t: "Developmental Activities (Main Activities) (" + time.main + " min)" });
       doc.push({ k: "num", items: main });
 
       var sum = [];
       sum.push("Recap. The pupils state, in their own words, what the period taught" + (names.length ? " and name the key terms: " + names.slice(0, 3).join(", ") : "") + ".");
+      if (t.healthPlan) sum.push("The class says the health rule or slogan for the week together, and each pupil names the one habit they will keep this week.");
       if (objs.length) sum.push("The teacher summarises the lesson: by now the pupils can " +
         joinList(objs.slice(0, 2).map(function (o) { return o.charAt(0).toLowerCase() + o.slice(1); })) + ".");
       sum.push(t.kgPlan
         ? "Show and celebrate. The children show their work, each says one new thing learned, and the teacher displays the work on the wall."
+        : t.healthPlan
+        ? "Correction and record. The pupils copy the corrected points, tick their name on the class habit chart, and the teacher reminds them that a disclosure of harm is never kept as a secret: it goes to the head teacher the same day."
         : "Correction. The pupils copy the corrected points into their exercise books.");
       sum.push("The teacher gives the assignment and announces the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ".");
       doc.push({ k: "h3", t: "Summary Conclusion (" + time.sum + " min)" });
@@ -579,16 +657,27 @@
         if (t.home[1]) asg.push(t.home[1]);
         asg.push("Tell your family one new thing you learned today" + (next ? " and ask them about " + plain(next.title) : "") + ".");
       } else {
+        if (t.healthPlan && t.home && t.home.length) {
+          /* A health assignment is practised at home, not only written at home. */
+          asg.push("Home practice: " + t.home[0]);
+          if (t.home[1]) asg.push("Home practice: " + t.home[1] + " (a parent or carer ticks the habit chart).");
+        } else if (t.healthPlan) {
+          asg.push("Home practice: keep this week's habit every day, and tell the class on Monday whether you kept it.");
+        }
         if (names.length) asg.push("Copy the key terms and their meanings into your exercise book: " + names.slice(0, 4).join(", ") + ".");
-      var used = {};
-      if (gw) used[gw] = 1;
-      ev.forEach(function (e) { used[e.q] = 1; });
-      var hq = homeQuestion(t, used);
-      if (hq) asg.push("Answer in your exercise book: " + hq.replace(/\.\s*$/, "") + ".");
-      asg.push("Preview the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ": read the course text and bring one question.");
+        var used = {};
+        if (gw) used[gw] = 1;
+        ev.forEach(function (e) { used[e.q] = 1; });
+        var hq = homeQuestion(t, used);
+        if (hq) asg.push("Answer in your exercise book: " + hq.replace(/\.\s*$/, "") + ".");
+        asg.push("Preview the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ": read the course text and bring one question.");
       }
       doc.push({ k: "h3", t: "Assignment" });
       doc.push({ k: "num", items: asg });
+      if (t.healthPlan && t.safeguard) {
+        doc.push({ k: "h3", t: "Safeguarding & Sensitive-Content Note (Teacher)" });
+        doc.push({ k: "p", t: plain(t.safeguard) });
+      }
 
       /* ---- Weekly Plan Adjustment & Remedial Section across the 3 or 4 weeks ---- */
       var wAdjRows = [

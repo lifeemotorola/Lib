@@ -142,6 +142,22 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Literature_Grade" + g + "_Workbook.docx"; }
     },
+    /* ---------------- Health Science (Elementary strand) ----------------
+       The health strand of the national Elementary General Science guide
+       (data-hs.js), taught as a course of its own for Grades 1-6: hygiene and
+       the body, food and germs, medicines and drug abuse, body safety, puberty,
+       HIV and healthy living. Lesson plans are built in the health shape
+       (demonstrate, practise, chart, pledge) with the safeguarding note printed
+       on every plan; the worksheet engine is General Science's, since these
+       units carry the same term/fact/diagram/investigation banks. */
+    hs: {
+      label: "Health Science", icon: "sub-hs", accent: "#1f7a63",
+      curriculum: function () { return HS_CURRICULUM; },
+      engine: function () { return GEN_SC; },
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "apply"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Health_Science_Grade" + g + "_Pack.docx"; }
+    },
     /* ---------------- Kindergarten (ECD) ----------------
        The national Early Childhood Development theme units for KG-I and
        KG-II (data-kg.js). Kindergarten plans teacher's lesson plans from the

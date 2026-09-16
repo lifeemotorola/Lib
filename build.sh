@@ -18,7 +18,7 @@ cd "$(dirname "$0")"
     base64 -w0 assets/icons/favicon-48.png
     echo '">'
   fi
-  echo '<title>Liberian Course Pack Generator &middot; English, Phonics, French, General Science, Mathematics, Social Studies, Religious &amp; Moral Education, Physical Education, Biology, Chemistry, Physics, Economics, English Grammar, Geography, History, Civics, Literature &amp; Kindergarten</title>'
+  echo '<title>Liberian Course Pack Generator &middot; English, Phonics, French, General Science, Health Science, Mathematics, Social Studies, Religious &amp; Moral Education, Physical Education, Biology, Chemistry, Physics, Economics, English Grammar, Geography, History, Civics, Literature &amp; Kindergarten</title>'
   echo '<style>'
   cat styles.css
   echo '</style>'
@@ -58,7 +58,7 @@ cd "$(dirname "$0")"
   # kg.png backs both kindergarten levels (KG-I and KG-II).
   echo '<script>window.SUBJECT_COVER_ART={'
   first=1
-  for id in en pho fr sc ma ss rm pe bi ch ph ec eg gg li wa kg; do
+  for id in en pho fr sc hs ma ss rm pe bi ch ph ec eg gg li wa kg; do
     img="assets/covers/$id.png"
     [ -f "$img" ] || continue
     if [ "$first" -eq 0 ]; then printf ','; fi
@@ -75,7 +75,7 @@ cd "$(dirname "$0")"
   # the <script> element early and silently corrupts the deliverable (it
   # happened once, hidden in a code comment). Refuse to build instead of
   # shipping a page that breaks in the browser.
-  SCRIPTS="brand.js usage.js humancheck.js data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-pho.js data-gg.js data-hi.js data-ci.js data-li.js data-kg.js data-wa.js data-wa-ma.js data-wa-en.js data-wa-bio.js data-wa-bio2.js data-wa-ch.js data-wa-ph.js data-wa-ec.js data-wa-gg.js data-wa-his.js data-wa-ag.js data-wa-li.js data-wa-crs.js gen-en.js gen-pho.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js gen-wa.js book.js ai.js voice.js lesson.js cover-text.js toc.js teaching.js app.js"
+  SCRIPTS="brand.js usage.js humancheck.js data-en.js data-fr.js data-fr79.js data-fr1012.js data-sc.js data-sc79.js data-hs.js data-ma.js data-ma79.js data-ma-sh.js data-ss.js data-ss79.js data-rm.js data-rm79.js data-pe.js data-pe79.js data-bi.js data-ch.js data-ph.js data-ec.js data-eg.js data-pho.js data-gg.js data-hi.js data-ci.js data-li.js data-kg.js data-wa.js data-wa-ma.js data-wa-en.js data-wa-bio.js data-wa-bio2.js data-wa-ch.js data-wa-ph.js data-wa-ec.js data-wa-gg.js data-wa-his.js data-wa-ag.js data-wa-li.js data-wa-crs.js gen-en.js gen-pho.js gen-fr.js gen-sc.js gen-ma.js gen-ma79.js gen-ma-sh.js gen-ss.js gen-rm.js gen-pe.js gen-li.js gen-wa.js book.js ai.js voice.js lesson.js cover-text.js toc.js teaching.js app.js"
   for f in $SCRIPTS; do
     if grep -q '</script>' "$f"; then
       echo "ERROR: $f contains a literal </script> — the built index.html would be corrupt." >&2
