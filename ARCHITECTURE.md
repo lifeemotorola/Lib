@@ -37,7 +37,7 @@ offline-ready. `tests/sw.js` guards all of this.
 | Generation | `gen-*.js` | Deterministic exercise engines per subject. Physics/Biology/Chemistry reuse `gen-sc.js`; Economics/Geography/History reuse `gen-ss.js`; Phonics, Literature, Mathematics and WASSCE have their own. |
 | Presentation | `app.js` | Subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence, WASSCE track. The largest file (3.3k lines) and the one to read last. |
 | Teaching tools | `teaching.js`, `lesson.js` | Teaching workspace: IndexedDB library, question editor, assessment builder; daily and weekly lesson/unit plan builders. |
-| Extras | `ai.js` (tutor), `voice.js` (speech), `humancheck.js` (Turnstile), `book.js` (duplex print), `toc.js` (contents page numbers), `cover-text.js` (cover wording) | Independent features; each degrades quietly if unavailable. |
+| Extras | `ai.js` (tutor), `voice.js` (speech), `humancheck.js` (Turnstile), `book.js` (duplex print), `toc.js` (contents page numbers), `cover-text.js` (cover wording), `btt.js` (back to top) | Independent features; each degrades quietly if unavailable. |
 | Build & tests | `build.sh`, `tests/` | See below. |
 
 ## 3. The block model — the one idea worth understanding first
@@ -131,6 +131,7 @@ node tests/kg-lesson.js         # Kindergarten ECD lesson plans
 node tests/civics-teaching.js   # all 36 Civics units
 node tests/usage.js             # usage counters and the no-network guarantee
 node tests/sw.js                # offline shell: resilient install, per-page caching, fallbacks
+node tests/btt.js               # back-to-top button: threshold, corner sharing, never printed
 ```
 
 Browser tests (Playwright; `pip install -r requirements.txt`):
@@ -142,9 +143,9 @@ python tests/history.py   # History track controls, packs, plans, exports
 python tests/teaching.py  # library save/reopen, import/export, question editing
 ```
 
-`tests/lesson-e2e.js` and `tests/weekly-plan-e2e.js` need `jsdom`
-(`npm i jsdom`) and drive the built `index.html` end to end; they are not in CI
-today.
+`tests/lesson-e2e.js`, `tests/weekly-plan-e2e.js` and `tests/btt-e2e.js` need
+`jsdom` (`npm i jsdom`) and drive the built `index.html` end to end; they are
+not in CI today.
 
 ## 9. Adding a subject or content
 

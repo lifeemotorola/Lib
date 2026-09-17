@@ -125,7 +125,7 @@ ok(platDef.hdr.fs === 1.35 && platDef.hdr.bg === "",
    "platform top header keeps the CSS default size and colour");
 ok(platDef.ftr.on === false, "platform bottom footer defaults to off (the new bottom bar is opt-in)");
 ok(platDef.ftr.l === "Liberian National Curriculum" &&
-   platDef.ftr.r === "Course Pack Generator",
+   platDef.ftr.r === "Easy School Liberia",
    "platform bottom footer has sensible default text on both sides");
 
 /* ------------------------------------------------------------------ */
@@ -323,8 +323,8 @@ function fire(id, type, mutate) {
 }
 
 /* the platform bar, as body.html ships it */
-const FACTORY_TITLE = "Easy School Liberia \u00b7 Course Pack Generator";
-const FACTORY_SUB = 'English \u00b7 Phonics \u00b7 French<br><span class="top-sub">KG-I &amp; KG-II lesson plans &amp; cover pages</span>';
+const FACTORY_TITLE = "Easy School Liberia";
+const FACTORY_SUB = '<span class="top-sub">KG-I &amp; KG-II lesson plans &amp; cover pages</span>';
 const topH1 = { tagName: "H1", textContent: FACTORY_TITLE, innerHTML: FACTORY_TITLE, style: {} };
 const topStrip = { tagName: "SPAN", textContent: "KG-I &amp; KG-II lesson plans &amp; cover pages", style: {} };
 const topP = { tagName: "P", textContent: "", innerHTML: FACTORY_SUB, style: {},
@@ -468,7 +468,7 @@ if (W) {
     sheet: { on: true, hdr: { on: true, l: "STORED SCHOOL", r: "", fs: 13, col: "#a11b1b", bold: true },
              ftr: { on: true, l: "", r: "", fs: 9, col: "", pg: true } },
     plat:  { hdr: { on: true, title: "", sub: "", note: "", fs: 1.9, bg: "", crest: true, install: true },
-             ftr: { on: false, l: "Liberian National Curriculum", r: "Course Pack Generator", fs: 0.78, bg: "" } }
+             ftr: { on: false, l: "Liberian National Curriculum", r: "Easy School Liberia", fs: 0.78, bg: "" } }
   }));
   W.loadHF(); W.renderSheetHF(); W.renderPlatHF();
   ok(W.HF.sheet.hdr.fs === 13 && el("shHfHdrFs").value === "13" &&

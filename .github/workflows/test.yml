@@ -33,6 +33,7 @@ jobs:
           node tests/civics-teaching.js
           node tests/usage.js
           node tests/sw.js
+          node tests/btt.js
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'

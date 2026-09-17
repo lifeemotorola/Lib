@@ -998,6 +998,42 @@ img.ai-msg-img{width:26px;height:26px}
   .vr-fab,.vr-panel,.vr-sel-pill,.no-print{display:none!important}
 }
 
+/* ============================================================
+   BACK TO TOP — returns the platform to its header after a long
+   scroll down through the A4 sheets. Floating like the AI tutor
+   and the voice reader, hidden until there is something to go
+   back up from, and never part of the printable session.
+   ============================================================ */
+.btt-fab{position:fixed;bottom:22px;right:22px;z-index:60;width:46px;height:46px;
+  display:grid;place-items:center;background:#fff;color:var(--bleu);
+  border:1px solid #c9dbf6;border-radius:50%;cursor:pointer;
+  box-shadow:0 6px 24px rgba(11,59,140,.28);font-family:inherit;
+  transition:transform .2s,box-shadow .2s,background .2s,color .2s,border-color .2s}
+/* the author display above wins over the user-agent [hidden] rule, so the
+   hidden button has to be hidden here too — exactly as .ai-fab does */
+.btt-fab[hidden]{display:none}
+.btt-fab .ic{width:1.35rem;height:1.35rem}
+.btt-fab:hover{transform:translateY(-2px);color:#fff;border-color:transparent;
+  background:linear-gradient(135deg,#0b3b8c,#1e5fd0);box-shadow:0 8px 30px rgba(11,59,140,.45)}
+.btt-fab:active{transform:translateY(0)}
+.btt-fab:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+/* the AI tutor's button owns the corner, so this one stands above it */
+.btt-fab.btt-stacked{bottom:84px}
+
+@media(max-width:640px){
+  .btt-fab{bottom:14px;right:14px;width:52px;height:52px}
+  /* the tutor's button is a 52px circle at bottom:14px on a phone */
+  .btt-fab.btt-stacked{bottom:76px}
+}
+@media(prefers-reduced-motion:reduce){
+  .btt-fab{transition:none}
+}
+
+/* Never print the back-to-top button */
+@media print{
+  .btt-fab{display:none!important}
+}
+
 /* Offline teaching workspace — intentionally outside the A4 print surface. */
 .teaching-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#f1f7f5;border:1px solid #cbded7;border-radius:12px;padding:16px;margin:0 0 20px;color:#173e35}
 .teaching-toolbar>div{flex:1;min-width:180px}.teaching-toolbar strong,.teaching-toolbar span{display:block}.teaching-toolbar span{font-size:12px;margin-top:4px;color:#587167}

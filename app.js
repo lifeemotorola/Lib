@@ -448,10 +448,10 @@
     var pd = platDefaults();
     if (topTitle) {
       topTitle.textContent = (pl.hdr.title && pl.hdr.title.trim()) || pd.title ||
-        "Easy School Liberia \u00b7 Course Pack Generator";
+        "Easy School Liberia";
     }
     if (topSub) {
-      var defSub = "English \u00b7 Phonics \u00b7 French \u00b7 General Science \u00b7 Mathematics \u00b7 Social Studies \u00b7 Religious & Moral Education \u00b7 Physical Education \u00b7 Biology \u00b7 Chemistry \u00b7 Physics \u00b7 Economics \u00b7 English Grammar \u00b7 Geography \u00b7 History \u00b7 Civics \u00b7 Literature<br><span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks, tests and answer keys \u00b7 works offline</span>";
+      var defSub = "<span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks, tests and answer keys \u00b7 works offline</span>";
       topSub.innerHTML = (pl.hdr.sub && pl.hdr.sub.trim()) || pd.sub || defSub;
       /* "Small line under the subtitle" replaces the .top-sub strip. Rebuilding
          innerHTML above every pass is what puts the factory line back when the
@@ -493,7 +493,7 @@
       var botL = $("#botFootL");
       var botR = $("#botFootR");
       if (botL) botL.textContent = pl.ftr.l || "Liberian National Curriculum";
-      if (botR) botR.textContent = pl.ftr.r || "Course Pack Generator";
+      if (botR) botR.textContent = pl.ftr.r || "Easy School Liberia";
       bot.style.fontSize = (pl.ftr.fs || 0.78) + "rem";
       if (pl.ftr.bg) {
         bot.style.background = "linear-gradient(135deg," + pl.ftr.bg + "," + pl.ftr.bg + ")";
@@ -913,7 +913,7 @@
   function defaultPlatHF() {
     return {
       hdr: { on: true, title: "", sub: "", note: "", fs: 1.35, bg: "", crest: true, install: true },
-      ftr: { on: false, l: "Liberian National Curriculum", r: "Course Pack Generator", fs: 0.78, bg: "" }
+      ftr: { on: false, l: "Liberian National Curriculum", r: "Easy School Liberia", fs: 0.78, bg: "" }
     };
   }
   function normalizeSheetHF(h) {
