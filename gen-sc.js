@@ -203,7 +203,7 @@
 
   /* Worked calculations — only rendered for units that supply t.worked.
      Each entry is {q, steps:[], a}. Subjects without calculations (Science,
-     Biology, PE) simply omit the field and the sheet is skipped. */
+     PE) simply omit the field and the sheet is skipped. */
   function wsWorked(t, n, r) {
     var w = t.worked;
     if (!w || !w.length) return null;

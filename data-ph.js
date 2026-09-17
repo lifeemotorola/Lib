@@ -97,6 +97,74 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Bernoulli's Principle and Applications"},
     {k:"p", t:"**Bernoulli's principle:** where a fluid flows faster, its pressure falls. It lifts the aeroplane wing (fast air over the curved top, slow beneath), draws the spray from the scent-atomizer, and makes two racing cars suck together. Applications in the house and on the road: the Bunsen burner's air hole, the filter pump."},
+    {k:"rule"},
+    {k:"h3", t:"The Instruments and the Readings They Give"},
+    {k:"table", head:["Instrument","Quantity measured","Reads to","The precaution that saves the mark"], rows:[
+      ["Metre rule","Length","1 mm","Keep the eye square to the mark; check the worn zero end and start from the 10 cm mark instead"],
+      ["Vernier caliper","Length, small diameters and depths","0.1 mm","Close the jaws on nothing first and note the zero error, then subtract it"],
+      ["Micrometer screw gauge","Small lengths, wire diameter","0.01 mm","Turn the ratchet until it clicks; never force the spindle"],
+      ["Measuring cylinder","Volume of a liquid","1 cm³","Read the bottom of the meniscus with the eye level with the liquid"],
+      ["Triple-beam or electronic balance","Mass","0.1 g or 0.01 g","Zero the balance, and never weigh a hot or wet sample directly"],
+      ["Stopwatch","Time","0.01 s","Start and stop on the same reference event; repeat and average to beat reaction time"],
+      ["Thermometer","Temperature","1 °C or 0.1 °C","Immerse the bulb fully and leave it until the reading steadies"],
+      ["Spring balance","Force (weight)","0.1 N","Hang it vertically, check the zero, and read at eye level"],
+      ["Tape measure","Long distances and circumferences","1 mm","Keep the tape taut and in line with what is measured"]
+    ]},
+    {k:"p", t:"**Reading the vernier and the micrometer.** On a vernier caliper read the **main scale** just before the vernier zero (say 2.3 cm), then find the one vernier division that lines up exactly with a main-scale line — the 6th gives 0.06 cm, so the reading is **2.36 cm**. On a micrometer read the **sleeve** (say 5.5 mm) and add the **thimble** division that lines up with the datum line (21 × 0.01 = 0.21 mm) for **5.71 mm**. Both instruments carry a **zero error** when they do not read zero on nothing: a rule reads +0.03 mm closed means every reading must have 0.03 mm subtracted. Say the error and the correction in the answer — examiners award the mark for the correction, not for the number alone."},
+    {k:"h3", t:"Significant Figures, Standard Form and Conversion"},
+    {k:"num", items:[
+      "**Every non-zero digit is significant:** 4.57 has three significant figures",
+      "**Zeros between digits are significant:** 4007 has four; **leading zeros are not:** 0.0042 has two — they only place the point",
+      "**Trailing zeros after a decimal point are significant:** 2.50 has three, because the writer measured to the hundredth; 2.5 has two",
+      "**Write big and small numbers in standard form,** one digit before the point times a power of ten: 150 000 000 m/s becomes 1.5 × 10⁸ m/s; 0.000 000 001 6 C becomes 1.6 × 10⁻¹⁹ C",
+      "**Give the answer to the least number of significant figures used in the data:** a length of 2.4 m (two figures) times a width of 1.35 m (three) is 3.2 m², not 3.24 m²",
+      "**Always carry the unit.** A number with no unit is not a physical quantity and usually loses the mark"
+    ]},
+    {k:"p", t:"**Conversions that recur in every paper:** 1 km = 1000 m, 1 m = 100 cm = 1000 mm, 1 cm = 10 mm, 1 mm = 1000 µm; 1 kg = 1000 g; 1 h = 60 min = 3600 s; 1 litre = 1000 cm³ = 10⁻³ m³; and because area and volume square and cube the factor, 1 m² = 10⁴ cm² while 1 m³ = 10⁶ cm³ — which is why 1 g/cm³ is exactly 1000 kg/m³. Speed converts by dividing by 3.6: 72 km/h ÷ 3.6 = **20 m/s**, and a taxi at 36 km/h is doing 10 m/s, covering 10 m every second — the figure that decides whether it stops in time for the child in the road."},
+    {k:"h3", t:"Errors — and What to Do About Them"},
+    {k:"table", head:["Error","How it arises","The remedy"], rows:[
+      ["Zero error","The instrument does not read zero when it should","Note the error and subtract it from every reading"],
+      ["Parallax error","The eye is off to one side of the scale","Bring the eye directly in line with the mark or the meniscus"],
+      ["Reaction time","The stopwatch starts or stops late, about 0.2 s either way","Time many events, or many repetitions, and divide"],
+      ["Random error","Readings scatter either side of the true value from small unknown causes","Repeat the measurement and take the average"],
+      ["Systematic error","Every reading is wrong in the same direction (a stretched tape, an uncalibrated balance)","Calibrate against a known standard, or use another instrument"],
+      ["End error","The zero end of a rule is worn away","Start measuring from the 10 cm mark and subtract"]
+    ]},
+    {k:"p", t:"**Accuracy against precision.** A balance that reads 24.31 g, 24.30 g and 24.32 g is **precise** — the readings agree — and if the true mass is 24.31 g it is **accurate** too. A balance that reads 24.6 g, 24.6 g and 24.6 g when the true mass is 24.3 g is precise but not accurate: it carries a systematic zero error. Averaging cures random scatter; only calibration cures a systematic error. **Percentage error** says how bad a reading is: an error of 0.5 cm on a 20 cm length is (0.5 ÷ 20) × 100 = 2.5 %, but the same 0.5 cm on a 2 cm length is 25 % — which is why short lengths are measured with a vernier rather than a rule."},
+    {k:"h3", t:"The Dimensions of the Derived Quantities"},
+    {k:"table", head:["Quantity","Formula","SI unit","Dimension"], rows:[
+      ["Area","length × length","m²","L²"],
+      ["Volume","length × breadth × height","m³","L³"],
+      ["Density","mass ÷ volume","kg/m³","ML⁻³"],
+      ["Speed / velocity","distance ÷ time","m/s","LT⁻¹"],
+      ["Acceleration","change of velocity ÷ time","m/s²","LT⁻²"],
+      ["Force","mass × acceleration","N (kg m/s²)","MLT⁻²"],
+      ["Work and energy","force × distance","J (N m)","ML²T⁻²"],
+      ["Power","work ÷ time","W (J/s)","ML²T⁻³"],
+      ["Pressure","force ÷ area","Pa (N/m²)","ML⁻¹T⁻²"],
+      ["Momentum","mass × velocity","kg m/s","MLT⁻¹"]
+    ]},
+    {k:"p", t:"**Using dimensions as a check.** Take the formula v² = u² + 2as. The left side carries (LT⁻¹)² = L²T⁻²; the right side carries 2 × LT⁻² × L = L²T⁻². The dimensions agree, so the equation may be right. Try s = ut + ½at³: LT⁻² × T³ = L²T⁻¹, which is not a length, so the equation must be wrong however neatly it was remembered. Dimensional analysis cannot prove an equation correct — a constant of ½ or 2 escapes it — but it catches almost every misremembered formula, and it converts units for you: the newton is a kilogram metre per second squared, so pressure, force ÷ area, must be kg m⁻¹ s⁻², the pascal."},
+    {k:"h3", t:"Pressure in Numbers"},
+    {k:"p", t:"**P = F/A** turns every everyday effect into arithmetic. A woman of weight 600 N balancing on two heels, each of area 1 cm², presses on 2 × 10⁻⁴ m² of floor: P = 600 ÷ (2 × 10⁻⁴) = **3 × 10⁶ Pa**, thirty times the pressure of the atmosphere — enough to dent a wooden floor and to sink into soft ground, which is why she wears flat shoes on the beach. The same 600 N spread over two soles of 150 cm² each gives 600 ÷ (3 × 10⁻²) = **2 × 10⁴ Pa**, one hundred and fifty times less. This is the whole physics of the sharp cutlass (a small area, a great pressure), the broad tractor track and the elephant's padded feet (a great area, a small pressure), the wide strap of the school bag, the needle and the nail point, and the railway sleeper carrying the rail's load into the ballast."},
+    {k:"h3", t:"Liquids Under Pressure — P = ρgh Worked"},
+    {k:"p", t:"In a liquid the pressure at a depth h is **P = ρgh**, and it does not depend on the shape or the width of the vessel — only on depth, density and g. Five metres down in a lake: P = 1000 × 10 × 5 = **5 × 10⁴ Pa**, half an atmosphere; add the atmosphere above it and a diver's eardrum feels **1.5 × 10⁵ Pa**. Ten metres down the water alone gives 10⁵ Pa, so the total is about **two atmospheres** — and every ten metres adds another. That is why a dam is built thick at the bottom and thin at the top, why the holes in a water tank jet furthest from the lowest one, why a submarine has a limit to its depth, and why the town's **water tower stands high**: the height of the water above the tap is what pushes it out, and a tower 20 m above the tap delivers 1000 × 10 × 20 = 2 × 10⁵ Pa, enough for two atmospheres at the standpipe. Pressure is transmitted equally in all directions at the same depth, and liquids are almost incompressible — the two facts behind Pascal's principle."},
+    {k:"h3", t:"Pascal's Principle and the Hydraulic Press"},
+    {k:"p", t:"**Pascal's principle:** pressure applied to an enclosed fluid is transmitted undiminished to every part of the fluid and to the walls of the container. In the **hydraulic press** a small effort on a small piston makes the same pressure in the oil as a large load on a large piston, so **F₁/A₁ = F₂/A₂**. Push 20 N down on a piston of area 0.01 m² and the oil carries 2000 Pa; that pressure on a piston of area 1 m² lifts F₂ = 2000 × 1 = **2000 N**. The machine multiplies force tenfold, and its **velocity ratio is A₂/A₁**, the same ten — the small piston moves ten times as far as the large one, so no energy is created: work in equals work out, less the friction. The same principle runs the car **jack**, the **hydraulic brake** (the master cylinder pressing on four wheel cylinders), the power steering, the dentist's chair and the press that bales scrap metal."},
+    {k:"h3", t:"Archimedes' Principle, Flotation and Relative Density"},
+    {k:"p", t:"**Archimedes' principle:** when a body is wholly or partly immersed in a fluid it experiences an **upthrust** equal to the weight of the fluid it displaces. The **law of flotation** follows: a floating body displaces its own weight. A boat of weight 5000 N floating at rest displaces 5000 N of water, that is 500 kg of it, which is 0.5 m³ — the volume of the hull below the waterline, and the reason the **Plimsoll line** is marked on the ship's side for fresh water and for salt water of different densities. Weigh a stone in air (12 N) and again under water (8 N): the upthrust is 4 N, so the **relative density** of the stone is weight in air ÷ loss of weight in water = 12 ÷ 4 = **3**, and its density is 3 × 1000 = **3000 kg/m³**. An object sinks when its density exceeds the liquid's, floats when it is less, and stays where it is put when the two are equal. The **density bottle** finds the relative density of a liquid by weighing equal volumes of it and of water; the **hydrometer** floats upright, weighted at the base, with a narrow stem so that a small change of density shows as a large change of depth — it sinks lower in kerosene than in water, which is why it is used to test a car battery's acid and the freshness of milk."},
+    {k:"h3", t:"Atmospheric Pressure, Barometers and Manometers"},
+    {k:"p", t:"The air above us weighs on everything: at sea level it supports **760 mm (76 cm) of mercury** in a barometer. Check it with P = ρgh: 13 600 × 10 × 0.76 ≈ **1.03 × 10⁵ Pa**, called one atmosphere. Mercury is used because it is dense (a water barometer would need 10.3 m of tube), does not wet the glass and has a low vapour pressure; the space above the column is a **Torricellian vacuum**. The **aneroid barometer** uses a sealed, springy metal box whose lid moves with the pressure — the dial of the weather station and of the aircraft altimeter, which reads height because pressure falls about 1 mm of mercury for every 11 m of climb. A **manometer** is a U-tube that measures a gas pressure against the atmosphere: the difference in the two levels gives the excess pressure. The **suction** of a drinking straw, a syringe and a rubber sucker is not suction at all — the mouth or the hand removes the air inside, and the atmosphere outside pushes the liquid or the cup in. At high altitude the pressure falls, so water boils below 100 °C and food takes longer to cook, which is why the pressure cooker, raising the pressure inside, cooks faster."},
+    {k:"h3", t:"Bernoulli's Principle in Numbers"},
+    {k:"p", t:"Where a fluid speeds up, its pressure falls. Air flowing over the curved top of a **wing** travels faster than the air beneath, so the pressure above is lower and the difference lifts the aircraft; the same difference sucks two lorries together as they pass at speed, pulls a roof off in a storm (fast air above, still air below), curves a spinning football through the air, and draws the petrol into the airstream in a carburettor and the scent up an atomizer. In the **Bunsen burner** the jet of gas drags air in through the open hole; close the hole and the flame goes yellow and sooty because the air no longer mixes. The rule for every one of these: name the fast-moving fluid, state that its pressure is lower, and say which way the greater pressure on the other side pushes."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Definitions with units** — define density, pressure, relative density and state the SI unit of each; a definition without its unit is half an answer",
+      "**One substitution calculation** — usually P = F/A, P = ρgh, ρ = m/V or F₁/A₁ = F₂/A₂; the marks go to the formula, the substitution with units, and the answer with units",
+      "**An instrument reading** — a vernier or micrometer scale drawn to be read, with the zero error stated",
+      "**An explanation of an everyday effect** — why the heel sinks, why the dam is thick at the bottom, why the ship floats; the mark is for naming the principle and applying it, not for the story alone",
+      "**A graph or a table of readings** — plot the points, draw the best straight line or smooth curve, and state the relationship the graph shows"
+    ]}
   ],
 
   focus:[
@@ -220,6 +288,27 @@ var PH_CURRICULUM = [
     {q:"A hydraulic press has a small piston of area 0.02 m² and a large piston of area 0.2 m². A force of 50 N is applied to the small piston. Find the force on the large piston.", steps:[
       "Pressure transmitted equally: F₁/A₁ = F₂/A₂", "50/0.02 = F₂/0.2", "F₂ = 50 × 0.2 ÷ 0.02"
     ], a:"500 N"},
+    {q:"A woman of weight 600 N stands on two heels, each of area 1 cm². Find the pressure she exerts on the floor.", steps:[
+      "Total area A = 2 cm² = 2 × 10⁻⁴ m²",
+      "P = F ÷ A = 600 ÷ (2 × 10⁻⁴)"
+    ], a:"3 × 10⁶ Pa (about 30 times atmospheric pressure)"},
+    {q:"Convert 72 km/h into m/s.", steps:[
+      "72 km/h = 72 000 m ÷ 3600 s",
+      "Divide by 3.6"
+    ], a:"20 m/s"},
+    {q:"A solid weighs 12 N in air and 8 N when fully immersed in water. Find the upthrust and the relative density of the solid.", steps:[
+      "Upthrust = weight in air − weight in water = 12 − 8",
+      "Relative density = weight in air ÷ upthrust = 12 ÷ 4",
+      "Density = relative density × 1000 kg/m³"
+    ], a:"Upthrust 4 N; relative density 3, so density 3000 kg/m³"},
+    {q:"Find the total pressure 5 m below the surface of a lake, taking atmospheric pressure as 1.0 × 10⁵ Pa (ρ = 1000 kg/m³, g = 10 m/s²).", steps:[
+      "Pressure of the water P = ρgh = 1000 × 10 × 5",
+      "Total pressure = water pressure + atmospheric pressure"
+    ], a:"1.5 × 10⁵ Pa"},
+    {q:"The density of iron is 7800 kg/m³. Find the mass and the weight of a casting of volume 0.02 m³ (g = 10 m/s²).", steps:[
+      "m = ρV = 7800 × 0.02",
+      "W = mg = 156 × 10"
+    ], a:"156 kg; weight 1560 N"}
   ],
   apply:[
     {q:"Why does a doctor need to understand physics even though a doctor is not called a physicist?", a:"Medical imaging, X-rays, ultrasound and radiotherapy all work on physical principles; understanding them helps a doctor use the equipment safely and correctly."},
@@ -273,6 +362,69 @@ var PH_CURRICULUM = [
     {k:"h3", t:"Newton's Laws of Motion and Universal Gravitation"},
     {k:"p", t:"**First law** (inertia): a body stays at rest or in uniform motion in a straight line unless a resultant force acts on it. **Second law:** the rate of change of momentum is proportional to the applied force — **F = ma** (newton: the force giving 1 kg an acceleration of 1 m/s²); solve the problems for mass, force and acceleration together. **Third law:** to every action there is an equal and opposite reaction — the launcher pushes the rocket's gas back, and the gas pushes the rocket on. **Newton's law of universal gravitation:** every mass attracts every other mass, F = Gm₁m₂/r² — gravity quiets the moon into orbit and drops the mango."},
     {k:"rule"},
+    {k:"h3", t:"Distance, Displacement, Speed and Velocity in Detail"},
+    {k:"table", head:["Quantity","What it measures","Scalar or vector","Unit","Formula"], rows:[
+      ["Distance","The total length of the path travelled","Scalar","metre (m)","measured along the path"],
+      ["Displacement","The shortest distance from start to finish, with its direction","Vector","metre (m)","straight line, start to end"],
+      ["Speed","The rate of change of distance","Scalar","m/s","speed = distance ÷ time"],
+      ["Velocity","The rate of change of displacement","Vector","m/s","velocity = displacement ÷ time"],
+      ["Acceleration","The rate of change of velocity","Vector","m/s²","a = (v − u) ÷ t"]
+    ]},
+    {k:"p", t:"**Why the distinction is worth marks.** A runner completes one lap of a 400 m track in 80 s. Her **speed** is 400 ÷ 80 = **5 m/s**, but her **displacement** is zero — she stands where she started — so her **velocity** is **0 m/s**. A body moving in a circle at steady speed has a changing velocity, because the direction changes every instant, and a changing velocity means it is accelerating. **Average speed** is always total distance ÷ total time, never the average of the speeds: a taxi covers 60 km in the first hour and 90 km in the next two, so its average speed is 150 km ÷ 3 h = **50 km/h**, not the (60 + 45) ÷ 2 = 52.5 km/h that averaging the two speeds would give. **Instantaneous speed** is the reading of the speedometer at one moment; the **uniform** motion of the equations is motion at a steady velocity in a straight line."},
+    {k:"h3", t:"Acceleration and Deceleration"},
+    {k:"p", t:"**Acceleration** is the rate of change of velocity: a = (v − u) ÷ t, in **m/s²** — how many metres per second the velocity gains every second. A car going from 10 m/s to 30 m/s in 5 s accelerates at (30 − 10) ÷ 5 = **4 m/s²**; the same car braking from 20 m/s to rest in 4 s has a = (0 − 20) ÷ 4 = **−5 m/s²**, the negative sign marking **deceleration** (retardation). Acceleration happens whenever velocity changes — in size, in direction, or in both — so a car rounding a bend at a steady 15 m/s is accelerating even though the speedometer never moves. Take care with the sign: choose one direction as positive at the start and keep it for u, v, a and s all through the question."},
+    {k:"h3", t:"The Equations of Motion and When to Use Each"},
+    {k:"table", head:["Equation","Use it when this quantity is not involved","Useful rearrangements"], rows:[
+      ["v = u + at","displacement s","u = v − at; t = (v − u) ÷ a; a = (v − u) ÷ t"],
+      ["s = ut + ½at²","final velocity v","t from a quadratic; a = 2(s − ut) ÷ t²"],
+      ["v² = u² + 2as","time t","s = (v² − u²) ÷ 2a; a = (v² − u²) ÷ 2s"],
+      ["s = ½(u + v)t","acceleration a","the average velocity times the time"]
+    ]},
+    {k:"p", t:"These four hold only for **uniform (constant) acceleration in a straight line**. Choose by what the question gives and what it asks: no time mentioned → v² = u² + 2as; no final velocity → s = ut + ½at²; no distance → v = u + at; no acceleration → s = ½(u + v)t. For a body starting from rest u = 0 and they shrink to v = at, s = ½at² and v² = 2as; for a body brought to rest v = 0 and s = u² ÷ 2a is the **braking distance**, which grows as the square of the speed — double the speed, four times the distance to stop."},
+    {k:"h3", t:"Reading and Drawing Motion Graphs"},
+    {k:"table", head:["Graph","The gradient (slope) gives","The area under it gives","A horizontal line means"], rows:[
+      ["Displacement–time","velocity","—","the body is at rest"],
+      ["Velocity–time","acceleration","displacement travelled","constant velocity (zero acceleration)"],
+      ["Acceleration–time","rate of change of acceleration","change of velocity","constant acceleration"]
+    ]},
+    {k:"p", t:"**Reading a velocity–time graph.** A car starts from rest, its velocity rising steadily to 20 m/s in 5 s, holds 20 m/s for 10 s, then brakes to rest in 4 s. The gradient of the first part is 20 ÷ 5 = **4 m/s²**; of the last part, −20 ÷ 4 = **−5 m/s²**; of the flat middle, zero. The distance travelled is the area: a triangle ½ × 5 × 20 = 50 m, a rectangle 20 × 10 = 200 m, and a triangle ½ × 4 × 20 = 40 m — **290 m** in 19 s, an average speed of 290 ÷ 19 ≈ **15.3 m/s**. On a displacement–time graph a straight line means constant velocity and its slope is that velocity; a curve bending upward means the body is speeding up; a line sloping back down means it is returning toward the start. When you draw one: use more than half the paper, label both axes with quantity and unit, plot the points small and neat, and draw the best straight line or smooth curve — never join dot to dot unless the reading demands it."},
+    {k:"h3", t:"Free Fall and Vertical Projection"},
+    {k:"p", t:"Near the Earth every body falls with **a = g ≈ 9.8 m/s², taken as 10 m/s²**, downward, whatever its mass — air resistance neglected. A stone dropped from 45 m: s = ½gt² gives t² = 90 ÷ 10 = 9, so it lands after **3 s** with v = gt = **30 m/s**. Thrown straight up at 20 m/s, it slows at 10 m/s², so it takes **2 s** to reach the top where v = 0, rises h = u² ÷ 2g = 400 ÷ 20 = **20 m**, and comes back symmetrically: **4 s** in all, striking the thrower's hand at 20 m/s. The whole flight uses a = −g on the way up and a = +g on the way down if upward is taken as positive — one sign convention, used consistently, is all that is needed. In real air a falling body accelerates only until the **air resistance** equals its weight; after that it falls at a constant **terminal velocity** — the parachutist's steady 50 m/s before the chute opens, the raindrop's gentle 8 m/s, the reason a cat and a person do not fall alike. Measure g in the laboratory by timing a falling steel ball released by an electromagnet onto a trapdoor, or with the simple pendulum (Grade 11)."},
+    {k:"h3", t:"Newton's Laws in Detail"},
+    {k:"num", items:[
+      "**First law — the law of inertia.** A body remains at rest, or continues to move with uniform velocity in a straight line, unless acted on by a resultant external force. Inertia is the resistance to any change of motion and it grows with mass, which is why the loaded truck is harder to start and harder to stop than the taxi, why the passenger lurches forward when the bus brakes, why a coin drops into a glass when the card under it is flicked away, and why the headrest saves the neck in a rear-end collision",
+      "**Second law.** The rate of change of momentum of a body is directly proportional to the resultant force and takes place in the direction of that force; with mass constant this is **F = ma**. One **newton** is the force that gives a mass of 1 kg an acceleration of 1 m/s². A 1200 kg car accelerating at 1.5 m/s² has a resultant force of 1800 N; if friction and air resistance total 400 N, the engine must supply **2200 N**. The law also reads F = (mv − mu) ÷ t, the form used for collisions and jets (Grade 11)",
+      "**Third law.** To every action there is an equal and opposite reaction. The two forces are equal in size, opposite in direction, of the same kind, act at the same instant, and — the point that wins the mark — act on **different bodies**, which is why they never cancel each other"
+    ]},
+    {k:"table", head:["Action force","Reaction force","Where you see it"], rows:[
+      ["Foot pushes backward on the ground","Ground pushes the foot forward","Walking and running"],
+      ["Gun pushes the bullet forward","Bullet pushes the gun backward","Recoil of a gun"],
+      ["Rocket pushes exhaust gas downward","Gas pushes the rocket upward","A rocket moving in empty space"],
+      ["Book pushes down on the table","Table pushes up on the book","The normal reaction supporting a load"],
+      ["Earth pulls the falling mango","Mango pulls the Earth upward","Universal gravitation — the Earth's huge mass makes its acceleration invisible"]
+    ]},
+    {k:"h3", t:"Mass and Weight"},
+    {k:"table", head:["Mass","Weight"], rows:[
+      ["The quantity of matter in a body","The gravitational force pulling on that matter"],
+      ["A scalar — magnitude only","A vector — always toward the centre of the Earth"],
+      ["Measured in kilograms (kg) with a beam balance","Measured in newtons (N) with a spring balance"],
+      ["The same everywhere in the universe","W = mg, so it changes with g — less on a hill, less on the Moon"],
+      ["A measure of inertia","A force, so it can be resolved into components on a slope"]
+    ]},
+    {k:"p", t:"A man of mass 60 kg weighs W = mg = 60 × 10 = **600 N** on Earth, but only 60 × 1.6 = **96 N** on the Moon where g = 1.6 m/s², while his mass stays 60 kg in both places — he is just as hard to shove sideways on the Moon as on Earth. Astronauts float not because gravity has stopped (at the space station's height it is still about 90 % of its surface value) but because the station and everything in it are falling together."},
+    {k:"h3", t:"Universal Gravitation in Detail"},
+    {k:"p", t:"**Newton's law of universal gravitation:** every particle of matter attracts every other particle with a force directly proportional to the product of their masses and inversely proportional to the square of the distance between their centres, **F = Gm₁m₂/r²**, where G = 6.67 × 10⁻¹¹ N m²/kg² is the universal gravitational constant. Two 1 kg masses 1 m apart attract with 6.67 × 10⁻¹¹ N — far too small to feel, which is why only a planet-sized mass produces a noticeable pull. Double the distance and the force falls to a quarter; triple it, to a ninth. Setting F = mg for a body at the Earth's surface gives **g = GM/r²** ≈ 9.8 m/s², so g falls with height, is slightly greater at the poles than at the equator (the Earth bulges and spins), and varies a little with the rocks below — the geologist's gravimeter reads the same variation to find ore. Gravitation supplies the **centripetal force** that holds the Moon in its orbit and the satellite over one spot of the Earth, gives the tides their pull, and makes the planets keep their paths; it is the weakest of the four fundamental forces and yet rules the universe at large because it always attracts and never cancels."},
+    {k:"h3", t:"A Method for Every Motion Problem"},
+    {k:"num", items:[
+      "**Write down the five letters** s, u, v, a, t and fill in every value the question gives, with its unit and its sign",
+      "**Convert first** — km/h to m/s, minutes to seconds, centimetres to metres — before substituting",
+      "**Choose the equation that omits the one quantity you neither know nor want**",
+      "**Substitute and solve**, keeping the units with the numbers all the way through",
+      "**Check the answer against common sense**: a walking speed near 1.5 m/s, a car in town near 15 m/s, a fall of 3 s from about 45 m",
+      "**State the unit and the direction** where the quantity is a vector"
+    ]},
+    {k:"h3", t:"Stopping Distance — the Arithmetic That Saves Lives"},
+    {k:"p", t:"A car's **stopping distance** is its **thinking distance** plus its **braking distance**. At 20 m/s (72 km/h) with a driver's reaction time of 0.7 s the car travels 20 × 0.7 = **14 m** before the brakes even touch; braking with a deceleration of 5 m/s², v² = u² + 2as gives s = (0 − 400) ÷ (2 × −5) = **40 m**, so the car stops only after **54 m**. Alcohol, tiredness, a phone call and a crowded roadside market all lengthen the thinking distance; worn tyres, wet tarmac and an overloaded vehicle lengthen the braking distance — and because the braking distance grows as the square of the speed, doubling the speed from 20 to 40 m/s makes it 160 m, four times as far. This is the physics behind the speed limit past a school gate."}
   ],
 
   focus:[
@@ -358,6 +510,26 @@ var PH_CURRICULUM = [
     {q:"What force gives a 2 kg mass an acceleration of 4 m/s²?", steps:[
       "F = ma", "2 × 4"
     ], a:"8 N"},
+    {q:"A car travelling at 20 m/s brakes to rest with a deceleration of 5 m/s². Find the braking distance.", steps:[
+      "v² = u² + 2as, with v = 0 and a = −5 m/s²",
+      "0 = 400 + 2(−5)s, so 10s = 400"
+    ], a:"40 m"},
+    {q:"A taxi covers 60 km in the first hour and 90 km in the next two hours. Find its average speed for the whole journey in km/h and in m/s.", steps:[
+      "Average speed = total distance ÷ total time = 150 km ÷ 3 h",
+      "Convert: 50 ÷ 3.6"
+    ], a:"50 km/h, which is about 13.9 m/s"},
+    {q:"A stone is thrown vertically upward at 20 m/s. Find the time to the highest point and the height reached (g = 10 m/s²).", steps:[
+      "At the top v = 0, so t = u ÷ g",
+      "h = u² ÷ 2g = 400 ÷ 20"
+    ], a:"2 s to the top; greatest height 20 m (4 s for the whole flight)"},
+    {q:"A 1200 kg car accelerates at 1.5 m/s² against friction and air resistance totalling 400 N. Find the force the engine must supply.", steps:[
+      "Resultant force F = ma = 1200 × 1.5 = 1800 N",
+      "Driving force = resultant + resistance = 1800 + 400"
+    ], a:"2200 N"},
+    {q:"Two bodies attract each other with a force F. The distance between them is doubled. What is the new force?", steps:[
+      "F = Gm₁m₂/r², so F is inversely proportional to r²",
+      "Doubling r multiplies the force by 1/4"
+    ], a:"F ÷ 4"}
   ],
   apply:[
     {q:"Why does a bus passenger lurch forward when the bus stops suddenly?", a:"The passenger's body continues forward by inertia (Newton's first law) because it keeps its motion unless a force acts."},
@@ -432,6 +604,57 @@ var PH_CURRICULUM = [
       ["Screw", "An inclined plane wound round a post", "Car jack, vice, bottle cap"],
     ]},
     {k:"p", t:"The **wheelbarrow** is the everyday second-class lever — load between fulcrum and effort, MA always above 1 — spot its class among levers about the market and the yard."},
+    {k:"rule"},
+    {k:"h3", t:"Work in Detail — and When No Work Is Done"},
+    {k:"p", t:"**W = F × s** counts only the force that acts **along** the displacement. No work is done in three common cases: the body does not move (pushing a wall, holding a bucket still — the muscles tire but W = 0 because s = 0); the motion is at right angles to the force (a waiter carrying a tray horizontally does no work against gravity, because the weight is vertical and the motion horizontal); and there is no force (a body gliding in space at constant velocity needs no work to keep moving). Lifting a 20 kg bucket of water through 2 m does W = F × s = mg × s = 200 × 2 = **400 J**; carrying the same bucket 100 m along the level road does **no work against gravity**, though the legs certainly work against friction inside the body. The **joule** is a newton-metre; the same joule measures work, energy and heat, which is the point of the conservation law."},
+    {k:"h3", t:"The Forms of Energy and How They Change"},
+    {k:"table", head:["Device or event","Energy supplied","Energy delivered","Energy wasted"], rows:[
+      ["Mount Coffee hydroelectric plant","Potential energy of the reservoir water","Electrical energy","Heat in the turbine and generator, sound, friction"],
+      ["Electric motor (fan, blender)","Electrical energy","Kinetic energy of the blades","Heat in the coil, sound"],
+      ["Generator or dynamo","Kinetic energy of the turning shaft","Electrical energy","Heat and friction"],
+      ["Lamp (filament)","Electrical energy","Light","Most of it as heat — a fluorescent or LED lamp wastes less"],
+      ["Solar panel","Light (radiant) energy","Electrical energy","Heat"],
+      ["Battery or cell","Chemical energy","Electrical energy","Heat from internal resistance"],
+      ["Firewood and charcoal stove","Chemical energy","Heat and light","Smoke, heat lost up the chimney and to the air"],
+      ["Photosynthesis in the leaf","Light energy","Chemical energy in glucose","Heat, reflected and transmitted light"],
+      ["Microphone and loudspeaker","Sound → electrical → sound","The signal","Heat and distortion"],
+      ["A falling mango","Potential energy","Kinetic energy","Air resistance as heat and sound on impact"]
+    ]},
+    {k:"h3", t:"Conservation of Energy in Numbers"},
+    {k:"p", t:"**The law of conservation of energy:** energy can be transformed from one form to another but can neither be created nor destroyed, so the total energy of an isolated system stays constant. A 2 kg body held 5 m above the ground has PE = mgh = 2 × 10 × 5 = **100 J** and no kinetic energy. Released, it loses height and gains speed; halfway down, at 2.5 m, it holds 50 J of PE and 50 J of KE; just before it strikes, all 100 J is kinetic, so ½mv² = 100 gives v = √(2 × 100 ÷ 2) = **10 m/s** — the same answer the equations of motion give from v² = 2gh. On impact the 100 J becomes heat, sound and the deformation of the ground; nothing disappears. The **pendulum** shows the same exchange between its extremes (all PE) and its lowest point (all KE), losing a little to air resistance each swing, which is why it eventually stops — the energy has gone to the air as heat, not out of the universe. The hydroelectric station is the same calculation on a national scale: water's PE becomes the turbine's KE, then electrical energy, then light and heat in the house, with every step taxed by friction."},
+    {k:"h3", t:"Power in Detail"},
+    {k:"p", t:"**Power** is the rate of doing work: **P = W ÷ t**, in **watts** (one joule per second); the kilowatt is 1000 W. Since W = F × s, power can also be written **P = F × v** for a body moving at steady speed — the form that decides whether a car can hold its speed up a hill. A pump lifts 500 kg of water through 10 m in 20 s: W = mgh = 50 000 J and P = 50 000 ÷ 20 = **2500 W**, or 2.5 kW. A car cruising at 20 m/s against a total resistance of 500 N needs P = 500 × 20 = **10 000 W**, 10 kW, just to hold that speed. Two boys shift the same load of bricks up the same stairs: both do the same work, but the one who finishes in half the time develops twice the power. The **kilowatt-hour** is energy, not power — a 1 kW appliance running for 1 h uses 1 kWh, the unit LEC sells (see Grade 12)."},
+    {k:"h3", t:"The Principle of Moments in Practice"},
+    {k:"p", t:"For a body in equilibrium **the sum of the clockwise moments about any point equals the sum of the anticlockwise moments about that same point**, and the resultant force is zero. Choose the pivot at the point where an unknown force acts and that force drops out of the moment equation — the trick that makes beam problems short. A uniform beam 4 m long and of weight 200 N rests on supports at its two ends; a 300 N load sits 1 m from the left support. Taking moments about the left support (so its reaction R₁ does not appear): clockwise moments are the beam's weight at the centre, 200 × 2 = 400 N m, and the load, 300 × 1 = 300 N m; anticlockwise is R₂ × 4. So 4R₂ = 700 and **R₂ = 175 N**; then R₁ + R₂ = 500 gives **R₁ = 325 N**. The same method finds the position of a child on a see-saw, the tension in a crane's cable, the force in a forearm lifting a load, and the reading on each of two balances carrying a plank."},
+    {k:"h3", t:"Levers — the Three Classes"},
+    {k:"table", head:["Class","Arrangement","Everyday example","Mechanical advantage"], rows:[
+      ["First","Fulcrum between load and effort","See-saw, scissors, pliers, claw hammer, crowbar, the balance","Greater than, equal to or less than 1, depending on the arms"],
+      ["Second","Load between fulcrum and effort","Wheelbarrow, nutcracker, bottle opener, the door pushed near the handle","Always greater than 1 — a force multiplier"],
+      ["Third","Effort between fulcrum and load","Tweezers, sugar tongs, the forearm lifting a load in the hand, a spade used to toss soil","Always less than 1 — it trades force for speed and range of movement"]
+    ]},
+    {k:"p", t:"Read the class from the middle: whichever of fulcrum, load and effort sits in the middle names the class. The **lever law** is the principle of moments applied to it: effort × effort arm = load × load arm, so **MA = effort arm ÷ load arm**."},
+    {k:"h3", t:"Machines and their Velocity Ratios"},
+    {k:"table", head:["Machine","Velocity ratio","How the VR is found","A Liberian use"], rows:[
+      ["Lever","Effort arm ÷ load arm","Measure the two distances from the fulcrum","Crowbar prising a stump; wheelbarrow"],
+      ["Single fixed pulley","1","It only changes the direction of the effort","Hoisting a flag"],
+      ["Block and tackle","Number of rope segments supporting the load","Count the ropes leaving the moving block","Lifting engine parts, raising water from a deep well"],
+      ["Inclined plane","Length of the slope ÷ height risen","VR = l ÷ h = 1 ÷ sin θ","Ramp loading a truck; a staircase; the road winding up a hill"],
+      ["Wheel and axle","Radius of the wheel ÷ radius of the axle","VR = R ÷ r","The well windlass, the steering wheel, a screwdriver turned by hand"],
+      ["Screw jack","2πR ÷ pitch of the screw","The effort travels a circle while the load rises one pitch","Lifting a car to change a tyre"],
+      ["Wedge","Length ÷ thickness","A moving inclined plane","The cutlass splitting wood; an axe"],
+      ["Hydraulic press","Area of the large piston ÷ area of the small piston","VR = A₂ ÷ A₁","Baling scrap, pressing palm oil"]
+    ]},
+    {k:"p", t:"**Efficiency** ties the three numbers together: efficiency = (MA ÷ VR) × 100 % = (work output ÷ work input) × 100 %, and it is always **below 100 %** because friction between the moving parts and the weight of those parts themselves waste part of the input as heat. A pulley system with VR 6 and efficiency 75 % has MA = 0.75 × 6 = 4.5, so it lifts 900 N with an effort of 900 ÷ 4.5 = **200 N**; the missing 0.5 of the VR is friction. Efficiency is improved by lubricating, by ball bearings, by making the moving parts lighter and stiffer, and by tightening what should not slip. The inclined plane loses efficiency to the friction of the load on the ramp — which is also what stops the load sliding back."},
+    {k:"h3", t:"Energy in Liberia — the Chain from River to Lamp"},
+    {k:"p", t:"Follow one joule from the St. Paul River to a classroom lamp. Water held in the reservoir at Mount Coffee has **potential energy**; released down the penstock it converts to **kinetic energy**; the moving water turns the **turbine**, so the energy becomes rotational kinetic energy; the turbine spins the **generator**, where the rotating coil in a magnetic field converts it to **electrical energy** (electromagnetic induction, Grade 12); the transformer steps the voltage up for transmission to cut the current and the I²R loss in the wires; at the town another transformer steps it down; in the lamp the electrical energy becomes light and heat. At every arrow some energy escapes as heat, sound and friction, so the overall efficiency is well under half — the reason a modern **LED lamp** (which converts more of its electrical energy into light than a filament bulb) matters as much to the national budget as a new turbine. Firewood and charcoal deliver the chemical energy of sunlight stored by photosynthesis, and a **solar panel** converts radiant energy directly to electricity in a single step; both remind the learner that every form of energy on Earth, except the nuclear and the tidal, began as sunlight."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Define work, energy and power** with their SI units, and state the principle of conservation of energy",
+      "**Substitute into W = F × s, KE = ½mv², PE = mgh, P = W ÷ t** and give the unit with the answer",
+      "**Apply the principle of moments**, stating clearly which point the moments were taken about",
+      "**Compute MA, VR and efficiency**, and explain why efficiency is never 100 %",
+      "**Name the energy transformations** in a device — the marks are for the chain, in order, not for the device's use"
+    ]}
   ],
 
   focus:[
@@ -554,6 +777,27 @@ var PH_CURRICULUM = [
     {q:"Using MA = 4 and VR = 5, find the efficiency.", steps:[
       "Efficiency = (MA ÷ VR) × 100%", "(4 ÷ 5) × 100"
     ], a:"80%"},
+    {q:"A pump lifts 500 kg of water through 10 m in 20 s. Find the work done and the power developed (g = 10 m/s²).", steps:[
+      "W = mgh = 500 × 10 × 10",
+      "P = W ÷ t = 50 000 ÷ 20"
+    ], a:"50 000 J (50 kJ); 2500 W, i.e. 2.5 kW"},
+    {q:"A 2 kg body falls from a height of 5 m. Find its kinetic energy and its speed just before it strikes the ground (g = 10 m/s²).", steps:[
+      "PE lost = mgh = 2 × 10 × 5 = 100 J, all of it becoming KE",
+      "½mv² = 100, so v² = 2 × 100 ÷ 2"
+    ], a:"KE = 100 J; speed 10 m/s"},
+    {q:"An inclined plane 5 m long raises a load through 1 m. A load of 600 N is pushed up it with an effort of 150 N. Find the VR, the MA and the efficiency.", steps:[
+      "VR = length ÷ height = 5 ÷ 1",
+      "MA = load ÷ effort = 600 ÷ 150",
+      "Efficiency = (MA ÷ VR) × 100 %"
+    ], a:"VR 5, MA 4, efficiency 80 %"},
+    {q:"A car of mass 1000 kg moving at 20 m/s is brought to rest in 50 m. Find the average braking force.", steps:[
+      "KE = ½mv² = ½ × 1000 × 400 = 200 000 J",
+      "Work done by the brakes = F × s, so F = 200 000 ÷ 50"
+    ], a:"4000 N"},
+    {q:"A machine of velocity ratio 6 and efficiency 75 % lifts a load of 900 N. Find the effort needed.", steps:[
+      "MA = (efficiency ÷ 100) × VR = 0.75 × 6 = 4.5",
+      "Effort = load ÷ MA = 900 ÷ 4.5"
+    ], a:"200 N"}
   ],
   apply:[
     {q:"Why are hydroelectric dams built high in the mountains?", a:"The greater the height of the stored water, the more gravitational potential energy it has, which becomes more kinetic energy and then more electrical energy in the turbines."},
@@ -613,6 +857,62 @@ var PH_CURRICULUM = [
       ["Combined", "The three together for a fixed mass of gas", "P₁V₁/T₁ = P₂V₂/T₂"],
     ]},
     {k:"p", t:"Demonstrate the laws: compress the air in a sealed syringe (Boyle), warm a trapped column of air (Charles), heat a sealed flask (Pressure law). Remember **temperatures must be in kelvin: K = °C + 273**."},
+    {k:"rule"},
+    {k:"h3", t:"Heat, Temperature and Internal Energy"},
+    {k:"p", t:"**Temperature** is the degree of hotness of a body — the level of the average kinetic energy of its molecules — and it decides which way heat flows. **Heat** is energy in transit: it flows of its own accord only from a hotter body to a colder one, and it is measured in **joules** (the old calorie survives in the relation 1 cal = 4.2 J). **Internal energy** is the total kinetic and potential energy of all the molecules of a body, so a bucket of warm water holds more internal energy than a cup of boiling water even though the cup is hotter. Two bodies in **thermal equilibrium** are at the same temperature and exchange no net heat — the principle behind every thermometer reading, and the zeroth law of thermodynamics. Temperature is a scalar; heat and internal energy are forms of energy; none of the three is a substance, which is why the old word **caloric** was abandoned."},
+    {k:"h3", t:"The Three Temperature Scales"},
+    {k:"table", head:["Scale","Ice point","Steam point","Absolute zero","Conversion"], rows:[
+      ["Celsius (°C)","0 °C","100 °C","−273 °C","K = °C + 273"],
+      ["Kelvin (K)","273 K","373 K","0 K","°C = K − 273"],
+      ["Fahrenheit (°F)","32 °F","212 °F","−460 °F","°F = (9/5)°C + 32; °C = (5/9)(°F − 32)"]
+    ]},
+    {k:"p", t:"**Conversions worth drilling:** normal body temperature 37 °C = **310 K** = 98.6 °F; a hot day in Monrovia at 32 °C = 305 K = 89.6 °F; 68 °F = (68 − 32) × 5 ÷ 9 = **20 °C**; and −40 is the one reading that is the same on both scales, since (−40 × 9/5) + 32 = −40. The **kelvin** is the SI unit and the scale the gas laws demand: a temperature interval of 1 K equals an interval of 1 °C, but 0 K, **absolute zero**, is the temperature at which the molecules of an ideal gas would have no kinetic energy left and the volume they occupy would extrapolate to zero. Never put a Celsius figure into P₁V₁/T₁ = P₂V₂/T₂ — the commonest single error in the thermal physics paper."},
+    {k:"h3", t:"Thermometers — the Property Each One Uses"},
+    {k:"table", head:["Thermometer","Thermometric property","Typical range","Where it is used"], rows:[
+      ["Mercury-in-glass","Expansion of a liquid","−39 °C to 357 °C","Laboratory work; the standard school thermometer"],
+      ["Alcohol-in-glass","Expansion of a liquid","−115 °C to 78 °C","Cold climates; the alcohol is dyed red to be seen"],
+      ["Clinical (mercury)","Expansion of a liquid","35 °C to 43 °C","Body temperature; the constriction holds the reading"],
+      ["Constant-volume gas","Pressure of a gas at fixed volume","Very wide; the most accurate","Standardising other thermometers"],
+      ["Resistance (platinum)","Electrical resistance of a metal","−200 °C to 1200 °C","Industry and precision work"],
+      ["Thermocouple","E.m.f. between two joined dissimilar metals","Up to 1600 °C; responds very fast","Furnaces, engines, small points"],
+      ["Thermistor","Resistance of a semiconductor (falls as it warms)","−50 °C to 150 °C","Electronic thermometers, cars, fridges"],
+      ["Total-radiation pyrometer","Radiation from a hot body","Above 800 °C","Molten metal, no contact needed"],
+      ["Bimetallic strip","Different expansions of two bonded metals","Ordinary ranges","Thermostats, fire alarms, dials"]
+    ]},
+    {k:"p", t:"**Calibrating a liquid-in-glass thermometer** uses the two **fixed points**: the bulb is packed in pure melting ice at normal atmospheric pressure and the level marked **0 °C** (the lower fixed point), then held in the steam above boiling pure water at normal atmospheric pressure and marked **100 °C** (the upper fixed point). The distance between them is the **fundamental interval**, divided into 100 equal parts. An uncalibrated thermometer with lower and upper fixed points at 20 mm and 170 mm reads a temperature of ((level − 20) ÷ 150) × 100 °C — so a level at 95 mm is (75 ÷ 150) × 100 = **50 °C**. A good thermometric substance expands uniformly, is visible, does not wet the glass, conducts heat well, has a low heat capacity so it does not cool what it measures, and stays liquid over the range wanted: mercury satisfies all of these, water none — water expands unevenly, is colourless, wets glass and freezes at 0 °C. The **clinical thermometer's constriction** just above the bulb lets the mercury rise but breaks the thread when it cools, so the reading can be carried to the light; it must be shaken down before use and never sterilised in boiling water, which would burst it."},
+    {k:"h3", t:"Thermal Expansion in Detail"},
+    {k:"table", head:["Substance","Linear expansivity α per K","What its expansion means in practice"], rows:[
+      ["Aluminium","2.4 × 10⁻⁵","Expands most of the common metals; roofing sheets need room to move"],
+      ["Brass","1.9 × 10⁻⁵","Bonds with iron in the bimetallic strip, bending as it warms"],
+      ["Copper","1.7 × 10⁻⁵","Overhead cables sag more in the hot season"],
+      ["Steel and iron","1.1 to 1.2 × 10⁻⁵","Nearly the same as concrete, which is why the two can be used together"],
+      ["Concrete","1.2 × 10⁻⁵","Slabs are cast in sections with gaps between them"],
+      ["Ordinary glass","9 × 10⁻⁶","Thick glass cracks when heated unevenly; thin Pyrex (3 × 10⁻⁶) does not"]
+    ]},
+    {k:"p", t:"The expansions follow one another: **linear** Δl = αlΔθ, **area** ΔA = 2αAΔθ (superficial expansivity β = 2α), and **volume** ΔV = 3αVΔθ (cubic expansivity γ = 3α), where Δθ is the temperature change in kelvin or in degrees Celsius — an interval, so either scale works. A 20 m steel rail at 25 °C heated to 55 °C lengthens by 1.2 × 10⁻⁵ × 20 × 30 = **7.2 mm**, and the gap between rails is cut for exactly that. **Applications and their consequences:** expansion gaps in rails, bridges on rollers and in concrete slabs; the **bimetallic strip** of brass and iron that bends toward the iron as it warms and makes or breaks a contact in the thermostat, the fire alarm and the flasher unit; hot rivets and heated iron tyres shrunk onto wheels as they cool; the metal lid loosened under hot water because the metal expands more than the glass; the pendulum of a clock lengthening in the heat and losing time; telephone wires hung slack so the cold season cannot snap them; and the **expansion of a liquid** used in the thermometer itself, the level of petrol in a tank rising on a hot day, and the overflow pipe on a car's cooling system."},
+    {k:"h3", t:"The Anomalous Expansion of Water"},
+    {k:"p", t:"Water behaves like other liquids from about 4 °C upward, but between **0 °C and 4 °C it contracts as it warms**: its density is greatest at **4 °C**. This **anomalous expansion** is why a lake freezes from the surface down — the coldest water, being less dense, floats on the 4 °C water below, ice forms on top and, since ice and water are poor conductors, the layer insulates what is underneath, so fish and plants survive the cold season instead of being frozen solid. It is also why ice floats, why a bottle of water left in a freezer bursts, why pipes crack in a frost, and why the density of a liquid is always quoted with its temperature. Note too that **impurities and pressure** shift the fixed points: dissolved salt lowers the melting point of ice (which is why salt melts ice on a road) and raises the boiling point of water (which is the principle of the pressure cooker)."},
+    {k:"h3", t:"The Gas Laws in Detail"},
+    {k:"table", head:["Law","Quantity held constant","Equation","The graph"], rows:[
+      ["Boyle's law","Temperature (and mass)","P₁V₁ = P₂V₂; PV = constant","P against V is a curve; P against 1/V is a straight line through the origin"],
+      ["Charles' law","Pressure (and mass)","V₁/T₁ = V₂/T₂; V ∝ T","V against T in kelvin is a straight line through the origin; against °C it meets the axis at −273 °C"],
+      ["Pressure law (Gay-Lussac)","Volume (and mass)","P₁/T₁ = P₂/T₂; P ∝ T","P against T in kelvin is a straight line through the origin"],
+      ["Combined gas equation","Mass only","P₁V₁/T₁ = P₂V₂/T₂","—"],
+      ["General gas law","—","PV = nRT, with R = 8.31 J mol⁻¹ K⁻¹","—"]
+    ]},
+    {k:"p", t:"**Worked through.** A fixed mass of gas occupies 300 cm³ at 2 × 10⁵ Pa and 27 °C. Find its volume at 1 × 10⁵ Pa and 127 °C. Convert first: T₁ = 27 + 273 = 300 K and T₂ = 127 + 273 = 400 K. Then V₂ = P₁V₁T₂ ÷ (P₂T₁) = (2 × 10⁵ × 300 × 400) ÷ (1 × 10⁵ × 300) = **800 cm³** — the halved pressure doubles the volume and the higher temperature enlarges it further. A gas at 90 kPa and 27 °C warmed to 87 °C at constant volume reaches P₂ = 90 × 360 ÷ 300 = **108 kPa**. Compressing 400 cm³ of gas at 100 kPa to 250 cm³ at constant temperature raises the pressure to 100 × 400 ÷ 250 = **160 kPa**. In every case check the direction of the answer against the law before writing it down: squeeze a gas and its pressure must rise; warm a gas in a closed flask and its pressure must rise; warm a gas free to expand and its volume must rise."},
+    {k:"h3", t:"Why the Gases Obey — the Kinetic Explanation"},
+    {k:"p", t:"The **kinetic theory** says a gas is a swarm of tiny molecules moving at random and colliding elastically with each other and with the walls; the **pressure** is the average force of those collisions per unit area. Halve the volume at constant temperature and the same number of molecules strike each square metre of wall twice as often, so the pressure doubles — **Boyle's law**. Raise the temperature at constant volume and the molecules move faster: they strike harder and more often, so the pressure rises in proportion to the kelvin temperature — the **pressure law**. Raise the temperature at constant pressure and the only way to keep the collision rate per unit area the same is to give the molecules more room, so the volume grows with the kelvin temperature — **Charles' law**. Extrapolate the V–T line back and it meets the temperature axis at **−273 °C**, where the volume would be zero: the physical meaning of absolute zero and the reason the kelvin scale starts there. Real gases liquefy before they get that far, so the laws are exact only for an **ideal gas** — a good approximation at low pressure and high temperature."},
+    {k:"h3", t:"Heating and Cooling Curves"},
+    {k:"p", t:"Heat a block of ice steadily and plot temperature against time. The curve climbs to **0 °C**, goes **flat** while the ice melts (the heat goes into breaking the bonds rather than raising the temperature — the **specific latent heat of fusion**), climbs again through the liquid, flattens once more at **100 °C** while the water boils (the **specific latent heat of vaporisation**), and rises again as steam. The flat sections are the fingerprints of a pure substance: a pure solid melts at a sharp, constant temperature, while an impure one melts over a range and at a lower temperature, which is how the laboratory tests purity. The cooling curve of molten naphthalene, plotted every minute as it solidifies, shows the same flat section at its freezing point — the standard school experiment, in which the tube is stirred gently and read at eye level, and the flat part is the mark that the substance is pure."},
+    {k:"h3", t:"A Method for Every Gas-Law Problem"},
+    {k:"num", items:[
+      "**List P₁, V₁, T₁ and P₂, V₂, T₂**, putting a dash for what is not given",
+      "**Convert every temperature to kelvin** — add 273 to the Celsius figure",
+      "**Cancel what stays constant**: constant temperature leaves P₁V₁ = P₂V₂; constant pressure leaves V₁/T₁ = V₂/T₂; constant volume leaves P₁/T₁ = P₂/T₂; otherwise use P₁V₁/T₁ = P₂V₂/T₂",
+      "**Make the unknown the subject before substituting**, and keep the units of volume and pressure the same on both sides (cm³ with cm³, kPa with kPa — they cancel)",
+      "**Sanity-check the direction**: more pressure, less volume; more heat, more volume or more pressure"
+    ]}
   ],
 
   focus:[
@@ -712,6 +1012,31 @@ var PH_CURRICULUM = [
     {q:"Convert 100 °C to kelvin.", steps:[
       "K = °C + 273", "100 + 273"
     ], a:"373 K"},
+    {q:"A fixed mass of gas occupies 300 cm³ at 2 × 10⁵ Pa and 27 °C. Find its volume at 1 × 10⁵ Pa and 127 °C.", steps:[
+      "Convert to kelvin: T₁ = 300 K, T₂ = 400 K",
+      "P₁V₁/T₁ = P₂V₂/T₂, so V₂ = P₁V₁T₂ ÷ (P₂T₁)",
+      "V₂ = (2 × 10⁵ × 300 × 400) ÷ (1 × 10⁵ × 300)"
+    ], a:"800 cm³"},
+    {q:"A gas at 90 kPa and 27 °C is heated to 87 °C at constant volume. Find its new pressure.", steps:[
+      "T₁ = 300 K, T₂ = 360 K",
+      "P₁/T₁ = P₂/T₂, so P₂ = 90 × 360 ÷ 300"
+    ], a:"108 kPa"},
+    {q:"A steel rail is 20 m long at 25 °C. Find its increase in length when heated to 55 °C (α = 1.2 × 10⁻⁵ K⁻¹).", steps:[
+      "Δθ = 55 − 25 = 30 K",
+      "Δl = αlΔθ = 1.2 × 10⁻⁵ × 20 × 30"
+    ], a:"7.2 × 10⁻³ m, i.e. 7.2 mm"},
+    {q:"Convert 68 °F to degrees Celsius and to kelvin.", steps:[
+      "°C = (5/9)(°F − 32) = (5/9)(68 − 32)",
+      "K = °C + 273"
+    ], a:"20 °C, i.e. 293 K"},
+    {q:"An uncalibrated thermometer marks its lower fixed point at 20 mm and its upper fixed point at 170 mm. Find the temperature when the mercury stands at 95 mm.", steps:[
+      "Fundamental interval = 170 − 20 = 150 mm",
+      "θ = ((95 − 20) ÷ 150) × 100"
+    ], a:"50 °C"},
+    {q:"A gas occupies 400 cm³ at 100 kPa. Find its pressure when it is compressed to 250 cm³ at constant temperature.", steps:[
+      "P₁V₁ = P₂V₂",
+      "P₂ = 100 × 400 ÷ 250"
+    ], a:"160 kPa"}
   ],
   apply:[
     {q:"Why does a sealed plastic bottle of water bulge when left in the sun?", a:"Heat warms the air and water vapour inside; at nearly constant volume the increased temperature raises the pressure, pressing the bottle outward."},
@@ -771,6 +1096,64 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Capacitors and Capacitance"},
     {k:"p", t:"A **capacitor** stores electric charge on two plates kept apart by an insulator (the dielectric); its **capacitance C = Q/V** in farads — raised by larger plates, closer spacing, and a better dielectric. Identify the **types and uses of capacitors:** camera flash and radio tuning; in **parallel the capacitances add (C = C₁ + C₂)**, in **series they combine reciprocally (1/C = 1/C₁ + 1/C₂)** — the network rules are the mirror image of resistors. Work the networks of capacitors — series, parallel and series-parallel — in the exercise set."},
+    {k:"rule"},
+    {k:"h3", t:"Charge in Detail — Quantisation and Conservation"},
+    {k:"p", t:"Charge comes in packets. The **electron** carries the smallest free charge, e = **1.6 × 10⁻¹⁹ C**, and the proton carries exactly the same quantity positive, so any charge is a whole number of these: **Q = ne**, the principle of **quantisation of charge**. A balloon that gains 3 × 10⁶ electrons carries Q = 3 × 10⁶ × 1.6 × 10⁻¹⁹ = **4.8 × 10⁻¹³ C**, negative; conversely 3.2 × 10⁻⁶ C is 3.2 × 10⁻⁶ ÷ 1.6 × 10⁻¹⁹ = **2 × 10¹³ electrons**. Only the **electrons move** when a body is charged — the protons stay locked in the nuclei — so a positive body is one that has **lost** electrons and a negative body one that has **gained** them. The **law of conservation of charge** says charge is never created or destroyed: rubbing two bodies apart leaves the total unchanged, one gaining exactly what the other loses. Charge is measured with a **coulomb**, and the coulomb is defined through the current: one coulomb is the charge carried past a point by one ampere in one second (Grade 12)."},
+    {k:"h3", t:"Materials and their Charges"},
+    {k:"table", head:["Class","Examples","What happens to charge","A use"], rows:[
+      ["Conductor","Copper, aluminium, iron, carbon (graphite), the human body, damp earth, salt solution","Charge spreads at once; free electrons carry it","Wiring, earthing straps, the lightning conductor"],
+      ["Insulator (dielectric)","Glass, polythene, rubber, dry wood, dry air, mica, plastic, ebonite","Charge stays where it is put","Cable sheathing, the handle of a screwdriver, capacitor dielectrics"],
+      ["Semiconductor","Silicon, germanium","Conducts between the two, and better when warm or doped","Diodes, transistors, solar cells (Grade 12)"]
+    ]},
+    {k:"p", t:"Note the practical points: a conductor held in the bare hand cannot be charged by rubbing, because the charge runs through the body to earth — it must be held by an insulating handle. A damp day ruins electrostatic experiments because a film of moisture makes every surface slightly conducting. And an insulator charged at one point stays charged there, which is what makes static cling and the photocopier possible."},
+    {k:"h3", t:"The Three Methods of Charging"},
+    {k:"num", items:[
+      "**Friction (rubbing).** Electrons are scraped from one material to the other by contact. Rubbing **glass with silk** leaves the glass positive (it loses electrons) and the silk negative; rubbing **polythene or ebonite with fur or wool** leaves the rod negative and the fur positive. Both bodies carry equal and opposite charges",
+      "**Contact (conduction).** A charged body touches a neutral one and shares its electrons; the neutral body takes the **same sign** of charge as the one that touched it",
+      "**Induction.** A charged body is brought **near** but never touches: its presence drives electrons through the conductor, so the near end takes the opposite sign and the far end the same. Earth the far end (or touch it with a finger), remove the earth, then remove the inducing charge, and the conductor is left with the **opposite** sign to the inducer — no charge has been used up from the inducer at all"
+    ]},
+    {k:"h3", t:"The Gold-Leaf Electroscope"},
+    {k:"p", t:"The **electroscope** is the detector: a metal cap and rod inside a glass case, with a thin gold leaf hanging from the lower end. Charge reaching the cap spreads over the rod and leaf, and since both carry the **same** sign they repel, so the leaf diverges. It detects charge (the leaf rises), compares the amount of charge (the greater the divergence, the more charge), and — once charged with a known sign — identifies the sign of an unknown charge (a body of the same sign increases the divergence; the opposite sign reduces it and may collapse the leaf). To charge it by **induction**: bring a negatively charged rod near the cap, so electrons are pushed down into the leaf and the cap becomes positive; earth the cap with a finger, letting those electrons escape; remove the finger, then the rod; the electroscope is left **positively** charged, and the leaf stays up. The same instrument shows **point discharge**: a sharp needle held near a charged cap bleeds the charge away silently, because the field at a point is strong enough to ionise the air — the principle of the lightning conductor."},
+    {k:"h3", t:"Coulomb's Law and the Electric Field — the Calculations"},
+    {k:"p", t:"**Coulomb's law:** the force between two point charges is directly proportional to the product of the charges and inversely proportional to the square of the distance between them, **F = kq₁q₂/r²**, with k = 9 × 10⁹ N m²/C² (k = 1/4πε₀, where ε₀ = 8.85 × 10⁻¹² C²/N m² is the permittivity of free space). Two charges of 2 µC and 3 µC 0.1 m apart repel or attract with F = 9 × 10⁹ × (2 × 10⁻⁶ × 3 × 10⁻⁶) ÷ 0.1² = 9 × 10⁹ × 6 × 10⁻¹² ÷ 10⁻² = **5.4 N** — a force big enough to feel, from charges far smaller than any that accumulate on a comb. Halve the distance and the force becomes four times; double one charge and the force doubles. An **electric field** is a region in which a charge experiences a force, and its **intensity** is the force per unit positive charge: **E = F/q = kq/r²**, in N/C, which is the same as V/m. At 0.2 m from a 4 µC point charge, E = 9 × 10⁹ × 4 × 10⁻⁶ ÷ 0.04 = **9 × 10⁵ N/C**. Between large parallel plates the field is **uniform**, E = V/d, so 12 V across plates 4 mm apart gives 12 ÷ 0.004 = **3000 V/m**. The **electric potential** at a point is the work done bringing unit positive charge from infinity to it, and the **potential difference** between two points is the work done per coulomb: **V = W/Q**, so moving 5 C through 12 V does W = QV = **60 J**."},
+    {k:"h3", t:"Patterns of the Electric Field"},
+    {k:"table", head:["Arrangement","The pattern of the lines of force"], rows:[
+      ["Single positive charge","Straight lines radiating outward in all directions"],
+      ["Single negative charge","Straight lines converging inward from all directions"],
+      ["Two unlike charges near each other","Lines leave the positive and curve into the negative; the field is strongest in the gap"],
+      ["Two like charges near each other","Lines leave both and push apart, leaving a neutral point between them where the field is zero"],
+      ["Two large parallel plates of opposite sign","Evenly spaced parallel lines from one plate to the other — a uniform field, except at the edges where they fringe"],
+      ["A charged sphere","The same pattern as a point charge at its centre, with no field inside the metal"],
+      ["A sharp point on a charged body","Lines crowd together at the point, so the field there is strongest — point discharge"]
+    ]},
+    {k:"p", t:"Rules for drawing them: lines start on positive charge and end on negative, they never cross (a crossing would give two directions of force at one point), their closeness shows the strength of the field, and the direction of the line at any point is the direction of the force on a **positive** test charge placed there."},
+    {k:"h3", t:"Lightning, Thunder and Safety"},
+    {k:"p", t:"Inside a thundercloud the updraughts rub ice crystals and droplets apart, leaving the base of the cloud strongly negative and the top positive. The negative base **induces** a positive charge on the ground below — on trees, roofs, people and palm tops — and when the field exceeds about 3 × 10⁶ V/m the air ionises and a **leader** steps down to meet a streamer from the ground: the flash. A stroke may carry 20 000 A at hundreds of millions of volts for a few millionths of a second, heating the channel to about 30 000 °C; the sudden expansion of that superheated air is the **thunder**. Because light travels at 3 × 10⁸ m/s and sound at about 340 m/s, the seconds between flash and bang divided by three give the distance in kilometres — a gap of 6 s means the stroke was about **2 km** away. The **lightning conductor** is a pointed copper rod at the highest point of the building, bonded by a thick copper tape to a plate buried in damp earth: the point bleeds charge quietly into the air and, if a stroke comes, the thick conductor carries it harmlessly to ground instead of through the roof timbers. In a storm keep away from tall isolated trees, metal fences, water and open ground; do not carry a long metal object; and indoors unplug sensitive equipment, because the surge arrives down the wires."},
+    {k:"h3", t:"Capacitors in Detail"},
+    {k:"table", head:["Connection","Combined capacitance","Charge and voltage"], rows:[
+      ["Parallel","C = C₁ + C₂ + C₃ (they simply add)","The same voltage across each; the charge divides in proportion to the capacitances"],
+      ["Series","1/C = 1/C₁ + 1/C₂ + 1/C₃, i.e. C = C₁C₂ ÷ (C₁ + C₂) for two","The same charge on each; the voltage divides, the larger capacitance taking the smaller share"]
+    ]},
+    {k:"p", t:"A **capacitor** is two conductors separated by an insulator: the **parallel-plate** capacitor (plates of area A, separation d, dielectric between), the **electrolytic** (large capacitance, must be connected the right way round), the **variable** (meshing vanes, the tuning capacitor of a radio), the **paper, mica and ceramic** types. Its **capacitance C = Q/V**, in **farads** (one coulomb per volt); practical capacitors are in microfarads (µF = 10⁻⁶ F), nanofarads and picofarads. Capacitance rises with **larger plate area**, **smaller separation** and a **dielectric of higher permittivity** — which is why inserting glass or polythene between the plates increases C, and why the plates of a variable capacitor are meshed to change the effective area. Two capacitors of 2 µF and 3 µF give **5 µF in parallel** and 6 ÷ 5 = **1.2 µF in series**. A 2 µF capacitor charged to 100 V holds Q = CV = 2 × 10⁻⁴ C and energy **E = ½CV² = ½QV = Q²/2C** = ½ × 2 × 10⁻⁶ × 100² = **0.01 J** — the small but sudden energy that fires a camera flash, smooths the ripple in a phone charger, blocks direct current while passing alternating (Grade 12), stores the charge in a defibrillator, and sets the timing in every electronic circuit. Always discharge a large capacitor through a resistor before touching it: it keeps its charge long after the supply is switched off."},
+    {k:"h3", t:"Uses and Dangers of Static Electricity"},
+    {k:"table", head:["Application or hazard","How electrostatics is used, or avoided"], rows:[
+      ["Photocopier and laser printer","A charged drum holds the image; oppositely charged toner sticks only to the image and is fused to the paper"],
+      ["Electrostatic spray painting","The paint droplets are given one charge and the car body the other, so the spray wraps round into the corners and less paint is wasted"],
+      ["Chimney precipitators and air cleaners","Smoke particles are charged and pulled onto collecting plates instead of leaving the chimney"],
+      ["Separating ores and seeds","Charged particles of different materials are deflected differently by an electric field"],
+      ["Fuel tanker and aircraft refuelling","A conducting chain or bonding wire carries the charge from the moving fuel to earth; a spark in the vapour would ignite it"],
+      ["Flour mills, cotton mills, sugar silos","Fine dust charged by friction can explode; the plant is earthed, humidified and kept free of dust"],
+      ["Electronic components","A charged finger can destroy a transistor, so components are handled by their edges and stored in conducting bags"],
+      ["Anaesthetic theatres and hospital oxygen","Sparks ignite gases, so conducting floors and antistatic materials are used"]
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State the basic law of electrostatics** (like charges repel, unlike attract) and **Coulomb's law** in words before writing F = kq₁q₂/r²",
+      "**Explain induction**, usually with a diagram of the electroscope; the marks are for the sequence — bring near, earth, remove earth, remove rod",
+      "**Substitute into F = kq₁q₂/r², E = F/q, C = Q/V and W = QV**, converting microcoulombs to coulombs first",
+      "**Describe the lightning conductor** and why it is pointed, thick and well earthed",
+      "**Give one use and one danger** of static electricity, each with the reason"
+    ]}
   ],
 
   focus:[
@@ -864,6 +1247,33 @@ var PH_CURRICULUM = [
     {q:"A capacitor stores 2 C of charge at a voltage of 4 V. Find its capacitance.", steps:[
       "C = Q ÷ V", "2 ÷ 4"
     ], a:"0.5 F"},
+    {q:"How many electrons make up a charge of 3.2 × 10⁻⁶ C? (e = 1.6 × 10⁻¹⁹ C)", steps:[
+      "Q = ne, so n = Q ÷ e",
+      "n = 3.2 × 10⁻⁶ ÷ 1.6 × 10⁻¹⁹"
+    ], a:"2 × 10¹³ electrons"},
+    {q:"Two point charges of 2 µC and 3 µC are 0.1 m apart. Find the force between them (k = 9 × 10⁹ N m²/C²).", steps:[
+      "F = kq₁q₂/r²",
+      "F = 9 × 10⁹ × (2 × 10⁻⁶ × 3 × 10⁻⁶) ÷ 0.01"
+    ], a:"5.4 N (attractive if the signs differ, repulsive if they are alike)"},
+    {q:"Find the electric field intensity 0.2 m from a point charge of 4 µC.", steps:[
+      "E = kq/r²",
+      "E = 9 × 10⁹ × 4 × 10⁻⁶ ÷ (0.2)²"
+    ], a:"9 × 10⁵ N/C, directed away from the charge"},
+    {q:"A 2 µF capacitor is charged to a potential difference of 100 V. Find the charge stored and the energy stored.", steps:[
+      "Q = CV = 2 × 10⁻⁶ × 100",
+      "E = ½CV² = ½ × 2 × 10⁻⁶ × 10 000"
+    ], a:"Q = 2 × 10⁻⁴ C; energy 0.01 J"},
+    {q:"Two capacitors of 2 µF and 3 µF are connected (a) in parallel and (b) in series. Find the combined capacitance in each case.", steps:[
+      "Parallel: C = C₁ + C₂",
+      "Series: C = C₁C₂ ÷ (C₁ + C₂) = 6 ÷ 5"
+    ], a:"5 µF in parallel; 1.2 µF in series"},
+    {q:"Find the work done in moving 5 C of charge through a potential difference of 12 V.", steps:[
+      "W = QV"
+    ], a:"60 J"},
+    {q:"Parallel plates 4 mm apart have a potential difference of 12 V between them. Find the electric field intensity between them.", steps:[
+      "E = V ÷ d",
+      "E = 12 ÷ 0.004"
+    ], a:"3000 V/m (the same as 3000 N/C)"}
   ],
   apply:[
     {q:"Why does your hair stand up when you touch a Van de Graaff generator?", a:"Your body gains like charges that spread to the strands of hair, which then repel one another and stand up."},
@@ -915,6 +1325,87 @@ var PH_CURRICULUM = [
     {k:"h3", t:"Elasticity — Hooke's Law and Young's Modulus"},
     {k:"p", t:"**Elasticity** is the power to regain shape when the deforming force is withdrawn. **Hooke's law:** within the elastic limit, the extension of a spring or wire is directly proportional to the applied load — F = ke; past the **elastic limit** a body stretches and stays stretched. Plot the extension against load: straight through the proportional region, then curving away at the **yield point** — the graphical representation of elasticity. For stretching a material itself (not a specimen), use **Young's (elastic) modulus** E = stress ÷ strain, and apply it in the exercise problems; **elastic strings** store and return energy the same way."},
     {k:"rule"},
+    {k:"h3", t:"The Three States Compared"},
+    {k:"table", head:["Property","Solid","Liquid","Gas"], rows:[
+      ["Arrangement of particles","Packed close in a fixed, regular pattern","Close but irregular, able to slide past one another","Far apart, random, no pattern"],
+      ["Motion of particles","Vibrate about fixed positions","Vibrate and move about freely","Move rapidly in straight lines until they collide"],
+      ["Forces between particles","Very strong","Strong enough to hold the volume, not the shape","Negligible except during collisions"],
+      ["Shape and volume","Fixed shape and fixed volume","Fixed volume, takes the shape of the container","Neither fixed; fills the container"],
+      ["Compressibility","Almost incompressible","Almost incompressible","Highly compressible"],
+      ["Density","Highest (water and ice are the famous exception)","High","Very low"],
+      ["Diffusion","Extremely slow (years for two metals in contact)","Slow (minutes in a beaker of water)","Fast (seconds across a room)"]
+    ]},
+    {k:"p", t:"A fourth state, **plasma**, appears when a gas is heated or strongly energised until electrons are stripped from the atoms — the ionised gas of a fluorescent tube, a lightning stroke, the sun and every other star. **Atoms** are the smallest particles of an element that can take part in a chemical change; **molecules** are groups of atoms bonded together, of one element (O₂, S₈) or of several (H₂O, C₆H₁₂O₆); **ions** are atoms or groups that have gained or lost electrons and so carry charge. A typical atom is about 10⁻¹⁰ m across and its nucleus about 10⁻¹⁵ m — if the atom were the size of the national stadium, the nucleus would be a grain of sand on the centre spot."},
+    {k:"h3", t:"The Kinetic Theory — Assumptions and Evidence"},
+    {k:"num", items:[
+      "Matter is made of a very large number of **tiny particles** — atoms, molecules or ions",
+      "The particles are in **constant random motion**, and their average kinetic energy rises with the temperature",
+      "There are **forces of attraction** between the particles, strongest in solids and negligible in gases",
+      "In a gas the collisions between particles, and with the walls, are **perfectly elastic** — no kinetic energy is lost overall",
+      "The volume of the particles themselves is negligible compared with the volume of the gas"
+    ]},
+    {k:"table", head:["Evidence","What it proves"], rows:[
+      ["Brownian motion — smoke cells or pollen grains jiggling under the microscope","Invisible air or water molecules are in constant motion and bombard the visible particle unevenly"],
+      ["Diffusion — the smell of cooking reaching the back of the house, dye spreading in still water","Particles move of their own accord and mix"],
+      ["Gas pressure on the walls of a container, rising when heated or squeezed","Particles bombard the walls; more particles, faster particles or a smaller space means more collisions per second"],
+      ["Evaporation cooling the surface","The fastest particles escape, leaving the slower ones behind, so the average kinetic energy — the temperature — falls"],
+      ["Expansion on heating and the fixed shape of a solid","Particles vibrate with larger amplitude as they gain energy; in a solid the forces hold them in place"]
+    ]},
+    {k:"h3", t:"Changes of State and their Energy"},
+    {k:"table", head:["Change","From and to","Energy"], rows:[
+      ["Melting (fusion)","Solid to liquid","Absorbs heat — the specific latent heat of fusion — at constant temperature"],
+      ["Freezing (solidification)","Liquid to solid","Releases the same quantity of heat"],
+      ["Vaporisation (boiling)","Liquid to gas throughout the bulk, at a fixed boiling point","Absorbs a large quantity — the specific latent heat of vaporisation"],
+      ["Evaporation","Liquid to gas at the surface, at any temperature","Absorbs heat from the surroundings, so it cools them"],
+      ["Condensation","Gas to liquid","Releases heat — the reason a steam burn is worse than a boiling-water burn"],
+      ["Sublimation","Solid straight to gas","Absorbs heat — camphor, naphthalene, iodine, dry ice"],
+      ["Deposition","Gas straight to solid","Releases heat — frost forming on a cold night"]
+    ]},
+    {k:"p", t:"**Evaporation and boiling are not the same process.** Boiling happens throughout the liquid at one fixed temperature (100 °C for pure water at standard pressure), with bubbles of vapour forming in the bulk, and it needs a continuous supply of heat; evaporation happens only at the surface, at **every** temperature, quietly and without bubbles, and it is faster when the liquid is warmer, when the surface is larger, when air moves across it and when the air is dry. Evaporation is what cools the body when it sweats, cools water in a porous clay pot on a hot verandah, dries clothes on the line, makes the wet-bulb thermometer read below the dry-bulb, and carries heat out of the evaporator of a refrigerator and a split-unit air conditioner. The **latent heat** is the energy needed to overcome the forces between particles without raising the temperature — which is why the flat sections of a heating curve are flat, why ice at 0 °C cools a drink better than water at 0 °C (it takes 336 000 J/kg more to melt it), and why steam at 100 °C scalds more severely than water at 100 °C (it gives up 2 260 000 J/kg as it condenses)."},
+    {k:"h3", t:"Cohesion, Adhesion, Surface Tension and Capillarity"},
+    {k:"p", t:"**Cohesion** is the attraction between molecules of the **same** substance; **adhesion** the attraction between molecules of **different** substances. Water wets glass because its adhesion to glass exceeds its cohesion to itself, so it climbs the wall of a tube and shows a **concave meniscus**; mercury does not wet glass because its cohesion is greater, so it curves **convex** and is depressed in a tube. **Surface tension** is the effect of that cohesion at a free surface: molecules inside the liquid are pulled equally on all sides, but molecules at the surface are pulled only inward and sideways, so the surface behaves like a stretched elastic skin trying to contract to the smallest possible area. It is why a needle or a paper clip laid gently on water floats although steel is denser than water, why pond skaters and mosquitoes' larvae work the surface film, why drops and bubbles are **spherical** (the smallest area for a given volume), why water beads on a waxed car, and why a shaving brush leaves a pointed tip when it is lifted from the water. Surface tension **falls when the temperature rises** and when **soap or detergent** is added — detergents are built to do exactly that, letting water spread into the weave of the cloth and lift the grease; a hot wash therefore cleans better than a cold one. **Capillarity** is the rise or fall of a liquid in a narrow tube or a porous solid, caused by adhesion and surface tension together: the narrower the tube, the higher the rise. It draws water up from the soil into the plant's fine vessels and up the wick of a kerosene lamp, carries ink along blotting paper and up a towel, brings damp up the walls of a house (which is why a **damp-proof course** of slate or plastic is laid in the mortar), and lets a lump of sugar wet through from one corner."},
+    {k:"h3", t:"Viscosity and Diffusion"},
+    {k:"table", head:["Fluid","Relative viscosity","Effect of heating it"], rows:[
+      ["Air and other gases","Very low","Viscosity rises slightly"],
+      ["Water","Low","Viscosity falls"],
+      ["Kerosene","Low","Viscosity falls"],
+      ["Palm oil","High","Viscosity falls sharply — hot palm oil pours, cold palm oil barely moves"],
+      ["Engine oil (SAE 40)","Very high","Viscosity falls, which is why a cold engine is harder to turn over"],
+      ["Honey and syrup","Very high","Viscosity falls"],
+      ["Bitumen and tar","Extremely high","Flows only when hot — which is how a road is laid"]
+    ]},
+    {k:"p", t:"**Viscosity** is the internal friction of a fluid: the resistance its layers offer to sliding past one another, and so the drag on anything moving through it. Its SI unit is the pascal-second (Pa s) or N s m⁻². It explains why a stone dropped in water speeds up only until the **drag equals its weight** and then falls at a constant **terminal velocity** (the same reasoning as a parachutist in air), why a ball-bearing falls slowly through glycerine, why the engine needs oil of the right grade for the season, and why the blood's viscosity matters to the heart's workload. **Stokes' law** gives the drag on a small sphere moving slowly through a viscous fluid as F = 6πrvη, from which the viscosity of a liquid can be measured by timing a ball-bearing down a tall measuring cylinder. **Diffusion** is the movement of particles from a region of higher concentration to one of lower, until the concentration is even: fast in gases (a scent crossing a room in seconds), slow in liquids (a crystal of potassium manganate(VII) colouring a beaker of still water over minutes), and extremely slow in solids (a plate of lead and a plate of gold pressed together interdiffuse over years). Diffusion is faster at **higher temperature** (the particles move faster), for **lighter particles**, and in a **less dense medium**; it never happens in a vacuum, since there is nothing to diffuse. **Osmosis** is the special case of the diffusion of water through a selectively permeable membrane — the same kinetic theory at work in a living cell."},
+    {k:"h3", t:"Elasticity, Hooke's Law and the Load–Extension Graph"},
+    {k:"p", t:"**Elasticity** is the property by which a body regains its original shape and size when the deforming force is removed; **plasticity** is the opposite — the body keeps its new shape. **Hooke's law:** within the **elastic limit**, the extension produced is directly proportional to the force producing it, **F = ke**, where k is the **force constant (spring constant)** in N/m — how stiff the spring is. A spring that stretches 2 cm under 4 N has k = 4 ÷ 0.02 = **200 N/m**, and 6 N stretches it 6 ÷ 200 = 0.03 m, so a spring 20 cm long under no load becomes 23 cm. The **energy stored** in a stretched spring is the work done stretching it, the area under the load–extension graph: **E = ½Fe = ½ke² = F²/2k** — 200 N/m stretched 0.05 m stores ½ × 200 × 0.05² = **0.25 J**, released all at once when the catapult fires. Two identical springs side by side (**in parallel**) share the load, so the combination is twice as stiff, k = k₁ + k₂; end to end (**in series**) they share the extension, so the combination is half as stiff, 1/k = 1/k₁ + 1/k₂."},
+    {k:"table", head:["Point on the load–extension graph","What is happening"], rows:[
+      ["Straight line from the origin","Hooke's law holds; the extension is proportional to the load; the gradient is the force constant k"],
+      ["The limit of proportionality","The point where the straight line ends"],
+      ["The elastic limit","Beyond it the material will not return to its original length when unloaded"],
+      ["The yield point","Extension suddenly increases with little or no increase in load"],
+      ["Plastic (permanent) deformation","The material stretches and stays stretched — the wire has been ruined"],
+      ["The breaking point","The material snaps"]
+    ]},
+    {k:"h3", t:"Stress, Strain and Young's Modulus"},
+    {k:"p", t:"For a wire or a rod the same law is written in terms that do not depend on the specimen's size. **Stress = force ÷ cross-sectional area = F/A**, in pascals — the internal resisting force per unit area. **Strain = extension ÷ original length = e/l**, a pure number with no unit. **Young's modulus E = stress ÷ strain = (F/A) ÷ (e/l) = Fl/Ae**, also in pascals, and it is a property of the **material**, not of the wire: steel is about 2 × 10¹¹ Pa, copper about 1.2 × 10¹¹ Pa, aluminium about 7 × 10¹⁰ Pa, and rubber far smaller. A wire 2 m long of cross-section 1 × 10⁻⁶ m² carrying 10 N and stretching 1 mm has stress 10 ÷ 10⁻⁶ = **1 × 10⁷ Pa**, strain 0.001 ÷ 2 = **5 × 10⁻⁴**, and E = 1 × 10⁷ ÷ 5 × 10⁻⁴ = **2 × 10¹⁰ Pa**. The laboratory measures E with **Searle's apparatus**: two identical wires hung side by side from the same support, one the test wire with a vernier scale, the other a reference carrying a fixed load to cancel the effects of temperature and of the support yielding; loads are added in equal steps, the extension recorded each time, the loads then removed to prove the wire returned, and the readings plotted so that E = (Fl)/(A × gradient). Precautions that earn marks: measure the diameter with a micrometer at several places and average it, since A depends on the square of the diameter; measure the original length from the fixed end to the vernier; add the load gently and wait for the wire to settle; keep the loads within the elastic limit."},
+    {k:"h3", t:"Properties of Matter in Everyday Liberia"},
+    {k:"bul", items:[
+      "**Springs** — in the mattress, the vehicle suspension, the clutch, the safety valve and the spring balance, all working within their elastic limits",
+      "**Elastic bands and the football's bladder** — store energy when stretched and give it back, which is why the ball bounces",
+      "**Expansion joints** — in concrete slabs, long roofs and bridges, cut for the thermal expansion of Grade 10 Period IV",
+      "**Surface tension** — the water strider on the pond behind the school, the drop of water hanging from the tap, soap making washing easier",
+      "**Capillarity** — the kerosene climbing the lamp wick, water rising from the soil into the roots, damp creeping up an unplastered wall",
+      "**Viscosity** — palm oil poured warm, engine oil chosen for the season, the ball-bearing falling slowly through glycerine in the laboratory",
+      "**Diffusion** — the smell of pepper soup reaching the classroom, the salt dissolving in the pot without stirring, the fumes from a generator spreading through the yard, which is why the generator stays outside",
+      "**Density and flotation** — the loaded canoe sitting lower in the water, the timber raft floating down the river, the hydrometer testing a car battery"
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State the kinetic theory** and use it to explain one phenomenon — usually Brownian motion, evaporation or gas pressure",
+      "**Distinguish cohesion from adhesion**, and use them to explain the meniscus and capillarity",
+      "**Plot and interpret the load–extension graph**, identifying the elastic limit and reading the force constant from the gradient",
+      "**Substitute into F = ke, stress = F/A, strain = e/l and E = stress ÷ strain**, converting millimetres to metres and square millimetres to square metres first",
+      "**Compare evaporation with boiling** in a table — the marks are for four differences, not for a paragraph"
+    ]}
   ],
 
   focus:[
@@ -1006,6 +1497,28 @@ var PH_CURRICULUM = [
     {q:"What load stretches the same spring (k = 200 N/m) by 5 cm?", steps:[
       "F = ke", "200 × 0.05"
     ], a:"10 N"},
+    {q:"A spring is 20 cm long with no load and 25 cm long under a load of 4 N. Find its force constant and its length under 6 N.", steps:[
+      "Extension e = 25 − 20 = 5 cm = 0.05 m",
+      "k = F ÷ e = 4 ÷ 0.05 = 80 N/m",
+      "Extension under 6 N = 6 ÷ 80 = 0.075 m"
+    ], a:"k = 80 N/m; length 20 + 7.5 = 27.5 cm"},
+    {q:"A spring of force constant 200 N/m is stretched by 5 cm. Find the force needed and the energy stored.", steps:[
+      "F = ke = 200 × 0.05",
+      "E = ½ke² = ½ × 200 × 0.0025"
+    ], a:"10 N; 0.25 J"},
+    {q:"Two identical springs, each of force constant 100 N/m, support a load of 20 N (a) side by side in parallel and (b) end to end in series. Find the extension in each case.", steps:[
+      "Parallel: k = 100 + 100 = 200 N/m, so e = 20 ÷ 200",
+      "Series: 1/k = 1/100 + 1/100, so k = 50 N/m and e = 20 ÷ 50"
+    ], a:"0.1 m in parallel; 0.4 m in series"},
+    {q:"A wire 4 m long of cross-sectional area 2 × 10⁻⁶ m² carries a load of 20 N and stretches by 0.5 mm. Find the stress, the strain and Young's modulus.", steps:[
+      "Stress = F ÷ A = 20 ÷ (2 × 10⁻⁶)",
+      "Strain = e ÷ l = 0.0005 ÷ 4",
+      "E = stress ÷ strain"
+    ], a:"Stress 1 × 10⁷ Pa; strain 1.25 × 10⁻⁴; E = 8 × 10¹⁰ Pa"},
+    {q:"A body of mass 5 g falls through a liquid and reaches a terminal velocity of 0.2 m/s. State the resultant force on it at that speed and explain why.", steps:[
+      "At terminal velocity the acceleration is zero",
+      "So the resultant force is zero: weight = upthrust + viscous drag"
+    ], a:"Zero newtons — the forces are balanced, so the body moves on at a steady 0.2 m/s"}
   ],
   apply:[
     {q:"Why does a steel ship float even though steel is denser than water?", a:"The ship's hollow shape displaces a large volume of water; by Archimedes' principle the upthrust on that volume exceeds the ship's weight, so it floats."},
@@ -1061,6 +1574,44 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Simple Harmonic (Oscillatory) Motion"},
     {k:"p", t:"**Simple harmonic motion** is oscillatory motion in which the acceleration is proportional to the displacement and is always directed toward the mean (rest) position — the **pendulum** swinging through small angles and the **mass on a spring**. One complete to-and-fro movement is an **oscillation**; the time it takes is the **period T** (for a pendulum T = 2π√(L/g), independent of the mass) and the greatest displacement is the **amplitude**. It is the model of every vibration, from a guitar string to a suspension."},
+    {k:"rule"},
+    {k:"h3", t:"Vectors in Two Dimensions — Adding and Resolving"},
+    {k:"p", t:"Two displacements at right angles add by Pythagoras: walking 3 km east and then 4 km north puts the walker **5 km** from the start, in a direction tan⁻¹(4/3) = **53° north of east**, even though 7 km of ground was covered. For any angle use the **cosine law**, R = √(F₁² + F₂² + 2F₁F₂ cos θ), or draw the vectors **head-to-tail** to a stated scale and measure the closing side. **Resolving** works the other way: a vector of size F at an angle θ to a chosen direction is replaced by **F cos θ along that direction** and **F sin θ across it**, and the two components act independently — the reason the river problem below splits into two simple pieces. A boat heads straight across a 60 m river at 3 m/s while the current runs at 4 m/s: it still takes 60 ÷ 3 = **20 s** to cross (the current cannot help or hinder a motion at right angles to it), it drifts 4 × 20 = **80 m** downstream, and its resultant velocity over the ground is √(3² + 4²) = **5 m/s** at 53° downstream of the line it is pointing. To land opposite the starting point the boat must aim upstream at an angle whose sine is 4/5."},
+    {k:"h3", t:"Projectile Motion in Detail"},
+    {k:"table", head:["Quantity","Body thrown horizontally from a height h","Body projected at an angle θ to the horizontal"], rows:[
+      ["Horizontal motion","Constant velocity u; distance = ut","Constant velocity u cos θ"],
+      ["Vertical motion","Free fall from rest; s = ½gt²","Thrown upward at u sin θ, decelerating at g"],
+      ["Time of flight","t = √(2h ÷ g)","T = 2u sin θ ÷ g"],
+      ["Greatest height","h (it starts at the top)","H = u² sin²θ ÷ 2g"],
+      ["Range","R = u√(2h ÷ g)","R = u² sin 2θ ÷ g"],
+      ["Path","Half a parabola","A full parabola, symmetric about the highest point"]
+    ]},
+    {k:"p", t:"The whole of projectile motion rests on one idea: **the horizontal and vertical motions are independent**. Gravity acts only vertically, so the horizontal velocity never changes (air resistance neglected) while the vertical velocity changes at g. A ball rolling off a 1.25 m table at 4 m/s takes t = √(2 × 1.25 ÷ 10) = **0.5 s** to fall, lands **2 m** from the table's foot, and strikes with a vertical velocity of gt = 5 m/s combined with its 4 m/s horizontal, giving a resultant of √(16 + 25) = **6.4 m/s** at 51° below the horizontal. Kicked at 20 m/s and 30° to the horizontal, a football is in the air T = 2 × 20 × 0.5 ÷ 10 = **2 s**, rises H = (20 × 0.5)² ÷ 20 = **5 m**, and lands R = 400 × sin 60° ÷ 10 = **34.6 m** away. The range is greatest at **45°**, and two angles that add to 90° (30° and 60°) give the **same range** — the high, hanging kick and the low, fast one travel as far. The same mathematics serves the long jumper, the shot putter, the footballer's lofted pass, the water from a hose, the arrow, the mortar bomb and the satellite's first stage."},
+    {k:"h3", t:"Circular Motion in Detail"},
+    {k:"table", head:["Quantity","Formula","Unit"], rows:[
+      ["Angular displacement θ","arc ÷ radius","radian (2π rad = 360°)"],
+      ["Angular velocity ω","θ ÷ t = 2π ÷ T = 2πf","rad/s"],
+      ["Period T","time for one complete revolution","s"],
+      ["Frequency f","revolutions per second = 1 ÷ T","hertz (Hz)"],
+      ["Linear velocity v","rω = 2πr ÷ T","m/s"],
+      ["Centripetal acceleration","v² ÷ r = ω²r","m/s²"],
+      ["Centripetal force","mv² ÷ r = mω²r","N"]
+    ]},
+    {k:"p", t:"A body moving in a circle at constant **speed** is nevertheless **accelerating**, because its direction changes at every instant and velocity is a vector. The acceleration points to the centre, so the force that causes it must point to the centre too: the **centripetal force** F = mv²/r. It is not a new kind of force — it is whatever force happens to be available, and naming it is the answer to half the questions: **tension** in the string whirling a stone, **friction** between tyre and road for a car on a level bend, **gravitational attraction** holding the Moon and the satellite, the **normal reaction** of the wall on the clothes spinning in a washing drum (the water, feeling no such force, escapes through the holes), the **horizontal component of the reaction** on a banked track, and the **electrostatic force** on an electron round a nucleus. A 1000 kg car taking a 50 m bend at 15 m/s needs F = 1000 × 225 ÷ 50 = **4500 N** of friction; with a weight of 10 000 N that demands a coefficient of friction of at least 4500 ÷ 10 000 = **0.45**, which is why the same bend in the rain — where μ falls to about 0.3 — throws the car off. If the centripetal force suddenly fails, the body does not fly outward: it leaves along the **tangent**, at the point where the force stopped, which is where the stone goes when the string breaks and where the mud leaves the tyre. The so-called **centrifugal force** is not a force acting on the body but the reaction the body exerts, or the inertia that makes the passenger feel pressed against the door. **Banking** a bend tilts the reaction so that part of it points to the centre, allowing higher speeds without relying on friction."},
+    {k:"h3", t:"Rotational Motion"},
+    {k:"p", t:"In **rotational (rotary) motion** every point of a rigid body moves in a circle about the same fixed **axis**: the ceiling fan, the wheel of the taxi, the grinding stone, the turbine at Mount Coffee, the spinning Earth. All points share the same **angular velocity ω** and the same period, but their **linear** speeds differ, since v = rω — the rim of the wheel moves faster than the hub, which is why the outer edge of a grinding stone throws sparks further and why a long-handled spanner's end travels further than its head. Rotation about an axis through the body (the spinning top) is distinguished from **revolution** along a path outside it (the Earth round the sun, which is also nearly circular motion with gravity as the centripetal force). A body's resistance to a change in its rotation is its **moment of inertia**, which grows when the mass is spread further from the axis — the reason the diver tucks to spin faster and opens to slow down (Grade 11 Period III, angular momentum)."},
+    {k:"h3", t:"Simple Harmonic Motion in Detail"},
+    {k:"p", t:"**Simple harmonic motion (SHM)** is oscillatory motion in which the acceleration is directly proportional to the displacement from a fixed point and is always directed toward that point, a ∝ −x. The examples are the **simple pendulum** swinging through small angles, the **mass on a spring**, the balance wheel of a watch, a tuning fork's prong, a log bobbing on the water and the piston of an engine approximately. The **amplitude** is the greatest displacement, the **period T** the time for one complete to-and-fro, the **frequency f = 1/T**, and the **equilibrium position** the point of zero displacement. Energy swaps between the two extremes and the centre: at the extremes the body is momentarily at rest and all the energy is potential, at the centre it moves fastest and all the energy is kinetic, and the total stays constant while friction is neglected. For a pendulum **T = 2π√(l/g)** — independent of the mass of the bob and, for small swings, of the amplitude; a 1 m pendulum takes T = 2π√(1/10) ≈ **2.0 s**, and a 0.25 m one about **1.0 s**. For a mass-spring system **T = 2π√(m/k)**, so 0.2 kg on a 50 N/m spring oscillates with T = 2π√(0.004) ≈ **0.4 s**. **Measuring g with the pendulum:** swing it through a small angle (less than about 10°, or the formula fails), time 20 oscillations and divide by 20 to beat reaction time, repeat for five different lengths, and plot **T² against l** — the graph is a straight line through the origin with gradient 4π²/g, so g = 4π² ÷ gradient. Precautions that earn marks: a small dense bob, a light inextensible thread, a rigid support, no draughts, counting from the extreme (where the bob is momentarily still and easiest to see), and measuring the length from the point of suspension to the centre of the bob."},
+    {k:"h3", t:"Forced Vibration, Resonance and Damping"},
+    {k:"p", t:"Every body has a **natural frequency** at which it vibrates freely. Drive it at that frequency and the amplitude grows large — **resonance**. A swing pushed once per swing climbs higher with the smallest effort; a tuning fork makes its neighbour of the same frequency sound; a wine glass can be shattered by a singer holding exactly its note; a bridge can be set swaying dangerously by soldiers marching in step, which is why troops **break step** on a bridge, and by the wind, which is one reason a suspension bridge is stiffened and damped. The radio's tuning circuit is resonance in electricity: it responds strongly to one station's frequency and weakly to the rest (Grade 12). **Damping** is the deliberate removal of energy — the shock absorber of the car, the door closer, the pendulum clock's escapement — and a damped oscillator's amplitude dies away gradually unless energy is fed in to replace it, which is exactly what a forced vibration does."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Distinguish scalars from vectors** and add two vectors by scale drawing, stating the scale used",
+      "**Solve projectile problems** by treating the horizontal and vertical motions separately and saying so",
+      "**State that the centripetal force is not a new force** and name the force that supplies it in the situation given",
+      "**Define SHM**, give two examples, and use T = 2π√(l/g) or T = 2π√(m/k)",
+      "**Plot T² against l** and obtain g from the gradient — the marks are for the axes labelled with units, the points, the best line and the working"
+    ]}
   ],
 
   focus:[
@@ -1155,6 +1706,32 @@ var PH_CURRICULUM = [
     {q:"A projectile is thrown with horizontal velocity 6 m/s from a height of 45 m. Find its time of fall. (g = 10 m/s²)", steps:[
       "s = ½gt²", "45 = ½ × 10 × t²", "t² = 9"
     ], a:"3 s"},
+    {q:"A simple pendulum 0.25 m long swings through a small angle. Find its period and its frequency (g = 10 m/s², π² ≈ 10).", steps:[
+      "T = 2π√(l ÷ g) = 2π√(0.25 ÷ 10) = 2π × 0.158"
+    ], a:"T ≈ 1.0 s, so f = 1 ÷ T ≈ 1 Hz"},
+    {q:"A 0.2 kg mass hangs from a spring of force constant 50 N/m. Find the period of oscillation.", steps:[
+      "T = 2π√(m ÷ k) = 2π√(0.2 ÷ 50) = 2π√0.004"
+    ], a:"About 0.4 s"},
+    {q:"A 1000 kg car rounds a bend of radius 50 m at 15 m/s. Find the centripetal force and the least coefficient of friction that will hold it on the road (g = 10 m/s²).", steps:[
+      "F = mv² ÷ r = 1000 × 225 ÷ 50",
+      "Friction supplies it, so μ = F ÷ mg = 4500 ÷ 10 000"
+    ], a:"4500 N; μ = 0.45"},
+    {q:"A stone of mass 0.2 kg tied to a 0.5 m string makes 4 revolutions each second. Find its angular velocity, linear speed, centripetal acceleration and the tension in the string.", steps:[
+      "ω = 2πf = 2π × 4",
+      "v = rω = 0.5 × 25.1",
+      "a = v² ÷ r = 12.6² ÷ 0.5",
+      "T = ma = 0.2 × 316"
+    ], a:"ω ≈ 25.1 rad/s; v ≈ 12.6 m/s; a ≈ 316 m/s²; T ≈ 63 N"},
+    {q:"A football is kicked at 20 m/s at 30° to the horizontal. Find the time of flight, the greatest height and the range (g = 10 m/s²).", steps:[
+      "T = 2u sin θ ÷ g = 2 × 20 × 0.5 ÷ 10",
+      "H = u² sin²θ ÷ 2g = 400 × 0.25 ÷ 20",
+      "R = u² sin 2θ ÷ g = 400 × sin 60° ÷ 10"
+    ], a:"2 s; 5 m; 34.6 m"},
+    {q:"A boat heads straight across a 60 m wide river at 3 m/s while the current flows at 4 m/s. Find the resultant velocity, the time to cross and the drift downstream.", steps:[
+      "Resultant = √(3² + 4²), at tan⁻¹(4 ÷ 3) to the line across",
+      "Crossing time = width ÷ speed across = 60 ÷ 3",
+      "Drift = current × crossing time = 4 × 20"
+    ], a:"5 m/s at 53° downstream; 20 s; 80 m"}
   ],
   apply:[
     {q:"Why does a stone whirled on a string fly off along the tangent when the string breaks?", a:"While the string held, its pull bent the path into a circle; when it breaks the centripetal force vanishes and the stone continues, by inertia, along the straight-line tangent it had at that instant."},
@@ -1214,6 +1791,60 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Parallel Forces, Moments and the Centre of Gravity"},
     {k:"p", t:"For **parallel forces** the two conditions for equilibrium apply together: the forces must balance in each direction, and their **moments** (force × perpendicular distance from the line of action) must balance about any point — the **principle of moments**. The **centre of gravity** is the point through which the whole weight of a body appears to act; it coincides with the **centre of mass**, and a body balances when its centre of gravity lies above the point of support — the test of the **types of equilibrium**: **stable** (returns when tilted), **unstable** (topples) and **neutral** (stays put in the new position)."},
+    {k:"rule"},
+    {k:"h3", t:"Adding Forces — Graphically and Analytically"},
+    {k:"table", head:["Angle θ between the two forces","Resultant R","Note"], rows:[
+      ["0° (same direction)","F₁ + F₂","The greatest possible resultant"],
+      ["90°","√(F₁² + F₂²)","Pythagoras; the direction is tan⁻¹(F₂ ÷ F₁) from F₁"],
+      ["120° with F₁ = F₂","equal to each force","A useful special case"],
+      ["180° (opposite)","F₁ − F₂","The least possible resultant, along the larger force"],
+      ["Any other angle","√(F₁² + F₂² + 2F₁F₂ cos θ)","The cosine law"]
+    ]},
+    {k:"p", t:"**Two ways to add.** Graphically, draw the two vectors **head-to-tail** to a stated scale (say 1 cm to 2 N) with a protractor for the angle, then join the start to the end and measure that closing side — its length gives the size and its angle the direction. Analytically, use the **cosine law** R = √(F₁² + F₂² + 2F₁F₂ cos θ) and the **sine law** to fix the direction. Three forces of 6 N and 8 N at 90° give √(36 + 64) = **10 N** at 53° to the 6 N force; at 60° the same two give √(36 + 64 + 2 × 48 × 0.5) = √148 = **12.2 N**; two equal forces of 10 N at 120° give **10 N**, since 2 × 100 × cos 120° = −100 cancels one of the squares. The **resultant** is the single force that has the same effect as all the forces together; the **equilibrant** is the single force that balances them — equal in size to the resultant, opposite in direction. Say which one the question wants: many marks are lost by giving the resultant when the equilibrant was asked for."},
+    {k:"h3", t:"Resolution of Forces in Detail"},
+    {k:"p", t:"Any force F at an angle θ to a chosen direction is replaced by two perpendicular components, **F cos θ along** the direction and **F sin θ across** it, and the components act independently — they can be handled by ordinary arithmetic and recombined at the end. A pull of 10 N at 60° above the horizontal has components 10 cos 60° = **5 N** horizontally and 10 sin 60° = **8.66 N** vertically. Pulling a 30 kg crate along the floor with 100 N at 30° above the horizontal does two things at once: 100 cos 30° = **86.6 N** moves it forward, while 100 sin 30° = **50 N** lifts it, reducing the normal reaction from 300 N to **250 N** and so reducing the friction — which is why it is easier to pull a load than to push it at the same angle."},
+    {k:"table", head:["On a slope inclined at θ","Expression","Direction"], rows:[
+      ["Component of the weight down the slope","mg sin θ","Along the slope, downhill"],
+      ["Component of the weight into the slope","mg cos θ","Perpendicular to the slope"],
+      ["Normal reaction (smooth slope, no other force)","R = mg cos θ","Perpendicular, out of the slope"],
+      ["Friction (rough slope)","F = μR = μmg cos θ","Along the slope, uphill"],
+      ["Resultant force down a rough slope","mg sin θ − μmg cos θ","Along the slope"],
+      ["Acceleration down a rough slope","a = g(sin θ − μ cos θ)","Along the slope"]
+    ]},
+    {k:"p", t:"On a **smooth** (frictionless) slope a body slides down with a = g sin θ, so a 10 kg body on a 30° slope accelerates at 10 × 0.5 = **5 m/s²** whatever the mass — the mass cancels, as it does in free fall. As θ grows, sin θ grows and the slope gets steeper and faster; at θ = 90° the body is simply falling with a = g. On a **rough** slope friction opposes the motion, and the body stays put as long as mg sin θ ≤ μ mg cos θ, that is as long as tan θ ≤ μ — the angle at which it just begins to slide is the **angle of friction**, and measuring it is the simplest way to find μ."},
+    {k:"h3", t:"Equilibrium — Two Conditions and the Triangle of Forces"},
+    {k:"p", t:"A body is in **equilibrium** when (1) the vector sum of all the forces on it is zero — no resultant force, so no acceleration — and (2) the sum of the clockwise moments about any point equals the sum of the anticlockwise moments about that point — no resultant turning effect. The first condition alone leaves a couple free to spin the body; both together give complete equilibrium, which may be **static** (at rest) or **dynamic** (moving with constant velocity). For **three coplanar forces in equilibrium** acting through one point, the vectors drawn head-to-tail form a **closed triangle** — the triangle of forces; if the triangle fails to close, the gap is the resultant. **Lami's theorem** puts it in arithmetic: each force is proportional to the sine of the angle between the other two, F₁/sin α = F₂/sin β = F₃/sin γ. A picture frame of weight 20 N hung from two strings each making 30° with the horizontal has a tension T in each string given by the vertical balance 2T sin 30° = 20, so **T = 20 N** — each string carries the whole weight, which is why a picture cord strained too flat snaps."},
+    {k:"h3", t:"Parallel Forces and Beam Problems"},
+    {k:"p", t:"**Like parallel forces** act the same way (two men carrying a plank); **unlike parallel forces** act opposite ways and, if equal, form a **couple** whose moment is one force times the distance between them. The method for every beam question is the same: take moments about the point where an **unknown** force acts, so that unknown drops out of the equation; solve for the second unknown; then resolve forces vertically to check. A uniform plank 5 m long weighing 100 N rests on supports at its ends and carries a 400 N load 2 m from the left support. Moments about the left support: clockwise, the plank's own weight at its centre 100 × 2.5 = 250 N m plus the load 400 × 2 = 800 N m; anticlockwise, R₂ × 5. So 5R₂ = 1050 and **R₂ = 210 N**; resolving vertically, R₁ + R₂ = 500 gives **R₁ = 290 N**. The same four lines solve the see-saw, the crane's jib, the ladder against a wall, the forearm lifting a load (the biceps taking the moment about the elbow) and the two spring balances carrying a loaded metre rule — the standard laboratory check on the principle of moments. Remember that a **uniform** body's own weight acts at its centre, halfway along."},
+    {k:"h3", t:"Centre of Gravity, Centre of Mass and Stability"},
+    {k:"p", t:"The **centre of gravity** is the point through which the whole weight of a body appears to act, wherever the body is turned; the **centre of mass** is the point at which the whole mass may be taken to be concentrated. In a uniform gravitational field the two coincide. For a regular uniform body the centre is its geometric centre — the middle of the metre rule, the centre of the disc, the crossing of the diagonals; for an irregular lamina, suspend it in turn from two or three points, hang a plumb line from the same pin each time, and the lines cross at the centre of gravity. A body is in **stable equilibrium** when a small tilt raises its centre of gravity, so the weight turns it back (a cone on its base, a chair on four legs, a ship with a low load); **unstable** when a small tilt lowers the centre of gravity, so the weight turns it further (a cone on its apex, a pencil on its point, a bus leaning past its wheels); **neutral** when a tilt neither raises nor lowers it (a ball, a wheel on its axle, a roller). A body **topples** when the vertical line through its centre of gravity falls outside its base. Stability therefore increases by **lowering the centre of gravity** and **widening the base** — the racing car sits low with wide tyres, the crane carries a heavy counterweight, the bus is not loaded on its roof, the canoe keeps its load low, the tripod spreads its legs, the wrestler crouches with his feet apart, the yacht carries a lead keel, and the tumbler toy always rights itself because its weight sits below its rounded base."},
+    {k:"h3", t:"Friction in Detail"},
+    {k:"table", head:["Type of friction","When it acts","Size"], rows:[
+      ["Static friction","Between surfaces at rest relative to each other","Self-adjusting: it matches the applied force up to a maximum"],
+      ["Limiting friction","At the instant motion is about to start","The maximum static friction, F = μₛR"],
+      ["Kinetic (dynamic or sliding) friction","Between surfaces sliding over each other","Slightly less than the limiting value, F = μₖR, and roughly independent of speed"],
+      ["Rolling friction","When a body rolls on a surface","Much less than sliding friction — which is why wheels and ball bearings exist"],
+      ["Fluid friction (drag or viscosity)","When a body moves through a liquid or gas","Rises sharply with speed"]
+    ]},
+    {k:"p", t:"**Friction** is the force that opposes the relative motion of two surfaces in contact. Its **laws**: it acts along the surfaces, opposite to the motion or intended motion; it depends on the **nature of the two surfaces** (rough or smooth, dry or wet); it is **directly proportional to the normal reaction**, F = μR, where **μ** is the coefficient of friction and has no unit; it is **independent of the apparent area of contact**; and the limiting value exceeds the kinetic value. A block of weight 20 N that needs 6 N to start it moving has μₛ = 6 ÷ 20 = **0.3**, and if 4 N then keeps it sliding, μₖ = 4 ÷ 20 = **0.2**. Friction does not depend on the area, so a brick lying flat and the same brick on its end need the same force to start — a result worth demonstrating, because it surprises every class."},
+    {k:"table", head:["Friction is useful for","Friction is a nuisance because","Reduce it by","Increase it by"], rows:[
+      ["Walking, running and gripping (without it the foot slips back)","It wastes energy as heat, so no machine is 100 % efficient","Lubricating with oil or grease","Treads on tyres and shoes"],
+      ["Braking a bicycle, taxi or lift","It wears surfaces away — bearings, brake pads, engine cylinders, the soles of shoes","Ball and roller bearings","Chains on wheels in mud or on a slippery slope"],
+      ["Holding a nail in wood, a knot tied, a bolt tightened","It makes moving heavy loads hard work","Polishing and smoothing the surfaces","Spikes on football boots"],
+      ["The belt driving a machine, the clutch plate, the brake drum","It limits the speed and the range of a vehicle","Streamlining to cut air drag","Sand or grit spread on a slippery road"],
+      ["Writing with a pencil, striking a match, lighting with flint and steel","It heats and can seize a machine","An air cushion or a magnetic levitation","Rosin on a bow, rubber on a palm-oil press plate"]
+    ]},
+    {k:"h3", t:"Friction in Machines and in the Body"},
+    {k:"p", t:"In every machine friction is the tax on efficiency: the input work must pay for the useful output **and** for the heat the friction generates, which is why efficiency = MA ÷ VR is always below 100 % and why the inclined plane, the pulley and the screw jack all lose more than the lever. The remedies are the lubricant film that keeps surfaces apart, the ball bearing that turns sliding into rolling, the streamlined shape that cuts fluid friction, and the choice of materials — steel on bronze, nylon on steel, PTFE on anything. Inside the body the same principle applies: the ends of bones in a joint are coated with smooth **cartilage** and bathed in **synovial fluid**, the natural lubricant, so the hip and knee work with very low friction for a lifetime; when the cartilage wears, arthritis raises the friction and the pain. A bowler polishes the ball, a sprinter uses blocks to raise the friction at the start, and the goalkeeper's gloves are stippled rubber for the same reason the tyre has a tread."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Distinguish the resultant from the equilibrant** and say which the question wants",
+      "**Draw a scale diagram**, stating the scale, or use the cosine law — and give the direction as well as the size",
+      "**Resolve a weight on a slope** into mg sin θ and mg cos θ before writing any equation",
+      "**State the two conditions for equilibrium**, then take moments about a point where an unknown force acts",
+      "**Define the coefficient of friction** and use μ = F ÷ R, remembering that R is the normal reaction, not always the weight",
+      "**Give two advantages and two disadvantages of friction**, each with the reason, and two ways of reducing it"
+    ]}
   ],
 
   focus:[
@@ -1316,6 +1947,35 @@ var PH_CURRICULUM = [
       "The 300 N child sits at one end; let the 200 N child sit at the other",
       "Moments about the pivot: 300 × d = 200 × (4 − d)", "300d = 800 − 200d, so 500d = 800"
     ], a:"1.6 m from the heavier child"},
+    {q:"Two forces of 6 N and 8 N act at a point at 60° to each other. Find the magnitude of the resultant.", steps:[
+      "R² = F₁² + F₂² + 2F₁F₂ cos θ",
+      "R² = 36 + 64 + 2 × 48 × 0.5 = 148"
+    ], a:"About 12.2 N"},
+    {q:"A crate of mass 30 kg is pulled with a force of 100 N at 30° above the horizontal. Find the horizontal component of the pull and the normal reaction of the floor (g = 10 m/s²).", steps:[
+      "Horizontal = 100 cos 30°",
+      "Vertical lift = 100 sin 30°",
+      "R = mg − vertical lift = 300 − 50"
+    ], a:"86.6 N horizontally; R = 250 N"},
+    {q:"A block of weight 20 N needs a horizontal force of 6 N to start it moving and 4 N to keep it sliding. Find the coefficients of static and kinetic friction.", steps:[
+      "μ = F ÷ R, with R = 20 N",
+      "Static: 6 ÷ 20; kinetic: 4 ÷ 20"
+    ], a:"μₛ = 0.3; μₖ = 0.2"},
+    {q:"A uniform plank 5 m long weighing 100 N rests on supports at its two ends. A load of 400 N is placed 2 m from the left end. Find the reaction at each support.", steps:[
+      "Moments about the left support: R₂ × 5 = 100 × 2.5 + 400 × 2 = 1050",
+      "R₂ = 210 N; then R₁ = (100 + 400) − R₂"
+    ], a:"R₁ = 290 N at the left, R₂ = 210 N at the right"},
+    {q:"A body of mass 10 kg slides down a smooth slope inclined at 30° to the horizontal. Find its acceleration (g = 10 m/s²).", steps:[
+      "Downslope force = mg sin 30° = 100 × 0.5 = 50 N",
+      "a = F ÷ m = 50 ÷ 10"
+    ], a:"5 m/s² down the slope"},
+    {q:"A picture frame of weight 20 N hangs from two strings, each making 30° with the horizontal. Find the tension in each string.", steps:[
+      "The vertical components support the weight: 2T sin 30° = 20",
+      "T = 20 ÷ (2 × 0.5)"
+    ], a:"20 N in each string"},
+    {q:"Three coplanar forces of 5 N, 12 N and 13 N act at a point and balance. What can be concluded about the angle between the 5 N and 12 N forces?", steps:[
+      "For equilibrium the three forces form a closed triangle",
+      "5² + 12² = 25 + 144 = 169 = 13², so the triangle is right-angled"
+    ], a:"The 5 N and 12 N forces are at 90° to each other, and the 13 N force is their equilibrant"}
   ],
   apply:[
     {q:"Why is it easier to pull a loaded cart using a rope at a small angle to the horizontal than to push it at the same angle?", a:"Pulling upward at a small angle gives a useful horizontal component and slightly reduces the normal reaction and friction, while pushing presses the cart down and increases friction."},
@@ -1365,6 +2025,61 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"The Conservation of Linear and Angular Momentum"},
     {k:"p", t:"The **law of conservation of (linear) momentum**: for interacting bodies with no external force, total momentum before = total momentum after — the working rule for every collision and explosion problem, and the principle by which the rocket moves in empty space (exhaust back, rocket forward, total unchanged). **Angular momentum** is likewise conserved when no external torque acts: the skater spinning faster with arms drawn in, the diver tucking to somersault, the Earth keeping its spin."},
+    {k:"rule"},
+    {k:"h3", t:"Momentum in Detail"},
+    {k:"p", t:"**Linear momentum** is the quantity of motion a body carries: **p = mv**, a vector pointing along the velocity, measured in **kg m/s**, which is identical with the newton-second. An 800 kg taxi at 15 m/s carries 12 000 kg m/s; a 20 g bullet at 400 m/s carries only 8 kg m/s — which is why the taxi takes a long distance to stop and the bullet does not push you over, however dangerous it is. Momentum matters because it is **conserved**: in the absence of an external force the total momentum of a system stays the same, however the bodies inside it collide, explode or separate. Newton's second law is really a statement about momentum: the resultant force equals the **rate of change of momentum**, F = (mv − mu) ÷ t, which reduces to F = ma when the mass is constant and remains true when it is not — the rocket losing mass as it burns fuel, the conveyor belt picking up gravel. Two consequences: a large momentum takes a large force or a long time to remove (the truck's brakes), and a body with no resultant force on it keeps its momentum, which is the first law again."},
+    {k:"h3", t:"Impulse and Impulsive Forces"},
+    {k:"p", t:"**Impulse = force × time = change of momentum**, Ft = mv − mu, measured in newton-seconds (the same unit as momentum). On a force–time graph the **area under the curve is the impulse**. A force acting for a very short time but producing a large change of momentum is an **impulsive force**: the bat on the ball, the hammer on the nail, the floor on the falling glass, the ground on the landing athlete. A 0.5 kg football kicked from rest to 20 m/s in 0.05 s receives an impulse of 0.5 × 20 = **10 N s**, so the average force was 10 ÷ 0.05 = **200 N**. A 0.45 kg ball striking a wall at 10 m/s and rebounding at 8 m/s changes its momentum by 0.45 × (8 − (−10)) = **8.1 kg m/s** — the signs matter, and forgetting the rebound direction is the classic error — and if the contact lasts 0.02 s the average force on it is **405 N**. From Ft = Δp follows the safety principle of a lifetime: for a given change of momentum, **lengthening the time reduces the force**. The seat belt stretches, the airbag unfolds, the car's front crumples, the athlete lands on a mat, the cricketer draws his hands back, the parachutist bends his knees, the boxer's glove is padded, the egg carton is moulded, the long gun barrel accelerates the shot gently — each buys time and so buys a smaller force. The opposite is used deliberately when a large force is wanted in a short time: the karate chop, the hammer blow, the pile driver."},
+    {k:"table", head:["Situation","What is done to the time of contact","The effect on the force"], rows:[
+      ["Catching a cricket ball with the hands drawing back","Lengthened","The force on the hands is reduced"],
+      ["Landing with bent knees, or on a sand pit or mat","Lengthened","The force on the legs and spine is reduced"],
+      ["A car's crumple zone, seat belt and airbag","Lengthened","The force on the passengers is reduced — the reason they survive"],
+      ["An egg dropped on concrete","Very short","A very large force breaks it; on a cushion the same fall is survived"],
+      ["A hammer striking a nail","Very short","A very large force drives the nail in"],
+      ["A golfer following through","Lengthened while the club is in contact","The impulse, and so the ball's final momentum, is increased"],
+      ["A long-barrelled gun","Lengthened while the gas pushes","The bullet leaves with a greater velocity"]
+    ]},
+    {k:"h3", t:"Collisions Compared"},
+    {k:"table", head:["Type of collision","Momentum","Kinetic energy","What the bodies do","Example"], rows:[
+      ["Elastic","Conserved","Conserved","Separate again with the same relative speed","Molecules of a gas, billiard balls, hardened steel spheres, a superball approximately"],
+      ["Inelastic","Conserved","Partly lost as heat, sound and deformation","Separate, but more slowly than they met","Most road collisions, a ball dropped on sand"],
+      ["Perfectly inelastic","Conserved","The greatest loss of kinetic energy","Stick together and move on as one body","A bullet embedded in a block, two trucks coupling, a goalkeeper catching the ball"],
+      ["Explosion (or recoil)","Conserved — total zero before","Kinetic energy appears, from chemical or elastic energy","Fly apart in opposite directions","A gun firing, a rocket separating its stages, a firework bursting, two skaters pushing apart"]
+    ]},
+    {k:"p", t:"Note what never changes and what does: **momentum is conserved in every collision** because the forces the bodies exert on each other are an action-reaction pair acting for the same time, so the impulses are equal and opposite; **kinetic energy is conserved only in an elastic collision**. In an inelastic collision the missing kinetic energy has become heat, sound and the work of permanent deformation — the crumpled bonnet is energy spent. That is precisely why the crumple exists: the car absorbs the energy instead of the passenger."},
+    {k:"h3", t:"A Method for Every Collision Problem"},
+    {k:"num", items:[
+      "**Choose one direction as positive** and write every velocity with its sign — a body moving the other way carries a negative velocity",
+      "**Write the total momentum before** = m₁u₁ + m₂u₂, with signs",
+      "**Write the total momentum after**: (m₁ + m₂)v if they stick, or m₁v₁ + m₂v₂ if they separate",
+      "**Equate and solve** for the unknown velocity",
+      "**If kinetic energy is asked for**, compute ½mv² for each body before and after and subtract to find the loss",
+      "**State the direction** in the answer — momentum is a vector, and a bare number loses the mark"
+    ]},
+    {k:"p", t:"**Worked through.** A 2 kg trolley at 3 m/s collides with a 1 kg trolley at rest and they stick: momentum before 2 × 3 = 6 kg m/s, after (2 + 1)v, so v = **2 m/s**. Kinetic energy before is ½ × 2 × 9 = 9 J; after, ½ × 3 × 4 = 6 J; **3 J lost** to heat and sound. A 1500 kg car at 20 m/s rear-ends a 1000 kg car moving the same way at 5 m/s and the two lock: momentum before 30 000 + 5 000 = 35 000 kg m/s, after 2500v, so v = **14 m/s**; kinetic energy falls from 312 500 J to 245 000 J, **67 500 J** going into the crumpled metal. When the masses are equal and the collision is elastic, the moving body stops dead and the other moves off with its velocity — the behaviour of the first and last balls of a Newton's cradle."},
+    {k:"h3", t:"Explosions, Recoil and Rocket Propulsion"},
+    {k:"p", t:"Before an explosion the total momentum is zero, so after it the momenta must still add to zero: the pieces fly apart with equal and opposite momenta. A 5 kg gun firing a 20 g bullet at 500 m/s recoils at v = (0.02 × 500) ÷ 5 = **2 m/s** backward — the bullet's small mass at high speed balanced by the gun's large mass at low speed, which is why the shooter feels a shove and not a blow. The same law drives the **rocket**: hot gas is expelled backward at high speed, so the rocket moves forward, and it does so in **empty space** where there is nothing to push against — the momentum of the gas and the momentum of the rocket balance each other, and no air is needed (a misconception worth stating in an answer). The **jet engine** differs in taking its oxygen from the air instead of carrying an oxidiser, so it cannot work outside the atmosphere. The hose pipe kicks back as the water jets forward; a man stepping off a stationary canoe pushes it the other way; a squid and a jellyfish jet water behind them; and the sprinkler spins because the water leaves the bent arms sideways."},
+    {k:"h3", t:"Angular Momentum"},
+    {k:"p", t:"A rotating body carries **angular momentum**, the product of its moment of inertia and its angular velocity, L = Iω. It is conserved when no external **torque** (turning effect) acts — torque being force times the perpendicular distance from the axis. Since I grows when the mass is spread further from the axis, a body that pulls its mass inward must spin faster to keep L constant: the ice skater crossing her arms shoots into a fast spin and opens them to slow down, the diver tucks into a tight ball to somersault and opens to enter the water straight, the gymnast tucks on the bar, the ballet dancer does the same. The spinning bicycle wheel resists being tilted — **gyroscopic stability** — which is why a moving bicycle stands up and a stationary one falls, and why the gyroscope guides ships and aircraft. A helicopter's main rotor would spin the body the other way, so a small **tail rotor** provides the torque that cancels it. The Earth's own angular momentum keeps the seasons pointing the same way through the year and gives the compass its pole."},
+    {k:"h3", t:"Momentum in Everyday Liberia"},
+    {k:"bul", items:[
+      "**The loaded truck** takes far longer to stop than the empty one: same brakes, greater momentum",
+      "**The seat belt and the headrest** are momentum devices; the helmet lengthens the time of a head impact",
+      "**Speed humps by the school gate** cut the velocity, and therefore the momentum, before the crossing",
+      "**The canoe pushed off from the bank** moves the other way — conservation of momentum on the water",
+      "**The pile driver and the pestle** deliver a large change of momentum in a short time, so a large force",
+      "**The footballer cushioning the ball** with the chest or thigh lengthens the time and brings it to rest at his feet",
+      "**The crash barrier and the sand-filled drums** on a bend lengthen the stopping time of an errant vehicle"
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State the law of conservation of linear momentum** in full, including the condition that no external force acts",
+      "**Distinguish impulse from momentum** and show that impulse equals the change of momentum",
+      "**Compare elastic with inelastic collisions** — momentum conserved in both, kinetic energy only in the first",
+      "**Substitute into p = mv and Ft = mv − mu**, keeping the signs of the velocities",
+      "**Explain recoil and rocket propulsion** from conservation of momentum, and say that the rocket needs no air to push against",
+      "**Explain one safety device** in terms of increasing the time and so reducing the force"
+    ]}
   ],
 
   focus:[
@@ -1452,6 +2167,36 @@ var PH_CURRICULUM = [
     {q:"A 0.5 kg ball hits a wall at 8 m/s and rebounds at 6 m/s. Find the change of momentum.", steps:[
       "Taking rebound direction as positive: Δp = m(v − u)", "0.5 × (6 − (−8))"
     ], a:"7 kg m/s"},
+    {q:"A 0.5 kg football at rest is kicked to 20 m/s, the foot being in contact for 0.05 s. Find the impulse and the average force on the ball.", steps:[
+      "Impulse = change of momentum = mv − mu = 0.5 × 20 − 0",
+      "F = impulse ÷ t = 10 ÷ 0.05"
+    ], a:"10 N s; 200 N"},
+    {q:"A 0.45 kg ball strikes a wall at 10 m/s and rebounds at 8 m/s. Find the change of momentum, and the average force if the contact lasts 0.02 s.", steps:[
+      "Take the rebound direction as positive: Δp = m(v − u) = 0.45 × (8 − (−10))",
+      "F = Δp ÷ t = 8.1 ÷ 0.02"
+    ], a:"8.1 kg m/s; 405 N on the ball"},
+    {q:"A 1500 kg car at 20 m/s collides with a 1000 kg car moving in the same direction at 5 m/s, and the two lock together. Find their common speed and the kinetic energy lost.", steps:[
+      "Momentum before = 1500 × 20 + 1000 × 5 = 35 000 kg m/s",
+      "After: 2500v = 35 000, so v = 14 m/s",
+      "KE before = 300 000 + 12 500; KE after = ½ × 2500 × 196 = 245 000 J"
+    ], a:"14 m/s; 67 500 J lost as heat, sound and deformation"},
+    {q:"A gun of mass 5 kg fires a bullet of mass 20 g at 500 m/s. Find the recoil velocity of the gun.", steps:[
+      "Momentum before = 0, so momentum after = 0",
+      "5v + 0.02 × 500 = 0, so v = −10 ÷ 5"
+    ], a:"2 m/s backward"},
+    {q:"A 4000 kg truck moving at 3 m/s collides with a 2000 kg truck moving at 2 m/s in the opposite direction, and they couple. Find their common velocity.", steps:[
+      "Take the first truck's direction as positive",
+      "Momentum before = 4000 × 3 − 2000 × 2 = 8000 kg m/s",
+      "After: 6000v = 8000"
+    ], a:"About 1.33 m/s in the direction the first truck was moving"},
+    {q:"A 2 kg trolley moving at 4 m/s makes an elastic collision with a stationary trolley of the same mass. State what happens to each.", steps:[
+      "Equal masses in an elastic collision exchange velocities",
+      "Momentum and kinetic energy are both conserved by that exchange"
+    ], a:"The first trolley stops and the second moves off at 4 m/s"},
+    {q:"A cricketer catches a 0.16 kg ball travelling at 25 m/s, drawing his hands back 0.5 m so that the ball stops in 0.04 s instead of 0.004 s. Find the average force in each case.", steps:[
+      "Δp = 0.16 × 25 = 4 kg m/s",
+      "F = Δp ÷ t: 4 ÷ 0.04 and 4 ÷ 0.004"
+    ], a:"100 N with the hands drawing back; 1000 N with stiff hands — ten times the force"}
   ],
   apply:[
     {q:"Why do seat belts and airbags save lives in a crash?", a:"They increase the time over which the momentum of the passenger is brought to zero, so the force (impulse ÷ time) is much smaller and injury is reduced."},
@@ -1496,6 +2241,83 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Heat Transfer and the Vacuum Flask"},
     {k:"p", t:"Discuss heat transfer in the **vacuum flask**: the **vacuum** stops conduction and convection; the **silvered walls** return radiation; the **cork stopper** seals what the glass cannot. A well-made flask keeps the soup hot and the ice unmelted by fighting all three transfers at once."},
+    {k:"rule"},
+    {k:"h3", t:"Heat Capacity and Specific Heat Capacity"},
+    {k:"p", t:"The **heat capacity C** of a body is the heat needed to raise the whole body through one degree, in J/K, and **C = mc**. The **specific heat capacity c** is the heat needed to raise **1 kg** of a substance through **1 K (or 1 °C)**, in J kg⁻¹ K⁻¹, and it is a property of the material: **Q = mcΔθ**. Warming 2 kg of water through 10 °C takes Q = 2 × 4200 × 10 = **84 000 J**; the same 2 kg of copper through the same 10 °C takes only 2 × 390 × 10 = **7 800 J**, because copper's specific heat capacity is about a tenth of water's. Water's very high value is the reason it is the world's coolant and the reason Liberia's coast is gentler than the interior: the sea warms and cools slowly, so Monrovia stays near 25 °C while Ganta swings far more; a hot-water bottle holds its heat for hours; the human body, mostly water, resists changes of temperature; and the same pot of soup scalds worse than the same mass of hot metal."},
+    {k:"table", head:["Substance","Specific heat capacity c (J kg⁻¹ K⁻¹)","What it means in practice"], rows:[
+      ["Water (liquid)","4200","The highest of the common substances; the coolant of engines, the store of heat in a hot-water system"],
+      ["Ethanol","2400","Warms and cools quickly; used where a fast response is wanted"],
+      ["Ice","2100","Half that of water, which is why the first part of a heating curve is steeper than the rest"],
+      ["Steam","2000","Less than liquid water"],
+      ["Wood","1700","Feels warm because it takes a lot of heat to warm it and conducts badly"],
+      ["Air","about 1000","Light per unit volume, so a room is warmed quickly"],
+      ["Concrete and stone","about 880","Stores the day's heat and gives it out at night"],
+      ["Aluminium","900","Cooking pots — light and quick to respond"],
+      ["Glass","840","—"],
+      ["Iron and steel","460","The engine block, the roofing sheet that burns the hand"],
+      ["Copper","390","The base of a good pot: it takes little heat to warm and conducts fast"],
+      ["Mercury","140","Small heat capacity, so the thermometer responds quickly"],
+      ["Lead","130","The lowest of the common metals"]
+    ]},
+    {k:"h3", t:"Latent Heat in Detail"},
+    {k:"p", t:"The **specific latent heat** of a substance is the heat needed to change the state of **1 kg** of it **without a change of temperature**: of **fusion** for solid to liquid, and of **vaporisation** for liquid to gas. For ice L_fusion = **3.36 × 10⁵ J/kg** (336 kJ/kg) and for water L_vaporisation = **2.26 × 10⁶ J/kg** (2260 kJ/kg), so Q = mL. Vaporisation needs about seven times as much as fusion because boiling tears the molecules right apart against their attraction, while melting only loosens them. The consequences are everyday facts: **steam at 100 °C scalds far worse than water at 100 °C** because condensing steam gives up 2 260 000 J/kg on top of its cooling; **ice cools a drink better than cold water** because melting takes 336 000 J/kg from the drink; **sweating cools the body** because the fastest molecules escape and take their energy with them; the **refrigerator** pumps a fluid that evaporates inside (absorbing heat) and condenses outside (releasing it); and cooking in a **pressure cooker** is faster because the higher pressure raises the boiling point above 100 °C. A worked chain of three steps: 0.5 kg of ice at −10 °C to water at 20 °C needs 0.5 × 2100 × 10 = **10 500 J** to warm the ice, 0.5 × 336 000 = **168 000 J** to melt it, and 0.5 × 4200 × 20 = **42 000 J** to warm the water — **220 500 J** in all, of which three quarters went into the melting at a constant 0 °C."},
+    {k:"h3", t:"Measuring c and L in the Laboratory"},
+    {k:"num", items:[
+      "**Specific heat capacity of a metal by the method of mixtures:** weigh the metal, heat it in boiling water until it reaches 100 °C, weigh the lagged calorimeter with a known mass of cool water and its temperature, transfer the metal quickly, stir, and record the highest temperature. Then heat lost by the metal = heat gained by the water + heat gained by the calorimeter: m₁c(100 − θ) = m₂ × 4200 × (θ − θ₁) + C_cal(θ − θ₁)",
+      "**Specific heat capacity of a liquid electrically:** a heater of known power P (or a joulemeter reading VIt) warms a measured mass for a measured time, with stirring and lagging; c = VIt ÷ (mΔθ). Precautions: lag the vessel, stir continuously, wait for the temperature to steady before reading, and allow for the heat the vessel takes",
+      "**Specific latent heat of fusion of ice:** add dry ice at 0 °C to warm water in a lagged calorimeter, stir until it melts, and use heat lost by the water and calorimeter = mL + (heat to warm the melted ice to the final temperature). Precautions: dry the ice first, add it slowly so the temperature does not fall too far, and make sure it is at 0 °C and not colder",
+      "**Specific latent heat of vaporisation of water:** pass steam from a boiler through a lagged calorimeter of cool water, catch the condensed water in a trap so only steam enters, weigh the condensate, and use the heat it gave up = mL + mcΔθ"
+    ]},
+    {k:"p", t:"In every one of these the **loss to the surroundings** is the enemy: lagging, a lid, quick transfer and a small temperature range above the room all reduce it, and the examiner expects the candidate to name at least two of them. A 50 W immersion heater left in 0.5 kg of water for 200 s supplies 10 000 J, raising the temperature by 10 000 ÷ (0.5 × 4200) ≈ **4.8 °C** if nothing is lost — the calculation that turns a laboratory reading into a value of c."},
+    {k:"h3", t:"The Laws of Heat Exchange"},
+    {k:"p", t:"When two bodies at different temperatures are mixed in an insulated vessel, **heat lost by the hot body = heat gained by the cold body** — the principle of the method of mixtures, and a direct consequence of conservation of energy. Mixing 0.4 kg of water at 80 °C with 0.6 kg at 20 °C: both are water, so the masses alone decide, and the final temperature is (0.4 × 80 + 0.6 × 20) ÷ 1.0 = **44 °C** — nearer the cooler reading because there is more of it. With different substances the specific heat capacities enter: a 0.5 kg block of metal at 100 °C dropped into 0.4 kg of water at 20 °C, settling at 30 °C, gives 0.5 × c × 70 = 0.4 × 4200 × 10, so c = 16 800 ÷ 35 = **480 J kg⁻¹ K⁻¹**, a value typical of steel. Always ask which bodies gain and which lose, include the calorimeter among the gainers when it is given a heat capacity, and never mix Celsius differences with kelvin values in the same equation — though a difference of 1 °C equals a difference of 1 K, so Δθ may be used in either."},
+    {k:"h3", t:"The Three Methods of Heat Transfer"},
+    {k:"table", head:["Method","Medium needed","How the energy travels","What the rate depends on","Everyday example"], rows:[
+      ["Conduction","Yes — best in solids","Molecules vibrate and pass the energy to their neighbours; in metals the free electrons carry it far faster","The temperature difference, the cross-sectional area, the length, and the material (its thermal conductivity)","The handle of a metal spoon warming in the pot; the tile floor feeling colder than the mat at the same temperature"],
+      ["Convection","Yes — liquids and gases only","The warmed fluid expands, becomes less dense and rises, and cooler fluid flows in to take its place — a convection current","The temperature difference, the freedom of the fluid to move, and the shape of the container","The sea breeze by day and the land breeze at night; smoke rising; the freezer compartment at the top of a refrigerator"],
+      ["Radiation","No — it crosses a vacuum","Infrared electromagnetic waves travelling at the speed of light, needing no particles at all","The temperature of the surface, its area, and above all its colour and texture — dull black absorbs and emits best, shiny white worst","The sun warming the Earth; a solar water heater; the reflector behind an electric fire; heat felt from a charcoal stove"]
+    ]},
+    {k:"table", head:["Good conductors of heat","Poor conductors (insulators)","Why they are chosen"], rows:[
+      ["Silver, copper, aluminium, iron","Trapped air, wool, cotton, feathers, thatch, cork, wood, plastics, glass fibre, vacuum","A conductor is wanted where heat must move fast — the base of a pot, the fins of an engine, the element of an iron"],
+      ["Water (compared with air)","Water is a poor conductor, which is why a bath holds its heat","An insulator is wanted where heat must be kept back — the pot handle, the thatch roof, the woollen blanket, the double-glazed window, the lagging on a pipe"]
+    ]},
+    {k:"h3", t:"The Vacuum Flask in Detail"},
+    {k:"table", head:["Part of the flask","What it defeats","How"], rows:[
+      ["The vacuum between the double walls","Conduction and convection","There are no particles to carry the energy across"],
+      ["The silvered inner surfaces facing the vacuum","Radiation","The shiny surfaces reflect infrared back into the flask, and radiate very little themselves"],
+      ["The cork or plastic stopper","Conduction, convection and evaporation","A poor conductor that seals the opening"],
+      ["The thin glass walls","Conduction","Glass conducts badly, and thin walls shorten the path"],
+      ["The outer case and the felt or foam packing","Conduction and mechanical shock","Protects the fragile inner vessel"]
+    ]},
+    {k:"p", t:"The flask works both ways, which is the point often missed: it keeps soup hot **and** ice unmelted, because it slows the transfer of heat in whichever direction the temperature difference points. The same reasoning makes the **cooler box** of foam and ice, the **clay water pot** (which also loses heat by evaporation through its porous walls), the **thermos of a hospital**, and the **lagging on a hot-water pipe**. A **woollen blanket** does not warm the body — it traps the air the body has warmed and stops convection carrying it away, which is why several thin layers are warmer than one thick one."},
+    {k:"h3", t:"Evaporation and Boiling Compared"},
+    {k:"table", head:["Evaporation","Boiling"], rows:[
+      ["Occurs at the surface only","Occurs throughout the liquid, with bubbles of vapour forming in the bulk"],
+      ["Happens at every temperature","Happens at one fixed temperature, the boiling point"],
+      ["Quiet and invisible","Noisy and visible"],
+      ["Produces cooling of the remaining liquid","Needs a continuous supply of heat from outside"],
+      ["Rate rises with temperature, surface area, dryness and air movement","Boiling point rises with pressure and falls at altitude; dissolved substances raise it"],
+      ["The vapour leaves at the temperature of the liquid","The vapour leaves at the boiling point"]
+    ]},
+    {k:"h3", t:"Heat in Everyday Liberia"},
+    {k:"bul", items:[
+      "**The sea breeze:** by day the land heats faster than the sea, the air over the land rises, and cooler air flows in from the water; at night the order reverses and the land breeze blows out",
+      "**The charcoal stove:** radiation from the coals, convection of the hot gases, and conduction into the pot — the blackened, rough pot bottom absorbs radiation better than a shiny one",
+      "**The white-painted roof** reflects radiation and keeps the room cooler than a black roof, which absorbs it",
+      "**The fan** does not cool the air; it moves air across the skin so that sweat evaporates faster and carries heat away",
+      "**The thatch roof** traps air and insulates, which is why a thatched house stays cooler by day and warmer by night than an iron-roofed one",
+      "**The generator** wastes most of its fuel as heat; the fins on its engine increase the area for conduction and convection",
+      "**The solar water heater** on a hotel roof absorbs radiation in a blackened pipe behind glass — the glass traps the re-radiated heat, the greenhouse effect in a box"
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Define specific heat capacity and specific latent heat** with their units, and distinguish heat capacity from specific heat capacity",
+      "**Substitute into Q = mcΔθ and Q = mL**, in the right order when a change of state is involved",
+      "**Apply heat lost = heat gained**, naming the bodies on each side and including the calorimeter when its heat capacity is given",
+      "**Describe one method of measuring c or L**, with at least two precautions and the reason for each",
+      "**Compare conduction, convection and radiation** in a table, and explain one everyday example of each",
+      "**Explain the vacuum flask** part by part, saying which mode of transfer each part defeats"
+    ]}
   ],
 
   focus:[
@@ -1576,6 +2398,33 @@ var PH_CURRICULUM = [
     {q:"A 3 kg metal block warms by 25 °C with 30 000 J. Find its specific heat capacity.", steps:[
       "c = Q ÷ (mΔT)", "30000 ÷ (3 × 25)"
     ], a:"400 J/kg°C"},
+    {q:"0.4 kg of water at 80 °C is mixed with 0.6 kg of water at 20 °C. Find the final temperature, neglecting heat losses (c = 4200 J/kg°C).", steps:[
+      "Heat lost = heat gained; both are water, so m₁(80 − θ) = m₂(θ − 20)",
+      "0.4 × 80 + 0.6 × 20 = 1.0 × θ"
+    ], a:"44 °C"},
+    {q:"A 50 W immersion heater warms 0.5 kg of water for 200 s. Find the energy supplied and the rise in temperature (c = 4200 J/kg°C, no losses).", steps:[
+      "Energy = P × t = 50 × 200",
+      "Δθ = Q ÷ (mc) = 10 000 ÷ (0.5 × 4200)"
+    ], a:"10 000 J; a rise of about 4.8 °C"},
+    {q:"Find the heat needed to change 0.5 kg of ice at −10 °C into water at 20 °C (c_ice = 2100, c_water = 4200 J/kg°C, L_fusion = 3.36 × 10⁵ J/kg).", steps:[
+      "Warm the ice: 0.5 × 2100 × 10",
+      "Melt it at 0 °C: 0.5 × 336 000",
+      "Warm the water: 0.5 × 4200 × 20",
+      "Add the three"
+    ], a:"10 500 + 168 000 + 42 000 = 220 500 J"},
+    {q:"A 0.5 kg block of metal at 100 °C is dropped into 0.4 kg of water at 20 °C and the mixture settles at 30 °C. Find the specific heat capacity of the metal (c_water = 4200 J/kg°C).", steps:[
+      "Heat lost by the metal = 0.5 × c × (100 − 30) = 35c",
+      "Heat gained by the water = 0.4 × 4200 × (30 − 20) = 16 800 J",
+      "35c = 16 800"
+    ], a:"480 J/kg°C"},
+    {q:"Find the heat needed to boil away 0.2 kg of water already at 100 °C (L_vaporisation = 2.26 × 10⁶ J/kg).", steps:[
+      "Q = mL = 0.2 × 2.26 × 10⁶"
+    ], a:"4.52 × 10⁵ J (452 kJ)"},
+    {q:"A 2 kW kettle takes 4 minutes to raise 1 kg of water from 25 °C to 100 °C. Find the heat gained by the water and the efficiency of the kettle (c = 4200 J/kg°C).", steps:[
+      "Heat to the water = 1 × 4200 × 75",
+      "Energy supplied = 2000 × 240",
+      "Efficiency = (315 000 ÷ 480 000) × 100 %"
+    ], a:"315 kJ to the water; about 66 % efficient"}
   ],
   apply:[
     {q:"Why does a coastal town stay cooler in summer than an inland town?", a:"Water has a high specific heat capacity and heats up slowly, and sea breezes bring cooler air, moderating the coastal temperature."},
@@ -1630,6 +2479,74 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Vibrations in Strings and Tubes; Beats"},
     {k:"p", t:"Every musical instrument is a vibrating source: **strings** (guitar, kora) vibrate with a frequency set by length, tension and thickness, and **pipes** (flute, horn, whistle) vibrate in the air column within — **closed pipes** and **open pipes** give their own series of notes, longer or looser giving lower pitch. Stringed and non-stringed (percussion and wind) instruments differ in how they set the vibration going. When two notes of nearly equal frequency sound together the combined loudness rises and falls — **beats** — at a rate equal to the difference of the two frequencies, the trick piano tuners use; **noise** is a jumble of unrelated frequencies where **music** is orderly."},
+    {k:"rule"},
+    {k:"h3", t:"Wave Terms and the Wave Equation in Detail"},
+    {k:"table", head:["Term","What it means","Symbol","Unit"], rows:[
+      ["Amplitude","The greatest displacement of a particle from its rest position; it fixes the energy and, for sound, the loudness","A","metre"],
+      ["Wavelength","The distance between two successive points in the same phase — crest to crest, or compression to compression","λ (lambda)","metre"],
+      ["Frequency","The number of complete waves passing a point each second; fixed by the source","f","hertz (Hz)"],
+      ["Period","The time for one complete wave","T","second; T = 1 ÷ f"],
+      ["Wave speed","The distance the wave travels each second","v","m/s"],
+      ["Phase","The stage a particle has reached in its vibration","—","degrees or radians"],
+      ["Crest and trough","The highest and lowest points of a transverse wave","—","—"],
+      ["Compression and rarefaction","The crowded and spread-out regions of a longitudinal wave","—","—"]
+    ]},
+    {k:"p", t:"The three are tied by the **universal wave equation v = fλ**, which also reads v = λ ÷ T. A wave of frequency 50 Hz and wavelength 4 m travels at 50 × 4 = **200 m/s**; a water ripple with a period of 0.25 s and a wavelength of 2 m travels at 2 ÷ 0.25 = **8 m/s**. The point that catches candidates out: when a wave passes from one medium into another, its **frequency never changes** — the source is still vibrating at the same rate — while its **speed and wavelength both change together**. That is why light bends entering glass and why sound changes wavelength entering warm air. The speed depends on the **medium**, not on the loudness or the brightness: in the same air, a whisper and a shout travel at the same 340 m/s, which is why an echo returns the same words, only fainter."},
+    {k:"h3", t:"Transverse and Longitudinal Waves"},
+    {k:"table", head:["Feature","Transverse wave","Longitudinal wave"], rows:[
+      ["Direction of vibration of the particles","At right angles to the direction the wave travels","Along the direction the wave travels"],
+      ["The parts of the wave","Crests and troughs","Compressions and rarefactions"],
+      ["Can it be polarised?","Yes — only transverse waves can","No"],
+      ["Examples","Light and all electromagnetic waves; ripples on water; a wave sent along a string; the S-waves of an earthquake","Sound in air; a pulse sent along a spring; the P-waves of an earthquake"],
+      ["Medium needed?","Electromagnetic waves need none; water and string waves do","Always needs a material medium"],
+      ["How it is produced in the laboratory","A ripple tank, or a rope flicked sideways","A slinky spring pushed and pulled along its length, or a tuning fork"]
+    ]},
+    {k:"p", t:"Both kinds transfer **energy without transferring matter**: the cork on the pond bobs up and down while the ripple passes on, and the air molecule at the back of the classroom vibrates to and fro while the teacher's voice travels to it. **Polarisation** is the test that settles the question for light: passing light through a Polaroid and turning a second Polaroid in front of it makes the light vanish at one angle, which only a transverse wave can do — one of the classical proofs that light is transverse."},
+    {k:"h3", t:"The Properties of Waves"},
+    {k:"num", items:[
+      "**Reflection** — a wave bounces off a surface. For light the angle of incidence equals the angle of reflection (Grade 11 Period VI); for sound it gives the **echo**; in the ripple tank straight waves reflect straight and circular waves reflect circular, the centre of curvature on the other side of the barrier",
+      "**Refraction** — a wave changes direction as it changes speed crossing a boundary. Water waves slow and shorten in shallow water, bending toward the normal; light bends entering glass (Grade 12); sound bends toward the cool air near the ground at night, which is why voices carry further after dark",
+      "**Diffraction** — a wave spreads after passing a gap or round an obstacle. It is most marked when the gap is about the same size as the wavelength, which is why sound (wavelength about a metre) bends readily round a doorway while light (wavelength 5 × 10⁻⁷ m) makes a sharp shadow",
+      "**Interference and superposition** — two waves meeting add their displacements. In step they reinforce (**constructive**, a larger amplitude); exactly out of step they cancel (**destructive**, a calm patch). The ripple tank with two dippers shows the alternating pattern; noise-cancelling headphones use the same cancellation deliberately",
+      "**Polarisation** — the vibration is confined to one plane. Only transverse waves polarise; Polaroid sunglasses cut the glare reflected from water and road surfaces",
+      "**Dispersion** — a wave splits into its component frequencies because the speed depends slightly on frequency; for light this gives the spectrum from a prism (Grade 12)"
+    ]},
+    {k:"h3", t:"Stationary (Standing) Waves"},
+    {k:"p", t:"When two identical waves travel in opposite directions along the same line they superpose and produce a **stationary wave**: a pattern that appears not to travel. The points of zero displacement are **nodes** (the ends of a guitar string, the closed end of a pipe) and the points of greatest displacement are **antinodes** (the middle of the string, the open end of the pipe). Energy is not carried along a stationary wave — it is trapped between the nodes, which is exactly what a musical instrument wants. A string fixed at both ends carries a fundamental whose wavelength is twice the string length, L = λ/2, with harmonics at λ = L, 2L/3 and so on; a pipe closed at one end has a node at the closed end and an antinode at the open, so its fundamental has λ = 4L and only **odd** harmonics appear."},
+    {k:"h3", t:"Sound — Production, Transmission and Speed"},
+    {k:"p", t:"**Sound** is a longitudinal wave produced by a **vibrating body** — a string, a skin, a reed, a column of air, the vocal cords — and it needs a material medium to travel. Ring an electric bell in a jar and pump the air out, and the sound fades although the hammer can still be seen striking: **sound cannot cross a vacuum**, while light can, which is why the sun is seen but never heard. Sound travels fastest in **solids** (about 5000 m/s in steel), slower in **liquids** (about 1500 m/s in water) and slowest in **gases** (about **340 m/s** in air at room temperature), because the particles are closer and the forces between them stronger. Its speed in air rises with temperature, v = 331 + 0.6T m/s, so at 30 °C it is 331 + 18 = **349 m/s**; it is very slightly greater in humid air and is unaffected by the pressure. The distance of a storm is the seconds between the flash and the bang divided by three, in kilometres. An **echo** is sound reflected from a hard, distant surface; for the ear to separate it from the original sound the reflection must arrive at least 0.1 s later, so the surface must be at least (340 × 0.1) ÷ 2 = **17 m** away. Echoes are used to measure the depth of water (**sonar**), to find flaws in metal and scan the unborn baby (**ultrasound**), and by bats and dolphins to hunt; unwanted echoes make a hall muddy, which is why a good hall is lined with soft absorbent material and a bathroom sings."},
+    {k:"h3", t:"The Qualities of Sound"},
+    {k:"table", head:["Quality","Determined by","Measured in","Everyday test"], rows:[
+      ["Pitch","The frequency of the vibration","hertz (Hz)","A whistle is high-pitched, a drum low-pitched; tightening a string raises its pitch"],
+      ["Loudness","The amplitude, and so the intensity — the energy crossing unit area each second","decibels (dB) on a logarithmic intensity scale","Striking a drum harder raises the amplitude and the loudness, not the pitch"],
+      ["Quality (timbre)","The waveform — which overtones are present and how strong they are","—","The same note on a guitar, a flute and a piano is recognised at once"]
+    ]},
+    {k:"table", head:["Sound","Approximate intensity level (dB)","Effect"], rows:[
+      ["Threshold of hearing","0","The faintest sound a young ear detects"],
+      ["Rustling leaves, a quiet library","10 to 30","Restful"],
+      ["Normal conversation","60","Comfortable for hours"],
+      ["A busy street, a loud radio","80 to 85","Above this, prolonged exposure begins to damage hearing"],
+      ["A disco, a chainsaw","100 to 110","Damage in minutes to hours; ear protection needed"],
+      ["A jet engine a few metres away","120","Painful; immediate risk"],
+      ["Threshold of pain","140","Injury in seconds"]
+    ]},
+    {k:"p", t:"The human ear hears from about **20 Hz to 20 000 Hz** when young, and the upper limit falls with age and with noise exposure — which is why the oldest person in the room often misses the highest notes. **Infrasound** below 20 Hz comes from earthquakes, thunder and large machinery and is felt rather than heard; elephants use it to communicate over kilometres. **Ultrasound** above 20 kHz is used by bats and dolphins, by the medical scanner (a safe picture of the unborn baby, the liver and the heart), by the sonar, by the cleaner that shakes the dirt off jewellery and by the machine that finds cracks in a weld. **Noise** is an irregular, unwanted sound with a jumbled waveform; **music** is a regular, ordered vibration. Noise pollution raises blood pressure, disturbs sleep and damages hearing, and is controlled by silencers, absorbent linings, double glazing, barriers beside the highway, planning that keeps the school away from the airport, and ear protection at the workplace."},
+    {k:"h3", t:"The Doppler Effect in Detail"},
+    {k:"p", t:"When a source of waves moves relative to an observer, the frequency heard differs from the frequency emitted. **Approaching**, the source runs after its own waves, crowding them together: the wavelength shortens and the frequency — the pitch — **rises**. **Receding**, it runs away from them, stretching them out: the pitch **falls**. The taxi horn drops as it passes the listener; the racing car's note falls away down the straight; the train whistle does the same at the crossing. The effect belongs to every wave, not only to sound, and its applications are among the most useful in physics: **radar and the police speed gun** measure the shift of a reflected radio wave to find a car's speed; **medical ultrasound** measures the shift of sound reflected from moving blood to check the heart and the circulation; **astronomy** measures the shift of light from the galaxies — the **red shift**, showing them receding, which is the evidence that the universe is expanding; and weather radar tracks the motion of a storm. A moving **observer** also hears a shift, because he meets the waves more often when moving toward the source."},
+    {k:"h3", t:"Vibrating Strings and Pipes"},
+    {k:"p", t:"Every stringed instrument is a stretched string fixed at both ends, vibrating in a stationary wave. Its fundamental frequency is **f = v ÷ 2L**, where v is the speed of the wave along the string, so a 0.5 m string carrying waves at 200 m/s sounds f = 200 ÷ 1 = **200 Hz**, and pressing it at the middle fret, halving L, doubles the pitch to 400 Hz. The speed along the string is v = √(T ÷ μ), where T is the tension and μ the mass per unit length, so the pitch is raised by **shortening** the string (the fret, the finger on the kora), by **tightening** it (the tuning peg) and by using a **thinner, lighter** string (the high strings of the guitar are the thin ones, and the low strings are wound with wire to raise μ). Air columns work the same way: a pipe **open at both ends** has f = v ÷ 2L, a pipe **closed at one end** f = v ÷ 4L, so a 0.25 m closed pipe sounds 340 ÷ 1 = **340 Hz** in air at 340 m/s. Blowing harder produces the overtones — the harmonics at 2f, 3f and so on, or only the odd multiples in a closed pipe — and the mixture of them gives the instrument its quality. The flute, the whistle, the horn, the organ pipe and the bottle blown across its mouth are all air columns; the drum is a vibrating **membrane**, whose pitch rises as the skin is tightened and whose note is not a clean harmonic series, which is why drums are not tuned to a scale."},
+    {k:"h3", t:"Beats and Resonance"},
+    {k:"p", t:"Two notes of slightly different frequency sound together produce a throbbing rise and fall of loudness called **beats**, at a **beat frequency equal to the difference of the two frequencies**: forks of 256 Hz and 260 Hz give **4 beats per second**. Piano tuners use the effect — they adjust the string until the beats disappear, when the two are exactly in tune; so do the players of two flutes, and so does anyone tightening the strings of a kora against a known note. **Resonance** is the large response of a body when it is driven at its natural frequency: one tuning fork makes another of the same frequency sound across the room, a singer can break a glass, a bridge must be designed so that neither the wind nor marching feet match its natural frequency, and the tuning circuit of a radio responds strongly to one station while rejecting the rest. Both beats and resonance are interference and superposition seen in time rather than in space."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Define amplitude, wavelength, frequency and period**, and use v = fλ with the units stated",
+      "**Distinguish transverse from longitudinal waves**, giving two examples of each and naming the test (polarisation)",
+      "**Describe the echo experiment** to find the speed of sound, with the distance, the timing of many claps and the calculation",
+      "**Explain the Doppler effect** and give one application beyond the passing car",
+      "**Compare pitch, loudness and quality**, saying which physical quantity each depends on",
+      "**Use f = v ÷ 2L for a string and an open pipe, and f = v ÷ 4L for a closed pipe**",
+      "**State the audible range** and give one use of ultrasound"
+    ]}
   ],
 
   focus:[
@@ -1732,6 +2649,33 @@ var PH_CURRICULUM = [
     {q:"Two sources emit 256 Hz and 260 Hz. What beat frequency is heard?", steps:[
       "Beat frequency = f₂ − f₁", "260 − 256"
     ], a:"4 beats per second"},
+    {q:"A sound wave of frequency 170 Hz has a wavelength of 2 m. Find its speed and its period.", steps:[
+      "v = fλ = 170 × 2",
+      "T = 1 ÷ f"
+    ], a:"340 m/s; T ≈ 0.0059 s"},
+    {q:"The speed of sound in air is 331 m/s at 0 °C and increases by 0.6 m/s for each degree Celsius. Find its speed at 30 °C.", steps:[
+      "v = 331 + 0.6 × 30"
+    ], a:"349 m/s"},
+    {q:"A ship sends a sonar pulse downward and receives the echo after 0.4 s. Find the depth of the water (speed of sound in water 1500 m/s).", steps:[
+      "The pulse travels down and back, so the depth is half the distance",
+      "Depth = (1500 × 0.4) ÷ 2"
+    ], a:"300 m"},
+    {q:"A guitar string 0.5 m long carries waves at 200 m/s. Find the frequency of its fundamental note, and the frequency when a fret halves the vibrating length.", steps:[
+      "f = v ÷ 2L = 200 ÷ (2 × 0.5)",
+      "Halving L doubles f"
+    ], a:"200 Hz; 400 Hz"},
+    {q:"A pipe closed at one end is 0.25 m long. Find the frequency of its fundamental note (speed of sound 340 m/s).", steps:[
+      "For a closed pipe f = v ÷ 4L",
+      "f = 340 ÷ (4 × 0.25)"
+    ], a:"340 Hz"},
+    {q:"Two tuning forks of 256 Hz and 260 Hz sound together. Find the beat frequency and say how a tuner uses it.", steps:[
+      "Beat frequency = |f₁ − f₂|",
+      "The beats grow slower as the two approach and vanish when they agree"
+    ], a:"4 beats per second; the tuner adjusts until the beats disappear, meaning the two are in tune"},
+    {q:"A cliff stands 85 m from a learner who claps once. Find the time before he hears the echo (speed of sound 340 m/s).", steps:[
+      "The sound travels to the cliff and back: 2 × 85 = 170 m",
+      "t = distance ÷ speed = 170 ÷ 340"
+    ], a:"0.5 s"}
   ],
   apply:[
     {q:"Why can two people on the Moon not talk to each other directly?", a:"There is no air (medium) on the Moon, so sound waves have nothing to travel through; speech cannot pass between them."},
@@ -1799,6 +2743,59 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"The Photoelectric Effect and the Laser"},
     {k:"p", t:"The **photoelectric effect** — electrons ejected from a metal surface by light of sufficient frequency, never below it however bright — showed that light arrives in packets (photo-electric cells put it to work in doors and meters), and the **principle of the laser** — excited atoms emitting identical photons in step — produces the intense, single-colour, narrow beam of the surveyor, the surgeon and the compact disc."},
+    {k:"rule"},
+    {k:"h3", t:"Sources of Light and Rectilinear Propagation in Detail"},
+    {k:"p", t:"**Luminous** bodies make their own light — the sun and the stars by nuclear fusion, a flame by the heat of burning, a fluorescent tube by an electric discharge, an LED by electrons crossing a junction, the firefly by a chemical reaction. **Non-luminous** bodies are seen only by the light they reflect — the moon, the planets, this page, a friend's face; that is why the moon has phases and why a room is dark when the lamp is off. A **ray** is a line showing the direction of travel; a **beam** is a bundle of rays, and beams are **parallel** (a distant searchlight), **convergent** (toward a point) or **divergent** (from a point). Light travels in **straight lines** — **rectilinear propagation** — proved by the sharp edge of a shadow, by the beam of a torch seen in dusty air, by the pinhole camera and by the fact that a candle cannot be seen through three cards unless their holes are in line. The straight-line rule has one limit: when a gap is about as small as the wavelength the light spreads — diffraction — which is why shadows are not perfectly sharp under a microscope."},
+    {k:"h3", t:"Shadows, Eclipses and the Pinhole Camera"},
+    {k:"p", t:"A **point source** (a tiny lamp, a distant star) casts a shadow that is all **umbra** — total darkness with a sharp edge. An **extended source** (a fluorescent tube, the sun) casts an umbra surrounded by a **penumbra**, the partial shadow where some of the source is visible; the wider the source or the closer the object, the wider the penumbra. A **solar eclipse** occurs when the new moon comes between the sun and the Earth: an observer in the moon's umbra sees the sun covered completely (total eclipse), one in the penumbra sees part of it covered (partial), and when the moon is near its farthest from the Earth a ring of the sun survives — the **annular** eclipse. A **lunar eclipse** occurs when the full moon passes into the Earth's shadow, and the moon turns coppery red rather than vanishing, because the Earth's atmosphere refracts the red end of the spectrum into the shadow. Neither happens every month, because the moon's orbit is tilted about 5° to the Earth's. **Never look directly at the sun**, eclipsed or not: the eye's lens concentrates it onto the retina and burns it without pain. The **pinhole camera** is a light-tight box with a tiny hole and a screen at the back: the image is **real, inverted** and can be any size, and the magnification is image distance ÷ object distance. A camera 0.2 m long forming a 5 cm image of a tree 10 m away records a tree of 5 × (10 ÷ 0.2) = 250 cm = **2.5 m**. Making the hole smaller gives a sharper but dimmer image, and making it too small blurs it again by diffraction; two holes give two overlapping images."},
+    {k:"h3", t:"Reflection in Detail"},
+    {k:"p", t:"The **laws of reflection:** the incident ray, the reflected ray and the normal to the surface at the point of incidence all lie in one plane, and the **angle of incidence equals the angle of reflection** — both measured from the **normal**, never from the surface. **Regular (specular) reflection** from a polished surface sends a parallel beam away as a parallel beam, so a mirror forms an image; **diffuse reflection** from a rough surface scatters the rays in every direction, so a page of paper or a wall is visible from any angle but shows no image — the same law obeyed by every tiny facet, only the facets face different ways. The image in a **plane mirror** is **virtual** (it cannot be caught on a screen, and the rays only appear to come from it), **upright**, the **same size** as the object, **laterally inverted** (the left hand appears as the right, which is why AMBULANCE is written reversed on the bonnet), and as **far behind the mirror** as the object is in front. Two mirrors inclined at an angle θ produce n = (360 ÷ θ) − 1 images, so at 60° there are **five** — the principle of the **kaleidoscope**. A **periscope** uses two plane mirrors at 45°, or two prisms by total internal reflection, to see over a wall or from a submarine."},
+    {k:"h3", t:"Spherical Mirrors in Detail"},
+    {k:"table", head:["Position of the object (concave mirror)","Position of the image","Nature","Size","A use"], rows:[
+      ["Beyond the centre of curvature C","Between C and F","Real and inverted","Diminished","Astronomical telescopes observing distant objects"],
+      ["At C","At C","Real and inverted","Same size","Copying an object at the same size"],
+      ["Between C and F","Beyond C","Real and inverted","Magnified","The projector, the cinema"],
+      ["At F","At infinity","Real (parallel rays)","—","The torch, the headlamp and the searchlight reflector"],
+      ["Between F and the pole P","Behind the mirror","Virtual and upright","Magnified","The shaving and make-up mirror, the dentist's mirror"],
+      ["Anywhere (convex mirror)","Behind the mirror","Virtual and upright","Diminished","The driving mirror and the shop security mirror — a wide field of view"]
+    ]},
+    {k:"p", t:"The vocabulary: the **pole P** is the centre of the mirror's surface; the **centre of curvature C** the centre of the sphere of which it is part; the **radius of curvature r** the distance PC; the **principal axis** the line through P and C; the **principal focus F** the point where rays parallel to the axis meet after reflection (or appear to come from, in a convex mirror); and the **focal length f = r ÷ 2**. Construct an image with two of the four standard rays: a ray parallel to the axis reflects through F; a ray through F reflects parallel to the axis; a ray through C returns along itself; a ray striking the pole reflects symmetrically about the axis. The **mirror equation** ties the numbers together, **1/f = 1/u + 1/v**, and the **magnification m = v ÷ u = image height ÷ object height**, with the real-is-positive sign convention (distances measured from the pole, real images positive, virtual images negative). An object 30 cm from a concave mirror of f = 10 cm: 1/v = 1/10 − 1/30 = 2/30, so v = **15 cm**, real, inverted, and m = 15 ÷ 30 = **0.5**, half the size. The same object at 5 cm, inside the focus: 1/v = 1/10 − 1/5 = −1/10, so v = **−10 cm** — negative, therefore **virtual**, behind the mirror, upright and **magnified twice**, which is exactly what the shaving mirror does."},
+    {k:"h3", t:"Mirrors at Work"},
+    {k:"table", head:["Device","The optics used","Why it is chosen"], rows:[
+      ["Torch, headlamp, car headlight and searchlight","A concave reflector with the bulb at the focus","Rays from the focus leave parallel, giving a long beam"],
+      ["Solar cooker and solar furnace","A large concave reflector","Parallel rays from the sun are concentrated at the focus, where the temperature climbs enough to cook or to melt"],
+      ["Shaving, make-up and dentist's mirror","A concave mirror with the face inside the focus","A virtual, upright, magnified image"],
+      ["Driving mirror and shop security mirror","A convex mirror","A diminished image, therefore a wide field of view; the warning that objects are nearer than they appear"],
+      ["Reflecting telescope","A large concave mirror with a small plane or convex secondary","A mirror can be made far larger than a lens and suffers no colour fringe"],
+      ["Periscope and binoculars","Two plane mirrors at 45°, or two prisms using total internal reflection","Turns the line of sight through 90° twice without loss of brightness"],
+      ["Kaleidoscope","Three plane mirrors at 60°","Repeated images of coloured glass form symmetrical patterns"],
+      ["The satellite dish and the radio telescope","A concave metal reflector","Collects weak radio waves onto the receiver at the focus — the same geometry as the optical mirror"]
+    ]},
+    {k:"h3", t:"The Electromagnetic Spectrum in Numbers"},
+    {k:"table", head:["Band","Approximate wavelength","Frequency","A Liberian application"], rows:[
+      ["Radio waves","above 0.1 m","below 3 × 10⁹ Hz","LBC and other broadcasts, the mobile phone network"],
+      ["Microwaves","1 mm to 0.1 m","3 × 10⁹ to 3 × 10¹¹ Hz","Satellite television, radar, the microwave oven, mobile-phone links"],
+      ["Infrared","7 × 10⁻⁷ m to 1 mm","3 × 10¹¹ to 4 × 10¹⁴ Hz","Heat from a fire or the sun, the remote control, night-vision equipment, drying crops"],
+      ["Visible light","4 × 10⁻⁷ m (violet) to 7 × 10⁻⁷ m (red)","4 × 10¹⁴ to 7.5 × 10¹⁴ Hz","Sight, photography, the traffic light, the solar panel"],
+      ["Ultraviolet","1 × 10⁻⁸ m to 4 × 10⁻⁷ m","7.5 × 10¹⁴ to 3 × 10¹⁶ Hz","Making vitamin D in the skin, sterilising water and hospital equipment, detecting forged notes"],
+      ["X-rays","1 × 10⁻¹¹ m to 1 × 10⁻⁸ m","3 × 10¹⁶ to 3 × 10¹⁹ Hz","The hospital X-ray of a broken bone, the airport baggage scanner"],
+      ["Gamma rays","below 1 × 10⁻¹¹ m","above 3 × 10¹⁹ Hz","Radiotherapy for cancer, sterilising sealed medical supplies, industrial flaw detection"]
+    ]},
+    {k:"p", t:"All of them are the same thing — oscillating electric and magnetic fields at right angles to each other and to the direction of travel — differing only in frequency. Every one travels at **c = 3 × 10⁸ m/s** in a vacuum, is **transverse**, needs **no medium**, carries **energy and momentum**, can be **reflected, refracted, diffracted and polarised**, and obeys **c = fλ**. The order to memorise is rising frequency and falling wavelength: radio, microwave, infrared, visible (red to violet), ultraviolet, X-rays, gamma. Energy rises with frequency, so the short-wave end is **ionising**: ultraviolet causes sunburn and, in excess, skin cancer (the ozone layer screens most of it, and the welder's mask screens the arc); X-rays and gamma rays pass through tissue and can destroy cells, which is why the radiographer stands behind a lead screen, wears a film-badge dosimeter and limits every patient's dose, and why the same radiation that damages cells is used deliberately to kill a tumour."},
+    {k:"h3", t:"The Photoelectric Effect and the Laser"},
+    {k:"p", t:"In the **photoelectric effect** light falling on a metal surface ejects electrons, but only if its **frequency exceeds a threshold** peculiar to the metal; below that frequency nothing is emitted however bright the light or however long it shines, and above it electrons come out **instantly**. Brightness affects only the **number** of electrons, never their maximum energy, which rises with the frequency. Einstein explained it in 1905 by supposing light arrives in packets — **photons** — each of energy **E = hf**, with h = 6.63 × 10⁻³⁴ J s: one photon gives all its energy to one electron, part of it (the **work function W₀ = hf₀**) paying to escape the metal and the rest appearing as kinetic energy, **hf = W₀ + ½mv²**. The effect is the working principle of the **solar cell** — the panels now lighting clinics and charging phones across Liberia — of the light meter of a camera, the automatic door, the burglar alarm and the television camera tube. A **laser** produces light by **stimulated emission**: one photon triggers an excited atom to emit a second photon identical in frequency, phase and direction, and the pair trigger four, and so on, between two mirrors, until a beam emerges. Laser light is **monochromatic** (one wavelength), **coherent** (all the waves in step), **nearly parallel** (it spreads very little) and therefore **intense**. It reads the bar code at the supermarket till and the disc in the player, carries telephone calls along an optical fibre, cuts and welds steel, removes a tattoo, reshapes the cornea in eye surgery, levels a building site, measures the distance to the moon and points at the stars in a planetarium."},
+    {k:"h3", t:"Light, Burning and the Environment"},
+    {k:"p", t:"Burning gives both light and heat, and the examination asks the candidate to weigh the two. A charcoal stove lights a room and cooks a meal, but the smoke carries **soot** that blackens the walls and the lungs, and **carbon monoxide** that kills in a closed room; a kerosene lamp gives a bright, clean flame when the wick is trimmed, and a smoky one when it is not; diesel generators supply the light of many a street and add particulate matter to the air of the neighbourhood. Fire clears a field quickly and destroys the humus, the soil organisms and the seedlings with it, and the smoke of a bush fire reduces visibility on the highway and irritates every chest downwind. **Light pollution** — the glare of unshielded lamps — wastes energy, disturbs sleep and hides the stars from a town child. The answer that earns the marks names the effect, the substance responsible, and a remedy: burn cleanly with enough air, ventilate the room, use a chimney or a lamp shade, shield the lamp downward, and prefer the LED panel and the solar lantern to the flame wherever they can be afforded."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State the laws of reflection** and distinguish regular from diffuse reflection",
+      "**Give the properties of the image in a plane mirror** — five of them, including lateral inversion",
+      "**Draw a ray diagram** for a concave or convex mirror, using two standard rays, and describe the image",
+      "**Use 1/f = 1/u + 1/v and m = v ÷ u** with the sign convention stated",
+      "**List the regions of the electromagnetic spectrum in order**, with one use and one danger of a named region",
+      "**Explain the photoelectric effect** — threshold frequency, photon, work function — and name one application",
+      "**State three properties of the laser beam** and give two uses"
+    ]}
   ],
 
   focus:[
@@ -1904,6 +2901,32 @@ var PH_CURRICULUM = [
     {q:"State the speed of light in vacuum to one significant figure.", steps:[
       "c = 3 × 10⁸ m/s"
     ], a:"3 × 10⁸ m/s"},
+    {q:"An object is placed 30 cm from a concave mirror of focal length 10 cm. Find the image position, its nature and the magnification.", steps:[
+      "1/v = 1/f − 1/u = 1/10 − 1/30",
+      "1/v = 2/30, so v = 15 cm",
+      "m = v ÷ u = 15 ÷ 30"
+    ], a:"15 cm from the mirror; real, inverted and diminished; magnification 0.5"},
+    {q:"An object is placed 5 cm from a concave mirror of focal length 10 cm. Find the image position and magnification.", steps:[
+      "1/v = 1/10 − 1/5 = −1/10",
+      "v = −10 cm, the negative sign meaning the image is virtual",
+      "m = v ÷ u = 10 ÷ 5"
+    ], a:"10 cm behind the mirror; virtual, upright and magnified twice"},
+    {q:"Two plane mirrors are inclined at 60° with an object between them. Find the number of images formed.", steps:[
+      "n = (360 ÷ θ) − 1",
+      "n = (360 ÷ 60) − 1"
+    ], a:"5 images"},
+    {q:"A pinhole camera 0.2 m long forms an image 5 cm high of a tree standing 10 m away. Find the height of the tree.", steps:[
+      "Magnification = image distance ÷ object distance = 0.2 ÷ 10 = 0.02",
+      "Object height = image height ÷ magnification = 5 ÷ 0.02"
+    ], a:"250 cm, i.e. 2.5 m"},
+    {q:"A radio station broadcasts at 100 MHz. Find the wavelength of its waves (c = 3 × 10⁸ m/s).", steps:[
+      "λ = c ÷ f",
+      "λ = 3 × 10⁸ ÷ 1 × 10⁸"
+    ], a:"3 m"},
+    {q:"A spherical mirror has a radius of curvature of 30 cm. Find its focal length, and state where the bulb of a torch must be placed in front of it.", steps:[
+      "f = r ÷ 2",
+      "Rays from the focus leave the mirror parallel"
+    ], a:"15 cm; the bulb sits at the focus, 15 cm from the pole"}
   ],
   apply:[
     {q:"Why does a convex mirror make a good car wing (side) mirror?", a:"It always forms a small, upright, virtual image and gives a much wider field of view than a plane mirror, so the driver sees more of the road behind."},
@@ -1956,6 +2979,83 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Dispersion, Colours, Lenses and the Eye"},
     {k:"p", t:"The prism splits white light into the spectrum — **dispersion** — because each colour refracts by its own amount, violet most, red least: the rainbow is the sky's dispersion. Distinguish **primary colours** of light (red, green, blue — adding to white) from **primary pigments** (cyan, magenta, yellow — subtracting to black). **Lenses:** the **convex (converging)** forms real inverted images for camera, projector and telescope — and a magnified virtual one inside the focal length (the magnifying glass); the **concave (diverging)**, small upright images and the correction of **short sight (myopia)**, as the convex corrects **long sight (hyperopia)** — lenses and eye defects. The lens formula matches the mirror's: 1/f = 1/u + 1/v; m = v/u."},
+    {k:"rule"},
+    {k:"h3", t:"Refraction in Detail — Why Light Bends"},
+    {k:"p", t:"Light travels fastest in a vacuum, slower in air, slower still in water and slowest in glass. When a ray crosses a boundary at an angle, one side of the wavefront reaches the new medium first and changes speed first, so the whole front turns: that turning is **refraction**. The **frequency never changes** — the source still vibrates at the same rate — but the **speed and the wavelength both change** in the same proportion. The **laws of refraction:** the incident ray, the refracted ray and the normal at the point of incidence lie in one plane; and the ratio sin i ÷ sin r is a constant for the two media, **Snell's law**, that constant being the **refractive index**. Entering a **more dense** optical medium the ray bends **toward** the normal and slows; entering a less dense medium it bends **away** and speeds up; along the normal it does not bend at all, although it still slows. The effects are everywhere: the stick looks bent in the bucket, the pool looks shallower than it is, a coin in an empty bowl appears when water is poured in, the glass block displaces a ray sideways (the **lateral displacement**, which grows with the thickness of the block, the angle of incidence and the refractive index), the star appears slightly higher than it is and twinkles as the air moves, the sun is still seen after it has geometrically set, and the hot road shimmers with a **mirage** — layers of air of different density refracting, and finally totally internally reflecting, the light from the sky so that it looks like a pool of water."},
+    {k:"h3", t:"Refractive Index and Snell's Law"},
+    {k:"table", head:["Medium","Refractive index n","Speed of light in it (m/s)","The critical angle to air"], rows:[
+      ["Vacuum","1.000 (exactly)","3.00 × 10⁸","—"],
+      ["Air","1.0003","about 3.00 × 10⁸","—"],
+      ["Ice","1.31","2.29 × 10⁸","about 50°"],
+      ["Water","1.33","2.26 × 10⁸","about 49°"],
+      ["Perspex","1.49","2.01 × 10⁸","about 42°"],
+      ["Crown glass","1.52","1.97 × 10⁸","about 41°"],
+      ["Ruby","1.76","1.70 × 10⁸","about 35°"],
+      ["Diamond","2.42","1.24 × 10⁸","about 24°"]
+    ]},
+    {k:"p", t:"The refractive index can be written four equivalent ways, and the question decides which to use: **n = sin i ÷ sin r** (from the angles), **n = c ÷ v** (from the speeds), **n = real depth ÷ apparent depth** (from the shift of an object seen through the medium), and for the critical angle **sin C = 1 ÷ n**. Light slowed to 2 × 10⁸ m/s in a liquid gives n = 3 × 10⁸ ÷ 2 × 10⁸ = **1.5**; a ray entering glass at 45° and refracted through 28° gives n = 0.707 ÷ 0.469 = **1.51**. A swimming pool that **appears** 1.5 m deep is really 1.5 × 1.33 = **2.0 m** deep — the reason a non-swimmer must never judge a river by eye, and the reason the spear-fisher aims **below** the fish he sees. The relative refractive index between two media is the ratio of their indices, n₂₁ = n₂ ÷ n₁, and light crossing from water into glass bends toward the normal because glass is the denser of the two."},
+    {k:"h3", t:"Total Internal Reflection in Detail"},
+    {k:"p", t:"As a ray passes from glass toward air the refracted ray bends further and further from the normal; at one particular angle of incidence, the **critical angle C**, the refracted ray just grazes the surface at 90°; beyond it no ray escapes and **all** the light is reflected back inside — **total internal reflection**, with no loss of brightness at all, unlike a mirror. Two conditions must hold: the light must travel from the **optically denser** to the **less dense** medium, and the angle of incidence must be **greater than the critical angle**. Since sin C = 1/n, crown glass gives C = sin⁻¹(0.658) = **41.8°**, water **48.8°**, and diamond only **24.4°** — the diamond's small critical angle means light entering it is reflected many times inside before leaving, which with dispersion is the whole of its sparkle, and the reason a cut diamond has so many facets. The applications are among the most valuable in modern physics: the **optical fibre** — a core of very pure glass of higher index surrounded by cladding of lower index, so light is trapped by repeated total internal reflection and carried round bends — used for **telecommunications** (thousands of telephone calls and television channels in one hair-thin fibre, immune to electrical interference, light, secure and low-loss) and for **medicine** (the endoscope and the laparoscope, which look inside the stomach and the abdomen through a bundle of fibres, with a second bundle carrying light in); **prisms** in binoculars, periscopes and single-lens reflex cameras, where a 45°–90°–45° prism turns the light through 90° or 180° with no tarnishing and total reflection; the **mirage**; the brightness of a cut **diamond**; and the empty-looking test tube in water, which shines because a layer of air around it reflects the light back."},
+    {k:"h3", t:"Lenses in Detail"},
+    {k:"table", head:["Position of the object (convex lens)","Position of the image","Nature","Size","A use"], rows:[
+      ["Beyond 2F","Between F and 2F on the far side","Real and inverted","Diminished","The camera"],
+      ["At 2F","At 2F on the far side","Real and inverted","Same size","Photocopying at the same size"],
+      ["Between F and 2F","Beyond 2F","Real and inverted","Magnified","The projector, the slide projector, the compound microscope's objective"],
+      ["At F","At infinity","Parallel rays (no image)","—","The spotlight and the collimator"],
+      ["Inside F","On the same side as the object","Virtual and upright","Magnified","The magnifying glass, the reading lens"],
+      ["Anywhere (concave lens)","On the same side as the object","Virtual and upright","Diminished","Correcting short sight; the peephole in a door"]
+    ]},
+    {k:"p", t:"The three construction rays for a **convex (converging) lens**: a ray parallel to the axis passes through the principal focus on the far side; a ray through the focus emerges parallel to the axis; a ray through the **optical centre** goes straight on undeviated. The **lens equation** is **1/f = 1/u + 1/v** and the **magnification m = v ÷ u = image height ÷ object height**, with real-is-positive. The **power** of a lens is **P = 1/f** with f in **metres**, measured in **dioptres (D)**: a lens of f = 25 cm has P = 1 ÷ 0.25 = **+4 D**, and a diverging lens of f = −50 cm has P = **−2 D**, the negative sign marking the concave lens. Thin lenses in contact add their powers, P = P₁ + P₂, which is how an optician builds a prescription. An object 30 cm from a convex lens of f = 20 cm: 1/v = 1/20 − 1/30 = 1/60, so v = **60 cm**, real, inverted and magnified twice — the projector. The same object at 10 cm, inside the focus: 1/v = 1/20 − 1/10 = −1/20, so v = **−20 cm**, virtual, upright and magnified twice — the magnifying glass."},
+    {k:"h3", t:"The Eye, Accommodation and its Defects"},
+    {k:"table", head:["Part of the eye","Its function"], rows:[
+      ["Cornea","The transparent front surface; it does most of the refraction"],
+      ["Aqueous humour","The clear fluid behind the cornea; keeps the eyeball firm"],
+      ["Iris","The coloured curtain that opens and closes the pupil, controlling the amount of light"],
+      ["Pupil","The hole through which light enters"],
+      ["Eye lens","A flexible convex lens providing the fine adjustment of focus"],
+      ["Ciliary muscles and suspensory ligaments","Change the shape of the lens — accommodation"],
+      ["Retina","The light-sensitive screen, with rods for dim light and cones for colour; the image formed here is real, inverted and diminished"],
+      ["Fovea (yellow spot)","The small region of sharpest vision, cones only"],
+      ["Optic nerve","Carries the signals to the brain, which turns the inverted image the right way up"],
+      ["Blind spot","Where the optic nerve leaves; there are no receptors there"],
+      ["Choroid","The black lining that absorbs stray light, as the blackened inside of a camera does"],
+      ["Sclera","The tough white outer coat that protects and holds the shape"]
+    ]},
+    {k:"p", t:"**Accommodation** is the eye's focusing: to see a **near** object the ciliary muscles **contract**, the suspensory ligaments slacken, the lens becomes **thicker and more convex**, and its focal length shortens; to see a **distant** object the muscles relax, the ligaments pull taut, the lens flattens and the focal length lengthens. The **near point** of a normal young eye is about **25 cm** and the far point is infinity. The eye and the camera agree closely — the lens and the eye lens, the film or sensor and the retina, the aperture and the iris with its pupil, the shutter and the eyelid — and differ in one respect that matters: the camera's lens has a fixed focal length and is moved to focus, while the eye's lens stays put and changes shape. **Defects and their correction:** **short sight (myopia)** — the eyeball is too long or the lens too powerful, so the image of a distant object forms in front of the retina and distant objects blur; corrected by a **concave (diverging) lens** of negative power. **Long sight (hypermetropia)** — the eyeball is too short or the lens too weak, so the near image would form behind the retina; corrected by a **convex (converging) lens**. **Presbyopia** — the lens stiffens with age and accommodation is lost, so the near point recedes; reading glasses, often convex. **Astigmatism** — the cornea is not evenly curved, so lines in one direction focus and those at right angles do not; corrected by a **cylindrical lens**. **Cataract** — the lens clouds; treated by surgery and an artificial lens. **Colour blindness** — inherited, usually a missing type of cone. **Glaucoma** — raised pressure inside the eye damaging the optic nerve."},
+    {k:"h3", t:"Optical Instruments Compared"},
+    {k:"table", head:["Instrument","The optics","What it gives"], rows:[
+      ["Camera","One convex lens, an adjustable aperture and shutter, film or sensor","A real, inverted, diminished image; the shutter time controls the exposure"],
+      ["Simple microscope (magnifying glass)","One convex lens with the object inside F","A virtual, upright, magnified image"],
+      ["Compound microscope","Two convex lenses — an objective of very short focal length and an eyepiece","A greatly magnified virtual image, inverted relative to the object"],
+      ["Astronomical telescope (refracting)","An objective of long focal length and an eyepiece of short focal length","A magnified image of a distant object, inverted; magnification = f_o ÷ f_e"],
+      ["Reflecting telescope","A large concave mirror with a secondary mirror or prism","The same, but the mirror can be made much larger and gives no colour fringe"],
+      ["Binoculars and the terrestrial telescope","Two lenses with erecting prisms","A magnified, upright image for use on land"],
+      ["Projector","A convex lens with the slide between F and 2F","A real, inverted (so the slide is loaded upside down), magnified image on a screen"],
+      ["Periscope","Two plane mirrors or prisms at 45°","A view over an obstacle"],
+      ["Endoscope","Two bundles of optical fibres","A picture from inside the body, one bundle carrying light in and the other the image out"],
+      ["Spectrometer and the prism","A glass prism","Dispersion of light for analysis"]
+    ]},
+    {k:"p", t:"The telescope's **magnification is f_o ÷ f_e**, so an objective of 100 cm with an eyepiece of 5 cm gives a magnification of **20**, and the instrument in normal adjustment is f_o + f_e = **105 cm** long. The compound microscope magnifies in two stages — the objective forms a real magnified image, and the eyepiece magnifies that again — so the total is the product of the two. In every instrument the rule is the same: identify the lens or mirror, say where the object sits relative to its focus, and read the image from the table."},
+    {k:"h3", t:"Dispersion, Colours and Pigments"},
+    {k:"p", t:"White light is a mixture. A **prism** refracts each colour by a different amount because the refractive index depends slightly on the wavelength — **violet most, red least** — so the beam spreads into the **spectrum**: red, orange, yellow, green, blue, indigo, violet. Newton showed it with two prisms: the first split the beam and the second, inverted, recombined the colours back to white. The **rainbow** is the same work done by a million droplets: light refracts on entering a drop, disperses, is **totally internally reflected** at the back of the drop, and refracts out again — the observer sees red on the outside of the primary bow and violet inside, with the sun behind him; a fainter secondary bow above has the colours reversed after two internal reflections. **Pigment** colours work the other way: a red cloth reflects red and **absorbs** the rest, so under green light it looks black because there is no red left to reflect; black absorbs all colours and white reflects all. Additive mixing of the **primary colours of light** and subtractive mixing of the **primary pigments** are set out below; the printer uses the pigments, the television screen the lights."},
+    {k:"table", head:["Mixing lights (additive)","Result","Mixing pigments (subtractive)","Result"], rows:[
+      ["Red + green","Yellow","Yellow + cyan","Green"],
+      ["Red + blue","Magenta","Magenta + yellow","Red"],
+      ["Green + blue","Cyan","Cyan + magenta","Blue"],
+      ["Red + green + blue","White","Cyan + magenta + yellow","Black (all light absorbed)"],
+      ["Red, green and blue are the primary colours of light","—","Cyan, magenta and yellow are the primary pigments — often taught as blue, red and yellow","—"]
+    ]},
+    {k:"p", t:"A **filter** subtracts: a red filter transmits red and absorbs the rest, so a red filter over a green object shows black. The photographer's polarising filter cuts glare; the welder's dark glass cuts ultraviolet and infrared; the sunglasses cut the intensity; and the blue glass of a clinic's lamp cuts the yellow. The candidate who can say which colours are **transmitted**, which **absorbed** and which **reflected** answers every colour question in the paper."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State the laws of refraction** and define the refractive index in two ways — sin i ÷ sin r and c ÷ v",
+      "**Explain total internal reflection**, give its two conditions, and use sin C = 1 ÷ n",
+      "**Name two applications of total internal reflection**, usually the optical fibre and the prism",
+      "**Draw a ray diagram** for a convex lens and describe the image, or use 1/f = 1/u + 1/v with m = v ÷ u",
+      "**Express the power of a lens in dioptres**, remembering that f must be in metres and a concave lens is negative",
+      "**Distinguish myopia from hypermetropia** and name the correcting lens for each",
+      "**Explain dispersion and the rainbow**, and give the primary colours of light and of pigments"
+    ]}
   ],
 
   focus:[
@@ -2045,6 +3145,35 @@ var PH_CURRICULUM = [
     {q:"Given n = 1.5 and an angle of refraction of 30°, find sin i (and hence i).", steps:[
       "sin i = n × sin r", "1.5 × sin30° = 1.5 × 0.5"
     ], a:"sin i = 0.75, so i ≈ 49°"},
+    {q:"Light travels at 3 × 10⁸ m/s in air and 2 × 10⁸ m/s in a liquid. Find the refractive index of the liquid and its critical angle.", steps:[
+      "n = c ÷ v = 3 × 10⁸ ÷ 2 × 10⁸",
+      "sin C = 1 ÷ n = 1 ÷ 1.5"
+    ], a:"n = 1.5; C ≈ 41.8°, i.e. about 42°"},
+    {q:"A swimming pool appears to be 1.5 m deep when viewed from directly above. Find its real depth (n = 1.33).", steps:[
+      "n = real depth ÷ apparent depth",
+      "Real depth = 1.33 × 1.5"
+    ], a:"About 2.0 m — the pool is deeper than it looks"},
+    {q:"An object is placed 30 cm from a convex lens of focal length 20 cm. Find the image position, its nature and the magnification.", steps:[
+      "1/v = 1/f − 1/u = 1/20 − 1/30 = 1/60",
+      "v = 60 cm, positive, so the image is real",
+      "m = v ÷ u = 60 ÷ 30"
+    ], a:"60 cm on the far side; real, inverted and magnified twice — the projector arrangement"},
+    {q:"Find the power of a lens of focal length (a) 25 cm and (b) −50 cm.", steps:[
+      "P = 1 ÷ f with f in metres",
+      "(a) 1 ÷ 0.25; (b) 1 ÷ (−0.5)"
+    ], a:"(a) +4 D, a convex lens; (b) −2 D, a concave lens"},
+    {q:"An astronomical telescope has an objective of focal length 100 cm and an eyepiece of focal length 5 cm. Find its magnification and its length in normal adjustment.", steps:[
+      "Magnification = f_o ÷ f_e",
+      "Length = f_o + f_e"
+    ], a:"Magnification 20; length 105 cm"},
+    {q:"Find the critical angle for water (n = 1.33) and for diamond (n = 2.42), and say which sparkles more and why.", steps:[
+      "sin C = 1 ÷ n for each",
+      "Water: sin C = 0.752; diamond: sin C = 0.413"
+    ], a:"Water about 48.8°, diamond about 24.4°; the diamond's small critical angle traps light inside it by repeated total internal reflection, so it sparkles"},
+    {q:"A ray enters a glass block of refractive index 1.5 at an angle of incidence of 30°. Find the angle of refraction.", steps:[
+      "n = sin i ÷ sin r, so sin r = sin i ÷ n",
+      "sin r = 0.5 ÷ 1.5 = 0.333"
+    ], a:"r ≈ 19.5° — the ray bends toward the normal"}
   ],
   apply:[
     {q:"Why does a swimming pool appear shallower than it really is?", a:"Light from the bottom of the pool bends away from the normal as it leaves the water, so the eye traces it back to a higher apparent position, making the pool look shallower."},
@@ -2121,6 +3250,73 @@ var PH_CURRICULUM = [
       "Use the correct fuse rating — never bypass a fuse with wire.",
       "Earth metal-cased appliances; treat every wire as live until proved dead."
     ]},
+    {k:"rule"},
+    {k:"h3", t:"The Sources of Direct Current in Detail"},
+    {k:"table", head:["Source","Energy converted","Rechargeable?","Where it is used"], rows:[
+      ["Leclanché dry cell (1.5 V)","Chemical to electrical","No — a primary cell","Torches, radios, wall clocks, the school bell"],
+      ["Alkaline cell (1.5 V)","Chemical to electrical","No","Where a longer life is needed — the digital meter, the camera"],
+      ["Lead-acid accumulator (2 V per cell)","Chemical to electrical, and back again","Yes — a secondary cell","The vehicle battery, the solar home system, the clinic's back-up supply"],
+      ["Lithium-ion and nickel-cadmium cells","Chemical to electrical","Yes","Mobile phones, laptops, solar lanterns, the power tool"],
+      ["Fuel cell","Chemical energy of hydrogen (or methanol) and oxygen, continuously supplied","Not rechargeable — it is refuelled","Buses, remote stations, spacecraft; it makes electricity and water"],
+      ["Solar (photovoltaic) cell","Light to electrical","—","The panels on clinics and schools, the solar lantern, the phone-charging station"],
+      ["Dynamo or DC generator with a commutator","Mechanical to electrical","—","The bicycle lamp dynamo, the vehicle alternator with its rectifier, the power station"],
+      ["Thermocouple","Heat to electrical","—","Measuring a high temperature, the flame-failure device on a gas heater"]
+    ]},
+    {k:"p", t:"Cells joined in **series** add their e.m.f. — three 1.5 V cells give 4.5 V — and carry the **same current** through each, which is what a torch needs; joined in **parallel** the e.m.f. stays 1.5 V but the **capacity and the life** increase, since each cell supplies part of the current, which is what a bank of batteries for a solar system wants. Never join unequal cells in parallel: the stronger drives current backward through the weaker and wastes it as heat. A cell is **polarised** when bubbles of hydrogen collect on its electrode and raise its internal resistance; the dry cell avoids this with a **depolariser** (manganese dioxide), and the accumulator is designed to be charged again by passing a current through it in the reverse direction. Every real cell has an **internal resistance**, which is why its terminal voltage falls as the current drawn rises."},
+    {k:"h3", t:"Current, Charge and the Instruments"},
+    {k:"p", t:"**Current is the rate of flow of charge: I = Q/t**, so **Q = It**; one **ampere** is one coulomb per second. A current of 2 A flowing for 3 minutes carries Q = 2 × 180 = **360 C**, and a phone charger delivering 1 A for 2 h carries 7200 C. **Conventional current** is taken to flow from the positive terminal to the negative outside the source, while the **electrons** actually flow the other way; state which convention the diagram uses and be consistent. An **ammeter** is connected **in series** and has a very **low** resistance so that it does not change the current it is measuring; a **voltmeter** is connected **in parallel** across the component and has a very **high** resistance so that it draws almost no current; the **galvanometer** detects a tiny current and is the movement inside both, converted to an ammeter by a low-resistance **shunt** in parallel and to a voltmeter by a high-resistance **multiplier** in series; the **multimeter** combines them with an ohmmeter. The **effects of a current** are the ways it is detected and used: **heating** (the kettle, the iron, the fuse, the filament lamp), **magnetic** (the bell, the motor, the electromagnet, the relay), **chemical** (electroplating, electrolysing water, charging a battery), **lighting** (the LED, the fluorescent tube) and **physiological** (the shock, the defibrillator, the nerve impulse)."},
+    {k:"h3", t:"Resistance, Resistivity and Ohm's Law in Detail"},
+    {k:"table", head:["Material","Resistivity ρ (Ω m)","Why it is chosen"], rows:[
+      ["Silver","1.6 × 10⁻⁸","The best conductor, but too costly for wiring"],
+      ["Copper","1.7 × 10⁻⁸","Almost as good as silver, ductile and affordable — house wiring and cables"],
+      ["Aluminium","2.8 × 10⁻⁸","Light, so it is used for the long overhead lines"],
+      ["Iron and steel","1.0 × 10⁻⁷","Strong; used where strength matters more than loss"],
+      ["Carbon (graphite)","about 3.5 × 10⁻⁵","The electrode of a cell and the brush of a motor"],
+      ["Nichrome","1.1 × 10⁻⁶","High resistivity and a high melting point without oxidising — the heating element"],
+      ["Glass","10¹⁰ to 10¹⁴","An insulator — the supports of the overhead line"],
+      ["Rubber and plastics","about 10¹³","The sheath of a cable and the handle of a tool"]
+    ]},
+    {k:"p", t:"**Ohm's law:** at a constant temperature, the current through a metallic conductor is directly proportional to the potential difference across it, **V = IR**, so **R = V/I** in **ohms (Ω)**. Resistance depends on four things: it is **proportional to the length** (twice the wire, twice the resistance), **inversely proportional to the cross-sectional area** (twice the diameter, a quarter of the resistance, since A = πd²/4), it depends on the **material** through the **resistivity ρ**, and it depends on the **temperature** — rising for metals, falling for carbon, semiconductors and the thermistor. All four are combined in **R = ρL/A**, with ρ in Ω m: a copper wire 10 m long of cross-section 1 × 10⁻⁶ m² has R = (1.7 × 10⁻⁸ × 10) ÷ 10⁻⁶ = **0.17 Ω**. An **ohmic** conductor gives a straight line through the origin on an I–V graph; a **non-ohmic** one does not — the **filament lamp** curves over because the heating filament's resistance rises, the **semiconductor diode** conducts in one direction only and shows almost no current until about 0.6 V, and the **thermistor** passes more current as it warms. State the condition 'at constant temperature' whenever the law is quoted: it is a mark, and it is the reason the filament lamp's resistance measured cold differs from its resistance measured hot."},
+    {k:"h3", t:"Series and Parallel Circuits Worked"},
+    {k:"table", head:["Property","Series","Parallel"], rows:[
+      ["Current","The same everywhere","Divides between the branches; the sum of the branch currents equals the main current"],
+      ["Potential difference","Divided across the components in proportion to their resistances","The same across every branch"],
+      ["Total resistance","R = R₁ + R₂ + R₃ — always greater than the largest","1/R = 1/R₁ + 1/R₂ + 1/R₃ — always less than the smallest"],
+      ["Two equal resistors R","Give 2R","Give R ÷ 2"],
+      ["If one component fails","The whole circuit breaks","The other branches keep working"],
+      ["Adding more resistors","Increases the total resistance and reduces the current","Decreases the total resistance and increases the current from the source"],
+      ["Everyday use","A fuse, a switch and a lamp in one line; decorative lighting strings","House wiring, so every socket and lamp takes the full mains voltage"]
+    ]},
+    {k:"p", t:"**Worked through.** A 4 Ω and a 6 Ω resistor in parallel: R = (4 × 6) ÷ (4 + 6) = 24 ÷ 10 = **2.4 Ω**; across a 12 V battery the total current is 12 ÷ 2.4 = **5 A**, split as 12 ÷ 4 = **3 A** and 12 ÷ 6 = **2 A** — the smaller resistance taking the larger share. Add a 4 Ω resistor in series with that pair and the total becomes 2.4 + 4 = **6.4 Ω**, so 12 V drives 1.875 A, of which the parallel pair sees 12 − (1.875 × 4) = 4.5 V. The **potential divider** is the same idea used deliberately: two resistors in series share the supply voltage in proportion to their resistances, so 8 V across a 2 Ω and a 6 Ω pair gives 2 V and 6 V at their junction — the circuit behind the volume control, the sensor and the dimmer. A **rheostat** used as a variable resistor limits the current; used as a potential divider it supplies any voltage from zero to the full supply."},
+    {k:"h3", t:"EMF, Internal Resistance and Lost Volts"},
+    {k:"p", t:"The **electromotive force (e.m.f., E)** of a cell is the total energy it gives to each coulomb that passes through it; the **terminal potential difference (V)** is the energy each coulomb delivers to the external circuit; the difference is the **lost volts**, spent driving the current through the cell's own **internal resistance r**: **E = V + Ir**, so **V = E − Ir** and **E = I(R + r)**. A cell of e.m.f. 6 V and internal resistance 0.5 Ω driving a 2.5 Ω resistor gives I = 6 ÷ (2.5 + 0.5) = **2 A**, a terminal voltage of 6 − (2 × 0.5) = **5 V**, and **1 V** lost inside the cell. Measure r in the laboratory by varying R, reading V and I each time, and plotting **V against I**: the graph is a straight line whose **intercept on the V axis is E** and whose **gradient is −r**. This is why a car's headlights **dim** for a moment when the starter motor is switched on — the huge current it draws makes Ir large, so the terminal voltage collapses — and why a battery feels warm in use, and why the accumulator must be kept charged and its terminals clean. The maximum power a cell can deliver to an external resistor occurs when R = r, but the cell then wastes half its energy inside itself."},
+    {k:"h3", t:"Kirchhoff's Laws and How to Use Them"},
+    {k:"p", t:"**Kirchhoff's first (junction) law:** the total current flowing into a junction equals the total current flowing out of it — a statement of the **conservation of charge**, since charge cannot pile up at a point. If 2 A and 3 A enter a junction, 5 A must leave; if 5 A enters and 2 A leaves by one branch, 3 A leaves by the other. **Kirchhoff's second (loop) law:** around any closed loop of a circuit, the sum of the e.m.f.s equals the sum of the products of current and resistance — a statement of the **conservation of energy**, since each coulomb gains as much from the cells as it spends in the resistors. The method for a network: label a current in each branch with an assumed direction (a wrong guess simply returns a negative answer); apply the junction law at one point fewer than there are unknown currents; apply the loop law to as many independent loops as needed; solve the simultaneous equations. For a single loop, the two laws collapse into I = E ÷ (R + r) and Ohm's law is enough — which is most of the examination questions."},
+    {k:"h3", t:"Electrical Energy, Power and the Cost"},
+    {k:"p", t:"**Power** is the rate at which electrical energy is converted: **P = VI = I²R = V²/R**, in **watts**. **Energy** is E = Pt = VIt, in joules; but the supply company sells the **kilowatt-hour**, 1 kWh = 1000 W × 3600 s = **3.6 × 10⁶ J**, called one **unit**. Units used = power in kW × time in hours, and the cost = units × the tariff on the bill. An iron rated 1000 W at 240 V draws I = P ÷ V = **4.2 A** and its element has R = V² ÷ P = 57 600 ÷ 1000 = **57.6 Ω**; used 2 h a day for 30 days it consumes 1 × 60 = **60 units**, which at L$ 40 per unit costs **L$ 2 400** — more than most households spend on lighting in the same month, and the reason the iron and the kettle are the appliances worth switching off. Note that the same appliance on Liberia's 120 V circuits takes **twice the current** for the same power, so the wires and the fuse must be rated accordingly."},
+    {k:"table", head:["Appliance","Power","Current at 240 V","Current at 120 V","Fuse to fit"], rows:[
+      ["LED lamp","10 W","0.04 A","0.08 A","The smallest available — 3 A"],
+      ["Television","120 W","0.5 A","1.0 A","3 A"],
+      ["Fan","60 W","0.25 A","0.5 A","3 A"],
+      ["Refrigerator","200 W","0.8 A","1.7 A","3 A, allowing for the starting surge"],
+      ["Electric iron","1000 W","4.2 A","8.3 A","5 A"],
+      ["Kettle","2000 W","8.3 A","16.7 A","10 A"],
+      ["Water pump","3000 W","12.5 A","25 A","15 A, on its own circuit"],
+      ["Air conditioner","1500 W","6.3 A","12.5 A","10 A"]
+    ]},
+    {k:"p", t:"Choose the fuse just **above** the normal current of the appliance: too high and it will not melt before the cable does, too low and it blows in use. The fuse is a short length of thin wire of low melting point placed **in the live wire**, so that when it melts the appliance is disconnected from the high potential; it is a deliberate weak point, the cheapest part in the circuit and the one that saves the rest."},
+    {k:"h3", t:"Domestic Wiring and Electrical Safety"},
+    {k:"p", t:"The house receives three wires: the **live** (brown, at high potential, the dangerous one), the **neutral** (blue, at about earth potential, the return path) and the **earth** (green and yellow, the safety wire bonding every metal case to a rod in the ground). Every switch and every fuse goes in the **live** wire, so that switching off really does make the appliance safe; a switch in the neutral leaves the appliance live and waiting. The **three-pin plug** has the **earth pin longer**, so it opens the shutters of the socket and makes the earth connection first and breaks it last; the cable grip clamps the outer sheath, not the conductors; and the fuse sits in the live pin. Metal-cased appliances are **earthed** so that if a live wire touches the case a large current flows, the fuse blows and the case is never left live to the touch; plastic-cased appliances are **double insulated**, marked with the square-inside-square symbol, and need no earth. The **consumer unit** carries a fuse or a **miniature circuit breaker (MCB)** for each circuit — lighting, sockets, cooker, pump — so a fault in one does not darken the house, and a **residual-current device (RCD)** that trips on a leakage as small as 30 mA, fast enough to save a life. The **ring circuit** of the sockets uses thicker cable because it carries more current. Never overload one socket with adapters, never join a flex with tape, never touch a switch with wet hands (water lowers the body's resistance from about 100 000 Ω dry to a few thousand Ω wet, and the same 240 V then drives a hundred times the current through the chest), never leave a charging phone on a bed, and keep the generator outside and earthed. **If someone is being shocked:** switch off at the mains first; do not touch the victim while the current flows; if the supply cannot be cut, push the wire away with a dry wooden pole or a plastic chair; call for help; and begin resuscitation if the heart has stopped, since the current that caused the injury has already gone."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State Ohm's law with its condition** and define the ohm",
+      "**Combine resistors** in series and in parallel, and reduce a series–parallel network step by step",
+      "**Use E = I(R + r)** and explain the lost volts, or find E and r from a V–I graph",
+      "**State Kirchhoff's two laws** and say which conservation principle each expresses",
+      "**Calculate the cost of electricity** — convert watts to kilowatts and minutes to hours before multiplying",
+      "**Choose a fuse rating** from the appliance's power and voltage, and explain why the fuse is in the live wire",
+      "**Give safety rules** with the reason for each — the reason is where the marks are"
+    ]}
   ],
 
   focus:[
@@ -2227,6 +3423,41 @@ var PH_CURRICULUM = [
     {q:"At a price of L$ 40 per unit, find the cost of using 5 kWh.", steps:[
       "Cost = units × price", "5 × 40"
     ], a:"L$ 200"},
+    {q:"A copper wire is 10 m long and has a cross-sectional area of 1 × 10⁻⁶ m². Find its resistance (ρ = 1.7 × 10⁻⁸ Ω m).", steps:[
+      "R = ρL ÷ A",
+      "R = (1.7 × 10⁻⁸ × 10) ÷ 10⁻⁶"
+    ], a:"0.17 Ω"},
+    {q:"A 4 Ω and a 6 Ω resistor are connected in parallel across a 12 V battery. Find the combined resistance, the total current and the current in each resistor.", steps:[
+      "R = (4 × 6) ÷ (4 + 6)",
+      "I = V ÷ R = 12 ÷ 2.4",
+      "Branch currents: 12 ÷ 4 and 12 ÷ 6"
+    ], a:"2.4 Ω; 5 A in all; 3 A through the 4 Ω and 2 A through the 6 Ω"},
+    {q:"A cell of e.m.f. 6 V and internal resistance 0.5 Ω is connected to a 2.5 Ω resistor. Find the current, the terminal voltage and the lost volts.", steps:[
+      "I = E ÷ (R + r) = 6 ÷ 3.0",
+      "V = E − Ir = 6 − (2 × 0.5)",
+      "Lost volts = Ir"
+    ], a:"2 A; terminal voltage 5 V; lost volts 1 V"},
+    {q:"An electric iron is rated 1000 W, 240 V. Find the current it draws, the resistance of its element, and the cost of using it 2 h each day for 30 days at L$ 40 per unit.", steps:[
+      "I = P ÷ V = 1000 ÷ 240",
+      "R = V² ÷ P = 57 600 ÷ 1000",
+      "Units = 1 kW × 2 h × 30 days; cost = units × L$ 40"
+    ], a:"4.2 A; 57.6 Ω; 60 units, costing L$ 2 400"},
+    {q:"A 2 Ω and a 3 Ω resistor in parallel are joined in series with a 4 Ω resistor across a 26 V supply. Find the total resistance and the current.", steps:[
+      "Parallel pair: (2 × 3) ÷ (2 + 3) = 1.2 Ω",
+      "Total R = 1.2 + 4 = 5.2 Ω",
+      "I = 26 ÷ 5.2"
+    ], a:"5.2 Ω; 5 A"},
+    {q:"A current of 2 A flows for 3 minutes. Find the charge that passes a point in the circuit.", steps:[
+      "Q = It = 2 × 180"
+    ], a:"360 C"},
+    {q:"A kettle is rated 2000 W, 240 V. Find its current and choose the correct fuse from 3 A, 5 A, 10 A and 13 A.", steps:[
+      "I = P ÷ V = 2000 ÷ 240",
+      "Choose the smallest rating above the working current"
+    ], a:"8.3 A; the 10 A fuse"},
+    {q:"Two cells, each of e.m.f. 1.5 V and internal resistance 0.2 Ω, are joined in series and connected to a 6.6 Ω resistor. Find the current.", steps:[
+      "Total e.m.f. = 1.5 + 1.5 = 3.0 V; total internal resistance = 0.2 + 0.2 = 0.4 Ω",
+      "I = E ÷ (R + r) = 3.0 ÷ 7.0"
+    ], a:"About 0.43 A"}
   ],
   apply:[
     {q:"Why do long wires in a house use thick copper cables rather than thin ones?", a:"Thick copper cables have low resistance, so less energy is wasted as heat and the voltage drop along the wire is small."},
@@ -2292,6 +3523,56 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"The Transformer"},
     {k:"p", t:"The **transformer** changes AC voltage: AC in the **primary** coil drives an alternating flux through the soft-iron core, which induces an alternating e.m.f. in the **secondary** coil. The turns ratio governs it: **Vs/Vp = Ns/Np** — **step-up** transformers raise the voltage for the grid's long-distance wires (so the I²R line losses fall), and **step-down** transformers return it to 220 V for the house. Elaborate the principle and the function: a transformer works only on AC, and for an ideal transformer VpIp = VsIs."},
+    {k:"rule"},
+    {k:"h3", t:"Magnetic Materials and the Domain Theory"},
+    {k:"table", head:["Class of material","Behaviour in a field","Examples","Use"], rows:[
+      ["Ferromagnetic","Strongly attracted; can be made into permanent magnets","Iron, steel, nickel, cobalt and their alloys","Magnets, transformer cores, the recording medium, the crane's lifting face"],
+      ["Paramagnetic","Very weakly attracted","Aluminium, platinum, manganese, oxygen","Where magnetism must be negligible but the metal still needed"],
+      ["Diamagnetic","Very weakly repelled","Copper, zinc, bismuth, water, wood, most plastics","Wiring and cases that must not disturb a field"],
+      ["Non-magnetic (in ordinary use)","Shows no attraction","Brass, glass, paper, air","The frame of a compass, the case of a watch"]
+    ]},
+    {k:"p", t:"The **domain theory** explains what magnetising really does. Inside a ferromagnetic material are countless tiny regions, the **domains**, each already fully magnetised by the alignment of its atoms. In an unmagnetised bar the domains point in every direction and cancel; bringing a magnet near, or passing a current through a coil round the bar, makes the domains that already point the right way grow and the others turn, until at **saturation** they all point one way and the bar is a magnet. **Soft iron** lets its domains turn easily and slip back easily, so it magnetises strongly but loses its magnetism when the field is removed — the material of a **temporary magnet**, an electromagnet and a transformer core. **Steel**, an alloy of iron with carbon, holds its domains in place, so it is harder to magnetise and harder to demagnetise — the material of a **permanent magnet**. Heating a magnet above its **Curie temperature** (about 770 °C for iron), hammering it, or dropping it, scrambles the domains again and destroys the magnetism."},
+    {k:"h3", t:"Fields, Flux and Flux Density"},
+    {k:"p", t:"**Magnetic flux Φ** is the total field passing through an area, measured in **webers (Wb)**, and the **flux density B = Φ/A** is the flux per unit area at right angles to the field, measured in **teslas (T)**, one tesla being one weber per square metre. B is the strength used in F = BIL and in the definition of the motor effect. Field lines have four properties worth stating: they run from the **north pole to the south pole** outside the magnet (and continue inside it, so they are closed loops), they **never cross**, they are **closer together where the field is stronger**, and they behave as though under tension, pulling the magnet into line. Map them with **iron filings** on a card (tapped gently so the filings become tiny compasses) or by **plotting** with a small compass, marking the needle's position step by step. Two like poles side by side produce a **neutral point** between them, where the two fields cancel and a compass points nowhere in particular; a bar magnet with its north pointing geographic north produces neutral points on either side where its field cancels the Earth's. The **Earth's own field** is that of a giant magnet whose poles do not coincide with the geographic poles: the **angle of declination (variation)** is the angle between true north and magnetic north, and it must be read from the chart of the region before a compass bearing is used on a map; the **angle of dip (inclination)** is the angle the field makes with the horizontal, zero at the magnetic equator and 90° at the magnetic poles. The field extends into space as the **magnetosphere**, which deflects the charged particles of the solar wind and channels the few that enter to the poles, where they make the **aurora**."},
+    {k:"h3", t:"Magnetising and Demagnetising in Detail"},
+    {k:"num", items:[
+      "**Single-touch stroking:** lay the bar on the table, draw one pole of a strong magnet along it from one end to the other, **lift the magnet clear** and return to the start, and repeat twenty times in the same direction. The end where the stroking pole finishes becomes the **opposite** pole",
+      "**Divided touch:** stroke outward from the centre of the bar with two magnets at once, opposite poles trailing, and the two ends become opposite poles",
+      "**The electrical method:** place the bar inside a solenoid and pass a **strong direct current** for a few seconds. The pole at each end is found from the current's direction by the right-hand grip rule; this is the method used in industry, and it is how an electromagnet is made permanent in a loudspeaker",
+      "**Hammering** a steel bar held pointing north-south magnetises it weakly, because the Earth's field aligns the domains while the shock lets them move",
+      "**Demagnetising:** heat it red-hot and let it cool out of the field, hammer it while it lies east-west, or — the standard laboratory method — place it in a solenoid carrying **alternating current** and withdraw it slowly, so the domains are left pointing at random",
+      "**Care and storage:** store bar magnets in pairs north to south with **keepers** of soft iron across the ends, keep them away from heat and from other fields, and never drop them"
+    ]},
+    {k:"h3", t:"The Magnetic Effect of a Current — the Electromagnet"},
+    {k:"p", t:"Oersted found in 1820 that a compass needle swings when a current is switched on nearby: **every current produces a magnetic field**. Round a straight wire the field is a set of **concentric circles**, its direction given by the **right-hand grip rule** — grip the wire in the right hand with the thumb pointing along the current, and the fingers curl in the direction of the field. A circular coil concentrates the field through its centre; a **solenoid** — a long coil — produces a field exactly like a bar magnet's, with poles at its ends, named by the same rule (looking at one end, if the current appears to flow **anticlockwise** that end is a **north** pole). Winding the coil on a **soft iron core** multiplies the field many times: this is the **electromagnet**, whose strength grows with the **current**, the **number of turns** and the **quality of the core**, and which can be switched off — the one thing a permanent magnet cannot do."},
+    {k:"table", head:["Device","How the electromagnet is used"], rows:[
+      ["The electric bell","The current magnetises the coil, the armature is pulled and the hammer strikes; the movement breaks the contact, the magnetism dies, the spring returns the armature and the contact closes again — so the bell buzzes"],
+      ["The relay","A small current in the coil switches a much larger current in another circuit — the starter relay of a car, the street-light controller, the protection relay of a substation"],
+      ["The scrapyard crane","Lifts a tonne of iron with the current on and releases it by switching off, with no chains or hooks"],
+      ["The magnetic separator","Lifts iron out of crushed ore, grain or waste"],
+      ["The loudspeaker and the telephone receiver","A varying current in the voice coil moves it in a permanent field, and the cone makes the air vibrate"],
+      ["The magnetic recorder","A signal current magnetises a moving tape or disc in a pattern that can be read back"],
+      ["The circuit breaker and the trip coil","A current above the rating magnetises the coil strongly enough to release the catch"],
+      ["The hospital MRI scanner","A very strong field aligns the nuclei of the body's water so that a picture of the soft tissue can be made"]
+    ]},
+    {k:"h3", t:"The Motor Effect in Detail"},
+    {k:"p", t:"A conductor carrying a current and lying **across** a magnetic field experiences a **force**, because the field of the current and the field of the magnet add on one side and cancel on the other, pushing the conductor toward the weak side. Its size is **F = BIL** when the conductor is at right angles to the field (and F = BIL sin θ in general), and its direction is given by **Fleming's left-hand rule** — the First finger points along the Field (north to south), the seCond finger along the Current, and the thuMb gives the Motion. A wire 0.2 m long carrying 4 A in a field of 0.5 T feels F = 0.5 × 4 × 0.2 = **0.4 N**. The force grows with the field, the current and the length of wire in the field, and vanishes when the wire lies **along** the field. The **DC motor** turns this into rotation: a rectangular coil lies between curved pole pieces that make the field **radial**, so the turning effect stays at its greatest throughout the turn; a **split-ring commutator** reverses the current in the coil every half turn, which keeps the two sides being pushed in the same rotational sense; **carbon brushes** carry the current to the spinning rings; and a soft iron core inside the coil strengthens the field. Make it turn faster or harder by increasing the current, adding turns, using a stronger magnet or a better core. The **AC (induction) motor** has no commutator or brushes at all: a rotating magnetic field in the stator induces currents in the rotor, and those currents are dragged round — simple, rugged and cheap, which is why it drives the fan, the pump, the blender, the lift and the electric vehicle. Note the pair: the **motor** converts electrical energy to mechanical; the **generator** does the reverse and is built almost identically, differing only in what is supplied and what is taken."},
+    {k:"h3", t:"The Moving-Coil Galvanometer"},
+    {k:"p", t:"A coil of fine wire is suspended in a **radial** magnetic field between the poles of a permanent magnet, held by a hairspring, with a pointer over a scale. When a current passes, the motor effect turns the coil until the spring's restoring couple balances it, so the **deflection is proportional to the current** — and the radial field keeps the scale even. The galvanometer is the movement inside the ordinary meters: a **low-resistance shunt** in parallel with it converts it into an **ammeter** (most of the current bypasses the delicate coil), and a **high-resistance multiplier** in series converts it into a **voltmeter** (most of the voltage drops across the multiplier). A **moving-iron** instrument works on the magnetisation of iron rather than on a coil in a field, and so reads alternating current as well as direct. The **digital multimeter** replaces the movement with electronics and reads voltage, current and resistance with one dial."},
+    {k:"h3", t:"Electromagnetic Induction in Detail"},
+    {k:"p", t:"**Electromagnetic induction** is the production of an e.m.f. in a circuit when the magnetic flux linking it changes. **Faraday's law:** the magnitude of the induced e.m.f. is proportional to the rate of change of flux linkage. **Lenz's law:** the induced current flows in such a direction that its magnetic effect **opposes** the change that produced it — the law of conservation of energy in disguise, since the energy of the induced current must come from the work done against that opposition. Lenz's law is why it feels hard to push a magnet into a coil and hard to pull it out, and why a strong magnet dropped down a copper tube falls slowly, braking itself with the currents it induces. **Fleming's right-hand (dynamo) rule** gives the direction of the induced current: thuMb Motion, First finger Field, seCond finger induced Current. The induced e.m.f. is increased by a **stronger field**, **more turns**, **faster relative motion**, a **larger area** of coil and a **soft iron core**. The **AC generator (alternator)** rotates a coil in a field and takes the current out through **slip rings** and brushes, giving a sinusoidal e.m.f. that is greatest when the sides of the coil cut the field lines at right angles and zero when they move along them, with one complete cycle per revolution — spin it 60 times a second and the output is 60 Hz. The **DC generator** replaces the slip rings with a **split-ring commutator**, which reverses the connections every half turn and delivers a pulsing but one-way current; smooth it with many coils and it becomes steady. **Self-induction** is the e.m.f. induced in a coil by the change of its own current — the spark at the switch when a coil circuit is broken, and the choke that starts a fluorescent tube. **Mutual induction** is the e.m.f. induced in a second coil by the changing current in the first — the transformer and the induction coil. **Eddy currents** are loops of induced current swirling in a solid block of metal: they heat it (the induction cooker, the furnace) and brake it (the eddy-current brake of a train and a weighing balance), and they waste energy in a transformer, which is why its core is **laminated** — insulated slices across the path of the currents. Induction also drives the **metal detector**, the **card reader**, the **wireless phone charger**, the **electric guitar's pickup** and the **bicycle dynamo**."},
+    {k:"h3", t:"The Transformer in Detail"},
+    {k:"p", t:"A **transformer** is two coils wound on a **laminated soft-iron core**. Alternating current in the **primary** sets up a flux that changes continuously; the core carries that changing flux through the **secondary**, where it induces an alternating e.m.f. For an ideal transformer, one that loses nothing, **Eₛ ÷ Eₚ = Nₛ ÷ Nₚ = Iₚ ÷ Iₛ**. More turns on the secondary than the primary makes a **step-up** transformer; fewer makes a **step-down**. The transformer **cannot work on direct current**, because a steady current gives a steady flux and a steady flux induces nothing — which is precisely why the national grid is alternating. Real transformers lose energy four ways: **heat in the windings** (I²R, reduced with thicker copper), **eddy currents in the core** (reduced by laminating), **hysteresis** — the energy spent turning the domains over and over (reduced by using soft iron or a silicon steel), and **flux leakage** (reduced by winding the secondary over the primary on a closed core); a large power transformer still reaches 98 or 99 % efficiency. The **grid** uses all of this: the generator at Mount Coffee produces at about 11 kV; a step-up transformer raises it to 132 or 225 kV for transmission — the CLSG line that links Côte d'Ivoire, Liberia, Sierra Leone and Guinea runs at 225 kV — because for a given power P = VI, a hundred times the voltage means a hundredth of the current, and the loss in the cables is I²R, so the loss falls ten-thousandfold; substations step it down through 33 kV and 11 kV to the 120/240 V of the home, and the little transformer in a phone charger steps it down again to 5 V of direct current. A 240 V primary of 400 turns with a secondary of 40 turns gives 240 × 40 ÷ 400 = **24 V**; stepping 33 000 V down to 240 V with 160 secondary turns needs 160 × 33 000 ÷ 240 = **22 000 turns** on the primary."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State the law of magnetic poles**, describe how a magnet may be made and destroyed, and explain the domain theory",
+      "**Sketch the field** of a bar magnet, of two poles and of a current-carrying wire, and name the rule used for the direction",
+      "**Distinguish a motor from a generator**, and state Fleming's left-hand and right-hand rules with what each is for",
+      "**Use F = BIL** and say when it applies",
+      "**State Faraday's and Lenz's laws** and explain one demonstration of each",
+      "**Use Eₛ ÷ Eₚ = Nₛ ÷ Nₚ = Iₚ ÷ Iₛ**, and explain why the grid transmits at high voltage",
+      "**Give two losses in a transformer** and the remedy for each"
+    ]}
   ],
 
   focus:[
@@ -2402,6 +3683,30 @@ var PH_CURRICULUM = [
     {q:"A wire carrying 2 A lies at right angles to a magnetic field of flux density 0.5 T over 0.1 m of its length. Find the force on it.", steps:[
       "F = BIL", "0.5 × 2 × 0.1"
     ], a:"0.1 N"},
+    {q:"A transformer has 800 turns on the primary and 40 on the secondary and is connected to a 240 V supply. Find the secondary voltage and the secondary current if the primary takes 0.5 A, assuming 100 % efficiency.", steps:[
+      "Eₛ = Eₚ × Nₛ ÷ Nₚ = 240 × 40 ÷ 800",
+      "Iₛ = Iₚ × Nₚ ÷ Nₛ = 0.5 × 800 ÷ 40"
+    ], a:"12 V; 10 A — a step-down transformer that multiplies the current"},
+    {q:"A conductor 0.25 m long carrying 3 A lies at right angles to a magnetic field of flux density 0.4 T. Find the force on it.", steps:[
+      "F = BIL = 0.4 × 3 × 0.25"
+    ], a:"0.3 N, in the direction given by Fleming's left-hand rule"},
+    {q:"A transformer steps 240 V down to 12 V. Its primary takes 0.5 A while its secondary supplies 8 A. Find its efficiency.", steps:[
+      "Input power = 240 × 0.5",
+      "Output power = 12 × 8",
+      "Efficiency = (output ÷ input) × 100 %"
+    ], a:"Input 120 W, output 96 W, so 80 % efficient"},
+    {q:"A step-down transformer changes 33 000 V to 240 V. If the secondary has 160 turns, find the number of turns on the primary.", steps:[
+      "Nₚ = Nₛ × Eₚ ÷ Eₛ = 160 × 33 000 ÷ 240"
+    ], a:"22 000 turns"},
+    {q:"A magnetic flux of 4 × 10⁻³ Wb passes at right angles through an area of 0.02 m². Find the flux density.", steps:[
+      "B = Φ ÷ A = 4 × 10⁻³ ÷ 0.02"
+    ], a:"0.2 T"},
+    {q:"State four ways of increasing the e.m.f. induced in a coil by a moving magnet.", steps:[
+      "Move the magnet faster",
+      "Use a stronger magnet",
+      "Increase the number of turns on the coil",
+      "Insert a soft iron core into the coil"
+    ], a:"Faster motion, a stronger field, more turns and a soft iron core — each raises the rate of change of flux linkage"}
   ],
   apply:[
     {q:"Why does a magnet lose its magnetism when it is hammered or dropped?", a:"Dropping or hammering jolts the magnetic domains out of alignment, so the material becomes demagnetised."},
@@ -2459,6 +3764,65 @@ var PH_CURRICULUM = [
     {k:"h3", t:"Basic Electronics — Semiconductors"},
     {k:"p", t:"A **semiconductor** conducts between conductor and insulator — silicon and germanium. **Doping** adds trace impurities: donor atoms (with extra electrons) give **n-type**, acceptor atoms (leaving electron 'holes') give **p-type**; undoped material is **intrinsic**, doped **extrinsic**, and **band theory** explains their conductance rising with temperature — unlike a metal's. The **semiconductor devices:** the **diode** (conducts one way — rectifying AC to DC), the **thermistor** (resistance falling as it warms — the thermometer of circuits) and the **transistor** (the current amplifier and switch that makes modern electronics possible). Analyze their functions in a simple circuit."},
     {k:"rule"},
+    {k:"h3", t:"The AC Waveform in Detail"},
+    {k:"p", t:"An alternating current does not merely reverse; it follows a smooth **sine wave**. Starting at zero it rises to its **peak** value V₀, falls back through zero to the peak in the opposite direction, and returns to zero — one **cycle** — and it does this fifty or sixty times a second. The **period T** is the time of one cycle and **f = 1/T**; on Liberia's LEC network the supply is 120/240 V at **60 Hz**, so T = 1/60 ≈ **0.017 s**, while most of West Africa and Europe run at 220-240 V and **50 Hz** (T = 0.02 s). The peak voltage is not what the label quotes: what is quoted is the **r.m.s. (root-mean-square) value**, the steady direct voltage that would produce the **same heating effect** in the same resistor, and for a sine wave **V_rms = V₀ ÷ √2 = 0.707 V₀**, with the same relation for the current. A 240 V supply therefore reaches 240 × 1.41 ≈ **340 V** twice in every cycle, which is why insulation and switches are rated for the peak and not for the label, and why a shock from the mains is worse than its quoted voltage suggests. The r.m.s. value is what an AC meter reads and what is used in P = VI. Mains frequency also keeps time: an electric clock counts the cycles, so a 60 Hz clock run on a 50 Hz supply loses a sixth of an hour every hour — a detail that matters to anyone importing an appliance."},
+    {k:"h3", t:"Alternating Current against Direct Current"},
+    {k:"table", head:["Feature","Direct current (DC)","Alternating current (AC)"], rows:[
+      ["Direction of flow","One way only","Reverses many times a second"],
+      ["Source","Cell, battery, solar panel, a dynamo with a commutator","An alternator, the mains supply"],
+      ["Graph against time","A straight line","A sine wave about zero"],
+      ["Can its voltage be changed easily?","No — not without electronics","Yes — with a transformer, which is the decisive advantage"],
+      ["Long-distance transmission","Poor at low voltage","Excellent: stepped up to cut the current and the I²R loss"],
+      ["Chemical effects","Electroplating, electrolysing, charging a battery — DC is essential","No net chemical effect"],
+      ["Motors","The DC motor, with a commutator and brushes","The induction motor, with no brushes — simpler and tougher"],
+      ["Electronics","Every circuit inside needs DC","Rectified to DC at the charger or the power supply"],
+      ["Danger","Both are lethal; AC of the same r.m.s. voltage is more likely to make the muscles clasp and to disturb the heart"]
+    ]},
+    {k:"h3", t:"Electrical Measuring Instruments"},
+    {k:"table", head:["Instrument","What it measures","How it is connected","Its resistance"], rows:[
+      ["Ammeter","Current, in amperes","In series with the component","Very low, so it does not reduce the current"],
+      ["Voltmeter","Potential difference, in volts","In parallel across the component","Very high, so it draws almost no current"],
+      ["Galvanometer","A very small current, and its direction","In series, often as the null detector in a bridge","Low to moderate"],
+      ["Ohmmeter and multimeter","Resistance; and voltage, current and resistance in one","Across the component, with the supply switched off","Internal battery supplies a small current"],
+      ["Wattmeter","Power","Current coil in series, voltage coil in parallel","—"],
+      ["Energy meter","Energy in kilowatt-hours — the LEC meter on the wall","In the supply line","Very low"],
+      ["Cathode-ray oscilloscope","A waveform: its peak voltage, its period and its shape","The signal to the Y input","Very high at the input"],
+      ["Clamp meter","Current without breaking the circuit","Round the conductor","—"]
+    ]},
+    {k:"h3", t:"The Cathode-Ray Oscilloscope"},
+    {k:"p", t:"Inside the evacuated glass tube an **electron gun** — a heater, a cathode, a control grid and accelerating anodes — fires a narrow beam of electrons at a **fluorescent screen**. Two pairs of plates steer it: the **Y plates** carry the signal to be examined, and the **X plates** carry a **time base** voltage that sweeps the beam steadily from left to right, so the picture unfolds in time. Read the trace from the two controls: with the **Y-gain** at 2 V/div, a wave reaching 3 divisions above the centre line has a **peak voltage of 6 V** (12 V peak to peak); with the **time base** at 5 ms/div, one complete cycle spanning 4 divisions has a **period of 20 ms** and a **frequency of 50 Hz**. A DC supply gives a flat line displaced from the centre; an AC supply gives a sine wave; the output of a rectifier gives a series of humps; a microphone gives an irregular trace. Because it draws almost no current and responds in microseconds, the oscilloscope is the physicist's window into a circuit — the modern digital version stores the trace, measures it and prints it."},
+    {k:"h3", t:"Resistance, Reactance, Impedance and Resonance"},
+    {k:"p", t:"In an AC circuit a **resistor** behaves as in DC, with the voltage and the current **in phase**. A **capacitor** charges and discharges every half cycle, so an alternating current appears to pass while a steady one cannot: the current **leads** the voltage by 90°, and the opposition it offers is the **capacitive reactance X_C = 1 ÷ (2πfC)**, which is large at low frequency and falls as the frequency rises — a capacitor passes the high notes and blocks the low, which is how it couples one amplifier stage to the next and smooths a rectified supply. An **inductor (coil)** opposes any change of current, so the current **lags** the voltage by 90°, and its **inductive reactance X_L = 2πfL** rises with frequency — the coil passes DC and chokes the high frequencies, which is how the choke smooths a supply and protects against surges. Together with the resistance they give the **impedance** of the circuit, **Z = √(R² + (X_L − X_C)²)**, and Ohm's law for AC becomes **V = IZ**, with the real power **P = V_rms I_rms cos φ**, where cos φ is the **power factor**. When X_L equals X_C the two cancel, Z falls to its smallest value R, the current reaches its greatest, and the circuit is in **resonance** at **f₀ = 1 ÷ (2π√(LC))**. A 0.5 H coil at 50 Hz has X_L = 2π × 50 × 0.5 = **157 Ω**; a 10 µF capacitor at the same frequency has X_C = 1 ÷ (2π × 50 × 10⁻⁵) = **318 Ω**; and a circuit with L = 0.1 H and C = 10 µF resonates at 1 ÷ (2π × 10⁻³) = **159 Hz**. Resonance is exactly how the radio selects one station: turning the tuning knob changes C until f₀ equals the frequency of the wanted transmitter, and that station's tiny signal produces a large response while all the others are rejected."},
+    {k:"h3", t:"Producing Electricity for Liberia in Detail"},
+    {k:"p", t:"Follow the chain from the river to the socket. At the **Mount Coffee hydroelectric plant** on the St. Paul River the reservoir holds water high; released down the **penstock**, its potential energy becomes kinetic energy; the water turns the **turbine**; the turbine turns the **alternator**, where a rotating magnetic field induces an alternating e.m.f. in the stator windings (electromagnetic induction); a **step-up transformer** raises the voltage for transmission; the lines carry it to the **substation**, where it is stepped down again; the **distribution** network takes it through the town; the **meter** on the wall counts the kilowatt-hours; and the house's consumer unit divides it between the lighting circuit and the socket circuits. Liberia's supply also comes from **heavy fuel oil and diesel plants**, from **solar mini-grids and home systems** in the counties, from small **hydro** schemes, and from the **CLSG interconnection** — the 225 kV line linking Côte d'Ivoire, Liberia, Sierra Leone and Guinea, which imports power when the river is low and exports it when the rains fill the reservoir. The reasons a lamp goes out are worth knowing: generation short of demand, a fault on a line, an overloaded transformer, an unpaid bill, or a fault inside the house. What the learner can control is the demand side: **LED lamps** instead of filament (a tenth of the power for the same light), switching off what is not in use, ironing and pumping in one session rather than ten, a **solar water heater** instead of an electric one, and appliances bought for the right voltage and frequency."},
+    {k:"h3", t:"Semiconductors, Doping and Band Theory"},
+    {k:"p", t:"Materials are classified by their **energy bands**: in a **conductor** the valence band and the conduction band overlap, so electrons move freely; in an **insulator** the gap between them is very large, so almost no electron can cross; in a **semiconductor** the gap is small enough that heat or light lifts a few electrons across, leaving behind a positively charged vacancy called a **hole**. Pure — **intrinsic** — silicon has four valence electrons bonded to four neighbours; at room temperature a few bonds break, giving equal numbers of free electrons and holes, and its conductivity **rises with temperature** and with light, which is the opposite of a metal. **Doping** deliberately adds about one impurity atom in a million: a **pentavalent** atom such as arsenic, phosphorus or antimony brings a fifth electron that is easily freed, giving **n-type** material whose majority carriers are electrons; a **trivalent** atom such as boron, gallium or indium leaves a vacancy, giving **p-type** material whose majority carriers are holes. Both still carry the other kind of carrier as a minority, and both remain electrically neutral as a whole."},
+    {k:"h3", t:"The p–n Junction Diode and Rectification"},
+    {k:"p", t:"Where p-type and n-type meet, electrons cross into the p-side and fill holes, leaving a thin **depletion layer** of fixed ions that acts as a barrier. Connect the p-side to the **positive** of a supply and the n-side to the negative — **forward bias** — and the barrier narrows: once the applied voltage exceeds about **0.6 V for silicon** (0.3 V for germanium) current flows freely. Reverse the connections — **reverse bias** — and the layer widens, so almost no current flows until the breakdown voltage is reached. The **diode** is therefore a one-way valve, and it is the basis of **rectification**: converting alternating current to direct. **Half-wave rectification** uses a single diode and passes only one half of each cycle, giving a pulsing output; **full-wave rectification** uses four diodes in a **bridge** (or two with a centre-tapped transformer) and passes both halves, each redirected the same way. A **smoothing capacitor** across the output charges to the peak and discharges slowly between the pulses, filling the gaps, and a **regulator** holds the result steady — that little chain is the whole of the charger that fills a phone from a Monrovia socket. The **light-emitting diode (LED)** emits light when electrons recombine with holes, and does it so efficiently that it has replaced the filament lamp across the country; the **Zener diode** works in reverse breakdown to hold a fixed voltage; the **photodiode** and the **solar cell** run the junction the other way, letting light create the carriers that drive a current."},
+    {k:"h3", t:"The Transistor, the Integrated Circuit and the Sensors"},
+    {k:"table", head:["Device","What it does","Where it is used"], rows:[
+      ["Diode","Passes current one way only","Rectifiers, protection against reversed polarity, indicator lamps"],
+      ["LED","Emits light when forward biased","Lamps, torches, indicator lights, the television screen"],
+      ["Zener diode","Holds a steady voltage in reverse breakdown","Voltage references, the regulator of a power supply"],
+      ["Bipolar transistor (NPN or PNP)","A small base current controls a much larger collector current","Amplifiers in the radio and the hearing aid, switches driving a relay or an LED"],
+      ["Field-effect transistor (FET)","A voltage on the gate controls the current, drawing almost no input current","The input stage of instruments, the memory cell, power switching"],
+      ["Thermistor (NTC)","Its resistance falls as the temperature rises","Thermostats, fire alarms, the temperature probe of a vaccine refrigerator"],
+      ["LDR","Its resistance falls in bright light","The automatic street lamp, the camera's light meter, the burglar alarm"],
+      ["Solar cell","A large-area photodiode that converts light to electricity","The panels on clinics and schools, the solar lantern, the phone-charging kiosk"],
+      ["Integrated circuit","Millions of transistors on one chip","The phone's processor, the memory, the solar charge controller, the inverter's control"]
+    ]},
+    {k:"p", t:"The **bipolar transistor** has three terminals — the **emitter**, the **base** and the **collector**. A small current into the base controls a far larger current from collector to emitter, so the device **amplifies** (the weak signal from a radio aerial becomes sound) and **switches** (a few milliamps from a sensor turn on a relay that starts a pump). Switched on and off millions of times a second in patterns, transistors store and process information — the **integrated circuit** — which is what makes the mobile phone, the solar charge controller, the digital multimeter and the hospital monitor possible in a country with no component factory. Around them sit the passive parts: **resistors** to set currents and divide voltages, **capacitors** to smooth and time, **inductors** to choke and to tune. The **inverter** of a solar home system is the clearest example of the whole subject working together: the panel gives DC, the controller regulates it with transistors, the battery stores it, and the inverter switches it on and off sixty times a second through a transformer to make the 120 V AC that runs the fan."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Distinguish peak from r.m.s. values** and use V_rms = V₀ ÷ √2",
+      "**Compare AC with DC** in a table, giving the transformer as the decisive advantage of AC",
+      "**Name an instrument** for each quantity and say how it is connected and what resistance it should have",
+      "**Distinguish resistance from reactance and impedance**, and use Z = √(R² + (X_L − X_C)²)",
+      "**Explain resonance** and its use in tuning a radio",
+      "**Read a CRO trace** — peak voltage from the Y-gain and divisions, period from the time base, frequency from the period",
+      "**Explain doping**, n-type and p-type, the p–n junction and forward and reverse bias",
+      "**Describe half-wave and full-wave rectification** with smoothing, and state two uses of the transistor"
+    ]}
   ],
 
   focus:[
@@ -2565,6 +3929,36 @@ var PH_CURRICULUM = [
     {q:"An AC supply has a frequency of 50 Hz. Find its period.", steps:[
       "T = 1 ÷ f", "1 ÷ 50"
     ], a:"0.02 s"},
+    {q:"An AC supply has a peak voltage of 340 V. Find its r.m.s. value, and the peak current if the r.m.s. current is 5 A.", steps:[
+      "V_rms = V₀ ÷ √2 = 340 ÷ 1.414",
+      "I₀ = I_rms × √2 = 5 × 1.414"
+    ], a:"About 240 V r.m.s.; about 7.1 A peak"},
+    {q:"Find the reactance of (a) a 0.5 H inductor and (b) a 10 µF capacitor at 50 Hz.", steps:[
+      "X_L = 2πfL = 2 × 3.14 × 50 × 0.5",
+      "X_C = 1 ÷ (2πfC) = 1 ÷ (2 × 3.14 × 50 × 10⁻⁵)"
+    ], a:"About 157 Ω inductive; about 318 Ω capacitive"},
+    {q:"Find the resonant frequency of a circuit containing a 0.1 H inductor and a 10 µF capacitor.", steps:[
+      "f₀ = 1 ÷ (2π√(LC))",
+      "LC = 0.1 × 10⁻⁵ = 10⁻⁶, so √(LC) = 10⁻³",
+      "f₀ = 1 ÷ (2π × 10⁻³)"
+    ], a:"About 159 Hz"},
+    {q:"A CRO trace reaches 3 divisions above the centre line with the Y-gain at 2 V/div, and one complete cycle spans 4 divisions with the time base at 5 ms/div. Find the peak voltage, the period and the frequency.", steps:[
+      "Peak voltage = 3 × 2",
+      "Period T = 4 × 5 ms",
+      "f = 1 ÷ T"
+    ], a:"6 V peak (12 V peak to peak); T = 20 ms; f = 50 Hz"},
+    {q:"An AC circuit takes 2 A r.m.s. at 240 V with a power factor of 0.8. Find the real power consumed.", steps:[
+      "P = V_rms × I_rms × cos φ",
+      "P = 240 × 2 × 0.8"
+    ], a:"384 W"},
+    {q:"A coil has a resistance of 30 Ω and an inductive reactance of 40 Ω. Find its impedance and the current it takes from a 240 V supply.", steps:[
+      "Z = √(R² + X_L²) = √(900 + 1600)",
+      "I = V ÷ Z = 240 ÷ 50"
+    ], a:"50 Ω; 4.8 A"},
+    {q:"The LEC supply is 60 Hz. Find the period of one cycle, and state what would happen to a 50 Hz electric clock run from it.", steps:[
+      "T = 1 ÷ f = 1 ÷ 60",
+      "A cycle-counting clock runs fast when the frequency is higher than it was built for"
+    ], a:"T ≈ 0.017 s; the clock gains one second in every five, running a fifth fast"}
   ],
   apply:[
     {q:"Why are the sockets in a house wired in a ring circuit rather than many separate long cables?", a:"A ring circuit uses two paths back to the consumer unit, so thinner cables can be used and each socket still carries its share of current safely and cheaply."},
@@ -2616,6 +4010,79 @@ var PH_CURRICULUM = [
     {k:"h3", t:"Fission and Fusion — the Uses of Nuclear Energy"},
     {k:"p", t:"Distinguish the types of nuclear reactions: **fission** — a heavy nucleus (uranium-235) splits when it swallows a neutron, releasing energy and more neutrons that sustain a **chain reaction**; controlled, it runs nuclear power stations; uncontrolled, the atomic bomb. **Fusion** — light nuclei (hydrogen's) joining to helium at star-temperatures — powers the sun and promises clean energy, tamed nowhere yet. Mass becomes energy by Einstein's **E = mc²**."},
     {k:"rule"},
+    {k:"h3", t:"The Atom in Detail — the Models and the Evidence for Them"},
+    {k:"table", head:["Scientist and year","The model","What it explained","Where it failed"], rows:[
+      ["Dalton, 1803","The atom is a tiny indivisible sphere; atoms of one element are identical","The laws of chemical combination and the conservation of mass","The discovery of the electron, the proton and isotopes"],
+      ["J. J. Thomson, 1897","The plum-pudding atom: electrons embedded in a sphere of positive charge","The neutrality of matter and the existence of the electron, which he found in cathode rays","Rutherford's scattering experiment showed the positive charge is concentrated, not spread"],
+      ["Rutherford, 1911","A tiny dense positively charged nucleus with electrons moving round it, mostly empty space","Why most alpha particles passed straight through gold foil, why a few were deflected and why about one in twenty thousand bounced back","A circling electron should radiate energy and spiral into the nucleus, and the spectrum should be continuous — it is not"],
+      ["Bohr, 1913","Electrons occupy fixed energy levels (shells) and jump between them, absorbing or emitting a photon of energy hf = E₂ − E₁","The line spectrum of hydrogen and the stability of the atom","The spectra of atoms with more than one electron"],
+      ["Quantum mechanics, 1926 onward","Electrons are described by wave functions; an orbital is a region of probability, not a path","The whole of chemistry, the periodic table and the behaviour of solids","It gives probabilities, not certainties — which is what the uncertainty principle says nature is"]
+    ]},
+    {k:"table", head:["Particle","Relative mass","Mass in kilograms","Charge","Where it is"], rows:[
+      ["Proton","1","1.67 × 10⁻²⁷ kg","+1 (1.6 × 10⁻¹⁹ C)","In the nucleus"],
+      ["Neutron","1","1.67 × 10⁻²⁷ kg","0","In the nucleus"],
+      ["Electron","1/1836","9.11 × 10⁻³¹ kg","−1 (1.6 × 10⁻¹⁹ C)","In the shells around the nucleus"]
+    ]},
+    {k:"p", t:"Almost all the mass of an atom is in its nucleus, which is about 10⁻¹⁵ m across while the atom itself is about 10⁻¹⁰ m — a ratio of a hundred thousand. The **atomic number Z** counts the protons and therefore defines the element; the **mass number A** counts protons and neutrons together; and a neutral atom carries Z electrons. In nuclide notation the mass number is written above the atomic number, both to the left of the element symbol, so uranium-238 is ²³⁸₉₂U, with **92 protons, 92 electrons and 146 neutrons**; sodium-23 is ²³₁₁Na with 11 protons, 12 neutrons and 11 electrons, and the sodium ion Na⁺ has lost one electron and so has 10. The number of neutrons is always **A − Z** — the first thing to write in any nuclear question."},
+    {k:"h3", t:"Isotopes and Relative Atomic Mass"},
+    {k:"p", t:"**Isotopes** are atoms of the same element with the same number of protons but different numbers of neutrons — the same Z, a different A. They behave identically in chemistry (the electrons are the same) but differ in mass and, sometimes, in stability: hydrogen has **protium** ¹H, **deuterium** ²H and the radioactive **tritium** ³H; carbon has ¹²C, ¹³C and the radioactive ¹⁴C used in dating; chlorine has ³⁵Cl (75 %) and ³⁷Cl (25 %); uranium has the fissile ²³⁵U (0.7 % of natural uranium) and ²³⁸U. The **relative atomic mass** is the weighted average of the isotopes, which is why chlorine's is (35 × 0.75) + (37 × 0.25) = **35.5** and not a whole number — and why the mass spectrometer, which separates ions by their mass-to-charge ratio, is the instrument that measures it. Isotopes of the same element are chemically alike, so a radioactive isotope can be used as a **tracer** to follow an element through a plant, a body or a pipe without changing its behaviour."},
+    {k:"h3", t:"The Electron and its Properties"},
+    {k:"p", t:"The electron carries a charge of **−1.6 × 10⁻¹⁹ C** — the smallest free charge in nature, measured by Millikan's oil-drop experiment — and a mass of **9.11 × 10⁻³¹ kg**, about 1/1836 of the proton's, so its motion is easily changed by a field. Thomson identified it in 1897 as the particle of the **cathode rays**, and the properties of those rays are the properties of a stream of fast electrons: they travel in **straight lines** (casting a sharp shadow of a cross placed in their path), they carry **energy and momentum** (a small paddle wheel is turned along the tube), they are deflected by **electric and magnetic fields** in the direction that proves a **negative** charge, they produce **fluorescence** on a zinc sulfide screen, they **ionise** the gas they pass through, they travel in a **vacuum**, and when they are stopped suddenly by a heavy metal they produce **X-rays**. **Thermionic emission** is the boiling off of electrons from a heated cathode — the source of the beam in the cathode-ray oscilloscope, in the old radio valve and in the X-ray tube, where the electrons are accelerated by tens of thousands of volts onto a tungsten target. The same emission, controlled by a grid, is what made amplification possible and so made broadcasting possible."},
+    {k:"h3", t:"Radioactivity in Detail — the Three Radiations Compared"},
+    {k:"table", head:["Property","Alpha particle α","Beta particle β","Gamma ray γ"], rows:[
+      ["What it is","A helium nucleus, ⁴₂He","A fast electron emitted from the nucleus, ⁰₋₁e","An electromagnetic wave of very short wavelength, a photon"],
+      ["Charge","+2","−1","0"],
+      ["Mass (relative)","4","1/1836","None"],
+      ["Typical speed","About one tenth of the speed of light","Up to 0.99 of the speed of light","The speed of light"],
+      ["Ionising power","Very high","Moderate","Low"],
+      ["Penetrating power","A few centimetres of air; stopped by paper or the outer skin","A few metres of air; stopped by a few millimetres of aluminium","Hundreds of metres of air; greatly reduced only by thick lead or concrete"],
+      ["Deflected by an electric or magnetic field","Slightly, toward the negative side (it is heavy)","Strongly, toward the positive side","Not at all"],
+      ["Greatest danger","Inside the body — if swallowed or inhaled, it damages the tissue around it","Both inside and outside","Outside the body — it penetrates to the organs"]
+    ]},
+    {k:"p", t:"Radioactivity is the **spontaneous** disintegration of an unstable nucleus, and it is unaffected by temperature, pressure or chemical combination — nothing you can do in the laboratory speeds it up or slows it down. In every nuclear equation the **mass numbers** and the **atomic numbers** balance separately, which is the check to make: ²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He (238 = 234 + 4, 92 = 90 + 2); ¹⁴₆C → ¹⁴₇N + ⁰₋₁e (14 = 14 + 0, 6 = 7 − 1); and a gamma ray often follows, because the daughter nucleus is left excited and sheds the surplus energy without changing its identity. **Natural radioactivity** comes from uranium, radium, thorium, radon and potassium-40 in rocks and in our own bodies; **artificial radioactivity** is made by bombarding a nucleus with neutrons or alpha particles — Rutherford's ¹⁴₇N + ⁴₂He → ¹⁷₈O + ¹₁H was the first deliberate transmutation, turning nitrogen into oxygen."},
+    {k:"h3", t:"Half-life, Decay and Dating"},
+    {k:"p", t:"The **half-life** is the time taken for half the nuclei in a sample to decay, or for its **activity** (the count rate, in becquerels, one disintegration per second) to fall to half. Decay is **random**: no one can say which nucleus will go next, but with a great number of them the average is exact, and the count falls by the same fraction in each equal interval — an **exponential** curve that never quite reaches zero. A source of 640 counts/s with a half-life of 3 hours reads 320 after 3 hours, 160 after 6, 80 after 9 and **40 after 12 hours**; to reach 20 counts/s it takes five half-lives, **15 hours**. In general the fraction remaining after time t is (½)^(t/T). **Carbon-14 dating** uses the fact that living matter exchanges carbon with the air and so holds a fixed proportion of the radioactive ¹⁴C (half-life 5730 years); when the organism dies the exchange stops and the ¹⁴C decays, so charcoal from a campfire with a quarter of the activity of living wood is two half-lives old — about **11 500 years**. Rocks are dated with uranium-238 (4.5 billion years) or potassium-40. Every measurement must have the **background count** subtracted: the radon from the ground, cosmic rays, the rocks of the building, the potassium in food and the medical X-rays are always present, typically giving a few tens of counts a minute on a bare Geiger counter. Detection is by the **Geiger-Müller tube and counter**, the **cloud chamber** (alpha tracks are short and thick, beta tracks thin and wandering, gamma rays show only the electrons they knock out), the **photographic film badge** worn by radiographers, the **scintillation counter** and the **spark chamber**."},
+    {k:"h3", t:"Radiation and the Human Body; the Rules of Safety"},
+    {k:"p", t:"Ionising radiation knocks electrons out of the molecules it passes through, breaking the bonds of DNA and of the proteins around it. A small dose is repaired; a large one kills cells outright, giving **radiation burns** and **acute radiation sickness** — nausea, hair loss, a collapse of the blood counts and infection; a moderate dose delivered over years raises the risk of **cancer** later in life, of **cataracts** and of **genetic damage** to a person's children. The embryo is the most sensitive tissue of all, which is why an X-ray in pregnancy is avoided unless it is essential. The three rules of protection are **time, distance and shielding**: keep the exposure short, keep as far away as the work allows (the intensity falls with the square of the distance), and put the right material between — a sheet of paper or a few centimetres of air stops alpha particles, a few millimetres of aluminium stops beta, and thick lead or concrete is needed for gamma. In practice: handle sources with tongs or forceps, never with the fingers; store them in a lead container marked with the **trefoil** symbol; work behind a screen; never eat, drink or pipette by mouth in the laboratory; monitor the dose with a film badge; wash the hands afterwards; and obey the controlled-area signs. The medical use is always a balance — the information a scan gives against the dose it costs — and the same isotope that causes cancer in one arrangement treats it in another."},
+    {k:"h3", t:"Fission and Fusion Compared"},
+    {k:"table", head:["Feature","Fission","Fusion"], rows:[
+      ["What happens","A heavy nucleus splits into two lighter nuclei of roughly equal mass, with two or three neutrons and a great deal of energy","Two light nuclei join to make a heavier one, with a neutron and even more energy per kilogram"],
+      ["Typical fuel","Uranium-235, plutonium-239","Deuterium and tritium — the isotopes of hydrogen"],
+      ["Conditions needed","A slow (thermal) neutron and a critical mass","Temperatures of tens of millions of degrees and enormous pressure, to overcome the repulsion of the nuclei"],
+      ["Typical equation","²³⁵₉₂U + ¹₀n → ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3 ¹₀n + energy","²₁H + ³₁H → ⁴₂He + ¹₀n + energy"],
+      ["Products","Two radioactive fragments and long-lived waste","Helium and a neutron; little long-lived waste"],
+      ["Where it is controlled","In the nuclear reactor","In the sun and the stars; on Earth it is not yet controlled for power"],
+      ["Where it is uncontrolled","The atomic bomb","The hydrogen bomb, which is started by a fission bomb"],
+      ["Energy released per kilogram of fuel","About a million times that of coal","Several times that of fission"]
+    ]},
+    {k:"p", t:"The **chain reaction** is what makes fission useful: each split releases two or three neutrons, each of which can split another nucleus, so the reaction sustains itself if at least one neutron per fission goes on to cause another. Below the **critical mass** too many neutrons escape and the reaction dies; above it, it runs away. A reactor controls it with a **moderator** (graphite or heavy water) that slows the neutrons to the speed at which uranium-235 captures them best, **control rods** of boron or cadmium that absorb neutrons and are withdrawn or inserted to set the power, a **coolant** (water, gas or liquid sodium) that carries the heat to the steam turbines, and metres of **concrete shielding**. The **fusion** that powers the sun converts about 600 million tonnes of hydrogen every second at 15 million K; on Earth the difficulty is holding a gas that hot, which no container can do, so the attempts use magnetic bottles (the tokamak) or lasers squeezing a pellet. Its attractions are great — the fuel is in sea water, the waste is short-lived and there is no chain reaction to run away — which is why the research continues. Liberia has no nuclear plant; its resources are the rivers, the sun, the biomass and imported fuel, but the argument for and against nuclear power is a standard examination question and needs both sides."},
+    {k:"h3", t:"Mass and Energy: E = mc²"},
+    {k:"p", t:"Einstein's relation says mass is energy: **E = mc²**, with c = 3 × 10⁸ m/s. Converting just **2 g** of matter completely would release E = 0.002 × 9 × 10¹⁶ = **1.8 × 10¹⁴ J**, about fifty million kilowatt-hours — which is why a kilogram of nuclear fuel out-produces a mountain of coal. In a nucleus the effect is measurable: the mass of a nucleus is always **less** than the sum of the masses of its separate protons and neutrons, and the missing mass, the **mass defect**, is the **binding energy** that holds it together. The binding energy per nucleon is small for the very light elements, rises to a maximum near **iron (A = 56)** and falls slowly for the heavy ones — which is the whole explanation of nuclear energy: **fusing** light nuclei moves them up the curve toward iron, and **splitting** heavy nuclei also moves the fragments toward iron, and both release the difference. One atomic mass unit corresponds to 931 MeV, and nuclear energies are usually quoted in **electronvolts**, one eV being the energy an electron gains falling through 1 V, equal to 1.6 × 10⁻¹⁹ J."},
+    {k:"h3", t:"The Uses of Radioisotopes"},
+    {k:"table", head:["Field","Isotope","The use"], rows:[
+      ["Medicine","Cobalt-60","Radiotherapy — the gamma rays destroy a tumour; also sterilising equipment"],
+      ["Medicine","Iodine-131","Diagnosing and treating disease of the thyroid, which concentrates iodine"],
+      ["Medicine","Technetium-99m","A short-lived tracer for imaging the heart, bones and kidneys"],
+      ["Industry","Iridium-192","Gamma radiography to find flaws in a weld or a casting"],
+      ["Industry","Americium-241","The ionising source in the household smoke detector"],
+      ["Industry","Beta sources","Gauges controlling the thickness of paper, plastic sheet and metal foil as it is made"],
+      ["Agriculture","Cobalt-60","Irradiating grain and fruit to kill pests and delay spoilage"],
+      ["Agriculture","Phosphorus-32","Tracing how a fertiliser is taken up by the roots"],
+      ["Agriculture","Sterile males","Releasing sterilised insects to collapse a pest population without pesticide"],
+      ["Archaeology","Carbon-14","Dating charcoal, bone, wood and cloth up to about 50 000 years old"],
+      ["Geology","Uranium-238, potassium-40","Dating rocks and the age of the Earth"],
+      ["Research","Tracers generally","Following a reaction step by step in chemistry and in the living body"]
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Describe Rutherford's experiment** and what each observation proved",
+      "**State the properties of the electron** and of the cathode rays",
+      "**Complete a nuclear equation**, balancing the mass numbers and the atomic numbers separately",
+      "**Compare alpha, beta and gamma** in a table — nature, charge, penetration, ionising power and deflection",
+      "**Define half-life** and use (½)^(t/T), remembering to subtract the background count",
+      "**Distinguish fission from fusion** and describe the chain reaction with the moderator and the control rods",
+      "**Give uses of radioisotopes** in medicine, industry and agriculture, and the safety precautions with a reason for each"
+    ]}
   ],
 
   focus:[
@@ -2709,6 +4176,35 @@ var PH_CURRICULUM = [
     {q:"How many protons and neutrons are in carbon-14 (Z = 6)?", steps:[
       "Protons = Z = 6", "Neutrons = A − Z = 14 − 6"
     ], a:"6 protons, 8 neutrons"},
+    {q:"Write the number of protons, neutrons and electrons in ²³⁸₉₂U and in the ion ²³₁₁Na⁺.", steps:[
+      "Protons = Z; neutrons = A − Z; electrons = Z for a neutral atom, Z − 1 for a singly positive ion",
+      "Uranium-238: Z = 92, A − Z = 146",
+      "Sodium-23 ion: Z = 11, A − Z = 12, electrons = 11 − 1"
+    ], a:"²³⁸U: 92 protons, 146 neutrons, 92 electrons. ²³Na⁺: 11 protons, 12 neutrons, 10 electrons"},
+    {q:"A radioactive source has an activity of 640 counts per second and a half-life of 3 hours. Find its activity after 12 hours, and the time taken to fall to 20 counts per second.", steps:[
+      "12 hours is 4 half-lives: 640 → 320 → 160 → 80 → 40",
+      "20 counts/s is 5 half-lives: 5 × 3 hours"
+    ], a:"40 counts/s after 12 hours; 15 hours to reach 20 counts/s"},
+    {q:"Find the energy released if 2 g of matter is completely converted into energy (c = 3 × 10⁸ m/s).", steps:[
+      "E = mc²",
+      "E = 0.002 × (3 × 10⁸)² = 0.002 × 9 × 10¹⁶"
+    ], a:"1.8 × 10¹⁴ J"},
+    {q:"Chlorine consists of 75 % ³⁵Cl and 25 % ³⁷Cl. Find its relative atomic mass.", steps:[
+      "Weighted average = (35 × 0.75) + (37 × 0.25)",
+      "26.25 + 9.25"
+    ], a:"35.5"},
+    {q:"Complete the equations: (a) ²²⁶₈₈Ra → ? + ⁴₂He; (b) ¹⁴₆C → ¹⁴₇N + ?", steps:[
+      "(a) Balance A: 226 − 4 = 222; balance Z: 88 − 2 = 86, which is radon",
+      "(b) A is unchanged and Z rises by 1, so a beta particle is emitted"
+    ], a:"(a) ²²²₈₆Rn; (b) ⁰₋₁e, a beta particle"},
+    {q:"A piece of ancient charcoal has one quarter of the carbon-14 activity of living wood. Estimate its age (half-life of carbon-14 = 5730 years).", steps:[
+      "One quarter remaining means two half-lives",
+      "Age = 2 × 5730"
+    ], a:"About 11 460 years"},
+    {q:"Show that the beta decay of a neutron, n → p + e⁻ + ν-bar, obeys the conservation of charge and of baryon number.", steps:[
+      "Charge: 0 on the left; +1 − 1 + 0 = 0 on the right",
+      "Baryon number: 1 on the left; 1 + 0 + 0 = 1 on the right"
+    ], a:"Both are conserved, so the decay can occur — and it does, inside every nucleus that emits beta radiation"}
   ],
   apply:[
     {q:"Why are carbon-14 and potassium-40 used to date ancient objects?", a:"They decay at a known constant rate (fixed half-life), so measuring the remaining proportion gives the age of the object since it formed."},
@@ -2756,6 +4252,98 @@ var PH_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Einstein's Photoelectric Equation"},
     {k:"p", t:"In the **photoelectric effect** light ejects electrons from a metal surface — instantly, and only when the frequency exceeds a threshold, whatever the intensity. Einstein explained it in 1905: each photon carries energy **hf**; a quantum **W** (the work function) frees the electron, and the remainder leaves as kinetic energy — **hf = W + KE**. The equation, not the wave picture, accounts for the threshold, and it earned the Nobel Prize: light arrives as quanta."},
+    {k:"rule"},
+    {k:"h3", t:"Quantum Mechanics and the Uncertainty Principle in Detail"},
+    {k:"p", t:"The small world refuses to be described by the rules of the large one. **Wave-particle duality** is the first shock: light behaves as a wave in interference, diffraction and polarisation, and as a stream of particles in the photoelectric effect; and matter does the same — de Broglie proposed that a particle of momentum p has a wavelength **λ = h ÷ p**, and electrons fired at a crystal diffract exactly as X-rays do, with a wavelength for an electron at 10⁶ m/s of 6.6 × 10⁻³⁴ ÷ (9.1 × 10⁻³¹ × 10⁶) = **7.3 × 10⁻¹⁰ m**, comparable with the spacing of atoms, which is why the **electron microscope** resolves details a light microscope never can. The second shock is **Heisenberg's uncertainty principle**: it is impossible to measure the position and the momentum of a particle simultaneously with unlimited precision, **Δx · Δp ≥ h ÷ 4π**. This is not a fault of the instruments but a property of nature — to locate an electron precisely you must use short-wavelength, high-energy radiation, and that radiation changes the electron's momentum. The consequence is that the electron cannot be pictured as a planet on an orbit: it is described by a **wave function**, whose square gives the **probability** of finding it in a region, and the region is called an **orbital**. **Schrödinger's equation** gives those wave functions, and the allowed states are labelled by four **quantum numbers**: the **principal quantum number n** (the shell and the main energy, n = 1, 2, 3…), the **orbital (azimuthal) quantum number l** (the shape of the orbital, from 0 to n − 1, called s, p, d, f), the **magnetic quantum number m_l** (which orbital of that shape, from −l to +l) and the **spin quantum number m_s** (+½ or −½). The **Pauli exclusion principle** — no two electrons in an atom may share all four quantum numbers — is what forces electrons into successive shells and subshells, and therefore what makes the periodic table, chemistry, and every solid thing possible."},
+    {k:"h3", t:"Shells, Subshells and the Electron Configuration of the Light Elements"},
+    {k:"table", head:["Shell","Name","Subshells it contains","Maximum electrons (2n²)"], rows:[
+      ["n = 1","K","1s","2"],
+      ["n = 2","L","2s, 2p","8"],
+      ["n = 3","M","3s, 3p, 3d","18 (but only 8 are used before the 4s fills)"],
+      ["n = 4","N","4s, 4p, 4d, 4f","32"]
+    ]},
+    {k:"table", head:["Element","Z","Configuration by shells","s, p notation","Group and valency"], rows:[
+      ["Hydrogen","1","1","1s¹","1 electron to lose or share"],
+      ["Helium","2","2","1s²","Group 0 — inert, a full first shell"],
+      ["Lithium","3","2, 1","1s² 2s¹","Group I — valency 1"],
+      ["Beryllium","4","2, 2","1s² 2s²","Group II — valency 2"],
+      ["Boron","5","2, 3","1s² 2s² 2p¹","Group III — valency 3"],
+      ["Carbon","6","2, 4","1s² 2s² 2p²","Group IV — valency 4, the element of life"],
+      ["Nitrogen","7","2, 5","1s² 2s² 2p³","Group V — valency 3"],
+      ["Oxygen","8","2, 6","1s² 2s² 2p⁴","Group VI — valency 2"],
+      ["Fluorine","9","2, 7","1s² 2s² 2p⁵","Group VII — valency 1, the most reactive non-metal"],
+      ["Neon","10","2, 8","1s² 2s² 2p⁶","Group 0 — inert"],
+      ["Sodium","11","2, 8, 1","1s² 2s² 2p⁶ 3s¹","Group I — valency 1; the one outer electron is easily lost"],
+      ["Magnesium","12","2, 8, 2","…3s²","Group II — valency 2"],
+      ["Aluminium","13","2, 8, 3","…3s² 3p¹","Group III — valency 3"],
+      ["Chlorine","17","2, 8, 7","…3s² 3p⁵","Group VII — valency 1; it wants one electron"],
+      ["Argon","18","2, 8, 8","…3s² 3p⁶","Group 0 — inert"],
+      ["Potassium","19","2, 8, 8, 1","…4s¹","Group I — the 4s fills before the 3d"],
+      ["Calcium","20","2, 8, 8, 2","…4s²","Group II — valency 2"]
+    ]},
+    {k:"p", t:"The configuration **is** the periodic table: the number of occupied shells is the period, the number of outer electrons is the group (for the main groups), and the drive to a full outer shell — eight electrons, or two for the first shell — is what makes atoms bond, gives each element its valency, and explains why sodium and chlorine combine one to one while magnesium and chlorine combine one to two. Metals have one, two or three outer electrons and lose them; non-metals have five, six or seven and gain or share; the noble gases have full shells and do neither, which is why they are unreactive and why the transition metals fill the inner 3d subshell while the outer 4s stays much the same — the reason they have several valencies and make coloured compounds."},
+    {k:"h3", t:"Particle Accelerators in Detail"},
+    {k:"table", head:["Accelerator","Shape","How the particle gains energy","A feature"], rows:[
+      ["Linear accelerator (linac)","A straight evacuated tube","A series of drift tubes connected to an alternating supply; the particle is accelerated across each gap, and the tubes grow longer as it speeds up so that it always arrives in step","Used to produce X-rays for radiotherapy and as the first stage of a larger machine"],
+      ["Cyclotron","Two D-shaped electrodes (dees) between the poles of a large magnet","A constant magnetic field bends the particle into a circle while an alternating voltage between the dees accelerates it at each crossing, so the path spirals outward until the particle emerges","Compact and cheap; limited because a very fast particle gains mass and falls out of step"],
+      ["Synchrotron","A ring of fixed radius","Magnets and radio-frequency cavities are stepped up in time with the particle's energy, keeping it on the same circle","The largest machines — the 27 km Large Hadron Collider at CERN — are synchrotrons"],
+      ["Collider","A synchrotron with two beams meeting head on","Two beams are accelerated in opposite directions and made to collide","Nearly all the energy goes into the collision, so new particles are created efficiently"],
+      ["Betatron","A ring","A changing magnetic field induces an electric field that accelerates the electrons","Used for high-energy electrons in therapy and radiography"]
+    ]},
+    {k:"p", t:"Why accelerate at all? Two reasons: to give a charged particle enough kinetic energy to overcome the repulsion of a nucleus and reach it, and — through E = mc² — to turn energy into **mass**, creating particles that do not exist in ordinary matter. The higher the energy, the smaller the distance that can be probed, so an accelerator is a microscope whose resolution grows with its energy. The **detectors** record what comes out: the **cloud chamber** and the **bubble chamber** show tracks of droplets or bubbles along the path of a charged particle, the **spark chamber** and the **wire chamber** give electronic coordinates, the **scintillation counter** times the particle and measures its energy, the **calorimeter** absorbs it and totals the energy, and the **semiconductor tracker** follows it through a magnetic field so that the curvature of the path gives its momentum and the direction of the curve its charge. A thick short track is a heavy slow particle; a thin long one a light fast one; a fork in the tracks is a decay or a collision. In 2012 the Large Hadron Collider found the **Higgs boson**, the particle of the field that gives matter its mass — the last piece missing from the standard model."},
+    {k:"h3", t:"The Chart of Subatomic Particles"},
+    {k:"p", t:"Particles divide first by whether they feel the **strong** interaction. **Hadrons** do, and are built of quarks: **baryons** are three quarks — the **proton** (uud) and the **neutron** (udd), from which every nucleus is made, together with the heavier lambda and sigma particles produced in collisions — while **mesons** are a quark and an antiquark, the **pions** and **kaons** that carry the strong force between the nucleons and hold the nucleus together. **Leptons** do not feel the strong force: the **electron**, its heavier brothers the **muon** and the **tau**, and the three almost massless **neutrinos**, one for each. Every particle has an **antiparticle** of the same mass and opposite charge — the **positron** (e⁺), discovered by Anderson in the cosmic rays in 1932, the antiproton, the antineutron; when a particle meets its antiparticle they **annihilate** into gamma photons, and a gamma photon of sufficient energy can create a **pair**. Antimatter is made routinely in the accelerator and used in the hospital's **PET scanner**, where the positrons from an injected isotope annihilate and give two gamma rays in opposite directions that locate the source."},
+    {k:"table", head:["Quark","Charge","Where it is found"], rows:[
+      ["Up (u)","+2/3","Two in the proton, one in the neutron"],
+      ["Down (d)","−1/3","One in the proton, two in the neutron"],
+      ["Charm (c)","+2/3","Heavier particles made in accelerators"],
+      ["Strange (s)","−1/3","The kaon and the lambda particle"],
+      ["Top (t)","+2/3","The heaviest quark, found at Fermilab in 1995"],
+      ["Bottom (b)","−1/3","The B mesons used to study matter-antimatter asymmetry"]
+    ]},
+    {k:"p", t:"The proton's charge is 2/3 + 2/3 − 1/3 = **+1** and the neutron's is 2/3 − 1/3 − 1/3 = **0**, exactly as observed. Quarks are never found alone — **confinement** — because the strong force between them does not fall off with distance, so pulling them apart costs enough energy to create new quark pairs instead. The weak interaction changes one quark into another, and that is what beta decay really is: a **down quark turns into an up quark**, emitting an electron and an antineutrino, so the neutron becomes a proton."},
+    {k:"h3", t:"The Four Basic Interactions"},
+    {k:"table", head:["Interaction","What it acts on","Relative strength","Range","Exchange particle","What it does"], rows:[
+      ["Strong nuclear","Quarks and the hadrons built from them","1 (the strongest)","About 10⁻¹⁵ m","Gluon","Holds the quarks in a proton and the nucleons in a nucleus, against the repulsion of the protons"],
+      ["Electromagnetic","All charged particles","About 1/137","Infinite","Photon","Holds the electrons in the atom, makes chemistry, carries light, drives every electric circuit"],
+      ["Weak nuclear","Quarks and leptons","About 10⁻⁶","Below 10⁻¹⁸ m","W and Z bosons","Changes one kind of quark or lepton into another — beta decay, and the first step of the sun's fusion"],
+      ["Gravitational","All mass and energy","About 10⁻³⁹ (by far the weakest)","Infinite","The graviton — not yet detected","Holds the planets, the stars and the galaxies; dominates at large scale because it only attracts"]
+    ]},
+    {k:"p", t:"Unification is the programme of modern physics. Maxwell showed that electricity and magnetism are one **electromagnetic** interaction; in the 1960s Glashow, Salam and Weinberg showed that the electromagnetic and the weak are two faces of a single **electroweak** interaction, confirmed when the W and Z bosons were found at CERN in 1983; a **grand unified theory** would add the strong force, and a theory of **quantum gravity** would add the fourth — the two pillars of physics, quantum mechanics and general relativity, still do not fit together. The **Higgs field**, whose boson was found in 2012, explains why the particles have mass at all. The standard model works superbly and yet is incomplete: it says nothing of gravity, of the **dark matter** that holds the galaxies together, of the **dark energy** that is accelerating the expansion of the universe, of why the neutrinos have mass, or of why the universe is made of matter rather than of equal parts matter and antimatter. Those are the open questions the accelerators are built to answer."},
+    {k:"h3", t:"The Conservation Laws of Particle Physics"},
+    {k:"num", items:[
+      "**Mass-energy** — the total of mass and energy together is conserved, since one converts into the other by E = mc²",
+      "**Linear momentum** — the tracks in a collision photograph always balance when measured",
+      "**Angular momentum, including spin** — the intrinsic spin of the particles balances too",
+      "**Electric charge** — the total charge before an interaction equals the total after; no reaction has ever been seen to violate it",
+      "**Baryon number** — protons and neutrons count +1, their antiparticles −1, and everything else 0; the total is conserved, which is why the proton appears to be stable",
+      "**Lepton number** — counted separately for the electron, muon and tau families, with the antiparticles negative",
+      "**Strangeness** — conserved in strong and electromagnetic interactions but **not** in weak ones, which is why a strange particle is produced quickly and decays slowly"
+    ]},
+    {k:"p", t:"These laws are the working tool of the subject: given a proposed reaction, check the totals on both sides, and if any one fails the reaction cannot happen. In the beta decay of the neutron, n → p + e⁻ + ν-bar, the charge is 0 = +1 − 1 + 0, the baryon number is 1 = 1 + 0 + 0, and the lepton number is 0 = 0 + 1 − 1 (the antineutrino carrying −1) — all conserved, so the decay occurs. It was the failure of energy and momentum to balance in that same decay that led Pauli in 1930 to propose an invisible particle, the neutrino, rather than abandon conservation — a proposal vindicated experimentally twenty-six years later, and a good example of how a conservation law guides discovery."},
+    {k:"h3", t:"Einstein's Photoelectric Equation in Detail"},
+    {k:"p", t:"Four experimental facts could not be explained by a wave theory of light. First, there is a **threshold frequency** below which no electron is emitted, however intense the light or however long it shines. Second, emission is **instantaneous** — within 10⁻⁹ s. Third, the **maximum kinetic energy** of the emitted electrons rises linearly with the frequency and does not depend on the intensity at all. Fourth, the **number** of electrons rises with the intensity. Einstein's explanation: light of frequency f arrives in packets, **photons**, each of energy **E = hf**; one photon gives all of its energy to one electron; part of that energy, the **work function W₀ = hf₀**, is spent in escaping the metal surface, and the remainder appears as kinetic energy — **hf = W₀ + KE_max**, Einstein's photoelectric equation. Plotting KE_max against f gives a **straight line whose gradient is Planck's constant h**, whose intercept on the KE axis is −W₀ and whose intercept on the f axis is the threshold frequency f₀ — the standard way of measuring h in the laboratory. Worked through: light of frequency 1.0 × 10¹⁵ Hz on a metal of work function 4.0 × 10⁻¹⁹ J gives a photon energy of 6.63 × 10⁻³⁴ × 1.0 × 10¹⁵ = **6.63 × 10⁻¹⁹ J**, so the fastest electron leaves with 6.63 − 4.0 = **2.63 × 10⁻¹⁹ J**. In **electronvolts** (1 eV = 1.6 × 10⁻¹⁹ J) those figures are 4.1 eV, 2.5 eV and 1.6 eV, and the threshold frequency is 4.0 × 10⁻¹⁹ ÷ 6.63 × 10⁻³⁴ = **6.0 × 10¹⁴ Hz**, which is red light. The applications follow directly: the **solar cell** that lights a clinic, the **photomultiplier** that counts single photons, the camera's light meter, the automatic door, the burglar alarm and the sensor that counts vehicles on the highway."},
+    {k:"h3", t:"Applications of Modern Physics"},
+    {k:"table", head:["Field","What modern physics provides"], rows:[
+      ["Medicine","X-ray imaging, the CT scanner, MRI, the PET scan, ultrasound, radiotherapy with cobalt-60 or a medical linac, the laser in eye surgery, the semiconductor detector in every instrument"],
+      ["Industry","Semiconductor chips, the laser for cutting and welding, non-destructive testing of welds, the electron microscope, thickness gauges, automation and robotics"],
+      ["Communications","The optical fibre and the laser that drives it, the satellite transponder, the mobile network, GPS — whose clocks must be corrected for both special and general relativity to give a position within metres"],
+      ["Energy","The solar cell, nuclear power, superconducting magnets, more efficient lighting and power electronics"],
+      ["Research and cosmology","The accelerator and its detectors, the telescope at every wavelength, the evidence for the Big Bang, the expansion of the universe and the age of the Earth"],
+      ["Everyday life in Liberia","The LED lamp and lantern, the mobile phone and its charger, the solar home system and its controller, the barcode scanner at the supermarket, the smoke detector, the digital multimeter in the technician's bag"]
+    ]},
+    {k:"h3", t:"Careers at the Frontier"},
+    {k:"p", t:"A physicist measures carefully, models what was measured in mathematics, tests the model against a new measurement and says plainly where it fails. The career paths from a WASSCE physics and mathematics pass run through the science and engineering programmes of the University of Liberia and beyond: into the **Liberia Electricity Corporation** and the power sector, into **telecommunications** and the mobile networks, into **medical physics** in the hospitals, into **environmental monitoring and meteorology**, into **construction and materials testing**, into **education**, into **solar engineering** — one of the fastest-growing trades in the country — and, for those who continue, into research anywhere in the world. The subject asks for patience with instruments, confidence with numbers and the habit of asking why. Every technology in this classroom — the lamp, the phone, the scanner in the clinic — began as somebody's question about how nature behaves."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**State the uncertainty principle** and explain why the electron cannot be pictured as a planet in orbit",
+      "**Write the electron configuration** of a light element and relate it to its group and valency",
+      "**Describe the linear accelerator and the cyclotron**, saying how the particle gains energy in each",
+      "**Name the four fundamental interactions** with what each acts on and one effect of each",
+      "**Check a reaction against the conservation laws** of charge, baryon number and lepton number",
+      "**Use hf = W₀ + KE**, converting between joules and electronvolts, and explain the shape of the KE against f graph",
+      "**Give two applications** of modern physics in medicine or in communications"
+    ]}
   ],
 
   focus:[
@@ -2850,6 +4438,33 @@ var PH_CURRICULUM = [
     {q:"An electron falls from the n = 3 shell to the n = 2 shell of an atom, emitting a photon of energy 3.0 × 10⁻¹⁹ J. Find the photon's frequency. (h = 6.6 × 10⁻³⁴ J s)", steps:[
       "E = hf", "f = E ÷ h = (3.0 × 10⁻¹⁹) ÷ (6.6 × 10⁻³⁴)"
     ], a:"About 4.5 × 10¹⁴ Hz"},
+    {q:"Light of frequency 1.0 × 10¹⁵ Hz falls on a metal of work function 4.0 × 10⁻¹⁹ J. Find the photon energy and the maximum kinetic energy of the emitted electrons (h = 6.63 × 10⁻³⁴ J s).", steps:[
+      "E = hf = 6.63 × 10⁻³⁴ × 1.0 × 10¹⁵",
+      "KE_max = hf − W₀ = 6.63 × 10⁻¹⁹ − 4.0 × 10⁻¹⁹"
+    ], a:"6.63 × 10⁻¹⁹ J per photon; 2.63 × 10⁻¹⁹ J of kinetic energy"},
+    {q:"A metal has a work function of 3.3 × 10⁻¹⁹ J. Find its threshold frequency (h = 6.6 × 10⁻³⁴ J s).", steps:[
+      "W₀ = hf₀, so f₀ = W₀ ÷ h",
+      "f₀ = 3.3 × 10⁻¹⁹ ÷ 6.6 × 10⁻³⁴"
+    ], a:"5 × 10¹⁴ Hz — light of a lower frequency emits no electrons however bright it is"},
+    {q:"Convert a photon energy of 3.2 × 10⁻¹⁹ J into electronvolts (1 eV = 1.6 × 10⁻¹⁹ J).", steps:[
+      "E in eV = E in joules ÷ 1.6 × 10⁻¹⁹"
+    ], a:"2.0 eV"},
+    {q:"Find the de Broglie wavelength of an electron of mass 9.1 × 10⁻³¹ kg moving at 10⁶ m/s (h = 6.6 × 10⁻³⁴ J s).", steps:[
+      "λ = h ÷ mv",
+      "λ = 6.6 × 10⁻³⁴ ÷ (9.1 × 10⁻³¹ × 10⁶)"
+    ], a:"About 7.3 × 10⁻¹⁰ m — the size of an atomic spacing, which is why electrons diffract through a crystal"},
+    {q:"Write the electron configuration of sodium (Z = 11) and of chlorine (Z = 17), and state the valency of each.", steps:[
+      "Fill the shells in order: 2, then 8, then the remainder",
+      "Sodium: 2, 8, 1 — one electron to lose. Chlorine: 2, 8, 7 — one electron to gain"
+    ], a:"Na 2,8,1 and Cl 2,8,7; valency 1 for each, so they combine as NaCl"},
+    {q:"The proton is made of two up quarks of charge +2/3 and one down quark of charge −1/3. Verify the proton's charge, and find the charge of the neutron (udd).", steps:[
+      "Proton: 2/3 + 2/3 − 1/3",
+      "Neutron: 2/3 − 1/3 − 1/3"
+    ], a:"Proton +1; neutron 0"},
+    {q:"In a photoelectric experiment the maximum kinetic energy of the emitted electrons is plotted against the frequency of the light. State what the gradient and the two intercepts represent.", steps:[
+      "From KE = hf − W₀ the graph is a straight line",
+      "Gradient = h; intercept on the KE axis = −W₀; intercept on the frequency axis = f₀"
+    ], a:"The gradient is Planck's constant, the KE intercept is the negative of the work function, and the frequency intercept is the threshold frequency"}
   ],
   apply:[
     {q:"Why are particle accelerators needed to study the structure of matter?", a:"The nucleus and its particles are held by the strong interaction and can only be split or revealed by smashing them with other particles at very high energy, which only accelerators can provide."},
