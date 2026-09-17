@@ -9,7 +9,7 @@
       label: "English", icon: "sub-en", accent: "#0b6b3a",
       curriculum: function () { return EN_CURRICULUM; },
       engine: function () { return GEN_EN; },
-      defaults: ["words", "match", "cloze", "phonics", "grammar", "pairs", "mcq", "passage", "write", "spelling"],
+      defaults: ["words", "wordex", "match", "cloze", "phonics", "grammar", "pairs", "mcq", "passage", "write", "spelling"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "English_Grade" + g + "_Workbook.docx"; }
     },
@@ -41,7 +41,7 @@
       label: "Mathematics", icon: "sub-ma", accent: "#5b2a86",
       curriculum: function () { return MA_CURRICULUM; },
       engine: function () { return GEN_MA; },
-      defaults: ["terms", "worked", "drills", "drills2", "mcq", "word", "show", "challenge", "mental"],
+      defaults: ["terms", "wordex", "worked", "drills", "drills2", "mcq", "word", "show", "challenge", "mental"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Mathematics_Grade" + g + "_Workbook.docx"; }
     },
@@ -630,17 +630,84 @@
     return out.slice(0, 4);
   }
 
-  window.UNIT_NOTES = function (t, n) {
+  window.UNIT_NOTES = function (t, n, subj) {
     if (!NOTES_ON) return [];
     var out = [];
     var title = t.title || t.fr || "";
 
     /* Verbatim study notes: units may carry a `study` block list transcribed
        straight from the official course text. When present it is rendered
-       as-is (bold key terms via ** **), replacing the auto-assembled page. */
+       as-is (bold key terms via ** **), replacing the auto-assembled page.
+       For Mathematics and English a worked example is interleaved right after
+       the first study block that names each new word/term (math terms carry a
+       baked `ex`; English words get a cloze example from GEN_EN.wordExample).
+       Any word the study text does not name is collected in a trailing
+       section so no new word is left without a worked example. */
     if (t.study && t.study.length) {
       out.push({ k: "h2", t: "Study Notes \u2014 Period " + n + ": " + title });
-      t.study.forEach(function (b) { out.push(b); });
+
+      var exItems = [];
+      if (subj === "ma" && t.terms && t.terms.length) {
+        t.terms.forEach(function (v) {
+          if (v.ex && v.ex.q && (v.ex.steps || []).length >= 2 && v.ex.a) {
+            exItems.push({
+              name: v.t, done: false,
+              ex: { q: stripTags(v.ex.q), steps: (v.ex.steps || []).map(stripTags), a: stripTags(v.ex.a) }
+            });
+          }
+        });
+      } else if (subj === "en" && t.words && t.words.length && window.GEN_EN && GEN_EN.wordExample) {
+        t.words.forEach(function (v) {
+          var e = GEN_EN.wordExample(v);
+          if (e) exItems.push({ name: v.w, ex: e });
+        });
+      }
+
+      function nameInText(name, text) {
+        var esc = String(name).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        return new RegExp("(^|[^a-z0-9])" + esc + "([^a-z0-9]|$)", "i").test(String(text));
+      }
+      function blockText(b) {
+        if (b.t) return b.t;
+        if (b.items && b.items.length) return b.items.join(" ");
+        if (b.rows && b.rows.length) return b.rows.map(function (r) { return Array.isArray(r) ? r.join(" ") : r; }).join(" ");
+        return "";
+      }
+      /* Each example is placed after the first study block that names the
+         word in a definition block (p/bul/num/table); a heading-only mention
+         is the fallback position. Unnamed words go to the trailing section. */
+      var insertAt = {};
+      exItems.forEach(function (e) {
+        var defIdx = -1, headIdx = -1;
+        for (var i = 0; i < t.study.length; i++) {
+          var b = t.study[i];
+          if (!nameInText(e.name, blockText(b))) continue;
+          if (b.k === "h3") { if (headIdx < 0) headIdx = i; continue; }
+          defIdx = i;
+          break;
+        }
+        e.at = defIdx >= 0 ? defIdx : headIdx;
+        if (e.at >= 0) (insertAt[e.at] = insertAt[e.at] || []).push(e);
+      });
+
+      t.study.forEach(function (b, i) {
+        out.push(b);
+        (insertAt[i] || []).forEach(function (e) {
+          out.push({ k: "p", t: "**Worked example \u2014 " + stripTags(e.name) + ":** " + e.ex.q });
+          out.push({ k: "num", items: e.ex.steps });
+          out.push({ k: "p", t: "**Answer:** " + e.ex.a });
+        });
+      });
+      var rest = exItems.filter(function (e) { return e.at < 0; });
+      if (rest.length) {
+        out.push({ k: "h3", t: "Worked Examples \u2014 Remaining New Words" });
+        rest.forEach(function (e) {
+          out.push({ k: "p", t: "**" + stripTags(e.name) + ":** " + e.ex.q });
+          out.push({ k: "num", items: e.ex.steps });
+          out.push({ k: "p", t: "**Answer:** " + e.ex.a });
+        });
+      }
+
       out.push({ k: "rule" });
       out.push({ k: "space" });
       return out;
