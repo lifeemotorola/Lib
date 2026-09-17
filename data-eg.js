@@ -60,6 +60,97 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Vocabulary Development and Study Skills"},
     {k:"p", t:"Take at least **ten words every week**: learn their spellings and their meanings, and use each in a sentence of your own. Review **study skills and note taking** — listening for the main idea, writing notes in your own words, arranging them under headings, and reviewing them the same day. A growing vocabulary and good notes carry every other subject."},
+    {k:"h3", t:"How Nouns Form the Plural"},
+    {k:"p", t:"Plurals are a favourite first question on every WASSCE paper because they mix one easy rule with a dozen honest exceptions. The machinery: add **-s** to most nouns (market, markets); add **-es** after s, x, z, ch or sh (box, boxes; church, churches); change **y to -ies** after a consonant (baby, babies) but simply add -s after a vowel (day, days); change **f or fe to -ves** (knife, knives; leaf, leaves); change the **vowel inside** the word (man, men; foot, feet; tooth, teeth); add **-en** in the oldest pattern (ox, oxen; child, children); keep the **same form** for sheep, deer, fish and series; and remember that some nouns are only ever plural (scissors, trousers, cattle, thanks) while others have no plural at all (information, rice, homework, news)."},
+    {k:"table", head:["Type","Singular","Plural","The point to state"], rows:[
+      ["Regular (add -s)","the pupil","the pupils","the general rule"],
+      ["-es after a hiss sound","the box, the church","the boxes, the churches","spelling, not sound, decides"],
+      ["-y to -ies","the baby, the city","the babies, the cities","consonant before y"],
+      ["f/fe to -ves","the leaf, the knife","the leaves, the knives","half-halves, life-lives too"],
+      ["Vowel change","man, woman, foot, tooth","men, women, feet, teeth","must be memorised"],
+      ["-en plural","ox, child","oxen, children","old English endings"],
+      ["Unchanged","sheep, deer, fish","sheep, deer, fish","one and many, same word"],
+      ["Plural only","scissors, trousers","—","a pair of scissors is correct"],
+      ["Singular only","information, news, rice","—","no plural, no 'an' before plural verb"]
+    ]},
+    {k:"h3", t:"Gender in Nouns"},
+    {k:"p", t:"Nouns show **gender** in four ways. **Masculine**: man, father, he-goat, actor, prince. **Feminine**: woman, mother, she-goat, actress, princess, lioness. **Common gender** names either sex: cousin, friend, teacher, doctor, baby, neighbour, child — 'My cousin passed her exam' shows a cousin that may now be a woman. **Neuter gender** names things without life or sex: stone, mango, table, Monrovia. Most trade and job words that once had a feminine form (authoress, editress, stewardess) have faded from use — **doctor, engineer and driver are common gender now** — and that is the modern, correct usage an essay may note."},
+    {k:"h3", t:"The Cases — and the Personal Pronoun Table"},
+    {k:"p", t:"A noun or pronoun has a **case**: the **nominative** for the subject or the complement after a linking verb (**Kollie** bought rice; it is **I**); the **possessive** (genitive) for ownership (Kollie **'s** pen, the market **'s** roof); and the **objective** for the receiver of the action or of a preposition (the teacher praised **Kollie**; between you and **me**)."},
+    {k:"table", head:["Person","Subject (nominative)","Object (objective)","Possessive adjective","Possessive pronoun","Reflexive"], rows:[
+      ["1st singular","I","me","my","mine","myself"],
+      ["2nd singular","you","you","your","yours","yourself"],
+      ["3rd singular masculine","he","him","his","his","himself"],
+      ["3rd singular feminine","she","her","her","hers","herself"],
+      ["3rd singular neuter","it","it","its","its","itself"],
+      ["1st plural","we","us","our","ours","ourselves"],
+      ["2nd plural","you","you","your","yours","yourselves"],
+      ["3rd plural","they","them","their","theirs","themselves"]
+    ]},
+    {k:"h3", t:"Three Tests before You Choose a Pronoun"},
+    {k:"num", items:[
+      "**Count the antecedent.** Everyone, each, either, neither, anybody and nobody are SINGULAR: 'Everyone must bring HIS OR HER book' — or recast the sentence plural: 'All must bring their books.'",
+      "**Ask what the pronoun does in its own clause.** Subject of a verb takes the nominative (He and I went); object of a verb or preposition takes the objective (between you and ME; she gave it to us).",
+      "**Match the gender.** A pronoun takes the sex of its antecedent: Musu ... her; the dog ... its; the class ... its as a unit, their as the members — say which sense you mean."
+    ]},
+    {k:"table", head:["The common error","The correct form","The reason"], rows:[
+      ["Between you and I","between you and me","after a preposition use the objective case"],
+      ["Him and I carried the bag","He and I carried the bag","subjects of the verb take the nominative"],
+      ["Everyone gave their best","Everyone gave his or her best","singular antecedent, singular pronoun (or recast in the plural)"],
+      ["Each of the girls were seated","each of the girls was seated","the subject is 'each', not 'girls'"],
+      ["Musu lost their pen","Musu lost her pen","a singular feminine antecedent takes 'her'"],
+      ["This book is her's","this book is hers","possessive pronouns take no apostrophe"],
+      ["The children's toys are in the yard","(correct as it stands)","an irregular plural takes 's after the -ren"]
+    ]},
+    {k:"h3", t:"The Possessive Apostrophe in Full"},
+    {k:"bul", items:[
+      "**Singular noun, even one ending in s: add 's** — Kollie's machete, the boss's car, Moses' or Moses's (both used; be consistent).",
+      "**Regular plural already ending in s: add the apostrophe only** — the pupils' exercise books, the teachers' lounge.",
+      "**Irregular plural: add 's** — children's rights, women's league, the people's choice.",
+      "**Joint possession: one apostrophe at the end** — Kollie and Musu's father (one father). **Separate: both take it** — Kollie's and Musu's fathers (two fathers).",
+      "**Time and measure nouns take it too** — a day's journey, two weeks' pay, an hour's rest.",
+      "**Its is possessive; it's = it is.** 'The dog wagged its tail' — no apostrophe, because possessive pronouns (its, hers, yours, ours, theirs) NEVER carry one.",
+      "**Do not put apostrophes in ordinary plurals** — the 1990s, dos and don'ts, but mind your p's and q's."
+    ]},
+    {k:"h3", t:"Countable and Uncountable — Quantifiers That Must Match"},
+    {k:"table", head:["Use with countable nouns","Use with uncountable nouns","Worked both ways"], rows:[
+      ["many books, few oranges, a few girls","much rice, little water, a little time","many/much, few/little"],
+      ["several students, a number of bags","a great deal of sugar, a bit of luck","number vs amount"],
+      ["three bags of rice (count the bags!)","a piece of advice, a grain of sand","a piece/sack/cup of + noun"],
+      ["five cartons of soda","the news IS good; information IS useful","uncountable takes the singular verb"]
+    ]},
+    {k:"p", t:"Words that look plural but are uncountable, and so take a **singular verb** — news, summons, gallows — together with the usual troublemakers (advice, information, knowledge, furniture, luggage, baggage, money, traffic, weather, research) — are worth ten minutes of drilling every day: the mark for 'The news IS on at six' is as easy to gain and as easy to lose as any in the paper."},
+    {k:"h3", t:"Drafting the Autobiographical Narrative, Step by Step"},
+    {k:"num", items:[
+      "Choose two or three events that truly shaped you — not your whole life from birth: a move to town, a loss, a victory, the day you first earned money.",
+      "List them in TIME ORDER on one line each; this outline is your paragraph plan.",
+      "Open by placing yourself: who you are and where, in one or two sentences, present tense for what continues, past for what happened.",
+      "Tell each event in its own paragraph, with one line of dialogue where it brings the scene alive; keep your pronouns straight — I did it, Mother and I, not Me and Mother.",
+      "Close with what the events made you, and your hope: the reflection is what lifts a narrative from a list to a story.",
+      "Read it aloud to the class; mark every place the tense jumps without a reason, then repair it."
+    ]},
+    {k:"h3", t:"The Short Story Toolkit"},
+    {k:"bul", items:[
+      "**Plot** — the chain of events: beginning (scene and cast), middle (a problem that rises), turning point, end (a resolution that the reader can see was possible).",
+      "**Characters** — keep the cast to three or four; reveal each by speech, action and the small chosen detail, never by a list of adjectives.",
+      "**Setting** — one place, drawn with two or three senses; a market at dawn, a classroom in the dry season.",
+      "**Conflict** — the engine: person against person, against nature, against herself; a story without a problem is an anecdote.",
+      "**Theme** — what the story means underneath: honesty, courage, gratitude; never named, always shown.",
+      "**Dialogue** — each line spoken must either push the plot or reveal a character; use it to bring the people alive.",
+      "**Title** — short, fitted, earned by the story; give the title last."
+    ]},
+    {k:"h3", t:"Word Building for This Period: Turning Anything into a Noun"},
+    {k:"p", t:"English makes nouns out of almost everything by **suffix**: kind → kind**ness**, free → free**dom** (adjective + -ness/-dom); govern → govern**ment**, pay → pay**ment** (verb + -ment); educate → educa**tion** (verb + -tion); friend → friend**ship** (noun + -ship); act**or**, invent**or** (agent nouns); hope**less** turns too. The suffix changes the **part of speech**, so the new word fills a slot in the sentence exactly as a noun: 'The **happiness** of the class was visible.' Learn each new word with the family it belongs to — decide / decision / decisive — and your vocabulary grows by roots, not by singles."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Identify and classify** — underline the proper nouns, name the kind of each noun in a given sentence (common, collective, abstract, compound); a classed list scores full marks only when the heading matches the word",
+      "**Supply the pronoun** — a gap filled with the form that agrees in number, gender and person with the antecedent; state the antecedent if the question asks",
+      "**Correct the error** — 'Between you and I', 'Everyone with their book', 'Each of the girls were': spot, recast, and be ready to say why",
+      "**The apostrophe** — rewrite with the possessive (the bag of the girl → the girl's bag); know its/it's and hers without an apostrophe",
+      "**Uncountable nouns** — 'a piece of advice', 'The news is good'; never 'an information' nor 'advices'",
+      "**The composition** — autobiographical narrative or short story on the given topic: keep time order in the first, plot and dialogue in the second, and answer the instruction exactly"
+    ]}
+
   ],
 
   focus:[
@@ -187,6 +278,65 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Descriptive and Narrative Writing"},
     {k:"p", t:"Go through the writing process — prewrite, draft, revise, edit, publish — and develop given topics into **descriptive writing**, which paints a person, place or thing with details the senses can see, hear, smell, taste and touch; and into **narrative writing**, which tells events in time order with a clear beginning, middle and end."},
+    {k:"h3", t:"Main Verb or Helping Verb — the Two Tests"},
+    {k:"p", t:"A **main verb** can carry the sentence alone; a **helping (auxiliary) verb** only serves it. Test one: **does it take the -ed or -s of the past and the third person?** 'She **walks**' passes, so walks is the main verb. **Can the word be thrown into a question by borrowing do?** 'Do you **like** it?' passes — like is main; but you cannot say 'Do you are tired?', so **am, is, are, was, were** at work are helpers. Every verb helps with something particular: **be** (am, is, are, was, were) builds the progressive and the passive voice; **have, has, had** build the perfect tenses; **do, does, did** build questions, negatives and emphasis ('I DID finish'). The seven **modal auxiliaries** — can, could, may, might, must, shall, should, will, would — are helpers that take the bare infinitive after them: no -s, no -ing, no 'to': 'She must go', never 'must goes' nor 'must to go'."},
+    {k:"h3", t:"Visible, Mental and Linking — Three Kinds of Main Verb"},
+    {k:"bul", items:[
+      "**Visible (physical) action** can be seen: run, carry, pound, boil, cut, dance. In the composition 'the woman pounded cassava', the pounding is a visible act.",
+      "**Mental action** cannot be seen but is still done: think, believe, remember, decide, love, hate, know, understand, suppose, wish, refuse, prefer. 'Kollie decided to stay' reports an act of the mind, not a verb of being.",
+      "**Linking (copular) verbs** join the subject to a word that describes or renames it: be, become, seem, appear, look, feel, taste, smell, sound, grow, turn, remain, prove. Test: replace with **is/are** and the sentence still makes sense — 'The soup tastes salty' → 'The soup is salty', so tastes links; 'She tasted the soup' → 'She is the soup' fails, so tasted acts.",
+      "A linking verb is followed by an **adjective or a noun complement, never an adverb**: 'She looks well' means healthy; 'She looks badly' would describe her sight, and no examiner means that."
+    ]},
+    {k:"table", head:["Modal","It expresses","Example","The common slip"], rows:[
+      ["can / could","ability, permission, possibility","Musu can pound fufu; Could I borrow your pen?","'can' is never followed by 'to'"],
+      ["may / might","permission, weak possibility","May I go home? It might rain by evening.","might for the past: 'He said he might come'"],
+      ["must","necessity, strong deduction","You must submit the project Friday; that must be the chief.","'must to' is wrong — must go"],
+      ["should / ought to","duty, advice","We should help the old; you ought to greet your elders.","ought is the only one that takes 'to'"],
+      ["will / would","future, willingness, polite request, habit","I will try; Would you pass the salt? They would sit for hours talking.","would for past habit: 'Every harmattan we would light a fire'"],
+      ["shall","offer, suggestion (formal)","Shall I carry it? We shall overcome.","'shall' with I/we in questions"],
+      ["need / dare","necessity, courage (semi-modal)","Need he come? She dared to enter.","in the negative: 'He need not come'"]
+    ]},
+    {k:"h3", t:"Transitive and Intransitive — Object or No Object"},
+    {k:"p", t:"A **transitive verb** passes its action to an **object**: 'Kollie cut **the stick**.' An **intransitive verb** stops with the verb or an adverb: 'The baby **slept** quietly.' Find the object by asking **whom or what after the verb**: cut *what*? the stick — transitive. Sleep *what*? nothing — intransitive. The same verb may change its coat: 'She runs the shop' (transitive) against 'She runs fast' (intransitive); 'The bell rang' (intransitive) against 'He rang the bell' (transitive). Verbs that never take an object include come, go, sleep, arrive, fall, die, laugh, weep, shine and sit; verbs that almost always do include bring, buy, carry, cut, fetch, find, hold, lose, make, owe, pay, put, sell and take. **Give and the verbs of asking take two objects** — 'Father gave **us** (indirect) **money** (direct)' — and both survive in the passive: 'We were given money; money was given to us.'"},
+    {k:"h3", t:"Tenses of Period II — Forms and Signal Words"},
+    {k:"table", head:["Tense","How it is built","What it says","Signal words","Example"], rows:[
+      ["Present simple","base form, +s with he/she/it","habit, general truth, state","always, every day, never","Rice grows in the rainy season"],
+      ["Past simple","the past form (or -ed)","finished action","yesterday, last week, in 2019","We visited Grand Bassa last term"],
+      ["Future simple","will/shall + base","what is to come","tomorrow, soon, next year","She will sit the WASSCE next June"],
+      ["Present progressive","am/is/are + -ing","in progress now; planned near future","now, at present, still","The crowd is cheering"],
+      ["Past progressive","was/were + -ing","was in progress when…","while, when, at six yesterday","I was walking when it began to rain"],
+      ["Future progressive","will be + -ing","will be in progress at…","at eight tomorrow","At eight they will be writing the test"]
+    ]},
+    {k:"p", t:"**Stative verbs take no progressive.** Verbs of the mind and the senses — know, believe, remember, decide, love, hate, own, seem, understand, want — are states, not activities: write 'I **know** the road', never 'I am knowing the road'; 'She **loves** cassava leaf', never 'is loving'. Verbs of the senses allow the contrast to carry meaning: 'The soup **tastes** salty' (state) against 'the cook **is tasting** the soup' (act)."},
+    {k:"h3", t:"Subject–Verb Agreement — the Six Laws"},
+    {k:"num", items:[
+      "**A singular subject takes a singular verb; a plural subject a plural.** The boy runs; the boys run. Ignore anything that stands between: 'The box of mangoes IS heavy' — the subject is box.",
+      "**Subjects joined by AND are plural** — 'Kollie and Musu ARE friends'; but one idea takes the singular: 'Bread and butter IS his breakfast'; 'Slow and steady WINS the race.'",
+      "**With OR, NOR, either…or, neither…nor, not only…but also, the verb agrees with the nearer subject** — 'Neither the driver nor the PASSENGERS WERE hurt'; 'Not only the boys but also the TEACHER WAS late.'",
+      "**Each, every, either, neither, one, everyone, nobody take the singular** — 'Each of the girls HAS a book.' But 'the number' is singular and 'a number' plural: 'The NUMBER of pupils is falling; A NUMBER of pupils are absent.'",
+      "**Collective nouns** (team, class, crowd, committee, family, jury, government) take the singular as a unit — 'The team IS winning' — and the plural when the members act apart — 'The team ARE arguing among themselves.'",
+      "**Money, distance, time and weight as amounts are singular** — 'Ten thousand dollars IS a great sum'; 'Fifty miles IS a long way'; and nouns plural in form but singular in sense — news, measles, mumps, physics, mathematics, politics, the gallows — 'The news IS on at six.'"
+    ]},
+    {k:"p", t:"One more examiner's trap: the verb **to be** in the past is 'was/were', and after there it agrees with what follows — '**There ARE** three boys' but '**There IS** one girl left'; '**It is I**' formally, though 'it is me' rules in speech; and a question flips subject and verb, so 'Does he know?' never 'Do he know?' Keep the **present perfect** for unfinished time: 'I HAVE lived here for five years' (still do) against 'I LIVED there in 2015' (done and gone)."},
+    {k:"h3", t:"Verbs That Carry Your Narrative"},
+    {k:"bul", items:[
+      "Choose the **strong verb over the adverb-leaned-on**: trudged, not walked slowly; whispered, not said quietly; gaped, not looked widely — two words become one and the line hardens.",
+      "Vary your openings: a sentence beginning with the adverb ('Into the yard walked the goat') or the -ing form ('Pounding the cassava, Ma sang') lifts the paragraph out of subject-verb-object monotony.",
+      "Hold the **tense of the narrative** — usually past — and shift only where the story truly moves: 'We WERE walking when the rain BEGAN; we HAVE never been so wet.'",
+      "Match the verb to the register: a formal essay does not 'kick off' — it 'begins'; a story may.",
+      "Read one paragraph aloud hunting **s-v agreement slips** — every, each, news, the number — and repair before you copy the fair draft."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Label the verb** — in a given sentence, say whether it is an action, linking or helping verb; a transitive or intransitive action verb",
+      "**Find the object** — underline the direct object; say which verb has none",
+      "**Supply the right form** — 'Each of the pupils (has/have) a book': the mark is for the rule, not a guess",
+      "**Rebuild the tense** — change a passage from the present to the past without leaving any verb behind",
+      "**The progressive** — rewrite with be + -ing at a given time; know the stative verbs that refuse it",
+      "**Modals** — replace must/should/can as directed; follow each with the bare infinitive",
+      "**One paragraph of description or narration** — vivid verb, steady tense, and no agreement errors"
+    ]}
+
   ],
 
   focus:[
@@ -306,6 +456,56 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Persuasion: the Persuasive Essay"},
     {k:"p", t:"A **persuasive essay** seeks to convince the reader to accept a position or act. Its parts: a clear **position** stated early; **reasons** in support, each developed with evidence or example; **answers to the other side**; and a strong **call to action** at the close. Choose an issue that matters to your community, write persuasively using the relevant mechanics — capital letters, punctuation, spelling — and discuss the issues involved for presentation to the class."},
+    {k:"h3", t:"The Perfect Tenses — Built on have + Past Participle"},
+    {k:"p", t:"Every perfect tense says **completed before**, and every one is built the same way: a form of **have** plus the **past participle**. **Present perfect** (has/have + participle) ties the past to now — 'I **have finished** my work' (it stands finished now); 'Musu **has lived** in Harper for eight years' (she still does). **Past perfect** (had + participle) is *the earlier of two past actions* — 'When the teacher arrived, the boys **had run** away' (running first, arriving after). **Future perfect** (will have + participle) looks back from a future point — 'By next June we **will have completed** Senior High.' The signal words examiners test: **just, already, yet, ever, never, since, for, by** — with **since + starting point** (since 2019, since Monday) and **for + length** (for three years, for a long time); and never put a finished-time word in a present-perfect sentence — 'I have seen him *yesterday*' is wrong: yesterday is simple past, 'I saw him yesterday'."},
+    {k:"table", head:["Tense","Formula","Example","What it insists on"], rows:[
+      ["Present perfect","has/have + p.p.","She has gone to school.","gone (and not back) — result visible now"],
+      ["Present perfect progressive","has/have been + -ing","It has been raining all morning.","still going, or just stopped with evidence"],
+      ["Past perfect","had + p.p.","The match had ended when we came.","which of two past events was first"],
+      ["Past perfect progressive","had been + -ing","He had been waiting two hours when the bus came.","duration before a past moment"],
+      ["Future perfect","will have + p.p.","By eight I shall have cooked the rice.","done before a future mark"],
+      ["Future perfect progressive","will have been + -ing","Next year they will have been married ten years.","how long by a future mark"]
+    ]},
+    {k:"h3", t:"Regular and Irregular — How the Past Is Made"},
+    {k:"p", t:"A **regular verb** builds its past and its past participle with **-ed**: walk → walked → walked. The spelling rules that lose marks when forgotten: most verbs add -ed (pound → pounded); verbs ending in **e add only -d** (love → loved); **consonant + y changes y to -ied** (carry → carried, study → studied) but vowel + y simply adds -ed (play → played, enjoy → enjoyed); a **stressed final syllable ending in one vowel and one consonant doubles the last letter** (stop → stopped, plan → planned, refer → referred) — but not when the stress is elsewhere (visit → visited, open → opened) nor after a vowel pair (rain → rained); and **bark, liked, watched** carry the **-t** sound after a voiceless ending — a pronunciation, not a spelling, that oral tests chase. **Irregular verbs** refuse the rule and must be learned in families: they change the vowel (sing–sang–sung; drink–drank–drunk; begin–began–begun), change and add -n (go–went–gone; know–knew–known; grow–grew–grown; draw–drew–drawn), change all three or none at all (do–did–done; see–saw–seen; come–came–come; run–ran–run; put–put–put; cut–cut–cut; cost–cost–cost), or shift only in the participle (take–took–taken; give–gave–given; write–wrote–written; ride–rode–ridden; rise–rose–risen; fall–fell–fallen)."},
+    {k:"table", head:["Base form","Past simple","Past participle","The pair examiners love"], rows:[
+      ["go","went","gone","has gone (away) vs has been (visited and back)"],
+      ["come","came","come","come and see, not come and saw"],
+      ["see","saw","seen","I have seen it, not I have saw it"],
+      ["do","did","done","did he do it — no double past"],
+      ["eat","ate","eaten","has eaten, not has ate"],
+      ["take","took","taken","mistaken rhymes with taken, not took"],
+      ["give","gave","given","given, written, risen all end -en"],
+      ["know","knew","known","know–no past with w"],
+      ["begin","began","begun","i–a–u drift: begin-began-begun, swim-swam-swum, ring-rang-rung"],
+      ["break","broke","broken","speak-spoke-spoken, steal-stole-stolen"],
+      ["choose","chose","chosen","freeze-froze-frozen"],
+      ["fly","flew","flown","grow-grew-grown, throw-threw-thrown"],
+      ["lie (recline)","lay","lain","versus lay-laid-laid (to put down) — the true trap"],
+      ["sit","sat","sat","sit (to rest) takes no object; set-set-set (to place) must: 'She SAT the cup down' is wrong — she SET it down"]
+    ]},
+    {k:"p", t:"The most punished pair in every mark scheme: **lie vs lay**. **Lie, lay, lain, lying** means to recline — 'The pen LAY on the desk'; 'She has LAIN there since noon'; and it takes NO object. **Lay, laid, laying** means to put something down and MUST have an object — 'She LAID the pen on the desk'; 'She has LAID it there often.' Ask *object or no object*, and the answer follows."},
+    {k:"h3", t:"Comparative and Superlative in Full"},
+    {k:"p", t:"One syllable takes **-er/-est** (tall, taller, tallest; fast, faster, fastest — with doubled consonant after one vowel: big, bigger, biggest; thin, thinner, thinnest); **-y changes to -ier** (happy, happier, happiest); two or more syllables take **more/most** (useful, more useful, most useful). Irregulars: **good/well — better — best; bad/badly — worse — worst; little — less — least; many/much — more — most; far — farther (distance) — further (more of); old — elder (family rank) — oldest; late — latter (of two) — latest (time)**. The laws that carry marks: **compare with than, never then** ('taller than Kollie'); the **double comparative is wrong** ('more better', 'most biggest'); **use the comparative between two** ('the BETTER of the twins') and the superlative with **one of the + plural** ('one of the BEST schools in Maryland County'); never compare a thing with its own class — write 'Harper is **larger than any other town** in Maryland' (or 'the largest town in Maryland'), never 'larger than any town in Maryland', which would make Harper larger than itself; and the **as…as** frame takes the positive: 'quiet as a mouse', 'not so hot as Gbarnga in March'."},
+    {k:"h3", t:"The Persuasive Essay — Skeleton and Moves"},
+    {k:"num", items:[
+      "**Claim in the first line.** Say what you want the reader to believe or do, in the introduction, before the detail: 'School should begin at seven.'",
+      "**One reason per paragraph.** Topic sentence, then proof — fact, example, figure, or a short story — then a line tying it back to the claim.",
+      "**Answer the objection.** Name the strongest opposing view and knock it down politely; a persuasion that admits nothing persuades nobody.",
+      "**Words that push:** modal duty (must, should, ought), inclusive pronouns (we, our), concrete numbers, the repeated refrain; and no shouting — the calm argument beats the angry one.",
+      "**Close with the call.** Restate the claim and say who must do what first.",
+      "**Read it as your enemy would.** Mark every assertion with no support behind it; supply the support or cut the assertion."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Choose the tense** — a sentence with a bracketed verb and a since/for/by/yesterday signal: the perfect or the simple past turns on whether the time is finished",
+      "**Supply the participle** — 'has (go) ___': gone, not went; a dozen irregulars return every year, and the lie/lay trap is among them",
+      "**Correct the double past or the wrong form** — 'I have saw it', 'He didn't went', 'more better'",
+      "**Comparatives from a table of data** — two towns, two figures: write the sentence the numbers support, than and not then",
+      "**The older-of-two rule** — 'the taller of the sisters', 'the best of the three'; comparative for two, superlative beyond",
+      "**The persuasive paragraph or essay** — claim, one reason per paragraph, an objection answered, a call at the end; the mechanics (tense, agreement, -ed spellings) are marked inside it, not apart from it"
+    ]}
+
   ],
 
   focus:[
@@ -422,6 +622,67 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Making Writing Vivid and Precise"},
     {k:"p", t:"Well-chosen adjectives and adverbs make writing vivid or precise: 'the dog barked' becomes 'the fierce dog barked loudly in the yard.' But do not heap them — one exact word beats three vague ones. Apply adjectives and adverbs appropriately in compositions, and read the difference aloud."},
+    {k:"h3", t:"The Kinds of Adjectives — by the Question They Answer"},
+    {k:"table", head:["Question","Kind","Words it covers","Example"], rows:[
+      ["what kind?","descriptive (qualitative)","good, tall, red, muddy, tired, honest","the MUDDY road to Todee"],
+      ["which one? / how many?","demonstrative","this, that, these, those","THAT mango is ripe"],
+      ["whose?","possessive","my, your, his, her, its, our, their, Kollie's","HER new wrapper"],
+      ["how many? / which order?","numeral","one, two, first, third, few, several, many","the FIRST boy; SEVERAL traders"],
+      ["what? who? which?","interrogative","what, which, whose (before a noun)","WHICH dress will you wear?"],
+      ["from where?","proper","Liberian, Ghanaian, Monrovian, Bassa","a KPELLE story"],
+      ["(two words joined)","compound","heavy-hearted, good-looking, six-year-old, self-confident","a SELF-CONFIDENT speaker"]
+    ]},
+    {k:"p", t:"An adjective may sit **before** the noun (attributive: a LONG journey) or **after a linking verb** as complement (predicative: the journey was LONG). Words that look like adjectives but are not: **the** (article), **very** (adverb, till it means exact: the very spot), **enough** follows what it modifies (good ENOUGH, big ENOUGH — never enough big), and a noun may serve as adjective (SCHOOL fees, MANGO tree — still a noun in the dictionary, an adjective in the sentence)."},
+    {k:"h3", t:"Order of Adjectives and the Comma Between Them"},
+    {k:"p", t:"English stacks descriptive adjectives in a fixed order — **opinion, size, age, shape, colour, origin, material, purpose** — and a wrong order sounds wrong even when the grammar is right: we say 'a beautiful little old round brown clay water pot,' never 'a clay round beautiful pot.' Commas: join adjectives with a comma when the order could be shuffled or and could be inserted ('a cold, hungry traveller'); no comma when the last adjective belongs to the noun as a unit ('a small green school bag' — 'green school bag' is the thing). One thing the mark scheme rewards: never punctuate the article ('a, honest man' is wrong) and never put a comma between adjective and its noun."},
+    {k:"h3", t:"Adverbs — Kinds, Formation and the Flat Ones"},
+    {k:"bul", items:[
+      "**Adverbs of manner** answer how? — formed from the adjective with **-ly**: quick → quickly, slow → slowly. Spelling shifts: **y to -ily** (happy → happily); **drop the -le e + y** (gentle → gently, simple → simply); **drop the -e** (true → truly, whole → wholly, due → duly); **-ll** (full → fully).",
+      "**Flat adverbs** — identical to the adjective and taking no -ly: **fast, hard, late, long, low, high, straight, right, far**. 'He runs FAST'; 'She works HARD.' The trap is the -ly twins with their own meanings: **hardly** = scarcely (He HARDLY ate = he almost did not eat), **lately** = recently, **highly** = greatly (praised HIGHLY), **latest** = most recent news. 'The boy spoke hardly any words' is correct; 'the boy worked hardly' is nonsense.",
+      "**Adverbs of frequency** — always, usually, often, sometimes, rarely, seldom, never; they sit BEFORE the main verb but AFTER be: 'She ALWAYS sings', 'He is NEVER late'.",
+      "**Adverbs of degree** — very, too, rather, quite, fairly, almost, enough (after), so…that, too…to: 'THE soup is TOO hot TO eat' carries its own result.",
+      "**Adverbs of time and place** — now, then, today, here, there, elsewhere, upstairs.",
+      "**The conjunctive adverbs** — however, therefore, moreover, nevertheless, besides, otherwise, meanwhile, then, finally, first: they link sentences but are NOT conjunctions, so they can never join two sentences with one bare comma."
+    ]},
+    {k:"table", head:["Pair","One means","The other means","Correct use"], rows:[
+      ["good / well","good is an adjective","well is the adverb — and an adjective for health","She sings WELL; the food is GOOD; 'I am WELL, thank you'"],
+      ["bad / badly","adjective","adverb","He did BADLY in the test (not 'did bad')"],
+      ["real / really","adjective","adverb","a REAL case; it is REALLY hot (not 'real hot')"],
+      ["sure / surely","adjective","adverb","Are you SURE?; SURELY he meant no harm (surely = certainly)"],
+      ["near / nearly","close by","almost","the NEAR village; he NEARLY died (almost, not close)"],
+      ["late / lately","not on time","recently","He came LATE; Have you seen him LATELY?"],
+      ["hard / hardly","with effort; solid","scarcely","works HARD; could HARDLY hear"]
+    ]},
+    {k:"h3", t:"Comparative and Superlative of Adverbs"},
+    {k:"p", t:"The -ly adverbs compare with **more/most**, never with -er: **more carefully, most carefully** (not carefullest). The flat and irregular ones compare like adjectives: **fast – faster – fastest; hard – harder – hardest; late – later – latest; early – earlier – earliest; well – better – best; badly – worse – worst; far – farther/further**. Keep than with the comparative and the with the superlative: 'Musu runs **faster than** Kollie'; 'Musu runs **the fastest** of all.' Two comparatives can stack for a trend: '**The more** we practise, **the better** we speak.' And avoid the double mark scheme failure: no 'more faster', no 'most tallest' — one engine of comparison per adjective."},
+    {k:"h3", t:"Proper, Compound and the Article"},
+    {k:"bul", items:[
+      "**Proper adjectives** are made from proper nouns and always carry the capital: Ghana**ian**, Monrovi**an**, Kru, Bassa, Atlantic; but the noun keeps its own spelling — 'the coast of Liberia', not 'Liberian coast of'.",
+      "**Compound adjectives** hyphenate before the noun but open after it: 'a **well-known** trader' yet 'the trader is **well known**'; 'a **two-week** course' (not two-weeks); ages: 'a **five-year-old** boy'.",
+      "**The definite article**: before a unique thing (the sun, the harmattan, the Equator); before a thing already named (a girl — the girl); with superlatives and ordinals (the best, the first); with adjectives as a class (the poor, the young); with geographical plurals and rivers/seas/orients (the Atlantic, the St Paul, the United States, the Niger); before the name of a vessel (the Joy).",
+      "**No article** before most proper names, languages and school subjects (Liberia, English, Mathematics), before meals and abstracts used generally (rice for lunch, honesty pays), and in the plural-generic of things named by material (mangoes rot quickly). **A/an** follows the SOUND, not the letter: **an** hour, **a** university, **an** MP, **a** one-week course, **an** honest man."
+    ]},
+    {k:"h3", t:"The Conjunctive Adverb and the Semicolon"},
+    {k:"p", t:"A conjunctive adverb joining two full sentences takes the **semicolon before it and a comma after it**: 'The market closed**; however,** we bought rice.' A bare comma there is the **comma splice** that papers everywhere punish: 'The market closed, however we bought rice' welds two sentences with a pin. The four lawful repairs: the semicolon above; a full stop and a new sentence; a coordinating conjunction with a comma ('The market closed, **but** we still bought rice'); or subordination ('**Although** the market had closed, we bought rice'). The five degrees of what these words say: **contrast** — however, nevertheless, yet, still, instead; **result** — therefore, thus, so, then, consequently; **addition** — moreover, furthermore, besides, also, again; **time** — meanwhile, then, finally, next; **concession** — indeed, of course (followed by the turn)."},
+    {k:"h3", t:"Making Writing Vivid and Precise — the Craft"},
+    {k:"bul", items:[
+      "**One right adjective beats three average ones**: 'the RED laterite dust stung his eyes' shows and feels; 'very nice beautiful dust' shows nothing.",
+      "**Do not grade absolutes**: unique, dead, perfect, full, round cannot be very unique or more perfect — use absolutely, completely, nearly instead.",
+      "**Cut -ing echo and empty intensifiers**: very, really, so, just, quite, rather are weeds; each one left standing is a mark of precision lost.",
+      "**Match the register**: 'rather nice' for talk, 'satisfactory' for the formal letter; slang has no place in the composition.",
+      "**Test each adjective against the noun**: a HEAVY rain falls in sheets, a HARD rain stings; do not say 'hot weather and high temperature' twice."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Adjective or adverb?** — 'She sings (beautiful/beautifully)'; after a linking verb choose the adjective, with an action verb the adverb",
+      "**good/well, hard/hardly, late/lately, near/nearly** — the pair questions come back every single year",
+      "**The double comparison** — find and remove: 'more taller', 'most biggest', 'bestest'",
+      "**The order of adjectives** — rearrange jumbled words into the natural stack; the mark is for the instinct, so read it aloud",
+      "**The -ly spellings** — happily, truly, wholly, gently, quickly under dictation; and more carefully for the -ly adverb's comparative",
+      "**Punctuation of however** — the semicolon-and-comma frame; rewrite the comma splice any of the three other lawful ways",
+      "**One vivid paragraph** — described under 'making writing vivid': strong nouns and verbs first, adjectives chosen, intensifiers cut"
+    ]}
+
   ],
 
   focus:[
@@ -541,6 +802,58 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Persuasion: the Advertisement"},
     {k:"p", t:"Compose on approved topics incorporating prepositions, conjunctions, adverbs and interjections — among them the **advertisement**, a short piece of persuasion that names the product, claims its benefit, and calls on the reader to act, using words and pictures chosen to persuade."},
+    {k:"h3", t:"The Prepositions of Time and Place — at, in, on"},
+    {k:"table", head:["Word","At time","In time","On time"], rows:[
+      ["point / part of day","at six o'clock, at noon, at night, at dawn","in the morning, in the rainy season","on Monday evening"],
+      ["day / date","—","in June, in 2026, in the 1990s","on Friday, on 26 July, on my birthday"],
+      ["festival / period","at Christmas, at the harvest","in the harmattan, in wartime","on Independence Day"],
+      ["place point","at the market, at school, at the crossroads","in Monrovia, in Montserrado, in class","on the table, on Broad Street, on the wall"],
+      ["line / surface","at the bus stop, at the gate","in the river, in the yard, in the country","on the road, on the coast, on page 12"]
+    ]},
+    {k:"p", t:"The pairs that decide marks: **between** is for two (or each of a pair), **among** for more than two — 'shared between Musu and Kollie' but 'divided among the traders'. **Besides** = in addition to; **except** = leaving out — 'Besides Kollie, two others came' (Kollie came) against 'Everyone came EXCEPT Kollie' (he did not). **Since** takes a starting point, **for** a length — 'since 2019' / 'for five years'. **During** + noun, **while** + clause — 'during the holiday' / 'while we were on holiday'. **By** = not later than, **until** = up to and no further — 'finish BY Friday' / 'wait UNTIL Friday'. **Into** and **onto** show movement (walk INTO the house, jump ONTO the bed) where **in** and **on** show rest; **off** against **from** ('take it OFF the table' when it leaves the surface, 'from' when the surface is only the starting point). **At** before arrive in small places, **in** for cities and countries: arrive AT the station, arrive IN Monrovia. Never add a preposition to a transitive verb — 'discuss about', 'resemble to', 'enter into the house' (enter the house), 'marry with' are all errors of the mother tongue; 'return back' and 'repeat again' double the meaning."},
+    {k:"h3", t:"Prepositions Fixed by the Word Before Them"},
+    {k:"table", head:["Verb or adjective","Takes","Example"], rows:[
+      ["listen / listen carefully","to","Listen TO the instructions"],
+      ["depend / rely","on (upon)","It DEPENDS ON the rains"],
+      ["believe","in","Believe IN honesty"],
+      ["agree","with a person; to a plan; on a point","I AGREE WITH you; agreed TO the terms; agreed ON the date"],
+      ["apologise","for (a thing), to (a person)","Apologise TO the teacher FOR being late"],
+      ["afraid / frightened / scared","of","Not AFRAID OF the dark"],
+      ["angry / furious","with a person, at a thing","ANGRY WITH the boy, ANGRY AT the noise"],
+      ["good / bad / excellent","at","GOOD AT mathematics"],
+      ["fond / jealous / proud","of","PROUD OF her country"],
+      ["married","to (never with)","She was MARRIED TO a Buchanan man"],
+      ["different","from (also to, BrE)","Different FROM what we expected"],
+      ["complain / succeed","of-or-about / in","COMPLAINED ABOUT the noise; SUCCEEDED IN the test"],
+      ["die","of a disease, from a cause","DIED OF malaria (from overwork)"],
+      ["prevented / protected / safe","from","SAFE FROM harm"]
+    ]},
+    {k:"h3", t:"Conjunctions — Coordinating, Subordinating, Correlative"},
+    {k:"p", t:"A **coordinating conjunction** joins equals: the seven **FANBOYS** — for, and, nor, but, or, yet, so — and the comma before them when two full sentences meet: 'The rain fell**, and** we ran.' A **subordinating conjunction** joins a dependent clause to the main clause and says how they relate: **time** — when, while, before, after, since, until, as soon as; **cause** — because, since, as, now that; **condition** — if, unless (= if…not), provided that, once; **contrast** — although, though, whereas, while; **purpose and result** — so that, in order that, so…that; **place** — where, wherever. When the subordinate clause comes first it takes a comma: 'WHEN the bell rang, we left'; no comma when it follows: 'We left WHEN the bell rang.' One rule that recurs in every correction exercise: **no double negatives** with nor — 'Kollie NEITHER came NOR sent word'; and after if or when of the present, use the simple form, not will: 'If it RAINS tomorrow we will stay' — never 'if it will rain.'"},
+    {k:"bul", items:[
+      "**Correlative conjunctions** come in pairs and demand **balance**: the same form must follow each half — 'BOTH the teacher AND the pupils attended'; 'either Kollie or Musu HAS the key' (the nearer subject rules the verb); 'not only tired BUT ALSO hungry'; 'neither the boys nor the girl WAS late'; 'whether to go OR to stay'; 'the more we practise, the better we speak'. A pair split out of balance is the error to hunt: 'He not only runs but also swims' → 'He BOTH runs AND swims.'"
+    ]},
+    {k:"h3", t:"Interjections — the Words That Stand Apart"},
+    {k:"p", t:"An **interjection** (introjection) throws out feeling and has no grammatical link to the sentence around it: **O** my father!; **Oh!**, **Ah!**, **Alas!**, **Wow!**, **Hey!**, **Hush!**, **Bravo!**, **Hurrah!**, **Well!** (resignation or pause). Because they stand apart, they take the **exclamation mark** when strong and a **comma** when mild — 'Oh, never mind' — and the noun after O is in the **vocative case**: 'O Kollie, come here.' Interjections belong to speech and storytelling, never to the formal letter; a paper may ask you to punctuate them, but no essay should lean on them."},
+    {k:"h3", t:"Persuasion at Work — the Advertisement"},
+    {k:"num", items:[
+      "Fix the product and the person: who must buy, and in one line what it does for them.",
+        "Open with the hook — the claim, a question, or the picture in words: 'Thirsty? Ice-cold Joy water, every morning.'",
+        "Use the imperative and the second person: TRY it; ASK for it; you will not regret IT.",
+        "Lean on the superlative honestly — the strongest, the purest — and back it with one plain reason (size, price, years in the trade).",
+        "Shape the slogan to be said aloud: rhyme (Pleasure without price), alliteration (best, brightest, balm), rhythm, or repetition.",
+        "Close with the call: buy it where — and say the name again. Check every claim you could not defend in court."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Supply the preposition** — at/in/on with time and place; arrive AT a town or IN a country; good AT, depend ON, angry WITH a person",
+      "**between or among; since or for; during or while; by or until; besides or except** — the pair choices in a given sentence",
+      "**Join the sentences** — with and, but, or, nor, yet, so (with the comma), or with although/because/unless (mind the comma when the clause leads)",
+      "**Correct the tongue-slip** — 'discuss about', 'marry with', 'enter into', 'repeat again', 'return back': the preposition or the copy is cut",
+      "**the correlative balance** — repair 'not only…but also' and 'either…or' so the halves match, and let the nearer subject govern the verb",
+      "**the advertisement task** — hook, claim, one honest reason, slogan, call: marked for persuasion, and again for the mechanics inside it"
+    ]}
+
   ],
 
   focus:[
@@ -665,6 +978,68 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Exposition: Comparison and Contrast"},
     {k:"p", t:"Write the **comparison-and-contrast** essay, a form of exposition that shows how two things are alike and how they differ: name the two subjects, state the basis of comparison, then treat the points one by one — by subject or by point. Develop your own topics and write the essay."},
+    {k:"h3", t:"Phrase and Clause — the First Divide"},
+    {k:"p", t:"A **phrase** is a group of words without its own subject–verb pair; a **clause** always carries one. 'In the market' names where but says nothing done — phrase. 'Because the market closed' has a subject and a verb but leans on the rest of the sentence — a **dependent (subordinate) clause**. 'The market closed' stands alone — an **independent (main) clause**. The whole of sentence analysis sits on this one test, and on counting: a **simple** sentence is one independent clause; **compound**, two or more joined by a FANBOYS conjunction or a semicolon; **complex**, one independent clause plus at least one dependent; **compound-complex**, two independents and a dependent. 'The rain fell, and the boys ran' is compound; 'The rain fell while the boys were packing, so they ran' is compound-complex."},
+    {k:"table", head:["Phrase type","Built from","It works as","Example"], rows:[
+      ["noun phrase","(determiner) + (modifiers) + noun","subject, object, complement","THE OLD WOMAN WITH THE BASKET sold pepper"],
+      ["verb phrase","auxiliaries + main verb","the predicate","she HAS BEEN POUNDING rice all morning"],
+      ["prepositional phrase","preposition + its object (a noun phrase)","adjective or adverb","the roof OF THE HOUSE / we walked IN THE RAIN"],
+      ["infinitive phrase","to + base form","noun, adjective or adverb","TO TELL the truth is brave"],
+      ["gerund phrase","-ing form + its dependents","a noun","SELLING OLD CLOTHES paid his fees"],
+      ["participial phrase","-ing / -ed verb form + dependents","an adjective","THE BOY CARRYING THE SACK tripped; rice BOILED WITH PALM OIL"],
+      ["appositive phrase","a noun phrase beside another noun","explains or renames","Kollie, THE CLASS CAPTAIN, read the prayer"]
+    ]},
+    {k:"h3", t:"Gerund or Participle — the Two Tests"},
+    {k:"p", t:"Both wear **-ing**; the office decides the kind. **In a noun slot — subject, object, complement, object of a preposition — it is a gerund**: '**Selling** fish taught him arithmetic'; 'she enjoys **cooking**'; 'his dream, **teaching**, came true.' **Beside a noun doing the work of an adjective, or inside a verb phrase with be, it is the present participle**: 'the **selling** price'; 'she **was cooking**.' Two tells: a gerund can take a **possessive** before it — 'we objected to **Kollie's coming** late' — and only the gerund can follow of, about, for, by, without, in: 'he learns **by listening**'. The participle, being an adjective, can be dropped from the sentence without injury: 'the man STANDING there' → 'the man there' — try it with the gerund and the sentence collapses."},
+    {k:"h3", t:"The Dangling Modifier — Every Year, One Mark"},
+    {k:"p", t:"A participial phrase must be fastened to the doer of the -ing action; when the doer is absent or wrong, the modifier **dangles** and the sentence turns absurd: '**Walking to school**, the rain caught Musu' — the rain was not walking. Repair by naming the doer inside the main clause: '**Walking to school**, Musu was caught by the rain'; or by expanding the phrase to a clause: 'As Musu walked to school, the rain caught her.' The same test catches '**Having finished** the plate, the bowl was washed' (the plate did not finish itself) and '**After cooking**, supper was served' — supply the cook."},
+    {k:"h3", t:"The Clauses Inside the Complex Sentence"},
+    {k:"table", head:["Clause kind","It works as","Begins with","Example"], rows:[
+      ["noun clause","subject, object, complement","that, whether, what, who, when, why","WHO BUILT IT is unknown; I know THAT SHE CAME"],
+      ["adverbial clause","adverb of time, cause, condition, contrast, purpose","when, because, if, although, so that","we left WHEN the bell rang"],
+      ["relative (adjective) clause","adjective on a noun","who, whom, whose, which, that, where","the girl WHO WON; the pen THAT YOU LOST"],
+      ["relative clause, defining","says WHICH one — no commas","that / who / zero relative","the boy [who] sits beside me is Tongo"],
+      ["relative clause, non-defining","adds a fact about the one already fixed — commas","which / who (never that)","Monrovia, WHICH was founded in 1822, stands on Cape Mesurado"]
+    ]},
+    {k:"p", t:"Two relative rules that WASSCE corrects: **whom** when the pronoun is an object ('the man WHOM we thanked'), and the comma law — a name or a unique thing takes the commas (Harper**, which lies on the coast,** is my town), a defining clause never does (the town WHICH lies on the coast is Harper). **That** may replace who/which in defining clauses but never after a comma, and it may vanish altogether when it is the object: 'the book (that) I read.'"},
+    {k:"h3", t:"Phrasal Verbs — the Verb Plus Its Little Word"},
+    {k:"p", t:"A **phrasal verb** welds a verb to an adverb particle or a preposition, and the pair usually means more than the verb: the particle turns **give** (hand over) into **give up** (surrender). When the adverb particle is there, a short object may come **between** — 'turn the light **on**', 'call the man **off**', 'write it **down**', 'pick it **up**' — but a **pronoun object must go between** ('take it **off**', never take off it); a preposition, having an object by nature, stays before its noun — 'look **after** the child' never 'look the child after.' Separable or not is a habit to learn with the word."},
+    {k:"table", head:["Phrasal verb","It means","Example"], rows:[
+      ["call off","cancel","The match was CALLED OFF for rain"],
+      ["put off","postpone; disgust","They PUT the test OFF until Monday"],
+      ["give up","stop trying; surrender","He GAVE UP smoking"],
+      ["carry on / carry out","continue / perform","CARRY ON with the plan; CARRY OUT the experiment"],
+      ["bring up","raise a child; raise a topic","She was BROUGHT UP in Harper"],
+      ["run out of","have no more","We RAN OUT OF kerosene"],
+      ["put up with","tolerate","The class PUT UP WITH the noise"],
+      ["set out / set off","begin a journey","We SET OFF at dawn"],
+      ["look into","investigate","The council will LOOK INTO the road"],
+      ["take after","resemble","The boy TAKES AFTER his uncle"],
+      ["turn down","refuse; lower","She TURNED DOWN the offer"],
+      ["do without","manage lacking","We DID WITHOUT the radio"],
+      ["get over","recover","He GOT OVER the fever slowly"],
+      ["look forward to","await gladly","I LOOK FORWARD TO the holidays (to + -ing!)"]
+    ]},
+    {k:"h3", t:"Exposition: Comparison and Contrast, the Two Frames"},
+    {k:"num", items:[
+      "**Block method** — one whole paragraph on A, one on B, then a third weighing them; best for short, simple subjects: first the farm at Kakata, then the plantation at Harbel, then the judgment between.",
+      "**Point-by-point method** — one paragraph per point of comparison, each covering A and B together: labour in farm and plantation; tools; yields; marketing. This is the frame WASSCE examiners prefer for its discipline.",
+      "Draw the frame before writing: two columns headed A and B with the shared points down the left — every row you cannot fill is a point to drop.",
+      "Signal the turns: **similarities** — like, both, also, similarly, likewise, in the same way; **differences** — but, yet, while, whereas, unlike, on the other hand, in contrast, however.",
+      "Make every comparison between true like-for-like: 'The climate of Monrovia is wetter than THAT OF Gbarnga' — never 'wetter than Gbarnga', which compares a climate with a town.",
+      "End with the weighing sentence: the thesis restated as a judgment, not new material."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Label the underlined group** — phrase or clause, and if a phrase: noun, verb, prepositional, infinitive, gerund or participial",
+      "**Give the clause its kind** — noun, adverbial or relative; defining or non-defining; supply or delete the commas as the clause demands",
+      "**Classify the sentence** — simple, compound, complex, compound-complex, by counting independent and dependent clauses",
+      "**Repair the dangling modifier** — walk the -ing phrase back to its doer and re-fasten it",
+      "**The phrasal verb meaning** — 'called off', 'put up with', 'takes after': supply the one-word verb it replaces, and mind pronouns between the parts (turn IT off)",
+      "**the comparative frame** — rewrite so like is compared with like ('the rain of Monrovia, not Monrovia, is heavier than THAT of Gbarnga')",
+      "**the exposition paragraph** — comparison or contrast on the given pair, in one of the two frames, with the signal words marked"
+    ]}
+
   ],
 
   focus:[
@@ -785,6 +1160,58 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Writing Book Reports"},
     {k:"p", t:"In the context of literature, the **book report** in its standard format gives: the **title and author**; the **setting** — where and when; the **characters** — who they are; the **plot** — what happens, briefly and in order; the **theme** — what the story is really about; and your **evaluation** — what the book taught you and how well it did it. Read short stories and write a report on each using this format."},
+    {k:"h3", t:"The Five Forms and Where Each One Lives"},
+    {k:"table", head:["Form","Built how","Lives in","Examples"], rows:[
+      ["base (present except 3rd singular)","the dictionary form","after modals; plural present; infinitive","they WORK; must WORK; to WORK"],
+      ["-s form (3rd person singular present)","base + s/es","present simple with he/she/it","SHE WORKS; he goes; she studies"],
+      ["-ing form (present participle)","base + ing (drop e; double t in running)","progressives; gerunds","is WORKing; WORKing here is hard"],
+      ["past form (past simple, V2)","-ed, or the learned change","past simple, alone","SHE WORKED; she went; he knew"],
+      ["past participle (V3)","-ed, or -n or unchanged","perfects (have + V3) and passives (be + V3)","has WORKED; was BUILT; has gone; was seen"]
+    ]},
+    {k:"p", t:"Every one of the tenses is assembled from those five parts. Regular verbs are transparent: work – works – working – worked – worked. Irregular verbs hide their goods, and the two forms that most often collapse into each other in scripts are V2 and V3: went (past) and gone (participle) — 'he HAS gone', never 'has went'; saw and seen; knew and known; wrote and written. A WASSCE objective test will hand you a blank after have, had or was; the answer is always V3."},
+    {k:"h3", t:"The Six Tenses, One Table to End All Tables"},
+    {k:"table", head:["Tense","Formula","Typical signal","Example"], rows:[
+      ["present simple","V1 / V1+s","always, every day, the truth","Rice needs water"],
+      ["past simple","V2","yesterday, last term, in 2019","The rains failed last year"],
+      ["future simple","will/shall + V1","tomorrow, soon","The school will open in January"],
+      ["present perfect","has/have + V3","just, already, yet, since, for","The head has arrived (and is here)"],
+      ["past perfect","had + V3","before, after, by the time, when","The bell had rung before we reached the hall"],
+      ["future perfect","will have + V3","by + future point","By Friday we shall have finished the wall"]
+    ]},
+    {k:"p", t:"The progressives — be + V-ing — sit inside the three present/past/future frames when the action is in progress; the perfect progressives add been: 'it **has been raining** since dawn'. The four uses of the present perfect that exams test are: **result now** (I have lost my key — still missing), **experience** (have you ever…?), **continuing state with since/for** (she has lived here since 2019), and **news just in** (the chief has arrived). A finished-time word kills it: not 'have arrived yesterday' but **arrived yesterday**."},
+    {k:"h3", t:"Sequence of Tenses"},
+    {k:"bul", items:[
+      "When the reporting verb is past, the verb inside the report usually steps back: 'Kollie **says** he **is** tired' against 'Kollie **said** he **was** tired.'",
+      "A general truth does not step back: 'Our teacher **taught** that water **is** wet'; 'the earth **moves** round the sun' was said, is true.",
+      "Two past events in one sentence: the **earlier** takes the past perfect, the later the simple past — 'when I **arrived**, the match **had begun**'; after **after** and **before** the order is already clear, so simple past is tolerated.",
+      "A narrative keeps one backbone tense (past) and shifts only on purpose — for flashback (past perfect) or for the characters' own voices (direct speech)."
+    ]},
+    {k:"h3", t:"Cause and Effect — the Machinery"},
+    {k:"table", head:["You want to…","Use","Watch out for"], rows:[
+      ["state the cause first","because, since, as, owing to, due to, on account of, because of + noun","due to / because of take a NOUN; because takes a CLAUSE"],
+      ["state the result","so, so that, therefore, thus, hence, consequently, as a result","so that = purpose; so…that = degree + result"],
+      ["name a chain","lead to, result in, result from, bring about, cause, produce, give rise to","result IN the effect; result FROM the cause"],
+      ["write the paragraph","one cause many effects, or many causes one effect — pick one frame","do not invent causes the facts do not support"],
+      ["punctuate a leading clause","Because the roads flooded, the trucks stalled","the comma closes the subordinate clause, and no 'because … , so …' double-join"]
+    ]},
+    {k:"h3", t:"The Book Report — Frame for the Reader"},
+    {k:"num", items:[
+      "Head the report with the record: title, author, publisher and year, your name and class, the date read.",
+      "Summarise in four or five sentences what the book is about — the situation, the trouble, the outcome — WITHOUT retelling every chapter and without giving away more than the first third needs.",
+      "Describe the people: the protagonist, the opposition, one or two others — each with a line of evidence from the text.",
+      "Name the setting and what it does: the village, the school, the city; the place of a story is a cause, not wallpaper.",
+      "Say the theme in one sentence: what the book is REALLY about (growing up, honesty against pride).",
+      "Judge with reasons and a quotation: what you liked or disliked and WHY; then recommend — to whom, and for what reader's taste."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**The verb form bank** — give V1–V3 and -ing of go, see, know, write, take, do, come, begin; the two that slip most (went/gone) are in every paper",
+      "**Choose the tense from the signal** — since/for/yesterday/already/by the time: the answer is read from the clue word, not the blank's shape",
+      "**The back-shift** — rewrite direct speech into reported: 'Kollie said, \"I am tired\"' → he said he WAS tired (universal truths excepted)",
+      "**the because/so pair** — join two sentences once, not twice; comma after a leading because-clause",
+      "**the book report or one paragraph of it** — summary, one judged quality with a supporting line, and the record block that shows you know a report from a story"
+    ]}
+
   ],
 
   focus:[
@@ -897,6 +1324,65 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Proofreading"},
     {k:"p", t:"**Proofreading** is checking finished writing for correctness. Hunt for: the **mechanics of grammar** — agreement of subject and verb, tense, pronoun case; **misspelled words**; **grammatical errors** such as **run-on sentences** (two sentences run together with only a comma or nothing) and **sentence fragments** (a piece of a sentence punctuated as one); **shifts in pronouns** — wandering from 'they' to 'you' or from 'one' to 'we'; and faults of **capitalization** and **abbreviation** — the capital for proper nouns and beginnings, the full stop and space in abbreviations. Apply proper mechanics to write sentences effectively, and correct a passage of every fault above."},
+    {k:"h3", t:"Active to Passive — the Five Movements"},
+    {k:"num", items:[
+      "Move the OBJECT of the active verb into the subject seat: 'Musa bought rice' → RICE …",
+      "Put the verb **be** into the SAME tense the active verb had: bought (past) → WAS.",
+      "Change the main verb to its **past participle** (V3): → bought.",
+      "Place the old subject after **by**, in the objective case: → by Musa.",
+      "Adjust everything else: the plural subject now needs plural be — 'the traders sold rubber; RUBBER WAS SOLD by the traders'; 'MUSA AND JENNIE were thanked' turns to 'we were thanked by…'. Nothing in the by-phrase may steal the verb's number."
+    ]},
+    {k:"table", head:["Tense","Active","Passive"], rows:[
+      ["present simple","pounds the fufu","is pounded"],
+      ["present progressive","is pounding","is being pounded"],
+      ["past simple","pounded","was pounded"],
+      ["past progressive","was pounding","was being pounded"],
+      ["present perfect","has pounded","has been pounded"],
+      ["past perfect","had pounded","had been pounded"],
+      ["future","will pound","will be pounded"],
+      ["modal + V1","must pound","must be pounded"]
+    ]},
+    {k:"p", t:"Three facts that earn the method marks: the passive keeps the **tense of the verb be**, while the main verb always stands as a past participle (is pounded is present, was pounded past, will be pounded future — the tense rides wholly on be; and was being pounded carries the past progressive through both helpers); verbs of two objects give **two passives** — 'she was given a book' and 'a book was given to her'; and the intransitive **cannot** go passive at all — there is no object to promote, so 'the accident was happened' is impossible. Use the passive when the **doer is unknown, obvious or unimportant** ('the shop was robbed'; 'he is well known'), when the **receiver must be the topic** ('the bridge was completed in 2022'), in **scientific and formal instruction** ('the mixture was heated'), and for **tact** ('a mistake was made'). Avoid it when the doer matters: 'five pupils were chased away by the principal's brother' hides nothing — say plainly 'the principal's brother chased away five pupils', and keep the story moving with active verbs."},
+    {k:"h3", t:"Proper Verb Usage — the Standing Six"},
+    {k:"bul", items:[
+      "**The subjunctive** still lives in wishes and demands: 'if I **were** rich' (not was, in the that-clause of wishing); 'I demand that he **come** at once' (base form); 'God **save** Liberia'; 'as it **were**'.",
+      "**shall / will**: shall offers and simple futurity with I and we (formal: 'I shall be glad'); will for willingness and promise with all persons; in questions shall I / shall we ask leave and propose.",
+      "**ought to, used to, had rather**: 'you OUGHT TO apologise' (ought keeps its to); 'she USED TO sell pepper' — a past habit — but 'she IS USED TO selling pepper' means accustomed to it, the preposition taking the gerund; 'I had rather stay than fight' (bare infinitives).",
+      "**dare and need** as semi-modals in the negative and question: 'he DARES not speak'; 'need she GO?' — but the ordinary verb forms are also correct: 'she doesn't need to go.'",
+      "**may / might / can / could** in wishes and purpose: 'MAY you succeed'; 'I study so that I MAY pass' — and never 'can' for permission in the formal sentence: 'may I go?'",
+      "**do, does, did** carry the question and the negative only — 'he did NOT go', never 'did not went' — and the emphasis 'I DID do it.'"
+    ]},
+    {k:"h3", t:"The Paragraph — Architecture"},
+    {k:"p", t:"A paragraph is **one idea, fully worked**: the **topic sentence** states it (and carries the **controlling idea** — what about it), the **supporting sentences** prove it with fact, example, reason, quotation or narrative detail, and the **concluding sentence** rounds it off or turns toward the next idea. The two marks examiners award on paragraphs are **unity** (nothing in that strays from the topic sentence) and **coherence** (the sentences hold hands). The hands are: the order of time or importance; **transitions** (first, then, again, however, therefore, finally); reference (this plan, that day, the same trouble); and repetition of the key word."},
+    {k:"table", head:["If the job is…","Build the paragraph by…","Signal words"], rows:[
+      ["telling a story","time order, event on event","first, then, soon, at last"],
+      ["describing a scene","spatial order, near to far; the chosen senses","beside, behind, above, at the far end"],
+      ["giving information","definition, then facts and figures","namely, for example, that is"],
+      ["proving a point","claim, reason, evidence, tie-back","because, since, for instance, thus"],
+      ["comparing","block or point-by-point","like, unlike, whereas, similarly"],
+      ["explaining consequences","the cause, then each effect in turn","as a result, consequently, therefore"]
+    ]},
+    {k:"h3", t:"Proofreading — the Order of the Hunt"},
+    {k:"num", items:[
+      "**Read it aloud, twice.** The ear hears what the eye forgives — the missing he, the verb that never arrived, the sentence that ran across two full stops.",
+      "**Hunt by list, not at large**: first subjects and verbs (agreement and tense jumps), then pronouns (antecedent and case), then punctuation (commas at joins, apostrophes, the full stop the run-on sentence needs), then spelling of the same-old words (their/there, received, business).",
+      "**Check the top and bottom**: the heading, date, name and closing of a letter; the greeting and farewell of a speech — losses of format marks are avoidable and unforgiven.",
+      "**Swap with a classmate for one round.** A fresh eye finds what yours has married itself to.",
+      "**Use the marks when you correct**: ^ or ins for insertion, str or ~~through~~ for deletion, sp for spacing, tr for transposed letters, || for a new paragraph, = or cap for a capital. Copy the fair draft only after the marks have died.",
+      "**Count what the question demanded**: four sentences, two paragraphs, ten words — a short answer to a long instruction loses on number before meaning."
+    ]},
+    {k:"h3", t:"The Run-on and Its Four Repairs"},
+    {k:"p", t:"Two sentences run together with only a comma or nothing are the most common faults of the second period's script: the **run-on (fused)** sentence ('The bell rang we ran') and the **comma splice** ('The bell rang, we ran'). Four repairs, and any scores: the **full stop** (The bell rang. We ran.); the **semicolon** for closely linked pairs (The bell rang; we ran.); the **coordinating conjunction** with its comma (The bell rang, and we ran.); and **subordination** (After the bell rang, we ran.) The comma may weld lists, but never sentences. A **fragment** is the opposite disease — a dependent clause or a phrase standing alone ('Because the rain fell.'), cured by attaching it to a main clause or completing its thought."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Change the voice** — active to passive with the tense kept (is pounded, was being pounded, will have been pounded): the marks ride on the be-verb's tense and the V3",
+      "**Say why the passive** — supply the by-phrase, or explain that the doer is unknown or unimportant",
+      "**Find and fix the run-on** — comma splice or fused sentence: four lawful repairs; fragments: attach or complete",
+      "**Shape the paragraph** — pick the topic sentence from four candidates (the one that controls, not merely mentions), then add the missing transition",
+      "**The subjunctive and the old helpers** — if I WERE; he DARES not; you OUGHT TO go",
+      "**The fair copy** — a paragraph with a given task is marked for the proofread: agreement, punctuation, spelling of the same-old words"
+    ]}
+
   ],
 
   focus:[
@@ -1009,6 +1495,45 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Dictionary Skills"},
     {k:"p", t:"Use the dictionary effectively in defining words. Its keys: **words are arranged in alphabetical order**, letter by letter; the **guide words** at the top of every dictionary page show the first and last entries on that page; the **entry** gives the spelling, the pronunciation, the part or parts of speech, the meanings numbered by sense, and an example. Find a word by its guide words, then read its parts of speech and choose the meaning that fits the sentence."},
+    {k:"h3", t:"Using the Tenses in Practice — the Storyteller's Discipline"},
+    {k:"p", t:"A narrative is built on one **backbone tense** and moves only when it means to. A past narration tells what happened in the **past simple** ('we LEFT the town at dawn'); the **past progressive** paints the background against which events land ('the sun WAS SHINING, the birds WERE SINGING, when the truck STOPPED'); the **past perfect** steps back to an earlier event before returning ('we HAD TRAVELLED twenty miles; then the tyre burst'). Report and minutes prefer the present perfect for news just in ('the committee HAS approved the site') and the past simple for what is done. A plan or forecast lives in the future. The single worst habit in scripts is the tense drift — 'the woman WAS pounding when a boy COMES in' — and the proofreading pass exists to catch it: underline every verb in the draft, and ask of each, does the clock of the story truly move here?"},
+    {k:"h3", t:"The Four Kinds of Essay — One Plan Each"},
+    {k:"table", head:["The instruction says…","You must…","Frame"], rows:[
+      ["narrate / tell the story of","put events in order with people and a turning point","scene, trouble, climax, outcome, and what it made of you"],
+      ["describe","paint with the senses and the particulars","general impression first, then detail near to far"],
+      ["explain / give an account of","make a process or a state of affairs clear","definition, causes, workings, effects, example"],
+      ["discuss / argue / persuade","weigh and take a side","claim, reasons with proof, answer the objection, restated judgment"]
+    ]},
+    {k:"p", t:"The command words cut the plan: **relate** asks for a connected story, **give reasons** asks for proof, **compare** demands like-for-like pairs, **state** wants the point plain without decoration, **illustrate** wants an example that carries the idea. Circle the command word and the limits (your own experience; not more than 250 words) before anything else — answering beyond the limit or beside the question is the commonest way an able script fails."},
+    {k:"h3", t:"The Essay from Prompt to Fair Copy"},
+    {k:"num", items:[
+      "**Read the instruction twice**, circle the command word, underline the limits, and say in one line what the finished essay must do.",
+      "**Mine for matter** — five minutes of lists: persons, places, causes, examples, quotations, figures; kill nothing at this stage.",
+      "**Select and order** — three or four paragraphs, one controlling idea each; write the topic sentences now and test that together they already answer the question.",
+      "**Draft** — introduction that states the thesis, the paragraphs in plan order, a conclusion that ends on the judgment, not on a new fact.",
+      "**Revise at the paragraph level** — unity, coherence, the transitions, the evidence; a paragraph of two sentences has not been trusted with a job.",
+      "**Proofread at the word level** — verbs, pronouns, punctuation, spelling — then copy fair, and keep the plan: an essay is graded as a built thing, not a spilt one."
+    ]},
+    {k:"h3", t:"The Dictionary Page, Read Aloud"},
+    {k:"p", t:"A dictionary entry hands you far more than a meaning. **The guide words** at the top of each page name the first and last entry on it — the alphabetical order they keep is word by LETTER, not by syllable: **car comes before card, card before care, care before caret** (shorter before longer when letters run out), and the entry word is alphabeted ignoring spaces and hyphens. The **syllable points** (dic-tion-ar-y) show where the word falls; the **pronunciation in respelling** (dic-shuh-ner-ee) shows the sounds, with the **accent mark before the stressed syllable**. The **part of speech** (n., v., adj.) tells the kind; the **numbered senses** give the order — usually the oldest or central first; the **example phrase** shows the collocation it lives in; **idioms appear under the main word** (see 'run' for 'run out of'); and **usage labels** (informal, slang, archaic, Brit., U.S.) tell where and when the sense is proper. A thesaurus gives the synonym crowd with a choice to make; a glossary gives the hard words of one book only."},
+    {k:"h3", t:"Alphabetical Order — the Librarian's Test"},
+    {k:"bul", items:[
+      "Compare letter by letter: **fa, far, fare, farm** stand in that order — the shorter word leads when letters run out.",
+      "Ignore the space: **post office** is filed P-O-S-T-O (among postman and postage); **passer-by** is alphabeted as passerby, the hyphen dissolved.",
+      "Names of persons: surname first (Dadzie, N. Grant — filed under D); titles and prefixes of nobility go as read (most school catalogs file Dr King under K).",
+      "Numbers: a dictionary files them as spelt (Twelfth Night under T), a catalog files the word, not the figure.",
+      "The catalog itself: **author, title, and subject cards** are three doors into one drawer; the **call number** (Dewey: 000 knowledge, 100 philosophy, 200 religion, 300 society, 400 language, 500 science, 600 craft, 700 arts, 800 literature, 900 history and places) fixes where the book waits on the shelf; the online catalog is the same three doors, typed."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Choose and justify the tense** — a sentence or short gap with since/yesterday/while/by the time: the mark scheme wants the signal named",
+      "**Keep the story in one tense** — repair the drift in a given paragraph (was/walks/came)",
+      "**Obey the command word** — narrate against describe against discuss: the same title sets three essays; know what each asks",
+      "**Dictionary order** — arrange eight words correctly (care, car, card, caret…); say which came first and why",
+      "**The entry's machinery** — guide words, syllables, stress, part of speech, usage labels; identify what each part of a printed entry answers",
+      "**The essay plan** — topic sentences for a given title; the examiner can see a plan from the first line of each paragraph"
+    ]}
+
   ],
 
   focus:[
@@ -1123,6 +1648,90 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Spelling Rules and Commonly Misspelled Words"},
     {k:"p", t:"Apply the **spelling rules**: i before e except after c — believe, receive; drop the final e before a vowel ending — hope, hoping, but hopeful; double the final consonant after a short vowel — stop, stopping; change y to i before an ending — easy, easier. Review the **commonly misspelled words** for proper spellings — accommodation, beginning, definite, embarrass, necessary, occasion, receive, tomorrow, until, writing — and drill them until they are secure."},
+    {k:"h3", t:"Spelling Rules Worth Their Salt"},
+    {k:"bul", items:[
+      "**i before e except after c** — believe, relief, field, piece; but receive, ceiling, deceit, conceit after the c; the honest exceptions are frequent and must be known: **either, neither, leisure, seize, weird, foreign, ancient**, and their neighbours.",
+      "**Double the final consonant** when a stressed final syllable ends in one vowel and one consonant: stop → stopped, big → bigger, refer → referred, begin → beginning. Never when the stress sits earlier: visit → visited, open → opened, travel → travelling (British single l); never after a vowel pair: rain → raining, read → reader.",
+      "**Keep the silent e** before -able, -ous and -ing where dropping it would change the sound: courage → courageous, change → changeable, race → racing; drop it elsewhere: love → loving, use → useful, like → likeness. The cut-downs must be memorised: **truly, wholly, duly, judgment, argument** — the e simply vanishes.",
+      "**y after a consonant becomes i** before an ending that does not start with i: happy → happier, happy → happiness, carry → carried; but the y stays before -ing and -ish: trying, babyish. Beauty → beauteous is a law unto itself: memorise it.",
+      "**Words that end in -able/-ible** follow no rule at all — memorise the two short lists: reasonable, comfortable, preferable, dependable against possible, sensible, visible, terrible, flexible."
+    ]},
+    {k:"table", head:["Word","The slip that loses the mark","How to keep it"], rows:[
+      ["necessary","neccessary, necesary","one C, two S's — a shirt needs sleeves: ne-CE-SS-ary"],
+      ["separate","seperate","there is PAR (a container) inside sep-AR-ate"],
+      ["receive","recieve","i before e — after the c, e goes first: reCEiVe"],
+      ["business","buisness, buisness","busy + ness: BUSY loses its y and no i appears"],
+      ["government","goverment","the n of govern stays before -ment"],
+      ["privilege","priviledge","there is no a: priviLEGE, twice e"],
+      ["definite","definate","fine is inside: defiNE"],
+      ["grammar","grammer","both this word and calendar end in -AR: gramMAR, calenDAR; the misspeller writes -er"],
+      ["occurrence","occurrence with one c","oc-CUR-RENCE: double c and double r"],
+      ["beginning","begining","begin + -ing: double the n: begiN-N-ing"],
+      ["calendar","calender","the last syllable is -AR, like grammar"],
+      ["cemetery","cemetary","three E's, no a: C-e-m-e-t-e-r-y"]
+    ]},
+    {k:"table", head:["Homophone","Their own meanings","In a sentence"], rows:[
+      ["their / there / they're","possessive / place or filler / they are","THEIR house is over THERE; that's why THEY'RE late"],
+      ["to / two / too","direction or infinitive / the number / also, excessively","I came TO see the TWO girls who are TOO small"],
+      ["its / it's","possessive / it is or it has","The dog wagged ITS tail; IT'S (it is) rabid"],
+      ["peace / piece","quiet, calm / a part of anything","make PEACE; a PIECE of palm oil soap; pass the PEACE pipe"],
+      ["principal / principle","head of the school, chief / a rule or belief","the PRINCIPAL is your PAL; a man of PRINCIPLE"],
+      ["affect / effect","verb: to influence / noun: the result","the rain AFFECTS the crops; the EFFECT is a thin harvest"],
+      ["led / lead","past of lead / the metal (pronounced led)","She LED the song; pipes of LEAD"],
+      ["weather / whether","climate / if","in wet WEATHER ask WHETHER to go"],
+      ["desert / dessert","to abandon, or the dry land / the sweet course","DESSERT after dinner is sweet; the Sahara is a DESERT"],
+      ["aloud / a lot","spoken / many","read it ALOUD; I have A LOT (two words) to do"]
+    ]},
+    {k:"table", head:["Pair","Rule of the road"], rows:[
+      ["borrow / lend","you BORROW FROM, you LEND TO: may I BORROW your pen? I will LEND you mine"],
+      ["leave / let","LEAVE = go or make go; LET = allow: LET me go; don't LEAVE me waiting"],
+      ["learn / teach","the pupil LEARNS, the master TEACHES: she TAUGHT me to read"],
+      ["raise / rise","RAISE takes an object (raise the flag); RISE never does (the sun rises)"],
+      ["lay / lie","LAY puts (laid, laid); lie reclines (lay, lain) — the past of lie is lay, the whole trap"],
+      ["sit / set","SIT rests (sat); SET places (set) — 'she SET the basket where they SAT'"],
+      ["fewer / less","FEWER counts (fewer boys), LESS weighs (less rice)"],
+      ["number / amount","the NUMBER of pupils, the AMOUNT of water"],
+      ["can / may","CAN ability, MAY permission: MAY I pass?"],
+      ["like / as","LIKE + noun (like rain), AS + clause (as it rains)"],
+      ["among / between","AMONG more than two, BETWEEN the pair"],
+      ["imply / infer","the SPEAKER implies, the HEARER infers","did you IMPLY that I was careless? I INFERRED it from your face"]
+    ]},
+    {k:"h3", t:"Prefixes, Roots, Suffixes — the Word Machine"},
+    {k:"table", head:["Piece","Carries","Unpacks as"], rows:[
+      ["un- / in- / im- / il- / ir-","not","unable, indecent, impossible, illegal, irresponsible"],
+      ["re-","again","rewrite, rebuild, return"],
+      ["pre- / fore-","before","preview, forecast; post- = after: postwar"],
+      ["dis- / mis-","apart, wrong","disagree, misjudge"],
+      ["over- / under-","too much / too little","overcook, underpaid"],
+      ["inter- / sub- / trans-","between / under / across","interstate, subway, transport"],
+      ["-tion / -sion","act or state of","narration, permission"],
+      ["-ment / -ness / -ship / -hood","state or action","agreement, kindness, friendship, childhood"],
+      ["-er / -or / -ist","one who","farmer, actor, pianist"],
+      ["-ful / -less / -able / -ive / -ous","full of / without / able / tending / full of (adj.)","helpful, careless, eatable, active, famous"],
+      ["scrib / script","write","describe, manuscript"],
+      ["port","carry","transport, import, porter"],
+      ["vis","see","visible, visit, supervise"],
+      ["dict","say","dictate, predict, dictionary"]
+    ]},
+    {k:"p", t:"The last three rows are **roots**: Latin and Greek seeds from which whole families grow. When a strange word arrives in a passage, take it apart before you guess — **in-visibility** = not (in-) + see (vis) + being able to (-ible) + state (-ity): the state of not being able to be seen. Context then decides which sense the sentence wants."},
+    {k:"h3", t:"Context Clues — the Five Give-Aways"},
+    {k:"bul", items:[
+      "**Definition in the sentence** — 'Laterite, a red iron-rich soil, cakes in the sun.' The comma did the work; examiners love it.",
+      "**Restatement** — 'the toll, that is, the money for using the road', signalled by that is, in other words, or a dash.",
+      "**Example list** — 'legumes such as beans and groundnut keep the soil rich' teaches legumes by its members.",
+      "**Contrast** — 'unlike her talkative sister, Jennie was reticent' makes reticent mean the opposite of talkative; watch but, however, unlike, on the other hand.",
+      "**Cause, consequence and tone** — 'the torrential rain washed away two bridges' says torrential was heavy enough to destroy; the whole passage's weather tells you a word's colour even when its dictionary shade stays vague. Never carry one word's meaning to every place: a HARD road is rough, a HARD day is bad, he HARDLY worked is barely."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Dictation** — the same dozen words every year: necessary, separate, receive, business, government, privilege, definite, grammar, beginning, cemetery",
+      "**Choose the homophone** — their/there, peace/piece, principal/principle, affect/effect, led/lead: a blank, two or three spellings, and no mercy",
+      "**Correct the misused word** — 'less boys', 'more easier', 'laid down on the bed', 'discuss about', 'laid the book' vs 'lay on the shelf'",
+      "**Build the family** — give the noun, verb and adjective of decide, succeed, act, enjoy, invisible",
+      "**Prefix or suffix asked for** — the opposite of honest, able, legible, responsible: dishonest, unable, illegible, irresponsible (the negatives double up with the -in- inside: unable, not unabled)",
+      "**Meaning from the passage** — supply the sense of a marked word using one of the five clue types, and name the clue"
+    ]}
+
   ],
 
   focus:[
@@ -1238,6 +1847,45 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Scanning, Skimming and the SQ4R Method"},
     {k:"p", t:"**Scanning** searches the page for a particular fact — a name, a date, a figure — moving the eye quickly down the page. **Skimming** moves fast over the whole text to catch the main idea and the shape, reading headings, first and last lines. The **SQ4R method** orders serious study: **Survey** the whole text; **Question** each heading; **Read** for the answers; **Record** the answers in notes; **Recite** them from memory; **Review** them again later. Discuss and explain these reading methods and apply each to passages in class."},
+    {k:"h3", t:"Finding a Book — Cards, Call Numbers, Shelves"},
+    {k:"p", t:"The catalog is the library's index; the **call number** is the book's address. Under the **Dewey** plan used by most Liberian school libraries the ten classes run 000 knowledge in general, 100 philosophy and psychology, 200 religion, 300 social sciences (so 372 is education, 326 politics), 400 language, 500 pure science (516 mathematics, 523 astronomy, 591 zoology), 600 applied science and crafts (613 health, 641 cookery), 700 arts, 800 literature (810 American, 820 English), 900 history and geography (966 Africa). A number like **966.5 L42** means history of Liberia (966.5) by a writer whose name begins with L. The **author card** tells where a book by a known writer stands; the **title card** a remembered title; the **subject card** what exists on a topic — three doors into one drawer, and the online catalog replaces all three with search fields. Order in every drawer and list: **alphabetical by letter, the shorter word before the longer when letters run out**. Reference works (dictionary, encyclopedia, atlas, almanac, thesaurus, the biography index) live on the open shelf, out of the loan queue — the **encyclopedia** gives the whole field and points to further reading, where the **dictionary** gives the word."},
+    {k:"h3", t:"Reading the Question Back into the Passage"},
+    {k:"num", items:[
+      "**Read the questions first**, then the passage: you then read hunting, and hunting is faster than wandering.",
+      "**Number the paragraphs** and match every question to its home paragraph — answers are placed, not floating.",
+      "**Answer on the passage's own evidence**: quote or paraphrase the exact words; where 'in your own words' appears, rebuild the sense without reusing any phrase of three words or more.",
+      "**Mind the instruction verbs** — 'find a word meaning…' wants ONE word from the passage, and the part of speech must match; 'what does the writer mean by…' wants the sense HERE, not in general.",
+      "**Reference questions** ('to what does THIS refer?') are answered by looking both ways — as a rule the thing already named, not the thing coming next.",
+      "**Title the passage last**: a good title names the subject and the writer's angle, in five or six words."
+    ]},
+    {k:"h3", t:"Skimming and Scanning — Two Different Speeds"},
+    {k:"table", head:["Skill","You move…","To get","Practice task"], rows:[
+      ["skimming","fast over all of it","the gist; which paragraph says what","read a news page in three minutes and give each item its one line"],
+      ["scanning","fast to ONE fixed mark","a date, a name, a figure, a word","find 1943, or 'Buchanan', or the word 'tariff', in the same page"],
+      ["close reading","slowly, line by line","meaning, tone, the writer's moves","dictionary the unknown words; restate each paragraph"],
+      ["study reading","in cycles","retention for the test","the SQ4R below once, then again the next day"]
+    ]},
+    {k:"h3", t:"SQ4R — the Full Cycle"},
+    {k:"bul", items:[
+      "**Survey** — title, headings, pictures, the first and last lines: what is this going to tell me?",
+      "**Question** — turn each heading into a question and keep it open; the page is now an answer.",
+      "**Read** — to answer your question, at study speed, marking whatever serves it.",
+      "**Recite** — close the book and say or write the answer; what cannot be recited has not been read.",
+      "**Record** — notes in your own words under the heading, names and figures copied exact.",
+      "**Review** — the same day, then a week later; five minutes each time keeps a term's work alive for the examination."
+    ]},
+    {k:"h3", t:"Reading the Lines Behind the Lines"},
+    {k:"p", t:"The last questions of a good comprehension are the thinking ones: the writer's **purpose** (to inform, persuade, entertain, warn), the **tone** (angry, amused, respectful, fearful) and the **audience** — all three read from the same signs: the adjectives chosen ('a *thick* crowd' against 'a *gathered* crowd'), the modal verbs ('we *must* act' is persuasion), the question the writer does not answer, and the loaded words behind the answer key's favourite label, **implication**: 'the minister *promised* to rebuild' hints that the rebuilding has not begun. The facts answer *what*; the word-choice answers *why*."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**The reference work to choose** — atlas for the map, almanac for the year's figures, thesaurus for the synonym, encyclopedia for the overview, dictionary for the spelling: the question hands you a task, you name the shelf",
+      "**Alphabet and call-number order** — which book comes first on the shelf, and what does a 966.5 promise",
+      "**Scanning or skimming** — name the right speed for the given task (find the score in a results page: scanning)",
+      "**The one-word find** — 'in the passage, find a word which means X': match the part of speech the blank requires",
+      "**The short answer** — one sentence resting on its own evidence; quote for 'according to the writer', recast for 'in your own words'",
+      "**Purpose, tone, audience** — each with one quotation as proof; never 'to make us think'"
+    ]}
+
   ],
 
   focus:[
@@ -1354,6 +2002,48 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Report Writing, Oral Reading and Listening"},
     {k:"p", t:"A **report** records an event, a visit or an investigation: its title, its date and place, its findings arranged under headings, its conclusion and any recommendation — all in the formal, impersonal style. Practise **oral reading and speaking** — clear voice, steady pace, eye contact — and **listening to speeches**, noting the main points and judging the delivery. Give **oral presentations for critical evaluation**, offering and receiving comment with respect."},
+    {k:"h3", t:"The Five Parts of a Letter, and What Each Must Carry"},
+    {k:"table", head:["Part","Sits where","Carries","Traps"], rows:[
+      ["Heading","top right","writer's address, then the date (12 June 2026 — never 12/6/26)","town and date are joined by a comma; smallest place first; no full stops inside the address lines"],
+      ["Salutation","left, below the heading","Dear Mr Dadzie; Dear Sir; My dear Aunt Jene","a name gets a name (never Dear Sir to your uncle); comma after it"],
+      ["Body","the letter's middle","one subject per paragraph; the point FIRST, then the reason, then the ask","no slang and no contractions in the formal letter; no 'urgent' shouting in caps in either"],
+      ["Subscription","lower right","Yours sincerely (a name was used); Yours faithfully (Dear Sir); yours affectionately (kin and friends)","comma after it, and capital on Yours only"],
+      ["Signature","under the subscription","full name; title if the letter is official","post-nominals and designation of office belong to the signature, not the salutation"]
+    ]},
+    {k:"p", t:"The two courtesies that decide the salutation and the close together: **name the person you are writing to — Dear Mr Kollie — and end Yours sincerely**; **do not know the name — Dear Sir/Madam — and end Yours faithfully.** The **informal letter** adds the personal greeting and the family news, allows contractions and exclamations, and closes yours lovingly or with thanks; the **formal letter** opens with its business in the first sentence ('I write to apply for the post of…'), keeps one matter per paragraph, asks clearly for what it wants, and ends with the thanks owed in advance ('I shall be grateful for an early reply') before the subscription. The **business letter** adds the block above the salutation: the inside address of the person written to, and the **subject line** (your Ref/our Ref if trading). No letter, friendly or stiff, should leave a question the reader cannot answer: who writes, what is wanted, by when."},
+    {k:"h3", t:"The Application Letter — the WASSCE Favourite"},
+    {k:"num", items:[
+      "Heading and inside address: your address and date top right; the Managing Director / the Principal's full address at the left.",
+      "Salutation: Dear Sir (unknown name) — so, Yours faithfully at the end.",
+      "**State the post sought at once**: 'I wish to apply for the post of clerk advertised in the Daily Observer of 3 June.' The post, the source, the date — three facts in one sentence.",
+      "Age, school, WASSCE subjects and results, any certificate or training — figures and dates, not adjectives.",
+      "Experience and qualities PROVEN: 'I kept the accounts of my father's store for two years', not 'I am honest and hardworking' alone.",
+      "Availability ('I may be interviewed at any time from…') and the enclosures listed (copies of certificates).",
+      "One paragraph of polite close asking for consideration; subscription, signature, full name. And no begging: the application states what it offers."
+    ]},
+    {k:"h3", t:"The Speech — Writing for the Ear"},
+    {k:"p", t:"A speech is heard once, so it must be **built to be caught**: the **introduction** greets the platform (Mr Chairman, the Principal, teachers, and fellow students), names the motion, and takes its side within three sentences; the **body** gives three arguments at most, each with its example, and each signed off — 'that is why I say…'; the **conclusion** returns to the greeting's order (I thank the impartial timekeeper…) and ends on the restated claim. The ear's tools: the **short sentence**; **repetition** of the key phrase (I have a dream…); the **triad** (we need food, work and schools); the **rhetorical question** (can a child study on an empty stomach?); the **contrast pair** (not punishment but patience). The delivery's tools, marked in oral exams: **eye** over the room not the paper, **volume** that reaches the back bench, **pace** slowed at the commas, **pause** after the point, standing **posture**, and the page turned before the sentence ends — never turn your back, never read the whole speech aloud."},
+    {k:"h3", t:"The Report — What, When, Where, How, Why, Who"},
+    {k:"bul", items:[
+      "The opening sentence carries the **first three questions** — what happened, when, where: 'A fire destroyed the Grade 9 block of St Peters High School on Tuesday morning.' The rest answers **how** and **why**, and the **who** of witnesses and officials.",
+      "The order is the reader's need, not the event's: **most important first**, details after; a fire report names the loss before the weather.",
+      "The **third person and the past tense** tell the finished event ('the cause was traced'); present perfect carries the still-unfolding ('two classes have been moved'); direct quotes breathe in short doses.",
+      "Matter, not style: figures, names, times; no exclamation, no adjectives the police could not verify.",
+      "The head gives the story its first line: a title (THE MARKET FIRE) or a dateline (BUCHANAN, 5 May).",
+      "Types you will be asked for: the **news report**, the **match report**, the **meeting report** (with the resolutions), the **trip/field report** (what was seen, learned, recommended) — all six questions, all the same discipline."
+    ]},
+    {k:"h3", t:"Oral Reading, Listening, and the Two Together"},
+    {k:"p", t:"**Oral reading** is marked on **pronunciation** (the final -s, the -ed endings: pounds, liked, needed), **stress** (reCORD vs REcord), **punctuation kept as pause** (a comma half-breath, a full stop a whole one), **speed held steady**, and **tone matched to the sense** (the question rises, the warning slows). **Listening** has its own grades in the viva: listen **for detail** (the figures in a weather bulletin), **for reasoning** (the argument in a debate), and **to evaluate** (is the evidence enough?); the listener's habits — stop the talking inside and wait, note the two or three figures as they pass, question the speaker not the person, and ask the clarifying question at the gap, not in the middle — are the same habits the comprehension paper tests on paper."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Write the letter the task names** — friend, editor, principal, or the application: the register, the salutation-close pair (Dear Sir — Yours faithfully), and the first sentence that states the post sought are the marked three",
+      "**Correct the letter's mechanics** — date and address order, the comma after the salutation and subscription, no contractions in the formal one",
+      "**The report of the school event** — six questions in the first paragraph; past tense; third person; no decoration",
+      "**The speech on the given motion** — the greeting, the position at once, three arguments with proof, the return at the end",
+      "**Pronunciation of the passage read aloud** — the -ed and -s endings, the word stress, the pause at the punctuation",
+      "**The listening or oral-viva question** — state the detail you caught and what the speaker argued; answer at the length asked"
+    ]}
+
   ],
 
   focus:[
@@ -1473,6 +2163,43 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Summary Writing"},
     {k:"p", t:"A **summary** gives the main ideas of a passage in your own words, in far fewer words, keeping the original sense and order. Method: read the passage through; find the topic sentence of each paragraph; strip away examples, repetitions and detail; write the essentials in your own words; and check that nothing important is lost and nothing added. Read given texts and summarise them."},
+    {k:"h3", t:"The Three Cases, Drill and Proof"},
+    {k:"p", t:"Cases are positions in the sentence wearing different clothes: **nominative (subjective)**, **possessive (genitive)**, **objective**. The drill that ends the guessing: **strip the sentence to its spine.** 'The principal thanked **the boys and me**' — remove the join, test each alone: *thanked the boys* ✓, *thanked I* ✗ — so thanked **me**. The reverse check works the same: '**She and he** signed the petition' — *he signed* ✓, *him signed* ✗, so **he and she**. After **than** and **as** the case follows from the verb the clause hides: 'Musu is taller than **I**' (than I [am]); 'the teacher praised Musu more than **me**' (than [he praised] me) — the two are not interchangeable, and the objective is the safe everyday form the mark schemes accept. Who/whom: whom only when it can answer with **him** — 'the man WHOM we met' (we met him); 'the woman WHO met us' (she met us). 'It is **I**' is the formal key, 'it's me' the spoken truth — say which register you are writing."},
+    {k:"h3", t:"The Perfect Tenses Applied — the Four Questions"},
+    {k:"num", items:[
+      "**Is the time word finished or open?** yesterday, last year, in 2019 → past simple; today, this week, since, for → present perfect ('I have seen him TODAY' but 'I saw him YESTERDAY').",
+      "**Are there two pasts?** The earlier one takes the past perfect — 'by the time we reached the field, the match had begun'; if after/before already fix the order, simple past twice is clean.",
+      "**How far does the state run?** had been + -ing counts the duration before a past mark — 'she had been cooking since dawn when the power failed'.",
+      "**What does a future deadline see?** by Friday, by next June → future perfect — 'by June we shall have covered the whole guide'."
+    ]},
+    {k:"p", t:"One trap worth its own drill: **no finished-time word with has/have** — 'he has died last year' is impossible (a death done yesterday belongs to the past simple: **he died last year**). And **gone against been**: 'she has GONE to Ganta' (she is there or on the road) against 'she has BEEN to Ganta' (she went and came back) — the objective test loves exactly this pair."},
+    {k:"h3", t:"The Speech Kinds and Their Shapes"},
+    {k:"table", head:["Kind","Its one job","Its shape","Its danger"], rows:[
+      ["informative","make a subject clear","define, describe, illustrate, summarise","loving the detail more than the listener"],
+      ["persuasive","move the listener to act or believe","claim, proofs, answer the objection, call","anger without evidence"],
+      ["special occasion (tribute)","honour a person or event","the story that shows the quality","generality: praise must name a deed"],
+      ["after-dinner / entertaining","delight the room","short anecdotes, the gentle joke, the quick landing","the joke that needs a footnote"],
+      ["debate speech","win the motion on the floor","greet, take the side, three arguments, rebut, close","reading the paper instead of meeting the room"]
+    ]},
+    {k:"h3", t:"Summary Writing — Cut It to the Bone"},
+    {k:"num", items:[
+      "**Find the thread**: ask of each paragraph — what did it ADD to the story or argument? Discard example, quotation, figure, description and every repeated point; keep the skeleton.",
+      "**Count the words the passage carries** and the limit you must reach; the usual ratio is a third. That ratio is your cutting budget before you write a line.",
+      "**Write in your own words**, in **one paragraph**, in the **third person and the present or past tense the passage used** — no 'the writer says', no direct speech, no 'I'.",
+      "**Join with subordination** — because, when, after, so that — so the points ride one sentence where the passage needed three.",
+      "**Check against the source**: every point of the skeleton present, nothing added, the word limit honoured, and it reads as a whole piece even if the original never did."
+    ]},
+    {k:"p", t:"The marks in a summary go to **coverage and compression, not style**: a grader counts the points kept and counts the words over. Two habits protect both: write the point-list first, then only the sentences; and never copy a whole sentence of the passage — a lifted line is a point not rewritten and, on many keys, not counted."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Case in the blank** — 'between you and (I/me)'; 'who(m) did they name'; '(She/Her) and I went': the spine-test wins",
+      "**Since/for, gone/been, died/has died** — the three little traps of the perfect tenses, each in a sentence of its own",
+      "**Two pasts in one sentence** — put the past perfect on the earlier action; or explain why after/before lets simple past stand",
+      "**The summary of 300 words in 100** — points, not prose; one paragraph, third person, own words",
+      "**A speech for the named occasion** — greeting, position, three supported points, the close: the format is on the mark scheme before the English is",
+      "**Error-spotting across a paragraph** — case, agreement, tense, apostrophe: the paper's own mix, at paper's own speed"
+    ]}
+
   ],
 
   focus:[
@@ -1585,6 +2312,50 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Review of Verb Usage: the Principal Parts and Six Tenses"},
     {k:"p", t:"Review the **five forms (principal parts) of a verb** — base (start), s-form (starts), ing-form (starting), past (started), past participle (has/have started) — and gain more practice in using the tenses: **present simple, past simple, future simple, present perfect, past perfect, future perfect**. In groups, drill the parts and tenses until each is automatic in writing."},
+    {k:"h3", t:"How a Poem Works"},
+    {k:"p", t:"A poem says its one thing **in words that do double work**: besides the sense, each line carries **sound** and **shape**. The machinery: the **line** (a poem is read by lines, so where one ends is a choice); the **stanza**, the verse paragraph; **rhythm**, the beat of stressed and unstressed syllables, counted or free; **rhyme** and its **scheme** (AABB for the couplet hymn of praise, ABAB for the alternating ballad, and none at all in **free verse**, which keeps the rhythm and drops the ending-sounds); the **turn** (the point, usually near the end, where the poem swings from picture to meaning); and the **title**, the first words and sometimes the last."},
+    {k:"table", head:["Device","It does this","Example (for the local ear)"], rows:[
+      ["simile","compares with like or as","'the river runs LIKE a tired man after rain'"],
+      ["metaphor","says one thing IS another","'the night is a black wrapper over Bomi'"],
+      ["personification","gives the lifeless human acts","'the wind POUNDED the zinc roof all night'"],
+      ["hyperbole","deliberate overstatement for effect","'I have told you a thousand times'"],
+      ["understatement","softening for the same effect","'the harmattan is a little dry'"],
+      ["irony","the words mean the opposite of the situation","'fine weather!' said the farmer as the yam rotted"],
+      ["apostrophe","speaking to the absent or dead","'O death, where is thy sting?'"],
+      ["alliteration","repeated opening sounds","'the DRY DUST of the harmattan road'"],
+      ["assonance","repeated vowel sounds within","'the grOAN of the mOrtar and stOne'"],
+      ["onomatopoeia","the word sounds the thing","crash, patter, buzz, splash"]
+    ]},
+    {k:"h3", t:"Reading a Poem — the Procedure"},
+    {k:"num", items:[
+      "Read it twice: once for the ear, once with a pencil — mark what you cannot see.",
+      "Paraphrase stanza by stanza in plain prose: what is actually happening, to whom, where.",
+      "Ask **who speaks** (the poet is not the speaker): a child, an old man, a river, a mourner.",
+      "Name the **mood** (grief, pride, playfulness) and find the two words that carry it.",
+      "Find the **imagery**: which figure of speech does the most work, and what does it make you see?",
+      "Locate the **turn** and say what changed — then the **theme** in one sentence: not the subject (a fishing town) but what the poem says about it (the sea feeds and starves).",
+      "Judge: which single line would you keep if the poem were cut in half? Defend the choice."
+    ]},
+    {k:"h3", t:"Writing the Poem, the Story, the Play Scene"},
+    {k:"bul", items:[
+      "**The poem** starts from one moment, not a subject: the morning the market burned, a name called across a yard. Fix the picture first — two senses minimum — then choose its music: a rhyme you can land, or free lines whose rhythm you can keep by reading aloud.",
+      "**The lyric** is the short personal song-mood poem; the **narrative poem** and the **ballad** tell a story in verse; the **dirge** mourns, the **praise song** honours, the **ode** addresses its subject with ceremony; the **didactic** poem teaches and must not forget to be a poem.",
+      "**The short story** keeps to one effect: a single trouble, a small cast, a setting you could draw, a turn where the fight changes shape, and an ending the reader could see but did not. Narrate in the **first person** for intimacy ('I was fourteen…') or **third person** for range; a **flashback** may carry the past into the present action but must leave its rails visible.",
+      "**The play scene** speaks only through **dialogue** and **stage directions**: every line either pushes the action or reveals the character; the **soliloquy** lets a figure think aloud; the **aside** trusts the audience with a secret; entrances and exits do the work a novelist does with description; conflict on the stage must be **seen to rise in three beats** — meet, clash, break.",
+        "After any draft: read it aloud ONCE with the ear of a stranger, and cut the first sentence of every paragraph — the writing usually begins at the second."
+    ]},
+    {k:"h3", t:"Prose — the Kinds and the Tools"},
+    {k:"p", t:"**Prose** is writing in sentences and paragraphs rather than lines: **fiction** (the novel and the short story — imagined) and **non-fiction** (essay, biography, autobiography, travel, report — the world told truly). A **novel** is long, wide in cast and time, with side plots; a **short story** is one plot, one effect, no room to spare — which is why the story's first line and the tale's ending are the whole of its craft. The **point of view** decides what the reader may know: **first person** (I) is intimate but blind beyond the speaker; **third person limited** lives inside one head; **third person omniscient** sees all heads and times; and the choice, like the tense, is a promise — break it once and the reader's trust is broken with it. Theme is the sentence the plot proves; plot is the theme in action."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Identify the figure of speech** in a quoted line and say what it does — imagery, rhythm and often rhyme are named in the instruction; name the device and its effect, not one without the other",
+      "**Scan the poem's music** — mark the rhyme scheme; count the beats in a line; say whether it is free verse",
+      "**The speaker and the tone** — who is speaking, to whom, in what feeling; answer with two supporting words",
+      "**Turn the poem to prose** — a stanza paraphrased into plain sentences is a standing objective-paper task",
+      "**Write the short story or the play scene** on the given situation — one effect kept; dialogue that carries the plot; the stage directions punctuated correctly",
+      "**Essay as review** — a book or play review keeps the essay's frame (thesis, evidence, judgment) and adds the record line: title, author, publisher, year"
+    ]}
+
   ],
 
   focus:[
@@ -1701,6 +2472,77 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Speech Development, Oral Practice and Test Tips"},
     {k:"p", t:"Continue **speech development and oral practice**: write speeches and present them in the classroom for critical evaluation — voice, pace, contact, argument. Tips for taking public tests: read every instruction twice; answer the questions asked, not the ones you hoped for; budget the time; attempt every question; leave minutes to check the paper through."},
+    {k:"h3", t:"The Phrasal Verbs the Papers Keep"},
+    {k:"table", head:["Phrasal verb","One-word verb it equals","Example"], rows:[
+      ["break down","stop working; collapse","The lorry BROKE DOWN at the bridge; the talks BROKE DOWN"],
+      ["bring about","cause","The rains BROUGHT ABOUT the flood"],
+      ["call on","visit briefly; invite to speak","The teacher CALLED ON me for the answer"],
+      ["carry out","perform, execute","CARRY OUT the instructions in order"],
+      ["come across","find by chance","I CAME ACROSS the letter in the old chest"],
+      ["count on","rely on","You can COUNT ON Musu"],
+      ["cut down on","reduce","We CUT DOWN ON sugar"],
+      ["do away with","abolish","The school DID AWAY WITH caning"],
+      ["end up","finish in a state","We ENDED UP walking home"],
+      ["get along with","live on friendly terms","She GETS ALONG WITH her roommates"],
+      ["keep up with","stay level with","Keep UP WITH the lesson, not the gossip"],
+      ["look down on","despise","No one should LOOK DOWN ON the poor"],
+      ["look up to","admire","Every pupil LOOKS UP TO the principal"],
+      ["make up for","compensate","He worked twice to MAKE UP FOR the lost day"],
+      ["put forward","propose","She PUT FORWARD a new plan"],
+      ["run into","meet by chance","I RAN INTO my form teacher in Ganta"],
+      ["stand for","represent","ECOWAS STANDS FOR the West African community"],
+      ["take over","assume control","The new manager TOOK OVER in April"],
+      ["turn up","arrive; appear","He TURNED UP an hour late"],
+      ["wear out","become unusable","The shoes WORE OUT before term end"]
+    ]},
+    {k:"p", t:"Two grammar laws ride with the list. **When the little word is an adverb particle, a short object may sit inside and a pronoun MUST**: turn the light on, turn it on — never turn on it. **When the little word is a true preposition it keeps its object close**: look after the baby, look after her — never look the baby after. Some verbs take both coats with different fits: **put on your shoes** (on = particle: put them on) against **put on the table** (on = preposition: put them on the table). And the participle after the verb keeps its own government: **look forward to** takes the -ing form — 'I look forward to SEEING you', the fixed preposition after the whole phrase, never 'to see you' after this particular pair."},
+    {k:"h3", t:"Troublesome Words — the Final Check"},
+    {k:"table", head:["Pair","Rule","Correct"], rows:[
+      ["affect / effect","AFFECT is the verb (influence); EFFECT is the noun (result), or the verb 'to bring about'","The rain AFFECTED the crop; the EFFECT was famine; the chief EFFECTED change"],
+      ["amount / number","AMOUNT for what you weigh, NUMBER for what you count","a large AMOUNT of rice; a small NUMBER of pupils"],
+      ["less / fewer","FEWER counts","FEWER traders came this year"],
+      ["due to / because of","DUE TO follows a linking verb (attributed to); BECAUSE OF joins clauses","The delay was DUE TO rain; we waited BECAUSE OF the rain"],
+      ["data","formally plural, often treated as singular mass","the DATA SHOW (school grammar) / the data is in — answer as the paper asks"],
+      ["farther / further","FARTHER for distance, FURTHER for more of anything","we walked FARTHER; FURTHER discussion"],
+      ["flaunt / flout","FLAUNT shows off; FLOUT disobeys openly","he FLAUNTED his medal; they FLOUTED the rule"],
+      ["lie / lay","LIE reclines (lay, lain); LAY puts down (laid, laid)","she LAID the pen down; she LAY awake; she has LAIN there"],
+      ["that / which","THAT defines (no comma); WHICH adds (with comma)","the road THAT we built; the road, WHICH we built, is open"],
+      ["who / whom","WHOM when the pronoun is an object","the man WHOM we asked; the boy WHO asked"],
+      ["stationary / stationery","stationARY = still; stationERY = pens and paper","the STATIONERY shop sells paper; the STATIONARY bicycle stays parked"],
+      ["each other / one another","EACH OTHER for two, ONE ANOTHER for more","the twins helped EACH OTHER; the class helped ONE ANOTHER"]
+    ]},
+    {k:"h3", t:"The Common Mistakes — One Line Each, to End Them"},
+    {k:"bul", items:[
+      "**Double negative** — 'I did not see nothing' says the opposite: NO / ANY, choose one.",
+      "**Dangling modifier** — 'Walking home, the rain caught me': give the -ing its doer.",
+      "**Fragment** — a because/which/when clause left standing alone: weld it to a main clause.",
+      "**Comma splice** — two sentences, one comma: full stop, semicolon, conjunction, or subordination.",
+      "**Tense drift** — 'she was singing when the bell rings': hold the backbone tense.",
+      "**Agreement by sense not proximity** — 'the box of mango ARE' — find the true subject first.",
+      "**Vague reference** — 'they say…' with no they, or 'this' with no thing: name the referent.",
+      "**Misplaced only** — 'he only walked five miles today' vs 'he walked only five miles': only touches what follows it.",
+      "**Faulty comparison** — 'better than any student in the class' (he is a student): add OTHER.",
+      "**Unnecessary shift of person** — 'a pupil should study; you must work': one person throughout.",
+      "**Redundancy** — 'repeat again, return back, each and every, absolutely must': one is enough.",
+      "**Cliche worn through** — 'cold as ice, busy as a bee, last but not least': the composition earns nothing from a borrowed coat."
+    ]},
+    {k:"h3", t:"How to Work a Past Paper — the Method"},
+    {k:"num", items:[
+      "**Sit it for real**: the clock on, no notes, one sitting — the value of a past paper is the conditions, not the questions.",
+      "**Mark with the key as a prosecutor**: right counts, but the mark scheme's route matters; note the marks lost for format, not sense.",
+      "**Classify every loss** into the four boxes: grammar, comprehension, composition format, time. The box with the most entries is next week's drill.",
+      "**Rewrite the wrong answers from memory** a week later — a repaired script you did not rewrite is a repair you have not made.",
+      "**Keep an error log** — one page per past sitting: the error, the rule, the example. It is the only revision book that ever shrinks."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**The phrasal-verb blank** — 'the talks were ___ (called off / called on / called up)': meaning decides, and pronoun placement inside it",
+      "**Replace with one word** — 'put up with', 'look into', 'do away with': give the single verb the phrase hides",
+      "**Choose the troublesome word** — affect/effect, less/fewer, due to/because of, who/whom, that/which: one sentence, one blank, no second chance",
+      "**The correction objective** — a ten-line paragraph seeded with fragments, splices, dangling -ings and agreement slips; hunt them all",
+      "**The full past-paper circuit** — objectives, then the essay, then the summary, at paper speed: the mark scheme's proportions are the clock's instructions"
+    ]}
+
   ],
 
   focus:[
@@ -1814,6 +2656,53 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Speech Development and Oral Practice"},
     {k:"p", t:"Compose different kinds of **speeches** and develop and deliver **public speeches**: prepare thoroughly, open strongly, signpost the points, close memorably — and judge one another's delivery fairly in class evaluation."},
+    {k:"h3", t:"The Expositions — Five Ways to Explain"},
+    {k:"table", head:["Mode","Its question","How to build it","Watch"], rows:[
+      ["definition","what IS the thing?","genus first (the family), then differentia (what sets it apart): 'A noun is a word that names a person, place, thing or idea'","a circle definition (a ruler is what you rule with) teaches nothing"],
+      ["division and classification","what are its parts or kinds?","split on ONE principle, then list the kinds: 'farming is divided into subsistence, plantation and commercial, by purpose and scale'","overlapping boxes; a missing member"],
+      ["process analysis","HOW does it work or get made?","steps in order, each with its verb: 'to pound fufu, the boiled cassava IS POUNDED…'","skip nothing; the reader who cannot repeat the steps failed to read"],
+      ["cause and effect","WHY, and so what?","one cause with its chain, or one effect with its causes; name the link words","false cause: after is not because"],
+      ["comparison and contrast","how alike, how unlike?","point-by-point or block; like with like","faulty pairing: compare a climate with a climate, not a town"]
+    ]},
+    {k:"p", t:"An exposition is **one controlling idea** driven home: the **thesis** stands at the end of the introduction as a full sentence (not a question, not a title), every **topic sentence** below it answers the thesis in turn, and every fact supports a topic sentence — a paragraph that supports nothing gets cut, however good it reads. The red thread test: read only your topic sentences; if they tell the whole argument by themselves, the essay is built. Exposition differs from persuasion in its promise: persuasion wants the reader to ACT, exposition wants the reader to UNDERSTAND — and an examiner can tell in the first paragraph which was attempted."},
+    {k:"h3", t:"The Revision Moves That Pay"},
+    {k:"num", items:[
+      "**Cut the opening**: find where your second paragraph begins — often the true first line is inside it; start late and end early.",
+      "**Trade adverbs for verbs**: 'walked slowly and heavily' becomes TRUDGED; 'said loudly' becomes SHOUTED — and the sentence gains muscle and loses six words.",
+      "**Name the abstract**: 'the services are inadequate' becomes 'the health post has no gloves and one shelf of drugs' — exposition lives on particulars.",
+      "**Vary the openings**: of ten sentences, at most four may begin with the subject; move the adverbial, use the -ing, or the there-frame — but no stunts.",
+      "**Check the transitions at the paragraph seams**: each first sentence after the first should look back (this plan, that day, the same trouble) before it looks forward.",
+      "**End on the judgment, not new matter**: the last paragraph says what the whole essay was for — and no example enters after that point."
+    ]},
+    {k:"h3", t:"Verb Usage — the Final Ten That Still Walk In"},
+    {k:"table", head:["The slip","The form","Why"], rows:[
+      ["he don't know","he DOESN'T know","the third person takes does"],
+      ["nobody know it","NOBODY KNOWS it","indefinite pronouns are singular"],
+      ["the number of pupils are","the NUMBER of pupils IS","the head noun is number; a NUMBER of pupils ARE"],
+      ["I suggest that he comes now","that he COME now","the mandative subjunctive takes the base form"],
+      ["if I was you","if I WERE you","the wishing subjunctive"],
+      ["between you and I","between you and ME","object of a preposition"],
+      ["who did they select","WHOM did they select","it answers with him — but WHO is correct if it is the subject: 'who selected it?'"],
+      ["she laid down on the bed","she LAID the book down; she LAY DOWN","lay puts; lie reclines"],
+      ["'she set down in the chair'","she SAT down in the chair; she SET the cup down","SET places a thing and must have an object; SIT rests and must not"],
+      ["this data shows / these data show","as the key prefers; know both","data is a plural in Latin; English mass usage is accepted — the reason must be stated"]
+    ]},
+    {k:"h3", t:"Speech Development and the Oral — the Three Ps"},
+    {k:"bul", items:[
+      "**Prepare**: know the motion so well you can argue BOTH sides in ninety seconds; build the outline, not the full script — a read speech dies on its feet.",
+      "**Practise**: aloud, standing, timed; once to the wall, once to a friend who may interrupt; mark where you ran words together and where you feared the pause — the pause is the punctuation of speech.",
+      "**Perform**: feet planted, weight even; eyes in three places around the room, one sentence at each; volume one notch past comfort; the first and the last line delivered from memory; the paper face-up on the stand, never in the hand.",
+      "In **debate**, the courtesies score as well as the cases: greet the chair and the timekeeper, address the IMPARTIAL floor, rebut the point not the person, and close the way you opened; a point of information taken graciously buys the ear for your next argument."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Write the expository essay** on a set topic (farming methods, the value of punctuality, why rivers flood): thesis at the end of the introduction, one mode held, topic sentences that carry the argument alone",
+      "**Build the classification** — 'classify the following into…, stating the principle used': overlapping boxes lose the principle mark",
+      "**The paragraph repair** — insert the transition, cut the unsupported sentence, or fix the comparison: exposition is graded as craft, not decoration",
+      "**Correct the final-ten verb slips** — the objective paper cycles them; don't, number, subjunctives, who/whom, lay/lie",
+      "**The debate or platform speech** — outline form may be asked (introduction, arguments with proof, answer to objection, conclusion); deliver one paragraph as the oral"
+    ]}
+
   ],
 
   focus:[
@@ -1927,6 +2816,59 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Review of Phrases and Clauses"},
     {k:"p", t:"In groups of five, review and discuss **phrases and clauses**: the noun phrase and verb phrase; the verbal phrases — participle, gerund, infinitive; the prepositional phrase; and the clauses — independent; dependent; noun, adjective and adverb clauses. Construct sentences that use each, correctly punctuated — the comma after an introductory phrase, no comma between two verbs sharing one subject."},
+    {k:"h3", t:"Word Families — the Review Table"},
+    {k:"table", head:["Verb","Noun","Adjective","Adverb"], rows:[
+      ["decide","decision","decisive","decisively"],
+      ["succeed","success","successful","successfully"],
+      ["act","action, actor","active","actively"],
+      ["enjoy","enjoyment","enjoyable","—"],
+      ["apply","application, applicant","applicable","—"],
+      ["instruct","instruction, instructor","instructive","instructively"],
+      ["govern","government, governor","governmental, governing","—"],
+      ["maintain","maintenance","maintainable","—"],
+      ["occupy","occupation, occupant","occupied, occupying","—"],
+      ["prefer","preference","preferable","preferably"],
+      ["revise","revision","revisable","—"],
+      ["unite","union, unity, unit","united, unified","unitedly"]
+    ]},
+    {k:"p", t:"The family drill is worth five minutes a day precisely because the objective paper asks the member the sentence cannot carry by itself: a blank after an article wants the **noun** ('the ___ of the plan'), a blank before a noun wants the **adjective** ('a ___ decision'), a blank after the verb wants the **adverb** ('he acted ___'). Knowing the family means guessing nothing."},
+    {k:"h3", t:"Context Clues at Higher Speed — Three Worked Cases"},
+    {k:"p", t:"**Case one, the definition clue**: 'Laterite, a red iron-rich soil that cakes when dry, paved the yard.' The words between the commas ARE the meaning — the sentence has only to be cut and the definition lifted. **Case two, the example clue**: 'the pungent odours of the market — fermented cassava, smoked fish, and bitterball — turned visitors away'; the examples set the field (pungent: strong-smelling), and the tone (turned visitors away) sets the sign (unpleasant). **Case three, the contrast clue**: 'where her brother blurted, Jennie was reticent'; the counter-position makes reticent the opposite of the blurting kind (reserved, holding back). The method in every case: **guess from the neighbourhood, test by substitution** (does the guessed word keep the sentence's sense and its grammar?), then check the root or affix if one is showing."},
+    {k:"h3", t:"Affixes at Speed — the Review Grid"},
+    {k:"table", head:["Affix","Its work","Built example"], rows:[
+      ["un-, in-, im-, il-, ir-, dis-","make negative","untrue, indecent, impossible, illegal, irresponsible, disagree"],
+      ["re-","again","rebuild, re-read"],
+      ["mis-","wrongly","misjudge, misprint"],
+      ["over-, under-","too much / too little","overcook, underpay"],
+      ["inter- / trans- / sub-","between / across / under","interstate, transport, subway"],
+      ["non-","not, outside the class","non-negotiable, nonsense"],
+      ["-er / -or / -ist / -ian","one who does","farmer, actor, pianist, historian"],
+      ["-tion / -ment / -ness / -ity / -ship / -hood","state, act, quality","instruction, payment, kindness, ability, friendship, childhood"],
+      ["-ful / -less / -able / -ible","with / without / able to be","careful, careless, eatable, possible"],
+      ["-y / -ish / -like / -ward","having some / like / toward","rainy, reddish, childlike, homeward"],
+      ["-ize / -ify / -en","make into","formalize, beautify, widen"]
+    ]},
+    {k:"h3", t:"Spelling — the Final Gauntlet"},
+    {k:"p", t:"The dictation list every candidate should be able to write with eyes shut: **necessary, separate, receive, business, government, privilege, definite, grammar, beginning, cemetery, committee, embarrass, exaggerate, rhythm, environment, library, February, address, recommend, success, surprise, temperature, tomorrow, existence, conscious, questionnaire, beforehand, independent, judgement, accommodate**. The traps are patterns, not accidents: doubled letters (su-cc-ess, re-comm-m-end, a-cc-ommo-date), single-double switches (be-foreh-a-nd has none of the rr people write), silent intruders (rh-yt-h-m, li-br-a-ry, Fe-br-u-a-ry), and the -ent/-ant and -ance/-ence roulette (different, excellent; independence, existence, patient/conscience). Write them twice a week; keep the wrong ones, and only the wrong ones, on the page that sleeps under the pillow."},
+    {k:"h3", t:"Phrases and Clauses — the Method of Analysis"},
+    {k:"num", items:[
+      "**Find the finite verb(s)** first — every verb of that kind opens a clause; count them and you have counted the clauses.",
+      "**Find each subject** beside its verb, and mark whether a conjunction (and, but) joins the verbs inside one clause or the clauses themselves.",
+      "**Bracket the dependent clauses** at their subordinators (when, because, who, that, although) — an -ed or -ing without an auxiliary is not a clause but a phrase.",
+      "**Name each remaining phrase by its head**: a noun phrase, a verb phrase (helpers plus main verb), a prepositional phrase, an infinitive or gerund phrase, a participial phrase.",
+      "**State the function of every bracketed group** — the clause or phrase that cannot be named for its office has not been analysed, only labelled."
+    ]},
+    {k:"p", t:"**The worked analysis.** *When the rains stopped, the farmers, who had waited a month, went to their fields by the river.* — 'When the rains stopped' = adverbial clause of time; 'the farmers' = **noun phrase**, subject; 'who had waited a month' = relative clause, non-defining (its commas say all farmers waited — the name chooses none); 'went' with nothing to help it = past simple main verb, transitive with no object; 'to their fields' = prepositional phrase adverbial of direction; 'by the river' = prepositional phrase adjectival on fields. One sentence, four clauses or phrase-units, none homeless. That is the whole of a WASSCE parse — the skill is the counting, and the confidence is that the count never lies: number the verbs, and the analysis follows."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Supply the right family member** — decide/decision/decisive blanks after the article, before the noun, after the verb",
+      "**Give the meaning from context** — definition clues, example clues, contrast clues; name which one the passage used",
+      "**Build and parse by affix** — the opposite of 'legible', the doer of 'instruct', the state of 'child': prefixes and suffixes asked as arithmetic",
+      "**Dictation** — from the final gauntlet list; the doubled letters are the mark",
+      "**Analyse the sentence** — clauses counted by verb, phrases named by head and office, defining against non-defining and its commas",
+      "**Rewrite without changing meaning** — the gerund to a noun clause, the relative clause to an adjective: the transformation question is the vocabulary review in disguise"
+    ]}
+
   ],
 
   focus:[
@@ -2045,6 +2987,51 @@ var EG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Continuous Rehearsal to the End"},
     {k:"p", t:"Assign yourselves continuous rehearsal of past WASSCE papers until the examination itself, so that responding to the questions becomes habit. Learners respond positively to questions in past WASSCE papers and make a successful pass in future examinations — that is the aim of this final review."},
+    {k:"h3", t:"The Mark Scheme Is a Clock"},
+    {k:"p", t:"Every mark on a WASSCE paper is a minute's claim on you: a section carrying a third of the total marks owns a third of the hour allowed. Work the arithmetic before the paper begins — in a paper of 100 marks over 3 hours, 1 mark is about 1.8 minutes, so a 20-mark summary owns some 36 minutes and no more, and a 40-mark essay owns 72: budget, then defend the budget. When a question runs over its minutes, take your best answer and move on — **an unfinished answer scores its part; an unwritten answer scores nothing, however good the plan in your head.** The last twelve minutes of every sitting belong to the sweep: names and numbers re-checked, blanks filled with the closest defensible choice, nothing left empty."},
+    {k:"h3", t:"The Objective Paper — the Five-Pass Method"},
+    {k:"num", items:[
+      "**Read the stem first and cover the options**: for two seconds the question belongs to you, and a pre-formed answer is the best shield against a clever wrong choice.",
+      "**Read all options to the end** — the paper is built so that option C tempts the candidate who stops reading at C.",
+      "**Eliminate the impossible options first**, then the merely unlikely: two strikes turn one mark into three in the head.",
+      "**Answer it again before you mark it**: the second pass catches the eye-slip of choosing B where the pencil meant the words you read under A.",
+      "**Flag, do not fight**: a doubtful item gets a small mark on the paper's edge and returns after the last question — the clock is the examiner no one argues with."
+    ]},
+    {k:"h3", t:"The Essay and the Summary — Half an Hour of Habit"},
+    {k:"p", t:"Grammar papers mark the composition as composition — **content and organization first, mechanics carried through it** — so the three habits that lift an average script are all cheap: (1) **answer the exact question** — underline its command words and limits, and check the finished script against them line by line; (2) **plan in topic sentences before the first sentence** — three to five, in order, on the question paper; (3) **leave the last five minutes for the read-aloud proofread**, hunting verbs, pronouns, apostrophes and the same-old spellings. For the summary: one paragraph, own words, the points and nothing else, the limit honoured — coverage and compression, not style, carry the marks. The fair copy must be fair: a legible hand is worth two marks a script, and the examiner who cannot read it cannot reward it."},
+    {k:"h3", t:"The Error Log — the Only Book That Shrinks"},
+    {k:"bul", items:[
+      "One page per past sitting, four boxes: **grammar** (tense, concord, case, punctuation), **comprehension** (the wrong reading, the missed instruction), **format** (letter parts, summary frame, missing record line), **time** (what you ran out on).",
+      "Under each, three columns: the error, the rule that kills it, and one true example from your own script — the example is what the exam will recall.",
+      "Re-drill the biggest box for ten minutes a day, then re-sit the question that held that error; the box must shrink before the paper is crossed off.",
+      "Every second Wednesday, sit a full past paper cold, under time, with no notes — the log tells you where it went, and only the sitting tells you whether it stayed fixed."
+    ]},
+    {k:"h3", t:"What Each Section Really Demands"},
+    {k:"table", head:["The section","What it is testing","How marks are actually given"], rows:[
+      ["objective grammar items","recognition of the rule","the right choice, and no credit for a near miss — the reason must be in your head anyway for the next question"],
+      ["error spotting / correction","application","the corrected form AND its reason; half answers get half credit at best"],
+      ["comprehension","locating and restating","one question, one piece of evidence; 'in your own words' means no three-word lift"],
+      ["summary","compression","counted points; the word limit enforced; no opinion of yours"],
+      ["composition / directed writing","organization and register","the task done exactly (letter parts, essay frame), then the coherence, then the clean mechanics"],
+      ["oral","pronunciation, stress, fluency","the endings -s and -ed, the pause at punctuation, the eye from the page"]
+    ]},
+    {k:"h3", t:"The Last Week, and the Hall"},
+    {k:"bul", items:[
+      "**No new material in the last seventy-two hours** — re-drill the log, re-speak one old past-paper essay plan, re-read the dictation list; then stop earlier than you think.",
+      "**Kit and sleep beat last-minute cramming**: two pens, pencil, eraser, watch, and the admission document on the table by the door the night before; six hours of sleep is worth more than the sixth hour of light.",
+      "**In the hall**: read the instructions on the cover first; write name, index number and subject where required before the clock turns; run the mark-to-minute budget you built in practice.",
+      "**Answer the easy sections first to bank the confidence**, and never leave a blank — an empty box cannot be right; a reasoned guess can.",
+      "**Hand in with nothing unwritten** — every sheet, every part, your number on the script; the question you left for the flag that never came back is the one to forget on the way out, not on the way in."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Everything the three years built** — the objective paper is nouns to phrases, tenses to concord, the letter to the summary, all at paper speed",
+      "**The time budget** — a practical question may itself ask how you would divide the period; the answer is the marks-to-minutes arithmetic",
+      "**The instruction obeyed** — word limits, 'in your own words', 'from the passage', one letter of six paragraphs: the format mark is the cheapest in the hall",
+      "**The clean fair copy** — legible, punctuated, proofread; mechanics inside the composition, not bolted on",
+      "**The oral**: read the printed passage aloud with the endings and the pauses; answer the interviewer's question at the length asked, and return the question when invited"
+    ]}
+
   ],
 
   focus:[
