@@ -73,7 +73,7 @@
       label: "Biology", icon: "sub-bi", accent: "#0f5132",
       curriculum: function () { return BI_CURRICULUM; },
       engine: function () { return GEN_SC; },
-      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "apply"],
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "worked", "classify", "diagram", "experiment", "apply"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Biology_Grade" + g + "_Workbook.docx"; }
     },
