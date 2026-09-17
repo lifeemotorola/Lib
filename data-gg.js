@@ -73,6 +73,77 @@ var GG_CURRICULUM = [
     {k:"h3", t:"The Earth's Movements"},
     {k:"p", t:"The earth's **rotation** is its turning on its axis from west to east once in 24 hours. Its **effects**: the alternation of **day and night**; the apparent movement of the sun across the sky; the difference of local time from place to place; and, with the Ferrel deflection, the bending of winds and currents. The earth's **revolution** is its journey around the sun in its **orbit**, once in 365¼ days, at a tilt of 23½° from the plane of the orbit. The terms associated with revolution: the **orbit, axis, inclination (axial tilt), the solstices** of 21 June and 22 December, when the sun is overhead at a tropic, and the **equinoxes** of 21 March and 23 September, when day and night are equal everywhere. The **effects of revolution**: the **seasons** and the varying length of day and night through the year."},
     {k:"p", t:"**Ferrel's law of deflection**: moving air and water are deflected to the right in the northern hemisphere and to the left in the southern, because of the earth's rotation — the trade winds and the great ocean currents all bend to this law. An **eclipse** is the hiding of one heavenly body by another or by the earth's shadow. A **solar (sun) eclipse** forms when the moon passes between the sun and the earth, casting its shadow on the earth; a **lunar (moon) eclipse** forms when the earth passes between the sun and the moon, so the earth's shadow falls on the moon. Illustrate both by diagrams, and distinguish carefully between them."},
+    {k:"h3", t:"The Earth in Numbers"},
+    {k:"table", head:["Measure","Figure","Note"], rows:[
+      ["Equatorial diameter","12 756 km","the bulge the spin makes"],
+      ["Polar diameter","12 714 km","42 km shorter — the oblateness in one pair of numbers"],
+      ["Equatorial circumference","40 075 km","the walk round the belt; polar circuit about 40 008 km"],
+      ["Surface area","510 million km²","water about 361 million (71%), land about 148 million (29%)"],
+      ["Mean distance from the sun","150 million km","light covers it in about 8¼ minutes"],
+      ["Rotation speed at the Equator","about 1 670 km/h","40 075 km ÷ 24 h — and you feel nothing, because it is steady"],
+      ["Revolution period","365¼ days","the extra quarter-day is why every fourth year borrows a day"]
+    ]},
+    {k:"p", t:"Two figures to keep ready: **1° of latitude ≈ 111 km** everywhere (40 075 ÷ 360 ≈ 111.3, and the meridian is a true circle), while **1° of longitude is 111 km only at the Equator** — the parallels shrink toward the poles, so the degree narrows with them until at 90° it is nothing at all. Every distance question on the graticule is one of these two facts dressed differently."},
+    {k:"h3", t:"Proofs that the Earth is Round — Each Worth a Mark"},
+    {k:"bul", items:[
+      "**The ship at sea**: hull first, masts last over the horizon — the deck of water is curved, not flat.",
+      "**The curved horizon itself**: standing high, you see farther; climb a tower, a tree, an aircraft, and the rim of sight retreats outward.",
+      "**Circumnavigation**: sail ever west from Monrovia and you come back to Monrovia from the east — only a closed surface allows that.",
+      "**The eclipse shadow**: the earth's shadow on the moon is always a circular arc, and only a sphere shadows so in every position.",
+      "**The stars climb**: as you travel north, new stars lift above the northern horizon and southern ones sink below the southern — at the Equator you can see all the sky's stars; in the poles' vicinity, only half.",
+      "**Time itself**: local noon arrives four minutes later for every degree west — an unbroken curve of daylight moving round a turning ball.",
+      "**The old measurement**: Eratosthenes noted the sun overhead at Syene while a pillar at Alexandria cast a shadow of about 7°, and since the two cities were some 800 km apart, 800 × 360 ÷ 7 ≈ 41 000 km — the circumference guessed with a stick and a shadow. Modern satellites and photographs of the whole globe end the argument."
+    ]},
+    {k:"h3", t:"Latitude against Longitude"},
+    {k:"table", head:["Property","Latitude","Longitude"], rows:[
+      ["Runs","east-west, measuring north-south","north-south, measuring east-west"],
+      ["Also called","parallels","meridians"],
+      ["Lines are","small circles (each its own size)","equal great circles"],
+      ["Number","180 (90 N, 90 S, the Equator between)","360 half-lines (180 E, 180 W, Greenwich between)"],
+      ["Starts counting from","the Equator (0°)","the Prime Meridian of Greenwich (0°)"],
+      ["Spacing between lines","constant — about 111 km","from 111 km at the Equator to nil at the poles"],
+      ["Key named lines","Tropics of Cancer and Capricorn (23½°), Arctic and Antarctic Circles (66½°), the poles (90°)","Greenwich (0°), the 180° meridian, the International Date Line which mostly follows it"],
+      ["Main use","climate zones, distance north-south","time, position east-west"]
+    ]},
+    {k:"h3", t:"Local Time — the Method, Worked"},
+    {k:"num", items:[
+      "Find the **difference in degrees** of longitude: both places on the same side of Greenwich, subtract (15°E and 4°E → 11°); on opposite sides, add (a town at 11°W and a town at 3°E → 14°).",
+      "**Multiply by 4 minutes**: 14° × 4 = 56 minutes.",
+      "**Set the direction**: the place to the EAST is AHEAD — add; the place to the WEST is BEHIND — subtract. (The sun meets the east first.)",
+      "So when it is **12 noon at Greenwich**, the town 45°E has seen noon three hours ago and stands at **15:00**; the town 60°W is four hours late at **08:00**. If it is noon at Monrovia (about 11°W, roughly 44 minutes behind), the clock at Greenwich shows about **12:44**."
+    ]},
+    {k:"p", t:"The International Date Line exists so the calendar does not lose count: a traveller who flies **westward across it gains nothing and repeats nothing — he steps into tomorrow**; eastward, he **repeats a day**. Keep the direction straight with the ship's log. And the school trap in every paper: 'noon' is a place's own — the sun at its highest along THAT meridian — so a day begins at midnight local, not at midnight Greenwich."},
+    {k:"h3", t:"Distances Along the Graticule — Two Worked Steps"},
+    {k:"num", items:[
+      "**North-south distance**: the two towns lie on 4°N and 9°N — the gap is 5° of latitude, 5 × 111 = **555 km**, whatever meridians they stand on.",
+      "**East-west distance on the Equator**: the towns of 8°W and 3°W differ by 5° of longitude on the line itself: 5 × 111 = **555 km**.",
+      "**East-west elsewhere**: at 10°N the same 5° of longitude covers noticeably LESS than 555 km, because the parallel there is a smaller circle; the candidate who multiplies by 111 at all latitudes loses the mark for the qualifier.",
+      "**Position in words**: a place at 6°N, 11°W is described as its latitude FIRST, then longitude, with the meridian reference — '6 degrees north of the Equator and 11 degrees west of Greenwich'."
+    ]},
+    {k:"h3", t:"Norths, Declination and the Compass"},
+    {k:"bul", items:[
+      "**True (geographic) north** points to the North Pole along the meridian; **grid north** follows the map's vertical grid lines; **magnetic north** is where the needle points, toward the magnetic pole wandering in the Arctic.",
+      "**Magnetic declination** is the angle between magnetic and true north at the place; the surveyor's compass must be corrected by it — add or subtract as the needle lies — before any bearing is drawn or read.",
+      "The needle is deflected locally too: iron ore bodies, steel roofing and a mobile phone on the page can all swing it. Two readings from two stations, taken at the same time, catch such errors — the practical rule on any field trip."
+    ]},
+    {k:"h3", t:"Common Mistakes of the Graticule"},
+    {k:"bul", items:[
+      "Adding time for a place to the WEST or subtracting for the EAST — the reverse of the law; check by asking who sees the sun first.",
+      "Treating one degree of LONGITUDE as 111 km everywhere, without the shrinking of the parallels.",
+      "Writing latitude and longitude in the wrong order, or leaving the N/S and E/W off — a position without its hemisphere is a half answer.",
+      "Confusing the solstice (sun overhead at a Tropic) with the equinox (sun overhead at the Equator, day equal to night everywhere).",
+      "Naming the Date Line a meridian of convenience only for mapmakers: it moves where island groups asked — Kiribati bent it in 1995 — but the calendar day changes on it and nowhere else."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Calculate local time** between two given longitudes: the four minutes per degree, the add-east/subtract-west law, and the answer as a clock time",
+      "**Distance from coordinates**: north-south by 111 km; east-west along a named parallel with the qualifier",
+      "**Define the graticule's terms** — latitude, longitude, great circle, meridian; a definition without its reference line (from where it counts) is half",
+      "**Proofs of the shape** — name two or three, each in a sentence that shows WHY it proves",
+      "**Effects of rotation against revolution** — day and night and time belong to the spin; seasons, changing day-length and the sun's migration between the Tropics to the orbit's tilt",
+      "**Named lines** — Equator, Tropics, Polar Circles, Greenwich, the Date Line: place each on the blank diagram; the marks hide in the labels"
+    ]}
+
   ],
 
   focus:[
@@ -238,6 +309,59 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"The Importance of Rocks to Man"},
     {k:"p", t:"Rocks matter to man: they are the parent material of all **soils**; a source of **building stone, road metal and cement**; the store of **mineral wealth** — iron, gold, diamonds and the fuels coal and petroleum, all won from rock; the aquifer that holds underground water; and the scenery and soils on which farming and settlement depend."},
+    {k:"h3", t:"The Layers in Numbers"},
+    {k:"table", head:["Layer","Depth or thickness","State and make-up","Its note in the exam"], rows:[
+      ["Crust (lithosphere)","5–10 km oceanic; 30–70 km continental","solid rock; sial (granite: silica and aluminium) above sima (basalt: silica and magnesium)","thinnest under the oceans; the NIMBA range exposes ancient crustal rock"],
+      ["Mantle","to about 2 900 km","mostly solid rock that FLOWS over ages; the upper part, the asthenosphere, is partly molten and sluggish","convection here moves the plates — the engine of drift"],
+      ["Outer core","2 250 km thick","liquid iron and nickel; its currents make the magnetic field","the field is why the compass points north at all"],
+      ["Inner core","radius about 1 220 km","solid iron and nickel, compressed and near 5 000 °C","solid despite the heat, because of the pressure"]
+    ]},
+    {k:"p", t:"Depth knowledge comes from the study of **earthquake waves** — their speeds and shadows bend differently through liquid and solid — and from the weights and magnetism of the whole globe; no drill has ever reached the mantle. The two crustal families name themselves in the older books: **sial** (silica + aluminium — the lighter, granite continental floor) and **sima** (silica + magnesium — the denser, basaltic ocean floor). The crust floats on the mantle as a raft floats, a first lesson in isostasy that explains why mountains have deep roots."},
+    {k:"h3", t:"Minerals — the Six Field Tests"},
+    {k:"table", head:["Test","How it is done","What it settles"], rows:[
+      ["Colour","look at the whole crystal","suggests but proves little — quartz comes in many coats"],
+      ["Streak","rub the powder on unglazed porcelain","the honest colour: hematite is black in hand, cherry-red in streak"],
+      ["Hardness","scratch across the Mohs scale: fingernail 2½, coin 3, knife 5½, glass 5½, steel file 6½, quartz 7","talc 1, gypsum 2, calcite 3, fluorite 4, apatite 5, feldspar 6, quartz 7, topaz 8, corundum 9, diamond 10"],
+      ["Cleavage","watch how it splits","mica peels in sheets, feldspar at right angles, quartz has no true cleavage"],
+      ["Acid","one drop of dilute hydrochloric","calcite and all limestones FIZZ — the cheapest decisive test in the kit"],
+      ["Weight and feel","heft it; wet it; taste (carefully)","galena is startlingly heavy for grey; halite is salt; clays stick to the tongue"]
+    ]},
+    {k:"p", t:"A **rock** is an aggregate of one or more **minerals**; a mineral is a naturally formed element or compound with fixed composition and structure. The common rock-builders to know on sight: **quartz** (glassy, hard, no fizz), **feldspar** (pink or white, cleaving, the most plentiful family in the crust), **mica** (sheeted and shiny), **calcite** (the fizzing carbonate that cements limestone), **amphibole and pyroxene** (the dark iron-magnesium minerals of basalt and gabbro), **olivine** (green, of the deep mantle), and **clay minerals** (the weathered dust that holds a hillside and a farmer's rice both). Ore minerals are the metals' hiding-places: **hematite** and **magnetite** for iron — the bands the Bomi and Nimba ranges are mined from; **bauxite** for aluminium; **cassiterite** for tin; **gold** native in its quartz veins."},
+    {k:"h3", t:"The Rock Cycle — One Sentence per Step"},
+    {k:"num", items:[
+      "Magma from the deep crust cools slowly underground → **intrusive igneous rock** (granite, gabbro — coarse crystals, cooled slow).",
+      "Or it erupts and chills fast at the surface → **extrusive igneous** (basalt, obsidian — fine or glassy, cooled quick).",
+      "Weathering breaks any exposed rock to sediment; erosion and transport carry it; deposition lays it in beds.",
+      "The beds are buried, squeezed and cemented → **sedimentary rock** (sandstone, shale, limestone — stratified, fossil-bearing).",
+      "Heat and pressure without melting rewrite any rock → **metamorphic** (shale → slate → schist → gneiss; limestone → marble; sandstone → quartzite).",
+      "Uplift and erosion strip the cover and show the next layer of the cycle; or the rock is buried far enough to melt, and the magma begins again. The cycle never starts and never ends — that is the point of its name."
+    ]},
+    {k:"h3", t:"The Three Families Compared"},
+    {k:"table", head:["Feature","Igneous","Sedimentary","Metamorphic"], rows:[
+      ["How made","cooling and solidifying of molten rock","compaction and cementation of sediment, or precipitation","heat and pressure acting on an older rock"],
+      ["Typical structure","massive, crystalline; no beds","bedded/stratified, clastic grains","banded or foliated; crystals realigned"],
+      ["Fossils","never — the melt destroys them","the usual host — buried quickly in quiet beds","seldom — the squeeze usually erases them"],
+      ["Examples","granite, gabbro, basalt, pumice, obsidian","sandstone, shale, limestone, conglomerate, coal, chalk","slate, phyllite, schist, gneiss, marble, quartzite"],
+      ["Economic work","dimension stone; quarry aggregate","the water aquifers, limestone cement and marble, coal and oil reservoirs","road metal and slate roofs; gneiss country rock of the iron ranges"]
+    ]},
+    {k:"h3", t:"Rocks and Minerals in the Liberian Round"},
+    {k:"bul", items:[
+      "The **Bomi, Bongan, Wologisi and Nimba hills** are the old basement complex — gneisses and schists carrying **banded iron formation** (hematite and magnetite in quartz bands), which is why the iron mines stood there: Bong and Lamco shipped ore to the coast through decades.",
+      "The coastal plain is **Cretaceous to recent sands and clays**, with **laterite** cappings — the iron-rich crust that paves village roads and red-stains every rain — and estuarine muds that build the mangrove shore.",
+      "**Alluvial gold** in the rivers and pits of the interior districts, and **diamond** in the stream gravels of Lofa and the Gbapa hills: worked by hand, washed in pans, sold in the same towns that dig them.",
+      "**Quarry rock** for aggregate and the gabion baskets at the road edges, **sand and gravel** from the river bars, **clay** for every burnt brick and roof tile — the non-metal mining that never makes the news and makes most of the buildings.",
+      "The **pegmatites** of the old ranges — coarse seams of quartz, feldspar, mica and beryl — yield the specimen minerals a school collection needs, and the lapidary trade that cuts and polishes them.",
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Name the layers** with their depths, states and materials — sial against sima, oceanic against continental crust, and why the inner core stays solid",
+      "**Classify a specimen from tests** — colour, streak, hardness, acid: the table of six is the syllabus for this question",
+      "**Three rock types, three formation stories**: say HOW each is made before naming examples; 'granite is igneous because it cooled from magma' carries the mark",
+      "**The rock cycle diagram** — arrows and labels: weathering, erosion, deposition, lithification, metamorphism, melting, intrusion, extrusion",
+      "**Economic geography of rocks** — name the mineral, name the rock, name the country in one line each: iron in the Bomi-Nimba bands, alluvial gold and diamond in the interior",
+      "**Fossils: where and why** — sedimentary beds preserve them, igneous heat forbids them: the reasoning is the question"
+    ]}
+
   ],
 
   focus:[
@@ -396,6 +520,55 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Migration"},
     {k:"p", t:"**Migration** is the movement of people from one place to settle in another. Its **forms and types**: internal (within a country) — rural to urban; and external (international); permanent or seasonal; voluntary or forced. Its **causes** are the **push factors** — lack of jobs, land and services, insecurity, poor harvests — and the **pull factors** — jobs, education, health care, higher wages, family ties. Its **effects** fall on both ends: at the **source**, lost labour and broken families but remittances sent home; at the **receiving region**, growth of labour and market but pressure on housing and services. Its **controls**: balanced regional development, rural employment and services, and town planning. Outline the consequences of migration for source and receiving regions, and suggest solutions."},
+    {k:"h3", t:"The Arithmetic of Population"},
+    {k:"num", items:[
+      "**Density** = total population ÷ land area. A county of 240 000 people over 6 000 km² gives 240 000 ÷ 6 000 = **40 persons per km²** — and say the unit, or half the mark stays behind.",
+      "**Crude birth rate** = births ÷ total population × 1000: 480 babies in a town of 20 000 → 480 ÷ 20 000 × 1000 = **24 per 1000 a year**. The death rate works the same with deaths.",
+      "**Rate of natural increase** = (birth rate − death rate) ÷ 10, in per cent: 24 − 6 = 18 per 1000 = **1.8 % a year**.",
+      "**The doubling time** by the rule of 70: 70 ÷ 1.8 ≈ **39 years** to double — the figure that makes a growth rate feel like a school-building bill."
+    ]},
+    {k:"p", t:"Densities deceive at the two extremes of scale. A country's average hides its whole story: the 2008 census counted **3,476,608** people over some **111 369 km²** — an average near 31 per km² — yet **Montserrado**, a peninsula of a county, held over a third of the nation, while the interior forest counties sat below ten per km². Always ask, of any density figure, what the average is averaging."},
+    {k:"h3", t:"Where People Live, and Where They Will Not"},
+    {k:"bul", items:[
+      "**The world crowds on the cool temperate plains and the old river valleys**: north-eastern North America, Europe, the Nile, the Ganges-Brahmaputra, China's east, south-east Asia's deltas — flat or gentle land, water, fertile soil, jobs.",
+      "**It thins in the four hard places**: the too-wet (the Amazon and the Congo basins, the coastal forests' own interior), the too-dry (Sahara, Kalahari, central Australia), the too-cold (the polar margins, the high Andes and Himalaya), and the too-broken (steep country everywhere soil and transport fail).",
+      "Liberia follows the water and the road: the coast and the old mining and plantation towns stand thickest, the ridge-and-stream interior sparse, and every density map is really a map of **rainfall, soil, tsetse, road and history** read sideways."
+    ]},
+    {k:"h3", t:"Reading a Population Pyramid"},
+    {k:"table", head:["Shape","Its birth and death story","What a planner must build","Example kind of country"], rows:[
+      ["Broad base, quick taper","many births, short lives — rapid growth","schools, then the first jobs","Niger, and much of Africa in the 20th century"],
+      ["Bulge in the middle, narrow base","growth slowing; young adults now","jobs and housing now, care homes later","many middle-income countries today"],
+      ["Beehive — nearly straight sides","low births, long lives — slow or no growth","pensions and health care; the labour force narrows","Japan, most of Europe"],
+      ["Youth-dependency burden","each worker feeds children","the dividend needs schools and factories — or the burden stays","the hinge on which Africa's next thirty years turn"]
+    ]},
+    {k:"p", t:"The **dependency ratio** measures who is carried: (population under 15 + over 64) ÷ the 15–64 workers × 100. A ratio of 80 means 80 dependants per 100 workers; when births fall and the working years lengthen, the **demographic dividend** opens — the one arithmetic fact development aims at, and the school answer's favourite 'so what?'."},
+    {k:"h3", t:"Settlement — Form, Pattern, Site, Situation"},
+    {k:"table", head:["Word","It asks","Answers look like"], rows:[
+      ["Form (or pattern)","what shape is the village?","nucleated — clustered round a square, a spring or a chief's compound; dispersed — farms scattered; linear — strung along one road, river or beach"],
+      ["Function","what is the town FOR?","market, administrative capital, port, mining camp, religious centre, university, resort"],
+      ["Site","WHAT is it standing ON?","Monrovia on Cape Mesurado's harbour bar; a hill-top for defence; a river-crossing point (ford, bridge-head)"],
+      ["Situation","WHAT lies around and beyond it?","on the road between mine and port; at the junction of two highways; commanding a river's head of navigation"]
+    ]},
+    {k:"p", t:"Never confuse the pair: **site is the ground, situation is the neighbourhood.** A town can have a fine site and a dying situation (a port the highway forgot), or a bad site rescued by situation (a crossroads that grew up in a swamp because three roads met there — Monrovia's Broad Street itself). The question 'explain the influence of situation on the growth of the town' wants the second column."},
+    {k:"h3", t:"Migration — the Types and the Ledger"},
+    {k:"bul", items:[
+      "**By direction**: rural-urban (the great move of developing countries), urban-rural (the counter-flow of richer ones), rural-rural (farm pioneers following exhausted soil), urban-urban (jobs jumping city to city).",
+      "**By borders**: internal against international; and within the international, **economic** (the work-seeker), **political** (the refugee, the asylum-seeker), **forced** (the trafficked and the displaced), **environmental** (the flood-land evacuee), **social** (family reunion, marriage, education).",
+      "**By clock**: permanent against **seasonal and circular** — the cocoa and rice harvest moves, then returns.",
+      "**The ledger of one move**: at the **source**, labour lost (the young and able) but remittances and returned skills; at the **destination**, labour and market gained but rent, slum, water and crime; at the **migrant**, wages against loneliness — no question of 'effects' is answered until all three columns have been written."
+    ]},
+    {k:"h3", t:"Liberia's Migration Ledger"},
+    {k:"p", t:"Three waves are readable on any county map: the **recruitment of labour** to the mines and the plantation — the interior emptied by wage economies long before the road arrived; the **war displacements of 1990–2003**, which doubled and redoubled Monrovia's camps and then sent many back to villages that had no school left; and today's **steady rural-urban drift** of the young to Monrovia, Gbarnga, Kakata and Buchanan, answered at source by remittances and an ageing farm population, and at destination by the self-built townships on the city's clay edges (Duport, Paynesville, Todee's borders). Add the **returning diaspora** — nurses, drivers, tailors with American habits and American money — the newest column in the ledger, and the one the examiners did not teach."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Compute density, birth rate, natural increase** — the formula, the substitution, the per km² or per 1000 unit on the answer line",
+      "**Explain a world pattern of density** — three physical and three human factors, each with one named place",
+      "**Read the pyramid** — say which stage it shows and what the country must build in the next ten years",
+      "**Nucleated, dispersed, linear** — the map extract, then the reason: defence, water, road, estate",
+      "**Site against situation** — define both on one town you know; the pair is marked as a pair",
+      "**Push and pull of one named move** — rural to urban Monrovia, or across a border: effects at source AND destination, and the word 'both' is the whole question"
+    ]}
+
   ],
 
   focus:[
@@ -552,6 +725,55 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Gradient, Diagrams, Profiles and Sketches"},
     {k:"p", t:"The **gradient of a slope** is its steepness, expressed as a ratio of vertical rise to horizontal distance — 1 in 20, say — or as a percentage or an angle. Calculate it from the heights and distances of a map. Design **diagrams, profiles and sketches** resulting from survey exercises: the field sketch drawn from one viewpoint, the annotated map, and the cross-section. Prepare an annotated map using the three types of map scale."},
+    {k:"h3", t:"Three Faces of the Scale, and the Conversions"},
+    {k:"p", t:"Scale says **how much the world has been shrunk**, and wears three faces: the **statement** ('2 cm to 1 km'), the **R.F. or representative fraction** (1:50 000 — a fraction with the units cancelled, so it reads in any system), and the **graphical line** drawn on the map — the only one that survives a photocopy, because when paper is stretched or shrunk the drawn line changes with the map while the figure does not. The arithmetic is one idea: **1 km = 100 000 cm**, so 2 cm : 1 km = 2 : 100 000 = **1:50 000**; and 1:50 000 means 1 cm on paper is 50 000 cm on ground = 500 m, i.e. **2 cm to the kilometre**."},
+    {k:"h3", t:"Scale Questions — Four Worked Cases"},
+    {k:"num", items:[
+      "**Map to ground**: the footpath measures 8 cm on a 1:50 000 map → 8 × 50 000 = 400 000 cm = **4 km**.",
+      "**Ground to map**: a lake 5 km long on a 1:25 000 map → 500 000 ÷ 25 000 = **20 cm**; the scale that cannot show it (1:100 000 → 5 cm) is a worse base for lake studies — say both, that is the mark.",
+      "**Statement to R.F.**: '1 inch to 2 miles' → 1 : (2 × 63 360) = **1:126 720** (5 280 ft in a mile, 12 inches in a foot).",
+      "**Changing the scale**: to DOUBLE the size of the map, halve the denominator's meaning — 1:50 000 enlarged twice becomes **1:25 000**; an enlargement of five times turns 1:50 000 into 1:10 000. Area multiplies by the SQUARE of the factor: an estate drawn at 4 cm² on the smaller map covers 16 cm² when the linear scale is doubled. The 'two centimetres to one kilometre' line, restated, is simply 1:50 000 spoken in metres."
+    ]},
+    {k:"h3", t:"Grid References — Along the Corridor, Then Up the Stairs"},
+    {k:"num", items:[
+      "**Eastings first, northings second** — read right along the bottom (the eastings), then up the left side (the northings); every grid reference in the world follows that order, and the memory rhyme is 'along the corridor, up the stairs.'",
+      "**Four-figure** (e.g. 0458) names the whole square — enough to say where a village sits.",
+      "**Six-figure** (e.g. 043587) splits each square into tenths: the extra digit is the tenth guessed with the eye — on a 1 km square drawn 10 cm wide, one tenth is 1 cm on the map and 100 m on the ground; '043 587' pins a point 3 tenths east and 7 tenths north within square 0458, a box about 100 m on a side.",
+      "**Always give the pair without a comma inside it and never reverse it**: a reversed reference puts the school in the swamp and the swamp on the ridge. Add the grid zone when the map spans more than one."
+    ]},
+    {k:"h3", t:"Direction: the Points, the Bearing, the Back Bearing"},
+    {k:"bul", items:[
+      "The **16 points**: the cardinals N, E, S, W; the intermediates NE, SE, SW, NW; then NNE, ENE, ESE, SSE, SSW, WSW, WNW, NNW — the full compass rose, in order, is a one-mark question waiting.",
+      "A **bearing** is an angle measured **clockwise from north**, three figures, no degree sign lost: 047°, 168°, 275°.",
+      "The **back (reciprocal) bearing** is the forward bearing **±180°**: add 180 if the angle is below 180, subtract if above — 047° gives 227°; 275° gives 095°. The field check that proves a traverse closes: every fore and back bearing should differ by exactly 180° (or the station moved).",
+      "Between any two named towns, say the direction BOTH ways — 'Kakata lies about north-east of Monrovia; Monrovia lies south-west of Kakata' — never the same words twice."
+    ]},
+    {k:"h3", t:"Gradient, Profiles and Sketch Maps"},
+    {k:"num", items:[
+      "**Gradient** is steepness as a ratio: vertical ÷ horizontal in the SAME units. Up 40 m over 1.6 km: 1 600 ÷ 40 = 40, so the slope is **1 in 40** (1:40) — and 2.5 % if you prefer 'rise per hundred of run'; on a map, count the contour intervals crossed for the vertical and measure the run from the scale.",
+      "**A cross-section (profile)**: draw your straight line across the map; mark every contour it meets, and the spot heights; drop the ticks down to graph paper at the same vertical spacing (label it!); join with a free hand that keeps a cliff a cliff — vertical exaggeration only when asked, and then stated: V.E. = vertical scale ÷ horizontal scale.",
+      "**A sketch map** is drawn from observation, not scale: the main roads first, then rivers, then buildings in their real shapes; a **title**, a **key** for every symbol invented, a **north arrow**, and distances labelled — 'about 3 km' is honest where a ruled scale on a free-hand map is a lie.",
+      "**A diagram** (school, farm, market scene) is labelled in English, in block letters, with leader rules that never cross; the label spellings carry the marks, not the art."
+    ]},
+    {k:"h3", t:"The Map Itself — Its Five Essential Features"},
+    {k:"bul", items:[
+      "**Title** — what is shown, and where, and of what date the map was surveyed (an old map of a young city is a historical document, not a way-finder).",
+      "**Key (legend)** — every conventional sign explained: the exam's sign list is small and the marks sit in it (see the ten in Grade 12 map work).",
+      "**Scale** — at least one of its three faces; with it, measure; without it, the map is a picture.",
+      "**Direction** — north arrow or the rose; with the graticule printed, the meridians serve.",
+      "**Grid and marginal figures** — the eastings and northings that let you quote a position; and the **conventional signs' colours** as good law: blue for water, brown for relief and contour figures, black for man-made things and names, green for vegetation, red for roads and important sites."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Convert the scale** — statement to R.F. and back, with the 100 000 cm in a km shown, not assumed",
+      "**Give the ground distance for a measured line** — ruler reading in cm and half-cm, multiply, convert, and box the unit",
+      "**Enlargement** — new scale after doubling or five-times work; the candidate who multiplies where they should divide loses at once",
+      "**Quote the six-figure grid reference** of a named feature; then name the feature a reference gives",
+      "**State direction and bearing both ways** between two points, and find the back bearing by the 180° rule",
+      "**Calculate the gradient** between a spot height and a river, or between two contours — vertical, horizontal, same units, ratio answer",
+      "**Draw the cross-section** from the given line: ticks, join, and the named relief features (summit, valley, ridge, spur, cliff) the map was hiding"
+    ]}
+
   ],
 
   focus:[
@@ -707,6 +929,59 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Environmental Hazards"},
     {k:"p", t:"**Environmental hazards** are events, natural or human, that threaten life and property. Their **types, causes, effects and control**: **soil erosion and depletion**, as water and wind strip the topsoil — controlled by cover, contour banks and trees; **drought**, the failure of rain; **deforestation**, the loss of forest to the axe and the fire; **global warming**, the heating of the atmosphere by greenhouse gases; **desertification**, the spread of desert-like conditions as land degrades — causing loss of farmlands, aridity and change in the pattern of agriculture; and **flooding**, whose causes include heavy **precipitation** and the **melting of ice**, and whose effects are the **displacement of population, loss of life and property** — prevented by drainage, protection of wetlands and careful building. Identify incidents of environmental hazards locally and elsewhere, and propose the ways to avoid or manage them."},
+    {k:"h3", t:"Land and Water in Figures"},
+    {k:"table", head:["The globe's account","Figure","The school question it answers"], rows:[
+      ["Surface of the earth","about 510 million km²","the total in every percentage"],
+      ["Water","about 361 million km² — 71 %","'why the earth looks blue from space'"],
+      ["Land","about 148 million km² — 29 %","the Northern Question: most land lies north of the Equator"],
+      ["Water that is fresh","about 2.5 parts in 100","and most of THAT is locked in ice and deep groundwater"],
+      ["Water people can readily use","well under 1 % of all water","the real reason 'water crisis' is a phrase of our century"],
+      ["Ocean floors","the Pacific is the largest and deepest; the Atlantic the second and still widening at its mid-ocean ridge","why West Africa's coast is a trailing edge, not a collision margin"]
+    ]},
+    {k:"p", t:"The hemisphere counts that WASSCE asks for: **three-quarters of the land stands north of the Equator**; the Indian Ocean is almost wholly southern; the Arctic is a frozen sea where the Antarctic is a continent under ice; and the longest coastline in the world (Canada's) belongs to no desert. The Liberian corollary: a coast of lagoons, bars and mangroves where rivers that rise in the Nimba and Bomi ranges run short and fast to the sea — every river here is a small one, because the divide lies close behind the shore."},
+    {k:"h3", t:"Soil — the Recipe and the Profile"},
+    {k:"p", t:"By volume a good topsoil is **about 45 % mineral matter** (sand, silt, clay — the rock's ground-down bones), **about 5 % organic matter** (humus, the black rotted fraction), and **half water and air** in the pores — 25 and 25 in the ideal, forever swapping with the rains and the drought. The living fraction matters beyond its share: a spoonful of healthy soil holds more organisms than there are people on earth, and it is their work — roots prying, worms burrowing, bacteria digesting — that turns litter into humus (**humification**) and humus back into plant food (**mineralization**), the two words the examiner has now used in three years of papers."},
+    {k:"num", items:[
+      "**O (litter)** — fallen leaves on top, half-rotted; the forest floor's own pantry.",
+      "**A (topsoil)** — dark with humus, root-filled, where the farming happens.",
+      "**E (eluviation, where heavy rain leaches)** — pale, washed of its clays and plant food — the reason the rainforest's farmed soil fades fast once the cover is cut.",
+      "**B (subsoil)** — the deposit layer, redder and stickier: in the humid tropics it accumulates the iron and aluminium left behind and hardens to **laterite**.",
+      "**C (weathered parent rock)** — the stone still deciding whether to become soil.",
+      "**R (bedrock)** — the base that set the soil's mineral character in the first place."
+    ]},
+    {k:"h3", t:"Why Tropical Soils Fail — and How the Farmers Answer"},
+    {k:"bul", items:[
+      "**The wash**: heavy rain through bare soil carries the fine clay and its nutrients down past the roots (leaching) — the naked hillside after burning is the picture of it, and laterite's crust is its monument.",
+      "**The thin bank**: the rainforest's richness lies in the LITTER and the roots, not deep in the soil — clear-fell and burn, and two or three years of crops spend the capital; the bush fallow of seven years is the old bank account.",
+      "**The answers that work**: keep a cover (mulch, manure, cover crops like mucuna; leguminous intercropping fixes the nitrogen back); hold the slope (contour ridges and planting on the curve, bunds on swamp margins, terraces where the fall is steep); feed the cycle (compost pits, refuse turned to humus); break the wind (live fences, windbreaks of bamboo or leucaena); rest the field (rotational fallow, agroforestry with the food trees kept — oil palm, mango, bitterwood).",
+      "**The law of the matter**: soil forms at perhaps 1 cm in a century or two; it can be stripped in a season — 'soil is not renewable on a human clock' is the sentence that lifts a conservation answer out of the ordinary."
+    ]},
+    {k:"h3", t:"Pollution — Sources by Medium, with the Cure"},
+    {k:"table", head:["Medium","The main Liberian sources","What it does","The controls that exist or must"], rows:[
+      ["Water","open defecation and latrine overflow at the streams; washing bays and detergents; mine and mill tailings; sewage at the Freeport; oil from launch engines","cholera, typhoid, guinea-worm; fish killed; silted wells","protect the spring-catchment; pit latrines sited downhill and 15 m or more from any well (30 is safer); boil or treat the pipe's water to the tap; treat and license the tailings"],
+      ["Land","plastic and sachet waste; refuse in the drains and on the shore; mine pits left open; burial of the war dead's unexploded ordnance","choked drains breeding mosquitoes; floods made; children cut; farmland lost","collect and dump at a lined site; recycle the sachet to briquette and pellet makers; never burn openly where it can be covered; close and fence the pits"],
+      ["Air","old vehicle and generator smoke; open burning of waste; dust of the dry-season laterite road; kerosene lamps and hearths indoors","cough, eye, lung; the smoke that blinds the classroom","service engines, ban the burning days in market towns, water and grade the roads, move the hearth or light it better"]
+    ]},
+    {k:"h3", t:"Hazards — the Same Question Every Year"},
+    {k:"p", t:"Classify the hazard before you manage it: **hydro-meteorological** (flood, storm, drought, landslide — Liberia's standing four), **geological** (earthquake, volcanic — the rare ones here), **biological** (epidemic — cholera after flood, malaria in the wet season, Lassa in the dry). The management chain, in order, answers any 'how can the country reduce the loss?' question: **prevention** (stop the cause: build in the floodplain and you will flood) → **mitigation** (reduce the force: buffers, mangrove kept, slopes planted and drained) → **preparedness** (plan before: early-warning radio, stored food, drills, maps of who lives where the water will go) → **response** (when it comes: rescue, shelter, water) → **recovery** (build back better, or write the next disaster's first line). Hazard risk is the arithmetic of the chain: **risk = hazard × exposure × vulnerability**, and a poor, dense, unplanned settlement turns a moderate rain into a catastrophe — the sentence that answers 'why do cities drown?'"},
+    {k:"h3", t:"The Ecosystem Ledger — Chains, Webs and the Human Entry"},
+    {k:"bul", items:[
+      "A **food chain** is one line of eating: cassava leaf → grasscutter → python → vulture; a **food web** is the whole market of them tangled, and the web — not the chain — is what resists a shock.",
+      "**Producers** (every green plant) fix the sun's work; **consumers** eat it in ranks; **decomposers** — fungi and bacteria — close the loop by rotting everything back to plant food; cut the last rank and the first starves.",
+      "Energy moves **one way and leaks at every step** — about a tenth passes up (the 10 % law), which is why the tiger is rare and the grass is not, and why eating lower on the web feeds more people.",
+      "When one rank is sprayed, gobbled or cleared, the ranks beside it BLOOM then STARVE — the locust after the bird is gone; that is 'ecological balance', and it is not a state, it is a tug-of-war.",
+      "**The human entry that WASSCE wants named**: bushmeat pressure on the forest's seed-spreaders (the elephant and the duiker ARE the planter), the pesticide in the stream, the dam, the road that cuts a forest in two — and every answer must close with a management step, not a lament."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Land and water percentages**, and the hemisphere facts that come with them",
+      "**The soil profile drawn and labelled** — O, A, (E), B, C, R — with humification and mineralization placed where they happen",
+      "**Laterite explained** — leaching and iron left behind; why the road hardens and the farm fades on the same hill",
+      "**Conservation measures for a named farm on a named slope** — cover, contour, bund, rotation: always the four families of the remedy",
+      "**Pollution by medium** — sources, effects, controls, in three columns; the cure must match the source named",
+      "**Hazard, vulnerability, risk** — define the three, then apply them to a flood town; and the management chain in its order, prevention first"
+    ]}
+
   ],
 
   focus:[
@@ -873,6 +1148,46 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"The Biosphere"},
     {k:"p", t:"The **biosphere** is the life layer of the earth — the narrow zone where air, water and land support life. Its **composition** runs from the **forests**, **swamps** and **deserts** to grassland, rivers and sea. The **biochores** are the great life regions — forest, savanna, desert, tundra — each with its plant and animal communities. Its importance: food, medicine, timber, fuel, the regulation of climate and the protection of soil. Distinguish the **aquatic bio cycle** (life in water) from the **terrestrial bio cycle** (life on land), draw both with the other layers of the earth, and draw the Venn diagram that shows the biosphere as the meeting of atmosphere, hydrosphere and lithosphere."},
+    {k:"h3", t:"The Four Kinds of Mountain — and How to Tell"},
+    {k:"table", head:["Type","Made by","How it looks","Named examples"], rows:[
+      ["Fold mountains","compression at a collision zone buckling the crust","long ranges, parallel ridges, the highest summits","Himalaya and Alps; Atlas; the Cape fold belt"],
+      ["Block (faulting) mountains","crust cracked and tilted along fault lines","flat tops on one side, a straight face on the other; the rift's shoulders","East African highlands; the Vosges; the Catskills by erosion, so beware old lists"],
+      ["Volcanic mountains","erupted material built in layers around a vent","cone, crater, sometimes a lake in it","Kilimanjaro, Cameroon, Vesuvius, Etna; Cameroon line twins of the rift"],
+      ["Residual (relic) mountains","an old folded range worn down by ages of weathering","low, rounded, stumps of hard rock above plains","the Aravalli of India; the Brazilian highlands; the Bomi and Wologisi inliers of the Liberian basement"]
+    ]},
+    {k:"p", t:"The classification question turns on **origin, not height**: Kilimanjaro stands alone because it was built, not buckled; the Bomi range rises from the plain because the soft country around it was removed, not because the land pushed up. Always write the making before the naming."},
+    {k:"h3", t:"Relief Words the Papers Test"},
+    {k:"table", head:["Word","Means","Where the exam hides it"], rows:[
+      ["watershed / drainage divide","the high line separating two river basins","'why the ridge between two towns is the boundary'"],
+      ["confluence","where two rivers meet","read off any map extract, with names"],
+      ["delta vs estuary","river's load built at the mouth vs a drowned river mouth","the Niger's fan against the Senegal's bar; St Paul's bar"],
+      ["plateau","raised flat country, steep at least on one edge","'table-land': the Adamaoua, the Jos, the Ethiopian highlands"],
+      ["basin","land drained inward to a low centre","Lake Chad's basin; and any town map in a bowl"],
+      ["peneplain","old land ground nearly to base level","the coastal plain country's worn interior"],
+      ["relief","the height difference within an area","'describe the relief' = say high, low, and where, from the contours"],
+      ["island / peninsula / isthmus","land round-watered, three-quarters watered, the neck between","Cape Mount peninsula to the point, then the bar"]
+    ]},
+    {k:"h3", t:"The Four Spheres Working as One"},
+    {k:"p", t:"Geography's whole physical half is the story of four shells touching: the **lithosphere** (crust and rigid upper mantle — the ground), the **atmosphere** (the air), the **hydrosphere** (all water), and the **biosphere** (life in the thin seam between them). One storm off Cape Mount runs the lesson: warm **hydrosphere** lifts vapour to the **atmosphere**, rain falls on the **lithosphere**'s laterite, the **biosphere**'s roots hold the slope and the bare slope lets it go — and the flood in the street is the four spheres' arithmetic. Weathering, the rock cycle, the water cycle, the carbon cycle and the life zones are each one of these sentences lengthened; the exam's 'with examples, show how the spheres interact' wants one such paragraph, and it earns the marks by NAMING the partners in every step, not by reciting four separate definitions."},
+    {k:"h3", t:"Liberia's Relief in Three Strips"},
+    {k:"bul", items:[
+      "**The coastal strip** — a low plain of sand, clay and mangrove swamps, barred offshore, lagooned behind, with the land's best ports at its natural harbours and bars (Monrovia on Cape Mesurado, Buchanan, Greenville, Harper, Robertsport at the Mano's mouth).",
+      "**The rolling forest belt and tableland** — 100–400 m of dissected plain and low plateau, the farm country, scarped by laterite wherever the trees have gone, and drained by rivers that become rapids within a day's walk of the sea — hence the 'falls' at St Paul, hence the power.",
+      "**The dissected highlands of the east and north** — the floor rising in broken tableland to the ridges and massifs of the basement complex: the Bomi and Wologisi ranges in the north, the **Nimba** iron range at the Guinean border, and the highest ground of all on **Mount Wuteve, about 1 380 m**, in the north-west — the 'Liberian Highlands' the maps of Africa mark with a comma of peaks. Behind them the Niger and the Senegal begin their long northern climbs; the country's own rivers run the other way, short and fast to the Atlantic."
+    ]},
+    {k:"p", t:"The rivers of the wet range — Mano, Morro, St Paul, St John, Cestos, Cavally, with the Lofa feeding the other way to the Niger — each cuts its gorge near its source, meanders in its lower plain, and dies in marsh and lagoon before the bar; the classic young-to-old profile, in one country, in a morning's drive."},
+    {k:"h3", t:"The Water Cycle, Sketched with Numbers"},
+    {k:"p", t:"The engine that makes the rivers: ocean water **evaporates** (and the forest's own leaves **transpire** — together, evapotranspiration), vapour cools aloft and **condenses** on dust to cloud, the cloud **precipitates** on the windward slopes, and the rain is then **run-off** along the surface and **infiltration** down to the water table, until both return, river by river, to the sea. Over the rainforest the cycle is partly self-made — the trees pump a flood of vapour that falls again inland (the coastal forest's own second and third harvests) — which is why cutting a forest shrinks the local rains, a fact Monrovia's dry-season well-diggers can date. The one number to carry: of the water that falls on land, only a minority becomes the run-off the taps and farms drink; the rest goes back to the sky — in a school diagram, label BOTH arrows or the cycle is a circle with a hole in it."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Classify a mountain from a description** — origin decides: built (volcanic), buckled (fold), tilted (block), surviving (residual); height proves nothing",
+      "**Liberia's relief in three strips** — coast, forest plain, highlands — with one river example and one named height each",
+      "**The spheres' interaction paragraph** — four names, and a partner NAMED at every step",
+      "**Relief terms defined on the map extract** — watershed, confluence, bar, lagoon, bluff, basin: mark or match, never describe loosely",
+      "**Water-cycle diagram, arrows both ways** — evaporation, transpiration, condensation, precipitation, run-off, infiltration — and one sentence on how deforestation cuts it",
+      "**Young to old river profiles** — gorge and fall in the highlands, meander and marsh at the sea: the country's own rivers as the ready example"
+    ]}
+
   ],
 
   focus:[
@@ -1042,6 +1357,61 @@ var GG_CURRICULUM = [
     {k:"p", t:"**Rivers** — the factors affecting the velocity of a river: gradient, volume, shape and roughness of the channel. The development of the **river valley** and its long profile through the upper, middle and lower course; the **processes of river erosion** — hydraulic action, abrasion (corrasion), attrition and solution; the **processes of river transportation** — traction, saltation, suspension and solution. The **landforms produced by river erosion** — the V-shaped valley, gorge, waterfall, potholes and meander cliffs; **by river deposition** — flood plain, levees, meanders and ox-bow lakes, deltas. The **importance of rivers**: water supply, transport, power, irrigation, fishing and fertile alluvial soils. Illustrate the river profile by diagrams."},
     {k:"p", t:"**Winds** — the characteristics of the desert: aridity, great temperature range, sparse vegetation and sandy or rocky ground; the types of desert landscape — the rocky (hamada), stony (reg) and sandy (erg) deserts. The **processes of wind erosion** — deflation, abrasion and attrition; of **wind transportation** — saltation, suspension and creep, as wind is the agent where water is absent. The **landforms of wind erosion** — mushroom (rock) pedestals, zeugen, yardangs, rock basins and deflation hollows; **of wind deposition** — sand dunes, barchans, seif dunes and loess. Identify the different types of desert landscape and the features the wind carves from them."},
     {k:"p", t:"**Waves** — the development of waves from wind over the sea; the **processes of wave erosion** — hydraulic action, corrasion, attrition and solution; of **wave transportation** — the longshore drift that carries material along the coast. The **landforms of wave erosion** — cliffs, wave-cut platforms, caves, arches, stacks and stumps; **of wave deposition** — beaches, spits, bars and mud flats. The **types of coast**: the **submergence coastline**, drowned by rising sea level, with rias and fjords; and the **emergence coastline**, lifted from the sea, with raised beaches and cliffs. Identify the different types of coastline in Africa, and adopt means of minimising river, wind and wave erosion."},
+    {k:"h3", t:"Continental Drift — the Evidence, Item by Item"},
+    {k:"bul", items:[
+      "**The fit of the coastlines**: South America's bulge drops into Africa's gulf as a cut-out into its page — match the shelves, not the tide-worn edges, and the fit tightens further.",
+      "**Matching rocks and structures**: the same ancient belts, the same fold lines of the Cape running on into the Sierras of Buenos Aires, the same Archean basement across the Atlantic — a sea cannot stitch stone.",
+      "**Matching fossils**: *Mesosaurus*, a small lake reptile, lies in Permian beds in Brazil AND in South Africa; no swimmer of the deep, it could not cross 4 000 km of salt; **Glossopteris**, a seed-fern of cool swamp lands, spreads its seeds — too heavy for wind — across all five southern continents.",
+      "**The tillite belts**: Permo-Carboniferous glacial gravel of the same age scratches the floors of South America, Africa, India, Australia and Antarctica, and the ice-flow arrows point back to one frozen south polar ice-cap in the union's middle — absurd unless the lands lay joined.",
+      "**Palaeoclimates locked in stone**: coal of tropical swamps under today's Antarctic cold, red desert beds and coral reefs in what is now arctic Norway — each a climate written where that climate cannot be, unless the land walked."
+    ]},
+    {k:"p", t:"Wegener proposed the drift in 1912 and died unconvincing because he could not name the engine; sea-floor spreading (Hess, Vine and Matthews) supplied it in the 1960s, and **plate tectonics** is the married theory: the crust's plates ride the mantle's slow convection, spreading at the ridges, dying at the trenches, and everything the exam asks — quakes, volcanoes, folds, mountains, mineral belts — is a sentence in that one story. The Mid-Atlantic Ridge runs the length of Liberia's own offshore: the country sits on the African plate, the Americas on theirs, and the Atlantic between grows about 2.5 cm a year — a fingernail's patience widening an ocean."},
+    {k:"h3", t:"Plate Boundaries — Three Fashions of Friction"},
+    {k:"table", head:["Boundary","The motion","Made there","Named for the map"], rows:[
+      ["Divergent (constructive)","plates part; magma rises","mid-ocean ridge, rift valley, thin basalt flows, mild quakes","Mid-Atlantic Ridge; the East African Rift that lifts Cameroon's line; the Red Sea's newborn basin"],
+      ["Convergent — ocean against continent (destructive)","the dense plate dives","deep-sea trench, coastal mountains, volcano arc, great quakes","the Peru-Chile trench and the Andes; the Japan trench and its arc"],
+      ["Convergent — continent against continent","neither dives; the crust crumples","huge fold mountains, no volcanoes, deep quakes","the Himalaya rising where India struck Asia, Tibet the collision's anvil"],
+      ["Conservative (transform)","plates slide past, neither made nor lost","linear faults, shallow violent quakes, no landform parade","the San Andreas sliding California past Nevada"]
+    ]},
+    {k:"h3", t:"Folds and Faults — the Dictionary That Scores"},
+    {k:"table", head:["Term","It is","Read from the map or the cliff"], rows:[
+      ["anticline","fold arch, limbs dipping away","the old rock in the CORE of the arch"],
+      ["syncline","fold trough, limbs converging","the young rock in the trough's centre"],
+      ["symmetrical vs asymmetrical vs overfold","limbs equal / unequal / one pushed past vertical","look which way the beds lean"],
+      ["nappe / thrust sheet","a fold so driven that its older rocks ride over younger","the marked plane at a mountain front"],
+      ["fault","a crack with movement","scree and a straight wall; a river that suddenly steps"],
+      ["normal (tension) fault","hanging wall slides DOWN","the extension: rift edges, the Cameroons' escarpments"],
+      ["reverse (compression) fault","hanging wall pushed UP, low angle","the shortening: collision fronts"],
+      ["horst (block mountain)","the raised middle between two faults","a flat-topped ridge with straight sides"],
+      ["graben / rift valley / graben","the sunk middle between two normal faults","the dead sea and the Rhine plain; the great East African valley lakes"],
+      ["fault-line lake, hot spring","where the cracked ground lets water or heat up","the rift's chain from Tanganyika to the Jordan"]
+    ]},
+    {k:"h3", t:"Vulcanism — the Kit and the Landforms"},
+    {k:"p", t:"**Magma** below, **lava** above; the rest is vocabulary and chemistry. **Basic** (low-silica, hot, runny, from the mantle: the shield's gentle layers and the flood basalts) against **acid** (silica-rich, cool-stiff, explosive: the cone built of shattered rock) gives the two volcano shapes — **shield and cone** — and the two tempers. The extrusive kit: crater, cone, lava plateau, the caldera (a collapsed chamber — Lake Toba's ring), the neck or plug where the vent's throat stands in relief after its cone is stripped, and pillow lava under water. The **intrusive** kit, cooled at depth and dug bare by ages: **batholith** (the great bosses of ancient basement country), **laccolith** (a sill that buckled the roof into a dome), **sill** (injected BETWEEN the beds — concordant), **dyke or dike** (cutting ACROSS the beds — discordant), and the **vein** in the fracture. The test question is always the same pair in new clothes: **how do you tell a sill from a dyke on this map?** — the sill shares the strike of the beds it lies in, the dyke crosses them, and the bake-dry, the chilled margin, tells the field geologist."},
+    {k:"h3", t:"Earthquakes — Measured Two Ways"},
+    {k:"p", t:"The **focus** (or hypocentre) is where the fault slips, kilometres down; the **epicentre** is the point on the map directly above it, where the shaking first arrives — every map question tries the pair. Energy leaves as waves: **P waves** first (push-pull, through rock AND liquid — the reason the outer core's shadow proves it liquid), then **S** (shake sideways, solids only), then the **surface waves** that do the demolition. The **Richter scale is logarithmic**: each whole step multiplies the recorded amplitude tenfold and the released energy about thirty-two times, so a 7 is not 'one more' than a 6 — it is ten times the shaking and some thirty times the energy of the 6, a hundred times the shaking and a thousand times the energy of a 5; **intensity** scales (Mercalli's I–XII) instead rate the damage town by town, and damage always outlives the number. The sea's earthquake wakes the **tsunami**; and in Liberia the ground is quiet — sit on an old stable craton — but 'safe' buildings need not 'safe' ground: the lessons the world pays for, the codes should steal for free."},
+    {k:"h3", t:"Weathering and Mass Wasting — the Slope Ledger"},
+    {k:"table", head:["Process","Mechanism","Where it rules, and what it leaves"], rows:[
+      ["exfoliation","pressure release shells the sheeted rock (granite)","the domes: onion-skin spalling of the Bomi tors"],
+      ["thermal fatigue","day-night expansion and contract of bare rock","the humid tropics' own quiet crumble — NOT deserts alone"],
+      ["hydration, hydrolysis, oxidation, solution","water alters the minerals, rusts the iron, dissolves the carbonate","chemical weathering that runs at full speed in heat and rain: the deep red laterite crust"],
+      ["biological","roots wedge; burrows open; acids attack","the termite country turned over soil every century"],
+      ["creep","the slow downhill drag, inches a decade","tilted telegraph poles, curved tree trunks, the fence that never stays"],
+      ["slumping / soil creep slide","a curved failure plane; a block on wet clay","the road cut that takes the embankment after the June rains"],
+      ["landslide / rockfall","fast, on steep or undercut slopes","the gorge walls of the St Paul; the scar on any new highway cut"]
+    ]},
+    {k:"p", t:"Mass movement is gravity wearing weathering's gifts: the steeper, wetter and barer the slope, the faster the ledger runs — and **the two human entries are always deforestation and the road-cut toe**, the sentence that answers 'why did it fall NOW?' Running water then takes what weathering loosens: valley, gorge, fall, and basin in the young stage, meander, ox-bow, floodplain and levee in the old, with the delta where the river finally lays its load; wind abrades and builds where rain is scarce — blowhole, arch, stack, stump on the wave-worn shore, and spit, bar, lagoon where the drift along the beach meets a bay; and the waves themselves cut only what a river has already fed them. Every one of those words is a landform question's answer half; the mark is in the process sentence before it."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Drift's evidence in five lines** — fit, fossils, rocks, ice, climate: the marks ride on the named proof, especially Mesosaurus and Glossopteris",
+      "**Boundary types with their products** — which boundary makes a trench, a fold range, a rift, nothing but quakes",
+      "**Fold or fault vocabulary on a diagram** — label anticline, syncline, overfold, fault plane, block; the diagram is the answer",
+      "**Sill against dyke** — the word that decides it is 'concordant vs discordant'",
+      "**Richter arithmetic in words** — why a 7 is not one more than a 6; the tenfold and thirtyfold answers",
+      "**Weathering by climate** — why the tropics' chemist beats the desert's hammer; why laterite forms here and none in a dry land",
+      "**A named landform explained** — gorge, stack, oxbow, levee, spit: location (which process, which stage) first, then formation in three steps, then the Liberian example if one is true"
+    ]}
+
   ],
 
   focus:[
@@ -1207,6 +1577,64 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Air Pollution"},
     {k:"p", t:"**Air pollution** is the fouling of the air by harmful substances. Its **causes**: exhaust and generator fumes, bush and waste burning, dust from unpaved roads, smoke from industry and charcoal fires, and chemicals sprayed in farms. Its **effects**: breathing diseases, acid rain, damaged crops and the warming of the climate. Its **control**: cleaner fuels, enforced emission laws, waste collection, paved roads, and tree planting. **Case study — air pollution in Liberia**: the dust and fumes of Monrovia's traffic, charcoal burning, waste burning at dump sites and flare gases; research its causes and impacts and report."},
+    {k:"h3", t:"The Air We Are Examined On"},
+    {k:"table", head:["Gas or part","Share of clean, dry air","Its geography job"], rows:[
+      ["nitrogen","about 78 %","inert filler; fixed by lightning and roots into the soil's food"],
+      ["oxygen","about 21 %","respiration and burning — the air's active half"],
+      ["argon","about 0.9 %","spares an occasional multiple-choice mark"],
+      ["carbon dioxide","about 0.04 % and rising (past 420 parts per million)","greenhouse work: it holds the earth's heat; plants eat it"],
+      ["water vapour","0 to about 4 %, the variable one","clouds, rain, humidity — the weather's engine fuel"],
+      ["dust, salt, smoke, pollen","trace","condensation nuclei — no drop forms on a dry, clean nothing"]
+    ]},
+    {k:"p", t:"Two of those traces carry the greenhouse argument: water vapour is the greater blanket, but carbon dioxide sets the climate's dial — it does not dry out, and every added part holds its share of heat. The dust's job is the one papers quiz: rain needs a particle to sit on; **hygroscopic** sea-salt and smoke make millions of small drops, which is why smoke can seed a shower and why the harmattan's haze hangs over the town like an old blanket."},
+    {k:"h3", t:"The Layers, Bottom Up"},
+    {k:"table", head:["Layer","Reaches to","Temperature with height","Life there"], rows:[
+      ["troposphere","10–16 km (higher at the Equator, thinner at the poles)","falls about 6.5 °C each km — the environmental lapse rate","all weather, all clouds, all our breathing"],
+      ["stratosphere","to about 50 km","holds then WARMS — the ozone layer drinks the sun's ultraviolet","jet cruise; life impossible in the raw light above the shield"],
+      ["mesosphere","to about 85 km","falls again — the coldest place of the atmosphere","meteors burn their first line here"],
+      ["thermosphere / ionosphere","to about 500 km+","rises past 1 000 °C — thin gas, fierce energy","auroras; the charged air that bends radio skywaves"],
+      ["exosphere","fades into space","the fringe","satellites drift at its floor"]
+    ]},
+    {k:"p", t:"The height of the troposphere at the Equator, the greatest in the world, is why equatorial thunderheads tower so high and rain so hard; the **inversion** — a warm lid sitting over cold air in a valley or a harmattan night — is why smoke stays knee-deep in the town and why frost pools downhill. Climb 2 km from a 30 °C coast and the air has lost about 13 °C before you add the cloud's own work; that arithmetic answers half the 'why is the peak cold' questions."},
+    {k:"h3", t:"Groundwater — the Terms and the Traps"},
+    {k:"table", head:["Term","It means","The trap in it"], rows:[
+      ["aquifer","the bed that carries water (sand, gravel, cracked rock)","'porous' is not enough — it must PASS water: clay is porous but tight"],
+      ["confined aquifer and water table","the unconfined's top surface is the water table; a sealed bed below it is confined","the table RISES and FALLS with the season — drill at the dry season's level, never the wet's"],
+      ["artesian","confined water under pressure: the bore rises above its aquifer, sometimes to the surface","an artesian BASIN is the saucer of tilted porous beds — the Great Artesian is Australia's; Libya's fossil water is the same principle under desert"],
+      ["spring","where the table meets daylight on a slope","the village's safe source — protect its catchment, fence the hillside above it"],
+      ["cone of depression / saline intrusion","over-pump and the table dips inland; pump too near a coast and the sea walks into the well","the Monrovia well-field lesson: fresh water floats on salt — draw too hard and the interface rises"]
+    ]},
+    {k:"p", t:"**Limestone country does its own plumbing.** Rain, sharpened by air's carbon dioxide into weak carbonic acid, dissolves calcite along the joints; over ages the rock hollows to **karst**: swallow holes where a stream vanishes, dolines and sinkholes, dry valleys, underground rivers, caves, and in the caves the patient furniture — **stalactites hanging from the roof (the 'c' holds them: ceiling), stalagmites building up from the floor, columns where they meet**, dripstone and flowstone, and the limestone pavement's grikes and clints above. Karst drains fast and stores little: its springs are few and great, its wells dry while its caves run with rivers, and its soils sit in the pockets — the reason karst country is so often thinly peopled."},
+    {k:"h3", t:"Heat, Pressure, Wind — the Engine Room"},
+    {k:"num", items:[
+      "Uneven heating is the first cause: the equator takes more sun than the poles, and land and sea warm at different speeds.",
+      "Warm air expands, rises, and leaves LOW pressure below; cold, dense air sinks into HIGH.",
+      "Air moves from high to low — wind — and the spinning earth steers it: **Ferrel's law** bends it RIGHT in the north hemisphere, LEFT in the south.",
+      "The settled pattern: the horse latitudes' highs at 30°, the doldrums' low belt (the **ITCZ**) tracking the sun's overhead line — far north of Liberia in July, when the rains live with us at the coast, and swinging south of us in December, when the harmattan's dry north-east arm follows its retreat; the sub-polar lows near 60°, the polar highs.",
+      "Between the belts blow the trades (north-east and south-east), the westerlies, the polar easterlies; on the seasons, the monsoons reverse."
+    ]},
+    {k:"h3", t:"The Local Winds, Drawn in Words"},
+    {k:"p", t:"**Land and sea breeze** is the diurnal monsoon and the examination's favourite diagram: by day the land heats faster — air above it rises, the low pulls the cooler air off the sea **inward** (the sea breeze, landing light on the beach at noon), by night the land sheds heat first — pressure reverses and the wind blows **off** the cooling land to the relatively warm sea (the land breeze, which the fishermen of Robertsport and Greenville both know he can ride out on and ride home by the second tide of air). The same contrast at scale, with the season instead of the clock, makes the West African **monsoon**: wet south-westerlies off the Atlantic in the high-sun months, dry north-easterlies off the Sahara in the low. And the valley's two: upslope by day, downslope (**mountain and valley breeze**) by night; while the harmattan itself is the continental version — the desert's winter outflow, dry and dusty, dimming the sun to a red coin and cracking the paint on every new house."},
+    {k:"h3", t:"Clouds, Rain and the Front? — the Short Kit"},
+    {k:"bul", items:[
+      "The four forms teach the lifting: **cirrus** high ice feathers; **cumulus** the fair-weather wool-heap, growing to the storm's cumulonimbus anvil; **stratus** the low grey lid; **nimbostratus** the steady rain layer — name the genus, say the height, then the weather it carries.",
+      "**Relief rain** up a windward slope, rain shadow leeward; **convectional** rain of the heated afternoon; **frontal** rain where two air masses ride over one another; equatorial Liberia lives by the first two, and the papers ask 'which, and why here?'",
+      "Humidity in its two mouths: **absolute** (the grams a cubic metre actually holds) against **relative** (the percent of what that air COULD hold at its temperature — so as air warms, RH falls with no water lost; the harmattan's dry '10 %' is the same physics).",
+      "Dew at the dew point, frost when the point sits below freezing; fog is a cloud whose base touches the ground — radiation fog in the still hollow, and the harmattan's haze is not fog at all."
+    ]},
+    {k:"h3", t:"Air Pollution — the Urban Register"},
+    {k:"p", t:"Sources a Monrovia pupil can name without a book: the generator's and the bush-lorry's diesel, the two-stroke's blue smoke, the household's coal and wood fire **indoors** (the killer nobody legislates), the open burning of the sachet and the evening refuse, the dust of an unpaved road, the burn of wet waste in the damp, the lagoon's gas. Effects run from the red eye and the child's night cough, to a haze that shuts the midday sun down grey, to the smoke pooling under the harmattan's warm lid on a still night in the basin. Controls answer in the same four doors: **at source** (engines tuned and fuels sulphur-poor, brick kilns moved away), **by dilution** (height, stack, and planning the valley's air-sheds and wind-ways open), **by law** (burn bans on market days, standards and the EPA's mandate), and **by the household** (chimney, dry wood, the fire out of the sleeping room) — with each one marked, because the question is 'explain ONE measure and show its effect', not a list."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Composition of the atmosphere with %s**, and the two-line 'importance' of carbon dioxide, water vapour or dust",
+      "**The layers, their lapse rates and where weather sits** — the height of the troposphere greatest over the equator is the reason the equatorial storm tower tops the temperate one",
+      "**The water-cycle arrows** — evaporation, transpiration, condensation, precipitation, run-off, infiltration — and what a paved town does to two of them",
+      "**Aquifer, water table, artesian, spring** — define the four and mark them on the diagram of a well",
+      "**Karst or limestone scenery**: stalactite against stalagmite, and why a stream disappears uphill and returns downhill",
+      "**Land and sea breeze, or the monsoon**: explain with the pressure reversal — the diagram in words, and the harmattan's place in the year",
+      "**An air-pollution case** — a named source, its health and weather effects, and ONE control argued, not listed"
+    ]}
+
   ],
 
   focus:[
@@ -1376,6 +1804,71 @@ var GG_CURRICULUM = [
       "**Cool temperate** — cool with a clear winter; western Europe",
       "**Cold temperate** — long hard winters, coniferous forest; Canada and Siberia",
       "**Polar** — frozen all year; the tundra and ice caps"]},
+    {k:"h3", t:"The Observatory Kit — Instrument, Element, Unit"},
+    {k:"table", head:["Element","Instrument","Read or measured in","The care that saves the mark"], rows:[
+      ["temperature","screen with the maximum-minimum thermometer","°C to a tenth","louvered screen, 1 m above grass, never on bare concrete"],
+      ["rainfall","rain gauge, funnel into a measuring cylinder","mm of depth","level and open-sky; read the meniscus at eye height"],
+      ["pressure","aneroid barometer","millibars (or millimetres of mercury)","tap gently, note trend not just value"],
+      ["wind direction","wind vane / rose of the compass point","point it blows FROM","north-easterly wind comes FROM the north-east — the common slip"],
+      ["wind speed","cup anemometer","km/h or m/s (the Beaufort scale for the eye)","run it minutes, not seconds"],
+      ["humidity","wet-and-dry bulb hygrometer, or hair","relative %","swing or ventilate before reading"],
+      ["sunshine","Campbell-Stokes recorder: glass ball burning a card","hours on the graded card","replace the card at noon and sunset"]
+    ]},
+    {k:"h3", t:"Climate Statistics — the Sums That Are Always Asked"},
+    {k:"num", items:[
+      "**Annual total rainfall**: add the twelve months (each month is the sum of its daily gauges); Monrovia's stands about **4 500–5 000 mm** against Timbuktu's under **250 mm** — the whole country contrast in one subtraction.",
+      "**Mean annual temperature**: the mean of the twelve monthly means, each monthly mean itself the average of its daily means.",
+      "**Annual range**: highest monthly mean minus lowest — Monrovia barely **3–4 °C** from January to July, Timbuktu near **15 °C**; equability against extremity, the two words the answer must use.",
+      "**Diurnal range**: day's maximum minus night's minimum — bigger in the desert, tiny at the coast; and bigger, remember, than the whole temperate year."
+    ]},
+    {k:"p", t:"The graph questions are arithmetic first: plot the rainfall as bars on the left axis and temperature as a line on the right, months along the bottom; then read the three facts the marks live on — when the rain fails, when the heat peaks, and **whether the wet season follows the heat (monsoon) or leads it** — and name the climate from the pattern before explaining it. A station that never falls below 18 °C, rains every month, and swings less than 4 °C is equatorial; the same heat with a bare six-month sky is savanna; heat, cold and almost nothing between is desert."},
+    {k:"h3", t:"The School Classification — Torrid, Temperate, Frigid"},
+    {k:"table", head:["Zone","Between","Its names within"], rows:[
+      ["Torrid (low latitude)","the Tropics, 23½°N to 23½°S","equatorial wet, tropical monsoon, tropical savanna, hot desert"],
+      ["Warm temperate","the Tropics and about 35–40°","Mediterranean, China-type humid subtropical, west coast marine (oceanic)"],
+      ["Cool temperate","about 40° to 60°","continental, cool west coast marine, steppe"],
+      ["Cold / polar","beyond the Arctic Circle","subarctic taiga, tundra, ice-cap"],
+      ["Highland","any latitude, by height","the climate that runs its zones up the mountain's side"]
+    ]},
+    {k:"p", t:"The control sentence the exam wants before any region: **climate = the long-term pattern of weather, set by latitude, altitude, distance from the sea, pressure and wind systems, ocean currents, slopes and vegetation — and, increasingly, by us.** Each region answer is one of these five carried through to its weather."},
+    {k:"h3", t:"The Great Regions in One Line Each"},
+    {k:"bul", items:[
+      "**Equatorial (Köppen Af)** — deep convection daily, ITCZ resident: 1 500–2 500+ mm every year without a true dry month; 25–28 °C always; the rainforest and its leached soils; the Guinea coast, the Congo basin, the Amazon.",
+      "**Tropical savanna (Aw)** — ITCZ summer rains, trade-wind winter drought; the grass that fires every year and the trees that wear its armour; the ring north and south of the forest, Liberia's own north-east margins in the sharper years.",
+      "**Tropical monsoon (Am)** — the season's swing in its fullest draft: sea to land in summer, land to sea in winter, the rain in between; India, the Guinea coast's northern edge, the bay of Bengal's shores.",
+      "**Hot desert (BWh)** — the 30° highs and the dry trades, or the cold-current coast: under 250 mm, evaporation outrunning all rain; the Sahara and the Kalahari, Namib and Atacama.",
+      "**Mediterranean (Csa)** — the belts' summer vacation: dry hot summers, wet mild winters on the west coasts at 30–45°; the vine, the olive, the orange.",
+      "**West coast marine (Cfb)** — the westerlies off the warm current all year: mild, cloudy, drizzly; the dairy lands of north-west Europe.",
+      "**Cool continental / subarctic (D, E)** — the cold winters of big land and high latitudes; taiga, permafrost, the tundra's two-month summer.",
+      "**Highland** — 6.5 °C down every vertical kilometre: the equatorial peak in ice; the slope of Cameroon or Switzerland reads the whole latitude ladder on one hillside."
+    ]},
+    {k:"h3", t:"Liberia's Climate in the Farmer's Words"},
+    {k:"p", t:"The coast lives in the **equatorial to tropical monsoon margin**: the rains build from April, break the long June–July swell (with the small **dry spell of August**, the old farmers' window for upland weeding and harvest of the first maize), peak again in September–October, then thin to the **dry season of December–March** when the harmattan dims the sun, the nights cool to the coolest of the year, and fire waits on every grass edge. Temperature hardly varies — the whole coast sits between about **25 and 28 °C** month to month — so the climate is defined by its **rain**, as every 'describe and account' key says; and the inland (Gbarnga, Ganta, Tubmanburg) runs a few degrees wilder, a little drier, one step into the savanna's outer room. Two sentences that answer most Liberia climate questions: the **rain** comes from the south-west monsoon meeting the heated land and the forest's own recycling; the **dry season** comes when the ITCZ has moved south of us and the desert's outflow wind lies over the country."},
+    {k:"h3", t:"Weather Forecasting, and Why the Fisherman Listens"},
+    {k:"bul", items:[
+      "The synoptic method in school words: read the map — highs, lows, fronts, isobars packed close for a gale — then say where the system is heading on the wind, and warn the coast **24 to 48 hours out**.",
+      "The satellite image: the swirl and its speed for the storm, the cloud-top brightness for the downpour, the dry slot for the harmattan.",
+      "The sea's own signs that predate instruments: the long swell that runs before the gale, the sunset's red reach, the smoke that will not rise on an inversion night — valid folk barometry the exam will not mark but the life will.",
+      "The last chain is the **warning to the beach**, not the forecast: a prediction the pirogue owner cannot receive on a radio he does not own is a paper exercise; forecast plus dissemination plus a safe harbour is disaster management — the three parts the question of 2015 type wanted."
+    ]},
+    {k:"h3", t:"Common Errors of This Unit"},
+    {k:"bul", items:[
+      "Weather and climate swapped: weather is today's mood, climate the thirty-year habit — define the pair, then use them.",
+      "'Hot' and 'rainy' without numbers: a climate answer without a rainfall total or a monthly mean is an opinion.",
+      "Naming the wind it blows TO — direction is always FROM: a south-west monsoon blows FROM the south-west, which is why it is wet.",
+      "Attributing the equatorial heat to 'being near the equator' and leaving there: the answer is the **overhead sun every equinox, the long day and short night all year, the moist onshore wind and the daily convection** — latitude opens the list, the rest closes the marks.",
+      "Reading only the rainfall bars: the temperature line decides the zone's NAME; the bars decide its season; a climograph read by half is a climate misclassified."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Weather against climate, element against instrument** — the four-instrument table is half the marks of the paper",
+      "**Climograph reading**: the zone, the wind that brings the rain, the season the drought owns, and the one-line reason for the peak",
+      "**The statistics**: annual total, mean annual temperature, annual and diurnal range — arithmetic with the units attached",
+      "**Relief, convectional and frontal rain** — which type falls at Ducop on a given afternoon and why",
+      "**Torrid zone region account** — position, pressure and wind, temperature, rainfall, vegetation, one economic activity",
+      "**An adaptation question** — why the harmattan cracks the house, why the coast escapes frost, why the savanna burns and the forest will not"
+    ]}
+
   ],
 
   focus:[
@@ -1540,6 +2033,54 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Lumbering"},
     {k:"p", t:"**Lumbering** is the felling and extraction of timber. Its **methods of exploitation** differ with the type of forest — the selective cutting of the mixed rainforest against the clear felling of the planted forest. The **choice trees** in lumbering: mahogany, abura, iroko, obeche, and in Liberia the red ironwood and the scented gum. The **factors affecting lumbering**: the density of valuable trees, terrain and drainage, transport — roads, rails and rivers — machinery, capital and skill, and the market and the mill. Its **importance**: the **provision of jobs**, **construction** timber, and a **foreign exchange earner**. Its problems — deforestation, lost species, silted rivers — and the solutions: selective logging, replanting, reserves. **Case studies**: **lumbering in Liberia**; **in the Congo Basin of Central Africa**; and **in West Africa** generally — visit a saw mill and report."},
+    {k:"h3", t:"The Zones of Vegetation, Climate to Canopy"},
+    {k:"table", head:["Zone","Climate behind it","Its plants","What people do there"], rows:[
+      ["Tropical rainforest","equatorial heat with rain every month","hardwoods in storeyed canopy, lianas, epiphytes, buttressed giants; the soil leached under all that leaf","logging, cocoa and oil palm on the edges, hunting — and the conservation argument on every front"],
+      ["Monsoon (deciduous) forest","the long dry month or two","trees that drop leaf to ride it out — teak, sal, shea in their places","the same crops on a calendar tied to the rains; fire the yearly gardener"],
+      ["Savanna (Guinea, Sudan, Sahel tiers)","rain once a year, 1 500 down to 250 mm, six to eight dry months","tall tussock grasses with scattered acacia and baobab; the gallery forest along the rivers","cattle and the millet-and-groundnut farm; the game and the park"],
+      ["Hot desert and steppe","the 30° highs, under 250 mm","xerophytes: succulents, spines, roots a dozen metres down; date palm only where the water comes to the surface","oasis farming, nomadic herding, the mineral under the sand"],
+      ["Mediterranean","dry hot summer, wet mild winter","sclerophyll: the hard leaf, the cork, the olive, the vine","the orchard and the grape; the tourist"],
+      ["Temperate deciduous and mixed","mild all year, rain all year","oak, beech, maple; the richest soils of the zones","dairy, wheat and the city — Europe's and north America's farm"],
+      ["Taiga (boreal conifer)","long cold, short mild","pine, spruce, fir in mats of lichen","the world's timber and pulp shelf, cut slow and cold"],
+      ["Tundra","the polar cold, permafrost","dwarf willow, moss, lichen, the two-month flower race","the reindeer herd, the oil and gas underneath, the road that heaves"]
+    ]},
+    {k:"p", t:"Read the table as one law: **each zone is what its water allows and its fire, frost or drought commands.** The forest's trees fight for the light; the savanna's fight for the rain and wear fire like a coat (the baobab's cork, the grass's buried buds); the desert's grow slow and deep; the cold keeps the canopy open to the sun at the top of the world. A question that asks 'account for the vegetation' wants one sentence of this law plus the named climate figures of that region — plant, climate, figure, in that order."},
+    {k:"h3", t:"Vegetation and the Human Round"},
+    {k:"bul", items:[
+      "**What we take**: timber and fuel, fibre and food, medicine and gum, the honey and the game the forest feeds; and what the forest gives standing — its rain recycled, its slopes held, its banks shaded, its air cooled.",
+      "**What we leave in exchange**: the cleared hectare for the farm, the burn that starts the season, the road that opens the hunting, the charcoal kiln that feeds the town's cooking and the town's hunger at once.",
+      "**The West African count**: the Upper Guinean forest block has lost most of its former extent to farm and road, and what remains standing is concentrated in Liberia — the phrase 'West Africa's largest rainforest' is the map answer and the conservation argument at once.",
+      "**The cures that work**: the forest law and the licensing, community forestry that pays the village for standing trees, the protected-area network (Sapo the flagship), reduced-impact logging, the fallow respected, the charcoal made efficient, and the farm that earns more per hectare so it needs fewer hectares."
+    ]},
+    {k:"h3", t:"Agriculture — the Systems Compared"},
+    {k:"table", head:["System","Its whole idea","Where, and how it reads on the map"], rows:[
+      ["Subsistence (shifting)","family food first; bush fallow restores the soil","the upland hill: rice, cassava, plantain, groundnut mixed in one clearing — polyculture against the pest"],
+      ["Swamp and tidal rice","water held on the flat against the rain's own rhythm","the bunds and drains of the coastal marsh, women's plots, the harvest at the dry season's edge"],
+      ["Plantation","one crop, capital, processing on the estate","the tapped rubber wall at Harbel or in Sinoe; the palm rows at the mill — the estate with a town of its own"],
+      ["Commercial grain","large fields, machines, the market and the rail","the American prairie, the Argentine pampas — and the question 'why not here': land tenure, capital, and the rain's two seasons"],
+      ["Mediterranean specialty","the summer-drought crops the wealth will ship","vine, olive, citrus on the winter rain — the one system whose climate spares the farmer July"],
+      ["Nomadic pastoralism","herds walked to water and pasture, the milk economy","the Sahel's cattle, goats and camels on the track between the rivers; the ranch against the range"],
+      ["Mixed farming and market gardening","crop and stock or milk and greens, the city as market","the dairy belts and the lettuce belts — 'the market, the road and the price, in that order'"]
+    ]},
+    {k:"h3", t:"Fisheries — Why the Fish Are Where They Are"},
+    {k:"p", t:"Fishing grounds sit where the sea brings its own lunch up: **the shallow shelves of the continental shelf** for light and nutrients; **where a cold current upwells** off a west coast — Peru's Humboldt, the Canary current off north-west Africa — the cold water rises rich and the small fish run in their millions; **where warm and cold currents meet** the water churns and the fog hangs over the world's richest banks — the Grand Banks of Newfoundland where the Gulf Stream meets the Labrador current, the Sea of Japan's waters the same collision in miniature. Liberia's own shelf is narrow and its rivers run heavy with silt, so the catch is honest but modest: the pirogue fisherman with seine, hook and line out of Robertsport, Greenville and Monrovia's beach, landing fresh for the same day's smoker; the licensed trawler offshore, mostly for export. The chain after the sea is the exam: **preservation** — sun-drying on the beach racks, the smoking kiln and the women who own it, salting, and the iced cold chain the electricity and the road deny; **management** — closed seasons, mesh size, the patrol of the exclusive zone against the foreign trawler, sanitation at the landing beach, and aquaculture to take the pressure off the stock: catfish and tilapia in the ponds. Every one of those words is a mark for 'improve the fishery' — and the improvement list is shorter than the hunger looks."},
+    {k:"h3", t:"Mining and Lumbering — the Two Extractives"},
+    {k:"bul", items:[
+      "**The mining ladder**: prospecting and exploration first (the geology's map), then extraction by the ore's place — **open-cast** for the shallow blanket (the iron ranges, bauxite, the quarry), **underground** for the deep reef (the gold veins of the interior), **placer** for the river's own sorting (alluvial gold and diamond: the pan, the sluice, the dredge), and the **solution and quarry** works for salts and building stone.",
+      "**After the hole**: crushing and beneficiation at the pit-head (the concentrate's grade), the rail or slurry to the port, the tailings dam — and the **reclamation bill**: backfill, re-slope, topsoil stored for the return, the pit given to water or to grass. Mining that cannot say how it closes has not planned; it has only dug.",
+      "**Lumbering by the true method**: selection logging (only the marked trees above the girth limit, the skid trails kept off the streams) against the clear-fell that plants a farm or a ruin in its place; the mill that takes the sawlog and sells the offcut; and the **sustainable yield** — cut no faster than the stand regrows — the one sentence every conservation mark scheme is waiting for.",
+      "**The local names that carry it**: the iron of Bong and the old Lamco range with their mine-to-rail-to-port lines, the diamond of Lofa and the alluvial gold of the western districts, the concessions of Sinoe and Grand Cape Mount, the quarry that makes the road — each a paragraph for any 'resources of Liberia' question, each with its **now**: revived, idle, or under a community's own licence."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Zone a map of Africa or the world**: name the vegetation, its climate figures, and the one economic use that fits it",
+      "**Adaptations of the xerophyte or the savanna grass** — spine, root, cork, buried bud: describe the plant and it describes the climate back",
+      "**Explain a system of farming** — shifting cultivation's fallow, the plantation's economy of scale, the nomad's movement: the WHY, with the climate named",
+      "**Fishing grounds**: why the Grand Banks and the Peru coast are there, and which physical fact Liberia's coast lacks",
+      "**Mining or logging with a diagram** — the method matched to the deposit's shape, and the processing chain in order",
+      "**Conservation as argument** — 'deforestation can be slowed without starving the town': the answer must hold BOTH the need and the cure, one paragraph each"
+    ]}
+
   ],
 
   focus:[
@@ -1697,6 +2238,54 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Sources of Energy"},
     {k:"p", t:"The **sources of energy** are classified as **renewable** — hydro-electric power, solar, wind, tidal, geothermal and biomass — and **non-renewable** — the **mineral (fossil) fuels: coal, natural gas, petroleum** and the nuclear fuel **uranium**. The **location and distribution of power sources**: **hydro-electric power** on the great **rivers, waterfalls and dams** — the Mount Coffee plant on the St Paul; **solar** from the **sunlight** of the tropics; **wind** on the open plains and coast; **tidal** power at the narrow straits; **geothermal** in the volcanic lands; **underground** heat and gas; and **biomass** from **organic organisms** — wood, charcoal, crop waste, biogas. The **factors affecting the sources of energy**: **capital, technology, climate** and the resource itself. The **importance of energy**: it drives industry, transport, homes and services — the engine of development. The **problems of energy harnessing** — cost, distance, technology — and their solutions."},
+    {k:"h3", t:"Industry Classified — the Three Cuts"},
+    {k:"p", t:"Industry sorts itself three ways, and papers mix the labels to catch the memoriser. **By weight of product**: **light** (food, drink, cloth, furniture, paper — small units, urban sites, often market-leaning) against **heavy** (steel, cement, ships, chemicals — big units, raw-material or port sites, rail and water essential). **By what it makes**: **capital goods** (the machines that make machines — lathes, plant, cables) against **consumer goods** (what households buy — and within that, **durables** against **non-durables**). **By stage**: **primary** (extracting), **secondary** (manufacturing and construction), **tertiary** (services) — and the share of each is the old **development ladder read as percentages**: the country that must import its ploughs exports its raw things."},
+    {k:"h3", t:"The Location Weights — Seven Pulls on One Scale"},
+    {k:"table", head:["Pull","It says","A factory that listens"], rows:[
+      ["raw material","weight-losing inputs (the ton of ore, the ton of cane, the log's half of waste) must be cut where they lie — the mill stands at the source","sugar at the cane field; sawmill at the forest; cement at the limestone, or at the quay where the clinker lands"],
+      ["market","heavy, perishable, or fragile outputs ship worst — make them where they are sold, and where the consumer can be watched","bottling the brew and the water; bakery and ice; paint"],
+      ["labour","skill for the precision works, numbers for the simple, cheap where the wage decides","garment and assembly at the town; watch-repair at the craft"],
+      ["power and water","the thirsty and the current-fed follow the supply, not the map's middle","the aluminium smelter at the cheap dam; the brewery at the pure well"],
+      ["transport","the junction, the port, the rail-head take the ton at the least handling","the steel at the quay; the refinery at the tanker's berth"],
+      ["capital and history","the old works feed on their own water, road, skill and habit — industry grows where industry already is","Monrovia's belt of small works and workshops, for every reason and none of them fixable overnight"],
+      ["government","the estate, the tax holiday, the zone, the road it promises — a legal location factor","the free zone at the Freeport, the industrial city on any planned green-field"]
+    ]},
+    {k:"h3", t:"Energy — the Sources Compared"},
+    {k:"table", head:["Source","Liberia's account","Its strength","Its price or problem"], rows:[
+      ["fuelwood and charcoal","the household's first energy still — the city cooks on it","free at the forest, the last resort of the gridless","the chainsaw's wage on the forest edge, and the smoke indoors"],
+      ["imported petroleum","diesel for the generators and the grid's spare hours, petrol for the bush lorry, kerosene for the lamp","dispatchable anywhere the truck reaches","every barrel at world price on top of freight — and the generator's noise and smog"],
+      ["hydro","the St Paul's falls at Mount Coffee, the old plant rebuilt after the war","cheap once built, and the river is ours","the season's own: the harmattan's low water, the silt that eats the dam, and the long drought risk"],
+      ["solar","the roof panels growing on homes, clinics and the mini-grids","instant at the sun's equator, no fuel, no moving part","the storage battery's price, and the dust of the dry season"],
+      ["biomass and waste","the mill's bagasse and palm-fibre fired at the boiler; the town's refuse unsold","the waste pays for its own burning","collection, moisture, and scale"]
+    ]},
+    {k:"p", t:"One arithmetic frames the whole subject — the **generator bill**: a 5 kW set running 8 hours a day needs about **40 kWh**, a thirsty engine burns roughly **0.3 litre per kWh**, so the day is **12 litres** of diesel; at $1.30 a litre the lamp and the fan cost **$15.60 a day**, some $450 a month for the small shop. Solar to the same load never sends a meter: the panels are the debt and the sun is the dividend. Any 'energy policy' question is answered by this arithmetic, then argued in words."},
+    {k:"h3", t:"Trade and Its Routes"},
+    {k:"bul", items:[
+      "**Visible against invisible** trade: the barrels and bales against the freight, insurance and remittance flows — and the **balance of payments**, which keeps the invisible too, is the wider book the balance of trade sits inside.",
+      "**Entrepôt** — the port that lands the world's goods to sell them again: the Freeport's deep water and bonded yards were built in that ambition for a whole region.",
+      "**The single-commodity risk**: when iron ore or rubber is the export, the world's price sets the country's pay-day; the terms of trade (export prices over import prices) is the line the examiners read the fortune in.",
+      "**Neighbours first**: within ECOWAS the duty-free schedules and the border markets (the kola, rice and fish roads) move more of the poor man's trade than any port; the regional question is always 'name the corridor and the goods'.",
+      "**What a port needs to live**: the deep berth, the quay's crane, the rail or road behind it (its **hinterland**), the customs, and the water and bunkers — Robertsport with all four but the rail is a port waiting, one with the rail is one that wins."
+    ]},
+    {k:"h3", t:"Modes — the Five-Word Comparison"},
+    {k:"table", head:["Mode","Cost per ton-km","Speed","Its best cargo"], rows:[
+      ["pipeline","cheapest to run after the pipe","continuous, slow, unstoppable","oil, gas, slurry, water to the town"],
+      ["water (sea and inland)","lowest of all the living modes","slowest","the ore, the timber, the container — anything heavy with a coast"],
+      ["rail","low on a busy line","steady, bulk","the mine-to-port train, and the grain that never met a truck"],
+      ["road (and its motor)","higher per ton-km, lower door-to-door on short runs","flexible, fast on good surfaces","the fresh fish, the passenger, the last mile of everything"],
+      ["air","the dearest by far","the only one that matters for the urgent","the passport, the seed sample, the spare part that stops the mill"]
+    ]},
+    {k:"p", t:"Liberia's transport story is the **rain's own**: the laterite road carries the day in the dry and the pothole in the wet; the all-weather coast road, the bridges over the St Paul and the Cavally, and the mine-rail that ran ore to Buchanan and Monrovia's quays are the fixed capital the geography demanded; the pirogue and the truck between the towns do the rest. The exam question 'explain the effects of poor transport on farming' is answered in one chain: the farm gate price falls for what cannot reach the market, so the crop that sells is cassava and the crop that is grown is not the crop that could pay — road, storage and price are one sentence in any full mark."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Classify the factory** — light or heavy, capital or consumer, primary or secondary: the product decides; name it and its class together",
+      "**Site the industry from the map and the facts** — choose the location and defend it with TWO pulls and one refusal of the other candidate",
+      "**The energy question** — why the household burns charcoal, why the grid wants the river, why the roof wants the panel: the table read as argument",
+      "**Balance of trade against payments** — the one-line difference and the consequence of one export",
+      "**Mode for the cargo** — ore to the port, blood to the clinic, rice over the border: which, why, and at what per-ton-km logic",
+      "**One named Liberian case** — the mill, the mine, the port or the brewery: factors, markets, and one improvement with its effect"
+    ]}
+
   ],
 
   focus:[
@@ -1857,6 +2446,55 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"The Graphical Representation of Statistics"},
     {k:"p", t:"**Line graphs** — the simple line graph for one series over time; the **combined** line graph to set two series on one frame; and the **compound** line graph to stack the parts of a whole. **Bar graphs** — the **histogram** of continuous classes; the **simple bar graph** of compared totals; the **divergent bar graph** above and below a base; and the **percentage bar graph** scaled to one hundred. **Circle graphs** — the **pie chart** cut by shares of 360°; the **proportional pie chart**; and the **proportional circle** sized by total. For each, state the advantages and disadvantages, choose the scale with care, and use squared paper to represent statistical data accurately."},
+    {k:"h3", t:"The Investigation, Step by Step"},
+    {k:"num", items:[
+      "**Name the problem** in one testable question — 'does the market distance change what the farmer grows?', not 'farming'.",
+      "**State the hypothesis** as the answer you expect, so the data has something to defeat.",
+      "**Choose what to measure and how**: observation (count, note, photograph), measurement (tape, compass, clinometer, GPS, the stop-watch), the questionnaire and the interview, the secondary source (the ministry's sheet, the census table, the old map) — always at least two kinds, so each can check the other.",
+      "**Organise**: the raw tally into a frequency table; the tally onto its base map; the answers coded by age, sex, place.",
+      "**Present**: graph and map chosen for the data's shape — the flow of people is a flow map, their density is a choropleth, their count is a dot map.",
+      "**Conclude** against the hypothesis: confirmed, modified or refuted, each with the figure that says it; and the 'evaluated' verb that follows — one weakness of the method (the sample, the season, the memory, the wet notebook) and how a rerun would fix it."
+    ]},
+    {k:"h3", t:"Questionnaire and Interview — the Craft Rules"},
+    {k:"bul", items:[
+      "**Short and single**: one question, one thing asked — 'how far and how often' is two questions in one coat, and the answer to the coat is nothing.",
+      "**Closed for counting, open for explaining**: the tick-box feeds the table; the 'why' feeds the paragraph; a questionnaire of only boxes is a census form, of only opens a chat.",
+      "**Neutral wording** — 'many traders say the road is bad: do you agree?' has put the answer in the question; ask what THEY say first.",
+      "**Pilot on ten** before printing a hundred, and repair the questions the pilot broke.",
+      "**Sampling**: a census of the county is impossible, so sample — random to be fair, stratified to hear every section, systematic for the road-transect; the size that fills the class of respondent, not the one that fills the notebook.",
+      "**At the interview**: morning after first light or evening is the farm's free hour; record the figure before the story; the language you share is an instrument as honest as the tape."
+    ]},
+    {k:"h3", t:"The Five Statistical Maps, Deepened"},
+    {k:"table", head:["Type","Each mark shows","Construction to the millimetre","The one danger"], rows:[
+      ["dot map","a fixed NUMBER of the thing (1 dot = 500 people)","plot every dot whole where the thing is; dots may crowd but never overlap into a smear","choosing a dot-value that makes the map a dot-cloud — the legend's number is the key to reading it"],
+      ["choropleth","a RATE or density by SHADED AREA","rank the units into classes (equal intervals, quantiles, or natural breaks), shade light to dark, key the classes","comparing totals where rates belong — a big county looks 'dense' for being big; population per km², never population"],
+      ["isarithmic (isolines)","the CONTINUOUS value through points (rain, height, temperature)","plot the station values, interpolate between the neighbours, draw smooth lines of equal value at a fixed interval","lines that CROSS (impossible), or an interval changed midway to flatter the pattern"],
+      ["flow map","a MOVEMENT: width ∝ quantity","scale the band widths to the figures (2 mm = 100 tonnes), keep each flow one colour, label direction","width drawn by eye — the eye inflates the biggest arrow and the examiners know"],
+      ["proportional symbol","a COUNT at a POINT (towns, ports, mines)","circle area ∝ the value — so radius scales with the square root; or graded squares","making the RADIUS proportional: the big circle then shouts four times too loud"]
+    ]},
+    {k:"h3", t:"Diagrams — the Three Arithmetic Moves"},
+    {k:"num", items:[
+      "**Pie chart**: each share × 360°, and 1 % = 3.6°. The 18 % of the workers in trade takes 18 × 3.6 = **64.8°**, round to 65°; draw the sector, shade the legend, put the % and the value on both — a pie with no numbers is a wheel.",
+      "**Bar and column**: the scale first — a round value per grid-line chosen so the tallest bar fills most of the frame without crowding it; then the axes titled WITH UNITS, the bars equal-width with equal gaps, and the title above the figure.",
+      "**Graph and trend line**: points plotted small and exact, the best-fit line or smooth curve drawn (not a join-the-dots zigzag unless the instruction says so), the gradient taken from TWO points on the LINE — never from two data dots — and read in its unit (°C per km, mm per month).",
+      "**Isoline exercise**: the interval named, values labelled on the lines, a spot height 'between' lines allowed, closed low = basin, closed high = hill, tight = steep, wide = gentle."
+    ]},
+    {k:"h3", t:"Presentation — the Marks Sitting Outside the Data"},
+    {k:"bul", items:[
+      "**Every figure carries** a number, a unit, and a source: '4 500 mm (LMD, 1990–2020 average)' — the source line is free marks and the first thing every script drops.",
+      "**Every map carries** title, key, scale, direction and the date of survey; the base map's neat line and your work's colour kept to two families.",
+      "**Every graph carries** the axes' names and scales, the plotted values' labels where space allows, and the figure number — 'Figure 3'.",
+      "**The table of data** keeps its headers, its units in the header not the cells, its rows aligned right on the decimal point, and its total line where the total is claimed."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Design the fieldwork** — 'plan a study of the school's water': the question, the method, the instrument, the sheet, the safety and courtesy, in that order",
+      "**Pick the right map or diagram for the given data** and say why the others lie — the choropleth/dot/pie choice is a sentence, not a drawing",
+      "**Draw from the table** — a pie of four sectors (shares × 360°), a bar of six, isolines through the given station values: the ruler earns the marks, not the shading",
+      "**Read the presented figure** — the density class, the flow's tonnage from its width, the dot's total, the line's gradient and its unit",
+      "**Evaluate the method** — one weakness, one fix, one sentence each; 'the results were affected by rain' is not an evaluation — say WHICH number moved and HOW"
+    ]}
+
   ],
 
   focus:[
@@ -2021,6 +2659,63 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Elementary Surveying"},
     {k:"p", t:"**Survey** is the measurement of land to fix its positions and areas. The **chain survey equipment** and its uses: the **chain or tape** to measure distance; the **ranging poles** to keep the line; the **arrows (pins)** to count the chain lengths; the **optical square and cross-staff** to turn right angles; the **offset staff** for side measures; the **clinometer** for slope; the **prismatic compass** for bearings; and the **field book** for the sketch notes. The **traverse** — a chain of lines run from station to station — is **closed** when it returns to its start and **open** when it does not; run it by **chain surveying** with baseline, offsets and tie lines, or by **prismatic-compass traversing**, recording the fore-bearing of each leg and checking with the back-bearing, which should differ by 180°. State the advantages and disadvantages of the survey methods, survey the school compound, and design the diagrams, profiles and sketches resulting from the survey. The modern extension is the **Geographic Information System (GIS)** — the computer handling of mapped data, fed by satellite **remote sensing** and the GPS."},
+    {k:"h3", t:"The Conventional Signs the Paper Will Use"},
+    {k:"table", head:["On the map","It means","Note for the question"], rows:[
+      ["thick red double line","primary highway","with its route number — the all-weather road"],
+      ["thin red or black line","secondary road, then track","the dashed line is the dry-season one"],
+      ["black line with cross-bars or sleepers","railway, single or double","the ore line to the port in the mine districts"],
+      ["blue line, single or doubled","river, stream; the double blue the canal","the arrow shows the current where the map draws it"],
+      ["blue with a hatched edge / dots","swamp and mangrove; the lake's marshy margin","'waterlogged ground' in the question's words"],
+      ["black square or rectangle cluster","building; the built-up area","the town's blocks, the school, the warehouse"],
+      ["red block with a cross / crescent","hospital; church; mosque","the public building is red on many sheets"],
+      ["green patch, stipple or tree tuft","woodland, scrub, plantation","the forest's edge is a boundary worth a mark"],
+      ["brown closed curves, one label","contours; the index line every fifth","the interval says whether the hill is 20 m steps or 50"],
+      ["tick-marked contour crowding","cliff; the ticks point downhill","a contour with the ticks ON it is the overhang"],
+      ["x with a figure / BM","spot height; bench mark","the surveyed point the surveyor's note returns to"],
+      ["triangle (trig station)","the survey's triangulation point","the map's anchor for resection"]
+    ]},
+    {k:"h3", t:"Scale and Distance — the Final Drill"},
+    {k:"num", items:[
+      "**Statement to R.F.**: '2 cm to 1 km' = 2 : 100 000 = **1:50 000**; '1 cm represents 500 m' = 1 : 50 000 — the same fraction twice spoken.",
+      "**R.F. to statement**: 1:25 000 → 1 cm = 25 000 cm = 250 m; **4 cm to the kilometre** on the ground it will not fit, so say 250 m per cm.",
+      "**Distance**: the road drawn 13.5 cm on 1:50 000 → 13.5 × 0.5 km = **6.75 km**; the straight-line and the road length are different answers and the question says which.",
+      "**Enlargement**: 'make a copy of twice the linear scale' → the new R.F. is 1:25 000 where the old was 1:50 000 (double the size, halve the denominator), and every area drawn grows FOUR times — 3 cm² of forest becomes 12 cm²."
+    ]},
+    {k:"h3", t:"Bearings, Grids and the 180° Law"},
+    {k:"num", items:[
+      "**Grid reference**: in square 04 58 the school sits about 3 tenths east and 7 tenths north — **043 587**; four figures for the square, six for the point, easting first, always.",
+      "**Bearing from A to B**: stand at A, north at 000°, read clockwise — 118°; **the back bearing is the forward ±180°** (118 + 180 = 298°; 240 − 180 = 060°), so a fore and back reading that fail to differ by 180° has an error to hunt: at the second station re-see the first.",
+      "**Compass against map**: correct the needle for the **magnetic declination** before plotting or reading; true, grid and magnetic north part company by the map's note.",
+      "**Resection to fix a position**: see two (or three) known features, take the magnetic bearing of each, convert to grid bearings, plot each BACKWARD from its feature — where the three position-lines meet (the small triangle they leave shows how well you saw) is where you stand, the one fix in the field that needs no chain."
+    ]},
+    {k:"h3", t:"Reading Relief from the Contours — the Six Patterns"},
+    {k:"bul", items:[
+      "**Concentric closed curves, figures rising inward** = hill or dome; falling inward = basin (the crater, the playa).",
+      "**Contours bent into a V or U** — the nose of the bend points **uphill where the valley is** (the stream's V cuts the contour, and the V's mouth faces down the water's road); the V pointing **downhill with no stream is the ridge or spur**.",
+      "**Crowded contours** = the steep face; **wide-spread** = gentle; **equally spaced with no bend** = the uniform slope — and where the spacing suddenly changes, the slope breaks (the scarp foot, the bench).",
+      "**Contours touching or merged with ticks** = cliff or gorge; two adjacent **pairs of nose-to-nose** = the col or saddle between two tops.",
+      "The **spot height** gives the point, the **index contour** (the heavier fifth line) gives the count, and the **vertical interval** (state it — 20 m) gives the arithmetic: hill = base + (count × interval).",
+      "**Drainage reads the relief before the contours do**: streams run away from every ridge and gather in every valley, so trace the blue first and the land's shape is drawn for you."
+    ]},
+    {k:"h3", t:"The Cross-Section and the Gradient, Worked"},
+    {k:"num", items:[
+      "**Profile, six moves**: rule the line on the map; mark each contour it crosses and each spot height, in order; set the vertical grid at the stated interval on paper sized to the map's relief; drop each tick down to its contour level and mark it; join with a free hand — a cliff stays a cliff, a flat top stays flat; label summit, valley, ridge, and write the vertical scale beside the figure.",
+      "**Vertical exaggeration** = vertical scale ÷ horizontal scale: contours plotted at 1 cm per 100 m against a map whose 1 cm is 1 km gives 1 000 ÷ 100 = **×10** — state it on the figure or the hill is a fraud.",
+      "**Gradient of the road**: it climbs from the 40 m contour to the 220 m spot = 180 m of rise, over a measured 3.6 cm at 1:50 000 = 1.8 km; 1 800 ÷ 180 = 10, so **1 in 10**, or 10 % — and in words 'steep enough that the loaded truck takes second gear'.",
+      "**Intervisibility** (the question 'can the lighthouse see the jetty?'): draw the section; if the contour line lies BELOW the straight sight-line all the way, yes; the moment the land crosses above it, no — the spur is the wall."
+    ]},
+    {k:"h3", t:"Elementary Surveying — the Chain and the Offset"},
+    {k:"p", t:"The field kit and its law in the same line: **ranging rods** to keep the straight line (one at each end, two more to close the gaps, the eye aligning four into one); the **steel tape** measured along, never guessed; **arrows** to mark the whole lengths; **pegs and mallet** to fix the ends; the **clinometer** for angles of slope and the **dumpy level and staff** for height differences carried across the valley; the **compass** for bearing. The **chain survey** is a baseline (say the 100 m along the field's edge, staked at 20 m intervals) plus the **offsets** — 90° spur-lines to every fence corner, hedge and stream — taken by the tape's 3-4-5 right angle or the cross-staff; the **field book** drawn on the spot with the offsets sketched in, because the map is made in the notebook that evening, never in the memory at the end of the day. Areas from the offsets use the **trapezoidal rule**: the strip between stations = mean of the two offsets × the interval — 12 m and 18 m offsets at 20 m spacing enclose (12+18)/2 × 20 = **300 m²**; sum the strips and the field is counted without once being crossed at full pace. And the two rules under all the arithmetic: **measure the long way (main triangles strong and well-conditioned), and check every length by a tie-line** — a survey without a check is a drawing of good intentions."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Measure and convert on the extract** — the road's length in km from its cm and the R.F.; the area from the grid squares or the offsets",
+      "**Give the six-figure grid reference, and the reverse** — name what the reference marks",
+      "**Bearing both ways with the 180° test**, and the compass-to-grid correction",
+      "**Describe the relief** in one paragraph — high where, low where, the slope's character, the drainage's direction — from the contour pattern alone",
+      "**Draw the cross-section and use it** — the interval, the labels, the ×10 exaggeration stated, then the intervisibility question answered from the line",
+      "**The surveying method in steps** — chain and offset: the kit named, the order kept, the 300 m² trapezoid worked, and the tie-line check defended"
+    ]}
+
   ],
 
   focus:[
@@ -2179,6 +2874,43 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"The Population Census"},
     {k:"p", t:"Discuss **why and how a population census is conducted**: the count of every person, by age, sex, household and work, taken on a census night by trained enumerators, processed and published — the **de facto** count where people are, the **de jure** count where they usually live. Its importance: planning the schools, clinics and roads, dividing representation and revenue, and measuring every other population rate. Its difficulties in Liberia — remote roadless places, a mobile people, cost and trained staff — and how they are met."},
+    {k:"h3", t:"The Rate-Sheet — Formula, Unit, Meaning"},
+    {k:"table", head:["Measure","The formula","Its unit","What a high figure says"], rows:[
+      ["crude birth rate","births ÷ total population × 1 000","per 1 000 a year","the cradle busy (or the young population's own future)"],
+      ["crude death rate","deaths ÷ total population × 1 000","per 1 000 a year","the grave busy — health, war, or the old-age pyramid"],
+      ["rate of natural increase","(CBR − CDR) ÷ 10","% a year","the number of children who will need schools in five years"],
+      ["infant mortality","deaths under 1 year ÷ live births × 1 000","per 1 000 live births","the single truest index of a health system"],
+      ["total fertility rate","children per woman over her life","children (average)","the level that replaces is 2.1"],
+      ["life expectancy at birth","the years the age-specific deaths allow","years","the summary of food, water, clinic and peace"],
+      ["density","population ÷ land area","persons per km²","the average that hides the county's real story"]
+    ]},
+    {k:"h3", t:"Four Worked Cases — the Whole of the Paper's Arithmetic"},
+    {k:"num", items:[
+      "**The town's growth**: 20 000 people, 480 births, 120 deaths → CBR = 480/20 000 × 1 000 = **24**; CDR = **6**; RNI = (24 − 6)/10 = **1.8 % a year**.",
+      "**Doubling**: at 1.8 % the **rule of 70** gives 70 ÷ 1.8 ≈ **39 years** to double the town — and the school map for 2065 is drawn from that single division.",
+      "**Dependency**: 0–14s number 8 400 and 65+ number 600 in a town of 20 000 → dependants 9 000, workers 11 000 → ratio = 9 000/11 000 × 100 ≈ **82** — every worker carries a child and two-thirds of another one.",
+      "**Density of the county**: 140 000 people over 7 000 km² → **20 persons per km²**, and the question's other half — 'is it over- or under-populated?' — answered only against resources, not against the map's emptiness."
+    ]},
+    {k:"h3", t:"Liberia's Census Figures — Know the Ones That Are True"},
+    {k:"p", t:"The 2008 national census counted **3,476,608** people in **15 counties** over roughly **111 369 km²** — an average of about 31 per km² that means nothing until it is unpacked: **Montserrado alone held over a third of the nation** (over a million, at a density the map paints the country's one dark blot), while the forested interior counties sat at single digits per km². The preliminary count of the **2022 census — about 5.1 million** — set the growth rate near **2.5 % a year** and the urban share near half, with Monrovia's conurbation (the city and Paynesville, Duport and Todee's edge) holding well over a third of all Liberians. The age structure is the widest pyramid on the class: roughly **two in five under fifteen**, and the workforce's dependency ratio high — the same arithmetic as the worked case above, at national scale. The exam will not ask for a census number to the unit; it asks what the pyramid, the density map and the growth rate MEAN — and each answer is one of the four worked cases wearing the flag."},
+    {k:"h3", t:"Migration — the Patterns with Names"},
+    {k:"bul", items:[
+      "**Ravenstein's laws**, in school English: most moves are short; the long ones land in the big city; migration steps its way up the ladder of towns; every current sets up a counter-current; the country moves more than the town; and the mover is mostly young and mostly — in the work-stream — male, while marriage moves lean the other way. Check each against your own class register before you defend the law.",
+      "**Lee's middle term**: between the origin's push and the destination's pull sit the **intervening obstacles** — river, fare, border, law, the family left behind — and the **intervening opportunities** that make a migrant stop at Kakata when Monrovia called; the volume of flow is the pull minus the friction, and roads are friction turned down.",
+      "**The forced kinds** the syllabus will not let pass: refugees across a border, and the **internally displaced** within one — Liberia's own camps of the 1990s and their return after 2003 are a case the exam has used and will use again; the **remittance** economy and the **brain drain** (nurses and teachers gone to richer posts) close the ledger."
+    ]},
+    {k:"h3", t:"Numbers, Policies and the Malthus Question"},
+    {k:"p", t:"Malthus, 1798: **population presses geometrically (1, 2, 4, 8), food arithmetically (1, 2, 3, 4)**, so the check comes — vice, famine, war — unless the moral restraint of later marriage stays the births. The answer key's second half is the rebuttal: the **green revolution's** yields, the **demographic transition's** own brake (as children survive and cities rise, parents choose fewer), and women's schooling as the most reliable contraceptive ever legislated. The **transition model's** four stages: high-high stall; death-rate fall and the youth explosion (Liberia's present rooms); birth rate catching down with the dividend opening; low-low, the ageing. **Policies** answer the stage: anti-natalist where the first stage burns (the campaign, the clinic, the school fee — and not the quota), **pro-natalist** where the fourth does (the child allowance, the parental leave, the crèche — France, Japan and Hungary's worry), and the honest Liberian line the paper rewards: **population policy that is really health, education and rights policy, whose demographic effect is the dividend, not the target.**"},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**The rate arithmetic** — CBR, CDR, RNI, density, dependency, doubling by the 70-rule: formula, substitution, unit, and a sentence of meaning",
+      "**The pyramid read** — stage, the pressure on schools or on pensions, and the one policy it calls for",
+      "**Explain a pattern of density** — three physical and three human reasons with a named place each; Liberia's dark blot and thin interior against the same six",
+      "**Push-pull with the obstacles** — Ravenstein or Lee by name, then applied to the field trip's own village",
+      "**Malthus, then the but** — state the ratio, name the two checks, then the two refutations",
+      "**The census and its uses** — what the counting builds: seats, schools, revenue, the next ten years' classrooms from today's birth register"
+    ]}
+
   ],
 
   focus:[
@@ -2333,6 +3065,45 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Urbanization: Causes, Problems and Planning"},
     {k:"p", t:"**Urbanization** is the rising share of people in towns. Its **causes**: migrants pulled by jobs and services, and the natural increase of the towns themselves. Its **problems**: housing shortage and slums, unemployment and the informal sector, congestion, water and power shortage, sanitation and pollution. Its **solutions** — and the need for planning: planned housing estates, roads and drains, decentralised services and jobs, and development of the rural areas to slow the drift. Undertake a settlement study of your local town."},
+    {k:"h3", t:"Reading the Settlement off the Map"},
+    {k:"table", head:["Pattern on the ground","Its map look","Its cause"], rows:[
+      ["nucleated","the buildings huddled as one blob","water at one point, defence, the chief's town, the crossroads"],
+      ["dispersed","houses as single dots in a field of farms","each homestead its own well and garden — the plantation's workers' pattern, the prairie's"],
+      ["linear","the street-village strung one long line","along one road, one river bank, one beach, one valley wall"],
+      ["hamlet to town","dots grouped, then a named cluster with functions","the spring that out-grew the spring-shed"]
+    ]},
+    {k:"p", t:"Answer 'describe the settlement pattern' in three parts: the **pattern named**, the **evidence read** ('buildings clustered at 043 587 round the road junction, with scattered homesteads beyond'), and the **cause inferred** from what is beside it — the junction, the bridge, the mine, the chief's town. A pattern without its cause is half the answer's marks; a cause without map evidence is none of them."},
+    {k:"h3", t:"Site, Situation — and the Town's Growth"},
+    {k:"p", t:"**Site** is the ground the town stands on — its drainage, water supply, defence, building stone; **situation** is the wider map — what the town commands between others. Good site, better situation, best growth: a ford that two trade roads met (the classic 'cross-roads town'), a creek-head at the last point ships could reach before the falls (the port's true birthplace — the St Paul's falls made the port above them and the power below), a deep bay behind a defensive ridge. The four **favourable** factors to cite and the four **unfavourable** to name for the town the question hates: swamp and sickness, flood and fire, isolation, and a site so strong it could not grow beyond its walls — the old walled towns the railways later by-passed. Town-planners say a settlement grows fastest when it has what the neighbouring ones lack — the gap in the rank fills, and the rank is the next question."},
+    {k:"h3", t:"The Urban Land-Use Models — One Paragraph Each"},
+    {k:"bul", items:[
+      "**Concentric rings** (Burgess): the CBD at the core, then the old housing and light industry, then the better homes, then the commute's edge — the city as a fried egg, growing by spreading rings.",
+      "**Sectors** (Hoyt): the city grows in wedges along its rail and road lines — industry down-wind and down-river, the elite up the ridge, the poor below — the egg sliced, not spread.",
+      "**Multiple nuclei** (Harris and Ullman): the big city is a cluster of centres — the CBD, the university, the airport, the industrial park, each its own gravitational pull — and this is the only model a spreading African city fits: Monrovia is a CBD at the basin's head, the port and the Freeport as second and third hearts, the township belts beyond, each with its own market.",
+      "The **land-rent logic** under all three: distance from the centre falls, so the bid rises for the centre — the office that pays for the floor, the factory that needs the ground, the house that wants the garden, each outbidding in its turn — and the squatter's choice is the same logic seen from the poor side: the nearest land the city will not pay for is the city's edge the road has not priced yet."
+    ]},
+    {k:"h3", t:"Urbanisation — the Ledger of a Town's Price"},
+    {k:"table", head:["Problem","Its cause in one clause","The remedy with its cost"], rows:[
+      ["housing and the self-built township","the move outruns the house","sites and services first, then the mortgage — the cheap part is the survey, not the cement"],
+      ["water and sanitation","pipes lag the people","extend the main to the township's skeleton road; the borehole and the VIP latrine are the stop-gap that must become the start"],
+      ["transport and the jam","work at one end, beds at the other","the ring road, the bus lane, and the town at the far end that ends the commute"],
+      ["waste and the choked drain","the market's plastic and the city's rain","collect it weekly or the flood collects it for you; the sachet to the recycler"],
+      ["crime and the idle young","the street as the only employer","lighting, sport, the vocational yard — the jobs policy is the police budget"],
+      ["fire and the flood","timber packed, no lanes, no water","the enforced spacing, the access lane, the mapped floodway — every city's cheapest insurance"]
+    ]},
+    {k:"p", t:"The **urban land-use zone** answer and the **planning** answer are the same coin: the plan (zoning: residential, commercial, industrial, the green buffer between the mill and the houses), the **satellite town** to take the overflow (and the road and water that make it a town, not a dormitory), the **rural pull** that keeps the next move unnecessary (the clinic and the college and the road at home), and the **gateway control** of the growth that must come — density along the corridor, the vertical street rather than the endless one."},
+    {k:"h3", t:"Central Places — Why the Town Has What It Has"},
+    {k:"p", t:"Every service has a **threshold** (the people it needs to stay open) and a **range** (the distance the buyer will carry or drive). The barber's threshold is a quarter of a town; the specialist hospital's is a region. Rank the services and you rank the settlements: the **low-order** hamlet (water point, small shop, the primary school), the **mid-order** market town (secondary school, clinic, the bank agent, the mechanic), the **high-order** centre (hospital, university, the court, the port's customs house) — a **county capital** that carries the lower orders on the side, a **primate city** that carries them all. Monrovia is the textbook primate: over a third of the nation, every high-order function, and the county seats — Gbarnga, Kakata, Harper, Voinjama, Robertsport — each the mid-order hub its region can feed. 'Explain why X has a university but Y, half the size away, has only a college' is answered in two words with a sentence: threshold, range."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Describe the settlement** from the extract — pattern, site, situation, function, in four labelled sentences with grid references",
+      "**Site against situation** — the two definitions, then the same town explained by both",
+      "**Rank the services** — low-order to high-order, then 'which of these should the new growth point get': the threshold argument marks",
+      "**Model the growing city** — name the pattern the map shows (ring, sector, nuclei) and defend it with the map's evidence",
+      "**One urban problem, argued** — cause, the price in lives and hours, one remedy and its own cost: the essay half of the paper",
+      "**Urbanisation against city growth** — the share against the count: a country can urbanise while its cities shrink; the sentence that separates the A scripts"
+    ]}
+
   ],
 
   focus:[
@@ -2494,6 +3265,59 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Problems of Agriculture and their Improvement"},
     {k:"p", t:"The problems: hand tools and little machinery, scarce fertiliser and improved seed, poor feeder roads, absent storage and processing, little credit, and land tenure that will not let farms grow; to these add pests, post-harvest loss and reliance on the rains. The improvement: better varieties and inputs, mechanisation fitted to the farm, cooperative marketing and processing to add value, rural credit, feeder roads and storage, irrigation where water allows, and secure tenure. Interpret agricultural statistics and land-use data in judging each reform, and debate the problems hampering Liberia's economy with recommendations for the primary industries."},
+    {k:"h3", t:"The Factors — Physical and Human, With Liberia's Proof"},
+    {k:"table", head:["Factor","Why it rules","The Liberian line for the answer"], rows:[
+      ["rainfall","the crop's bank account","2 000 to 5 000 mm from coast to upper Guinea — enough for two rice seasons and the forest's own rain-recycling; its two-season split sets the calendar"],
+      ["temperature and sun","the speed of growth","steady 25–28 °C at the coast: no frost, no dormancy, the year open — and the heat that also cooks the soil's humus away"],
+      ["relief","the slope's tax","the steep hill sheds water, tools and topsoil; the flat holds them; the contour and the bund are the farmer's answer to the gradient"],
+      ["soil","the bank itself","the sandy coastal plain for cassava and palm; the clay valleys to bund and pond; the hillside's laterite to the grass — 'match the crop to the soil, or the soil to the crop'"],
+      ["land tenure","the question of who may plant a tree","the dual system — statutory and customary — decides whether a farmer plants rubber (a decade to the first cup) or cassava (five months)"],
+      ["labour","hands, and whose","the family's hoe and cutlass; the season's shared work groups; the young hands the town takes"],
+      ["capital and credit","the inputs money","the improved seed, the tool, the transplanted seedling — and the bank that wants a title the customary land cannot give"],
+      ["technology and extension","the knowledge line","the government and mission farms' demonstration plots, the rice research at the stations, the agent whose visit is the whole college"],
+      ["market, road, price","the reason to grow more","'a crop is sold on a wheel as much as in a field': the good road doubles the price of what it carries, and the bad one grows only what walks to market — cassava, and the trader's own stomach"]
+    ]},
+    {k:"h3", t:"The Rice Year, Two Calendars"},
+    {k:"num", items:[
+      "**Upland (the hill farm)** — late dry season: the bush cut and left to dry (the December–March burning is the season's own calendar); the planting with the first heavy rains (May–June); two wegings before tassel; the harvest and the pound between October and December; the stubble returned, the plot to fallow.",
+      "**Swamp (the bottom farm)** — the bund and the drain cut the season before; nursery on the bed, transplant at the rains' full arrival; the water held to a hand's depth through the tillering, drained to ripen; harvest with the dry season's start — the January cut that gives the two-rice year its second loaf.",
+      "**The side calendar** — cassava rides along anywhere and saves the lean week; groundnut in the rice's margin feeds next year's nitrogen; the vegetable garden at the town's edge (the market gardening the road made) pays the school fee weekly.",
+      "**The labour ledger to argue** — a family's weeding falls in the same three weeks as every school term's end: the timing, not the hours, is the constraint — and the answer key's quiet half: labour-saving **is** calendar-saving."
+    ]},
+    {k:"h3", t:"The Tree Crops — From the Garden to the Port"},
+    {k:"table", head:["Crop","The work, in order","What decides its grade — and its price"], rows:[
+      ["rubber (Hevea)","bark cut in the spiral every second day at the dawn's flow; the latex coagulated; smoked into crepe and cup lump, or spun into technical specification","the coagulation clean and the smoke even — the dirt cup sells at the dumper's mercy; the estate's cup fetches the exchange's own price (the plantation economy: the 1926 Harbel opening made this country's line)"],
+      ["oil palm","the fresh bunch cut at the colour break, milled within the day — the fruit's acid clock runs the moment it is ripe","the hour between the tree and the mill is the price: the village's hand-pressed red oil is the grade of the fast trip, and nothing in between"],
+      ["cocoa","the pod split, the beans fermented in boxes or leaves five to seven days, sun-dried on mats, bagged clean","fermentation is the flavour and the grade; the dried-on-ground bean is the mould's dinner — the buyer's cutler is the crib"],
+      ["coffee","the Liberica and Robusta of the old gardens picked red, pulped, fermented off the mucilage, dried to the hull","the even sun and the clean water: the coffee dried on a road eats tar and loses the cup — and Liberia's own species, the Liberica, carries the country's name in the trade"],
+      ["sugarcane","the cane burned and cut at the mill's pace, crushed the same day","the field-to-mill clock again — sugar is logistics, and the plantation at Skako was built on the rail's promise"]
+    ]},
+    {k:"h3", t:"Livestock, and the Fly in the Forest"},
+    {k:"p", t:"The animal map of West Africa is a map of the **tsetse fly**: the trypanosomiasis it carries keeps the cattle out of the forest belt — which is why Liberia's herds are the fly-free breeds of the north and the small stocks of the whole country: **goat and sheep** on every homestead's chain, **pig** in the town's yard and the mission's fence, the **local fowl** under every cooking pot, the **grasscutter** semi-domesticated in the bush's edge, and the **rabbit** of the backyard and the school project. Protein from the herd is therefore small-scale by design and by disease — the answer to 'why no beef industry' is the fly, the breed, the vet's distance and the feed's cost in that order. The improvements that have been tried and can be cited: trypanotolerant breeds moved in, the cattle-fry and the pour-on, the village animal-health worker, the compound feeding of pig and poultry on kitchen and mill by-products, and the hatchery against the fox."},
+    {k:"h3", t:"Problems and Improvement — Matched Columns"},
+    {k:"table", head:["The problem","Its root","The improvement, and its catch"], rows:[
+      ["low yields per hectare","the saved seed spent, the hand hoe's day, the soil's bank half-empty","improved rice and the transplant line; compost and the fertilizer's dose","the seed needs the season's inputs on time — and credit is the next row"],
+      ["no credit, or dear","the land the bank cannot use as its paper","the rural bank, the cooperative's fund, the input-credit tied to the extension agent","the collateral question is the tenure question"],
+      ["the post-harvest loss","the grain in the field's rain, the weevil in the store","the raised rack, the hermetic bag, the village mill","the technology that the woman's time says yes to, or the storehouse that the thief says no to"],
+      ["the roadless farm","the market's price set by the carrier's cost","the feeder road graded, the river's landing kept","maintenance: one washed culvert prices a season back to cassava"],
+      ["the land itself uncertain","the dual system's line between the chief's and the deed","the registry mapped and the customary right recorded","reform that touches both laws is slow, and slow is the crop's enemy"],
+      ["pest and disease","the monoculture's invitation, the fly, the virus","the scout, the resistant line, the rotation","the pesticide is the last door, not the first"]
+    ]},
+    {k:"h3", t:"Two Arithmetics of the Farm"},
+    {k:"num", items:[
+      "**Yield and value**: a 2-hectare hill farm at 1.2 tonnes/ha gives 2.4 t of paddy; at $500 a tonne, $1 200 gross; if the inputs and labour cost $450, the margin is **$750** — and the improved seed that lifts the yield to 1.8 t/ha (50 % more) lifts the margin to $1 950 for a $60 of seed: the whole green-revolution case in one subtraction.",
+      "**Density of feeding the town**: a city of 1 000 000 mouths at 150 kg of rice a head a year needs **150 000 tonnes milled** — some 215 000 tonnes of paddy; at the national yield that is well over 100 000 hectares under rice within a day's truck of the market — the area, not the dream, that answers 'how can Liberia feed Monrovia'."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Two factors of agriculture, argued** — physical AND human, one Liberian proof each; the plant's need, then the person's reason",
+      "**Explain a system on the map** — the shifting farm, the swamp plot, the plantation: the cycle drawn in words, with its fallow or its milling",
+      "**One tree crop's chain** — field to port: the steps, the grade, and where the price is made (the palm bunch's day, the cocoa box's five days)",
+      "**The problems and the cures, matched** — no cure named that its catch is not faced; the examiner reads the second half first",
+      "**The farm arithmetic** — yield per hectare, the value, the margin: formula, the figure, the sentence of meaning",
+      "**Why no cattle kingdom** — the fly, the breed, the feed and the vet: a physical factor driving an economic result, the geography the paper loves"
+    ]}
+
   ],
 
   focus:[
@@ -2652,6 +3476,49 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"Trade: Internal, External and Regional"},
     {k:"p", t:"**Trade and commerce** — internal and external. Liberia's **exports**: iron ore, rubber, timber, cocoa, palm products and gold; its **imports**: rice, fuel, machinery and manufactured goods. Define the **balance of trade** — exports against imports — and read the ports through which each flows. **ECOWAS** and the **Mano River Union** open the regional market: free movement of goods and people, a wider market, joint projects. Assess Liberia's trade partners, the composition of its trade, and the development challenges it faces; outline the **tertiary industries** — trade, transport, banking and **tourism** on the beaches and reserves — with their problems and prospects."},
+    {k:"h3", t:"Industry and Development — the Added-Value Argument"},
+    {k:"p", t:"The development case for industry is a **price of processing** case: a tonne of cup lump sells at the world's floor, a tonne of processed crumb rubber a notch above, a tonne of gloves many notches above — the wage and the factory's depreciation and the profit sit in the notches. The two roads to that: **import substitution** (make what you now buy: the bottle, the mattress, the soap — the protected nursery, its risk the cosseted inefficiency) and **export promotion** (make what the region buys: the cashew roasted, the fish filleted, the timber finished at the mill that takes the sawdust too — its risk the world's price with the tariff wall added). Between them sits the **free zone at the port** — the imported parts, the duty-free shed, the assembly wage — and everywhere under all three sits the first industrial fact the Liberian answer must name: **power and the road**. A welder without steady current is a man with a tool."},
+    {k:"h3", t:"Four Factories, Four Site Arguments"},
+    {k:"num", items:[
+      "**A cement works**: either at the limestone (the bulk that loses half its weight in the kiln) or at the port (the clinker landed from a ship), and the market's size decides which — the works at the quay exist because the city outgrew the quarry's road. The answer names weight-losing against weight-gaining and cites both.",
+      "**A brewery**: water pure and plentiful, the glass and the malt heavy or fragile in, the city's bars close out — market-and-material, so it stands in the industrial quarter of the capital.",
+      "**A sawmill**: at the forest's edge for the log that is half sawdust, or at the port for the export; the internal market pulls it nearer town, the overseas contract pulls it to the quay — name the pull and the loss it saves.",
+      "**A fish canning (or freezing) plant**: at the landing beach where the hour the fish dies is the hour the plant starts; the raw material perishes faster than the freight costs — the only industry where 'market' means the sea's doorstep."
+    ]},
+    {k:"h3", t:"Energy for the Works — the Matrix"},
+    {k:"table", head:["Source","Liberia's present","Best industrial use","Its limit"], rows:[
+      ["grid hydro (the St Paul at Mount Coffee, the plants rebuilt)","the capital's baseload hours","the mill and the welder, cold storage on the quay","the dry season's water and the network's age — load-shedding is a business plan"],
+      ["diesel and barge power","the backup everywhere and the main light at night","the small shop's hours","the freight on every litre: the world's oil price enters the shirt's price"],
+      ["solar (roof and mini-grid)","growing clinic by clinic, school by school","the day-shift cold room, the mill's sun-hours battery","the storage bank for the rainy week and the harmattan's dust"],
+      ["biomass (mill residues)","the rubber and palm mills already burn their own waste","the boiler that dries the copra and the rubber","only where the mill stands; fuel or fertiliser is the farmer's choice"]
+    ]},
+    {k:"h3", t:"Transport — the Arithmetic of the Acre and the Tonne"},
+    {k:"num", items:[
+      "**Mode cost per tonne-km in school figures**: sea about $0.02–0.05, rail $0.05–0.10, road $0.10–0.25, air ten times the road — the reason the ore went by its own rail and never by truck, and the reason the tomato rots at the farm where the road stops.",
+      "**The mine-to-port test**: 160 km of rail at $0.05 carries a tonne for **$8**; a truck at $0.15 asks **$24** for the same ride — the railway's whole defence in two subtractions, and the one-line answer to 'why did the mines build their own line'.",
+      "**The last mile**: farm-gate to all-weather road at 5 km, at a head-loads cost of $0.03 a tonne-km, is pennies per tonne; at 30 km of rain-cut track in the foot-pan-man's price it is a day's wage — so 'the feeder road is a subsidy to the farmer written in gravel'.",
+      "**Time is money's cousin**: the ferry hour, the weigh-bridge queue and the customs day each add to the price the consumer pays and subtract from the price the producer keeps — the border post where two countries' traders stand is the geography of that subtraction."
+    ]},
+    {k:"h3", t:"Trade and Its Books"},
+    {k:"bul", items:[
+      "**The exports' face**: iron ore and rubber at the top of the list across the decades, with gold and diamond, timber and coffee-cocoa behind — and the **commodity's memory**: the price of the ore in Rotterdam pays for the rice in Monrovia, which is the whole of the 'terms of trade' lesson; when the ore price falls, the road works stop at home without one law changing.",
+      "**The imports' face**: the fuel, the rice, the machinery, the medicine — the list is the industry Liberia does not yet have; every year's import sheet is the next decade's factory short-list.",
+      "**Balance of trade** (visible only) against **balance of payments** (visibles, remittances, the aid and the debt's servicing too): a country can 'balance' the goods and drown in the invisible; the diaspora's remittance, a share of national income among the region's largest, is the invisible that moves the balance and builds the house at once.",
+      "**The regional frame**: ECOWAS and its tariff schedule, the corridors on the map, and the ports each neighbour's land-locked trade must cross — the port's geography is the region's, and the 'Freeport serving the sub-region' ambition is a sentence of foreign policy as much as of transport.",
+      "**The terms of trade defined and used**: the export-price index over the import-price index × 100 — a fall means the same tonne buys less rice than last year, the poor country's invisible tax, and the exam's favourite number to explain."
+    ]},
+    {k:"h3", t:"Measuring Development — and Mis-measuring"},
+    {k:"p", t:"Development is read from a **basket of indicators, never one**: GNI per capita and GDP's share from the three sectors (the worker-percentage of agriculture still tells the story: the smaller the share that feeds itself and sells the rest, the more the economy manufactures and serves); the **HDI's three parts** — a year-count of schooling, the life expectancy, the income — with its warning printed in the definition: a composite is a lens, not a soul; the **Poverty Line's** money measure and the **multidimensional** count of its deprivations; and the gender and equality cuts (the literacy gap, the land women farm without holding) that tell what the averages hide. The vocabulary the marks ask for: **developing against developed** by structure not by pity, **the demographic dividend** (the G12 population unit's own return), **sustainable development** (this book's last unit), and the honest note the top answers carry: growth of the GDP per head without the road, the current and the clinic is a number, not a development."},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**Site the factory and argue it** — two factors and the factory's own arithmetic of weight or perishability",
+      "**Raw export against processed export** — the glove against the cup lump: the value added, the jobs it seats, the capital it needs, and why the notches are not free",
+      "**Balance of trade against payments** — the two books, one figure each, and the remittance's entry in the second",
+      "**Terms of trade in one graph** — the index pair, the fall, and one policy that answers it (the export's processing, the import's substitution, the second market)",
+      "**The mine-to-port or farm-to-market cost chain** — the tonne-km table, the two modes compared, and the decision named",
+      "**Indicators and their faults** — GDP per head's one blind eye, the HDI's three, and 'a country can grow its income and fail these five' as the conclusion sentence"
+    ]}
+
   ],
 
   focus:[
@@ -2813,6 +3680,57 @@ var GG_CURRICULUM = [
     {k:"rule"},
     {k:"h3", t:"General Revision"},
     {k:"p", t:"The course closes with general revision over five fronts: **map reading** — scales, positions, directions, relief and cross-sections; the **primary, secondary and tertiary industries of Liberia**; **climate and natural vegetation**; the **regional geography of Africa**; and **population and settlement**. Recap and remember the definitions, elements, description and activities of these geographic topics — through class discussion, group presentation and individual project — and prepare for the school and WASSCE examinations."},
+    {k:"h3", t:"Liberia in Figures — the Register to Carry"},
+    {k:"table", head:["The fact","The figure","The use"], rows:[
+      ["land area","about 111 369 km²","the denominator of every density you quote"],
+      ["coastline","some 579 km of surf, bar, lagoon and mangrove","why every town sits on a river's reach as much as on the sea"],
+      ["land frontiers","with Sierra Leone, Guinea and Côte d'Ivoire in a long arc","the border markets, the refugee years, the corridor's geography"],
+      ["counties and capital","fifteen counties; Monrovia, founded 1822, the seat of government","the county map as the settlement rank"],
+      ["independence","26 July 1847","the history question's hinge, the census' starting year"],
+      ["highest land","Mount Wuteve, about 1 380 m, in the north-west","the one elevation the exam trusts you to know"],
+      ["the great rivers","Mano, St Paul, St John, Cestos, Cavally, and the Lofa northward to the Niger","each with its falls, its basin, its town at the head of navigation"],
+      ["forest","West Africa's largest remaining block of Upper Guinean rainforest, over 40 % of the land","the conservation essay's first sentence"],
+      ["the protected estate","Sapo National Park on the Cestos, the country's first and largest","the network the parks policy was built to add"],
+      ["people","about 3.5 million at the 2008 census, past 5 million by 2022","the growth rate and the pyramid, again"]
+    ]},
+    {k:"h3", t:"The Environmental Ledger — Cause to Cure"},
+    {k:"table", head:["Problem","The human pressure","The environmental result","The management, at its true cost"], rows:[
+      ["deforestation","the farm's advance, the charcoal kiln, the concession's road, and the road's own settlers","the forest's edge moves each year; the rain-recycling thins; the river yellows with silt","licensing and monitoring the concession, the community forest that pays for standing trees, the efficient stove at the town gate — the last cheapest"],
+      ["soil exhaustion and erosion","continuous cropping on the slope, the short fallow, the burn","the laterite crust where the A horizon ran to the river","contour bunds, the legume in the rotation, the compost pit, the agroforestry's shade — one generation's homework, done a field at a time"],
+      ["silted rivers","the catchment stripped for farm and mine, the dredge in the channel","the bar shallowing, the flood spreading, the fish spawning bed buried","the buffer kept along the bank, the settling pond at every pit, the catchment's forest bought back"],
+      ["urban waste and water","a city growing faster than its pipes and trucks","the sachet in the drain, the flood in the street, the well near the pit","the weekly collection priced and enforced, the drain's line kept clear by law, the latrine's 15–30 m setback from every well"],
+      ["hunting pressure","the bushmeat's city market, the road that opened the forest","the monkey and duiker gone from the concession's mile around every town","the quota enforced at the landing, the alternative protein (the fish, the grasscutter), the park's own patrol"],
+      ["the sea's edge","sand mining, the mangrove cut for fuel, the rising reach","the shore taken at Duport, the lagoon's nursery lost","the mangrove replanted and held, the sand cut licensed, the setback line kept from the high-tide mark"]
+    ]},
+    {k:"p", t:"**Sustainable development**, in the definition the mark scheme quotes: development that meets the present's needs **without impairing the future's** — the three legs standing together, economic, social, environmental, no leg shorter. Liberia's own line for the essay: the forest is the country's **capital**, not its income — fell it and the income is one season's, while the rain, the river, the medicine and the world's carbon cheque are the capital gone. The instruments have names to cite: the forest law and its licensing, the community-rights law that gave the village its share of standing timber, the protected-area network Sapo anchors, the environmental agency's impact assessment before any mine or road, and the climate pledges on which the world now keeps the ledger — REDD's promise that the carbon in the trees is money only if the trees stay."},
+    {k:"h3", t:"Africa by Region — the Revision Table"},
+    {k:"table", head:["Region","The physical key","Climate and vegetation","Economic signature to name"], rows:[
+      ["North Africa","the Atlas folds, the Sahara's ergs and regs, the Nile's cut","Mediterranean coast; desert and steppe beyond","oil and gas, the canal's toll, the Nile's cotton and wheat"],
+      ["West Africa","the low plateau and its basement tors; the young coasts","the forest-savanna-descent from south to north","the Gulf's cocoa, groundnut and oil; the coast's fisheries; the region's largest population"],
+      ["Central Africa","the Congo basin and its rivers; the rift's wall","the wet equatorial core under forest; the sahel-like margins","the timber, the copper-cobalt of Katanga, the oil of the coast and offshore"],
+      ["East Africa","the rift, the lakes, the great heights","the equator that is not hot (the plateau), the savanna's two halves","tea, coffee, horticulture, the wildlife's tourism, the Indian Ocean trade"],
+      ["Southern Africa","the high veld and the Kalahari; the Drakensberg wall","subtropical east to winter-rain southwest","the minerals' depth (gold, diamonds, platinum), the two-oceans route, the region's industry"]
+    ]},
+    {k:"p", t:"The regional answer is always the same four doors: **position** (latitudes, neighbours, the sea), **structure** (relief, rocks, drainage), **life** (climate, vegetation, soils), **work** (resources, agriculture, industry, transport) — walk the four in order with two named examples in each and the question cannot be failed. Liberia's own place in the first door's sentence: on West Africa's rainiest coast, the forest belt's last great stand, the Atlantic between its rivers and Europe's markets, one degree north of nothing that matters and four hundred from the Sahara — the reason the region and the country are the same question at two scales."},
+    {k:"h3", t:"How to Write the Regional Answer"},
+    {k:"num", items:[
+      "**Open with position** — the latitudes, the borders, the sea or its absence; a region without its coordinates is a rumour.",
+      "**Structure in three sentences** — the relief's shape, the rocks' age, the drainage's pattern; name one feature the marker can find on an atlas.",
+      "**Climate and vegetation as one paragraph** — the wind and pressure that bring the rain, the zone they write on the land.",
+      "**Work with a map in words** — where each activity sits and why that sits: the mine at the ore, the mill at the crop, the port at the river's head.",
+      "**One named case, one figure, one problem, one response** — the region's lesson in a paragraph: the forest's fall, the soil's theft, the water's overdraw, and the law or the terrace that answers.",
+      "**Close at the region's future** — what must happen in ten years for the four doors to still open: the development the country can sustain, and what would break it."
+    ]},
+    {k:"h3", t:"What the WASSCE Asks in This Unit"},
+    {k:"bul", items:[
+      "**'Describe the physical setting of a region'** — the four doors, one paragraph each, the atlas's names on the line",
+      "**Conservation argued** — the resource as capital not income, the instruments named, the cost faced: the essay's best-earned mark in the paper",
+      "**Liberia's own case** — forest, river, shore: problem, cause, effect, remedy in the exam's four-column mind",
+      "**Sustainable development defined and applied** — the Brundtland sentence and then a farm, a mill and a law in one",
+      "**The map of the regions of Africa** — the boundaries drawn, the signature each region is named for, and why the equatorial east is not rainforest's prisoner (the altitude's answer)",
+      "**Data at last** — a table of forest cover or catch: compute the change, draw it as the bar that shows the year's loss, and say the one consequence the graph is hiding from the eye"
+    ]}
+
   ],
 
   focus:[
