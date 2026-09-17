@@ -27,12 +27,12 @@
   "use strict";
 
   var DEFAULTS = {
-    product: "Easy School Liberia &middot; Course Pack Generator",
+    product: "Easy School Liberia",
     short: "Easy School Liberia",
     tutor: "Emmanuel",
     support: "",
     footerLeft: "Liberian National Curriculum",
-    footerRight: "Course Pack Generator",
+    footerRight: "Easy School Liberia",
     /* docTitle is deliberately empty by default. The page's <title> is not
        decoration: it lists every subject (which the tests rely on) and the
        platform rewrites it with the document name when printing. Only set

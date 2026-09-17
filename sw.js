@@ -2,7 +2,7 @@
 /* Bump on every release that changes index.html/scripts — old cached
    shells (including the pre-proxy build that contained a baked-in key)
    are flushed on activate. */
-var CACHE_NAME = "easy-school-liberia-v11";
+var CACHE_NAME = "easy-school-liberia-v12";
 var APP_SHELL = [
   "./index.html",
   "./book.html",

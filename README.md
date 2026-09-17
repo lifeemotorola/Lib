@@ -58,6 +58,14 @@ so the whole thing stays self-contained.
   French subject — plus reading **speed** and **pitch**. It lives entirely
   outside the printable session: the button and panel are hidden in print and
   never appear on a generated sheet
+- **Back to top** — a course pack runs to dozens of A4 sheets, so a floating
+  button appears once the reader is half a sheet down and returns the platform
+  to the subject, grade and period controls in one press. It scrolls smoothly
+  (instantly where the device asks for reduced motion, or on a browser too old
+  for smooth scrolling), it steps aside for the AI tutor's button and stands
+  down while that tutor's panel is open so the two never sit on top of each
+  other, and it is hidden in print — it is never injected into a generated
+  sheet, so it cannot reach a pupil's workbook or the Word export
 - **Customizable cover**: template choice, 18 built-in subject-matched PNG
   backgrounds (equations for Mathematics, laboratory imagery for Science,
   books for Literature, and so on), school name (persisted), uploaded logo or
