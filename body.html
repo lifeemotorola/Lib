@@ -432,6 +432,7 @@
       <span class="pill" id="pagePill">Pages: <b id="pageN">0</b></span>
       <button class="b2" id="docx"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Word (.docx)</button>
       <button class="b2" id="dup"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Duplex print</button>
+      <button class="b2" id="foldbk"><svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg> Fold book</button>
       <button class="b1" id="print"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg> Print / PDF</button>
     </div>
     <nav class="teaching-toolbar" aria-label="Teaching tools">
@@ -452,16 +453,29 @@
   </div>
 </footer>
 
-<!-- ============ DUPLEX PRINT HELPER ============ -->
+<!-- ============ DUPLEX PRINT / FOLD BOOK HELPER ============ -->
 <div class="bookmask" id="bookMask" hidden>
   <div class="bookmodal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
     <div class="book-head">
-      <h2 id="bookTitle"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Book print sequence</h2>
+      <h2 id="bookTitle"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> <span id="bookTitleText">Book print sequence</span></h2>
       <button type="button" class="book-x" id="bkClose" aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
     </div>
-    <p class="book-sub">Odd / even page sequences for duplex printing on a printer that prints one side at a time.</p>
+    <p class="book-sub" id="bookSub">Odd / even page sequences for duplex printing on a printer that prints one side at a time.</p>
 
     <div class="book-body" id="bookTool">
+      <div class="book-row book-row-mode">
+        <span class="book-f">
+          <label for="bookMode">Print session</label>
+          <select id="bookMode">
+            <option value="duplex">Duplex &mdash; double-sided pages</option>
+            <option value="fold">Fold book &mdash; folded, stapled booklet</option>
+          </select>
+        </span>
+        <span class="book-f" id="paperField" hidden>
+          <label for="paperSize">Paper size</label>
+          <select id="paperSize"></select>
+        </span>
+      </div>
       <div class="book-row">
         <span class="book-f">
           <label for="bookName">Book name (optional)</label>
@@ -493,7 +507,7 @@
 
         <div class="sequence-card">
           <div class="sequence-header">
-            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Front side (odd pages)
+            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> <span id="seqFrontTitle">Front side (odd pages)</span>
               <span class="pass pass-1">PASS 1</span></span>
             <button type="button" class="bk-copy" id="bkCopyOdd"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg> Copy</button>
           </div>
@@ -503,7 +517,7 @@
 
         <div class="sequence-card">
           <div class="sequence-header">
-            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Back side (even pages)
+            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> <span id="seqBackTitle">Back side (even pages)</span>
               <span class="pass pass-2">PASS 2</span></span>
             <button type="button" class="bk-copy" id="bkCopyEven"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg> Copy</button>
           </div>
@@ -513,7 +527,7 @@
 
         <div class="instructions">
           <h3><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg> How to print</h3>
-          <ol>
+          <ol id="bookHowTo">
             <li><b>Pass 1:</b> copy the <b>odd pages</b> sequence into your printer's page range. Print.</li>
             <li><b>Flip:</b> take the printed pages and flip/reinsert them into the printer tray.</li>
             <li><b>Pass 2:</b> copy the <b>even pages</b> sequence into your printer's page range. Print.</li>

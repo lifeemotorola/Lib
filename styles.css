@@ -644,6 +644,9 @@ input:focus-visible,label:focus-visible{
 .book-x:hover{background:#fdeeee;color:var(--rouge);border-color:#f3c9c9}
 .book-sub{margin:6px 0 14px;font-size:.82rem;color:var(--muted)}
 .book-row{display:grid;grid-template-columns:1fr 110px 150px;gap:10px}
+.book-row-mode{grid-template-columns:1fr 1fr;margin-bottom:10px}
+.book-f[hidden]{display:none}
+.summary-note{margin:9px 0 0;font-size:.78rem;color:var(--muted);line-height:1.5}
 .book-f{display:flex;flex-direction:column;gap:4px;min-width:0}
 .book-f label{font-size:.68rem;font-weight:700;color:var(--muted);
   text-transform:uppercase;letter-spacing:.6px}

@@ -2340,14 +2340,16 @@
       setTimeout(restore, 3000);   /* fallback when afterprint never fires */
     };
 
-    /* ---- duplex print helper (book print sequence) ---- */
+    /* ---- duplex print / fold book helper (book print sequence) ----
+       One dialog, two print sessions: "duplex" (odd/even passes) and
+       "fold" (saddle-stitch booklet imposition on A4, A3 or Legal). */
     var bmask = $("#bookMask"), btool = null;
     if (window.BOOK_TOOL && $("#bookTool")) btool = window.BOOK_TOOL.init($("#bookTool"));
-    function openBookTool() {
+    function openBookTool(which) {
       if (!bmask) return;
       var n = parseInt(($("#pageN") || {}).textContent, 10) || 0;
       var nm = n > 0 ? (opts().kg ? S().label + " " + opts().levelLabel + (isLP() ? " lesson plan" : " cover") : S().label + " Grade " + opts().grade + " workbook") : "";
-      if (btool) btool.open(n, nm);
+      if (btool) btool.open(n, nm, which === "fold" ? "fold" : "duplex");
       bmask.hidden = false;
       document.body.classList.add("book-open");
       var pc = $("#pageCount");
@@ -2358,9 +2360,10 @@
       bmask.hidden = true;
       document.body.classList.remove("book-open");
     }
-    var dupBtn = $("#dup");
+    var dupBtn = $("#dup"), foldBtn = $("#foldbk");
+    if (foldBtn && bmask) foldBtn.onclick = function () { openBookTool("fold"); };
     if (dupBtn && bmask) {
-      dupBtn.onclick = openBookTool;
+      dupBtn.onclick = function () { openBookTool("duplex"); };
       var bx = $("#bkClose");
       if (bx) bx.onclick = closeBookTool;
       document.addEventListener("keydown", function (e) {

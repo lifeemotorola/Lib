@@ -1,12 +1,22 @@
 /* Book print sequence helper — shared module.
-   Used by the duplex-print tool built into index.html (app.js wires the
-   modal in body.html) and by the standalone book.html page.
+   Used by the duplex-print and fold-book tools built into index.html
+   (app.js wires the modal in body.html) and by the standalone book.html.
 
-   A printer that prints only one side at a time needs two passes to make
-   a double-sided book:  1,3,5,... on the front, then the paper is flipped
-   and 2,4,6,... is printed on the back. This module turns a page count
-   into those two sequences, with copy buttons and a small saved-books
-   list kept in localStorage under the key "printBooks". */
+   Two print sessions share one dialog:
+
+   • Duplex — a printer that prints only one side at a time needs two
+     passes to make a double-sided book:  1,3,5,... on the front, then the
+     paper is flipped and 2,4,6,... is printed on the back.
+
+   • Fold book — a saddle-stitched booklet. Two pages sit side by side on
+     each face of a sheet ("2 pages per sheet", landscape); the stack is
+     folded once down the middle and stapled on the fold. Page order is
+     the classic imposition:  sheet 1 front = N,1  back = 2,N-1 and so on
+     inwards. The paper can be A4 (folds to A5), A3 (folds to A4) or Legal
+     (folds to 7 × 8½ in), offered in that sequence.
+
+   Both turn a page count into front/back sequences, with copy buttons and
+   a small saved-books list kept in localStorage under "printBooks". */
 (function (root) {
   "use strict";
 
@@ -20,6 +30,48 @@
       oddN: odd.length,
       evenN: even.length,
       sheets: Math.ceil(pageCount / 2)
+    };
+  }
+
+  /* Paper sizes for the fold book, in the order they are offered.
+     `sheet` is the paper that goes into the printer, `folded` the size of
+     the finished booklet page. Millimetres. */
+  var PAPER = [
+    { id: "a4",    label: "A4",    sheet: [210, 297], folded: [148, 210], foldedName: "A5" },
+    { id: "a3",    label: "A3",    sheet: [297, 420], folded: [210, 297], foldedName: "A4" },
+    { id: "legal", label: "Legal", sheet: [216, 356], folded: [178, 216], foldedName: "7 × 8\u00bd in" }
+  ];
+  function paper(id) {
+    var i;
+    for (i = 0; i < PAPER.length; i++) if (PAPER[i].id === id) return PAPER[i];
+    return PAPER[0];
+  }
+
+  /* Pure imposition builder for a fold (saddle-stitch) booklet.
+     The page count is padded up to a multiple of 4 — every sheet carries
+     four pages, two on each face. Returns the front and back sequences in
+     printer order (pairs: left page, right page per sheet face), the
+     padded total, how many blank pages the end of the document needs and
+     the paper description. */
+  function fold(pageCount, paperId) {
+    var n = Math.max(0, parseInt(pageCount, 10) || 0);
+    var total = Math.ceil(n / 4) * 4;
+    var sheets = total / 4;
+    var front = [], back = [], k;
+    for (k = 0; k < sheets; k++) {
+      front.push(total - 2 * k, 1 + 2 * k);
+      back.push(2 + 2 * k, total - 1 - 2 * k);
+    }
+    return {
+      front: front,
+      back: back,
+      frontN: front.length,
+      backN: back.length,
+      pages: n,
+      total: total,
+      blanks: total - n,
+      sheets: sheets,
+      paper: paper(paperId)
     };
   }
 
@@ -45,14 +97,70 @@
     var doc = (rootEl && rootEl.ownerDocument) ? rootEl.ownerDocument : rootEl;
     if (!doc || !doc.createElement) doc = root.document;
     var win = (doc && doc.defaultView) || root;
-    function $(id) { return (rootEl && rootEl.querySelector ? rootEl : doc).querySelector("#" + id); }
+    /* Look inside the tool container first; the dialog's title and subtitle
+       live in its header just outside it, so fall back to the document. */
+    function $(id) {
+      var scope = (rootEl && rootEl.querySelector) ? rootEl : doc;
+      return scope.querySelector("#" + id) || (scope !== doc ? doc.querySelector("#" + id) : null);
+    }
 
     var nameEl = $("bookName"), pagesEl = $("pageCount"), sepEl = $("separator");
+    var modeEl = $("bookMode"), paperEl = $("paperSize"), paperF = $("paperField");
     var results = $("results"), summary = $("summary");
     var oddEl = $("oddSequence"), oddC = $("oddCount");
     var evenEl = $("evenSequence"), evenC = $("evenCount");
+    var frontT = $("seqFrontTitle"), backT = $("seqBackTitle");
+    var howEl = $("bookHowTo"), subEl = $("bookSub"), titleEl = $("bookTitleText");
     var hintEl = $("bookHint"), listEl = $("bookListItems");
     var saved = loadBooks();
+
+    /* Fill the paper selector from PAPER so the order (A4, A3, Legal)
+       lives in one place. */
+    if (paperEl && !paperEl.options.length) {
+      PAPER.forEach(function (p) {
+        var o = doc.createElement("option");
+        o.value = p.id;
+        o.textContent = p.label + " \u2192 " + p.foldedName + " booklet";
+        paperEl.appendChild(o);
+      });
+    }
+
+    function mode() { return modeEl && modeEl.value === "fold" ? "fold" : "duplex"; }
+    function paperId() { return paperEl ? paperEl.value : "a4"; }
+
+    /* Relabel the dialog for the chosen session. */
+    function applyMode() {
+      var f = mode() === "fold";
+      if (paperF) paperF.hidden = !f;
+      if (rootEl && rootEl.classList) rootEl.classList.toggle("fold-mode", f);
+      if (titleEl) titleEl.textContent = f ? "Fold book" : "Book print sequence";
+      if (subEl) subEl.textContent = f
+        ? "Page order for a folded, stapled booklet: two pages on each side of the sheet, printed front then back, folded once down the middle."
+        : "Odd / even page sequences for duplex printing on a printer that prints one side at a time.";
+      if (frontT) frontT.textContent = f ? "Front side (outer pages)" : "Front side (odd pages)";
+      if (backT) backT.textContent = f ? "Back side (inner pages)" : "Back side (even pages)";
+      if (howEl) {
+        howEl.textContent = "";
+        var steps = f ? [
+          ["Set up:", " choose " + paper(paperId()).label + " paper, landscape, and \u201c2 pages per sheet\u201d in the print dialog."],
+          ["Pass 1:", " copy the front sequence into your printer\u2019s page range. Print."],
+          ["Flip:", " take the printed sheets and flip/reinsert them into the tray (same edge leading)."],
+          ["Pass 2:", " copy the back sequence into your printer\u2019s page range. Print."],
+          ["Fold", " the whole stack once down the middle and staple on the fold. Your booklet is ready!"]
+        ] : [
+          ["Pass 1:", " copy the odd pages sequence into your printer\u2019s page range. Print."],
+          ["Flip:", " take the printed pages and flip/reinsert them into the printer tray."],
+          ["Pass 2:", " copy the even pages sequence into your printer\u2019s page range. Print."],
+          ["", "Your double-sided book is ready!"]
+        ];
+        steps.forEach(function (st) {
+          var li = doc.createElement("li");
+          if (st[0]) { var b = doc.createElement("b"); b.textContent = st[0]; li.appendChild(b); }
+          li.appendChild(doc.createTextNode(st[1]));
+          howEl.appendChild(li);
+        });
+      }
+    }
 
     function separator() {
       var v = sepEl ? sepEl.value : ", ";
@@ -108,7 +216,9 @@
         nm.textContent = book.name;
         var pg = doc.createElement("div");
         pg.className = "book-pages";
-        pg.textContent = book.pages + " pages · " + (book.date || "");
+        pg.textContent = book.pages + " pages \u00b7 " +
+          (book.mode === "fold" ? "Fold book " + paper(book.paper).label + " \u00b7 " : "Duplex \u00b7 ") +
+          (book.date || "");
         info.appendChild(nm); info.appendChild(pg);
 
         var act = doc.createElement("div");
@@ -119,6 +229,8 @@
         view.addEventListener("click", function () {
           if (pagesEl) pagesEl.value = book.pages;
           if (nameEl) nameEl.value = book.name;
+          if (modeEl) modeEl.value = book.mode === "fold" ? "fold" : "duplex";
+          if (paperEl && book.paper) paperEl.value = book.paper;
           generate(book.pages, book.name, true);
           if (pagesEl && pagesEl.focus) pagesEl.focus();
         });
@@ -157,24 +269,54 @@
       }
       var nm = String(name != null ? name : (nameEl && nameEl.value)).trim();
       var sep = separator();
-      var r = seq(n, sep);
+      var f = mode() === "fold";
+      var r, p;
+      applyMode();
 
-      if (oddEl) oddEl.textContent = r.odd.join(sep);
-      if (evenEl) evenEl.textContent = r.even.join(sep);
-      if (oddC) oddC.textContent = r.oddN + " pages";
-      if (evenC) evenC.textContent = r.evenN + " pages";
+      if (f) {
+        r = fold(n, paperId());
+        p = r.paper;
+        if (oddEl) oddEl.textContent = r.front.join(sep);
+        if (evenEl) evenEl.textContent = r.back.join(sep);
+        if (oddC) oddC.textContent = r.frontN + " pages \u00b7 " + r.sheets + " sheet face" + (r.sheets === 1 ? "" : "s");
+        if (evenC) evenC.textContent = r.backN + " pages \u00b7 " + r.sheets + " sheet face" + (r.sheets === 1 ? "" : "s");
+      } else {
+        r = seq(n, sep);
+        if (oddEl) oddEl.textContent = r.odd.join(sep);
+        if (evenEl) evenEl.textContent = r.even.join(sep);
+        if (oddC) oddC.textContent = r.oddN + " pages";
+        if (evenC) evenC.textContent = r.evenN + " pages";
+      }
 
       if (summary) {
         summary.textContent = "";
         var h = doc.createElement("h3");
-        h.textContent = "Summary" + (nm ? ": " + nm : "");
+        h.textContent = (f ? "Fold book" : "Summary") + (nm ? ": " + nm : "");
         var grid = doc.createElement("div");
         grid.className = "summary-grid";
-        grid.appendChild(summaryItem("Total pages", n));
-        grid.appendChild(summaryItem("Odd (front)", r.oddN));
-        grid.appendChild(summaryItem("Even (back)", r.evenN));
-        grid.appendChild(summaryItem("Sheets needed", r.sheets));
+        if (f) {
+          grid.appendChild(summaryItem("Document pages", n));
+          grid.appendChild(summaryItem("Booklet pages", r.total));
+          grid.appendChild(summaryItem("Sheets of " + p.label, r.sheets));
+          grid.appendChild(summaryItem("Folded size", p.foldedName));
+        } else {
+          grid.appendChild(summaryItem("Total pages", n));
+          grid.appendChild(summaryItem("Odd (front)", r.oddN));
+          grid.appendChild(summaryItem("Even (back)", r.evenN));
+          grid.appendChild(summaryItem("Sheets needed", r.sheets));
+        }
         summary.appendChild(h); summary.appendChild(grid);
+        if (f) {
+          var note = doc.createElement("p");
+          note.className = "summary-note";
+          note.textContent = p.label + " sheet " + p.sheet[0] + " \u00d7 " + p.sheet[1] + " mm, folded to " +
+            p.folded[0] + " \u00d7 " + p.folded[1] + " mm (" + p.foldedName + ")." +
+            (r.blanks ? " A booklet needs a multiple of 4 pages: add " + r.blanks + " blank page" +
+              (r.blanks === 1 ? "" : "s") + " at the end (page" + (r.blanks === 1 ? " " : "s ") +
+              (r.blanks === 1 ? r.total : (n + 1) + "\u2013" + r.total) + ") so the sequence lines up."
+              : " Page count is already a multiple of 4 \u2014 no blank pages needed.");
+          summary.appendChild(note);
+        }
       }
       if (results) results.classList.add("show");
       hint("");
@@ -185,6 +327,8 @@
         var book = {
           name: nm,
           pages: n,
+          mode: f ? "fold" : "duplex",
+          paper: f ? paperId() : undefined,
           date: new Date().toLocaleDateString()
         };
         if (idx >= 0) saved[idx] = book; else saved.push(book);
@@ -200,11 +344,14 @@
       hint("");
     }
 
-    /* app.js calls open(pageCount, name) to prefill from the generated pack */
-    function open(pageCount, name) {
+    /* app.js calls open(pageCount, name, mode) to prefill from the
+       generated pack; mode is "duplex" (default) or "fold". */
+    function open(pageCount, name, which) {
       var n = parseInt(pageCount, 10);
       if (pagesEl) pagesEl.value = n > 0 ? n : "";
       if (nameEl) nameEl.value = n > 0 && name ? name : "";
+      if (modeEl && which) modeEl.value = which === "fold" ? "fold" : "duplex";
+      applyMode();
       hint("");
       if (n > 0) generate(n, name || null, true);
       else if (results) results.classList.remove("show");
@@ -224,15 +371,18 @@
         if (e.key === "Enter") generate(null, null, false);
       });
     }
-    if (sepEl) {
-      sepEl.addEventListener("change", function () {
-        if (results && results.classList.contains("show")) generate(null, null, false);
-      });
+    function regen() {
+      applyMode();
+      if (results && results.classList.contains("show")) generate(null, null, false);
     }
+    if (sepEl) sepEl.addEventListener("change", regen);
+    if (modeEl) modeEl.addEventListener("change", regen);
+    if (paperEl) paperEl.addEventListener("change", regen);
 
+    applyMode();
     paintList();
-    return { open: open, generate: generate, clear: clearAll, seq: seq };
+    return { open: open, generate: generate, clear: clearAll, seq: seq, fold: fold, mode: mode };
   }
 
-  root.BOOK_TOOL = { seq: seq, init: init };
+  root.BOOK_TOOL = { seq: seq, fold: fold, PAPER: PAPER, paper: paper, init: init };
 })(typeof window !== "undefined" ? window : this);
