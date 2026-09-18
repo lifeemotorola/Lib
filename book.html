@@ -368,6 +368,88 @@
             font-style: italic;
         }
 
+        .booklet-preview-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .mini-sheet-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 600px) {
+            .mini-sheet-pair { grid-template-columns: 1fr; }
+        }
+        .mini-sheet {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .mini-sheet-head {
+            background: rgba(15, 52, 96, 0.6);
+            font-size: 12px;
+            font-weight: 700;
+            color: #e2e8f0;
+            padding: 7px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .mini-sheet-body {
+            display: flex;
+            height: 90px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.15);
+        }
+        .mini-page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 6px;
+            text-align: center;
+        }
+        .mini-page.mini-blank {
+            background: rgba(255, 255, 255, 0.02);
+            color: #64748b;
+        }
+        .mini-pg-num {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .mini-blank .mini-pg-num {
+            color: #64748b;
+            font-size: 12px;
+        }
+        .mini-pg-sub {
+            font-size: 10px;
+            font-weight: 600;
+            color: #e94560;
+            margin-top: 2px;
+        }
+        .mini-crease {
+            width: 0;
+            border-left: 1px dashed rgba(255, 255, 255, 0.25);
+            position: relative;
+        }
+        .mini-crease::before,
+        .mini-crease::after {
+            content: "";
+            position: absolute;
+            left: -1px;
+            width: 3px;
+            height: 12px;
+            background: #e94560;
+            border-radius: 1px;
+        }
+        .mini-crease::before { top: 20%; }
+        .mini-crease::after { bottom: 20%; }
+
         @media (max-width: 500px) {
             .container {
                 padding: 25px;
@@ -526,6 +608,16 @@
                 </div>
                 <div class="sequence-numbers" id="evenSequence"></div>
                 <div class="page-count" id="evenCount"></div>
+            </div>
+
+            <div class="sequence-card booklet-preview-card" id="bookletPreviewCard" hidden>
+                <div class="sequence-header">
+                    <div class="sequence-title">
+                        <svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg> <span>Booklet Sheet Layout (Side-by-Side Preview)</span>
+                    </div>
+                    <span class="pass-label pass-1" id="bookletPaperBadge">A4 &rarr; A5</span>
+                </div>
+                <div class="booklet-preview-grid" id="bookletPreviewGrid"></div>
             </div>
 
             <div class="instructions">
