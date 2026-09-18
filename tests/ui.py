@@ -288,6 +288,35 @@ with sync_playwright() as p:
     if not pg.eval_on_selector("#bookMask", "e=>e.hidden"):
         bad.append("duplex helper did not close")
     print(f"  duplex helper: pack pages={n} odd/even ok")
+    # --- 6b. fold book session (same dialog, booklet imposition) ---
+    pg.eval_on_selector("#foldbk", "e=>e.click()"); pg.wait_for_timeout(250)
+    if pg.eval_on_selector("#bookMask", "e=>e.hidden"):
+        bad.append("fold book did not open")
+    if pg.eval_on_selector("#bookMode", "e=>e.value") != "fold":
+        bad.append("fold book button did not select the fold session")
+    if pg.eval_on_selector("#paperField", "e=>e.hidden"):
+        bad.append("fold book paper size selector hidden")
+    papers = pg.eval_on_selector("#paperSize", "e=>[...e.options].map(o=>o.textContent.split(' ')[0])")
+    if papers != ["A4", "A3", "Legal"]:
+        bad.append(f"fold book paper sizes {papers} != A4, A3, Legal")
+    pg.eval_on_selector("#pageCount", "e=>{e.value='6';e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    pg.eval_on_selector("#paperSize", "e=>{e.value='a3';e.dispatchEvent(new Event('change',{bubbles:true}))}")
+    pg.eval_on_selector("#bkGen", "e=>e.click()"); pg.wait_for_timeout(200)
+    front = pg.eval_on_selector("#oddSequence", "e=>e.textContent")
+    back = pg.eval_on_selector("#evenSequence", "e=>e.textContent")
+    if front != "8, 1, 6, 3" or back != "2, 7, 4, 5":
+        bad.append(f"fold book 6-page A3 run wrong: {front!r} / {back!r}")
+    summ = pg.eval_on_selector("#summary", "e=>e.textContent")
+    if "A3" not in summ or "2 blank pages" not in summ:
+        bad.append("fold book summary missing paper / blank-page note")
+    pg.eval_on_selector("#bookMode", "e=>{e.value='duplex';e.dispatchEvent(new Event('change',{bubbles:true}))}")
+    pg.wait_for_timeout(120)
+    if not pg.eval_on_selector("#paperField", "e=>e.hidden"):
+        bad.append("paper size selector still shown after switching back to duplex")
+    if pg.eval_on_selector("#oddSequence", "e=>e.textContent") != "1, 3, 5":
+        bad.append("switching back to duplex did not regenerate odd/even")
+    pg.eval_on_selector("#bkClose", "e=>e.click()"); pg.wait_for_timeout(150)
+    print("  fold book: A4/A3/Legal, 6-page A3 imposition ok")
     pg.close()
 
     # --- 7. kindergarten cover-page levels and the cover designer ---

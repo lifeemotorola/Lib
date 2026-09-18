@@ -60,6 +60,8 @@
             flex: 1;
             min-width: 200px;
         }
+        .input-wrapper[hidden] { display: none; }
+        .summary-note { margin: 10px 0 0; font-size: 13px; color: #bbb; line-height: 1.5; }
 
         label {
             display: block;
@@ -404,6 +406,7 @@
   <symbol id="i-dice" viewBox="0 0 24 24"><rect x="3.8" y="3.8" width="16.4" height="16.4" rx="3.4"/><circle cx="8.6" cy="8.6" r="1.25"/><circle cx="12" cy="12" r="1.25"/><circle cx="15.4" cy="15.4" r="1.25"/></symbol>
   <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5h6a2.5 2.5 0 0 1 2.5 2.5v13a2 2 0 0 0-2-2H4z"/><path d="M20 4.5h-6A2.5 2.5 0 0 0 11.5 7v13a2 2 0 0 1 2-2H20z"/></symbol>
   <symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9.5V3.5h10v6"/><rect x="3.5" y="9.5" width="17" height="7" rx="2"/><path d="M7 13.5h10v7H7z"/></symbol>
+  <symbol id="i-fold" viewBox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"/><path d="M12 5.5v13"/><path d="M12 5.5 7.5 9v9.5"/><path d="M15.5 9.5h2M15.5 12.5h2"/></symbol>
   <symbol id="i-page" viewBox="0 0 24 24"><path d="M6 3.5h7l5 5v12H6z"/><path d="M13 3.5v5h5"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2"/><path d="M16 8.5V5.5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
@@ -448,8 +451,22 @@
 
 </defs></svg>
     <div class="container">
-        <h1><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Book Print Sequence Generator</h1>
-        <p class="subtitle">Generate odd/even page sequences for duplex printing</p>
+        <h1><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> <span id="bookTitleText">Book Print Sequence Generator</span></h1>
+        <p class="subtitle" id="bookSub">Generate odd/even page sequences for duplex printing</p>
+
+        <div class="input-group">
+            <div class="input-wrapper">
+                <label for="bookMode">Print Session</label>
+                <select class="separator-select" id="bookMode">
+                    <option value="duplex">Duplex — double-sided pages</option>
+                    <option value="fold">Fold book — folded, stapled booklet</option>
+                </select>
+            </div>
+            <div class="input-wrapper" id="paperField" hidden>
+                <label for="paperSize">Paper Size</label>
+                <select class="separator-select" id="paperSize"></select>
+            </div>
+        </div>
 
         <div class="input-group">
             <div class="input-wrapper">
@@ -486,7 +503,7 @@
             <div class="sequence-card">
                 <div class="sequence-header">
                     <div class="sequence-title">
-                        <svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Front Side (Odd Pages)
+                        <svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> <span id="seqFrontTitle">Front Side (Odd Pages)</span>
                     </div>
                     <div>
                         <span class="pass-label pass-1">PASS 1</span>
@@ -500,7 +517,7 @@
             <div class="sequence-card">
                 <div class="sequence-header">
                     <div class="sequence-title">
-                        <svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Back Side (Even Pages)
+                        <svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> <span id="seqBackTitle">Back Side (Even Pages)</span>
                     </div>
                     <div>
                         <span class="pass-label pass-2">PASS 2</span>
@@ -513,7 +530,7 @@
 
             <div class="instructions">
                 <h3><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg> How to Print</h3>
-                <ol>
+                <ol id="bookHowTo">
                     <li><strong>Pass 1:</strong> Copy the <strong>odd pages</strong> sequence and paste it into your printer's page range. Print.</li>
                     <li><strong>Flip:</strong> Take the printed pages and flip/reinsert them into the printer tray.</li>
                     <li><strong>Pass 2:</strong> Copy the <strong>even pages</strong> sequence and paste it into your printer's page range. Print.</li>
