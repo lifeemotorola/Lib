@@ -429,7 +429,16 @@
   <main>
     <div class="bar" id="exportbar">
       <span class="meta" id="meta"></span>
-      <span class="pill" id="pagePill">Pages: <b id="pageN">0</b></span>
+      <span class="pill" id="pagePill">Pages: <b id="pageN">0</b><span id="foldPillDetails"></span></span>
+      <span class="fold-bar-pill" id="foldBarPaperPill" hidden>
+        <label for="foldBarPaper">Paper:</label>
+        <select id="foldBarPaper">
+          <option value="a4">A4 &rarr; A5</option>
+          <option value="a3">A3 &rarr; A4</option>
+          <option value="legal">Legal &rarr; 7&times;8&frac12;&quot;</option>
+        </select>
+      </span>
+      <button type="button" class="b2" id="foldExitBtn" hidden><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Standard view</button>
       <button class="b2" id="docx"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Word (.docx)</button>
       <button class="b2" id="dup"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Duplex print</button>
       <button class="b2" id="foldbk"><svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg> Fold book</button>
@@ -523,6 +532,14 @@
           </div>
           <div class="sequence-numbers" id="evenSequence"></div>
           <div class="page-count" id="evenCount"></div>
+        </div>
+
+        <div class="sequence-card booklet-preview-card" id="bookletPreviewCard" hidden>
+          <div class="sequence-header">
+            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg> Booklet Sheet Layout (Side-by-Side Preview)</span>
+            <span class="pass pass-1" id="bookletPaperBadge">A4 &rarr; A5</span>
+          </div>
+          <div class="booklet-preview-grid" id="bookletPreviewGrid"></div>
         </div>
 
         <div class="instructions">

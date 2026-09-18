@@ -202,6 +202,12 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
   .pbody{flex:1 0 auto}
   .page:last-child{page-break-after:auto}
   @page{size:210mm 297mm;margin:0}
+  .fold-sheet-banner{display:none!important}
+  .fold-crease::before,.fold-crease::after{display:none!important}
+  .fold-crease{border-left:1px dotted #ccc!important}
+  .fold-blank-inner{display:none!important}
+  .fold-subpage.fold-blank{background:#fff!important}
+  .page.fold-sheet{box-shadow:none!important;border:none!important;margin:0!important;padding:0!important;max-height:none!important}
 }
 
 /* ============ PLATFORM: subject theming ============ */
@@ -344,7 +350,7 @@ body[data-mode="teacher"] .page .phead{font-weight:700}
 #doc .page{
   transform:scale(var(--ps));
   transform-origin:top left;
-  margin-bottom:calc(22px - 297mm * (1 - var(--ps)));
+  margin-bottom:calc(22px - var(--sheet-h, 297mm) * (1 - var(--ps)));
 }
 /* Centring the painted sheet.
    `margin:0 auto` on .page centres its 794px LAYOUT box. That is correct
@@ -362,6 +368,357 @@ body[data-mode="teacher"] .page .phead{font-weight:700}
    still scroll normally and no scroll container is introduced. */
 main{ min-width:0; }
 #doc{ min-width:0; overflow-x:clip; overflow-y:visible; }
+
+/* ---- side-by-side fold booklet sheet ---- */
+:root {
+  --fold-w: 297mm;
+  --fold-h: 210mm;
+  --fold-scale: 0.707106;
+}
+
+.page.fold-sheet {
+  width: var(--fold-w, 297mm) !important;
+  height: var(--fold-h, 210mm) !important;
+  min-height: var(--fold-h, 210mm) !important;
+  max-height: var(--fold-h, 210mm) !important;
+  padding: 0 !important;
+  margin: 0 auto 26px !important;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), var(--shadow);
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  page-break-after: always;
+  break-after: page;
+}
+
+/* Informational banner along top of preview sheet (hidden in print) */
+.fold-sheet-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  padding: 0 12px;
+  background: rgba(11, 59, 140, 0.08);
+  border-bottom: 1px solid rgba(11, 59, 140, 0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e3a6c;
+  z-index: 15;
+  pointer-events: none;
+  user-select: none;
+}
+.fold-sheet-badge {
+  background: #0b3b8c;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.fold-sheet-order {
+  font-family: monospace;
+  font-weight: 800;
+  color: #0b3b8c;
+  font-size: 11px;
+}
+.fold-sheet-paper {
+  color: #4b5563;
+  font-size: 10px;
+}
+
+/* The side-by-side spread filling the sheet */
+.fold-spread {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left and right halves of the sheet */
+.fold-half {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* Center fold line / crease / staple mark */
+.fold-crease {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed #b8c6dc;
+  z-index: 12;
+  pointer-events: none;
+}
+.fold-crease::before,
+.fold-crease::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  width: 4px;
+  height: 16mm;
+  background: #7d90b2;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.25);
+}
+.fold-crease::before { top: 20%; }
+.fold-crease::after { bottom: 20%; }
+
+/* The container holding the scaled 210mm x 297mm page */
+.fold-page-viewport {
+  width: 210mm;
+  height: 297mm;
+  flex: 0 0 210mm;
+  transform: scale(var(--fold-scale, 0.707106));
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* The actual page content inside viewport */
+.fold-subpage {
+  width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  padding: 14mm 15mm 12mm;
+  font-size: var(--fs);
+  line-height: 1.42;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #fff;
+  position: relative;
+}
+.fold-subpage.coverpage {
+  padding: 0 !important;
+}
+.fold-subpage.coverpage .phead,
+.fold-subpage.coverpage .pfoot {
+  display: none !important;
+}
+.fold-subpage.coverpage .pbody {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography and elements inside fold-subpage matching .page */
+.fold-subpage h1 { font-size:1.43em; color:var(--bleu); border-bottom:2px solid var(--bleu); padding-bottom:6px; margin:18px 0 10px; }
+.fold-subpage h2 { font-size:1.21em; color:var(--bleu-l); margin:16px 0 8px; }
+.fold-subpage h3 { font-size:1.07em; margin:15px 0 7px; color:#12203a; }
+.fold-subpage p { margin:6px 0; }
+.fold-subpage p.it { font-style:italic; color:#555; }
+.fold-subpage .instr { background:#f2f6fc; border-left:3px solid var(--bleu-l); padding:7px 11px; font-style:italic; color:#3d4a63; font-size:.93em; border-radius:0 6px 6px 0; }
+.fold-subpage ol, .fold-subpage ul { margin:7px 0 7px 22px; padding:0; }
+.fold-subpage li { margin:5px 0; }
+.fold-subpage ul.toc { list-style:none; margin:9px 0; padding:0; }
+.fold-subpage ul.toc li { display:flex; align-items:baseline; gap:.45em; margin:4px 0; }
+.fold-subpage ul.toc li .toc-l { flex:0 1 auto; min-width:0; }
+.fold-subpage ul.toc li .toc-d { flex:1 0 1.2em; min-width:1.2em; border-bottom:1px dotted #8fa0ba; transform:translateY(-.26em); }
+.fold-subpage ul.toc li .toc-p { flex:0 0 auto; font-weight:700; color:var(--bleu); font-variant-numeric:tabular-nums; }
+.fold-subpage table { width:100%; border-collapse:collapse; margin:9px 0; font-size:.93em; }
+.fold-subpage th, .fold-subpage td { border:1px solid #9ab3d9; padding:5px 8px; text-align:left; vertical-align:top; }
+.fold-subpage th { background:#dce6f5; font-weight:700; }
+.fold-subpage td:first-child { font-weight:600; }
+.fold-subpage hr { border:none; border-top:1px solid var(--line); margin:12px 0; }
+.fold-subpage .ctr { text-align:center; }
+.fold-subpage h1.ctr { border-bottom:0; }
+.fold-subpage p.cbig { text-align:center; font-weight:700; font-size:1.35em; margin:.2em 0; }
+.fold-subpage .cv-t1 { font-size:21mm; line-height:1.08; border:0; padding:0; margin:0; color:var(--cv-ink); }
+.fold-subpage .cv-t1.long { font-size:14mm; }
+.fold-subpage .cv-t1.xlong { font-size:10.5mm; }
+body[data-mode="teacher"] .fold-subpage .phead { font-weight:700; }
+
+/* Blank page representation */
+.fold-subpage.fold-blank {
+  align-items: center;
+  justify-content: center;
+  background: #fbfcfe;
+}
+.fold-blank-inner {
+  text-align: center;
+  border: 2px dashed #d0dbe8;
+  border-radius: 12px;
+  padding: 30px 20px;
+  width: 75%;
+  background: #ffffff;
+}
+.fold-blank-badge {
+  font-size: 13pt;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #627b9f;
+  margin-bottom: 6px;
+}
+.fold-blank-title {
+  font-size: 18pt;
+  font-weight: 800;
+  color: #0b3b8c;
+  margin-bottom: 20px;
+}
+.fold-blank-lines {
+  margin: 20px auto;
+  width: 80%;
+}
+.fold-blank-line {
+  border-bottom: 1px solid #e1e8f0;
+  height: 12mm;
+}
+.fold-blank-hint {
+  font-size: 10.5pt;
+  color: #8395a7;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+/* Export bar controls for Fold book */
+.fold-bar-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--bleu);
+  background: #eaf1ff;
+  border: 1px solid #d3e2fb;
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.fold-bar-pill[hidden] {
+  display: none !important;
+}
+.fold-bar-pill select {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--bleu);
+  background: #fff;
+  border: 1px solid #c0d3f6;
+  border-radius: 6px;
+  padding: 2px 6px;
+  outline: none;
+  cursor: pointer;
+}
+#foldExitBtn[hidden] {
+  display: none !important;
+}
+#foldbk.active {
+  background: #0b3b8c;
+  color: #fff;
+  box-shadow: 0 0 0 2px #d3e2fb;
+}
+.fold-pill-text {
+  font-weight: 600;
+}
+
+/* Booklet preview grid in dialogs */
+.booklet-preview-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.mini-sheet-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .mini-sheet-pair { grid-template-columns: 1fr; }
+}
+.mini-sheet {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fcfdff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.mini-sheet-head {
+  background: #eef3fc;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--bleu);
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.mini-sheet-body {
+  display: flex;
+  height: 90px;
+  position: relative;
+  background: #fff;
+}
+.mini-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  text-align: center;
+}
+.mini-page.mini-blank {
+  background: #f8fafc;
+  color: #94a3b8;
+}
+.mini-pg-num {
+  font-size: .88rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.mini-blank .mini-pg-num {
+  color: #94a3b8;
+  font-size: .78rem;
+}
+.mini-pg-sub {
+  font-size: .65rem;
+  font-weight: 600;
+  color: var(--bleu);
+  margin-top: 2px;
+}
+.mini-crease {
+  width: 0;
+  border-left: 1px dashed #c0d0e6;
+  position: relative;
+}
+.mini-crease::before,
+.mini-crease::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  width: 3px;
+  height: 12px;
+  background: var(--bleu);
+  border-radius: 1px;
+}
+.mini-crease::before { top: 20%; }
+.mini-crease::after { bottom: 20%; }
 
 /* ---------- large desktop / smart TV ---------- */
 @media (min-width:1700px){
@@ -482,6 +839,7 @@ input:focus-visible,label:focus-visible{
   :root{ --ps:1 !important; }
   #doc{overflow:visible;margin:0}
   #doc .page{transform:none !important;margin:0 auto !important}
+  #doc .page.fold-sheet{transform:none !important;margin:0 !important}
   .panel-toggle{display:none !important}
   .panel{display:none !important}
 }
@@ -1691,7 +2049,16 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
   <main>
     <div class="bar" id="exportbar">
       <span class="meta" id="meta"></span>
-      <span class="pill" id="pagePill">Pages: <b id="pageN">0</b></span>
+      <span class="pill" id="pagePill">Pages: <b id="pageN">0</b><span id="foldPillDetails"></span></span>
+      <span class="fold-bar-pill" id="foldBarPaperPill" hidden>
+        <label for="foldBarPaper">Paper:</label>
+        <select id="foldBarPaper">
+          <option value="a4">A4 &rarr; A5</option>
+          <option value="a3">A3 &rarr; A4</option>
+          <option value="legal">Legal &rarr; 7&times;8&frac12;&quot;</option>
+        </select>
+      </span>
+      <button type="button" class="b2" id="foldExitBtn" hidden><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg> Standard view</button>
       <button class="b2" id="docx"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Word (.docx)</button>
       <button class="b2" id="dup"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Duplex print</button>
       <button class="b2" id="foldbk"><svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg> Fold book</button>
@@ -1785,6 +2152,14 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
           </div>
           <div class="sequence-numbers" id="evenSequence"></div>
           <div class="page-count" id="evenCount"></div>
+        </div>
+
+        <div class="sequence-card booklet-preview-card" id="bookletPreviewCard" hidden>
+          <div class="sequence-header">
+            <span class="sequence-title"><svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg> Booklet Sheet Layout (Side-by-Side Preview)</span>
+            <span class="pass pass-1" id="bookletPaperBadge">A4 &rarr; A5</span>
+          </div>
+          <div class="booklet-preview-grid" id="bookletPreviewGrid"></div>
         </div>
 
         <div class="instructions">
@@ -98832,6 +99207,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     function applyMode() {
       var f = mode() === "fold";
       if (paperF) paperF.hidden = !f;
+      var prevCard = $("bookletPreviewCard");
+      if (prevCard && !f) prevCard.hidden = true;
       if (rootEl && rootEl.classList) rootEl.classList.toggle("fold-mode", f);
       if (titleEl) titleEl.textContent = f ? "Fold book" : "Book print sequence";
       if (subEl) subEl.textContent = f
@@ -99018,6 +99395,60 @@ window.WA_SUBJECTS.crs = window.WA_crs;
           summary.appendChild(note);
         }
       }
+
+      var prevCard = $("bookletPreviewCard");
+      var prevGrid = $("bookletPreviewGrid");
+      var prevBadge = $("bookletPaperBadge");
+      if (prevCard && prevGrid) {
+        prevCard.hidden = !f;
+        if (f) {
+          if (prevBadge) prevBadge.textContent = p.label + " \u2192 " + p.foldedName;
+          prevGrid.innerHTML = "";
+          for (var k = 0; k < r.sheets; k++) {
+            var fLeft = r.front[2 * k], fRight = r.front[2 * k + 1];
+            var bLeft = r.back[2 * k], bRight = r.back[2 * k + 1];
+
+            var sheetRow = doc.createElement("div");
+            sheetRow.className = "mini-sheet-pair";
+
+            var fSheet = doc.createElement("div");
+            fSheet.className = "mini-sheet mini-sheet-front";
+            fSheet.innerHTML =
+              '<div class="mini-sheet-head">Sheet ' + (k + 1) + ' &middot; Front (Pass 1) &mdash; Pages ' + fLeft + ' &amp; ' + fRight + '</div>' +
+              '<div class="mini-sheet-body">' +
+                '<div class="mini-page' + (fLeft > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (fLeft > n ? 'Blank' : 'Page ' + fLeft) + '</span>' +
+                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+                '<div class="mini-crease"></div>' +
+                '<div class="mini-page' + (fRight > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (fRight > n ? 'Blank' : 'Page ' + fRight) + '</span>' +
+                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+              '</div>';
+
+            var bSheet = doc.createElement("div");
+            bSheet.className = "mini-sheet mini-sheet-back";
+            bSheet.innerHTML =
+              '<div class="mini-sheet-head">Sheet ' + (k + 1) + ' &middot; Back (Pass 2) &mdash; Pages ' + bLeft + ' &amp; ' + bRight + '</div>' +
+              '<div class="mini-sheet-body">' +
+                '<div class="mini-page' + (bLeft > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (bLeft > n ? 'Blank' : 'Page ' + bLeft) + '</span>' +
+                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+                '<div class="mini-crease"></div>' +
+                '<div class="mini-page' + (bRight > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (bRight > n ? 'Blank' : 'Page ' + bRight) + '</span>' +
+                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+              '</div>';
+
+            sheetRow.appendChild(fSheet);
+            sheetRow.appendChild(bSheet);
+            prevGrid.appendChild(sheetRow);
+          }
+        }
+      }
       if (results) results.classList.add("show");
       hint("");
 
@@ -99041,6 +99472,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       if (pagesEl) pagesEl.value = "";
       if (nameEl) nameEl.value = "";
       if (results) results.classList.remove("show");
+      var prevCard = $("bookletPreviewCard");
+      if (prevCard) prevCard.hidden = true;
       hint("");
     }
 
@@ -99081,7 +99514,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 
     applyMode();
     paintList();
-    return { open: open, generate: generate, clear: clearAll, seq: seq, fold: fold, mode: mode };
+    return { open: open, generate: generate, clear: clearAll, seq: seq, fold: fold, mode: mode, paper: paperId, applyMode: applyMode };
   }
 
   root.BOOK_TOOL = { seq: seq, fold: fold, PAPER: PAPER, paper: paper, init: init };
@@ -102817,12 +103250,28 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     document.documentElement.style.setProperty("--fs", FSZ() + "pt");
   }
 
+  /* ---------------- fold book & duplex preview modes ---------------- */
+  var bookMode = "duplex";
+  var bookPaper = "a4";
+  var lastLayoutOut = null;
+
+  var FOLD_SHEET_DIMS = {
+    a4:    { w: "297mm", h: "210mm", scale: 0.707106, label: "A4", foldedName: "A5" },
+    a3:    { w: "420mm", h: "297mm", scale: 1.0,      label: "A3", foldedName: "A4" },
+    legal: { w: "356mm", h: "216mm", scale: 0.72727,  label: "Legal", foldedName: "7 × 8½ in" }
+  };
+  function getFoldPaper(id) {
+    return FOLD_SHEET_DIMS[id] || FOLD_SHEET_DIMS.a4;
+  }
+
   function fitPreview() {
     var doc = $("#doc");
     if (!doc) return;
-    /* width of one A4 sheet in CSS pixels, measured from the document itself */
+    var isFold = (bookMode === "fold");
+    var sw = isFold ? getFoldPaper(bookPaper).w : "210mm";
+    /* width of current sheet in CSS pixels, measured from the document itself */
     var probe = document.createElement("div");
-    probe.style.cssText = "width:210mm;position:absolute;visibility:hidden;pointer-events:none";
+    probe.style.cssText = "width:" + sw + ";position:absolute;visibility:hidden;pointer-events:none";
     document.body.appendChild(probe);
     var sheet = probe.getBoundingClientRect().width;
     document.body.removeChild(probe);
@@ -104189,6 +104638,174 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     };
   }
 
+  function updateSheetDims() {
+    var isFold = (bookMode === "fold");
+    var p = getFoldPaper(bookPaper);
+    if (isFold) {
+      document.documentElement.style.setProperty("--sheet-w", p.w);
+      document.documentElement.style.setProperty("--sheet-h", p.h);
+      document.documentElement.style.setProperty("--fold-w", p.w);
+      document.documentElement.style.setProperty("--fold-h", p.h);
+      document.documentElement.style.setProperty("--fold-scale", p.scale);
+    } else {
+      document.documentElement.style.setProperty("--sheet-w", "210mm");
+      document.documentElement.style.setProperty("--sheet-h", "297mm");
+    }
+  }
+
+  function updatePrintStyle() {
+    var isFold = (bookMode === "fold");
+    var p = getFoldPaper(bookPaper);
+    var styleEl = document.getElementById("foldPrintStyle");
+    if (!styleEl) {
+      styleEl = document.createElement("style");
+      styleEl.id = "foldPrintStyle";
+      document.head.appendChild(styleEl);
+    }
+    if (isFold) {
+      styleEl.textContent =
+        "@page { size: " + p.w + " " + p.h + " landscape; margin: 0; }\n" +
+        "@media print {\n" +
+        "  .page.fold-sheet {\n" +
+        "    width: " + p.w + " !important;\n" +
+        "    height: " + p.h + " !important;\n" +
+        "    min-height: " + p.h + " !important;\n" +
+        "    max-height: " + p.h + " !important;\n" +
+        "    page-break-after: always !important;\n" +
+        "    break-after: page !important;\n" +
+        "    margin: 0 !important;\n" +
+        "    border: none !important;\n" +
+        "    box-shadow: none !important;\n" +
+        "  }\n" +
+        "  .fold-sheet-banner { display: none !important; }\n" +
+        "  .fold-crease { border-left: 1px dotted #ccc !important; }\n" +
+        "  .fold-crease::before, .fold-crease::after { display: none !important; }\n" +
+        "  .fold-blank-inner { display: none !important; }\n" +
+        "  .fold-subpage.fold-blank { background: #fff !important; }\n" +
+        "}";
+    } else {
+      styleEl.textContent =
+        "@page { size: 210mm 297mm portrait; margin: 0; }\n" +
+        "@media print {\n" +
+        "  .page { width: 210mm !important; height: 297mm !important; page-break-after: always !important; break-after: page !important; }\n" +
+        "}";
+    }
+  }
+
+  function renderStandardPages(out) {
+    var doc = $("#doc");
+    var total = out.pages.length;
+    doc.innerHTML = out.pages.map(function (bl, i) {
+      var isCover = bl.length === 1 && bl[0].k === "covart";
+      if (isCover) {
+        return '<div class="page coverpage"><div class="pbody">' +
+          blockHtml(bl[0]) + "</div></div>";
+      }
+      return '<div class="page">' + bandTop(out.pagePer[i]) + '<div class="pbody">' +
+        bl.map(blockHtml).join("") + "</div>" + bandBottom(i + 1, total) + "</div>";
+    }).join("");
+    document.querySelectorAll("#doc .cv-content").forEach(function (content) {
+      var height = content.clientHeight;
+      if (height && content.scrollHeight > height) content.style.transform = "scale(" + (height / content.scrollHeight).toFixed(4) + ")";
+    });
+    $("#pageN").textContent = total;
+    var pillDet = $("#foldPillDetails");
+    if (pillDet) pillDet.innerHTML = "";
+    fitPreview();
+  }
+
+  function renderFoldBookPages(out) {
+    var doc = $("#doc");
+    var total = out.pages.length;
+    var p = getFoldPaper(bookPaper);
+    var r = (window.BOOK_TOOL && typeof window.BOOK_TOOL.fold === "function")
+      ? window.BOOK_TOOL.fold(total, bookPaper)
+      : null;
+    if (!r || !r.front || !r.front.length) {
+      var tot = Math.ceil(Math.max(1, total) / 4) * 4;
+      var shs = tot / 4;
+      var front = [], back = [];
+      for (var k = 0; k < shs; k++) {
+        front.push(tot - 2 * k, 1 + 2 * k);
+        back.push(2 + 2 * k, tot - 1 - 2 * k);
+      }
+      r = { total: tot, sheets: shs, blanks: tot - total, front: front, back: back, paper: { label: p.label, foldedName: p.foldedName } };
+    }
+
+    var pageInnerHtml = {};
+    for (var pg = 1; pg <= r.total; pg++) {
+      if (pg <= total) {
+        var bl = out.pages[pg - 1];
+        var isCover = bl.length === 1 && bl[0].k === "covart";
+        if (isCover) {
+          pageInnerHtml[pg] = '<div class="fold-subpage coverpage"><div class="pbody">' +
+            blockHtml(bl[0]) + '</div></div>';
+        } else {
+          pageInnerHtml[pg] = '<div class="fold-subpage">' +
+            bandTop(out.pagePer[pg - 1]) +
+            '<div class="pbody">' + bl.map(blockHtml).join("") + '</div>' +
+            bandBottom(pg, total) +
+            '</div>';
+        }
+      } else {
+        pageInnerHtml[pg] = '<div class="fold-subpage fold-blank">' +
+          '<div class="fold-blank-inner">' +
+            '<div class="fold-blank-badge">Blank Page</div>' +
+            '<div class="fold-blank-title">Page ' + pg + '</div>' +
+            '<div class="fold-blank-lines"><div class="fold-blank-line"></div><div class="fold-blank-line"></div><div class="fold-blank-line"></div></div>' +
+            '<div class="fold-blank-hint">Notes / Booklet padding</div>' +
+          '</div></div>';
+      }
+    }
+
+    function makeSheetFace(sheetNum, faceName, passNum, lPg, rPg) {
+      var lLabel = (lPg > total) ? "Page " + lPg + " (Blank)" : (lPg === 1 ? "Page 1 (Cover)" : "Page " + lPg);
+      var rLabel = (rPg > total) ? "Page " + rPg + " (Blank)" : (rPg === 1 ? "Page 1 (Cover)" : "Page " + rPg);
+      return '<div class="page fold-sheet" data-sheet="' + sheetNum + '" data-face="' + faceName.toLowerCase() + '">' +
+        '<div class="fold-sheet-banner" aria-hidden="true">' +
+          '<span class="fold-sheet-badge">Sheet ' + sheetNum + ' &middot; ' + faceName + ' (Pass ' + passNum + ')</span>' +
+          '<span class="fold-sheet-order">' + lLabel + ' &nbsp;|&nbsp; ' + rLabel + '</span>' +
+          '<span class="fold-sheet-paper">' + p.label + ' &rarr; ' + p.foldedName + ' Booklet</span>' +
+        '</div>' +
+        '<div class="fold-spread">' +
+          '<div class="fold-half fold-left" data-page="' + lPg + '">' +
+            '<div class="fold-page-viewport">' + pageInnerHtml[lPg] + '</div>' +
+          '</div>' +
+          '<div class="fold-crease" aria-hidden="true"></div>' +
+          '<div class="fold-half fold-right" data-page="' + rPg + '">' +
+            '<div class="fold-page-viewport">' + pageInnerHtml[rPg] + '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    var htmlParts = [];
+    for (var s = 0; s < r.sheets; s++) {
+      htmlParts.push(makeSheetFace(s + 1, "Front", 1, r.front[2 * s], r.front[2 * s + 1]));
+      htmlParts.push(makeSheetFace(s + 1, "Back", 2, r.back[2 * s], r.back[2 * s + 1]));
+    }
+
+    doc.innerHTML = htmlParts.join("");
+    document.querySelectorAll("#doc .cv-content").forEach(function (content) {
+      var height = content.clientHeight;
+      if (height && content.scrollHeight > height) content.style.transform = "scale(" + (height / content.scrollHeight).toFixed(4) + ")";
+    });
+    $("#pageN").textContent = total;
+    var pillDet = $("#foldPillDetails");
+    if (pillDet) {
+      pillDet.innerHTML = ' &middot; <span class="fold-pill-text"><b>' + r.sheets + '</b> ' + (r.sheets === 1 ? 'sheet' : 'sheets') + ' (' + p.label + ' &rarr; ' + p.foldedName + ')</span>';
+    }
+    fitPreview();
+  }
+
+  function renderPackPages(out) {
+    if (bookMode === "fold") {
+      renderFoldBookPages(out);
+    } else {
+      renderStandardPages(out);
+    }
+  }
+
   function render(blocks) {
     var doc = $("#doc");
     /* Pagination must be viewport-independent: measuring while the preview is
@@ -104210,22 +104827,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       }
     }
 
-    var total = out.pages.length;
-    doc.innerHTML = out.pages.map(function (bl, i) {
-      var isCover = bl.length === 1 && bl[0].k === "covart";
-      if (isCover) {
-        return '<div class="page coverpage"><div class="pbody">' +
-          blockHtml(bl[0]) + "</div></div>";
-      }
-      return '<div class="page">' + bandTop(out.pagePer[i]) + '<div class="pbody">' +
-        bl.map(blockHtml).join("") + "</div>" + bandBottom(i + 1, total) + "</div>";
-    }).join("");
-    document.querySelectorAll("#doc .cv-content").forEach(function (content) {
-      var height = content.clientHeight;
-      if (height && content.scrollHeight > height) content.style.transform = "scale(" + (height / content.scrollHeight).toFixed(4) + ")";
-    });
-    $("#pageN").textContent = total;
-    fitPreview();
+    lastLayoutOut = out;
+    renderPackPages(out);
   }
 
   /* ---------------- .docx export ---------------- */
@@ -104805,12 +105408,59 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         document.title = old;
         window.removeEventListener("afterprint", restore);
       };
-      document.title = packFileBase();
+      var pfx = (bookMode === "fold") ? "_Fold_Booklet_" + getFoldPaper(bookPaper).label : "";
+      document.title = packFileBase() + pfx;
       window.addEventListener("afterprint", restore);
       try { if (window.USAGE) window.USAGE.track("print", { subject: cur, grade: opts().grade }); } catch (e) { /* ignore */ }
       window.print();
       setTimeout(restore, 3000);   /* fallback when afterprint never fires */
     };
+
+    function setBookMode(mode) {
+      bookMode = (mode === "fold") ? "fold" : "duplex";
+      var isFold = (bookMode === "fold");
+      document.body.classList.toggle("fold-book-active", isFold);
+      var foldBtn = $("#foldbk");
+      if (foldBtn) foldBtn.classList.toggle("active", isFold);
+      var foldPill = $("#foldBarPaperPill");
+      if (foldPill) foldPill.hidden = !isFold;
+      var exitBtn = $("#foldExitBtn");
+      if (exitBtn) exitBtn.hidden = !isFold;
+      var modeEl = $("#bookMode");
+      if (modeEl && modeEl.value !== bookMode) modeEl.value = bookMode;
+      var paperEl = $("#paperSize");
+      if (paperEl && paperEl.value) bookPaper = paperEl.value;
+      var barPaper = $("#foldBarPaper");
+      if (barPaper && barPaper.value !== bookPaper) barPaper.value = bookPaper;
+
+      updateSheetDims();
+      updatePrintStyle();
+      if (lastLayoutOut) {
+        renderPackPages(lastLayoutOut);
+      } else if (pack) {
+        render(pack.blocks);
+      }
+    }
+
+    function setBookPaper(paperId) {
+      if (paperId && FOLD_SHEET_DIMS[paperId]) {
+        bookPaper = paperId;
+      }
+      var paperEl = $("#paperSize");
+      if (paperEl && paperEl.value !== bookPaper) paperEl.value = bookPaper;
+      var barPaper = $("#foldBarPaper");
+      if (barPaper && barPaper.value !== bookPaper) barPaper.value = bookPaper;
+
+      updateSheetDims();
+      updatePrintStyle();
+      if (bookMode === "fold") {
+        if (lastLayoutOut) {
+          renderPackPages(lastLayoutOut);
+        } else if (pack) {
+          render(pack.blocks);
+        }
+      }
+    }
 
     /* ---- duplex print / fold book helper (book print sequence) ----
        One dialog, two print sessions: "duplex" (odd/even passes) and
@@ -104833,9 +105483,17 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       document.body.classList.remove("book-open");
     }
     var dupBtn = $("#dup"), foldBtn = $("#foldbk");
-    if (foldBtn && bmask) foldBtn.onclick = function () { openBookTool("fold"); };
+    if (foldBtn && bmask) {
+      foldBtn.onclick = function () {
+        setBookMode("fold");
+        openBookTool("fold");
+      };
+    }
     if (dupBtn && bmask) {
-      dupBtn.onclick = function () { openBookTool("duplex"); };
+      dupBtn.onclick = function () {
+        setBookMode("duplex");
+        openBookTool("duplex");
+      };
       var bx = $("#bkClose");
       if (bx) bx.onclick = closeBookTool;
       document.addEventListener("keydown", function (e) {
@@ -104844,6 +105502,31 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       bmask.addEventListener("mousedown", function (e) {
         if (e.target === bmask) closeBookTool();
       });
+    }
+
+    var modeEl = $("#bookMode");
+    if (modeEl) {
+      modeEl.addEventListener("change", function () {
+        setBookMode(modeEl.value);
+      });
+    }
+    var paperEl = $("#paperSize");
+    if (paperEl) {
+      paperEl.addEventListener("change", function () {
+        setBookPaper(paperEl.value);
+      });
+    }
+    var barPaper = $("#foldBarPaper");
+    if (barPaper) {
+      barPaper.addEventListener("change", function () {
+        setBookPaper(barPaper.value);
+      });
+    }
+    var exitFoldBtn = $("#foldExitBtn");
+    if (exitFoldBtn) {
+      exitFoldBtn.onclick = function () {
+        setBookMode("duplex");
+      };
     }
     $("#docx").onclick = function () {
       if (!pack) return;

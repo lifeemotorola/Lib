@@ -132,6 +132,8 @@
     function applyMode() {
       var f = mode() === "fold";
       if (paperF) paperF.hidden = !f;
+      var prevCard = $("bookletPreviewCard");
+      if (prevCard && !f) prevCard.hidden = true;
       if (rootEl && rootEl.classList) rootEl.classList.toggle("fold-mode", f);
       if (titleEl) titleEl.textContent = f ? "Fold book" : "Book print sequence";
       if (subEl) subEl.textContent = f
@@ -318,6 +320,60 @@
           summary.appendChild(note);
         }
       }
+
+      var prevCard = $("bookletPreviewCard");
+      var prevGrid = $("bookletPreviewGrid");
+      var prevBadge = $("bookletPaperBadge");
+      if (prevCard && prevGrid) {
+        prevCard.hidden = !f;
+        if (f) {
+          if (prevBadge) prevBadge.textContent = p.label + " \u2192 " + p.foldedName;
+          prevGrid.innerHTML = "";
+          for (var k = 0; k < r.sheets; k++) {
+            var fLeft = r.front[2 * k], fRight = r.front[2 * k + 1];
+            var bLeft = r.back[2 * k], bRight = r.back[2 * k + 1];
+
+            var sheetRow = doc.createElement("div");
+            sheetRow.className = "mini-sheet-pair";
+
+            var fSheet = doc.createElement("div");
+            fSheet.className = "mini-sheet mini-sheet-front";
+            fSheet.innerHTML =
+              '<div class="mini-sheet-head">Sheet ' + (k + 1) + ' &middot; Front (Pass 1) &mdash; Pages ' + fLeft + ' &amp; ' + fRight + '</div>' +
+              '<div class="mini-sheet-body">' +
+                '<div class="mini-page' + (fLeft > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (fLeft > n ? 'Blank' : 'Page ' + fLeft) + '</span>' +
+                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+                '<div class="mini-crease"></div>' +
+                '<div class="mini-page' + (fRight > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (fRight > n ? 'Blank' : 'Page ' + fRight) + '</span>' +
+                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+              '</div>';
+
+            var bSheet = doc.createElement("div");
+            bSheet.className = "mini-sheet mini-sheet-back";
+            bSheet.innerHTML =
+              '<div class="mini-sheet-head">Sheet ' + (k + 1) + ' &middot; Back (Pass 2) &mdash; Pages ' + bLeft + ' &amp; ' + bRight + '</div>' +
+              '<div class="mini-sheet-body">' +
+                '<div class="mini-page' + (bLeft > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (bLeft > n ? 'Blank' : 'Page ' + bLeft) + '</span>' +
+                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+                '<div class="mini-crease"></div>' +
+                '<div class="mini-page' + (bRight > n ? ' mini-blank' : '') + '">' +
+                  '<span class="mini-pg-num">' + (bRight > n ? 'Blank' : 'Page ' + bRight) + '</span>' +
+                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                '</div>' +
+              '</div>';
+
+            sheetRow.appendChild(fSheet);
+            sheetRow.appendChild(bSheet);
+            prevGrid.appendChild(sheetRow);
+          }
+        }
+      }
       if (results) results.classList.add("show");
       hint("");
 
@@ -341,6 +397,8 @@
       if (pagesEl) pagesEl.value = "";
       if (nameEl) nameEl.value = "";
       if (results) results.classList.remove("show");
+      var prevCard = $("bookletPreviewCard");
+      if (prevCard) prevCard.hidden = true;
       hint("");
     }
 
@@ -381,7 +439,7 @@
 
     applyMode();
     paintList();
-    return { open: open, generate: generate, clear: clearAll, seq: seq, fold: fold, mode: mode };
+    return { open: open, generate: generate, clear: clearAll, seq: seq, fold: fold, mode: mode, paper: paperId, applyMode: applyMode };
   }
 
   root.BOOK_TOOL = { seq: seq, fold: fold, PAPER: PAPER, paper: paper, init: init };

@@ -189,6 +189,12 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
   .pbody{flex:1 0 auto}
   .page:last-child{page-break-after:auto}
   @page{size:210mm 297mm;margin:0}
+  .fold-sheet-banner{display:none!important}
+  .fold-crease::before,.fold-crease::after{display:none!important}
+  .fold-crease{border-left:1px dotted #ccc!important}
+  .fold-blank-inner{display:none!important}
+  .fold-subpage.fold-blank{background:#fff!important}
+  .page.fold-sheet{box-shadow:none!important;border:none!important;margin:0!important;padding:0!important;max-height:none!important}
 }
 
 /* ============ PLATFORM: subject theming ============ */
@@ -331,7 +337,7 @@ body[data-mode="teacher"] .page .phead{font-weight:700}
 #doc .page{
   transform:scale(var(--ps));
   transform-origin:top left;
-  margin-bottom:calc(22px - 297mm * (1 - var(--ps)));
+  margin-bottom:calc(22px - var(--sheet-h, 297mm) * (1 - var(--ps)));
 }
 /* Centring the painted sheet.
    `margin:0 auto` on .page centres its 794px LAYOUT box. That is correct
@@ -349,6 +355,357 @@ body[data-mode="teacher"] .page .phead{font-weight:700}
    still scroll normally and no scroll container is introduced. */
 main{ min-width:0; }
 #doc{ min-width:0; overflow-x:clip; overflow-y:visible; }
+
+/* ---- side-by-side fold booklet sheet ---- */
+:root {
+  --fold-w: 297mm;
+  --fold-h: 210mm;
+  --fold-scale: 0.707106;
+}
+
+.page.fold-sheet {
+  width: var(--fold-w, 297mm) !important;
+  height: var(--fold-h, 210mm) !important;
+  min-height: var(--fold-h, 210mm) !important;
+  max-height: var(--fold-h, 210mm) !important;
+  padding: 0 !important;
+  margin: 0 auto 26px !important;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), var(--shadow);
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  page-break-after: always;
+  break-after: page;
+}
+
+/* Informational banner along top of preview sheet (hidden in print) */
+.fold-sheet-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  padding: 0 12px;
+  background: rgba(11, 59, 140, 0.08);
+  border-bottom: 1px solid rgba(11, 59, 140, 0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e3a6c;
+  z-index: 15;
+  pointer-events: none;
+  user-select: none;
+}
+.fold-sheet-badge {
+  background: #0b3b8c;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.fold-sheet-order {
+  font-family: monospace;
+  font-weight: 800;
+  color: #0b3b8c;
+  font-size: 11px;
+}
+.fold-sheet-paper {
+  color: #4b5563;
+  font-size: 10px;
+}
+
+/* The side-by-side spread filling the sheet */
+.fold-spread {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left and right halves of the sheet */
+.fold-half {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* Center fold line / crease / staple mark */
+.fold-crease {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed #b8c6dc;
+  z-index: 12;
+  pointer-events: none;
+}
+.fold-crease::before,
+.fold-crease::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  width: 4px;
+  height: 16mm;
+  background: #7d90b2;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.25);
+}
+.fold-crease::before { top: 20%; }
+.fold-crease::after { bottom: 20%; }
+
+/* The container holding the scaled 210mm x 297mm page */
+.fold-page-viewport {
+  width: 210mm;
+  height: 297mm;
+  flex: 0 0 210mm;
+  transform: scale(var(--fold-scale, 0.707106));
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* The actual page content inside viewport */
+.fold-subpage {
+  width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  padding: 14mm 15mm 12mm;
+  font-size: var(--fs);
+  line-height: 1.42;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #fff;
+  position: relative;
+}
+.fold-subpage.coverpage {
+  padding: 0 !important;
+}
+.fold-subpage.coverpage .phead,
+.fold-subpage.coverpage .pfoot {
+  display: none !important;
+}
+.fold-subpage.coverpage .pbody {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography and elements inside fold-subpage matching .page */
+.fold-subpage h1 { font-size:1.43em; color:var(--bleu); border-bottom:2px solid var(--bleu); padding-bottom:6px; margin:18px 0 10px; }
+.fold-subpage h2 { font-size:1.21em; color:var(--bleu-l); margin:16px 0 8px; }
+.fold-subpage h3 { font-size:1.07em; margin:15px 0 7px; color:#12203a; }
+.fold-subpage p { margin:6px 0; }
+.fold-subpage p.it { font-style:italic; color:#555; }
+.fold-subpage .instr { background:#f2f6fc; border-left:3px solid var(--bleu-l); padding:7px 11px; font-style:italic; color:#3d4a63; font-size:.93em; border-radius:0 6px 6px 0; }
+.fold-subpage ol, .fold-subpage ul { margin:7px 0 7px 22px; padding:0; }
+.fold-subpage li { margin:5px 0; }
+.fold-subpage ul.toc { list-style:none; margin:9px 0; padding:0; }
+.fold-subpage ul.toc li { display:flex; align-items:baseline; gap:.45em; margin:4px 0; }
+.fold-subpage ul.toc li .toc-l { flex:0 1 auto; min-width:0; }
+.fold-subpage ul.toc li .toc-d { flex:1 0 1.2em; min-width:1.2em; border-bottom:1px dotted #8fa0ba; transform:translateY(-.26em); }
+.fold-subpage ul.toc li .toc-p { flex:0 0 auto; font-weight:700; color:var(--bleu); font-variant-numeric:tabular-nums; }
+.fold-subpage table { width:100%; border-collapse:collapse; margin:9px 0; font-size:.93em; }
+.fold-subpage th, .fold-subpage td { border:1px solid #9ab3d9; padding:5px 8px; text-align:left; vertical-align:top; }
+.fold-subpage th { background:#dce6f5; font-weight:700; }
+.fold-subpage td:first-child { font-weight:600; }
+.fold-subpage hr { border:none; border-top:1px solid var(--line); margin:12px 0; }
+.fold-subpage .ctr { text-align:center; }
+.fold-subpage h1.ctr { border-bottom:0; }
+.fold-subpage p.cbig { text-align:center; font-weight:700; font-size:1.35em; margin:.2em 0; }
+.fold-subpage .cv-t1 { font-size:21mm; line-height:1.08; border:0; padding:0; margin:0; color:var(--cv-ink); }
+.fold-subpage .cv-t1.long { font-size:14mm; }
+.fold-subpage .cv-t1.xlong { font-size:10.5mm; }
+body[data-mode="teacher"] .fold-subpage .phead { font-weight:700; }
+
+/* Blank page representation */
+.fold-subpage.fold-blank {
+  align-items: center;
+  justify-content: center;
+  background: #fbfcfe;
+}
+.fold-blank-inner {
+  text-align: center;
+  border: 2px dashed #d0dbe8;
+  border-radius: 12px;
+  padding: 30px 20px;
+  width: 75%;
+  background: #ffffff;
+}
+.fold-blank-badge {
+  font-size: 13pt;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #627b9f;
+  margin-bottom: 6px;
+}
+.fold-blank-title {
+  font-size: 18pt;
+  font-weight: 800;
+  color: #0b3b8c;
+  margin-bottom: 20px;
+}
+.fold-blank-lines {
+  margin: 20px auto;
+  width: 80%;
+}
+.fold-blank-line {
+  border-bottom: 1px solid #e1e8f0;
+  height: 12mm;
+}
+.fold-blank-hint {
+  font-size: 10.5pt;
+  color: #8395a7;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+/* Export bar controls for Fold book */
+.fold-bar-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--bleu);
+  background: #eaf1ff;
+  border: 1px solid #d3e2fb;
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.fold-bar-pill[hidden] {
+  display: none !important;
+}
+.fold-bar-pill select {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--bleu);
+  background: #fff;
+  border: 1px solid #c0d3f6;
+  border-radius: 6px;
+  padding: 2px 6px;
+  outline: none;
+  cursor: pointer;
+}
+#foldExitBtn[hidden] {
+  display: none !important;
+}
+#foldbk.active {
+  background: #0b3b8c;
+  color: #fff;
+  box-shadow: 0 0 0 2px #d3e2fb;
+}
+.fold-pill-text {
+  font-weight: 600;
+}
+
+/* Booklet preview grid in dialogs */
+.booklet-preview-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.mini-sheet-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .mini-sheet-pair { grid-template-columns: 1fr; }
+}
+.mini-sheet {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fcfdff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.mini-sheet-head {
+  background: #eef3fc;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--bleu);
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.mini-sheet-body {
+  display: flex;
+  height: 90px;
+  position: relative;
+  background: #fff;
+}
+.mini-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  text-align: center;
+}
+.mini-page.mini-blank {
+  background: #f8fafc;
+  color: #94a3b8;
+}
+.mini-pg-num {
+  font-size: .88rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.mini-blank .mini-pg-num {
+  color: #94a3b8;
+  font-size: .78rem;
+}
+.mini-pg-sub {
+  font-size: .65rem;
+  font-weight: 600;
+  color: var(--bleu);
+  margin-top: 2px;
+}
+.mini-crease {
+  width: 0;
+  border-left: 1px dashed #c0d0e6;
+  position: relative;
+}
+.mini-crease::before,
+.mini-crease::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  width: 3px;
+  height: 12px;
+  background: var(--bleu);
+  border-radius: 1px;
+}
+.mini-crease::before { top: 20%; }
+.mini-crease::after { bottom: 20%; }
 
 /* ---------- large desktop / smart TV ---------- */
 @media (min-width:1700px){
@@ -469,6 +826,7 @@ input:focus-visible,label:focus-visible{
   :root{ --ps:1 !important; }
   #doc{overflow:visible;margin:0}
   #doc .page{transform:none !important;margin:0 auto !important}
+  #doc .page.fold-sheet{transform:none !important;margin:0 !important}
   .panel-toggle{display:none !important}
   .panel{display:none !important}
 }
