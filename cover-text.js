@@ -36,9 +36,10 @@
       schoolLabel: "School", subjectLabel: "Subject", classLabel: "Class", teacherLabel: "Teacher", pupilLabel: "Name",
       termLabel: "Term", yearLabel: "Year", termYearLabel: cover.term ? "Term" : "Term / Year",
       noteLabel: "Note", inspireLabel: "Inspire", inspireText: "Teach · Encourage · Achieve",
-      organization: opts.subjectId === "ci" ? "Civics · Original teaching resource" : opts.subjectId && opts.subjectId.charAt(0) === "w" ? "WASSCE · Syllabus-aligned practice" : "Liberian National Curriculum",
+      organization: opts.subjectId === "ci" ? "Civics · Original teaching resource" : opts.subjectId === "cs" ? "Computer Science · Original teaching resource" : opts.subjectId && opts.subjectId.charAt(0) === "w" ? "WASSCE · Syllabus-aligned practice" : "Liberian National Curriculum",
       detailLabel: "Detail", entryLabel: "Entry" };
     if (opts.subjectId === "ci") defaults.line = "Civics · Grade " + opts.grade + " · Original teaching resource; teacher review required";
+    if (opts.subjectId === "cs") defaults.line = "Computer Science · Grade " + opts.grade + " · Original teaching resource; teacher review required";
     /* A kindergarten level has no transcribed syllabus, so its cover names the
        level instead of a workbook and never claims curriculum content. */
     if (opts.kg) {

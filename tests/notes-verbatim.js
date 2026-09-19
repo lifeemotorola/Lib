@@ -119,6 +119,19 @@ const SUBJECTS = [
               facts: ["-ness", "-ment", "-tion", "-ship"] },
             { grade: 12, period: "VI",
               facts: ["plurals", "commands", "connectives"] }] },
+  { name: "Computer Science (Elementary)", global: "CS_CURRICULUM",
+    files: ["data-cs.js"],
+    grades: 6,                     /* every Grade 1-6 computing unit, all six periods, carries study[] */
+    spots: [{ grade: 1, period: "I",     /* computers around us */
+              facts: ["A computer is a machine that follows instructions"] },
+            { grade: 3, period: "II",    /* finding and fixing mistakes */
+              facts: ["A bug is a mistake"] },
+            { grade: 4, period: "III",   /* how messages travel */
+              facts: ["A network is a set of computers"] },
+            { grade: 6, period: "II",    /* binary */
+              facts: ["Binary uses only two digits, 0 and 1"] },
+            { grade: 6, period: "III",   /* computing in Liberia */
+              facts: ["Mobile money"] }] },
   { name: "Health Science (Elementary)", global: "HS_CURRICULUM",
     files: ["data-hs.js"],
     grades: 6,                     /* every Grade 1-6 health unit, all six periods, carries study[] */
