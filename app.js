@@ -1787,6 +1787,42 @@
     }
   }
 
+  /* The exported booklet is one fixed paper size per PDF page, so the
+     print dialog's paper must match it exactly — any other paper makes the
+     browser scale the whole sheet down (the booklet prints squashed onto a
+     half sheet). The browser's own "Booklet" layout (Chrome/Edge) is the
+     foolproof alternative: it folds the ordinary single-page export with no
+     paper or orientation settings at all. State all of this while fold mode
+     is active. */
+  function setFoldPrintNote() {
+    var note = $("#foldPrintNote");
+    var txt = $("#foldPrintNoteText");
+    if (!note || !txt) return;
+    if (bookMode !== "fold") { note.hidden = true; return; }
+    var p = getFoldPaper(bookPaper);
+    var twoPer = "Each sheet already carries <b>two pages side by side</b> &mdash; in the dialog use <b>Layout = Default</b> (not &ldquo;2 pages per sheet&rdquo; and not &ldquo;Booklet&rdquo;, both of which would shrink the pages again).";
+    if (bookPaper === "a4") {
+      txt.innerHTML =
+        "<b>Easiest (duplex printer or Save as PDF):</b> choose <b>Standard view</b>, then Print / PDF with " +
+        "paper = <b>A4</b> and <b>Layout = Booklet</b> (Chrome/Edge) &mdash; the browser folds the pages " +
+        "into the booklet itself and nothing else needs setting.<br>" +
+        "<b>Or print this fold view</b> (single-sided printers): dialog Layout = Default, paper = " +
+        "<b>A4, orientation = landscape</b>, scale = 100%. " + twoPer +
+        " Duplex printer: print all pages with <b>&ldquo;flip on long edge&rdquo;</b>; " +
+        "single-sided: pass 1 = odd pages, flip, pass 2 = even pages (the <b>Fold book</b> dialog lists both).";
+    } else {
+      var full = (bookPaper === "a3") ? "A3 (297 &times; 420 mm)" : "Legal (8.5 &times; 14 in)";
+      txt.innerHTML =
+        "<b>Easiest A4 way:</b> <b>Standard view</b> + Print / PDF with paper = <b>A4</b> and " +
+        "<b>Layout = Booklet</b> (Chrome/Edge) &mdash; gives an A5 booklet with no other settings.<br>" +
+        "<b>For this " + p.label + " booklet:</b> dialog Layout = Default, paper = <b>" + full +
+        "</b>, orientation = landscape, scale = 100%. " + twoPer +
+        " <b>If the dialog cannot take " + p.label + "</b> (it stays on A4) the sheets print squashed " +
+        "onto a half sheet &mdash; switch <b>Paper</b> above to <b>A4</b> and use the Booklet way.";
+    }
+    note.hidden = false;
+  }
+
   function renderStandardPages(out) {
     var doc = $("#doc");
     var total = out.pages.length;
@@ -2530,6 +2566,7 @@
 
       updateSheetDims();
       updatePrintStyle();
+      setFoldPrintNote();
       if (lastLayoutOut) {
         renderPackPages(lastLayoutOut);
       } else if (pack) {
@@ -2548,6 +2585,7 @@
 
       updateSheetDims();
       updatePrintStyle();
+      setFoldPrintNote();
       if (bookMode === "fold") {
         if (lastLayoutOut) {
           renderPackPages(lastLayoutOut);

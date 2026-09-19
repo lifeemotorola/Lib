@@ -191,7 +191,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .page hr{border:none;border-top:1px solid var(--line);margin:12px 0}
 
 @media print{
-  .top,.panel,.bar{display:none!important}
+  .top,.panel,.bar,.fold-print-note{display:none!important}
   .wrap{display:block;padding:0;max-width:none}
   body{background:#fff}
   .page{box-shadow:none;border:none;border-radius:0;margin:0;padding:14mm 15mm 12mm;
@@ -626,6 +626,36 @@ body[data-mode="teacher"] .fold-subpage .phead { font-weight:700; }
   cursor: pointer;
 }
 #foldExitBtn[hidden] {
+  display: none !important;
+}
+/* Print-setup warning shown while the fold booklet mode is active: it states
+   the exact paper / orientation / scale the print dialog must use, because
+   the exported sheets are one fixed paper size per PDF page and any other
+   dialog paper silently scale-fits them (squashing the whole booklet). */
+.fold-print-note {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin: 10px 0 0;
+  padding: 10px 13px;
+  border: 1px solid #e7c78d;
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  background: #fdf7ea;
+  color: #6d5316;
+  font-size: .84rem;
+  line-height: 1.5;
+  box-shadow: var(--shadow);
+}
+.fold-print-note .ic {
+  flex: none;
+  margin-top: 2px;
+  color: #b98a1d;
+}
+.fold-print-note b {
+  color: #5a440f;
+}
+.fold-print-note[hidden] {
   display: none !important;
 }
 #foldbk.active {
@@ -2063,6 +2093,10 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
       <button class="b2" id="dup"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg> Duplex print</button>
       <button class="b2" id="foldbk"><svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg> Fold book</button>
       <button class="b1" id="print"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg> Print / PDF</button>
+    </div>
+    <div class="fold-print-note" id="foldPrintNote" hidden>
+      <svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg>
+      <span id="foldPrintNoteText"></span>
     </div>
     <nav class="teaching-toolbar" aria-label="Teaching tools">
       <div><strong>Your teaching workspace</strong><span>Save, refine and assess — works offline</span></div>
@@ -99214,17 +99248,26 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       if (subEl) subEl.textContent = f
         ? "Page order for a folded, stapled booklet: two pages on each side of the sheet, printed front then back, folded once down the middle."
         : "Odd / even page sequences for duplex printing on a printer that prints one side at a time.";
-      if (frontT) frontT.textContent = f ? "Front side (outer pages)" : "Front side (odd pages)";
-      if (backT) backT.textContent = f ? "Back side (inner pages)" : "Back side (even pages)";
+      if (frontT) frontT.textContent = f ? "Front side (pass 1 \u2014 odd PDF pages)" : "Front side (odd pages)";
+      if (backT) backT.textContent = f ? "Back side (pass 2 \u2014 even PDF pages)" : "Back side (even pages)";
       if (howEl) {
         howEl.textContent = "";
+        /* The exported PDF already carries two booklet pages side by side on
+           each sheet, so the print dialog must NOT add "2 pages per sheet"
+           (that would quarter every page). The only dialog settings that
+           matter are paper, orientation and scale; the passes print the
+           sheet fronts (odd PDF pages) and backs (even PDF pages). */
         var steps = f ? [
-          ["Set up:", " choose " + paper(paperId()).label + " paper, landscape, and \u201c2 pages per sheet\u201d in the print dialog."],
-          ["Pass 1:", " copy the front sequence into your printer\u2019s page range. Print."],
+          ["Easiest:", " duplex printer or Save as PDF: close this dialog, choose Standard view in the top bar, then Print / PDF with paper = A4 and Layout = Booklet (Chrome/Edge). The browser folds the pages for you \u2014 nothing else to set."],
+          ["Set up:", " for a single-sided printer: in the print dialog choose Layout = Default, " + paper(paperId()).label + " paper, orientation landscape, scale 100%. Do not choose \u201c2 pages per sheet\u201d or \u201cBooklet\u201d \u2014 every sheet already carries two pages."],
+        ].concat(paper(paperId()).label !== "A4" ? [
+          ["Paper check:", " if the dialog cannot take " + paper(paperId()).label + " (it stays on A4), the sheets print squashed onto a half sheet \u2014 switch the Paper selector to A4 (folds to A5) instead."],
+        ] : []).concat([
+          ["Pass 1:", " print the odd-numbered pages of the PDF (1, 3, 5, \u2026) on one side only."],
           ["Flip:", " take the printed sheets and flip/reinsert them into the tray (same edge leading)."],
-          ["Pass 2:", " copy the back sequence into your printer\u2019s page range. Print."],
+          ["Pass 2:", " print the even-numbered pages of the PDF (2, 4, 6, \u2026) on the other side."],
           ["Fold", " the whole stack once down the middle and staple on the fold. Your booklet is ready!"]
-        ] : [
+        ]) : [
           ["Pass 1:", " copy the odd pages sequence into your printer\u2019s page range. Print."],
           ["Flip:", " take the printed pages and flip/reinsert them into the printer tray."],
           ["Pass 2:", " copy the even pages sequence into your printer\u2019s page range. Print."],
@@ -99353,10 +99396,16 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       if (f) {
         r = fold(n, paperId());
         p = r.paper;
-        if (oddEl) oddEl.textContent = r.front.join(sep);
-        if (evenEl) evenEl.textContent = r.back.join(sep);
-        if (oddC) oddC.textContent = r.frontN + " pages \u00b7 " + r.sheets + " sheet face" + (r.sheets === 1 ? "" : "s");
-        if (evenC) evenC.textContent = r.backN + " pages \u00b7 " + r.sheets + " sheet face" + (r.sheets === 1 ? "" : "s");
+        /* The copyable sequences are PDF page ranges: the odd pages are all
+           the sheet fronts in sheet order (pass 1) and the even pages all
+           the backs (pass 2). Which booklet page sits where on each face is
+           shown by the booklet preview grid, not typed into the printer. */
+        var pdfPages = r.total / 2, oddR = [], evenR = [], pi;
+        for (pi = 1; pi <= pdfPages; pi++) (pi % 2 ? oddR : evenR).push(pi);
+        if (oddEl) oddEl.textContent = oddR.join(sep);
+        if (evenEl) evenEl.textContent = evenR.join(sep);
+        if (oddC) oddC.textContent = oddR.length + " PDF pages \u00b7 all " + r.sheets + " sheet front" + (r.sheets === 1 ? "" : "s");
+        if (evenC) evenC.textContent = evenR.length + " PDF pages \u00b7 all " + r.sheets + " sheet back" + (r.sheets === 1 ? "" : "s");
       } else {
         r = seq(n, sep);
         if (oddEl) oddEl.textContent = r.odd.join(sep);
@@ -104692,6 +104741,42 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     }
   }
 
+  /* The exported booklet is one fixed paper size per PDF page, so the
+     print dialog's paper must match it exactly — any other paper makes the
+     browser scale the whole sheet down (the booklet prints squashed onto a
+     half sheet). The browser's own "Booklet" layout (Chrome/Edge) is the
+     foolproof alternative: it folds the ordinary single-page export with no
+     paper or orientation settings at all. State all of this while fold mode
+     is active. */
+  function setFoldPrintNote() {
+    var note = $("#foldPrintNote");
+    var txt = $("#foldPrintNoteText");
+    if (!note || !txt) return;
+    if (bookMode !== "fold") { note.hidden = true; return; }
+    var p = getFoldPaper(bookPaper);
+    var twoPer = "Each sheet already carries <b>two pages side by side</b> &mdash; in the dialog use <b>Layout = Default</b> (not &ldquo;2 pages per sheet&rdquo; and not &ldquo;Booklet&rdquo;, both of which would shrink the pages again).";
+    if (bookPaper === "a4") {
+      txt.innerHTML =
+        "<b>Easiest (duplex printer or Save as PDF):</b> choose <b>Standard view</b>, then Print / PDF with " +
+        "paper = <b>A4</b> and <b>Layout = Booklet</b> (Chrome/Edge) &mdash; the browser folds the pages " +
+        "into the booklet itself and nothing else needs setting.<br>" +
+        "<b>Or print this fold view</b> (single-sided printers): dialog Layout = Default, paper = " +
+        "<b>A4, orientation = landscape</b>, scale = 100%. " + twoPer +
+        " Duplex printer: print all pages with <b>&ldquo;flip on long edge&rdquo;</b>; " +
+        "single-sided: pass 1 = odd pages, flip, pass 2 = even pages (the <b>Fold book</b> dialog lists both).";
+    } else {
+      var full = (bookPaper === "a3") ? "A3 (297 &times; 420 mm)" : "Legal (8.5 &times; 14 in)";
+      txt.innerHTML =
+        "<b>Easiest A4 way:</b> <b>Standard view</b> + Print / PDF with paper = <b>A4</b> and " +
+        "<b>Layout = Booklet</b> (Chrome/Edge) &mdash; gives an A5 booklet with no other settings.<br>" +
+        "<b>For this " + p.label + " booklet:</b> dialog Layout = Default, paper = <b>" + full +
+        "</b>, orientation = landscape, scale = 100%. " + twoPer +
+        " <b>If the dialog cannot take " + p.label + "</b> (it stays on A4) the sheets print squashed " +
+        "onto a half sheet &mdash; switch <b>Paper</b> above to <b>A4</b> and use the Booklet way.";
+    }
+    note.hidden = false;
+  }
+
   function renderStandardPages(out) {
     var doc = $("#doc");
     var total = out.pages.length;
@@ -105435,6 +105520,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 
       updateSheetDims();
       updatePrintStyle();
+      setFoldPrintNote();
       if (lastLayoutOut) {
         renderPackPages(lastLayoutOut);
       } else if (pack) {
@@ -105453,6 +105539,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
 
       updateSheetDims();
       updatePrintStyle();
+      setFoldPrintNote();
       if (bookMode === "fold") {
         if (lastLayoutOut) {
           renderPackPages(lastLayoutOut);

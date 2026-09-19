@@ -139,17 +139,26 @@
       if (subEl) subEl.textContent = f
         ? "Page order for a folded, stapled booklet: two pages on each side of the sheet, printed front then back, folded once down the middle."
         : "Odd / even page sequences for duplex printing on a printer that prints one side at a time.";
-      if (frontT) frontT.textContent = f ? "Front side (outer pages)" : "Front side (odd pages)";
-      if (backT) backT.textContent = f ? "Back side (inner pages)" : "Back side (even pages)";
+      if (frontT) frontT.textContent = f ? "Front side (pass 1 \u2014 odd PDF pages)" : "Front side (odd pages)";
+      if (backT) backT.textContent = f ? "Back side (pass 2 \u2014 even PDF pages)" : "Back side (even pages)";
       if (howEl) {
         howEl.textContent = "";
+        /* The exported PDF already carries two booklet pages side by side on
+           each sheet, so the print dialog must NOT add "2 pages per sheet"
+           (that would quarter every page). The only dialog settings that
+           matter are paper, orientation and scale; the passes print the
+           sheet fronts (odd PDF pages) and backs (even PDF pages). */
         var steps = f ? [
-          ["Set up:", " choose " + paper(paperId()).label + " paper, landscape, and \u201c2 pages per sheet\u201d in the print dialog."],
-          ["Pass 1:", " copy the front sequence into your printer\u2019s page range. Print."],
+          ["Easiest:", " duplex printer or Save as PDF: close this dialog, choose Standard view in the top bar, then Print / PDF with paper = A4 and Layout = Booklet (Chrome/Edge). The browser folds the pages for you \u2014 nothing else to set."],
+          ["Set up:", " for a single-sided printer: in the print dialog choose Layout = Default, " + paper(paperId()).label + " paper, orientation landscape, scale 100%. Do not choose \u201c2 pages per sheet\u201d or \u201cBooklet\u201d \u2014 every sheet already carries two pages."],
+        ].concat(paper(paperId()).label !== "A4" ? [
+          ["Paper check:", " if the dialog cannot take " + paper(paperId()).label + " (it stays on A4), the sheets print squashed onto a half sheet \u2014 switch the Paper selector to A4 (folds to A5) instead."],
+        ] : []).concat([
+          ["Pass 1:", " print the odd-numbered pages of the PDF (1, 3, 5, \u2026) on one side only."],
           ["Flip:", " take the printed sheets and flip/reinsert them into the tray (same edge leading)."],
-          ["Pass 2:", " copy the back sequence into your printer\u2019s page range. Print."],
+          ["Pass 2:", " print the even-numbered pages of the PDF (2, 4, 6, \u2026) on the other side."],
           ["Fold", " the whole stack once down the middle and staple on the fold. Your booklet is ready!"]
-        ] : [
+        ]) : [
           ["Pass 1:", " copy the odd pages sequence into your printer\u2019s page range. Print."],
           ["Flip:", " take the printed pages and flip/reinsert them into the printer tray."],
           ["Pass 2:", " copy the even pages sequence into your printer\u2019s page range. Print."],
@@ -278,10 +287,16 @@
       if (f) {
         r = fold(n, paperId());
         p = r.paper;
-        if (oddEl) oddEl.textContent = r.front.join(sep);
-        if (evenEl) evenEl.textContent = r.back.join(sep);
-        if (oddC) oddC.textContent = r.frontN + " pages \u00b7 " + r.sheets + " sheet face" + (r.sheets === 1 ? "" : "s");
-        if (evenC) evenC.textContent = r.backN + " pages \u00b7 " + r.sheets + " sheet face" + (r.sheets === 1 ? "" : "s");
+        /* The copyable sequences are PDF page ranges: the odd pages are all
+           the sheet fronts in sheet order (pass 1) and the even pages all
+           the backs (pass 2). Which booklet page sits where on each face is
+           shown by the booklet preview grid, not typed into the printer. */
+        var pdfPages = r.total / 2, oddR = [], evenR = [], pi;
+        for (pi = 1; pi <= pdfPages; pi++) (pi % 2 ? oddR : evenR).push(pi);
+        if (oddEl) oddEl.textContent = oddR.join(sep);
+        if (evenEl) evenEl.textContent = evenR.join(sep);
+        if (oddC) oddC.textContent = oddR.length + " PDF pages \u00b7 all " + r.sheets + " sheet front" + (r.sheets === 1 ? "" : "s");
+        if (evenC) evenC.textContent = evenR.length + " PDF pages \u00b7 all " + r.sheets + " sheet back" + (r.sheets === 1 ? "" : "s");
       } else {
         r = seq(n, sep);
         if (oddEl) oddEl.textContent = r.odd.join(sep);
