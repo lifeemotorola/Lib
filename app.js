@@ -162,12 +162,14 @@
        Original unplugged-first computing units for Grades 1-6 (data-cs.js).
        No official Liberian Computer Science syllabus was supplied, so these
        are teaching resources, not a transcription. Lesson plans use the
-       computing-circle shape (try, debug, pair); packs reuse GEN_SC. */
+       computing-circle shape (try, debug, pair); packs reuse GEN_SC. Course
+       text is Physics-shaped (long study[] plus a worked[] bank of traced
+       algorithms, counts and binary reasoning — not Physics sums). */
     cs: {
       label: "Computer Science", icon: "sub-cs", accent: "#154e8a",
       curriculum: function () { return CS_CURRICULUM; },
       engine: function () { return GEN_SC; },
-      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "apply"],
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "worked", "apply"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Computer_Science_Grade" + g + "_Pack.docx"; }
     },

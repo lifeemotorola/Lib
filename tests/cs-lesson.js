@@ -118,10 +118,14 @@ ok(units.every((u) => u.experiment && typeof u.experiment === "object" && !Array
   "the investigation is an object (GEN_SC write-up), not a list of sums");
 ok(units.every((u) => typeof u.safeguard === "string" && u.safeguard.length > 120),
   "every unit carries a device and online-safety note for the teacher");
-ok(units.every((u) => (u.study || []).filter((b) => b.k === "h3").length >= 4),
-  "every unit carries a study focus for each week of the 4-week unit");
-ok(units.every((u) => !u.worked && !u.drills && !u.drills2),
-  "no calculation banks: computing is not drilled with sums");
+ok(units.every((u) => (u.study || []).filter((b) => b.k === "h3").length >= 12),
+  "every unit carries Physics-like course-text depth (12+ study headings)");
+ok(units.every((u) => (u.study || []).some((b) => b.k === "table")),
+  "every unit's study notes include at least one table");
+ok(units.every((u) => (u.worked || []).length >= 8),
+  "every unit carries 8+ worked tracing / counting / binary examples");
+ok(units.every((u) => !u.drills && !u.drills2),
+  "no maths drill banks: computing worked examples are algorithm traces, not sums");
 ok(units.every((u) => !/guide pp?\./i.test(u.subtitle || "")),
   "no invented national-guide page citations");
 ok(units.every((u) => /head teacher|trusted adult/i.test(u.safeguard)),
@@ -245,7 +249,7 @@ units.forEach((u) => {
 console.log("\n-- GEN_SC course pack uses Computing Classroom Rules --");
 const pack = GEN.buildPack({
   curriculum: units, grade: 1, topics: ["I"],
-  sheets: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "apply"],
+  sheets: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "worked", "apply"],
   perEx: 6, seed: 3, tests: true, exam: true, keys: true, teacher: true,
   subjectId: "cs", subjectName: "COMPUTER SCIENCE", subjectLine: "Computer Science",
   bandName: "Elementary"
@@ -257,6 +261,8 @@ ok(pt.indexOf("Science Safety Rules") < 0, "CS packs do not print Science Safety
 ok(pt.indexOf("we try, we debug, we do not laugh at a mistake") >= 0,
   "the computing classroom rules are the unplugged-first ones");
 ok(pt.indexOf("Computers Around Us") >= 0, "the pack names the unit");
+ok(/Calculations/.test(pt) && /show all your working/.test(pt) && pt.indexOf("Drill 1") < 0,
+  "pack includes the shared GEN_SC worked sheet and no maths drill sheets");
 ok(JSON.stringify(pack).indexOf("undefined") < 0, "the pack has no undefined holes");
 
 /* ------------------------------------------------------------------ */
