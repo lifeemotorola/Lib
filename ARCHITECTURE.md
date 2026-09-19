@@ -50,7 +50,7 @@ Every generator emits **the same block model**, and one renderer handles it:
 
 Because of this, adding a subject does not require touching pagination, the
 `.docx` exporter, print CSS or the contents page. That is why the platform
-covers 18 subjects with a small codebase: the variation lives in the data and
+covers 19 subjects with a small codebase: the variation lives in the data and
 the generators, not in the rendering.
 
 ## 4. Data model
