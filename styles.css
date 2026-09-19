@@ -179,7 +179,10 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 
 @media print{
   .top,.panel,.bar,.fold-print-note{display:none!important}
-  .wrap{display:block;padding:0;max-width:none}
+  /* padding must win over the max-width:1280px media rule, which also
+     matches the printed page width (~1123px on A4 landscape) and would
+     leave a 50px strip that pushes a blank page onto the end of the PDF */
+  .wrap{display:block;padding:0!important;max-width:none}
   body{background:#fff}
   .page{box-shadow:none;border:none;border-radius:0;margin:0;padding:14mm 15mm 12mm;
     width:210mm;height:297mm;min-height:297mm;font-size:var(--fs);

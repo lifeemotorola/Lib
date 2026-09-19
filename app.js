@@ -1758,8 +1758,13 @@
       document.head.appendChild(styleEl);
     }
     if (isFold) {
+      /* Named size + orientation keyword: "297mm 210mm landscape" (lengths
+         plus a keyword) is parsed by Chrome as a portrait page — the
+         keyword flips the given lengths — so every fold sheet was being
+         scale-fitted into a portrait A4 page (the squashed-booklet bug).
+         "A4 landscape" produces the intended 297x210mm landscape sheet. */
       styleEl.textContent =
-        "@page { size: " + p.w + " " + p.h + " landscape; margin: 0; }\n" +
+        "@page { size: " + p.label + " landscape; margin: 0; }\n" +
         "@media print {\n" +
         "  .page.fold-sheet {\n" +
         "    width: " + p.w + " !important;\n" +
@@ -1772,6 +1777,7 @@
         "    border: none !important;\n" +
         "    box-shadow: none !important;\n" +
         "  }\n" +
+        "  .page.fold-sheet:last-child { page-break-after: auto !important; break-after: auto !important; }\n" +
         "  .fold-sheet-banner { display: none !important; }\n" +
         "  .fold-crease { border-left: 1px dotted #ccc !important; }\n" +
         "  .fold-crease::before, .fold-crease::after { display: none !important; }\n" +
