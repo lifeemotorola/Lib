@@ -178,7 +178,7 @@ select:focus,input:focus{outline:2px solid #bcd3fb;outline-offset:0}
 .page hr{border:none;border-top:1px solid var(--line);margin:12px 0}
 
 @media print{
-  .top,.panel,.bar{display:none!important}
+  .top,.panel,.bar,.fold-print-note{display:none!important}
   .wrap{display:block;padding:0;max-width:none}
   body{background:#fff}
   .page{box-shadow:none;border:none;border-radius:0;margin:0;padding:14mm 15mm 12mm;
@@ -613,6 +613,36 @@ body[data-mode="teacher"] .fold-subpage .phead { font-weight:700; }
   cursor: pointer;
 }
 #foldExitBtn[hidden] {
+  display: none !important;
+}
+/* Print-setup warning shown while the fold booklet mode is active: it states
+   the exact paper / orientation / scale the print dialog must use, because
+   the exported sheets are one fixed paper size per PDF page and any other
+   dialog paper silently scale-fits them (squashing the whole booklet). */
+.fold-print-note {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin: 10px 0 0;
+  padding: 10px 13px;
+  border: 1px solid #e7c78d;
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  background: #fdf7ea;
+  color: #6d5316;
+  font-size: .84rem;
+  line-height: 1.5;
+  box-shadow: var(--shadow);
+}
+.fold-print-note .ic {
+  flex: none;
+  margin-top: 2px;
+  color: #b98a1d;
+}
+.fold-print-note b {
+  color: #5a440f;
+}
+.fold-print-note[hidden] {
   display: none !important;
 }
 #foldbk.active {
