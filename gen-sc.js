@@ -426,14 +426,25 @@
     if (opts.exam) toc.push("Semester examinations (Semester One & Two)");
     if (opts.keys) toc.push("Answer keys — for the teacher");
     doc.push({ k: "bul", items: toc });
-    doc.push({ k: "h3", t: "Science Safety Rules" });
-    doc.push({ k: "bul", items: [
-      "Never taste or smell any substance unless your teacher tells you to.",
-      "Tell your teacher at once about any spill, cut or burn.",
-      "Only the teacher handles flames, heat and sharp tools.",
-      "Keep your work area tidy and handle all equipment carefully.",
-      "Wash your hands with soap and water after every activity."
-    ] });
+    if (opts.subjectId === "cs") {
+      doc.push({ k: "h3", t: "Computing Classroom Rules" });
+      doc.push({ k: "bul", items: [
+        "We try, we debug, we do not laugh at a mistake.",
+        "A computer is a tool. Ask before you switch one on or pick up a phone.",
+        "Never share a password, PIN or personal photograph.",
+        "Hands stay dry. Food and drink stay away from devices.",
+        "Unplugged work with paper, cards and our bodies is real computing work."
+      ] });
+    } else {
+      doc.push({ k: "h3", t: "Science Safety Rules" });
+      doc.push({ k: "bul", items: [
+        "Never taste or smell any substance unless your teacher tells you to.",
+        "Tell your teacher at once about any spill, cut or burn.",
+        "Only the teacher handles flames, heat and sharp tools.",
+        "Keep your work area tidy and handle all equipment carefully.",
+        "Wash your hands with soap and water after every activity."
+      ] });
+    }
     doc.push({ k: "p", t: "Inclusive and differentiated learning is emphasised: work individually or in small mixed groups according to ability, gender, learning style and age.", i: true });
     doc.push({ k: "pagebreak" });
 

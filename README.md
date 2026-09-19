@@ -3,7 +3,7 @@
 An **offline, single-file web app** that generates printable course packs for the
 Liberian National Curriculum: pupil workbooks, period tests, semester
 examinations and teacher's answer keys — in **English, Phonics, French, General
-Science, **Health Science**, Mathematics, Social Studies, Religious & Moral
+Science, **Health Science**, **Computer Science**, Mathematics, Social Studies, Religious & Moral
 Education, Physical Education, Biology, Chemistry, Physics, Economics, English
 Grammar, Geography, History, Civics, Literature and Kindergarten**, Grades 1–12,
 all A4-exact on screen, in print and in Word.
@@ -18,7 +18,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **18 National Curriculum subjects** (the 16 graded subjects plus **Health Science**, which carries the Elementary health strand for Grades 1–6, and **Kindergarten**, which plans ECD lessons on KG-I and KG-II), plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
+- **19 National Curriculum subjects** (the 16 graded subjects plus **Health Science**, which carries the Elementary health strand for Grades 1–6, **Computer Science**, original unplugged-first units for Grades 1–6, and **Kindergarten**, which plans ECD lessons on KG-I and KG-II), plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -66,7 +66,7 @@ so the whole thing stays self-contained.
   down while that tutor's panel is open so the two never sit on top of each
   other, and it is hidden in print — it is never injected into a generated
   sheet, so it cannot reach a pupil's workbook or the Word export
-- **Customizable cover**: template choice, 18 built-in subject-matched PNG
+- **Customizable cover**: template choice, 19 built-in subject-matched PNG
   backgrounds (equations for Mathematics, laboratory imagery for Science,
   books for Literature, and so on), school name (persisted), uploaded logo or
   replacement background, pupil/teacher/term/year fields, and emoji crest — plus
@@ -94,6 +94,12 @@ so the whole thing stays self-contained.
   and weekly, 40-minute four-stage periods, with a safeguarding note printed on
   every plan) **and course packs** (workbook, period test, semester exam and
   teacher's key) on the General Science engine
+- **Computer Science — Elementary Grades 1–6**: original unplugged-first
+  computing units (`data-cs.js`) — **six 4-week units per grade, Periods I to
+  VI**. No official Computer Science syllabus was supplied, so these are
+  teaching resources, not a transcription. Lesson plans open in the computing
+  circle (*we try, we debug, we do not laugh at a mistake*); packs reuse the
+  General Science engine with Computing Classroom Rules
 - **Kindergarten — KG-I and KG-II lesson plans and cover pages**: a Kindergarten
   level band lists both kindergarten levels for every national-curriculum
   subject, with its own generated `kg.png` artwork and a bright Kindergarten
@@ -296,6 +302,46 @@ plan, the appendices and a fully worked 40-minute **model lesson** with board
 plan, expected answers, common mistakes, differentiation and home practice —
 `Grade-1-Care-of-the-Body.md` … `Grade-6-Body-Systems-Disease-and-Healthy-Living.md`.
 
+### Computer Science — Elementary Grades 1–6
+
+**Computer Science** is an original elementary computing course (`data-cs.js`).
+No official Liberian Computer Science syllabus was supplied, so these units are
+**teaching resources, not an official transcription**. Teachers should compare
+them with the school's approved scheme of work before use.
+
+Pick **National Curriculum → Computer Science → Grade 1 … Grade 6**: each grade
+carries **six 4-week units, Period I to Period VI** (Periods I–III in Semester
+One, IV–VI in Semester Two). The spiral is unplugged-first, so a class with no
+computer can still compute:
+
+| Grade | Focus |
+|---|---|
+| 1 | Computers around us, following instructions, patterns, parts, machine safety, taking turns |
+| 2 | Input and output, sequences, information versus things, keyboard and mouse, digital manners, saving work |
+| 3 | Loops, debugging, files and folders, the internet as a library, unplugged coding, responsible phones |
+| 4 | Decomposition, if–then choices, networks, searching, digital footprint, instructions a computer can follow |
+| 5 | Hardware and software, variables, data, passwords and safety, collaboration, writing instructions |
+| 6 | Abstraction, binary, computing in Liberia and Africa, cybersecurity, a computational-thinking project, making a program |
+
+Each unit carries **Physics-like course text** (`study[]` with many headings,
+tables and worked prose) and a **`worked[]` bank** of traced algorithms, counts
+and binary reasoning — age-appropriate 'calculations', not Physics sums.
+
+- **Lesson plan** (daily or weekly, 40-minute periods): the lesson opens in the
+  **computing circle** with the two rules (*we try, we debug, we do not laugh at
+  a mistake*), an **unplugged demonstration** is acted and then written, pupils
+  **pair-program** (driver and navigator), and the assignment ends with **home
+  practice** that needs no device. Weekly plans close with a **computing fair
+  and debug check**. A **Device & Online-Safety Note** is printed on every plan.
+- **Course pack**: key terms, matching, cloze, true/false, short answer, MCQ,
+  sorting, label-the-diagram, worked traces, the unplugged investigation
+  write-up and apply-it questions, plus the period test and the teacher's
+  key — generated by `GEN_SC`, including the shared **Calculations & problem
+  solving** sheet (traced algorithms, not Physics sums).
+
+**Source status:** original teaching resource; teacher review required. Not an
+official curriculum transcription. Scenarios are fictional.
+
 ## Quick start
 
 1. **Open `index.html`** in any modern browser (Chrome/Edge/Firefox). That's it —
@@ -399,6 +445,7 @@ session and paper they were made with.
 | French (`fr`) | 1–12 | 6 | 72 |
 | General Science (`sc`) | 1–9 | 6 | 54 |
 | Health Science (`hs`) | 1–6 | 6 (Periods I–VI) | 36 |
+| Computer Science (`cs`, original) | 1–6 | 6 (Periods I–VI) | 36 |
 | Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
 | Social Studies (`ss`) | 1–9 | 6 | 54 |
 | Religious & Moral Education (`rm`) | 1–9 | 6 | 54 |
@@ -421,6 +468,9 @@ session and paper they were made with.
 > health units per grade — Periods I to VI**; the periods the guide gives health
 > content to keep it at the guide's own period number, and the rest spiral that
 > grade's own outcomes, objectives, contents and activities.
+> **Computer Science** covers Grades 1–6 with **six 4-week original units per
+> grade — Periods I to VI**, unplugged-first; it is not an official syllabus
+> transcription.
 > **Kindergarten** spans KG-I–KG-II with 2 ECD theme
 > units per level (lesson plans only; packs stay cover-only).
 
@@ -604,7 +654,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/cs-lesson.js` (the original Elementary Computer Science units through the real plan builders: computing-circle wording, unplugged pair-debug, device-safety note, no health/ECD leakage, and `data-cs.js`, the `cs` tab icon and `cs.png` surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -679,6 +729,9 @@ node tests/kg-lesson.js
 
 # Elementary health units and health lesson-plan wording (no dependencies)
 node tests/health-lesson.js
+
+# Elementary Computer Science units and unplugged lesson-plan wording (no dependencies)
+node tests/cs-lesson.js
 
 # contents page numbers: the matcher that tells each Contents line which page
 # its part begins on (no dependencies)

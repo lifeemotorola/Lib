@@ -15,6 +15,10 @@ explicit about it is worth more than any feature on the platform.
 - **Original teaching content**, written for this project:
   - Civics, Grades 7–12 — 36 units (`data-ci.js`). No Civics syllabus was
     supplied, so these are original resources, not an official transcription.
+  - Computer Science, Grades 1–6 — 36 units (`data-cs.js`). No Computer
+    Science syllabus was supplied, so these are original unplugged-first
+    teaching resources, not an official transcription. Teacher review
+    against the school's scheme of work is required.
   - Senior High History, Grades 10–12 — 18 units of original explanatory
     notes aligned to the uploaded guide (`data-hi.js`), with source file and
     page numbers recorded per unit.
@@ -64,5 +68,5 @@ structuring and the surrounding generated material — not the curriculum.
   is inexpensive relative to the sale price and removes the last "what exactly
   am I buying?" question.
 - **Curriculum alignment review** — a written MoE or county education office
-  review of the 36 Civics and 18 History units converts "original, unverified"
+  review of the 36 Civics, 36 Computer Science and 18 History units converts "original, unverified"
   into "reviewed", which is worth more than any feature on this list.

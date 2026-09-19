@@ -158,6 +158,21 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Health_Science_Grade" + g + "_Pack.docx"; }
     },
+    /* ---------------- Computer Science (Elementary, original) ----------------
+       Original unplugged-first computing units for Grades 1-6 (data-cs.js).
+       No official Liberian Computer Science syllabus was supplied, so these
+       are teaching resources, not a transcription. Lesson plans use the
+       computing-circle shape (try, debug, pair); packs reuse GEN_SC. Course
+       text is Physics-shaped (long study[] plus a worked[] bank of traced
+       algorithms, counts and binary reasoning — not Physics sums). */
+    cs: {
+      label: "Computer Science", icon: "sub-cs", accent: "#154e8a",
+      curriculum: function () { return CS_CURRICULUM; },
+      engine: function () { return GEN_SC; },
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "worked", "apply"],
+      titleOf: function (t) { return t.title; },
+      file: function (g) { return "Computer_Science_Grade" + g + "_Pack.docx"; }
+    },
     /* ---------------- Kindergarten (ECD) ----------------
        The national Early Childhood Development theme units for KG-I and
        KG-II (data-kg.js). Kindergarten plans teacher's lesson plans from the
@@ -1354,6 +1369,9 @@
       } else if (cur === "ci") {
         jh.style.display = "";
         jh.textContent = "Civics Grades 7\u201312: original supplementary teaching material, not an official syllabus transcription. Review against your school\u2019s scheme of work.";
+      } else if (cur === "cs") {
+        jh.style.display = "";
+        jh.textContent = "Computer Science Grades 1\u20136: original elementary computing units (unplugged-first). Not an official syllabus transcription. Review against your school\u2019s scheme of work.";
       } else if (band.kg) {
         jh.style.display = "";
         jh.innerHTML = cur === "kg" && isLP()
@@ -1607,7 +1625,9 @@
       : isTeacher() ? "Teacher's Copy" + (o.keys ? " · Answer Keys Included" : "") : "Pupil Workbook & Assessment Pack";
     /* name the grade actually being generated, not the whole band. WASSCE
        packs name the WAEC examination instead of the national curriculum. */
-    var band = cur === "ci" ? "Civics · Original supplementary material · Grade " + o.grade : S().wa
+    var band = cur === "ci" ? "Civics · Original supplementary material · Grade " + o.grade
+      : cur === "cs" ? "Computer Science · Original teaching resource · Grade " + o.grade
+      : S().wa
       ? "WASSCE \u00b7 West African Senior School Certificate Examination \u00b7 Grade " + o.grade
       : bnd.kg
       ? o.levelName + " \u00b7 " + (o.subjectLine || S().label) + (isLP() ? " \u00b7 Lesson Plans" : " \u00b7 Cover page")
@@ -2686,6 +2706,7 @@
         hi: { h1: "8A5A00", h2: "B8860B", fill: "F7EBD0" },
         li: { h1: "4A2F7A", h2: "6B4AA8", fill: "E7DFF7" },
         kg: { h1: "B3541E", h2: "D3762A", fill: "F7E8D2" },
+        cs: { h1: "154E8A", h2: "2A7BC4", fill: "DCEAF7" },
         wma: { h1: "5B2A86", h2: "8247B5", fill: "EBDFF7" },
         wen: { h1: "0B6B3A", h2: "12864B", fill: "DCF0E4" },
         wbio: { h1: "0F5132", h2: "1A7A4C", fill: "D9EFE2" },

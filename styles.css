@@ -267,6 +267,12 @@ body[data-subject="kg"] .top{background:linear-gradient(135deg,#b3541e,#d3762a)}
 body[data-subject="kg"] .page th{background:#f7e8d2}
 body[data-subject="kg"] .page th,body[data-subject="kg"] .page td{border-color:#dfb380}
 
+/* Computer Science — computer blue, distinct from Social Studies teal and Health green */
+body[data-subject="cs"]{--bleu:#154e8a;--bleu-l:#2a7bc4;--rouge:#c8102e}
+body[data-subject="cs"] .top{background:linear-gradient(135deg,#154e8a,#2a7bc4)}
+body[data-subject="cs"] .page th{background:#dceaf7}
+body[data-subject="cs"] .page th,body[data-subject="cs"] .page td{border-color:#8fb4d8}
+
 /* cover page controls */
 #cvBox input[type=text]{width:100%;box-sizing:border-box;margin:0 0 6px;padding:6px 8px;
   border:1px solid #c9d3e2;border-radius:6px;font:inherit;font-size:.85rem}

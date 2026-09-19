@@ -148,6 +148,8 @@
     /* The Elementary health strand is taught by demonstration, discussion and
        practice — a habit performed, not only a fact copied. */
     hs: ["Demonstration and modelling of the healthy habit", "Question and answer on the pupils' own lives", "Small-group discussion and case study", "Role play and refusal-skills practice", "Chart, poster and pledge making with peer teaching"],
+    /* Unplugged-first computing: algorithms on paper, pair work, debug together. */
+    cs: ["Unplugged demonstration with cards, arrows or a paper computer", "Question and answer", "Pair programming / pair problem-solving", "Debugging a broken set of steps together", "Group algorithm and flowchart work"],
     wa: ["Question and answer", "Guided practice and drill", "Modelling solved examples on the board", "Pair and group work", "Examination-style practice"]
   };
   function methodFor(subjId, r) {
@@ -177,6 +179,10 @@
                               "the key-term and true-or-false health questions",
                               "sorting safe and unsafe practices into the class chart",
                               "the refusal, reporting or first-aid role play in pairs"];
+    if (t.csPlan) return ["the algorithm acted out and then written",
+                          "the key-term and true-or-false computing questions",
+                          "sorting computing ideas into the class chart",
+                          "the pair-debug of a broken set of steps"];
     var e = [];
     if (t.terms || t.words) e.push("the key-terms table");
     if (t.phonics && t.phonics.length) e.push("sound and pattern practice");
@@ -287,6 +293,27 @@
       if (customAdjNote) hh += " - Teacher's Note: " + plain(customAdjNote);
       return hh;
     }
+    /* Computer Science pacing is unplugged-first: act the algorithm, write it,
+       debug it in pairs; the last week is a computing fair and debug check. */
+    if (t && t.csPlan) {
+      var ckw = termNames(t).slice(0, 2).join(", ") || "the computing key words";
+      var cc = "";
+      if (adjMode === "remedial") {
+        if (w === 1) cc = "Unplugged Baseline and No-Blame Start: act " + ckw + " with cards and a paper computer, accept pointing and oral answers, and never laugh at a bug.";
+        else if (w < W) cc = "Extra Unplugged Stations: repeat the algorithm in pairs, keep the class computing chart running, and change one step at a time when debugging.";
+        else cc = "Every Objective Re-acted and Recorded: run the stations once more, test orally, and record each pupil against the checkpoints; refer any online-safety disclosure to the head teacher the same day.";
+      } else if (adjMode === "accelerated") {
+        if (w === 1) cc = "Peer Teachers From Day One: quick oral baseline; confident pupils lead the unplugged demo, hold the flowchart and define " + ckw + " while the teacher checks what they say.";
+        else if (w < W) cc = "Extension Algorithms: pupils write their own procedures, teach another pair, and add comments so the next driver knows why a step is there.";
+        else cc = "The Class Runs the Computing Fair: pupils present the stands, mark another class's algorithms, and debug without the teacher's prompt.";
+      } else {
+        if (w === 1) cc = "First Contact and Baseline: introduce " + ckw + " with cards and an unplugged demo, take the pupils' own answers, and note who can already follow a three-step sequence.";
+        else if (w < W) cc = "Algorithm Strengthening: the pupils lead more of the demo and the pair-debug; the weekly chart is updated and the difficult vocabulary is repeated in use.";
+        else cc = "Consolidation and Computing Fair: repeat the favourite unplugged algorithm, finish the posters, assess orally and in writing, and record each pupil against the checkpoints.";
+      }
+      if (customAdjNote) cc += " - Teacher's Note: " + plain(customAdjNote);
+      return cc;
+    }
     var terms = termNames(t);
     var kw = terms.slice(0, 2).join(", ") || "core vocabulary";
     var adj = "";
@@ -380,6 +407,7 @@
            the last focus consolidate, celebrate and observe. */
         if (t.kgPlan) wFocus = heads[w - 1] || "Consolidation, Celebration and Observation Check";
         else if (t.healthPlan) wFocus = heads[w - 1] || "Consolidation, Health Fair and Habit Check";
+        else if (t.csPlan) wFocus = heads[w - 1] || "Consolidation, Computing Fair and Debug Check";
         else if (w === 1) wFocus = heads[0] || "Foundations & Key Vocabulary";
         else if (w === 2) wFocus = heads[1] || "Core Developmental Skills & Principles";
         else if (w === 3 && W >= 4) wFocus = heads[2] || "Applied Investigations & Practice";
@@ -402,6 +430,7 @@
            with the adjustment table above; the last week of a short unit closes
            with the health fair and the habit check. */
         else if (t.healthPlan) subhead = heads[wk - 1] || "Consolidation, Health Fair and Habit Check";
+        else if (t.csPlan) subhead = heads[wk - 1] || "Consolidation, Computing Fair and Debug Check";
         else if (wk === 1) subhead = heads[0] || "Foundations & Key Vocabulary";
         else if (wk === 2) subhead = heads[1] || "Core Developmental Skills & Guided Practice";
         else if (wk === 3 && W >= 4) subhead = heads[2] || "Applied Practice, Investigation & Case Study";
@@ -452,6 +481,15 @@
           proc.push("Group Enquiry & Class Chart (Days 3–4): mixed-ability groups discuss the case study or situation cards, record the findings on the class health chart, and prepare one refusal line or slogan to say out loud.");
           if (isLast) proc.push("Health Fair & Habit Check (Day " + daysPerWeek + "): every objective is re-practised at the stands, the class presents its poster or pledge to another class, and the teacher records each pupil against the checkpoints before the written test.");
           else proc.push("Habit Check & Home Practice (Day " + daysPerWeek + "): pupils show the week's habit, the class updates the chart, and the home practice is agreed with a parent signature.");
+        } else if (t.csPlan) {
+          var cActs = (t.activities || []).slice((wk - 1) * 3, (wk - 1) * 3 + 3);
+          var cActTxt = cActs.length ? joinList(cActs.map(plain)) : "the unplugged demonstration, the pair-debug and the class computing chart for this week";
+          var cNames = names.slice(0, 3).join(", ") || "the computing key words";
+          proc.push("Computing Circle (Days 1, 3 and 5): the class greets the week's topic (" + subhead + "), repeats " + cNames + " aloud and answers one recall question from the last lesson; the two rules are said: we try, we debug, we do not laugh at a mistake.");
+          proc.push("Unplugged Demonstration & Pair Programming (Days 1–3): the teacher models " + cActTxt + " with cards, arrows or a paper computer; pupils then act the algorithm in pairs as driver and navigator while the teacher circulates and corrects.");
+          proc.push("Group Algorithm & Class Chart (Days 3–4): mixed-ability groups write the steps, swap with another group to debug, and record one precise instruction and one bug on the class computing chart.");
+          if (isLast) proc.push("Computing Fair & Debug Check (Day " + daysPerWeek + "): every objective is re-acted at the stands, the class presents its algorithm or flowchart to another class, and the teacher records each pupil against the checkpoints before the written test.");
+          else proc.push("Debug Check & Home Practice (Day " + daysPerWeek + "): pupils show the week's algorithm, the class updates the chart, and the home practice is agreed — no device is required.");
         } else if (wk === 1) {
           proc.push("Starter & Orientation (Days 1–2): Teacher introduces " + plain(t.title) + " and conducts diagnostic checks on prerequisite knowledge; writes key terms (" + (names.slice(0, 3).join(", ") || "core terms") + ") on the chalkboard.");
           proc.push("Developmental Instruction (Days 2–4): Teacher explains core concepts with textbook examples; pupils engage in choral repetition, vocabulary drills, and guided workbook exercises.");
@@ -498,6 +536,11 @@
           if (names.length) wAsg.push("Copy and define this week's key terms in the exercise book: " + names.slice((wk - 1) * 2, (wk - 1) * 2 + 4).join(", ") + ".");
           if (isLast) wAsg.push("Prepare the unit's health stand: the group presents its chart, poster or demonstration to another class.");
           else wAsg.push("Preview next week's focus (" + (heads[wk] || "the next steps") + ") and bring one question the family could not answer.");
+        } else if (t.csPlan && t.home && t.home.length) {
+          wAsg.push("Home practice: " + t.home[(wk - 1) % t.home.length]);
+          if (names.length) wAsg.push("Copy and define this week's key terms in the exercise book: " + names.slice((wk - 1) * 2, (wk - 1) * 2 + 4).join(", ") + ".");
+          if (isLast) wAsg.push("Prepare the unit's computing stand: the group presents its algorithm, flowchart or paper program to another class.");
+          else wAsg.push("Preview next week's focus (" + (heads[wk] || "the next steps") + ") and bring one unplugged example from home or the market.");
         } else {
           if (names.length && wk === 1) wAsg.push("Copy and define the key terms in your exercise book: " + names.slice(0, 4).join(", ") + ".");
           wAsg.push("Complete the weekly review exercises in the pupil workbook for " + subhead + ".");
@@ -512,14 +555,17 @@
       /* End-of-Unit Period Culmination */
       doc.push({ k: "h2", t: t.kgPlan ? "End-of-Unit Celebration & Observation Review (Unit Complete)"
         : t.healthPlan ? "End-of-Unit Health Fair & Habit Review (Unit Complete)"
+        : t.csPlan ? "End-of-Unit Computing Fair & Debug Review (Unit Complete)"
         : "End-of-Unit Culmination & Period Assessment (Unit Complete)" });
       doc.push({ k: "p", t: t.kgPlan
         ? "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". Every objective has been taught through play, practised in centers and outdoors, observed against the checkpoints, and celebrated with an exhibition of the children's work."
         : t.healthPlan
         ? "The teacher completes the " + W + "-week health unit on " + plain(t.title) + ". Every objective has been demonstrated, practised until it was performed correctly without a prompt, recorded on the class chart, and carried into the home; the unit closes with the health fair and the period assessment."
+        : t.csPlan
+        ? "The teacher completes the " + W + "-week computing unit on " + plain(t.title) + ". Every objective has been demonstrated unplugged, acted in pairs, written, debugged without blame, and recorded on the class computing chart; the unit closes with the computing fair and the period assessment."
         : "The teacher completes the " + W + "-week unit on " + plain(t.title) + ". All instructional objectives have been taught, adjusted weekly for pupil pacing, evaluated through formative checks, and consolidated with the marking period assessment." });
       if (t.safeguard) {
-        doc.push({ k: "h3", t: "Safeguarding & Sensitive-Content Note (Teacher)" });
+        doc.push({ k: "h3", t: t.csPlan ? "Device & Online-Safety Note (Teacher)" : "Safeguarding & Sensitive-Content Note (Teacher)" });
         doc.push({ k: "p", t: plain(t.safeguard) });
       }
 
@@ -577,15 +623,21 @@
         ? "Welcome song and attendance. The teacher welcomes the children with the theme song, takes attendance and settles them on the mat."
         : t.healthPlan
         ? "Health circle and attendance. The teacher greets the class, takes attendance, and sets the two rules of a health lesson: everything said here is answered honestly, and no pupil is laughed at or named."
+        : t.csPlan
+        ? "Computing circle and attendance. The teacher greets the class, takes attendance, and sets the two rules of a computing lesson: we try, we debug, we do not laugh at a mistake."
         : "Greeting and attendance. The teacher greets the class, takes attendance and settles the pupils into mixed-ability groups."];
       if (prev) intro.push("Review of the previous period (" + plain(prev.title) + "). The teacher asks two or three recall questions; the pupils answer orally and gaps are corrected on the spot.");
       else intro.push(t.healthPlan
         ? "Starter. The teacher asks what the pupils already do at home with this habit, and takes four or five answers without judging any of them."
+        : t.csPlan
+        ? "Starter. The teacher asks what the pupils already know about this idea — a phone, a radio, a recipe or a line-up — and takes four or five answers without judging any of them."
         : "Starter. The teacher sets a short question to check what the pupils already know about the topic.");
       intro.push(t.kgPlan
         ? "Introducing the lesson. The teacher shows the topic with a real object or picture and tells the children what they will do, sing, play and learn today."
         : t.healthPlan
         ? "Introducing the lesson. The teacher writes the topic on the board, reads the objectives, and tells the pupils the habit or the safety rule they will be able to perform and explain by the end of the period."
+        : t.csPlan
+        ? "Introducing the lesson. The teacher writes the topic on the board, reads the objectives, and tells the pupils the algorithm they will be able to act, write and debug by the end of the period."
         : "Introducing the lesson. The teacher writes the topic on the board, reads the objectives and tells the pupils exactly what they will be able to do by the end of the period.");
       if (open) intro.push("Advance organiser. The teacher raises the idea that opens the period: " + firstSentence(open));
       doc.push({ k: "h3", t: "Initial Activities / Introduction (" + time.intro + " min)" });
@@ -597,10 +649,14 @@
         ? "Presentation of the new idea. The teacher shows and demonstrates (" + head + ") with real objects and pictures; the children watch, handle, name and try each step with the teacher."
         : t.healthPlan
         ? "Presentation of the new content. The teacher explains and demonstrates (" + head + ") with the chart, the real aid and the pupils' own answers; the reason behind every rule is given, because a habit without a reason does not survive the playground."
+        : t.csPlan
+        ? "Presentation of the new content. The teacher explains and demonstrates (" + head + ") with cards, a flowchart and an unplugged algorithm; every step is acted before it is written, because a step you cannot act is not yet an instruction."
         : "Presentation of the new content. The teacher explains the key points of the period (" + head + ") using examples from the course text; pupils listen, ask questions and note the main points.";
       if (names.length) pres += t.kgPlan
         ? " Key words are said, clapped and shown on word cards: " + names.slice(0, 3).join(", ") + "."
         : t.healthPlan
+        ? " Key terms are defined and used in a sentence each: " + names.slice(0, 3).join(", ") + "."
+        : t.csPlan
         ? " Key terms are defined and used in a sentence each: " + names.slice(0, 3).join(", ") + "."
         : " Key terms are defined on the board: " + names.slice(0, 3).join(", ") + ".";
       main.push(pres);
@@ -609,13 +665,19 @@
       if (t.healthPlan && (t.experiment || t.diagram)) {
         main.push((t.experiment ? "Investigation or demonstration. The class carries out " + plain(t.experiment.title) + ": " + joinList(((t.experiment.steps || []).slice(0, 3)).map(plain)) + "; pupils record what they saw in the science journal." : "Investigation or demonstration. The class works through the chart and the picture evidence for this topic and records what they see in the science journal.") + (t.diagram ? " The diagram \u201c" + plain(t.diagram.title) + "\u201d is copied, labelled and kept." : ""));
       }
+      if (t.csPlan && (t.experiment || t.diagram)) {
+        main.push((t.experiment ? "Unplugged investigation. The class carries out " + plain(t.experiment.title) + ": " + joinList(((t.experiment.steps || []).slice(0, 3)).map(plain)) + "; pupils record the steps and the bug they found on the class computing chart." : "Unplugged investigation. The class works through the flowchart and the paper computer for this topic and records the steps on the class computing chart.") + (t.diagram ? " The diagram \u201c" + plain(t.diagram.title) + "\u201d is copied, labelled and kept." : ""));
+      }
       var ex = exerciseNames(t);
       if (ex.length) main.push("Pupil practice. In their groups the pupils do " + joinList(ex) + "; the teacher circulates, listens, answers questions and notes the mistakes to correct later.");
       if (t.healthPlan) main.push("Practice in pairs. Each pupil performs the habit or says the refusal line to a partner while the partner checks it against the class chart; the teacher listens in and corrects gently, without asking any pupil to speak about their own home or body in public.");
+      if (t.csPlan) main.push("Practice in pairs. Each pair acts the algorithm — one pupil is the driver, the other the navigator — then they swap; the partner checks the steps against the class chart, and no pupil is laughed at for a bug.");
       if (D > 90) main.push(t.kgPlan
         ? "Sharing and praise. Each small group shows what it made or did; the teacher praises each effort by name and re-models any step the children found hard."
         : t.healthPlan
         ? "Group report and the class chart. Each group puts its finding on the chart, presents one poster panel or slogan, and the class asks one question to each group."
+        : t.csPlan
+        ? "Group report and the class computing chart. Each group puts its algorithm on the chart, presents one flowchart or paper program, and the class asks one debug question to each group."
         : "Correction and feedback. Each group gives one answer; the teacher marks it, explains the wrong ones with reasons, and repeats the part that was difficult.");
       doc.push({ k: "h3", t: "Developmental Activities (Main Activities) (" + time.main + " min)" });
       doc.push({ k: "num", items: main });
@@ -623,12 +685,15 @@
       var sum = [];
       sum.push("Recap. The pupils state, in their own words, what the period taught" + (names.length ? " and name the key terms: " + names.slice(0, 3).join(", ") : "") + ".");
       if (t.healthPlan) sum.push("The class says the health rule or slogan for the week together, and each pupil names the one habit they will keep this week.");
+      if (t.csPlan) sum.push("The class says the computing rule for the week together: we try, we debug, we do not laugh at a mistake, and each pupil names the one algorithm they can now follow.");
       if (objs.length) sum.push("The teacher summarises the lesson: by now the pupils can " +
         joinList(objs.slice(0, 2).map(function (o) { return o.charAt(0).toLowerCase() + o.slice(1); })) + ".");
       sum.push(t.kgPlan
         ? "Show and celebrate. The children show their work, each says one new thing learned, and the teacher displays the work on the wall."
         : t.healthPlan
         ? "Correction and record. The pupils copy the corrected points, tick their name on the class habit chart, and the teacher reminds them that a disclosure of harm is never kept as a secret: it goes to the head teacher the same day."
+        : t.csPlan
+        ? "Correction and record. The pupils copy the corrected steps, tick their name on the class computing chart, and the teacher reminds them that a disclosure of online harm is never kept as a secret: it goes to the head teacher the same day."
         : "Correction. The pupils copy the corrected points into their exercise books.");
       sum.push("The teacher gives the assignment and announces the next lesson" + (next ? " \u2014 " + plain(next.title) : "") + ".");
       doc.push({ k: "h3", t: "Summary Conclusion (" + time.sum + " min)" });
@@ -663,6 +728,11 @@
           if (t.home[1]) asg.push("Home practice: " + t.home[1] + " (a parent or carer ticks the habit chart).");
         } else if (t.healthPlan) {
           asg.push("Home practice: keep this week's habit every day, and tell the class on Monday whether you kept it.");
+        } else if (t.csPlan && t.home && t.home.length) {
+          asg.push("Home practice: " + t.home[0]);
+          if (t.home[1]) asg.push("Home practice: " + t.home[1]);
+        } else if (t.csPlan) {
+          asg.push("Home practice: act this week's algorithm at home with no device required, and tell the class on Monday how it went.");
         }
         if (names.length) asg.push("Copy the key terms and their meanings into your exercise book: " + names.slice(0, 4).join(", ") + ".");
         var used = {};
@@ -676,6 +746,10 @@
       doc.push({ k: "num", items: asg });
       if (t.healthPlan && t.safeguard) {
         doc.push({ k: "h3", t: "Safeguarding & Sensitive-Content Note (Teacher)" });
+        doc.push({ k: "p", t: plain(t.safeguard) });
+      }
+      if (t.csPlan && t.safeguard) {
+        doc.push({ k: "h3", t: "Device & Online-Safety Note (Teacher)" });
         doc.push({ k: "p", t: plain(t.safeguard) });
       }
 
