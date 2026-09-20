@@ -894,6 +894,105 @@
   }
   window.PACK_DESIGNS = { colors: DESIGN_COLORS, shows: DESIGN_SHOWS, normalize: normalizeDesign, blank: defaultDesign };
 
+  /* ---------------- author back cover (the back of the book) ----------------
+     The last sheet of the booklet is about the author. Every part of it is a
+     setting on COVER.author: the page itself can be switched off, its photo
+     replaced, resized or dropped, and every line of text retyped. A blank
+     field falls back to the automatic wording in authorAuto(), so a teacher
+     who never opens the panel still gets the designed page they had before.
+
+     The portrait deliberately carries no border and no box: it stands alone
+     on the sheet with the paper showing through behind it. The "Border around
+     the photo" switch brings the ring back for anyone who wants it. */
+  var AUTHOR_LIMITS = { title: 120, subtitle: 200, kicker: 200, bio: 4000, mission: 800, contact: 400 };
+  var AUTHOR_TEXT_KEYS = Object.keys(AUTHOR_LIMITS);
+  var AUTHOR_FACTS = [
+    ["teacher", "Author / Teacher"], ["school", "School"],
+    ["subject", "Subject"], ["klass", "Class"]
+  ];
+  var AUTHOR_FACT_KEYS = AUTHOR_FACTS.map(function (f) { return f[0]; });
+  var AUTHOR_SHOWS = [
+    ["photo", "Author photo"], ["title", "Title"], ["subtitle", "Subtitle line"],
+    ["kicker", "Product line"], ["rule", "Rule & book icon"], ["bio", "Biography"],
+    ["mission", "Mission line"], ["facts", "Details rows"], ["contact", "Footer line"],
+    ["bg", "Cover background photo"], ["panel", "Box around the text"],
+    ["leaf", "Corner leaves"], ["dots", "Corner dots"], ["frame", "Border around the photo"]
+  ];
+  function defaultAuthor() {
+    return {
+      on: true,
+      title: "", subtitle: "", kicker: "", bio: "", mission: "", contact: "",
+      photo: "",            /* an uploaded portrait (data URL); "" = the bundled author photo */
+      photoSize: 34,        /* mm tall, 16-70 */
+      facts:  { teacher: "", school: "", subject: "", klass: "" },  /* "" = the pack's own value */
+      labels: { teacher: "", school: "", subject: "", klass: "" },  /* "" = the cover's label */
+      show: { photo: true, title: true, subtitle: true, kicker: true, rule: true, bio: true,
+              mission: true, facts: true, contact: true, bg: true, panel: true,
+              leaf: true, dots: true, frame: false }
+    };
+  }
+  /* The automatic wording, built from the pack being generated. ctx carries the
+     details already on the block, so the same function feeds the printed page,
+     the Word export and the placeholders in the editing panel. */
+  function authorAuto(ctx) {
+    ctx = ctx || {};
+    var brand = (typeof window !== "undefined" && window.APP_BRAND) || {};
+    var teacher = ctx.teacher || "", school = ctx.school || "",
+        subject = ctx.subject || "", klass = ctx.klass || "",
+        product = ctx.product || brand.product || "Easy School Liberia",
+        tutor = ctx.tutor || brand.tutor || "Emmanuel",
+        year = ctx.year || String(new Date().getFullYear());
+    return {
+      title: "About the Author",
+      subtitle: teacher ? "Prepared by " + teacher : product,
+      kicker: product + " \u00b7 Back Cover",
+      bio: "This booklet was prepared for " + (subject || "the subject") + (klass ? " " + klass : "") +
+        " by " + (teacher || "the teacher") + (school ? " of " + school : "") + ". " +
+        "It was generated with " + product + ", an offline, single-file web app that creates printable course packs " +
+        "for the Liberian National Curriculum. The content is transcribed from the official curriculum guides " +
+        "and enriched with exercises, study notes and assessments. " +
+        tutor + ", the AI tutor, is available online to help learners with difficult words and questions.",
+      mission: "**Mission:** Provide every Liberian teacher with free, offline, printable workbooks, tests and answer keys \u2014 no internet, no cost, no dependency.",
+      contact: "**" + product + "** \u00b7 Liberian National Curriculum \u00b7 " + year +
+        " \u00b7 Teacher's copy \u2014 not for pupil distribution when answer keys are included."
+    };
+  }
+  /* What actually prints: the user's words where they typed any, the automatic
+     wording everywhere else. */
+  function authorText(au, ctx) {
+    var a = authorAuto(ctx), o = normalizeAuthor(au), out = {};
+    AUTHOR_TEXT_KEYS.forEach(function (k) { out[k] = o[k] || a[k]; });
+    return out;
+  }
+  /* Fill in anything a stored or imported author page is missing, and clamp the
+     values, so an older saved document still loads safely. */
+  function normalizeAuthor(a) {
+    var base = defaultAuthor();
+    if (!a || typeof a !== "object") return base;
+    if (typeof a.on === "boolean") base.on = a.on;
+    AUTHOR_TEXT_KEYS.forEach(function (k) {
+      if (typeof a[k] === "string") base[k] = a[k].slice(0, AUTHOR_LIMITS[k]);
+    });
+    /* only a real image data URL may reach the sheet */
+    base.photo = (typeof a.photo === "string" && /^data:image\//.test(a.photo)) ? a.photo : "";
+    var ps = Number(a.photoSize);
+    base.photoSize = Number.isFinite(ps) ? Math.min(70, Math.max(16, Math.round(ps))) : base.photoSize;
+    AUTHOR_FACT_KEYS.forEach(function (k) {
+      if (a.facts && typeof a.facts[k] === "string") base.facts[k] = a.facts[k].slice(0, 240);
+      if (a.labels && typeof a.labels[k] === "string") base.labels[k] = a.labels[k].slice(0, 60);
+    });
+    if (a.show && typeof a.show === "object") {
+      Object.keys(base.show).forEach(function (k) {
+        if (typeof a.show[k] === "boolean") base.show[k] = a.show[k];
+      });
+    }
+    return base;
+  }
+  window.PACK_AUTHORS = {
+    shows: AUTHOR_SHOWS, facts: AUTHOR_FACTS, normalize: normalizeAuthor,
+    blank: defaultAuthor, auto: authorAuto, text: authorText
+  };
+
   var COVER = {
     on: true,
     tpl: "classic",          /* designed template id, or "table" for the plain list */
@@ -909,7 +1008,8 @@
     crest: "",                 /* optional user-typed character; blank = the template's drawn emblem */
     note: "",
     ownPage: true,
-    design: defaultDesign()
+    design: defaultDesign(),
+    author: defaultAuthor()      /* the back of the book: enable/disable + every word on it */
   };
   window.PACK_COVER_STATE = COVER;
 
@@ -1222,6 +1322,7 @@
         : "Student session: clean pupil worksheets, tests and examinations. No answers are included anywhere in the pack.";
     renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods();
     if (window.PACK_PAINT_COVER_PREVIEW) window.PACK_PAINT_COVER_PREVIEW();
+    if (window.PACK_PAINT_AUTHOR) window.PACK_PAINT_AUTHOR();
     generate();
   }
 
@@ -1272,6 +1373,7 @@
         document.body.setAttribute("data-subject", id);
         renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods();
         if (window.PACK_PAINT_COVER_PREVIEW) window.PACK_PAINT_COVER_PREVIEW();
+        if (window.PACK_PAINT_AUTHOR) window.PACK_PAINT_AUTHOR();
         generate();
       };
       box.appendChild(b);
@@ -1549,77 +1651,90 @@
   function isFrontCoverBlock(b) {
     return !!(b && (b.k === "covart" || b._cover));
   }
+  /* Renders the author sheet from the block's `author` settings: an uploaded or
+     bundled portrait with nothing drawn around it, then only the parts the
+     teacher left switched on. Every string comes from authorText(), so an
+     edit in the panel is what prints. */
   function authorCoverHtml(b) {
     var t = COVER_TPL[b.tpl] || COVER_TPL.classic;
     var ds = normalizeDesign(b.design || COVER.design);
+    var au = normalizeAuthor(b.author || COVER.author);
+    /* the front cover's designer still chooses the emblem used when there is no
+       portrait; everything else on this sheet answers to the author panel */
     function on(k) { return ds.show[k] !== false; }
-    function label(key, fallback) { return COVER_TEXT.label(b, key, fallback); }
-    var title = b.authorTitle || "About the Author";
-    var subtitle = b.authorSubtitle || (b.teacher ? "Written by " + b.teacher : "Easy School Liberia");
-    var school = b.school || "";
-    var teacher = b.teacher || "";
-    var subject = b.subject || "";
-    var klass = b.klass || "";
-    var avatar = b.avatar || (typeof window !== "undefined" && window.EMMANUEL_AVATAR) || "";
-    var product = b.product || "Easy School Liberia";
-    var tutor = b.tutor || "Emmanuel";
-    var year = b.year || "";
-    var bio = b.bio || "";
-    if (!bio) {
-      bio = "This booklet was prepared for " + (subject || "the subject") + " " + (klass || "") +
-        " by " + (teacher || "the teacher") + (school ? " of " + school : "") + ". " +
-        "It was generated with " + product + ", an offline, single-file web app that creates printable course packs " +
-        "for the Liberian National Curriculum. The content is transcribed from the official curriculum guides " +
-        "and enriched with exercises, study notes and assessments. " +
-        tutor + ", the AI tutor, is available online to help learners with difficult words and questions.";
+    function aon(k) { return au.show[k] !== false; }
+    /* the author panel's own label wins; otherwise the cover's label, which a
+       teacher may have blanked on purpose in the cover text panel */
+    function label(fact, key, fallback) {
+      return au.labels[fact] || COVER_TEXT.label(b, key, fallback);
     }
-    var mission = "**Mission:** Provide every Liberian teacher with free, offline, printable workbooks, tests and answer keys — no internet, no cost, no dependency.";
-    var contact = "**" + product + "** \u00b7 Liberian National Curriculum \u00b7 " + (year || new Date().getFullYear()) + " \u00b7 Teacher's copy — not for pupil distribution when answer keys are included.";
+    var ctx = { teacher: b.teacher, school: b.school, subject: b.subject, klass: b.klass,
+                product: b.product, tutor: b.tutor, year: b.year };
+    var txt = authorText(au, ctx);
+    /* an uploaded portrait wins; otherwise the photo bundled with the page */
+    var photo = au.photo || b.avatar ||
+      (typeof window !== "undefined" && window.EMMANUEL_AVATAR) || "";
 
+    var showBg = aon("bg") && !!b.bg;
     var bgLayer = "";
-    if (b.bg) {
+    if (showBg) {
       var fade = Math.max(0, Math.min(100, b.bgFade === undefined ? 78 : b.bgFade)) / 100;
       bgLayer =
         '<div class="cv-bg" style="background-image:url(' + b.bg + ')"></div>' +
         '<div class="cv-veil" style="opacity:' + fade.toFixed(2) + '"></div>';
     }
     var emblemId = ds.emblem || t.emblem;
-    var emblem = !on("emblem") ? "" : b.logo
-      ? '<div class="cv-logo"><img src="' + b.logo + '" alt=""></div>'
-      : avatar
-        ? '<div class="cv-logo"><img src="' + avatar + '" alt="Author" style="border-radius:50%;width:28mm;height:28mm;object-fit:cover;border:2px solid ' + t.leaf + '"></div>'
-        : '<div class="cv-emblem"><svg class="ic cv-em-svg" aria-hidden="true"><use href="#i-' + emblemId + '"/></svg></div>';
+    /* The portrait stands alone: no border, no circle, no box behind it — only
+       the paper of the sheet shows through. "Border around the photo" re-adds
+       the ring, and with no photo at all the template's emblem takes its place. */
+    var head = !aon("photo") ? "" : photo
+      ? '<div class="cv-avatar' + (aon("frame") ? " framed" : "") + '">' +
+          '<img src="' + photo + '" alt="' + esc(txt.title || "Author") + '" style="max-height:' + au.photoSize + 'mm">' +
+        '</div>'
+      : (on("emblem") ? '<div class="cv-emblem"><svg class="ic cv-em-svg" aria-hidden="true"><use href="#i-' + emblemId + '"/></svg></div>' : "");
 
     var rows = "";
     function row(lab, val) {
       return '<div class="cv-row"><span class="cv-lab">' + esc(lab) + ':</span><span class="cv-val">' + esc(val || "") + '</span></div>';
     }
-    if (teacher) rows += row(label("teacherLabel", "Author / Teacher"), teacher);
-    if (school) rows += row(label("schoolLabel", "School"), school);
-    if (subject) rows += row(label("subjectLabel", "Subject"), subject);
-    if (klass) rows += row(label("classLabel", "Class"), klass);
+    if (aon("facts")) {
+      var LABEL_KEY = { teacher: "teacherLabel", school: "schoolLabel", subject: "subjectLabel", klass: "classLabel" };
+      AUTHOR_FACTS.forEach(function (f) {
+        var key = f[0], val = au.facts[key] || b[key] || "";
+        if (val) rows += row(label(key, LABEL_KEY[key], f[1]), val);
+      });
+    }
 
-    return '<div class="cvart ' + t.cls + ' cv-back ' + (b.bg ? " hasbg" : "") + '"' + designVars(ds) + '>' +
+    var body =
+      (aon("bio") ? '<p class="cv-bio">' + rich(txt.bio) + '</p>' : "") +
+      (aon("mission") ? '<p class="cv-mission">' + rich(txt.mission) + '</p>' : "") +
+      (rows ? '<div class="cv-facts">' + rows + '</div>' : "");
+    /* the same words with or without the dashed box around them */
+    var panel = !body ? "" : '<div class="' + (aon("panel") ? "cv-panel dash" : "cv-backtext") + '" style="margin-top:6mm">' +
+      body + '</div>';
+
+    return '<div class="cvart ' + t.cls + ' cv-back' + (showBg ? " hasbg" : "") + '"' + designVars(ds) + '>' +
       bgLayer +
-      (on("leaf") ? '<div class="cv-leaf cv-lt">' + leafSvg(t.leaf) + '</div><div class="cv-leaf cv-rb">' + leafSvg(t.leaf) + '</div>' : "") +
-      (on("dots") ? '<div class="cv-dots cv-dtr"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : "") +
+      (aon("leaf") ? '<div class="cv-leaf cv-lt">' + leafSvg(t.leaf) + '</div><div class="cv-leaf cv-rb">' + leafSvg(t.leaf) + '</div>' : "") +
+      (aon("dots") ? '<div class="cv-dots cv-dtr"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : "") +
       '<div class="cv-content"><div class="cv-head">' +
-        emblem +
-        '<h1 class="cv-t1">' + esc(title) + '</h1>' +
-        '<div class="cv-t2">' + esc(subtitle) + '</div>' +
-        (on("rule") ? '<div class="cv-rule"><span></span><b><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg></b><span></span></div>' : "") +
-        '<p class="cv-sub">' + esc(product + ' \u00b7 Back Cover') + '</p>' +
+        head +
+        (aon("title") ? '<h1 class="cv-t1">' + esc(txt.title) + '</h1>' : "") +
+        (aon("subtitle") ? '<div class="cv-t2">' + esc(txt.subtitle) + '</div>' : "") +
+        (aon("rule") ? '<div class="cv-rule"><span></span><b><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg></b><span></span></div>' : "") +
+        (aon("kicker") ? '<p class="cv-sub">' + esc(txt.kicker) + '</p>' : "") +
       '</div>' +
-      '<div class="cv-panel dash" style="margin-top:6mm">' +
-        '<p style="font-size:4.2mm;line-height:1.5;margin:0 0 3mm">' + rich(bio) + '</p>' +
-        '<p style="font-size:3.8mm;line-height:1.5;margin:3mm 0 0">' + rich(mission) + '</p>' +
-        (rows ? '<div style="margin-top:5mm">' + rows + '</div>' : '') +
-      '</div>' +
-      '<div class="cv-foot" style="margin-top:auto"><div class="cv-org" style="max-width:100%;text-align:center;font-size:3.4mm">' + esc(contact) + '</div></div>' +
+      panel +
+      (aon("contact") ? '<div class="cv-foot" style="margin-top:auto"><div class="cv-org cv-contact">' + rich(txt.contact) + '</div></div>' : "") +
       '</div></div>';
   }
 
   function buildAuthorBlocks(o, sj) {
+    var au = normalizeAuthor(COVER.author);
+    /* The back of the book is a switch, not a fixture: switched off, no author
+       sheet is appended at all and pagination simply ends on the last content
+       page. */
+    if (!au.on) return [];
     var text = { schoolLabel: "School", teacherLabel: "Author / Teacher", subjectLabel: "Subject", classLabel: "Class" };
     try {
       if (window.COVER_TEXT && COVER && COVER.text) {
@@ -1640,6 +1755,10 @@
     var avatar = (typeof window !== "undefined" && window.EMMANUEL_AVATAR) || "";
     var product = (window.APP_BRAND && window.APP_BRAND.product) || "Easy School Liberia";
     var tutor = (window.APP_BRAND && window.APP_BRAND.tutor) || "Emmanuel";
+    /* the wording the sheet will print, kept on the block for the Word export
+       and for anything that reads the block without the author settings */
+    var txt = authorText(au, { teacher: teacher, school: school, subject: subject, klass: klass,
+                               product: product, tutor: tutor, year: COVER.year });
     return [
       { k: "pagebreak" },
       {
@@ -1660,9 +1779,10 @@
         avatar: avatar,
         product: product,
         tutor: tutor,
-        authorTitle: "About the Author",
-        authorSubtitle: teacher ? "Prepared by " + teacher : product,
-        bio: "",
+        author: au,
+        authorTitle: txt.title,
+        authorSubtitle: txt.subtitle,
+        bio: txt.bio,
         per: "author",
         _backCover: true,
         _author: true
@@ -2510,26 +2630,38 @@
           break;
         }
         case "author": {
+          /* the same author settings drive the Word back cover: what is
+             switched off here is absent there, and retyped text is what prints */
           var cdsA = normalizeDesign(b.design);
-          function conA(k) { return cdsA.show[k] !== false; }
+          var auD = normalizeAuthor(b.author || COVER.author);
+          function conA(k) { return auD.show[k] !== false; }
           function colA(k, fallback) { return cdsA[k] ? cdsA[k].replace("#", "").toUpperCase() : fallback; }
+          function plainA(s) { return String(s == null ? "" : s).replace(/\*\*([^*]+)\*\*/g, "$1"); }
+          var txtA = authorText(auD, { teacher: b.teacher, school: b.school, subject: b.subject, klass: b.klass,
+                                       product: b.product, tutor: b.tutor, year: b.year });
           body += para("", { sz: 40 });
-          var bgIdA = b.bg ? addImage(b.bg, b.bgMime || "image/jpeg") : null;
+          var bgIdA = (b.bg && conA("bg")) ? addImage(b.bg, b.bgMime || "image/jpeg") : null;
           if (bgIdA) { body += picXml(bgIdA, 1400, 620, 165); body += para("", { sz: 20 }); }
-          var avId = b.avatar ? addImage(b.avatar, "image/png") : (b.logo ? addImage(b.logo, "image/png") : null);
-          if (avId) body += picXml(avId, 320, 320, 45);
-          body += para(b.authorTitle || "About the Author", { b: true, sz: 48, color: colA("ink", C1), align: "center", before: 200, after: 60 });
-          body += para(b.authorSubtitle || b.teacher || "Easy School Liberia", { b: true, sz: 32, color: colA("accent", C2), align: "center", after: 120 });
-          var bioText = "This booklet was prepared for " + (b.subject || "the subject") + " " + (b.klass || "") + " by " + (b.teacher || "the teacher") + (b.school ? " of " + b.school : "") + ". It was generated with " + (b.product || "Easy School Liberia") + ", an offline, single-file web app that creates printable course packs for the Liberian National Curriculum. The content is transcribed from the official curriculum guides and enriched with exercises, study notes and assessments. " + (b.tutor || "Emmanuel") + ", the AI tutor, is available online to help learners with difficult words and questions.";
-          body += para(bioText, { sz: 26, after: 120 });
-          body += para("Mission: Provide every Liberian teacher with free, offline, printable workbooks, tests and answer keys — no internet, no cost, no dependency.", { b: true, sz: 26, after: 120 });
+          var photoA = auD.photo || b.avatar || b.logo;
+          var avId = (photoA && conA("photo")) ? addImage(photoA, "image/png") : null;
+          /* Word sizes the picture by its own width, so the cap in millimetres
+             is what keeps the portrait the size the panel asked for */
+          if (avId) body += picXml(avId, 900, 900, auD.photoSize);
+          if (conA("title")) body += para(plainA(txtA.title), { b: true, sz: 48, color: colA("ink", C1), align: "center", before: 200, after: 60 });
+          if (conA("subtitle")) body += para(plainA(txtA.subtitle), { b: true, sz: 32, color: colA("accent", C2), align: "center", after: 120 });
+          if (conA("bio")) body += para(plainA(txtA.bio), { sz: 26, after: 120 });
+          if (conA("mission")) body += para(plainA(txtA.mission), { b: true, sz: 26, after: 120 });
           var crA = [];
-          if (b.teacher) crA.push(["Author / Teacher", b.teacher]);
-          if (b.school) crA.push(["School", b.school]);
-          if (b.subject) crA.push(["Subject", b.subject]);
-          if (b.klass) crA.push(["Class", b.klass]);
-          if (crA.length) body += tableXml(["Detail", "Entry"], crA, FILL);
-          body += para((b.product || "Easy School Liberia") + " \u00b7 Liberian National Curriculum \u00b7 " + (b.year || new Date().getFullYear()) + " \u00b7 Back Cover", { sz: 20, align: "center", before: 200 });
+          if (conA("facts")) {
+            var LABEL_KEYA = { teacher: "teacherLabel", school: "schoolLabel", subject: "subjectLabel", klass: "classLabel" };
+            AUTHOR_FACTS.forEach(function (f) {
+              var key = f[0], val = auD.facts[key] || b[key] || "";
+              if (val) crA.push([auD.labels[key] || COVER_TEXT.label(b, LABEL_KEYA[key], f[1]), val]);
+            });
+          }
+          if (crA.length) body += tableXml([COVER_TEXT.label(b, "detailLabel", "Detail"), COVER_TEXT.label(b, "entryLabel", "Entry")], crA, FILL);
+          if (conA("kicker")) body += para(plainA(txtA.kicker), { i: true, sz: 22, align: "center", before: 160 });
+          if (conA("contact")) body += para(plainA(txtA.contact), { sz: 20, align: "center", before: 200 });
           break;
         }
         case "pagebreak": body += "<w:p><w:pPr><w:pageBreakBefore/></w:pPr></w:p>"; break;
@@ -3502,13 +3634,208 @@
     }
     window.PACK_PAINT_DESIGNER = renderDesigner;
 
+    /* ---- back of the book: the author page ----
+       One switch decides whether the sheet is printed at all; everything on it
+       is edited here. A field left blank prints the automatic wording for the
+       pack being generated, so the panel can be ignored entirely and the page
+       still looks designed. */
+    var AU_FIELDS = [["auTitle", "title"], ["auSubtitle", "subtitle"], ["auKicker", "kicker"],
+                     ["auBio", "bio"], ["auMission", "mission"], ["auContact", "contact"]];
+    var AU_LABEL_KEY = { teacher: "teacherLabel", school: "schoolLabel",
+                         subject: "subjectLabel", klass: "classLabel" };
+    /* the details of the pack in front of the teacher: they fill the
+       placeholders, so a blank field shows what it will print */
+    function authorCtx() {
+      var sj = S(), o = opts();
+      return {
+        teacher: (COVER.teacher || "").trim(),
+        school: (COVER.school || "").trim(),
+        subject: (sj && (sj.packName || sj.label)) || "Course Pack",
+        klass: o.levelLabel || ("Grade " + o.grade),
+        product: (window.APP_BRAND && window.APP_BRAND.product) || "Easy School Liberia",
+        tutor: (window.APP_BRAND && window.APP_BRAND.tutor) || "Emmanuel",
+        year: COVER.year
+      };
+    }
+    function auMsg(txt, bad) {
+      var m = $("#auMsg");
+      if (!m) return;
+      m.textContent = txt || "";
+      m.style.color = bad ? "var(--rouge)" : "var(--muted)";
+    }
+    function paintAuthorPrev() {
+      var p = $("#auPhotoPrev"), au = normalizeAuthor(COVER.author);
+      if (!p) return;
+      var bundled = window.EMMANUEL_AVATAR || "";
+      var src = au.photo || bundled;
+      p.className = "upprev auprev" + (src ? " has" : "");
+      p.innerHTML = src
+        ? '<img src="' + src + '" alt="Author photo"><small>' +
+            (au.photo ? "Your photo" : "Bundled photo") + "</small>"
+        : "<span>No photo</span>";
+      var rm = $("#rmAuPhoto");
+      if (rm) rm.disabled = !au.photo;
+    }
+    /* the four details rows: each has an editable label beside an editable
+       value, and both fall back to the pack's own wording when left blank */
+    function renderAuthorFacts() {
+      var box = $("#auFacts");
+      if (!box) return;
+      var au = COVER.author, ctx = authorCtx();
+      box.innerHTML = "";
+      window.PACK_AUTHORS.facts.forEach(function (f) {
+        var key = f[0];
+        var wrap = document.createElement("div");
+        wrap.className = "aufact";
+        var lab = document.createElement("input");
+        lab.type = "text";
+        lab.className = "au-lab";
+        lab.maxLength = 60;
+        lab.placeholder = COVER_TEXT.label({ labels: COVER.text }, AU_LABEL_KEY[key], f[1]);
+        lab.value = au.labels[key];
+        lab.setAttribute("aria-label", "Label for the " + f[1] + " row");
+        lab.title = "The label printed on the left of this row";
+        lab.oninput = function () { au.labels[key] = lab.value; saveCover(); generate(); };
+        var val = document.createElement("input");
+        val.type = "text";
+        val.className = "au-val";
+        val.maxLength = 240;
+        val.placeholder = (key === "klass" ? ctx.klass : ctx[key]) || f[1];
+        val.value = au.facts[key];
+        val.setAttribute("aria-label", f[1] + " printed on the author page");
+        val.title = "Blank prints this pack's own " + f[1].toLowerCase();
+        val.oninput = function () { au.facts[key] = val.value; saveCover(); generate(); };
+        wrap.append(lab, val);
+        box.appendChild(wrap);
+      });
+    }
+    function renderAuthorShows() {
+      var box = $("#auShows");
+      if (!box) return;
+      var au = COVER.author;
+      box.innerHTML = "";
+      window.PACK_AUTHORS.shows.forEach(function (pair) {
+        var key = pair[0], text = pair[1];
+        var lab = document.createElement("label");
+        lab.className = "chk";
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.id = "auShow-" + key;
+        cb.checked = au.show[key] !== false;
+        cb.onchange = function () { au.show[key] = cb.checked; saveCover(); generate(); };
+        var sp = document.createElement("span");
+        sp.textContent = text;
+        lab.append(cb, sp);
+        box.appendChild(lab);
+      });
+    }
+    function renderAuthorPanel() {
+      var au = COVER.author = normalizeAuthor(COVER.author);
+      var auto = authorAuto(authorCtx());
+      AU_FIELDS.forEach(function (pair) {
+        var el = $("#" + pair[0]);
+        if (!el) return;
+        el.placeholder = auto[pair[1]];
+        if (document.activeElement !== el) el.value = au[pair[1]];
+      });
+      var sw = $("#auOn");
+      if (sw) sw.checked = au.on;
+      var box = $("#auBox");
+      if (box) box.style.display = au.on ? "" : "none";
+      var sz = $("#auPhotoSize"), szv = $("#auPhotoSizeVal");
+      if (sz) sz.value = String(au.photoSize);
+      if (szv) szv.textContent = au.photoSize + " mm";
+      renderAuthorFacts();
+      renderAuthorShows();
+      paintAuthorPrev();
+    }
+    window.PACK_PAINT_AUTHOR = renderAuthorPanel;
+    /* the booklet preview in book.js labels the last page of a fold book; with
+       the author page switched off there is nothing there to label */
+    window.PACK_AUTHOR_ON = function () { return normalizeAuthor(COVER.author).on; };
+
+    /* The portrait is stored under its own key: like the logo and the
+       background photo it is far larger than the text settings, and a quota
+       failure must not cost the teacher the school details beside it. */
+    var ASTORE = "lncpg.authorimg.v1";
+    function saveAuthorImg() {
+      try {
+        localStorage.setItem(ASTORE, JSON.stringify({ photo: COVER.author.photo || "" }));
+      } catch (e) {
+        auMsg("Photo kept for this session only \u2014 too large to save on this device.", true);
+      }
+    }
+    function loadAuthorImg() {
+      try {
+        var raw = localStorage.getItem(ASTORE);
+        if (!raw) return;
+        var o = JSON.parse(raw);
+        if (o && typeof o.photo === "string") COVER.author.photo = o.photo;
+      } catch (e) { /* unreadable storage: the page prints without a portrait */ }
+    }
+
+    AU_FIELDS.forEach(function (pair) {
+      var el = $("#" + pair[0]);
+      if (!el) return;
+      /* the two long fields regenerate on leaving the field: rebuilding the
+         whole pack for every keystroke of a biography is wasted work */
+      var ev = el.tagName === "TEXTAREA" ? "change" : "input";
+      el.addEventListener(ev, function () {
+        COVER.author[pair[1]] = el.value;
+        saveCover();
+        generate();
+      });
+    });
+    var auSw = $("#auOn");
+    if (auSw) auSw.onchange = function () {
+      COVER.author.on = auSw.checked;
+      saveCover(); renderAuthorPanel(); syncBadges(); generate();
+    };
+    var auSz = $("#auPhotoSize");
+    if (auSz) auSz.oninput = function () {
+      COVER.author.photoSize = +auSz.value;
+      var v = $("#auPhotoSizeVal");
+      if (v) v.textContent = auSz.value + " mm";
+      saveCover();
+      generate();
+    };
+    var auIn = $("#auPhoto"), auRm = $("#rmAuPhoto");
+    if (auIn) auIn.onchange = function () {
+      var f = auIn.files && auIn.files[0];
+      auIn.value = "";                        /* allow re-picking the same file */
+      if (!f) return;
+      auMsg("Reading image\u2026");
+      /* "author" keeps the PNG's own transparency, so a portrait with a cut-out
+         background still stands alone on the sheet */
+      loadImageFile(f, "author", function (err, img) {
+        if (err) { auMsg(err, true); return; }
+        COVER.author.photo = img.url;
+        auMsg("Photo added \u2014 " + img.w + "\u00d7" + img.h + " px.");
+        saveAuthorImg(); paintAuthorPrev(); saveCover(); generate();
+      });
+    };
+    if (auRm) auRm.onclick = function () {
+      COVER.author.photo = "";
+      auMsg("");
+      saveAuthorImg(); paintAuthorPrev(); saveCover(); generate();
+    };
+    var auRs = $("#auReset");
+    if (auRs) auRs.onclick = function () {
+      COVER.author = defaultAuthor();
+      try { localStorage.removeItem(ASTORE); } catch (e) {}
+      auMsg("");
+      renderAuthorPanel(); syncBadges(); generate();
+    };
     /* ---- persistence: the school's details are remembered on this device ---- */
     var STORE = "lncpg.cover.v1";
-    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade", "useSubjectArt", "text", "design"];
+    var PERSIST = ["school", "motto", "crest", "teacher", "term", "year", "tpl", "bgFade", "useSubjectArt", "text", "design", "author"];
     function saveCover() {
       try {
         var o = {};
         PERSIST.forEach(function (k) { o[k] = COVER[k]; });
+        /* the portrait travels in its own key (see saveAuthorImg), so the text
+           settings never carry a data URL big enough to fail the quota */
+        if (o.author) o.author = Object.assign({}, o.author, { photo: "" });
         localStorage.setItem(STORE, JSON.stringify(o));
       } catch (e) { /* private mode or storage disabled: ignore */ }
     }
@@ -3523,6 +3850,8 @@
         if (!COVER_TPL[COVER.tpl] && COVER.tpl !== "table") COVER.tpl = "classic";
         /* a design saved by an older build may be missing keys */
         COVER.design = normalizeDesign(COVER.design);
+        /* so may the author page, which did not exist at all before */
+        COVER.author = normalizeAuthor(COVER.author);
         var back = { school: "cvSchool", motto: "cvMotto", crest: "cvCrest",
                      teacher: "cvTeacher", term: "cvTerm", year: "cvYear" };
         Object.keys(back).forEach(function (k) {
@@ -3536,6 +3865,10 @@
     loadCover();
     renderTplGrid();
     renderDesigner();
+    /* after loadCover(): the stored text settings are in place, and the
+       portrait that lives in its own key is layered back on top of them */
+    loadAuthorImg();
+    renderAuthorPanel();
     COVER_TEXT.init(COVER, saveCover, generate);
 
     /* ---- logo and background uploads ---- */
@@ -3637,9 +3970,13 @@
         .forEach(function (id) { var el = $("#" + id); if (el) el.value = ""; });
       COVER_IMG.logo = null; COVER_IMG.bg = null; COVER.text = {}; COVER_TEXT.set({});
       COVER.design = defaultDesign();
-      try { localStorage.removeItem(STORE); localStorage.removeItem(ISTORE); } catch (e) {}
+      /* the author page is part of this panel, so it resets with the rest */
+      COVER.author = defaultAuthor();
+      try { localStorage.removeItem(STORE); localStorage.removeItem(ISTORE); localStorage.removeItem(ASTORE); } catch (e) {}
       paintImgPrev(); upMsg("");
+      auMsg("");
       renderDesigner();
+      renderAuthorPanel();
       readCover(); generate();
     };
 
@@ -3679,6 +4016,9 @@
         /* the designer is optional on older saves; when present it must be a
            plain object so normalizeDesign can safely fill it in */
         if (s.cover.design !== undefined && (typeof s.cover.design !== "object" || s.cover.design === null || Array.isArray(s.cover.design))) throw new Error("Invalid cover design");
+        /* the author back cover is optional too: a document saved before it
+           existed simply prints the automatic page */
+        if (s.cover.author !== undefined && (typeof s.cover.author !== "object" || s.cover.author === null || Array.isArray(s.cover.author))) throw new Error("Invalid author page settings");
         /* a kindergarten level has no periods at all outside the Kindergarten
            subject's lesson plans, so any other saved period list must be
            empty for it; the ECD units match by their string grade instead */
@@ -3710,6 +4050,7 @@
         document.querySelectorAll(".sh").forEach(function (c) { c.checked = s.sheets.includes(c.value); });
         Object.keys(COVER).forEach(function (k) { if (s.cover[k] !== undefined) COVER[k] = s.cover[k]; });
         COVER.design = normalizeDesign(s.cover.design);
+        COVER.author = normalizeAuthor(s.cover.author);
         COVER.text = s.cover.text || {}; COVER_TEXT.set(COVER.text);
         COVER_IMG.logo = s.images.logo || null; COVER_IMG.bg = s.images.bg || null;
         Object.keys(CVMAP).forEach(function (id) { $("#" + id).value = COVER[CVMAP[id]] || ""; });
@@ -3727,7 +4068,7 @@
             renderSheetHF(); renderPlatHF(); bindSheetHF(); bindPlatHF(); applyHF();
           }
         }
-        paintSession(); paintDocType(); paintLpPlanTabs(); paintLpWeeks(); paintLpPresets(); renderTplGrid(); renderDesigner(); paintImgPrev(); applyFontSize(); syncBadges();
+        paintSession(); paintDocType(); paintLpPlanTabs(); paintLpWeeks(); paintLpPresets(); renderTplGrid(); renderDesigner(); renderAuthorPanel(); paintImgPrev(); applyFontSize(); syncBadges();
         generate();
       },
       redraw: function () { generate(); }
@@ -3756,12 +4097,16 @@
     setb("nParts", parts.length ? parts.length + " included" : "none");
 
     var cv = document.getElementById("cvOn");
+    /* the collapsed header also says whether the back of the book carries the
+       author page, so the state is visible without opening the panel */
+    var st = window.PACK_COVER_STATE;
+    var authorOn = !!(st && normalizeAuthor(st.author).on);
     if (cv && cv.checked) {
-      var st = window.PACK_COVER_STATE, tp = window.PACK_COVER_TPL;
+      var tp = window.PACK_COVER_TPL;
       var nm = st ? (st.tpl === "table" ? "Simple List"
                      : (tp && tp[st.tpl] ? tp[st.tpl].label : "on")) : "on";
-      setb("nCover", nm);
-    } else setb("nCover", "off");
+      setb("nCover", nm + (authorOn ? " + author" : ""));
+    } else setb("nCover", authorOn ? "author only" : "off");
 
     var f = document.getElementById("fsz");
     setb("nFmt", f ? (+f.value || 12) + "pt" : "");

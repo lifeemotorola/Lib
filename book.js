@@ -261,6 +261,16 @@
       });
     }
 
+    /* The last page of a fold booklet is the author back cover — unless the
+       teacher switched that page off in the platform, in which case the last
+       page is ordinary content and must not carry the label. The standalone
+       booklet tool has no author page to ask about, so it keeps the label. */
+    function backLabel(pg, total) {
+      if (pg !== total) return "";
+      var on = (win && typeof win.PACK_AUTHOR_ON === "function") ? win.PACK_AUTHOR_ON() : true;
+      return on ? '<span class="mini-pg-sub">Author — Back Cover</span>' : "";
+    }
+
     function summaryItem(label, value) {
       var it = doc.createElement("div");
       it.className = "summary-item";
@@ -358,12 +368,12 @@
               '<div class="mini-sheet-body">' +
                 '<div class="mini-page' + (fLeft > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (fLeft > n ? 'Blank' : 'Page ' + fLeft) + '</span>' +
-                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fLeft === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
+                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : backLabel(fLeft, r.total)) +
                 '</div>' +
                 '<div class="mini-crease"></div>' +
                 '<div class="mini-page' + (fRight > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (fRight > n ? 'Blank' : 'Page ' + fRight) + '</span>' +
-                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fRight === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
+                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : backLabel(fRight, r.total)) +
                 '</div>' +
               '</div>';
 
@@ -374,12 +384,12 @@
               '<div class="mini-sheet-body">' +
                 '<div class="mini-page' + (bLeft > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (bLeft > n ? 'Blank' : 'Page ' + bLeft) + '</span>' +
-                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bLeft === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
+                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : backLabel(bLeft, r.total)) +
                 '</div>' +
                 '<div class="mini-crease"></div>' +
                 '<div class="mini-page' + (bRight > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (bRight > n ? 'Blank' : 'Page ' + bRight) + '</span>' +
-                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bRight === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
+                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : backLabel(bRight, r.total)) +
                 '</div>' +
               '</div>';
 

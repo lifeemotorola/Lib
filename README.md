@@ -222,6 +222,34 @@ school's details, and is carried inside any document saved in the teaching
 library. The colours, emblem, title size and switches apply to the five designed
 templates; the Simple List template is plain text.
 
+### The back of the book — the author page
+
+A **Fold book** booklet has a back cover, and that sheet is about the author. It
+is edited in **Customization → Back of the book — the author**, below the cover
+controls and independent of them: the cover page can be switched off and the
+author page still prints, and vice versa.
+
+| Control | What it does |
+|---|---|
+| **Print an author page on the back of the book** | The whole sheet, on or off. Off removes the page *and* its page break, so the booklet simply ends on the last content page and the booklet preview stops labelling the last page. |
+| **Upload a photo / Remove** | Your own portrait, kept as a PNG so a cut-out keeps its transparency. With no upload the photo bundled with the page is used, and with neither the template's drawn emblem takes its place. |
+| **Photo size** | 16–70 mm, applied on screen, in print and in Word. |
+| **Title, subtitle, product line** | *About the Author*, the line under it, and the small italic line beneath the rule. |
+| **Biography, mission line, footer line** | The three paragraphs of the page. `**bold**` prints bold. |
+| **Details rows** | Four rows — author/teacher, school, subject, class — each with its own editable label beside its own editable value. |
+| **Show on the author page** | Fourteen switches: photo, title, subtitle line, product line, rule & book icon, biography, mission line, details rows, footer line, cover background photo, box around the text, corner leaves, corner dots, border around the photo. |
+
+The portrait stands alone on the sheet: no ring, no circle and no box are drawn
+around it and nothing is painted behind it, so the paper shows through a
+transparent image. **Border around the photo** puts the ring back for anyone who
+wants it. Every field prints the automatic wording for the pack in front of you
+while it stays blank — the placeholders show exactly what that wording is — so
+the panel can be ignored and the page still looks designed. The words are stored
+with the school's details, the portrait under its own storage key so a large
+photo cannot crowd them out, and both travel inside any document saved in the
+teaching library. The Word export reads the same settings, so a switched-off
+part is absent there too.
+
 ### Kindergarten — KG-I and KG-II lesson plans and cover pages
 
 **Kindergarten** appears as a level band alongside Elementary, Junior High and
@@ -741,6 +769,10 @@ node tests/history.js
 
 # KG-I / KG-II cover-page levels and the cover designer (no dependencies)
 node tests/cover-kg.js
+
+# back-of-the-book author page: the switch, the unbordered portrait and every
+# editable line, run against the real app.js sources (no dependencies)
+node tests/author-cover.js
 
 # Kindergarten ECD units and lesson-plan wording (no dependencies)
 node tests/kg-lesson.js

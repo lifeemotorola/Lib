@@ -280,6 +280,22 @@ body[data-subject="cs"] .page th,body[data-subject="cs"] .page td{border-color:#
 #cvBox .row2 input{width:50%}
 #cvBox .row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 #cvBox .row input[type=text]{margin:0}
+/* the author back-cover panel is its own box, so it carries the same field
+   styling as the cover panel above it */
+#auBox input[type=text],#auBox textarea{width:100%;box-sizing:border-box;margin:0 0 6px;
+  padding:6px 8px;border:1px solid #c9d3e2;border-radius:6px;font:inherit;font-size:.85rem}
+#auBox textarea{resize:vertical;line-height:1.5}
+#auBox .row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+#auBox .row input[type=text]{margin:0}
+#auBox .row label{flex:none;white-space:nowrap;font-size:.8rem}
+#auPhotoSize{flex:1;min-width:0;accent-color:var(--bleu)}
+/* one details row: its label beside the value it prints */
+.aufact{display:flex;gap:6px;margin-bottom:6px}
+.aufact input{flex:1;min-width:0}
+.aufact .au-lab{flex:0 0 42%}
+.auprev{height:74px}
+.auprev small{position:absolute;right:3px;bottom:3px;padding:1px 4px;border-radius:4px;
+  background:rgba(10,25,55,.76);color:#fff;font-size:.55rem;font-weight:700}
 .crest-in{width:58px!important;text-align:center;flex:none}
 /* number inputs in the panel sit right-aligned at a readable width */
 .dd-b .row input[type=number]{width:82px;flex:none}
@@ -870,7 +886,8 @@ input:focus-visible,label:focus-visible{
   .chk{padding:9px 6px;font-size:.9rem}
   .chk input{width:20px;height:20px;margin-top:1px}
   .mini button{padding:10px 6px;font-size:.8rem}
-  select,input[type=number],#cvBox input[type=text]{padding:11px 10px;font-size:16px}
+  select,input[type=number],#cvBox input[type=text],
+  #auBox input[type=text],#auBox textarea{padding:11px 10px;font-size:16px}
   .subtab,.sesstabs .sess,.bandtabs .bandtab{min-height:48px}
   .dd>summary{min-height:48px}
   .btn{padding:14px}
@@ -987,6 +1004,23 @@ input:focus-visible,label:focus-visible{
 /* author back cover may carry same frame but with slightly muted note */
 .cvart.cv-back .cv-note{background:#e8f0ff}
 .cvart.cv-back .cv-panel{background:rgba(255,255,255,.78)}
+
+/* ---- author portrait ----
+   The photo stands alone on the sheet. Nothing is drawn around it and nothing
+   is painted behind it, so a transparent PNG keeps its own silhouette and a
+   photo that carries its own background is not framed by anything the page
+   added. The ring below is opt-in, from the "Border around the photo" switch. */
+.cv-avatar{margin:3mm 0 2mm;display:grid;place-items:center;background:transparent}
+.cv-avatar img{display:block;width:auto;height:auto;max-width:70mm;max-height:62mm;
+  object-fit:contain;background:transparent;border:0;padding:0;box-shadow:none}
+.cv-avatar.framed img{border:2px solid var(--cv-accent);border-radius:50%;object-fit:cover}
+/* the author's words with the dashed box switched off: the same text on the
+   bare paper, no panel behind it */
+.cv-backtext{width:90%;margin:0 auto;border:0;background:transparent;padding:0 2mm}
+.cv-bio{font-size:4.2mm;line-height:1.5;margin:0 0 3mm}
+.cv-mission{font-size:3.8mm;line-height:1.5;margin:3mm 0 0}
+.cv-facts{margin-top:5mm}
+.cv-contact{max-width:100%;text-align:center;font-size:3.4mm}
 
 /* the cover sheet suppresses the running header and footer bands */
 .page.coverpage{padding:0}
