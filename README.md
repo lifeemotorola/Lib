@@ -18,7 +18,7 @@ so the whole thing stays self-contained.
 
 ## Features
 
-- **19 National Curriculum subjects** (the 16 graded subjects plus **Health Science**, which carries the Elementary health strand for Grades 1–6, **Computer Science**, original unplugged-first units for Grades 1–6, and **Kindergarten**, which plans ECD lessons on KG-I and KG-II), plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
+- **19 National Curriculum subjects** (the 16 graded subjects plus **Health Science**, which carries the Elementary health strand for Grades 1–6, **Computer Science**, original unplugged-first and paper-first units for Grades 1–12, and **Kindergarten**, which plans ECD lessons on KG-I and KG-II), plus **Civics supplementary teaching resources for Grades 7–12** (six Civics units per grade)
 - **Teacher-first platform** — the session opens in **Teacher** mode (the
   platform is built for teachers; the teacher copy adds full answer keys with
   reasons and methods). A **Student** session remains for clean pupil packs;
@@ -94,8 +94,11 @@ so the whole thing stays self-contained.
   and weekly, 40-minute four-stage periods, with a safeguarding note printed on
   every plan) **and course packs** (workbook, period test, semester exam and
   teacher's key) on the General Science engine
-- **Computer Science — Elementary Grades 1–6**: original unplugged-first
-  computing units (`data-cs.js`) — **six 4-week units per grade, Periods I to
+- **Computer Science — Grades 1–12**: original unplugged-first
+  computing units for Grades 1–6 (`data-cs.js`), junior high ICT and
+  computational-thinking units for Grades 7–9 (`data-cs79.js`) and senior high
+  computer-science units for Grades 10–12 (`data-cs1012.js`) — **six 4-week
+  units per grade, Periods I to
   VI**. No official Computer Science syllabus was supplied, so these are
   teaching resources, not a transcription. Lesson plans open in the computing
   circle (*we try, we debug, we do not laugh at a mistake*); packs reuse the
@@ -302,17 +305,23 @@ plan, the appendices and a fully worked 40-minute **model lesson** with board
 plan, expected answers, common mistakes, differentiation and home practice —
 `Grade-1-Care-of-the-Body.md` … `Grade-6-Body-Systems-Disease-and-Healthy-Living.md`.
 
-### Computer Science — Elementary Grades 1–6
+### Computer Science — Grades 1–12
 
-**Computer Science** is an original elementary computing course (`data-cs.js`).
-No official Liberian Computer Science syllabus was supplied, so these units are
-**teaching resources, not an official transcription**. Teachers should compare
-them with the school's approved scheme of work before use.
+**Computer Science** is an original computing course: elementary units in
+`data-cs.js` (Grades 1–6), junior high units in `data-cs79.js` (Grades 7–9) and
+senior high units in `data-cs1012.js` (Grades 10–12); the two upper files merge
+into the same `CS_CURRICULUM` list at load. No official Liberian Computer
+Science syllabus was supplied, so these units are **teaching resources, not an
+official transcription**. Teachers should compare them with the school's
+approved scheme of work before use.
 
-Pick **National Curriculum → Computer Science → Grade 1 … Grade 6**: each grade
-carries **six 4-week units, Period I to Period VI** (Periods I–III in Semester
-One, IV–VI in Semester Two). The spiral is unplugged-first, so a class with no
-computer can still compute:
+Pick **National Curriculum → Computer Science → Elementary / Junior High /
+Senior High → Grade 1 … Grade 12**: each grade carries **six 4-week units,
+Period I to Period VI** (Periods I–III in Semester One, IV–VI in Semester Two).
+The spiral is unplugged-first in the elementary grades and paper-first above
+them (every unit is teachable on paper and a chalkboard, with practice on a
+shared machine where the school has one), so a class with no computer can
+still compute:
 
 | Grade | Focus |
 |---|---|
@@ -322,10 +331,19 @@ computer can still compute:
 | 4 | Decomposition, if–then choices, networks, searching, digital footprint, instructions a computer can follow |
 | 5 | Hardware and software, variables, data, passwords and safety, collaboration, writing instructions |
 | 6 | Abstraction, binary, computing in Liberia and Africa, cybersecurity, a computational-thinking project, making a program |
+| 7 | The computer system (hardware, software, users), generations and types of computers, keyboard skills and word processing, the operating system and files, health and safety with ICT tools, algorithms, flowcharts and trace tables |
+| 8 | Inside the computer (CPU, memory, storage), spreadsheets, computer networks, the internet, the web and email, information security and digital citizenship, first programs (variables, input, output) |
+| 9 | Presentation software, programming with selection and repetition, data representation (text, images, sound), databases (tables, records, fields), web pages in HTML, emerging technology, careers and a computing project |
+| 10 | History and evolution of computing, number systems (binary, octal, hexadecimal), binary arithmetic and storage units, logic gates and Boolean algebra, computer architecture (inside the CPU), system software and operating systems |
+| 11 | Python data types, operators and expressions, Python control structures and functions, lists, strings and simple algorithms, relational databases and SQL, spreadsheets for analysis, networks and data communication |
+| 12 | Web technologies, client–server and cloud services, computer security, ethics and law, systems analysis and the SDLC, algorithm efficiency (searching, sorting, Big-O), AI, data science and emerging technologies, the computing project and examination preparation |
 
 Each unit carries **Physics-like course text** (`study[]` with many headings,
 tables and worked prose) and a **`worked[]` bank** of traced algorithms, counts
-and binary reasoning — age-appropriate 'calculations', not Physics sums.
+and binary reasoning in the elementary grades, and of traces, conversions,
+binary sums, truth tables, Python expressions, SQL queries, spreadsheet
+formulas and step counts in the upper grades — 'calculations' proper to
+computing, not Physics sums.
 
 - **Lesson plan** (daily or weekly, 40-minute periods): the lesson opens in the
   **computing circle** with the two rules (*we try, we debug, we do not laugh at
@@ -445,7 +463,7 @@ session and paper they were made with.
 | French (`fr`) | 1–12 | 6 | 72 |
 | General Science (`sc`) | 1–9 | 6 | 54 |
 | Health Science (`hs`) | 1–6 | 6 (Periods I–VI) | 36 |
-| Computer Science (`cs`, original) | 1–6 | 6 (Periods I–VI) | 36 |
+| Computer Science (`cs`, original) | 1–12 | 6 (Periods I–VI) | 72 |
 | Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
 | Social Studies (`ss`) | 1–9 | 6 | 54 |
 | Religious & Moral Education (`rm`) | 1–9 | 6 | 54 |
@@ -461,16 +479,16 @@ session and paper they were made with.
 | Literature (`li`) | 10–12 | 6 | 18 |
 | Kindergarten (`kg`, lesson plans) | KG-I–KG-II | 2 theme units | 4 |
 
-> **Coverage:** Mathematics, French and **Phonics** span Grades 1–12, and
+> **Coverage:** Mathematics, French, **Phonics** and **Computer Science** span Grades 1–12, and
 > Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and
 > Literature cover Grades 10–12; the other elementary and junior-high
 > subjects stop at Grade 9. **Health Science** covers Grades 1–6 with **six 4-week
 > health units per grade — Periods I to VI**; the periods the guide gives health
 > content to keep it at the guide's own period number, and the rest spiral that
 > grade's own outcomes, objectives, contents and activities.
-> **Computer Science** covers Grades 1–6 with **six 4-week original units per
-> grade — Periods I to VI**, unplugged-first; it is not an official syllabus
-> transcription.
+> **Computer Science** covers Grades 1–12 with **six 4-week original units per
+> grade — Periods I to VI**, unplugged-first in Grades 1–6 and paper-first in
+> Grades 7–12; it is not an official syllabus transcription.
 > **Kindergarten** spans KG-I–KG-II with 2 ECD theme
 > units per level (lesson plans only; packs stay cover-only).
 
@@ -654,7 +672,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics and French (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/cs-lesson.js` (the original Elementary Computer Science units through the real plan builders: computing-circle wording, unplugged pair-debug, device-safety note, no health/ECD leakage, and `data-cs.js`, the `cs` tab icon and `cs.png` surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics, French and Computer Science (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/cs-lesson.js` (the original Computer Science units for Grades 1–12 through the real plan builders: computing-circle wording, unplugged pair-debug, device-safety note, no health/ECD leakage, the upper-grade units' own subject matter, and `data-cs.js`, `data-cs79.js`, `data-cs1012.js`, the `cs` tab icon and `cs.png` surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -730,7 +748,7 @@ node tests/kg-lesson.js
 # Elementary health units and health lesson-plan wording (no dependencies)
 node tests/health-lesson.js
 
-# Elementary Computer Science units and unplugged lesson-plan wording (no dependencies)
+# Computer Science units (Grades 1-12) and unplugged lesson-plan wording (no dependencies)
 node tests/cs-lesson.js
 
 # contents page numbers: the matcher that tells each Contents line which page

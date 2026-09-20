@@ -21,7 +21,7 @@ faded educational cover artwork:
 | `fr.png` | French | [Eiffel Tower photograph, Pixabay](https://pixabay.com/images/search/the%20eiffel%20tower/) |
 | `sc.png` | General Science | [Atomic force microscope, Wikimedia Commons](https://en.wikipedia.org/wiki/Microscope) |
 | `hs.png` | Health Science (elementary) | AI-generated (soap, toothbrush, apple, glass of water and a bandage roll on a desk) — no upstream photographer or licence to clear |
-| `cs.png` | Computer Science (elementary) | AI-generated (laptop, keyboard, mouse, paper arrows and a blank flowchart on a chalkboard) — no letters, digits or people; no upstream photographer or licence to clear |
+| `cs.png` | Computer Science (Grades 1–12) | AI-generated (laptop, keyboard, mouse, paper arrows and a blank flowchart on a chalkboard) — no letters, digits or people; no upstream photographer or licence to clear |
 | `ma.png` | Mathematics | [Mathematics on a blackboard, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mathematics_(cryptography)_on_a_blackboard.jpg) |
 | `ss.png` | Social Studies | [World-history classroom](https://buildingbooklove.com/middle-school-world-history-classroom/) |
 | `rm.png` | Religious & Moral Education | [Working Together puzzle concept, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Working_Together_Teamwork_Puzzle_Concept.jpg) |

@@ -33,7 +33,7 @@ offline-ready. `tests/sw.js` guards all of this.
 |---|---|---|
 | Branding | `brand.js` | White-label strings (`window.APP_BRAND`): product name, short name, tutor name, support address, footer text. Edit one object to rebrand. |
 | Usage | `usage.js` | Optional on-device counters. **No network call** — enforced by `tests/usage.js`. |
-| Content | `data-*.js` | One curriculum array per subject. Junior/Senior High parts are merged in (`data-ma79.js`, `data-ma-sh.js`, `data-fr79.js`, `data-fr1012.js`, `data-*79.js`). |
+| Content | `data-*.js` | One curriculum array per subject. Junior/Senior High parts are merged in (`data-ma79.js`, `data-ma-sh.js`, `data-fr79.js`, `data-fr1012.js`, `data-cs79.js`, `data-cs1012.js`, `data-*79.js`). |
 | Generation | `gen-*.js` | Deterministic exercise engines per subject. Physics/Biology/Chemistry reuse `gen-sc.js`; Economics/Geography/History reuse `gen-ss.js`; Phonics, Literature, Mathematics and WASSCE have their own. |
 | Presentation | `app.js` | Subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence, WASSCE track. The largest file (3.3k lines) and the one to read last. |
 | Teaching tools | `teaching.js`, `lesson.js` | Teaching workspace: IndexedDB library, question editor, assessment builder; daily and weekly lesson/unit plan builders. |
@@ -128,6 +128,8 @@ node tests/ai.js                # tutor failure handling
 node tests/header-footer.js     # sheet + platform header/footer
 node tests/history.js           # Senior High History
 node tests/kg-lesson.js         # Kindergarten ECD lesson plans
+node tests/health-lesson.js     # Elementary health units and plans
+node tests/cs-lesson.js         # Computer Science units, Grades 1-12, and computing plans
 node tests/civics-teaching.js   # all 36 Civics units
 node tests/usage.js             # usage counters and the no-network guarantee
 node tests/sw.js                # offline shell: resilient install, per-page caching, fallbacks
@@ -161,7 +163,8 @@ not in CI today.
 - The AI tutor needs internet; the rest does not.
 - Printing is the real cost of using the platform, not the software.
 - 15 subjects' notes are transcriptions of MoE curriculum guides; Civics and
-  Senior High History are original content aligned to a supplied guide
+  Senior High History are original content aligned to a supplied guide, and
+  Computer Science (Grades 1–12) is original content with no supplied guide
   (see `NOTICE.md`).
 - The WASSCE track is original practice material, not official WAEC papers.
 - `uploads/` holds source PDFs that are **not** licensed for redistribution and

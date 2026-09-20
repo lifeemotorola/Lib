@@ -1,14 +1,16 @@
 #!/usr/bin/env node
-/* Node check for the Elementary Computer Science units and the computing-plan
-   wording. Zero-dependency: run with  node tests/cs-lesson.js
+/* Node check for the Computer Science units (Grades 1-12) and the
+   computing-plan wording. Zero-dependency: run with  node tests/cs-lesson.js
 
-   Executes the real data-cs.js units through the real lesson.js builders and
-   checks that the Grades 1-6 computing plans speak unplugged computing-lesson
-   language (computing circle, pair-debug, computing fair) and always carry
-   the device/online-safety note — while Health Science, General Science and
-   Kindergarten keep their exact existing wording. It also checks that
-   data-cs.js is wired into build.sh, app.js, the verbatim-notes check and the
-   built index.html, and that GEN_SC packs print Computing Classroom Rules.
+   Executes the real data-cs.js (Grades 1-6), data-cs79.js (Grades 7-9) and
+   data-cs1012.js (Grades 10-12) units through the real lesson.js builders and
+   checks that every computing plan speaks unplugged / paper-first
+   computing-lesson language (computing circle, pair-debug, computing fair)
+   and always carries the device/online-safety note — while Health Science,
+   General Science and Kindergarten keep their exact existing wording. It also
+   checks that the three data files are wired into build.sh, app.js, the
+   verbatim-notes check and the built index.html, and that GEN_SC packs print
+   Computing Classroom Rules.
 */
 "use strict";
 const fs = require("fs");
@@ -24,8 +26,9 @@ const sandbox = {
 };
 sandbox.window = sandbox;
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(path.join(root, "data-cs.js"), "utf8"), sandbox,
-  { filename: "data-cs.js" });
+["data-cs.js", "data-cs79.js", "data-cs1012.js"].forEach((f) => {
+  vm.runInContext(fs.readFileSync(path.join(root, f), "utf8"), sandbox, { filename: f });
+});
 vm.runInContext(fs.readFileSync(path.join(root, "lesson.js"), "utf8"), sandbox,
   { filename: "lesson.js" });
 vm.runInContext(fs.readFileSync(path.join(root, "gen-sc.js"), "utf8"), sandbox,
@@ -80,9 +83,16 @@ function hasTitle(blocks, s) {
 /* ------------------------------------------------------------------ */
 console.log("\n-- CS_CURRICULUM shape --");
 const PERIODS = ["I", "II", "III", "IV", "V", "VI"];
-ok(Array.isArray(units) && units.length === 36,
-  "thirty-six computing units: Periods I-VI in every Elementary grade");
-[1, 2, 3, 4, 5, 6].forEach((g) => {
+const GRADES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+ok(Array.isArray(units) && units.length === 72,
+  "seventy-two computing units: Periods I-VI in every grade from 1 to 12");
+ok(units.filter((u) => u.grade >= 1 && u.grade <= 6).length === 36,
+  "thirty-six Elementary units (data-cs.js)");
+ok(units.filter((u) => u.grade >= 7 && u.grade <= 9).length === 18,
+  "eighteen Junior High units (data-cs79.js)");
+ok(units.filter((u) => u.grade >= 10 && u.grade <= 12).length === 18,
+  "eighteen Senior High units (data-cs1012.js)");
+GRADES.forEach((g) => {
   const gUnits = units.filter((u) => u.grade === g);
   ok(gUnits.length === 6, "grade " + g + " carries six computing units, one per period");
   PERIODS.forEach((p) => {
@@ -102,6 +112,10 @@ ok(units.every((u) => u.source && u.source.type === "original"),
   "every unit is marked original, not an official transcription");
 ok(units.every((u) => (u.subtitle || "").indexOf("Original") >= 0),
   "every subtitle names the original-resource status");
+ok(units.filter((u) => u.grade <= 6).every((u) => /elementary/i.test(u.subtitle)) &&
+   units.filter((u) => u.grade >= 7 && u.grade <= 9).every((u) => /junior high/i.test(u.subtitle)) &&
+   units.filter((u) => u.grade >= 10).every((u) => /senior high/i.test(u.subtitle)),
+  "every subtitle names its own band (elementary, junior high or senior high)");
 ok(units.every((u) => (u.objectives || []).length >= 5), "every unit carries 5+ objectives");
 ok(units.every((u) => (u.terms || []).length >= 10), "every unit carries 10+ key terms");
 ok(units.every((u) => (u.facts || []).length >= 6), "every unit carries 6+ oral/written questions");
@@ -130,7 +144,7 @@ ok(units.every((u) => !/guide pp?\./i.test(u.subtitle || "")),
   "no invented national-guide page citations");
 ok(units.every((u) => /head teacher|trusted adult/i.test(u.safeguard)),
   "every safety note tells the teacher where a disclosure goes");
-ok(new Set(units.map((u) => u.title)).size === 36, "every unit title is unique");
+ok(new Set(units.map((u) => u.title)).size === 72, "every unit title is unique across Grades 1-12");
 const blob = JSON.stringify(units);
 ok(blob.indexOf("</script>") < 0, "no closing script tag in the curriculum payload");
 ["A computer is a machine that follows instructions",
@@ -140,6 +154,43 @@ ok(blob.indexOf("</script>") < 0, "no closing script tag in the curriculum paylo
  "Mobile money"].forEach((f) => {
   ok(blob.indexOf(f) >= 0, "spot fact present: " + f);
 });
+/* the upper-grade units carry their own subject matter, not a re-run of Grades 1-6 */
+[["Algorithms, Flowcharts and Trace Tables", 7],
+ ["Spreadsheets \u2014 Cells, Formulas and Functions", 8],
+ ["Programming \u2014 Selection and Repetition", 9],
+ ["Number Systems \u2014 Binary, Octal and Hexadecimal", 10],
+ ["Logic Gates and Boolean Algebra", 10],
+ ["Relational Databases and SQL", 11],
+ ["Algorithm Efficiency \u2014 Searching, Sorting and Big-O", 12]].forEach(([title, g]) => {
+  const u = units.filter((x) => x.title === title)[0];
+  ok(u && u.grade === g, "grade " + g + " teaches \u201c" + title + "\u201d");
+});
+const upper = units.filter((u) => u.grade >= 7);
+ok(upper.every((u) => (u.worked || []).every((w) => w.q && w.a && Array.isArray(w.steps) && w.steps.length)),
+  "every upper-grade worked example carries a question, steps and an answer");
+ok(upper.every((u) => (u.diagram && u.diagram.parts && u.diagram.parts.length >= 4) &&
+   (u.classify && u.classify.groups && u.classify.groups.length === 2)),
+  "every upper-grade unit carries both a labelled diagram and a two-group sorting task");
+ok(upper.every((u) => (u.study || []).filter((b) => b.k === "table").length >= 4),
+  "every upper-grade unit's course text carries 4+ tables");
+const upperBlob = JSON.stringify(upper);
+/* the renderer bolds **text** spans that contain no other asterisk; any ** left
+   after removing those spans would print literally (e.g. a Python ** power) */
+const strayBold = [];
+(function walk(v, at) {
+  if (typeof v === "string") {
+    if (v.replace(/\*\*[^*]+\*\*/g, "").indexOf("**") >= 0) strayBold.push(at);
+  } else if (Array.isArray(v)) {
+    v.forEach((x, i) => walk(x, at + "[" + i + "]"));
+  } else if (v && typeof v === "object") {
+    Object.keys(v).forEach((k) => walk(v[k], at + "." + k));
+  }
+})(upper, "units");
+ok(!strayBold.length,
+  "every ** in the upper-grade text is a renderable bold span" +
+  (strayBold.length ? " (stray: " + strayBold.slice(0, 3).join(", ") + ")" : ""));
+ok(upperBlob.indexOf("undefined") < 0 && upperBlob.indexOf("NaN") < 0,
+  "the upper-grade payload has no undefined or NaN holes");
 ok(units.every((u) => (u.terms || []).every((tm) =>
   tm.t && tm.d && tm.x && tm.x.toLowerCase().indexOf(tm.t.toLowerCase()) >= 0)),
   "every cloze sentence contains its own term");
@@ -228,7 +279,7 @@ const w3 = LP.build(baseOpts({ grade: 2, topics: ["VI"], lpPlanType: "weekly", l
 ok(textOf(w3.blocks).indexOf("Algorithm Strengthening") >= 0, "a 3-week unit still paces the algorithm");
 
 /* ------------------------------------------------------------------ */
-console.log("\n-- every one of the thirty-six units plans, and prints its own content --");
+console.log("\n-- every one of the seventy-two units plans, and prints its own content --");
 units.forEach((u) => {
   const g = u.grade, per = u.period;
   const p = LP.build(baseOpts({ grade: g, topics: [per], lpPlanType: "daily" }));
@@ -244,6 +295,31 @@ units.forEach((u) => {
   ok(w.indexOf("Computing Fair & Debug Check") >= 0 && w.indexOf("Computing Circle") >= 0,
     "grade " + g + " " + per + ": the weekly plan keeps the computing cycle and closes with the computing fair");
 });
+
+/* ------------------------------------------------------------------ */
+console.log("\n-- Grade 10 daily plan and Grade 12 weekly plan (upper grades use the same computing shape) --");
+const sh = LP.build(baseOpts({ grade: 10, topics: ["II"], levelName: "Grade 10",
+  subjectLine: "Computer Science - Senior High", lpPlanType: "daily" }));
+const sht = textOf(sh.blocks);
+ok(sht.indexOf("Number Systems") >= 0, "the Grade 10 plan teaches number systems");
+ok(sht.indexOf("Grade 10") >= 0, "the grade label reads Grade 10");
+ok(sht.indexOf("Computing circle") >= 0 && sht.indexOf("Device & Online-Safety Note") >= 0,
+  "the senior high plan keeps the computing circle and the safety note");
+ok(sht.indexOf("Health circle") < 0 && sht.indexOf("Welcome song") < 0,
+  "no health or ECD wording on a senior high computing plan");
+ok(/binary|hexadecimal|base/i.test(sht), "the Grade 10 plan draws its questions from the unit itself");
+const g12 = LP.build(baseOpts({ grade: 12, topics: ["IV"], levelName: "Grade 12",
+  subjectLine: "Computer Science - Senior High", lpPlanType: "weekly" }));
+const g12t = textOf(g12.blocks);
+ok(g12t.indexOf("Algorithm Efficiency") >= 0, "the Grade 12 weekly plan teaches algorithm efficiency");
+ok(g12t.indexOf("Computing Fair & Debug Check") >= 0, "the Grade 12 unit still closes with the computing fair");
+ok(g12t.indexOf("Week 1 of 4:") >= 0, "the Grade 12 weekly plan paces four weeks");
+ok(g12t.indexOf("Device & Online-Safety Note") >= 0, "the safety note is on the Grade 12 plan too");
+const jh = LP.build(baseOpts({ grade: 8, topics: ["II"], levelName: "Grade 8",
+  subjectLine: "Computer Science - Junior High", lpPlanType: "daily" }));
+const jht = textOf(jh.blocks);
+ok(jht.indexOf("Spreadsheets") >= 0 && /formula|cell/i.test(jht),
+  "the Grade 8 plan teaches spreadsheets from the unit's own material");
 
 /* ------------------------------------------------------------------ */
 console.log("\n-- GEN_SC course pack uses Computing Classroom Rules --");
@@ -264,6 +340,29 @@ ok(pt.indexOf("Computers Around Us") >= 0, "the pack names the unit");
 ok(/Calculations/.test(pt) && /show all your working/.test(pt) && pt.indexOf("Drill 1") < 0,
   "pack includes the shared GEN_SC worked sheet and no maths drill sheets");
 ok(JSON.stringify(pack).indexOf("undefined") < 0, "the pack has no undefined holes");
+const shPack = GEN.buildPack({
+  curriculum: units, grade: 11, topics: ["I", "IV"],
+  sheets: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "worked", "apply"],
+  perEx: 6, seed: 5, tests: true, exam: true, keys: true, teacher: true,
+  subjectId: "cs", subjectName: "COMPUTER SCIENCE", subjectLine: "Computer Science",
+  bandName: "Senior High"
+});
+const spt = textOf(shPack.blocks);
+ok(shPack.topics.length === 2, "a senior high pack builds the selected computing units");
+ok(spt.indexOf("Programming in Python") >= 0 && spt.indexOf("Relational Databases and SQL") >= 0,
+  "the senior high pack names its units");
+ok(spt.indexOf("Computing Classroom Rules") >= 0 && spt.indexOf("Science Safety Rules") < 0,
+  "senior high CS packs print Computing Classroom Rules, not Science Safety Rules");
+ok(JSON.stringify(shPack).indexOf("undefined") < 0, "the senior high pack has no undefined holes");
+const jhPack = GEN.buildPack({
+  curriculum: units, grade: 7, topics: ["VI"],
+  sheets: ["terms", "match", "cloze", "tf", "short", "mcq", "classify", "diagram", "experiment", "worked", "apply"],
+  perEx: 6, seed: 5, tests: true, exam: true, keys: true, teacher: true,
+  subjectId: "cs", subjectName: "COMPUTER SCIENCE", subjectLine: "Computer Science",
+  bandName: "Junior High"
+});
+ok(textOf(jhPack.blocks).indexOf("Trace Tables") >= 0 && JSON.stringify(jhPack).indexOf("undefined") < 0,
+  "a junior high pack builds the flowchart unit with no undefined holes");
 
 /* ------------------------------------------------------------------ */
 console.log("\n-- other subjects are untouched --");
@@ -308,6 +407,8 @@ ok(kt.indexOf("exercise book") < 0, "Kindergarten still has no exercise books");
 console.log("\n-- wiring and build --");
 const build = fs.readFileSync(path.join(root, "build.sh"), "utf8");
 ok(build.indexOf("data-cs.js") > 0, "build.sh concatenates data-cs.js");
+ok(build.indexOf("data-cs.js data-cs79.js data-cs1012.js") > 0,
+  "build.sh concatenates data-cs79.js and data-cs1012.js right after data-cs.js (they merge into CS_CURRICULUM)");
 ok(/\bfor id in [^\n]*\bcs\b/.test(build), "build.sh inlines the computing cover artwork");
 ok(/Computer Science/.test(build), "the built page titles the new subject");
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
@@ -315,12 +416,16 @@ ok(/    cs: \{\n      label: "Computer Science"/.test(app),
   "app.js registers the Computer Science subject");
 ok(/curriculum: function \(\) \{ return CS_CURRICULUM; \}/.test(app),
   "the subject reads the data-cs.js curriculum");
+ok(/Computer Science Grades 7\\u20139/.test(app) && /Computer Science Grades 10\\u201312/.test(app),
+  "the grade-band note names the junior and senior high computing units");
 ok(/engine: function \(\) \{ return GEN_SC; \}/.test(app),
   "computing packs reuse the General Science sheet engine");
 const icons = fs.readFileSync(path.join(root, "icons.svg.html"), "utf8");
 ok(icons.indexOf('id="i-sub-cs"') > 0, "the subject tab has its own computer icon");
 const nv = fs.readFileSync(path.join(root, "tests/notes-verbatim.js"), "utf8");
 ok(nv.indexOf("CS_CURRICULUM") > 0, "the verbatim study-notes check covers the computing units");
+ok(nv.indexOf("data-cs79.js") > 0 && nv.indexOf("data-cs1012.js") > 0,
+  "the verbatim study-notes check loads the upper-grade computing files too");
 const rg = fs.readFileSync(path.join(root, "tests/regress.py"), "utf8");
 ok(rg.indexOf("'cs'") >= 0 || rg.indexOf('"cs"') >= 0,
   "the Playwright subject sweep includes the computing subject");
@@ -344,6 +449,9 @@ const built = path.join(root, "index.html");
 if (fs.existsSync(built)) {
   const idx = fs.readFileSync(built, "utf8");
   ok(idx.indexOf("CS_CURRICULUM") > 0, "the built page carries the computing units");
+  ok(idx.indexOf("Algorithms, Flowcharts and Trace Tables") > 0 &&
+     idx.indexOf("Algorithm Efficiency \u2014 Searching, Sorting and Big-O") > 0,
+    "the built page carries the junior and senior high computing units");
   ok(idx.indexOf('id="i-sub-cs"') > 0, "the built page carries the computing tab icon");
   ok(idx.indexOf("SUBJECT_COVER_ART") > 0 && /"cs":\{url:"data:image\/png/.test(idx),
     "the built page inlines the computing cover artwork");
@@ -352,5 +460,5 @@ if (fs.existsSync(built)) {
 }
 
 console.log(fails ? `\nFAILED (${fails})` :
-  "\nOK: the Elementary Computer Science lesson plans check out.");
+  "\nOK: the Computer Science lesson plans (Grades 1-12) check out.");
 process.exit(fails ? 1 : 0);
