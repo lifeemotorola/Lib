@@ -358,12 +358,12 @@
               '<div class="mini-sheet-body">' +
                 '<div class="mini-page' + (fLeft > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (fLeft > n ? 'Blank' : 'Page ' + fLeft) + '</span>' +
-                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fLeft === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
                 '<div class="mini-crease"></div>' +
                 '<div class="mini-page' + (fRight > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (fRight > n ? 'Blank' : 'Page ' + fRight) + '</span>' +
-                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fRight === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
               '</div>';
 
@@ -374,12 +374,12 @@
               '<div class="mini-sheet-body">' +
                 '<div class="mini-page' + (bLeft > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (bLeft > n ? 'Blank' : 'Page ' + bLeft) + '</span>' +
-                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bLeft === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
                 '<div class="mini-crease"></div>' +
                 '<div class="mini-page' + (bRight > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (bRight > n ? 'Blank' : 'Page ' + bRight) + '</span>' +
-                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bRight === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
               '</div>';
 
