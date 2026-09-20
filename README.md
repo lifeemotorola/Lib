@@ -1,4 +1,4 @@
-# Liberian National Curriculum Course Pack Generator
+# Easy School Liberia 
 
 An **offline, single-file web app** that generates printable course packs for the
 Liberian National Curriculum: pupil workbooks, period tests, semester
