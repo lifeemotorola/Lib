@@ -523,6 +523,30 @@ main{ min-width:0; }
   margin: 0;
   padding: 0;
 }
+.fold-subpage.backcover {
+  padding: 0 !important;
+}
+.fold-subpage.backcover .phead,
+.fold-subpage.backcover .pfoot {
+  display: none !important;
+}
+.fold-subpage.backcover .pbody {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.fold-subpage.authorpage {
+  padding: 0 !important;
+}
+.fold-subpage.authorpage .phead,
+.fold-subpage.authorpage .pfoot {
+  display: none !important;
+}
+.fold-subpage.authorpage .pbody {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 /* Typography and elements inside fold-subpage matching .page */
 .fold-subpage h1 { font-size:1.43em; color:var(--bleu); border-bottom:2px solid var(--bleu); padding-bottom:6px; margin:18px 0 10px; }
@@ -960,10 +984,20 @@ input:focus-visible,label:focus-visible{
 .cv-plain .cv-leaf,.cv-plain .cv-dots,.cv-plain .cv-note,.cv-plain .cv-strip{display:none}
 .cv-plain .cv-emblem{font-size:11mm}
 
+/* author back cover may carry same frame but with slightly muted note */
+.cvart.cv-back .cv-note{background:#e8f0ff}
+.cvart.cv-back .cv-panel{background:rgba(255,255,255,.78)}
+
 /* the cover sheet suppresses the running header and footer bands */
 .page.coverpage{padding:0}
 .page.coverpage .phead,.page.coverpage .pfoot{display:none}
 .page.coverpage .pbody{height:100%;margin:0;padding:0}
+.page.backcover{padding:0}
+.page.backcover .phead,.page.backcover .pfoot{display:none}
+.page.backcover .pbody{height:100%;margin:0;padding:0}
+.page.authorpage{padding:0}
+.page.authorpage .phead,.page.authorpage .pfoot{display:none}
+.page.authorpage .pbody{height:100%;margin:0;padding:0}
 
 @media print{
   .cvart{-webkit-print-color-adjust:exact;print-color-adjust:exact}

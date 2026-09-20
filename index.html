@@ -536,6 +536,30 @@ main{ min-width:0; }
   margin: 0;
   padding: 0;
 }
+.fold-subpage.backcover {
+  padding: 0 !important;
+}
+.fold-subpage.backcover .phead,
+.fold-subpage.backcover .pfoot {
+  display: none !important;
+}
+.fold-subpage.backcover .pbody {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.fold-subpage.authorpage {
+  padding: 0 !important;
+}
+.fold-subpage.authorpage .phead,
+.fold-subpage.authorpage .pfoot {
+  display: none !important;
+}
+.fold-subpage.authorpage .pbody {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 /* Typography and elements inside fold-subpage matching .page */
 .fold-subpage h1 { font-size:1.43em; color:var(--bleu); border-bottom:2px solid var(--bleu); padding-bottom:6px; margin:18px 0 10px; }
@@ -973,10 +997,20 @@ input:focus-visible,label:focus-visible{
 .cv-plain .cv-leaf,.cv-plain .cv-dots,.cv-plain .cv-note,.cv-plain .cv-strip{display:none}
 .cv-plain .cv-emblem{font-size:11mm}
 
+/* author back cover may carry same frame but with slightly muted note */
+.cvart.cv-back .cv-note{background:#e8f0ff}
+.cvart.cv-back .cv-panel{background:rgba(255,255,255,.78)}
+
 /* the cover sheet suppresses the running header and footer bands */
 .page.coverpage{padding:0}
 .page.coverpage .phead,.page.coverpage .pfoot{display:none}
 .page.coverpage .pbody{height:100%;margin:0;padding:0}
+.page.backcover{padding:0}
+.page.backcover .phead,.page.backcover .pfoot{display:none}
+.page.backcover .pbody{height:100%;margin:0;padding:0}
+.page.authorpage{padding:0}
+.page.authorpage .phead,.page.authorpage .pfoot{display:none}
+.page.authorpage .pbody{height:100%;margin:0;padding:0}
 
 @media print{
   .cvart{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -163986,12 +164020,12 @@ window.WA_SUBJECTS.crs = window.WA_crs;
               '<div class="mini-sheet-body">' +
                 '<div class="mini-page' + (fLeft > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (fLeft > n ? 'Blank' : 'Page ' + fLeft) + '</span>' +
-                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (fLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fLeft === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
                 '<div class="mini-crease"></div>' +
                 '<div class="mini-page' + (fRight > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (fRight > n ? 'Blank' : 'Page ' + fRight) + '</span>' +
-                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (fRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (fRight === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
               '</div>';
 
@@ -164002,12 +164036,12 @@ window.WA_SUBJECTS.crs = window.WA_crs;
               '<div class="mini-sheet-body">' +
                 '<div class="mini-page' + (bLeft > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (bLeft > n ? 'Blank' : 'Page ' + bLeft) + '</span>' +
-                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bLeft === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (bLeft === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bLeft === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
                 '<div class="mini-crease"></div>' +
                 '<div class="mini-page' + (bRight > n ? ' mini-blank' : '') + '">' +
                   '<span class="mini-pg-num">' + (bRight > n ? 'Blank' : 'Page ' + bRight) + '</span>' +
-                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bRight === r.total ? '<span class="mini-pg-sub">Back Cover</span>' : '')) +
+                  (bRight === 1 ? '<span class="mini-pg-sub">Front Cover</span>' : (bRight === r.total ? '<span class="mini-pg-sub">Author — Back Cover</span>' : '')) +
                 '</div>' +
               '</div>';
 
@@ -167916,6 +167950,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   var bookMode = "duplex";
   var bookPaper = "a4";
   var lastLayoutOut = null;
+  var currentFoldInfo = null; /* {frontCount, backCount, contentTotal, total} for fold pagination */
 
   var FOLD_SHEET_DIMS = {
     a4:    { w: "297mm", h: "210mm", scale: 0.707106, label: "A4", foldedName: "A5" },
@@ -169085,6 +169120,138 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       foot + "</div></div>";
   }
 
+  /* ---- author back cover (fold booklet) ----
+     The back of the fold booklet is about the author. This renders a full-sheet
+     back cover with author information, styled as a designed cover but with
+     author-specific content. It is marked with per:"author" and _backCover so
+     pagination can exclude it from the page count in fold mode. */
+  function isAuthorBlock(b) {
+    return !!(b && (b.k === "author" || b.per === "author" || b._backCover || b._author));
+  }
+  function isFrontCoverBlock(b) {
+    return !!(b && (b.k === "covart" || b._cover));
+  }
+  function authorCoverHtml(b) {
+    var t = COVER_TPL[b.tpl] || COVER_TPL.classic;
+    var ds = normalizeDesign(b.design || COVER.design);
+    function on(k) { return ds.show[k] !== false; }
+    function label(key, fallback) { return COVER_TEXT.label(b, key, fallback); }
+    var title = b.authorTitle || "About the Author";
+    var subtitle = b.authorSubtitle || (b.teacher ? "Written by " + b.teacher : "Easy School Liberia");
+    var school = b.school || "";
+    var teacher = b.teacher || "";
+    var subject = b.subject || "";
+    var klass = b.klass || "";
+    var avatar = b.avatar || (typeof window !== "undefined" && window.EMMANUEL_AVATAR) || "";
+    var product = b.product || "Easy School Liberia";
+    var tutor = b.tutor || "Emmanuel";
+    var year = b.year || "";
+    var bio = b.bio || "";
+    if (!bio) {
+      bio = "This booklet was prepared for " + (subject || "the subject") + " " + (klass || "") +
+        " by " + (teacher || "the teacher") + (school ? " of " + school : "") + ". " +
+        "It was generated with " + product + ", an offline, single-file web app that creates printable course packs " +
+        "for the Liberian National Curriculum. The content is transcribed from the official curriculum guides " +
+        "and enriched with exercises, study notes and assessments. " +
+        tutor + ", the AI tutor, is available online to help learners with difficult words and questions.";
+    }
+    var mission = "**Mission:** Provide every Liberian teacher with free, offline, printable workbooks, tests and answer keys — no internet, no cost, no dependency.";
+    var contact = "**" + product + "** \u00b7 Liberian National Curriculum \u00b7 " + (year || new Date().getFullYear()) + " \u00b7 Teacher's copy — not for pupil distribution when answer keys are included.";
+
+    var bgLayer = "";
+    if (b.bg) {
+      var fade = Math.max(0, Math.min(100, b.bgFade === undefined ? 78 : b.bgFade)) / 100;
+      bgLayer =
+        '<div class="cv-bg" style="background-image:url(' + b.bg + ')"></div>' +
+        '<div class="cv-veil" style="opacity:' + fade.toFixed(2) + '"></div>';
+    }
+    var emblemId = ds.emblem || t.emblem;
+    var emblem = !on("emblem") ? "" : b.logo
+      ? '<div class="cv-logo"><img src="' + b.logo + '" alt=""></div>'
+      : avatar
+        ? '<div class="cv-logo"><img src="' + avatar + '" alt="Author" style="border-radius:50%;width:28mm;height:28mm;object-fit:cover;border:2px solid ' + t.leaf + '"></div>'
+        : '<div class="cv-emblem"><svg class="ic cv-em-svg" aria-hidden="true"><use href="#i-' + emblemId + '"/></svg></div>';
+
+    var rows = "";
+    function row(lab, val) {
+      return '<div class="cv-row"><span class="cv-lab">' + esc(lab) + ':</span><span class="cv-val">' + esc(val || "") + '</span></div>';
+    }
+    if (teacher) rows += row(label("teacherLabel", "Author / Teacher"), teacher);
+    if (school) rows += row(label("schoolLabel", "School"), school);
+    if (subject) rows += row(label("subjectLabel", "Subject"), subject);
+    if (klass) rows += row(label("classLabel", "Class"), klass);
+
+    return '<div class="cvart ' + t.cls + ' cv-back ' + (b.bg ? " hasbg" : "") + '"' + designVars(ds) + '>' +
+      bgLayer +
+      (on("leaf") ? '<div class="cv-leaf cv-lt">' + leafSvg(t.leaf) + '</div><div class="cv-leaf cv-rb">' + leafSvg(t.leaf) + '</div>' : "") +
+      (on("dots") ? '<div class="cv-dots cv-dtr"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : "") +
+      '<div class="cv-content"><div class="cv-head">' +
+        emblem +
+        '<h1 class="cv-t1">' + esc(title) + '</h1>' +
+        '<div class="cv-t2">' + esc(subtitle) + '</div>' +
+        (on("rule") ? '<div class="cv-rule"><span></span><b><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg></b><span></span></div>' : "") +
+        '<p class="cv-sub">' + esc(product + ' \u00b7 Back Cover') + '</p>' +
+      '</div>' +
+      '<div class="cv-panel dash" style="margin-top:6mm">' +
+        '<p style="font-size:4.2mm;line-height:1.5;margin:0 0 3mm">' + rich(bio) + '</p>' +
+        '<p style="font-size:3.8mm;line-height:1.5;margin:3mm 0 0">' + rich(mission) + '</p>' +
+        (rows ? '<div style="margin-top:5mm">' + rows + '</div>' : '') +
+      '</div>' +
+      '<div class="cv-foot" style="margin-top:auto"><div class="cv-org" style="max-width:100%;text-align:center;font-size:3.4mm">' + esc(contact) + '</div></div>' +
+      '</div></div>';
+  }
+
+  function buildAuthorBlocks(o, sj) {
+    var text = { schoolLabel: "School", teacherLabel: "Author / Teacher", subjectLabel: "Subject", classLabel: "Class" };
+    try {
+      if (window.COVER_TEXT && COVER && COVER.text) {
+        var dummy = { labels: COVER.text, school: "", motto: "", title1: "", title2: "", line: "", subject: "", klass: "", teacher: "", pupil: "", term: "", year: "", crest: "", note: "", design: COVER.design };
+        text.schoolLabel = window.COVER_TEXT.label(dummy, "schoolLabel", "School");
+        text.teacherLabel = window.COVER_TEXT.label(dummy, "teacherLabel", "Author / Teacher");
+        text.subjectLabel = window.COVER_TEXT.label(dummy, "subjectLabel", "Subject");
+        text.classLabel = window.COVER_TEXT.label(dummy, "classLabel", "Class");
+      }
+    } catch (e) {}
+    var subject = (sj && (sj.packName || sj.label)) || (o && o.subjectLine) || "Course Pack";
+    var klass = (o && (o.levelLabel || ("Grade " + o.grade))) || "";
+    var teacher = (o && o.teacherName) || COVER.teacher || "";
+    var school = (o && o.school) || COVER.school || "";
+    var coverBg = null;
+    try { coverBg = activeCoverBg(o); } catch (e) {}
+    var design = normalizeDesign(COVER.design);
+    var avatar = (typeof window !== "undefined" && window.EMMANUEL_AVATAR) || "";
+    var product = (window.APP_BRAND && window.APP_BRAND.product) || "Easy School Liberia";
+    var tutor = (window.APP_BRAND && window.APP_BRAND.tutor) || "Emmanuel";
+    return [
+      { k: "pagebreak" },
+      {
+        k: "author",
+        tpl: COVER.tpl,
+        school: school,
+        teacher: teacher,
+        subject: subject,
+        klass: klass,
+        term: COVER.term,
+        year: COVER.year,
+        logo: COVER_IMG.logo ? COVER_IMG.logo.url : "",
+        bg: coverBg ? coverBg.url : "",
+        bgMime: coverBg ? (coverBg.mime || "image/png") : "",
+        bgFade: COVER.bgFade,
+        design: design,
+        labels: text,
+        avatar: avatar,
+        product: product,
+        tutor: tutor,
+        authorTitle: "About the Author",
+        authorSubtitle: teacher ? "Prepared by " + teacher : product,
+        bio: "",
+        per: "author",
+        _backCover: true,
+        _author: true
+      }
+    ];
+  }
+
   /* Renders to real A4 sheets. Content is measured and flowed so nothing is clipped:
      a block that will not fit the remaining height of a sheet moves to the next sheet. */
   function blockHtml(b) {
@@ -169129,6 +169296,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       case "space": return '<div class="sp"></div>';
       case "rule": return "<hr>";
       case "covart": return coverArtHtml(b);
+      case "author": return authorCoverHtml(b);
       default: return "";
     }
   }
@@ -169167,7 +169335,69 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     if (!p) return "";
     if (p === "exam") return TEACHING.isAssessment() ? "Practice Assessment" : "Semester Examinations";
     if (p === "keys") return "Answer Keys";
+    if (p === "author") return "About the Author";
     return "Period " + (PERIOD_NO[p] || p);
+  }
+
+  /* ---------------- fold book pagination helpers ----------------
+     Front matter (cover + TOC) and back matter (author back cover) must not
+     be counted in the fold booklet's page numbers. Page numbers start at the
+     first lesson (first content page). */
+
+  function isContentPer(per) {
+    if (!per) return false;
+    var s = String(per).trim().toLowerCase();
+    if (!s) return false;
+    if (s === "author") return false; /* back cover, not counted */
+    return true;
+  }
+
+  function isFrontMatterPer(per) {
+    /* empty per before first content, or explicitly author? author is back, not front */
+    return !isContentPer(per);
+  }
+
+  function getFoldBoundaries(out) {
+    var total = out.pages ? out.pages.length : 0;
+    var perArr = out.pagePer || [];
+    var frontCount = 0;
+    /* frontCount = number of leading pages whose per is not content (cover, TOC) */
+    for (var i = 0; i < total; i++) {
+      var per = perArr[i] || "";
+      if (isContentPer(per)) break;
+      /* also check if page contains author block (should not happen at front) */
+      var bl = out.pages[i] || [];
+      var hasAuthor = false;
+      for (var j = 0; j < bl.length; j++) { if (isAuthorBlock(bl[j])) { hasAuthor = true; break; } }
+      if (hasAuthor) break;
+      frontCount++;
+    }
+    var backCount = 0;
+    for (var k = total - 1; k >= 0; k--) {
+      var perB = perArr[k] || "";
+      var blB = out.pages[k] || [];
+      var isAuthorPage = false;
+      if (perB === "author") isAuthorPage = true;
+      else {
+        for (var j2 = 0; j2 < blB.length; j2++) { if (isAuthorBlock(blB[j2])) { isAuthorPage = true; break; } }
+      }
+      if (!isAuthorPage) break;
+      backCount++;
+      /* stop if we hit content before frontCount (defensive) */
+      if (k <= frontCount) break;
+    }
+    var contentTotal = total - frontCount - backCount;
+    if (contentTotal < 0) contentTotal = 0;
+    return { frontCount: frontCount, backCount: backCount, contentTotal: contentTotal, total: total };
+  }
+
+  function getFoldDisplayForPage(pageIdx, foldInfo) {
+    /* pageIdx 0-based */
+    if (!foldInfo) return { isContent: true, number: pageIdx + 1, total: foldInfo ? foldInfo.total : 0 };
+    var n = pageIdx + 1;
+    if (pageIdx < foldInfo.frontCount) return { isContent: false, number: 0, total: foldInfo.contentTotal };
+    if (pageIdx >= foldInfo.total - foldInfo.backCount) return { isContent: false, number: 0, total: foldInfo.contentTotal };
+    return { isContent: true, number: n - foldInfo.frontCount, total: foldInfo.contentTotal };
   }
 
   function setRunning(o) {
@@ -169209,17 +169439,35 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       '<span class="phdr-r">' + esc(r) + '</span>' +
       '</div>';
   }
-  function bandBottom(n, total) {
+  function bandBottom(n, total, pageIdx, foldInfo) {
     var sh = HF.sheet;
+    var curFold = (typeof currentFoldInfo !== 'undefined') ? currentFoldInfo : null;
+    var info = foldInfo || curFold;
+    var bMode = (typeof bookMode !== 'undefined') ? bookMode : "duplex";
+    var isFold = (bMode === "fold" && info);
+    var displayN = n;
+    var displayTotal = total;
+    var hideNumber = false;
+    if (isFold && typeof getFoldDisplayForPage === 'function') {
+      var d = getFoldDisplayForPage(pageIdx != null ? pageIdx : (n - 1), info);
+      if (!d.isContent) {
+        hideNumber = true;
+      } else {
+        displayN = d.number;
+        displayTotal = d.total;
+      }
+    }
     var autoFoot = runhead.foot;
-    var autoRight = "Page " + n + " of " + total;
+    var autoRight = isFold ? (hideNumber ? "" : ("Page " + displayN + " of " + displayTotal)) : ("Page " + n + " of " + total);
     var l = (sh.ftr && sh.ftr.l) ? sh.ftr.l : autoFoot;
     var r = (sh.ftr && sh.ftr.r) ? sh.ftr.r : autoRight;
     /* the page number sits in its own wrapper so it can be hidden without
        losing the right-side custom text; if the user kept the right text as
        the automatic one, hide the page number entirely */
-    var pgShown = sh.ftr && sh.ftr.pg !== false && !(sh.ftr && sh.ftr.r);
-    var pg = pgShown ? '<span class="pftr-pg">Page ' + n + ' of ' + total + '</span>' : '';
+    var pgShown = !hideNumber && sh.ftr && sh.ftr.pg !== false && !(sh.ftr && sh.ftr.r);
+    var pg = pgShown ? '<span class="pftr-pg">Page ' + displayN + ' of ' + displayTotal + '</span>' : '';
+    /* When hiding number in fold mode, also hide the auto right text if it was the page number */
+    if (hideNumber && !(sh.ftr && sh.ftr.r)) r = "";
     return '<div class="pfoot">' +
       '<span class="pftr-l">' + esc(l) + '</span>' +
       '<span><span class="pftr-r">' + esc(r) + '</span> ' + pg + '</span>' +
@@ -169278,7 +169526,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         var e = queue.shift(), b = e.b;
         if (b.per) curPer = b.per;          /* a new unit, test or section begins */
         if (b.k === "pagebreak") { flush(); continue; }
-        if (b.k === "covart") {           /* a designed cover owns a whole sheet */
+        if (b.k === "covart" || b.k === "author" || b._backCover || b._author) {           /* a designed cover or author back cover owns a whole sheet */
           if (cur.length) flush();
           cur.push(b); mark(e.i); flush();
           continue;
@@ -169408,14 +169656,24 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   function renderStandardPages(out) {
     var doc = $("#doc");
     var total = out.pages.length;
+    var foldInfo = null;
+    if (bookMode === "fold") {
+      foldInfo = getFoldBoundaries(out);
+      currentFoldInfo = foldInfo;
+    } else {
+      currentFoldInfo = null;
+    }
     doc.innerHTML = out.pages.map(function (bl, i) {
-      var isCover = bl.length === 1 && bl[0].k === "covart";
+      var isCover = bl.length === 1 && (bl[0].k === "covart" || bl[0].k === "author");
+      var isAuthor = bl.length === 1 && isAuthorBlock(bl[0]);
+      var cls = "page" + (isCover ? (isAuthor ? " backcover authorpage" : " coverpage") : "");
       if (isCover) {
-        return '<div class="page coverpage"><div class="pbody">' +
+        return '<div class="' + cls + '"><div class="pbody">' +
           blockHtml(bl[0]) + "</div></div>";
       }
-      return '<div class="page">' + bandTop(out.pagePer[i]) + '<div class="pbody">' +
-        bl.map(blockHtml).join("") + "</div>" + bandBottom(i + 1, total) + "</div>";
+      var fi = (bookMode === "fold") ? foldInfo : null;
+      return '<div class="' + cls + '">' + bandTop(out.pagePer[i]) + '<div class="pbody">' +
+        bl.map(blockHtml).join("") + "</div>" + bandBottom(i + 1, total, i, fi) + "</div>";
     }).join("");
     document.querySelectorAll("#doc .cv-content").forEach(function (content) {
       var height = content.clientHeight;
@@ -169431,6 +169689,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     var doc = $("#doc");
     var total = out.pages.length;
     var p = getFoldPaper(bookPaper);
+    var foldInfo = getFoldBoundaries(out);
+    currentFoldInfo = foldInfo;
     var r = (window.BOOK_TOOL && typeof window.BOOK_TOOL.fold === "function")
       ? window.BOOK_TOOL.fold(total, bookPaper)
       : null;
@@ -169445,19 +169705,62 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       r = { total: tot, sheets: shs, blanks: tot - total, front: front, back: back, paper: { label: p.label, foldedName: p.foldedName } };
     }
 
+    /* Ensure author back cover stays at the physical back cover (page M = r.total)
+       even when blank padding is needed. If total < r.total and last page is author,
+       map author to r.total and treat intermediate pages as blanks. */
+    var hasAuthorBack = foldInfo.backCount > 0;
+    var authorOrigPage = hasAuthorBack ? total : 0; /* 1-based original index of author */
+    /* If multiple author pages, keep them at end; for simplicity keep only last author page at M */
     var pageInnerHtml = {};
     for (var pg = 1; pg <= r.total; pg++) {
-      if (pg <= total) {
-        var bl = out.pages[pg - 1];
+      var bl = null;
+      var pageIdx = -1;
+      var isBlank = false;
+      if (hasAuthorBack && r.total > total) {
+        /* padded booklet with author back cover */
+        if (pg === r.total) {
+          /* back cover = author */
+          bl = out.pages[authorOrigPage - 1];
+          pageIdx = authorOrigPage - 1;
+        } else if (pg >= total && pg < r.total) {
+          /* padding blanks before author */
+          isBlank = true;
+        } else if (pg < total) {
+          bl = out.pages[pg - 1];
+          pageIdx = pg - 1;
+        } else {
+          isBlank = true;
+        }
+      } else {
+        if (pg <= total) {
+          bl = out.pages[pg - 1];
+          pageIdx = pg - 1;
+        } else {
+          isBlank = true;
+        }
+      }
+      if (isBlank) {
+        pageInnerHtml[pg] = '<div class="fold-subpage fold-blank">' +
+          '<div class="fold-blank-inner">' +
+            '<div class="fold-blank-badge">Blank Page</div>' +
+            '<div class="fold-blank-title">Page ' + pg + '</div>' +
+            '<div class="fold-blank-lines"><div class="fold-blank-line"></div><div class="fold-blank-line"></div><div class="fold-blank-line"></div></div>' +
+            '<div class="fold-blank-hint">Notes / Booklet padding</div>' +
+          '</div></div>';
+      } else if (bl) {
         var isCover = bl.length === 1 && bl[0].k === "covart";
+        var isAuthor = bl.length === 1 && isAuthorBlock(bl[0]);
         if (isCover) {
           pageInnerHtml[pg] = '<div class="fold-subpage coverpage"><div class="pbody">' +
             blockHtml(bl[0]) + '</div></div>';
+        } else if (isAuthor) {
+          pageInnerHtml[pg] = '<div class="fold-subpage backcover authorpage"><div class="pbody">' +
+            blockHtml(bl[0]) + '</div></div>';
         } else {
           pageInnerHtml[pg] = '<div class="fold-subpage">' +
-            bandTop(out.pagePer[pg - 1]) +
+            bandTop(out.pagePer[pageIdx]) +
             '<div class="pbody">' + bl.map(blockHtml).join("") + '</div>' +
-            bandBottom(pg, total) +
+            bandBottom(pg, total, pageIdx, foldInfo) +
             '</div>';
         }
       } else {
@@ -169472,8 +169775,28 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     }
 
     function makeSheetFace(sheetNum, faceName, passNum, lPg, rPg) {
-      var lLabel = (lPg > total) ? "Page " + lPg + " (Blank)" : (lPg === 1 ? "Page 1 (Cover)" : "Page " + lPg);
-      var rLabel = (rPg > total) ? "Page " + rPg + " (Blank)" : (rPg === 1 ? "Page 1 (Cover)" : "Page " + rPg);
+      function pgLabel(pg) {
+        if (pg > r.total) return "Page " + pg + " (Blank)";
+        if (pg === 1) return "Page 1 (Front Cover)";
+        if (foldInfo && foldInfo.backCount > 0 && pg === r.total) return "Page " + pg + " (Author — Back Cover)";
+        if (pg > total) return "Page " + pg + " (Blank)";
+        if (foldInfo) {
+          var origIdx = -1;
+          if (foldInfo.backCount > 0 && r.total > total && pg === r.total) origIdx = total - 1;
+          else if (pg <= total) origIdx = pg - 1;
+          if (origIdx >= 0) {
+            var d = getFoldDisplayForPage(origIdx, foldInfo);
+            if (!d.isContent) {
+              if (origIdx < foldInfo.frontCount) return "Page " + pg + " (Front matter)";
+              return "Page " + pg + " (Back Cover)";
+            }
+            return "Page " + pg + " (p." + d.number + ")";
+          }
+        }
+        return "Page " + pg;
+      }
+      var lLabel = pgLabel(lPg);
+      var rLabel = pgLabel(rPg);
       return '<div class="page fold-sheet" data-sheet="' + sheetNum + '" data-face="' + faceName.toLowerCase() + '">' +
         '<div class="fold-sheet-banner" aria-hidden="true">' +
           '<span class="fold-sheet-badge">Sheet ' + sheetNum + ' &middot; ' + faceName + ' (Pass ' + passNum + ')</span>' +
@@ -169532,15 +169855,42 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     var out = layout(blocks);
     /* Contents page numbers: alternate between laying the pack out and writing
        the numbers onto its contents list until the numbers describe the sheets
-       that are actually on screen. Two passes settle almost every pack. */
+       that are actually on screen. Two passes settle almost every pack.
+       In fold mode, TOC must show adjusted numbers (excluding front/back). */
     if (window.PACK_TOC) {
       for (var pass = 0; pass < 4; pass++) {
-        if (!window.PACK_TOC.decorate(blocks, function (i) { return out.pageOf[i] || 0; })) break;
+        var foldInfoForToc = null;
+        if (bookMode === "fold") {
+          foldInfoForToc = getFoldBoundaries(out);
+        }
+        var decorateFn;
+        if (foldInfoForToc) {
+          decorateFn = (function (fi, o) {
+            return function (i) {
+              var orig = o.pageOf[i] || 0;
+              if (!orig) return 0;
+              var idx = orig - 1;
+              if (idx < fi.frontCount) return 0;
+              if (idx >= fi.total - fi.backCount) return 0;
+              var adj = orig - fi.frontCount;
+              return adj > 0 ? adj : 0;
+            };
+          })(foldInfoForToc, out);
+        } else {
+          decorateFn = function (i) { return out.pageOf[i] || 0; };
+        }
+        if (!window.PACK_TOC.decorate(blocks, decorateFn)) break;
         out = layout(blocks);
       }
     }
 
     lastLayoutOut = out;
+    /* compute foldInfo for rendering */
+    if (bookMode === "fold") {
+      currentFoldInfo = getFoldBoundaries(out);
+    } else {
+      currentFoldInfo = null;
+    }
     renderPackPages(out);
   }
 
@@ -169741,6 +170091,29 @@ window.WA_SUBJECTS.crs = window.WA_crs;
           if (con("org")) body += para(COVER_TEXT.label(b, "organization", "Liberian National Curriculum"), { sz: 22, align: "center" });
           break;
         }
+        case "author": {
+          var cdsA = normalizeDesign(b.design);
+          function conA(k) { return cdsA.show[k] !== false; }
+          function colA(k, fallback) { return cdsA[k] ? cdsA[k].replace("#", "").toUpperCase() : fallback; }
+          body += para("", { sz: 40 });
+          var bgIdA = b.bg ? addImage(b.bg, b.bgMime || "image/jpeg") : null;
+          if (bgIdA) { body += picXml(bgIdA, 1400, 620, 165); body += para("", { sz: 20 }); }
+          var avId = b.avatar ? addImage(b.avatar, "image/png") : (b.logo ? addImage(b.logo, "image/png") : null);
+          if (avId) body += picXml(avId, 320, 320, 45);
+          body += para(b.authorTitle || "About the Author", { b: true, sz: 48, color: colA("ink", C1), align: "center", before: 200, after: 60 });
+          body += para(b.authorSubtitle || b.teacher || "Easy School Liberia", { b: true, sz: 32, color: colA("accent", C2), align: "center", after: 120 });
+          var bioText = "This booklet was prepared for " + (b.subject || "the subject") + " " + (b.klass || "") + " by " + (b.teacher || "the teacher") + (b.school ? " of " + b.school : "") + ". It was generated with " + (b.product || "Easy School Liberia") + ", an offline, single-file web app that creates printable course packs for the Liberian National Curriculum. The content is transcribed from the official curriculum guides and enriched with exercises, study notes and assessments. " + (b.tutor || "Emmanuel") + ", the AI tutor, is available online to help learners with difficult words and questions.";
+          body += para(bioText, { sz: 26, after: 120 });
+          body += para("Mission: Provide every Liberian teacher with free, offline, printable workbooks, tests and answer keys — no internet, no cost, no dependency.", { b: true, sz: 26, after: 120 });
+          var crA = [];
+          if (b.teacher) crA.push(["Author / Teacher", b.teacher]);
+          if (b.school) crA.push(["School", b.school]);
+          if (b.subject) crA.push(["Subject", b.subject]);
+          if (b.klass) crA.push(["Class", b.klass]);
+          if (crA.length) body += tableXml(["Detail", "Entry"], crA, FILL);
+          body += para((b.product || "Easy School Liberia") + " \u00b7 Liberian National Curriculum \u00b7 " + (b.year || new Date().getFullYear()) + " \u00b7 Back Cover", { sz: 20, align: "center", before: 200 });
+          break;
+        }
         case "pagebreak": body += "<w:p><w:pPr><w:pageBreakBefore/></w:pPr></w:p>"; break;
       }
       emit(body);
@@ -169895,6 +170268,14 @@ window.WA_SUBJECTS.crs = window.WA_crs;
        would leave a blank second page. */
     var blocks = window.PACK_COVER(o, d);
     while (blocks.length && blocks[blocks.length - 1].k === "pagebreak") blocks.pop();
+    /* Append author back cover so fold booklet has back cover about author */
+    try {
+      var ab = buildAuthorBlocks(o, sj);
+      /* remove leading pagebreak from author blocks for cover-only doc, keep author itself */
+      for (var i = 0; i < ab.length; i++) {
+        if (ab[i].k !== "pagebreak") blocks.push(ab[i]);
+      }
+    } catch (e) {}
     return { topics: [], sheets: [], blocks: blocks, kg: true };
   }
 
@@ -169947,6 +170328,18 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       pack = sj.engine().buildPack(Object.assign({}, o, { keys: true }));
     }
     pack.blocks = window.TEACHING.accept(pack, signature);
+    /* Append author back cover (fold booklet back is about the author).
+       Filter any existing author blocks to avoid duplication on re-generate. */
+    try {
+      var filtered = [];
+      for (var fb = 0; fb < pack.blocks.length; fb++) {
+        var bb = pack.blocks[fb];
+        if (!isAuthorBlock(bb)) filtered.push(bb);
+      }
+      pack.blocks = filtered;
+      var authBlocks = buildAuthorBlocks(o, sj);
+      for (var ab2 = 0; ab2 < authBlocks.length; ab2++) pack.blocks.push(authBlocks[ab2]);
+    } catch (e) {}
     setRunning(o);
     render(pack.blocks);
     /* expose context for Emmanuel, the AI tutor */
@@ -170149,10 +170542,13 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       updateSheetDims();
       updatePrintStyle();
       setFoldPrintNote();
-      if (lastLayoutOut) {
-        renderPackPages(lastLayoutOut);
-      } else if (pack) {
+      /* When switching modes, re-render from pack.blocks so TOC page numbers
+         are adjusted for fold mode (excluding front/back). Using lastLayoutOut
+         alone would keep old TOC numbers. */
+      if (pack && pack.blocks) {
         render(pack.blocks);
+      } else if (lastLayoutOut) {
+        renderPackPages(lastLayoutOut);
       }
     }
 
@@ -170169,10 +170565,10 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       updatePrintStyle();
       setFoldPrintNote();
       if (bookMode === "fold") {
-        if (lastLayoutOut) {
-          renderPackPages(lastLayoutOut);
-        } else if (pack) {
+        if (pack && pack.blocks) {
           render(pack.blocks);
+        } else if (lastLayoutOut) {
+          renderPackPages(lastLayoutOut);
         }
       }
     }
