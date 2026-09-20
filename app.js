@@ -158,13 +158,17 @@
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Health_Science_Grade" + g + "_Pack.docx"; }
     },
-    /* ---------------- Computer Science (Elementary, original) ----------------
-       Original unplugged-first computing units for Grades 1-6 (data-cs.js).
-       No official Liberian Computer Science syllabus was supplied, so these
-       are teaching resources, not a transcription. Lesson plans use the
-       computing-circle shape (try, debug, pair); packs reuse GEN_SC. Course
-       text is Physics-shaped (long study[] plus a worked[] bank of traced
-       algorithms, counts and binary reasoning — not Physics sums). */
+    /* ---------------- Computer Science (Grades 1-12, original) ----------------
+       Original computing units: unplugged-first Elementary units for Grades
+       1-6 (data-cs.js), Junior High ICT and computational-thinking units for
+       Grades 7-9 (data-cs79.js) and Senior High Computer Science units for
+       Grades 10-12 (data-cs1012.js); the two upper files merge into
+       CS_CURRICULUM at load. No official Liberian Computer Science syllabus
+       was supplied, so these are teaching resources, not a transcription.
+       Lesson plans use the computing-circle shape (try, debug, pair); packs
+       reuse GEN_SC. Course text is Physics-shaped (long study[] plus a
+       worked[] bank of traced algorithms, conversions, counts and binary
+       reasoning — not Physics sums). */
     cs: {
       label: "Computer Science", icon: "sub-cs", accent: "#154e8a",
       curriculum: function () { return CS_CURRICULUM; },
@@ -1371,7 +1375,11 @@
         jh.textContent = "Civics Grades 7\u201312: original supplementary teaching material, not an official syllabus transcription. Review against your school\u2019s scheme of work.";
       } else if (cur === "cs") {
         jh.style.display = "";
-        jh.textContent = "Computer Science Grades 1\u20136: original elementary computing units (unplugged-first). Not an official syllabus transcription. Review against your school\u2019s scheme of work.";
+        jh.textContent = curBand === "sh"
+          ? "Computer Science Grades 10\u201312: original senior high computing units (paper-first: number systems, logic, architecture, Python, databases, networks, security, algorithms and a project). Not an official syllabus transcription. Review against your school\u2019s scheme of work."
+          : curBand === "jh"
+            ? "Computer Science Grades 7\u20139: original junior high ICT and computational-thinking units (paper-first, with practice on a shared machine where one exists). Not an official syllabus transcription. Review against your school\u2019s scheme of work."
+            : "Computer Science Grades 1\u20136: original elementary computing units (unplugged-first). Not an official syllabus transcription. Review against your school\u2019s scheme of work.";
       } else if (band.kg) {
         jh.style.display = "";
         jh.innerHTML = cur === "kg" && isLP()

@@ -119,9 +119,9 @@ const SUBJECTS = [
               facts: ["-ness", "-ment", "-tion", "-ship"] },
             { grade: 12, period: "VI",
               facts: ["plurals", "commands", "connectives"] }] },
-  { name: "Computer Science (Elementary)", global: "CS_CURRICULUM",
-    files: ["data-cs.js"],
-    grades: 6,                     /* every Grade 1-6 computing unit, all six periods, carries study[] */
+  { name: "Computer Science (Grades 1-12)", global: "CS_CURRICULUM",
+    files: ["data-cs.js", "data-cs79.js", "data-cs1012.js"],   /* the two upper files merge into CS_CURRICULUM */
+    grades: 12,                    /* every Grade 1-12 computing unit, all six periods, carries study[] */
     spots: [{ grade: 1, period: "I",     /* computers around us */
               facts: ["A computer is a machine that follows instructions"] },
             { grade: 3, period: "II",    /* finding and fixing mistakes */
@@ -131,7 +131,15 @@ const SUBJECTS = [
             { grade: 6, period: "II",    /* binary */
               facts: ["Binary uses only two digits, 0 and 1"] },
             { grade: 6, period: "III",   /* computing in Liberia */
-              facts: ["Mobile money"] }] },
+              facts: ["Mobile money"] },
+            { grade: 7, period: "VI",    /* algorithms, flowcharts and trace tables */
+              facts: ["finite, ordered set of steps", "flowchart"] },
+            { grade: 9, period: "II",    /* selection and repetition */
+              facts: ["runs a set number of times", "accumulator"] },
+            { grade: 10, period: "II",   /* number systems */
+              facts: ["one hexadecimal digit stands for exactly four bits"] },
+            { grade: 12, period: "IV",   /* algorithm efficiency */
+              facts: ["Big-O notation", "linear search"] }] },
   { name: "Health Science (Elementary)", global: "HS_CURRICULUM",
     files: ["data-hs.js"],
     grades: 6,                     /* every Grade 1-6 health unit, all six periods, carries study[] */
