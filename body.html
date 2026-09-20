@@ -221,6 +221,41 @@
             </details>
             <div class="mini"><button type="button" id="cvSave">Save school details</button><button type="button" id="cvClear">Clear</button></div>
           </div>
+
+          <!-- Back of the book: the author page. Its own box, outside #cvBox,
+               so it can be switched on or off whatever the cover page does.
+               The photo, every line of text, the details rows and each
+               show/hide switch are wired by renderAuthorPanel() in app.js. -->
+          <div class="cvsec">Back of the book &mdash; the author</div>
+          <label class="chk"><input type="checkbox" id="auOn" checked><span>Print an author page on the back of the book</span></label>
+          <div id="auBox">
+            <div class="upgrid">
+              <div class="upcell">
+                <div class="upprev auprev" id="auPhotoPrev"><span>No photo</span></div>
+                <label class="upbtn">Upload a photo<input type="file" id="auPhoto" accept="image/*"></label>
+                <button type="button" class="uprem" id="rmAuPhoto">Remove</button>
+              </div>
+              <div class="upcell">
+                <div class="row"><label for="auPhotoSize">Photo size</label>
+                  <input type="range" id="auPhotoSize" min="16" max="70" step="2" value="34">
+                  <b class="fadeval" id="auPhotoSizeVal">34 mm</b></div>
+                <p class="hint">The photo stands alone on the sheet: nothing is drawn around it and the paper shows through behind it. Switch <b>Border around the photo</b> on below for the ring.</p>
+              </div>
+            </div>
+            <p class="hint" id="auMsg"></p>
+            <input type="text" id="auTitle" maxlength="120" placeholder="About the Author">
+            <input type="text" id="auSubtitle" maxlength="200" placeholder="Prepared by …">
+            <input type="text" id="auKicker" maxlength="200" placeholder="Product line under the title">
+            <textarea id="auBio" rows="6" maxlength="4000" placeholder="Biography"></textarea>
+            <textarea id="auMission" rows="2" maxlength="800" placeholder="Mission line"></textarea>
+            <input type="text" id="auContact" maxlength="400" placeholder="Footer line">
+            <div class="cvsec">Details rows on the author page</div>
+            <div id="auFacts"></div>
+            <div class="cvsec">Show on the author page</div>
+            <div class="des-chks" id="auShows"></div>
+            <div class="mini"><button type="button" id="auReset">Reset the author page</button></div>
+            <p class="hint">Every field prints the automatic wording for this pack while it stays blank; type in one to take it over. The photo, the words, the details rows and these switches are saved on this device and travel with any saved document in your teaching library.</p>
+          </div>
         </div>
       </details>
 
