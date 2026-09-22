@@ -38,7 +38,7 @@
     return {
       blocks: [
         { k: "h3", t: "A · Key Terms — Religious & Moral Education Vocabulary" },
-        { k: "instr", t: "Read each term after your teacher. Copy the term, its meaning and the example into your Social Studies notebook." },
+        { k: "instr", t: "Read each term after your teacher. Copy the term, its meaning and the example into your Religious & Moral Education notebook." },
         { k: "table", head: ["Key term", "What it means", "Example"],
           rows: t.terms.map(function (v) { return [v.t, v.d, v.x]; }) }
       ], key: []
@@ -426,7 +426,9 @@
     doc.push.apply(doc, PACK_COVER(opts, {
       title: "RELIGIOUS & MORAL EDUCATION — GRADE " + opts.grade,
       sub: "Pupil Workbook & Assessment Pack",
-      line: "Elementary Religious & Moral Education · Liberian National Curriculum"
+      line: (opts.bandName || (opts.grade >= 10 ? "Senior High" : (opts.grade >= 7 ? "Junior High" : "Elementary"))) +
+            " " + (opts.subjectLine || "Religious & Moral Education") +
+            " · Liberian National Curriculum"
     }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Period " + periodNo(t.period) + ": " + t.title); });
