@@ -33,7 +33,7 @@ offline-ready. `tests/sw.js` guards all of this.
 |---|---|---|
 | Branding | `brand.js` | White-label strings (`window.APP_BRAND`): product name, short name, tutor name, support address, footer text. Edit one object to rebrand. |
 | Usage | `usage.js` | Optional on-device counters. **No network call** — enforced by `tests/usage.js`. |
-| Content | `data-*.js` | One curriculum array per subject. Junior/Senior High parts are merged in (`data-ma79.js`, `data-ma-sh.js`, `data-fr79.js`, `data-fr1012.js`, `data-cs79.js`, `data-cs1012.js`, `data-*79.js`). |
+| Content | `data-*.js` | One curriculum array per subject. Junior/Senior High parts are merged in (`data-ma79.js`, `data-ma-sh.js`, `data-fr79.js`, `data-fr1012.js`, `data-cs79.js`, `data-cs1012.js`, `data-rm79.js`, `data-rm1012.js`, `data-*79.js`). |
 | Generation | `gen-*.js` | Deterministic exercise engines per subject. Physics/Biology/Chemistry reuse `gen-sc.js`; Economics/Geography/History reuse `gen-ss.js`; Phonics, Literature, Mathematics and WASSCE have their own. |
 | Presentation | `app.js` | Subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence, WASSCE track. The largest file (3.3k lines) and the one to read last. |
 | Teaching tools | `teaching.js`, `lesson.js` | Teaching workspace: IndexedDB library, question editor, assessment builder; daily and weekly lesson/unit plan builders. |

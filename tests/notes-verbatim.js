@@ -242,8 +242,8 @@ const SUBJECTS = [
             { grade: 9, period: "IV",
               facts: ["Il a l'air triste", "avoir peur"] }] },
   { name: "Religious & Moral Education", global: "RM_CURRICULUM",
-    files: ["data-rm.js", "data-rm79.js"],   /* 7-9 file appends its units into RM_CURRICULUM */
-    grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */
+    files: ["data-rm.js", "data-rm79.js", "data-rm1012.js"],   /* the 7-9 and 10-12 files append their units into RM_CURRICULUM */
+    grades: 12,                 /* every unit from Grade 1 to Grade 12 must carry study[] */
     spots: [{ grade: 1, period: "I",
               facts: ["The Creator", "Genesis 1:26-27", "Holy Quran 6:23"] },
             { grade: 1, period: "V",
@@ -275,13 +275,17 @@ const SUBJECTS = [
             { grade: 9, period: "VI",
               facts: ["Chastity", "immorality", "temple of the Holy Spirit"] },
             { grade: 10, period: "I",
-              facts: ["Le participe passé", "j'ai mangé", "hier soir"] },
+              facts: ["I AM WHO I AM", "ninety-nine beautiful names", "We shall surely test you"] },
+            { grade: 10, period: "IV",
+              facts: ["Genesis 2:18", "Qur'an 30:21", "It is not good that the man should be alone"] },
+            { grade: 11, period: "I",
+              facts: ["Romans 2:14-15", "small voice", "coram Deo"] },
             { grade: 11, period: "V",
-              facts: ["300 million speakers", "Léopold Sédar Senghor", "franc CFA"] },
-            { grade: 12, period: "I",
-              facts: ["Il faut qu'il parte", "que je sois", "-e, -es, -e, -ions, -iez, -ent"] },
+              facts: ["every soul shall taste death", "atom's weight of good", "the Father's house"] },
+            { grade: 12, period: "II",
+              facts: ["seventy times seven", "Inter-Religious Council of Liberia", "make peace between your brothers"] },
             { grade: 12, period: "VI",
-              facts: ["plus-que-parfait", "Bonne chance", "d'abord, ensuite, puis"] }] },
+              facts: ["Ecclesiastes 1-2, 12:13", "Qur'an 51:56", "trees whose shade"] }] },
   { name: "Physical Education", global: "PE_CURRICULUM",
     files: ["data-pe.js", "data-pe79.js"],   /* 7-9 file appends its units into PE_CURRICULUM */
     grades: 9,                  /* every unit from Grade 1 to Grade 9 must carry study[] */
