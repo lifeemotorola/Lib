@@ -43,8 +43,8 @@ so the whole thing stays self-contained.
     plus custom teacher adjustment notes embedded directly on every weekly and daily plan.
 - **Study notes** for every unit: key ideas, worked examples and common
   mistakes — and for Social Studies, General Science, English, Mathematics,
-  French, Religious & Moral Education and Physical Education Grades 1–9
-  (Mathematics, French and Phonics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
+  French and Physical Education Grades 1–9, Religious & Moral Education
+  Grades 1–12 (Mathematics, French and Phonics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
   transcribed verbatim from the official curriculum guide. **Senior High
   History (Grades 10–12)** includes explanatory study notes and exercises
@@ -700,7 +700,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics, French and Computer Science (Grades 1–12), Religious & Moral Education and Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/cs-lesson.js` (the original Computer Science units for Grades 1–12 through the real plan builders: computing-circle wording, unplugged pair-debug, device-safety note, no health/ECD leakage, the upper-grade units' own subject matter, and `data-cs.js`, `data-cs79.js`, `data-cs1012.js`, the `cs` tab icon and `cs.png` surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics, French, Computer Science and Religious & Moral Education (Grades 1–12), Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/cs-lesson.js` (the original Computer Science units for Grades 1–12 through the real plan builders: computing-circle wording, unplugged pair-debug, device-safety note, no health/ECD leakage, the upper-grade units' own subject matter, and `data-cs.js`, `data-cs79.js`, `data-cs1012.js`, the `cs` tab icon and `cs.png` surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -843,6 +843,25 @@ Two short notes that recur in all of them:
 - **The curriculum is the Ministry's.** Fifteen subjects' notes are
   transcribed from official Liberian guides. The transcription and the platform
   are yours; the underlying curriculum is not, and no sale can make it
+  exclusive.
+
+## License
+
+No license file is included yet. Ask the repository owner before
+redistributing the curriculum content or the generated packs.
+s uploaded.** The platform has no analytics. Counting, when
+  switched on, stays in the browser; the AI tutor is the only feature that
+  sends anything (the question text, to your own proxy).
+- **The curriculum is the Ministry's.** Fifteen subjects' notes are
+  transcribed from official Liberian guides. The transcription and the platform
+  are yours; the underlying curriculum is not, and no sale can make it
+  exclusive.
+
+## License
+
+No license file is included yet. Ask the repository owner before
+redistributing the curriculum content or the generated packs.
+curriculum is not, and no sale can make it
   exclusive.
 
 ## License
