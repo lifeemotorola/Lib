@@ -242,7 +242,7 @@ const SUBJECTS = [
             { grade: 9, period: "IV",
               facts: ["Il a l'air triste", "avoir peur"] }] },
   { name: "Religious & Moral Education", global: "RM_CURRICULUM",
-    files: ["data-rm.js", "data-rm79.js", "data-rm1012.js", "data-rm1012-more.js"],   /* the 7-9 and 10-12 files append their units into RM_CURRICULUM */
+    files: ["data-rm.js", "data-rm79.js", "data-rm79-more.js", "data-rm1012.js", "data-rm1012-more.js"],   /* the 7-9 and 10-12 files append their units into RM_CURRICULUM */
     grades: 12,                 /* every unit from Grade 1 to Grade 12 must carry study[] */
     spots: [{ grade: 1, period: "I",
               facts: ["The Creator", "Genesis 1:26-27", "Holy Quran 6:23"] },
