@@ -57,7 +57,7 @@
       label: "Religious & Moral", icon: "sub-rm", accent: "#8a5a00",
       curriculum: function () { return RM_CURRICULUM; },
       engine: function () { return GEN_RM; },
-      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "sort", "compare", "casestudy", "apply"],
+      defaults: ["terms", "match", "cloze", "tf", "short", "mcq", "sort", "compare", "casestudy", "apply", "worked"],
       titleOf: function (t) { return t.title; },
       file: function (g) { return "Religious_and_Moral_Education_Grade" + g + "_Workbook.docx"; }
     },

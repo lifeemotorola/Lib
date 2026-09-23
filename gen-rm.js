@@ -281,6 +281,24 @@
     };
   }
 
+  /* Worked moral reasoning — the RME counterpart of the Physics worked
+     calculations. Only units that supply t.worked {q, steps[], a} get it. */
+  function wsWorked(t, n, r) {
+    var w = t.worked;
+    if (!w || !w.length) return null;
+    var sel = pick(w, Math.min(n || 3, w.length), r);
+    var blocks = [
+      { k: "h3", t: "Worked moral reasoning — show every step" },
+      { k: "instr", t: "Work through each case step by step: state the facts, name the issue, quote the teaching of the Holy Books, tradition and law, weigh who is affected, then give your decision and your reason." }
+    ];
+    sel.forEach(function (x, i) {
+      blocks.push({ k: "p", t: (i + 1) + ". " + x.q });
+      blocks.push({ k: "lines", n: 5 });
+    });
+    return { blocks: blocks,
+      key: sel.map(function (x, i) { return (i + 1) + ". " + x.a + "   [" + x.steps.join(" → ") + "]"; }) };
+  }
+
   var SHEETS = {
     terms:    { label: "Key terms glossary",          fn: function (t) { return wsTerms(t); } },
     match:    { label: "Match term to meaning",       fn: wsMatch },
@@ -292,6 +310,7 @@
     compare:  { label: "Compare & contrast",          fn: function (t) { return wsCompare(t); } },
     casestudy:{ label: "Story & reflection",          fn: function (t) { return wsCase(t); } },
     apply:    { label: "Moral reasoning",             fn: wsApply },
+    worked:   { label: "Worked moral reasoning",      fn: wsWorked },
     project:  { label: "Enquiry project",             fn: function (t) { return wsProject(t); } },
     debate:   { label: "Class discussion & debate",   fn: wsDebate },
     journal:  { label: "Moral journal",               fn: function (t) { return wsJournal(t); } },
