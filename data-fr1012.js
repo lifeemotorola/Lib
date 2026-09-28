@@ -889,7 +889,7 @@ const FR_CURRICULUM_1012 = [
   study:[
     /* ---- course text: Semester One, Period II — Le monde du travail ---- */
     {k:"h3", t:"L'annonce d'emploi — Reading a Job Advertisement"},
-    {k:"p", t:"A **petite annonce** gives the job title, the tasks, the qualities required and how to apply: *Société de commerce à Monrovia **recherche** secrétaire bilingue anglais-français. **Missions :** accueil, courrier, classement. **Qualités :** sérieux/sérieuse, organisé(e), ponctuel(le). **Envoyer CV et lettre de motivation.**"},
+    {k:"p", t:"A **petite annonce** gives the job title, the tasks, the qualities required and how to apply: *Société de commerce à Monrovia **recherche** secrétaire bilingue anglais-français. **Missions :** accueil, courrier, classement. **Qualités :** sérieux/sérieuse, organisé(e), ponctuel(le). **Envoyer CV et lettre de motivation.***"},
     {k:"rule"},
     {k:"h3", t:"Le CV — the Curriculum Vitae"},
     {k:"table", head:["Rubrique","Contenu","English"], rows:[["État civil","nom, prénom, adresse, téléphone","personal details"],["Formation","études et diplômes, du plus récent au plus ancien","education"],["Expérience professionnelle","emplois, stages, travaux","work experience"],["Compétences","langues, informatique, permis","skills"],["Centres d'intérêt","sport, lecture, musique","interests"]]},

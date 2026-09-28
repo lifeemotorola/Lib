@@ -700,7 +700,7 @@ packs must never be locked out by it.
 | `github/pages-deploy.workflow.yml` | Ready-made GitHub Actions workflow: builds `index.html` with the `AI_PROXY_URL` variable and deploys to Pages. Copy it to `.github/workflows/deploy.yml` once. |
 | `github/deploy-worker.workflow.yml` | Optional ready-made workflow: deploys the Worker automatically when `worker/` changes. Copy it to `.github/workflows/deploy-worker.yml` and add `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repository secrets to enable it. |
 | `build.sh` | Concatenates styles + markup + scripts into `index.html` and inlines the favicon and cover art; also bakes in `AI_PROXY_URL` and `TURNSTILE_SITE_KEY` when those variables are set. |
-| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics, French, Computer Science and Religious & Moral Education (Grades 1–12), Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/cs-lesson.js` (the original Computer Science units for Grades 1–12 through the real plan builders: computing-circle wording, unplugged pair-debug, device-safety note, no health/ECD leakage, the upper-grade units' own subject matter, and `data-cs.js`, `data-cs79.js`, `data-cs1012.js`, the `cs` tab icon and `cs.png` surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery) and `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered). |
+| `tests/` | Playwright UI regressions (`ui.py`), all-subject regression (`regress.py`), the human-check and quiet-failure guard (`humancheck.py`), pure sequence unit test (`book.js`), `notes-verbatim.js` (dependency-free Node check that every `study[]` block list renders as-is, per subject — Social Studies, General Science, English, Phonics, Mathematics, French, Computer Science and Religious & Moral Education (Grades 1–12), Physical Education Grades 1–9, and Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and Literature Grades 10–12 today; add a subject to its `SUBJECTS` list when its units gain `study` blocks, and `grades: N` (or `grades: {from: a, to: b}` for a band) once every unit in that range carries its own list). Three dependency-free Node checks sit alongside them: `tests/cover-kg.js` (the KG-I / KG-II cover-page levels, the cover-designer state normalizer, `designVars()`, `coverArtHtml()` show/hide and colour output, the kindergarten cover wording in `cover-text.js`, and that `kg.png` and the designer markup survive the build), `tests/kg-lesson.js` (the Kindergarten ECD units through the real plan builders: ECD daily/weekly wording, no exercise books or chalkboards, other subjects untouched, `data-kg.js` and the KG tab icon survive the build), `tests/health-lesson.js` (the Elementary health units through the real plan builders: health-circle wording, the safeguarding note on every plan, the guide's own content per grade, no ECD or generic-plan leakage either way, and `data-hs.js`, the `hs` tab icon, `hs.png` and the `elementary-lessons/` files surviving the build), `tests/cs-lesson.js` (the original Computer Science units for Grades 1–12 through the real plan builders: computing-circle wording, unplugged pair-debug, device-safety note, no health/ECD leakage, the upper-grade units' own subject matter, and `data-cs.js`, `data-cs79.js`, `data-cs1012.js`, the `cs` tab icon and `cs.png` surviving the build), `tests/voice.js` (the voice reader: chunking, one utterance at a time, no `pause()`, cancelled utterances ignored, silent-browser recovery), `tests/ai.js` (Emmanuel: failures reported, hangs given up on, Stop always frees the composer, answers streamed and remembered) and `tests/docx-inline.js` (the inline markup of the curriculum prose: `**bold**` and `*italic*` become `<b>`/`<i>` on the sheet and real runs in the `.docx`, entities become characters, an asterisk that is not markup keeps its place, and every subject's transcribed course text is swept for a marker that survives). |
 | `requirements.txt` | Python test dependencies. |
 
 ### How the content is organized
@@ -721,11 +721,21 @@ packs must never be locked out by it.
 - A unit may also carry `study[]` — a block list (`h3`/`p`/`bul`/`num`/`rule`,
   plus `table`/`cols`) transcribed **as-is from the official course text**.
   When present, the Study Notes page renders it verbatim instead of the
-  auto-assembled page. Any `p`/`bul`/`num`/`instr` text supports inline
-  `**bold**` markup (converted to `<b>`), used for key terms throughout the
-  course text — but not inside `table` cells, which are escaped, not
-  rendered. Single `*asterisks*` are not converted, so example words and
-  sentences are quoted instead of italicised. The original 15 subjects carry
+  auto-assembled page. Block text carries a light inline markup —
+  `**bold**` for the key terms throughout the course text, `*italic*` for a
+  title, a foreign word or a word read aloud — and one parser (`inlineSegs()`
+  in `app.js`) reads it for every output: the sheet renders `<b>`/`<i>`, and
+  the Word export emits a real bold/italic run, so no marker the writer meant
+  as emphasis is ever printed as text. Spans nest as the course text writes
+  them (`*un carré **rouge***`) and an italic span may run to a whole worked
+  example. The parser reads markup only: a multiplication (`0*4 + 1*2`),
+  a spaced operator (`2 + 3 * 4`), an unpaired `**`, the `*` a WASSCE syllabus
+  puts in front of a topic reserved for some countries, an inequality
+  (`x < 10`) and the HTML a computing lesson teaches
+  (`<p>Hello <b>world</b></p>`) all
+  print exactly as written. Entities a field still carries (`&gt;`, `&nbsp;`,
+  `&deg;`) become the characters they name instead of printing as text.
+  `tests/docx-inline.js` guards all of it. The original 15 subjects carry
   notes derived from their curriculum guides — Social Studies,
   General Science, English, Mathematics, French, Religious & Moral Education
   and Physical Education, Grades 1–9 (54 units each, plus the 42 Senior High
@@ -786,6 +796,10 @@ node tests/cs-lesson.js
 # contents page numbers: the matcher that tells each Contents line which page
 # its part begins on (no dependencies)
 node tests/toc.js
+
+# inline markup in the exports: **bold** and *italic* become real Word runs,
+# entities become characters, and nothing else is touched (no dependencies)
+node tests/docx-inline.js
 
 # voice reader and AI tutor (no dependencies)
 node tests/voice.js

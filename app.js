@@ -1537,8 +1537,122 @@
   /* ---------------- screen renderer ---------------- */
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function nl(s) { return esc(s).replace(/\n/g, "<br>"); }
-  /* inline **bold** markup for curriculum prose (study notes, key terms) */
-  function rich(s) { return nl(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>"); }
+
+  /* ---- inline markup in curriculum prose ----
+     Study notes and key terms are written in a light markup: **bold** for the
+     term being taught, *italic* for a title or a foreign word. One parser serves
+     both outputs — the screen renderer below and the .docx exporter — so a
+     workbook reads "The English alphabet has 26 letters" with the key term in
+     bold, instead of printing its markers ("**26 letters**") for a teacher to
+     delete by hand in Word.
+
+     inlineSegs() splits a string into runs of {t: text, b: bold, i: italic}.
+     Only the markup is read; everything else is text a learner has to see, so
+     the parser leaves it exactly as it stands: the * of a multiplication
+     (0*4 + 1*2) and of a spaced operator (2 + 3 * 4) keep their asterisks, an
+     unpaired ** prints as itself rather than bolding the rest of the page, an
+     inequality keeps its brackets (x < 10), and the HTML a computing lesson
+     teaches ("<p>Hello <b>world</b></p>") stays the code it is. */
+  var ENT_CHAR = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: "\u00a0",
+    mdash: "\u2014", ndash: "\u2013", middot: "\u00b7", hellip: "\u2026", deg: "\u00b0",
+    ldquo: "\u201c", rdquo: "\u201d", lsquo: "\u2018", rsquo: "\u2019", bull: "\u2022",
+    times: "\u00d7", divide: "\u00f7", laquo: "\u00ab", raquo: "\u00bb", frac12: "\u00bd" };
+  /* A field that has already been through an HTML escape must not print its
+     entities — a Grade 2 maths note reads "use the signs > and <", not "use the
+     signs &gt; and &lt;" — so they are turned back into the characters they
+     name, and the exporter escapes them once, for XML, on the way out. */
+  function decodeEnt(s) {
+    return String(s).replace(/&(#x[0-9a-fA-F]+|#\d+|[A-Za-z][A-Za-z0-9]*);/g, function (all, e) {
+      if (e.charAt(0) === "#") {
+        var n = (e.charAt(1) === "x" || e.charAt(1) === "X") ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+        return (n >= 32 && n <= 0x10FFFF) ? String.fromCodePoint(n) : all;
+      }
+      var k = e.toLowerCase();
+      return Object.prototype.hasOwnProperty.call(ENT_CHAR, k) ? ENT_CHAR[k] : all;
+    });
+  }
+  /* One recursive pass reads both markers. A **bold** span carries no asterisk
+     of its own, and an *italic* span may carry a bold span inside it — the
+     course text writes "*un carré **rouge***" and "*Marie dit : « **Je** suis
+     fatiguée »*" — so the italic scan steps over the bold spans it contains.
+     A span is only read as markup where its markers hug the words they mark
+     and the span stays inside one line, which is what keeps a multiplication
+     (0*4 + 1*2), a spaced operator (2 + 3 * 4) and an unpaired marker exactly
+     as they were written. How long the span is does not matter: the French
+     course wraps a whole worked example — a 350-character dialogue — in one
+     pair of markers, and it reads as one italic run. */
+  function emitSeg(out, t, b, i) { if (t.length) out.push({ t: t, b: !!b, i: !!i }); }
+  /* the "**" that closes a bold span opening at p, or -1 where the span carries
+     a lone asterisk (which belongs to an italic) or never closes at all */
+  function boldEnd(s, p) {
+    for (var q = p + 2; q < s.length; q++) {
+      if (s.charAt(q) !== "*") continue;
+      return s.charAt(q + 1) === "*" ? q : -1;
+    }
+    return -1;
+  }
+  /* the lone "*" that closes an italic span opening at p, or -1 */
+  function italicEnd(s, p) {
+    for (var q = p + 1; q < s.length; q++) {
+      if (s.charAt(q) !== "*") continue;
+      if (s.charAt(q + 1) === "*") {           /* a bold span inside: step over */
+        var e = boldEnd(s, q);
+        if (e < 0) return -1;
+        q = e + 1;
+        continue;
+      }
+      return q;
+    }
+    return -1;
+  }
+  function parseInline(s, b, i, out) {
+    var at = 0, p = 0;
+    while (p < s.length) {
+      if (s.charAt(p) !== "*") { p++; continue; }
+      var end, body;
+      if (s.charAt(p + 1) === "*") {
+        end = boldEnd(s, p);
+        body = end > p + 2 ? s.slice(p + 2, end) : "";
+        if (end > p + 2) {
+          emitSeg(out, s.slice(at, p), b, i);
+          emitSeg(out, body, true, i);          /* bold inside italic keeps it */
+          at = p = end + 2;
+          continue;
+        }
+      } else {
+        end = italicEnd(s, p);
+        body = end > p + 1 ? s.slice(p + 1, end) : "";
+        var before = p > 0 ? s.charAt(p - 1) : " ";
+        var after = (end >= 0 && end + 1 < s.length) ? s.charAt(end + 1) : " ";
+        if (end > p + 1 && body.indexOf("\n") < 0 &&
+            !/^\s|\s$/.test(body) && !/[A-Za-z0-9]/.test(before) && !/[A-Za-z0-9]/.test(after)) {
+          emitSeg(out, s.slice(at, p), b, i);
+          parseInline(body, b, true, out);      /* a bold span may sit inside */
+          at = p = end + 1;
+          continue;
+        }
+      }
+      p++;                                      /* not markup: print as written */
+    }
+    emitSeg(out, s.slice(at), b, i);
+  }
+  function inlineSegs(text) {
+    var out = [];
+    parseInline(String(text == null ? "" : text), false, false, out);
+    if (!out.length) out.push({ t: "", b: false, i: false });
+    /* entities are read last, and only into text: no tag is ever built out of
+       one, so "&lt;b&gt;" written on purpose to be seen is still seen */
+    out.forEach(function (g) { g.t = decodeEnt(g.t); });
+    return out;
+  }
+  /* inline markup as HTML: **bold** and *italic* for curriculum prose */
+  function rich(s) {
+    return inlineSegs(s).map(function (g) {
+      var t = esc(g.t).replace(/\n/g, "<br>");
+      if (g.i) t = "<i>" + t + "</i>";
+      return g.b ? "<b>" + t + "</b>" : t;
+    }).join("");
+  }
 
   /* ---- designed cover artwork ----
      Builds a full-sheet cover from the chosen template. Everything is inline
@@ -1719,10 +1833,10 @@
       (aon("dots") ? '<div class="cv-dots cv-dtr"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : "") +
       '<div class="cv-content"><div class="cv-head">' +
         head +
-        (aon("title") ? '<h1 class="cv-t1">' + esc(txt.title) + '</h1>' : "") +
-        (aon("subtitle") ? '<div class="cv-t2">' + esc(txt.subtitle) + '</div>' : "") +
+        (aon("title") ? '<h1 class="cv-t1">' + rich(txt.title) + '</h1>' : "") +
+        (aon("subtitle") ? '<div class="cv-t2">' + rich(txt.subtitle) + '</div>' : "") +
         (aon("rule") ? '<div class="cv-rule"><span></span><b><svg class="ic" aria-hidden="true"><use href="#i-em-book"/></svg></b><span></span></div>' : "") +
-        (aon("kicker") ? '<p class="cv-sub">' + esc(txt.kicker) + '</p>' : "") +
+        (aon("kicker") ? '<p class="cv-sub">' + rich(txt.kicker) + '</p>' : "") +
       '</div>' +
       panel +
       (aon("contact") ? '<div class="cv-foot" style="margin-top:auto"><div class="cv-org cv-contact">' + rich(txt.contact) + '</div></div>' : "") +
@@ -1794,9 +1908,9 @@
      a block that will not fit the remaining height of a sheet moves to the next sheet. */
   function blockHtml(b) {
     switch (b.k) {
-      case "h1": return "<h1" + (b.c ? ' class="ctr"' : "") + ">" + esc(b.t) + "</h1>";
-      case "h2": return "<h2" + (b.c ? ' class="ctr"' : "") + ">" + esc(b.t) + "</h2>";
-      case "h3": return "<h3" + (b.c ? ' class="ctr"' : "") + ">" + esc(b.t) + "</h3>";
+      case "h1": return "<h1" + (b.c ? ' class="ctr"' : "") + ">" + rich(b.t) + "</h1>";
+      case "h2": return "<h2" + (b.c ? ' class="ctr"' : "") + ">" + rich(b.t) + "</h2>";
+      case "h3": return "<h3" + (b.c ? ' class="ctr"' : "") + ">" + rich(b.t) + "</h3>";
       case "p": return "<p class=\"" + (b.i ? "it " : "") + (b.c ? "ctr " : "") + (b.big ? "cbig" : "") + "\">" + rich(b.t) + "</p>";
       case "instr": return '<p class="instr">' + rich(b.t) + "</p>";
       /* A contents list whose entries carry a page number (see toc.js) is laid
@@ -1818,7 +1932,7 @@
       case "table": return "<table><thead><tr>" +
         b.head.map(function (x) { return "<th>" + esc(x) + "</th>"; }).join("") + "</tr></thead><tbody>" +
         b.rows.map(function (r) {
-          return "<tr>" + r.map(function (c) { return "<td>" + (c ? esc(c) : "&nbsp;") + "</td>"; }).join("") + "</tr>";
+          return "<tr>" + r.map(function (c) { return "<td>" + (c ? rich(c) : "&nbsp;") + "</td>"; }).join("") + "</tr>";
         }).join("") + "</tbody></table>";
       /* the teacher's lesson plan form: a bordered table with no header row;
          cells are strings or {t, b(old), c(entre)} */
@@ -1827,7 +1941,7 @@
           return "<tr>" + row.map(function (c) {
             var cell = (typeof c === "object" && c) ? c : { t: c };
             var cls = (cell.b ? "b " : "") + (cell.c ? "ctr" : "");
-            return '<td' + (cls ? ' class="' + cls.replace(/\s+$/, "") + '"' : "") + ">" + nl(cell.t || "") + "</td>";
+            return '<td' + (cls ? ' class="' + cls.replace(/\s+$/, "") + '"' : "") + ">" + rich(cell.t || "") + "</td>";
           }).join("") + "</tr>";
         }).join("") + "</tbody></table>";
       case "lines": { var o = ""; for (var i = 0; i < b.n; i++) o += '<div class="wl"></div>'; return o; }
@@ -2439,14 +2553,24 @@
   }
   /* half-points, rescaled from the 14pt baseline to the chosen body size */
   function dsz(n) { return Math.max(2, Math.round(n * (FSZ() / FS_BASE))); }
+  /* Text becomes one Word run per stretch of like formatting, so the **bold**
+     and *italic* markup of the curriculum prose is real emphasis in Word and
+     no marker reaches the page (see inlineSegs). */
   function runs(text, opt) {
     opt = opt || {};
-    var props = "<w:rPr>" + (opt.b ? "<w:b/>" : "") + (opt.i ? "<w:i/>" : "") +
-      (opt.sz ? '<w:sz w:val="' + dsz(opt.sz) + '"/><w:szCs w:val="' + dsz(opt.sz) + '"/>' : "") +
-      (opt.color ? '<w:color w:val="' + opt.color + '"/>' : "") + "</w:rPr>";
-    return String(text).split("\n").map(function (p, i) {
-      return "<w:r>" + props + (i ? "<w:br/>" : "") + '<w:t xml:space="preserve">' + xe(p) + "</w:t></w:r>";
-    }).join("");
+    function props(g) {
+      /* the run properties in the order the Word schema lists them */
+      return "<w:rPr>" + ((opt.b || g.b) ? "<w:b/>" : "") + ((opt.i || g.i) ? "<w:i/>" : "") +
+        (opt.color ? '<w:color w:val="' + opt.color + '"/>' : "") +
+        (opt.sz ? '<w:sz w:val="' + dsz(opt.sz) + '"/><w:szCs w:val="' + dsz(opt.sz) + '"/>' : "") + "</w:rPr>";
+    }
+    var out = "";
+    inlineSegs(text).forEach(function (g) {
+      String(g.t).split("\n").forEach(function (p, k) {
+        out += "<w:r>" + props(g) + (k ? "<w:br/>" : "") + '<w:t xml:space="preserve">' + xe(p) + "</w:t></w:r>";
+      });
+    });
+    return out;
   }
   function para(text, opt) {
     opt = opt || {};
@@ -2636,7 +2760,6 @@
           var auD = normalizeAuthor(b.author || COVER.author);
           function conA(k) { return auD.show[k] !== false; }
           function colA(k, fallback) { return cdsA[k] ? cdsA[k].replace("#", "").toUpperCase() : fallback; }
-          function plainA(s) { return String(s == null ? "" : s).replace(/\*\*([^*]+)\*\*/g, "$1"); }
           var txtA = authorText(auD, { teacher: b.teacher, school: b.school, subject: b.subject, klass: b.klass,
                                        product: b.product, tutor: b.tutor, year: b.year });
           body += para("", { sz: 40 });
@@ -2647,10 +2770,10 @@
           /* Word sizes the picture by its own width, so the cap in millimetres
              is what keeps the portrait the size the panel asked for */
           if (avId) body += picXml(avId, 900, 900, auD.photoSize);
-          if (conA("title")) body += para(plainA(txtA.title), { b: true, sz: 48, color: colA("ink", C1), align: "center", before: 200, after: 60 });
-          if (conA("subtitle")) body += para(plainA(txtA.subtitle), { b: true, sz: 32, color: colA("accent", C2), align: "center", after: 120 });
-          if (conA("bio")) body += para(plainA(txtA.bio), { sz: 26, after: 120 });
-          if (conA("mission")) body += para(plainA(txtA.mission), { b: true, sz: 26, after: 120 });
+          if (conA("title")) body += para(txtA.title, { b: true, sz: 48, color: colA("ink", C1), align: "center", before: 200, after: 60 });
+          if (conA("subtitle")) body += para(txtA.subtitle, { b: true, sz: 32, color: colA("accent", C2), align: "center", after: 120 });
+          if (conA("bio")) body += para(txtA.bio, { sz: 26, after: 120 });
+          if (conA("mission")) body += para(txtA.mission, { b: true, sz: 26, after: 120 });
           var crA = [];
           if (conA("facts")) {
             var LABEL_KEYA = { teacher: "teacherLabel", school: "schoolLabel", subject: "subjectLabel", klass: "classLabel" };
@@ -2660,8 +2783,8 @@
             });
           }
           if (crA.length) body += tableXml([COVER_TEXT.label(b, "detailLabel", "Detail"), COVER_TEXT.label(b, "entryLabel", "Entry")], crA, FILL);
-          if (conA("kicker")) body += para(plainA(txtA.kicker), { i: true, sz: 22, align: "center", before: 160 });
-          if (conA("contact")) body += para(plainA(txtA.contact), { sz: 20, align: "center", before: 200 });
+          if (conA("kicker")) body += para(txtA.kicker, { i: true, sz: 22, align: "center", before: 160 });
+          if (conA("contact")) body += para(txtA.contact, { sz: 20, align: "center", before: 200 });
           break;
         }
         case "pagebreak": body += "<w:p><w:pPr><w:pageBreakBefore/></w:pPr></w:p>"; break;
@@ -2671,7 +2794,26 @@
 
     var NS = 'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" ' +
       'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
-    var SM = '<w:rPr><w:sz w:val="16"/><w:szCs w:val="16"/><w:color w:val="666666"/></w:rPr>';
+    /* the small type of the running bars, in the order the schema lists it */
+    function smallProps(color, b, i) {
+      return "<w:rPr>" + (b ? "<w:b/>" : "") + (i ? "<w:i/>" : "") +
+        '<w:color w:val="' + color + '"/><w:sz w:val="16"/><w:szCs w:val="16"/></w:rPr>';
+    }
+    var SM = smallProps("666666", false, false);
+
+    /* The bar text is typed by the teacher, so it goes through the same inline
+       parser as the body: what is meant as emphasis shows as emphasis, and no
+       marker or entity prints as itself. */
+    function hfRuns(text, o) {
+      var out = "";
+      inlineSegs(text).forEach(function (g) {
+        String(g.t).split("\n").forEach(function (p, k) {
+          out += "<w:r>" + smallProps(o.color, !!(o.b || g.b), !!g.i) +
+            (k ? "<w:br/>" : "") + '<w:t xml:space="preserve">' + xe(p) + "</w:t></w:r>";
+        });
+      });
+      return out;
+    }
 
     function headerFor(per) {
       var left = head.left + (per ? " \u00b7 " + periodLabel(per) : "");
@@ -2679,10 +2821,9 @@
         "<w:hdr " + NS + '><w:p><w:pPr><w:tabs><w:tab w:val="right" w:pos="10206"/></w:tabs>' +
         '<w:spacing w:before="0" w:after="0"/>' +
         '<w:pBdr><w:bottom w:val="single" w:sz="6" w:color="' + C2 + '"/></w:pBdr></w:pPr>' +
-        '<w:r><w:rPr><w:b/><w:sz w:val="16"/><w:szCs w:val="16"/><w:color w:val="' + C1 + '"/></w:rPr>' +
-        '<w:t xml:space="preserve">' + xe(left) + "</w:t></w:r>" +
+        hfRuns(left, { b: true, color: C1 }) +
         "<w:r>" + SM + "<w:tab/></w:r>" +
-        "<w:r>" + SM + '<w:t xml:space="preserve">' + xe(head.right) + "</w:t></w:r></w:p></w:hdr>";
+        hfRuns(head.right, { color: "666666" }) + "</w:p></w:hdr>";
     }
 
     function fld(instr) {
@@ -2692,7 +2833,7 @@
       "<w:ftr " + NS + '><w:p><w:pPr><w:tabs><w:tab w:val="right" w:pos="10206"/></w:tabs>' +
       '<w:spacing w:before="0" w:after="0"/>' +
       '<w:pBdr><w:top w:val="single" w:sz="6" w:color="' + C2 + '"/></w:pBdr></w:pPr>' +
-      "<w:r>" + SM + '<w:t xml:space="preserve">' + xe(head.foot) + "</w:t></w:r>" +
+      hfRuns(head.foot, { color: "666666" }) +
       "<w:r>" + SM + "<w:tab/></w:r>" +
       "<w:r>" + SM + '<w:t xml:space="preserve">Page </w:t></w:r>' + fld("PAGE") +
       "<w:r>" + SM + '<w:t xml:space="preserve"> of </w:t></w:r>' + fld("NUMPAGES") +

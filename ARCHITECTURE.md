@@ -64,8 +64,9 @@ A unit looks roughly like:
 
 `study[]` is optional and takes priority when present: it is a block list
 (`h3`/`p`/`bul`/`num`/`rule`/`table`) rendered **verbatim**, used for the
-sections transcribed from the official curriculum guides. Inline `**bold**`
-is supported in `p`/`bul`/`num`/`instr` text but not inside table cells.
+sections transcribed from the official curriculum guides. Block text carries
+inline `**bold**` and `*italic*` markup, read by one parser for every output
+(see §5) — including inside table cells.
 
 Generators are **deterministic and seeded**: the same seed always produces the
 same questions, so a student pack and its teacher key match question for
@@ -82,6 +83,20 @@ question, and Test A / Test B are the same questions shuffled. Never introduce
 - The `.docx` exporter is hand-written (no library): it builds the OOXML
   package, including images resized in a canvas, so the deliverable stays
   dependency-free.
+- **One inline-markup parser feeds both outputs.** `inlineSegs()` in `app.js`
+  splits any block text into runs of `{t, b, i}`: `**bold**` and `*italic*`
+  become emphasis (`<b>`/`<i>` on the sheet, `<w:b/>`/`<w:i/>` runs in Word),
+  and an entity a data field still carries (`&gt;`, `&nbsp;`) becomes the
+  character it names instead of printing as text. Spans nest the way the course
+  text writes them — `*un carré **rouge***` is a red square in italic with the
+  colour in bold — and an italic span may be a whole worked example. Everything
+  else is text and is left alone: a multiplication (`0*4 + 1*2`), a spaced
+  operator (`2 + 3 * 4`), an unpaired marker, the `*` the WASSCE syllabuses put
+  in front of a topic reserved for some countries, an inequality (`x < 10`) and
+  the HTML a computing lesson teaches. The sheet and the Word file therefore
+  read the same, and a marker the writer meant as emphasis never reaches a
+  teacher's printed workbook; `tests/docx-inline.js` sweeps every subject's
+  course text to keep it so.
 - Teacher/Student is a **format** decision made at export time. Student exports
   omit the answer-key section.
 
@@ -123,6 +138,7 @@ node tests/book.js              # duplex print sequences
 node tests/notes-verbatim.js    # transcribed study notes render as authored
 node tests/cover-kg.js          # KG-I/KG-II cover levels + cover designer
 node tests/toc.js               # contents page numbers
+node tests/docx-inline.js       # inline markup: bold/italic runs in Word, none printed
 node tests/voice.js             # speech reader chunking and recovery
 node tests/ai.js                # tutor failure handling
 node tests/header-footer.js     # sheet + platform header/footer
@@ -134,6 +150,8 @@ node tests/civics-teaching.js   # all 36 Civics units
 node tests/usage.js             # usage counters and the no-network guarantee
 node tests/sw.js                # offline shell: resilient install, per-page caching, fallbacks
 node tests/btt.js               # back-to-top button: threshold, corner sharing, never printed
+node tests/fold-book.js         # saddle-stitch booklet imposition
+node tests/author-cover.js      # back-of-the-book author page
 ```
 
 Browser tests (Playwright; `pip install -r requirements.txt`):
