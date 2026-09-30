@@ -5,7 +5,7 @@
   var fields = {
     title: "Main cover title", subtitle: "Book type / subtitle", line: "Curriculum / level line", subject: "Subject value",
     schoolLabel: "School label", subjectLabel: "Subject label", classLabel: "Class label", teacherLabel: "Teacher label",
-    pupilLabel: "Pupil / name label", termLabel: "Term label (simple list)", yearLabel: "Year label (simple list)", termYearLabel: "Term / year label (designed covers)",
+    pupilLabel: "Student / name label", termLabel: "Term label (simple list)", yearLabel: "Year label (simple list)", termYearLabel: "Term / year label (designed covers)",
     noteLabel: "Note label", inspireLabel: "Default message label", inspireText: "Default message text",
     organization: "Organization footer", detailLabel: "Table detail heading", entryLabel: "Table entry heading"
   };
@@ -32,14 +32,14 @@
   }
   function prepare(opts, d, cover, teacher) {
     var subject = String(d.title || "").split("—")[0].trim() || "Course Pack";
-    defaults = { title: subject, subtitle: teacher ? "Teacher's Lesson Book" : "Pupil Workbook", line: d.line || "", subject: subject,
+    defaults = { title: subject, subtitle: teacher ? "Teacher's Lesson Book" : "Student Workbook", line: d.line || "", subject: subject,
       schoolLabel: "School", subjectLabel: "Subject", classLabel: "Class", teacherLabel: "Teacher", pupilLabel: "Name",
       termLabel: "Term", yearLabel: "Year", termYearLabel: cover.term ? "Term" : "Term / Year",
-      noteLabel: "Note", inspireLabel: "Inspire", inspireText: "Teach · Encourage · Achieve",
-      organization: opts.subjectId === "ci" ? "Civics · Original teaching resource" : opts.subjectId === "cs" ? "Computer Science · Original teaching resource" : opts.subjectId && opts.subjectId.charAt(0) === "w" ? "WASSCE · Syllabus-aligned practice" : "Liberian National Curriculum",
+      noteLabel: "Note", inspireLabel: "Inspire", inspireText: teacher ? "Teach · Encourage · Achieve" : "Learn · Practise · Achieve",
+      organization: opts.subjectId === "ci" ? "Civics · Original " + (teacher ? "teaching" : "learning") + " resource" : opts.subjectId === "cs" ? "Computer Science · Original " + (teacher ? "teaching" : "learning") + " resource" : opts.subjectId && opts.subjectId.charAt(0) === "w" ? "WASSCE · Syllabus-aligned practice" : "Liberian National Curriculum",
       detailLabel: "Detail", entryLabel: "Entry" };
-    if (opts.subjectId === "ci") defaults.line = "Civics · Grade " + opts.grade + " · Original teaching resource; teacher review required";
-    if (opts.subjectId === "cs") defaults.line = "Computer Science · Grade " + opts.grade + " · Original teaching resource; teacher review required";
+    if (opts.subjectId === "ci") defaults.line = "Civics · Grade " + opts.grade + (teacher ? " · Original teaching resource; teacher review required" : " · Original learning resource");
+    if (opts.subjectId === "cs") defaults.line = "Computer Science · Grade " + opts.grade + (teacher ? " · Original teaching resource; teacher review required" : " · Original learning resource");
     /* A kindergarten level has no transcribed syllabus, so its cover names the
        level instead of a workbook and never claims curriculum content. */
     if (opts.kg) {
