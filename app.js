@@ -1871,7 +1871,8 @@
     } catch (e) {}
     var subject = (sj && (sj.packName || sj.label)) || (o && o.subjectLine) || "Course Pack";
     var klass = (o && (o.levelLabel || ("Grade " + o.grade))) || "";
-    var teacher = isTeacher() ? ((o && o.teacherName) || COVER.teacher || "") : "";
+    var studentMode = !!(window.PACK_MODE && window.PACK_MODE() === "student");
+    var teacher = studentMode ? "" : ((o && o.teacherName) || COVER.teacher || "");
     var school = (o && o.school) || COVER.school || "";
     var coverBg = null;
     try { coverBg = activeCoverBg(o); } catch (e) {}
@@ -1881,7 +1882,7 @@
     var tutor = (window.APP_BRAND && window.APP_BRAND.tutor) || "Emmanuel";
     /* the wording the sheet will print, kept on the block for the Word export
        and for anything that reads the block without the author settings */
-    var txt = authorText(au, { teacher: teacher, student: !isTeacher(), school: school, subject: subject, klass: klass,
+    var txt = authorText(au, { teacher: teacher, student: studentMode, school: school, subject: subject, klass: klass,
                                product: product, tutor: tutor, year: COVER.year });
     return [
       { k: "pagebreak" },
@@ -1890,7 +1891,7 @@
         tpl: COVER.tpl,
         school: school,
         teacher: teacher,
-        student: !isTeacher(),
+        student: studentMode,
         subject: subject,
         klass: klass,
         term: COVER.term,
@@ -4344,7 +4345,8 @@
     var fr = document.getElementById("shHfPrevFR");
     var pg = document.getElementById("shHfPrevPG");
     if (hl) hl.textContent = txt(sh.hdr, "l", "SUBJECT \u00b7 GRADE 5");
-    if (hr) hr.textContent = txt(sh.hdr, "r", isTeacher() ? "Teacher's Copy" : "Student Copy");
+    var studentMode = !!(window.PACK_MODE && window.PACK_MODE() === "student");
+    if (hr) hr.textContent = txt(sh.hdr, "r", studentMode ? "Student Copy" : "Teacher's Copy");
     if (fl) fl.textContent = txt(sh.ftr, "l", "Liberian Elementary Curriculum \u00b7 Grade 5");
     if (fr) fr.textContent = txt(sh.ftr, "r", "Easy School Liberia");
     if (pg) pg.style.display = sh.on && sh.ftr && sh.ftr.pg !== false ? "" : "none";
