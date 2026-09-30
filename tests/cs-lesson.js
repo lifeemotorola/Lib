@@ -441,8 +441,8 @@ ok(/Computer Science/.test(notice) && /not an official transcription/i.test(noti
 const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 ok(css.indexOf('body[data-subject="cs"]') >= 0, "Computer Science has its own theme colour");
 const coverText = fs.readFileSync(path.join(root, "cover-text.js"), "utf8");
-ok(coverText.indexOf("Computer Science · Original teaching resource") >= 0,
-  "cover text names Computer Science as an original teaching resource");
+ok(/teacher \? "teaching" : "learning"/.test(coverText) && /teacher review required/.test(coverText),
+  "Computer Science cover wording is audience-specific and keeps review guidance in the teacher session");
 ok(!fs.existsSync(path.join(root, "elementary-lessons", "cs.md")),
   "no invented markdown lesson file for Computer Science");
 const built = path.join(root, "index.html");

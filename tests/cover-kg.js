@@ -215,7 +215,9 @@ ok(text.organization === "Kindergarten \u00b7 Liberian National Curriculum",
    "the footer never claims transcribed curriculum content: " + text.organization);
 ok(text.subject === "ENGLISH", "the subject is still taken from the document title: " + text.subject);
 const gradeText = COVER_TEXT.prepare({ grade: 3, subjectId: "en" }, { title: "ENGLISH \u2014 GRADE 3" }, {}, false);
-ok(gradeText.subtitle === "Pupil Workbook", "a graded pack keeps the ordinary workbook subtitle");
+ok(gradeText.subtitle === "Student Workbook", "a graded pack uses the student-facing workbook subtitle");
+ok(!/teacher|pupil/i.test(gradeText.subtitle + gradeText.line + gradeText.organization),
+   "automatic student cover text avoids teacher and pupil terminology");
 
 /* ------------------------------------------------------------------ */
 console.log("\n-- artwork and build --");

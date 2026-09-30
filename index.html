@@ -1734,7 +1734,7 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
     <div class="crest"><svg class="ic" aria-hidden="true"><use href="#i-crest"/></svg></div>
     <div class="top-txt">
       <h1 data-brand="product">Easy School Liberia</h1>
-      <p><span class="top-sub">KG-I &amp; KG-II lesson plans &amp; cover pages &middot; Grades 1&ndash;12 &middot; printable pupil workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> <span data-brand="tutor">Emmanuel</span> AI tutor &middot; works offline</span></p>
+      <p><span class="top-sub">KG-I &amp; KG-II lesson plans &amp; cover pages &middot; Grades 1&ndash;12 &middot; printable student workbooks, tests and answer keys &middot; <svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg> <span data-brand="tutor">Emmanuel</span> AI tutor &middot; works offline</span></p>
     </div>
     <button type="button" class="install-app" id="installApp" hidden><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Install app</button>
     <span class="install-status" id="installStatus" role="status" aria-live="polite"></span>
@@ -1931,7 +1931,7 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
 
             <div class="cvsec">This pack</div>
             <input type="text" id="cvClass" placeholder="Class (blank = grade or KG level from above)">
-            <input type="text" id="cvPupil" placeholder="Pupil's name (student copy)">
+            <input type="text" id="cvPupil" placeholder="Student's name">
             <input type="text" id="cvTeacher" placeholder="Teacher's name">
             <div class="row2">
               <input type="text" id="cvTerm" placeholder="Term">
@@ -2062,7 +2062,7 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
             <!-- live preview of the running header & footer -->
             <div class="cvsec">Preview</div>
             <div class="hf-preview" id="shHfPrev">
-              <div class="pv-row pv-hd"><span class="phdr-l" id="shHfPrevHL">SUBJECT &middot; GRADE 5</span><span class="phdr-r" id="shHfPrevHR">Teacher's Copy</span></div>
+              <div class="pv-row pv-hd"><span class="phdr-l" id="shHfPrevHL">SUBJECT &middot; GRADE 5</span><span class="phdr-r" id="shHfPrevHR">Student Copy</span></div>
               <p style="margin:6px 0 4px;color:#888;font-size:.68rem;">A4 sheet content sits here, in the chosen font size and subject colour.</p>
               <div class="pv-row pv-ft"><span class="pftr-l" id="shHfPrevFL">Liberian Elementary Curriculum &middot; Grade 5</span><span><span class="pftr-r" id="shHfPrevFR">Easy School Liberia</span> <span class="pftr-pg" id="shHfPrevPG">Page 3 of 12</span></span></div>
             </div>
@@ -2102,7 +2102,7 @@ body[data-pftr-on="false"] .botfoot{display:none!important}
             <div class="row"><label for="platHdSub">Subtitle / list of subjects</label>
               <input type="text" id="platHdSub" maxlength="600" placeholder="English &middot; Phonics &middot; French &middot; ..."></div>
             <div class="row"><label for="platHdNote">Small line under the subtitle</label>
-              <input type="text" id="platHdNote" maxlength="240" placeholder="KG-I &amp; KG-II lesson plans &amp; cover pages &middot; Grades 1&ndash;12 &middot; printable pupil workbooks ..."></div>
+              <input type="text" id="platHdNote" maxlength="240" placeholder="KG-I &amp; KG-II lesson plans &amp; cover pages &middot; Grades 1&ndash;12 &middot; printable student workbooks ..."></div>
             <div class="row"><label for="platHdFs">Title text size</label>
               <input type="range" id="platHdFs" min="0.9" max="2.2" step="0.05" value="1.35">
               <b id="platHdFsVal">1.35rem</b></div>
@@ -175691,7 +175691,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   var fields = {
     title: "Main cover title", subtitle: "Book type / subtitle", line: "Curriculum / level line", subject: "Subject value",
     schoolLabel: "School label", subjectLabel: "Subject label", classLabel: "Class label", teacherLabel: "Teacher label",
-    pupilLabel: "Pupil / name label", termLabel: "Term label (simple list)", yearLabel: "Year label (simple list)", termYearLabel: "Term / year label (designed covers)",
+    pupilLabel: "Student / name label", termLabel: "Term label (simple list)", yearLabel: "Year label (simple list)", termYearLabel: "Term / year label (designed covers)",
     noteLabel: "Note label", inspireLabel: "Default message label", inspireText: "Default message text",
     organization: "Organization footer", detailLabel: "Table detail heading", entryLabel: "Table entry heading"
   };
@@ -175718,14 +175718,14 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   }
   function prepare(opts, d, cover, teacher) {
     var subject = String(d.title || "").split("—")[0].trim() || "Course Pack";
-    defaults = { title: subject, subtitle: teacher ? "Teacher's Lesson Book" : "Pupil Workbook", line: d.line || "", subject: subject,
+    defaults = { title: subject, subtitle: teacher ? "Teacher's Lesson Book" : "Student Workbook", line: d.line || "", subject: subject,
       schoolLabel: "School", subjectLabel: "Subject", classLabel: "Class", teacherLabel: "Teacher", pupilLabel: "Name",
       termLabel: "Term", yearLabel: "Year", termYearLabel: cover.term ? "Term" : "Term / Year",
-      noteLabel: "Note", inspireLabel: "Inspire", inspireText: "Teach · Encourage · Achieve",
-      organization: opts.subjectId === "ci" ? "Civics · Original teaching resource" : opts.subjectId === "cs" ? "Computer Science · Original teaching resource" : opts.subjectId && opts.subjectId.charAt(0) === "w" ? "WASSCE · Syllabus-aligned practice" : "Liberian National Curriculum",
+      noteLabel: "Note", inspireLabel: "Inspire", inspireText: teacher ? "Teach · Encourage · Achieve" : "Learn · Practise · Achieve",
+      organization: opts.subjectId === "ci" ? "Civics · Original " + (teacher ? "teaching" : "learning") + " resource" : opts.subjectId === "cs" ? "Computer Science · Original " + (teacher ? "teaching" : "learning") + " resource" : opts.subjectId && opts.subjectId.charAt(0) === "w" ? "WASSCE · Syllabus-aligned practice" : "Liberian National Curriculum",
       detailLabel: "Detail", entryLabel: "Entry" };
-    if (opts.subjectId === "ci") defaults.line = "Civics · Grade " + opts.grade + " · Original teaching resource; teacher review required";
-    if (opts.subjectId === "cs") defaults.line = "Computer Science · Grade " + opts.grade + " · Original teaching resource; teacher review required";
+    if (opts.subjectId === "ci") defaults.line = "Civics · Grade " + opts.grade + (teacher ? " · Original teaching resource; teacher review required" : " · Original learning resource");
+    if (opts.subjectId === "cs") defaults.line = "Computer Science · Grade " + opts.grade + (teacher ? " · Original teaching resource; teacher review required" : " · Original learning resource");
     /* A kindergarten level has no transcribed syllabus, so its cover names the
        level instead of a workbook and never claims curriculum content. */
     if (opts.kg) {
@@ -176815,7 +176815,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         "Easy School Liberia";
     }
     if (topSub) {
-      var defSub = "<span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable pupil workbooks, tests and answer keys \u00b7 works offline</span>";
+      var defSub = "<span class=\"top-sub\">KG-I & KG-II lesson plans & cover pages \u00b7 Grades 1\u201312 \u00b7 printable student workbooks, tests and answer keys \u00b7 works offline</span>";
       topSub.innerHTML = (pl.hdr.sub && pl.hdr.sub.trim()) || pd.sub || defSub;
       /* "Small line under the subtitle" replaces the .top-sub strip. Rebuilding
          innerHTML above every pass is what puts the factory line back when the
@@ -177153,9 +177153,9 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   /* ---------------- session mode: teacher | student ----------------
      The platform is built for TEACHERS first: the default session is the
      teacher's copy, carrying the full verbatim study notes and every answer
-     key. A smaller student session remains for clean pupil materials.
+     key. A smaller student session remains for clean student materials.
      Both sessions use the same curriculums and the same worksheets.
-     Student = clean pupil materials, no answers anywhere.
+     Student = clean student materials, no answers anywhere.
      Teacher = identical worksheets plus every answer key, marked as the
      teacher's copy in the cover, running head and footer. */
   var MODE = "teacher";
@@ -177265,24 +177265,34 @@ window.WA_SUBJECTS.crs = window.WA_crs;
   function authorAuto(ctx) {
     ctx = ctx || {};
     var brand = (typeof window !== "undefined" && window.APP_BRAND) || {};
-    var teacher = ctx.teacher || "", school = ctx.school || "",
+    var student = !!ctx.student;
+    var teacher = student ? "" : (ctx.teacher || ""), school = ctx.school || "",
         subject = ctx.subject || "", klass = ctx.klass || "",
         product = ctx.product || brand.product || "Easy School Liberia",
         tutor = ctx.tutor || brand.tutor || "Emmanuel",
         year = ctx.year || String(new Date().getFullYear());
     return {
-      title: "About the Author",
+      title: student ? "About this Study Pack" : "About the Author",
       subtitle: teacher ? "Prepared by " + teacher : product,
       kicker: product + " \u00b7 Back Cover",
-      bio: "This booklet was prepared for " + (subject || "the subject") + (klass ? " " + klass : "") +
-        " by " + (teacher || "the teacher") + (school ? " of " + school : "") + ". " +
-        "It was generated with " + product + ", an offline, single-file web app that creates printable course packs " +
-        "for the Liberian National Curriculum. The content is transcribed from the official curriculum guides " +
-        "and enriched with exercises, study notes and assessments. " +
-        tutor + ", the AI tutor, is available online to help learners with difficult words and questions.",
-      mission: "**Mission:** Provide every Liberian teacher with free, offline, printable workbooks, tests and answer keys \u2014 no internet, no cost, no dependency.",
-      contact: "**" + product + "** \u00b7 Liberian National Curriculum \u00b7 " + year +
-        " \u00b7 Teacher's copy \u2014 not for pupil distribution when answer keys are included."
+      bio: student
+        ? "This booklet is a self-study resource for " + (subject || "the subject") + (klass ? " " + klass : "") +
+          (school ? ", at " + school : "") + ". It was generated with " + product +
+          ", an offline app that creates printable course packs for the Liberian National Curriculum, with exercises, study notes and assessments. " +
+          tutor + ", the AI tutor, is available online to help learners with difficult words and questions."
+        : "This booklet was prepared for " + (subject || "the subject") + (klass ? " " + klass : "") +
+          " by " + (teacher || "the teacher") + (school ? " of " + school : "") + ". " +
+          "It was generated with " + product + ", an offline, single-file web app that creates printable course packs " +
+          "for the Liberian National Curriculum. The content is transcribed from the official curriculum guides " +
+          "and enriched with exercises, study notes and assessments. " +
+          tutor + ", the AI tutor, is available online to help learners with difficult words and questions.",
+      mission: student
+        ? "**Mission:** Help learners access free, offline study materials, workbooks and assessments."
+        : "**Mission:** Provide every Liberian teacher with free, offline, printable workbooks, tests and answer keys \u2014 no internet, no cost, no dependency.",
+      contact: student
+        ? "**" + product + "** \u00b7 Liberian National Curriculum \u00b7 " + year
+        : "**" + product + "** \u00b7 Liberian National Curriculum \u00b7 " + year +
+          " \u00b7 Teacher's copy \u2014 not for pupil distribution when answer keys are included."
     };
   }
   /* What actually prints: the user's words where they typed any, the automatic
@@ -177574,7 +177584,6 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       rows.push(coverRow(lab("subject"), subject));
       rows.push(coverRow(lab("class"), klass));
       rows.push(coverRow(lab("school"), COVER.school));
-      if (!isTeacher()) rows.push(coverRow(lab("teacher"), COVER.teacher));
       rows.push(coverRow(lab("term"), COVER.term));
       rows.push(coverRow(lab("year"), COVER.year));
       out.push({ k: "table", head: [lab("detail"), lab("entry")], rows: rows });
@@ -177646,8 +177655,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     if (n) n.textContent = TRACK === "wa"
       ? "WASSCE session: the WAEC West African Senior School Certificate Examination, Grade 12. Syllabus topics, objective (Paper 1) and theory (Paper 2) practice, topic mocks and a full WASSCE mock — built from the official WAEC syllabuses."
       : isTeacher()
-        ? "Teacher session: the same worksheets as the pupils receive, with every answer key included and each sheet marked as the teacher's copy."
-        : "Student session: clean pupil worksheets, tests and examinations. No answers are included anywhere in the pack.";
+        ? "Teacher session: the same worksheets students receive, with every answer key included and each sheet marked as the teacher's copy."
+        : "Student session: your worksheets, tests and examinations. Answers are not included in the pack.";
     renderSubjectTabs(); buildSheetList(); refreshGrades(); refreshPeriods();
     if (window.PACK_PAINT_COVER_PREVIEW) window.PACK_PAINT_COVER_PREVIEW();
     if (window.PACK_PAINT_AUTHOR) window.PACK_PAINT_AUTHOR();
@@ -178110,7 +178119,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     function label(fact, key, fallback) {
       return au.labels[fact] || COVER_TEXT.label(b, key, fallback);
     }
-    var ctx = { teacher: b.teacher, school: b.school, subject: b.subject, klass: b.klass,
+    var ctx = { teacher: b.teacher, student: !!b.student, school: b.school, subject: b.subject, klass: b.klass,
                 product: b.product, tutor: b.tutor, year: b.year };
     var txt = authorText(au, ctx);
     /* an uploaded portrait wins; otherwise the photo bundled with the page */
@@ -178143,6 +178152,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       var LABEL_KEY = { teacher: "teacherLabel", school: "schoolLabel", subject: "subjectLabel", klass: "classLabel" };
       AUTHOR_FACTS.forEach(function (f) {
         var key = f[0], val = au.facts[key] || b[key] || "";
+        if (b.student && key === "teacher") return;
         if (val) rows += row(label(key, LABEL_KEY[key], f[1]), val);
       });
     }
@@ -178189,7 +178199,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     } catch (e) {}
     var subject = (sj && (sj.packName || sj.label)) || (o && o.subjectLine) || "Course Pack";
     var klass = (o && (o.levelLabel || ("Grade " + o.grade))) || "";
-    var teacher = (o && o.teacherName) || COVER.teacher || "";
+    var studentMode = !!(window.PACK_MODE && window.PACK_MODE() === "student");
+    var teacher = studentMode ? "" : ((o && o.teacherName) || COVER.teacher || "");
     var school = (o && o.school) || COVER.school || "";
     var coverBg = null;
     try { coverBg = activeCoverBg(o); } catch (e) {}
@@ -178199,7 +178210,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     var tutor = (window.APP_BRAND && window.APP_BRAND.tutor) || "Emmanuel";
     /* the wording the sheet will print, kept on the block for the Word export
        and for anything that reads the block without the author settings */
-    var txt = authorText(au, { teacher: teacher, school: school, subject: subject, klass: klass,
+    var txt = authorText(au, { teacher: teacher, student: studentMode, school: school, subject: subject, klass: klass,
                                product: product, tutor: tutor, year: COVER.year });
     return [
       { k: "pagebreak" },
@@ -178208,6 +178219,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
         tpl: COVER.tpl,
         school: school,
         teacher: teacher,
+        student: studentMode,
         subject: subject,
         klass: klass,
         term: COVER.term,
@@ -178388,7 +178400,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       ? (isTeacher() ? "Teacher's Assessment" : "Student Assessment") + (o.keys ? " · Marking Scheme" : "")
       : isLP()
       ? (o.lpPlanType === "weekly" ? "Teacher's Weekly Unit Plan" : "Teacher's Lesson Plan")
-      : isTeacher() ? "Teacher's Copy" + (o.keys ? " · Answer Keys Included" : "") : "Pupil Workbook & Assessment Pack";
+      : isTeacher() ? "Teacher's Copy" + (o.keys ? " · Answer Keys Included" : "") : "Student Workbook & Assessment Pack";
     /* name the grade actually being generated, not the whole band. WASSCE
        packs name the WAEC examination instead of the national curriculum. */
     var band = cur === "ci" ? "Civics · Original supplementary material · Grade " + o.grade
@@ -179088,7 +179100,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
           var auD = normalizeAuthor(b.author || COVER.author);
           function conA(k) { return auD.show[k] !== false; }
           function colA(k, fallback) { return cdsA[k] ? cdsA[k].replace("#", "").toUpperCase() : fallback; }
-          var txtA = authorText(auD, { teacher: b.teacher, school: b.school, subject: b.subject, klass: b.klass,
+          var txtA = authorText(auD, { teacher: b.teacher, student: !!b.student, school: b.school, subject: b.subject, klass: b.klass,
                                        product: b.product, tutor: b.tutor, year: b.year });
           body += para("", { sz: 40 });
           var bgIdA = (b.bg && conA("bg")) ? addImage(b.bg, b.bgMime || "image/jpeg") : null;
@@ -179107,6 +179119,7 @@ window.WA_SUBJECTS.crs = window.WA_crs;
             var LABEL_KEYA = { teacher: "teacherLabel", school: "schoolLabel", subject: "subjectLabel", klass: "classLabel" };
             AUTHOR_FACTS.forEach(function (f) {
               var key = f[0], val = auD.facts[key] || b[key] || "";
+              if (b.student && key === "teacher") return;
               if (val) crA.push([auD.labels[key] || COVER_TEXT.label(b, LABEL_KEYA[key], f[1]), val]);
             });
           }
@@ -179710,13 +179723,16 @@ window.WA_SUBJECTS.crs = window.WA_crs;
       document.body.setAttribute("data-mode", MODE);
       var kr = $("#keysRow");
       if (kr) kr.style.display = isTeacher() ? "" : "none";
+      var teacherName = $("#cvTeacher");
+      if (teacherName) teacherName.style.display = isTeacher() ? "" : "none";
       var n = $("#sessNote");
       if (n) n.textContent = TRACK === "wa"
         ? "WASSCE session: the WAEC West African Senior School Certificate Examination, Grade 12. Syllabus topics, objective (Paper 1) and theory (Paper 2) practice, topic mocks and a full WASSCE mock \u2014 built from the official WAEC syllabuses."
         : isTeacher()
-          ? "Teacher session: the same worksheets as the pupils receive, with every answer key included and each sheet marked as the teacher's copy."
-          : "Student session: clean pupil worksheets, tests and examinations. No answers are included anywhere in the pack.";
+          ? "Teacher session: the same worksheets students receive, with every answer key included and each sheet marked as the teacher's copy."
+          : "Student session: your worksheets, tests and examinations. Answers are not included in the pack.";
       syncBadges();
+      paintSheetHFPreview();
     }
     document.querySelectorAll("#session .sess").forEach(function (b) {
       b.onclick = function () {
@@ -180117,7 +180133,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     function authorCtx() {
       var sj = S(), o = opts();
       return {
-        teacher: (COVER.teacher || "").trim(),
+        teacher: isTeacher() ? (COVER.teacher || "").trim() : "",
+        student: !isTeacher(),
         school: (COVER.school || "").trim(),
         subject: (sj && (sj.packName || sj.label)) || "Course Pack",
         klass: o.levelLabel || ("Grade " + o.grade),
@@ -180656,7 +180673,8 @@ window.WA_SUBJECTS.crs = window.WA_crs;
     var fr = document.getElementById("shHfPrevFR");
     var pg = document.getElementById("shHfPrevPG");
     if (hl) hl.textContent = txt(sh.hdr, "l", "SUBJECT \u00b7 GRADE 5");
-    if (hr) hr.textContent = txt(sh.hdr, "r", "Teacher's Copy");
+    var studentMode = !!(window.PACK_MODE && window.PACK_MODE() === "student");
+    if (hr) hr.textContent = txt(sh.hdr, "r", studentMode ? "Student Copy" : "Teacher's Copy");
     if (fl) fl.textContent = txt(sh.ftr, "l", "Liberian Elementary Curriculum \u00b7 Grade 5");
     if (fr) fr.textContent = txt(sh.ftr, "r", "Easy School Liberia");
     if (pg) pg.style.display = sh.on && sh.ftr && sh.ftr.pg !== false ? "" : "none";
