@@ -429,7 +429,9 @@ test("an entity written on purpose to be seen is still seen", () => {
     .map((ids) => [["data-wa.js"].concat(ids.map((id) => "data-wa-" + id + ".js")), "window.WA_" + ids[0]]);
   const FILES = [["data-en.js", "EN_CURRICULUM"], ["data-eg.js", "EG_CURRICULUM"],
     ["data-ma.js", "MA_CURRICULUM"], ["data-fr.js", "FR_CURRICULUM"], ["data-sc.js", "SC_CURRICULUM"],
-    ["data-ss.js", "SS_CURRICULUM"], ["data-rm.js", "RM_CURRICULUM"], ["data-pe.js", "PE_CURRICULUM"],
+    ["data-ss.js", "SS_CURRICULUM"],
+    [["data-rm.js", "data-rm-more.js", "data-rm15-depth.js", "data-rm79.js", "data-rm79-more.js", "data-rm69-depth.js", "data-rm1012.js", "data-rm1012-more.js", "data-rm1012-depth.js", "data-rm612-full.js"], "RM_CURRICULUM"],
+    ["data-pe.js", "PE_CURRICULUM"],
     ["data-bi.js", "BI_CURRICULUM"], ["data-ch.js", "CH_CURRICULUM"], ["data-ph.js", "PH_CURRICULUM"],
     ["data-ec.js", "EC_CURRICULUM"], ["data-gg.js", "GG_CURRICULUM"], ["data-li.js", "LI_CURRICULUM"],
     ["data-hi.js", "HI_CURRICULUM"], ["data-cs.js", "CS_CURRICULUM"], ["data-cs79.js", "CS_CURRICULUM_79"],
@@ -533,7 +535,30 @@ test("an entity written on purpose to be seen is still seen", () => {
                 `${(res.doc.match(/<w:i\/>/g) || []).length} italic runs`);
   }
 
-  group("8. The built deliverable carries the change");
+  group("8. Every expanded RME unit exports its detailed notes and tables");
+
+  const rmeContext = { console, window: {} };
+  vm.createContext(rmeContext);
+  const rmeFiles = FILES.find((entry) => entry[1] === "RM_CURRICULUM")[0];
+  rmeFiles.forEach((file) => vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), rmeContext, { filename: file }));
+  const rmeUnits = vm.runInContext("RM_CURRICULUM", rmeContext).filter((unit) => unit.rmeFullDetails);
+  test("all 42 full-detail RME units are included in the export sweep", () => assert.equal(rmeUnits.length, 42));
+  for (const unit of rmeUnits) {
+    const label = "RME Grade " + unit.grade + " Period " + unit.period;
+    const res = await exportParts(unit.study, { left: label, right: "", foot: "" });
+    test(label + ": detailed explanations, lists and tables survive Word export", () => {
+      assertClean(res.seen, label);
+      assert(res.seen.includes("Detailed Study"), "expanded study headings missing");
+      assert(res.seen.includes("Guided Classroom Enquiry"), "expanded activities missing");
+      assert(res.seen.includes("Check Your Understanding"), "expanded review missing");
+      const src = unit.study.map((block) => block.t || (block.items || []).join(" ") ||
+        [(block.head || []).join(" "), (block.rows || []).map((row) => row.join(" ")).join(" ")].join(" ")).join(" ");
+      assert(inOrder(alnum(plainExpect(src)), alnum(res.seen)), "RME notes lost words in Word export");
+      assert(/<w:b\/>/.test(res.doc), "expanded key-term emphasis missing");
+    });
+  }
+
+  group("9. The built deliverable carries the change");
 
   test("index.html is built from the new sources", () => {
     ["function inlineSegs(", "function decodeEnt(", "function parseInline(", "function boldEnd(",

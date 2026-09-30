@@ -147,6 +147,7 @@ node tests/kg-lesson.js         # Kindergarten ECD lesson plans
 node tests/health-lesson.js     # Elementary health units and plans
 node tests/cs-lesson.js         # Computer Science units, Grades 1-12, and computing plans
 node tests/civics-teaching.js   # all 36 Civics units
+node tests/rme-curriculum.js   # RME coverage, all 42 expanded Grade 6-12 lessons, generators and keys
 node tests/usage.js             # usage counters and the no-network guarantee
 node tests/sw.js                # offline shell: resilient install, per-page caching, fallbacks
 node tests/btt.js               # back-to-top button: threshold, corner sharing, never printed
@@ -160,6 +161,7 @@ Browser tests (Playwright; `pip install -r requirements.txt`):
 python tests/ui.py        # panel, covers, uploads, duplex, responsive
 python tests/regress.py   # every subject × grade × session, A4 geometry, no key leakage
 python tests/history.py   # History track controls, packs, plans, exports
+python tests/rme.py       # all expanded RME grades, offline packs, Word exports, weekly objectives
 python tests/teaching.py  # library save/reopen, import/export, question editing
 ```
 

@@ -25,12 +25,12 @@ var RM_MORE_1012 = [
       ["Both together","God is above all and near to all","The balanced teaching of the three traditions"]
     ]},
     {k:"rule"},
-    {k:"h3", t:"Wrong Ideas About God"},
+    {k:"h3", t:"Different Positions about God and Theistic Responses"},
     {k:"bul", items:[
-      "**Atheism** — the belief that there is no God. The believer answers from creation, conscience and revelation (Psalm 14:1; Romans 1:20).",
-      "**Agnosticism** — the view that we cannot know whether God exists.",
-      "**Polytheism** — belief in many equal gods; rejected by all three traditions, which hold one Supreme Creator.",
-      "**Pantheism** — the idea that everything *is* God; the traditions teach that God made nature and is not the same as it.",
+      "**Atheism** — commonly the absence of belief in gods; some atheists also affirm that no gods exist. Theistic responses may appeal to creation, conscience or revelation; these arguments can be studied without insulting non-believers.",
+      "**Agnosticism** — uncertainty or a view about limits of knowledge concerning whether God exists.",
+      "**Polytheism** — belief in multiple gods. Christianity and Islam reject it; classifications of African Traditional religions require specific, qualified accounts.",
+      "**Pantheism** — identifying the divine with the whole of reality. Christian and Islamic Creator–creation distinctions differ from it; other traditions must be considered in context.",
       "**Idolatry** — giving to any created thing the worship that belongs to God alone (Exodus 20:3-5; Qur'an 4:48 on shirk)."
     ]},
     {k:"rule"},
@@ -40,10 +40,10 @@ var RM_MORE_1012 = [
   terms:[
     {t:"transcendent", d:"above and beyond creation, not limited by it", x:"The transcendent God is not contained by any temple."},
     {t:"immanent", d:"present and active within creation", x:"The immanent God is near to the one who prays."},
-    {t:"atheism", d:"the belief that God does not exist", x:"The psalmist answered atheism in Psalm 14:1."},
-    {t:"agnosticism", d:"the view that we cannot know whether God exists", x:"Agnosticism leaves the question open."},
-    {t:"polytheism", d:"belief in many gods", x:"The three traditions of Liberia reject polytheism."},
-    {t:"pantheism", d:"the belief that everything is God", x:"Pantheism confuses the Creator with creation."},
+    {t:"atheism", d:"absence of belief in gods, sometimes including the claim that no gods exist", x:"Atheism concerns belief in gods, not a lack of ethical values."},
+    {t:"agnosticism", d:"uncertainty or a position about limits of knowledge concerning God", x:"Agnosticism leaves the question open."},
+    {t:"polytheism", d:"belief in many gods", x:"Polytheism must be distinguished from monotheism using the specific tradition."},
+    {t:"pantheism", d:"the belief that everything is God", x:"Pantheism differs from a strict Creator–creation distinction."},
     {t:"shirk", d:"in Islam, associating partners with God — the gravest sin", x:"Worshipping an idol is shirk."},
     {t:"idolatry", d:"worshipping a created thing instead of God", x:"Loving money above God is a form of idolatry."}
   ],
@@ -51,10 +51,10 @@ var RM_MORE_1012 = [
     {q:"Distinguish transcendence from immanence.", a:"Transcendence means God is above and beyond creation; immanence means He is present and active within it. The traditions hold both together."},
     {q:"What is shirk, and why is it considered serious in Islam?", a:"Associating partners with God; it denies Tawhid, the oneness of God, and Qur'an 4:48 calls it the sin God will not forgive if a person dies unrepentant."},
     {q:"Give two ways a belief about God should change behaviour.", a:"Because God is all-knowing, be honest even in secret; because He is merciful, forgive others."},
-    {q:"Explain the difference between atheism and agnosticism.", a:"Atheism says God does not exist; agnosticism says we cannot know whether He exists."}
+    {q:"Explain the difference between atheism and agnosticism.", a:"Atheism concerns absence of belief in gods, sometimes including denial of their existence; agnosticism concerns uncertainty or limits of knowledge. The positions can overlap."}
   ],
   tf:[
-    {s:"Pantheism teaches that God and nature are the same thing.", a:"true", why:"That is the definition of pantheism. The three traditions reject it because they teach that God made nature."},
+    {s:"Pantheism teaches that God and nature are the same thing.", a:"true", why:"Pantheism identifies the divine with reality; this differs from Christian and Islamic Creator–creation distinctions. Other accounts require careful attribution."},
     {s:"A transcendent God cannot be near to people.", a:"false", why:"The traditions teach that God is both transcendent and immanent (Isaiah 55:8-9; Qur'an 50:16)."}
   ],
   worked:[
@@ -75,7 +75,7 @@ var RM_MORE_1012 = [
     {k:"rule"},
     {k:"h3", t:"How the Holy Books Were Preserved"},
     {k:"table", head:["Book","Parts","Language","Preservation"], rows:[
-      ["Holy Bible","Old Testament (39 books) and New Testament (27 books) = 66","Hebrew, Aramaic, Greek","Copied by scribes; thousands of ancient manuscripts; later translated into many languages"],
+      ["Holy Bible","Protestant canon: 39 Old Testament + 27 New Testament = 66; Catholic normally 73; Orthodox varies","Hebrew, Aramaic, Greek","Copied by scribes; thousands of ancient manuscripts; later translated into many languages"],
       ["Holy Qur'an","114 surahs, about 6,236 verses","Arabic","Memorised by huffaz; gathered into one text under the early caliphs; recited in Arabic worldwide"],
       ["Hadith","Collections such as Sahih al-Bukhari and Sahih Muslim","Arabic","Each report checked through its chain of narrators (isnad)"],
       ["Oral tradition","Proverbs, stories, songs, rites","Liberia's local languages","Passed from elders to the young in homes, initiation schools and gatherings"]
@@ -102,7 +102,7 @@ var RM_MORE_1012 = [
     {t:"initiation school", d:"a traditional school where elders train the young in custom and adult duty", x:"The Sande and Poro teach through initiation schools."}
   ],
   facts:[
-    {q:"How many books are in the Old and New Testaments?", a:"39 in the Old Testament and 27 in the New Testament, 66 in all (Protestant canon)."},
+    {q:"How many books are in the usual Protestant Old and New Testaments?", a:"39 in the Old Testament and 27 in the New Testament, 66 in all (Protestant canon)."},
     {q:"What is an isnad, and why does it matter?", a:"The chain of narrators behind a Hadith report. Scholars examine it to judge whether the report is reliable."},
     {q:"Give three rules for reading Scripture responsibly.", a:"Read in context, notice what kind of writing it is, and let each verse agree with the whole message. Also seek qualified teachers."},
     {q:"How is oral tradition preserved in Liberia?", a:"Elders pass on proverbs, stories, songs and rites in homes, initiation schools and community gatherings."}

@@ -225,7 +225,7 @@ var RM_MORE_79 = [
     {q:"Name three ways HIV is spread.", a:"Through blood, sexual contact and from mother to child."},
     {q:"Why is testing important?", a:"Many STIs have no signs, and early testing leads to early treatment."},
     {q:"What example did Jesus set toward the sick?", a:"He touched and healed the man with leprosy instead of rejecting him (Mark 1:40-42)."},
-    {q:"Give four ways to stay safe from STIs.", a:"Abstain, stay faithful in marriage, never share blades or needles, and get tested and treated early."}
+    {q:"Give four ways to stay safe from STIs.", a:"Avoid sexual exposure, avoid shared needles or contaminated blades, obtain relevant vaccination, and seek qualified testing and prevention advice including correct barrier use where relevant."}
   ],
   tf:[
     {s:"You can get HIV by eating from the same plate.", a:"false", why:"HIV does not spread through casual contact."},
