@@ -43,10 +43,13 @@ so the whole thing stays self-contained.
     plus custom teacher adjustment notes embedded directly on every weekly and daily plan.
 - **Study notes** for every unit: key ideas, worked examples and common
   mistakes — and for Social Studies, General Science, English, Mathematics,
-  French and Physical Education Grades 1–9, Religious & Moral Education
-  Grades 1–12 (Mathematics, French and Phonics also Grades 10–12) and Biology, Chemistry, Physics, Economics,
+  French and Physical Education Grades 1–9 (Mathematics, French and Phonics
+  also Grades 10–12) and Biology, Chemistry, Physics, Economics,
   English Grammar and Geography Grades 10–12, the full **course text**,
-  transcribed verbatim from the official curriculum guide. **Senior High
+  transcribed from the official curriculum guides. **Religious & Moral Education**
+  spans Grades 1–12: guide-aligned topics in Grades 1–9, original Senior High
+  resources in Grades 10–12, and full-detail original teaching supplements for
+  every period in Grades 6–12. **Senior High
   History (Grades 10–12)** includes explanatory study notes and exercises
   aligned to the uploaded History guide, with source pages recorded per unit
 - **Voice reader (offline)** — a floating "voice reader" that pronounces the
@@ -494,7 +497,7 @@ session and paper they were made with.
 | Computer Science (`cs`, original) | 1–12 | 6 (Periods I–VI) | 72 |
 | Mathematics (`ma`) | 1–12 | 6 for 1–9; 11 / 8 / 23 for 10 / 11 / 12 | 96 |
 | Social Studies (`ss`) | 1–9 | 6 | 54 |
-| Religious & Moral Education (`rm`) | 1–9 | 6 | 54 |
+| Religious & Moral Education (`rm`) | 1–12 | 6 (Periods I–VI) | 72 |
 | Physical Education (`pe`) | 1–9 | 6 | 54 |
 | Biology (`bi`) | 10–12 | 6 | 18 |
 | Chemistry (`ch`) | 10–12 | 6 | 18 |
@@ -507,7 +510,8 @@ session and paper they were made with.
 | Literature (`li`) | 10–12 | 6 | 18 |
 | Kindergarten (`kg`, lesson plans) | KG-I–KG-II | 2 theme units | 4 |
 
-> **Coverage:** Mathematics, French, **Phonics** and **Computer Science** span Grades 1–12, and
+> **Coverage:** Mathematics, French, **Phonics**, **Computer Science** and
+> **Religious & Moral Education** span Grades 1–12, and
 > Biology, Chemistry, Physics, Economics, English Grammar, Geography, History and
 > Literature cover Grades 10–12; the other elementary and junior-high
 > subjects stop at Grade 9. **Health Science** covers Grades 1–6 with **six 4-week
@@ -519,6 +523,62 @@ session and paper they were made with.
 > Grades 7–12; it is not an official syllabus transcription.
 > **Kindergarten** spans KG-I–KG-II with 2 ECD theme
 > units per level (lesson plans only; packs stay cover-only).
+
+### Religious & Moral Education — expanded Grades 6–12
+
+Choose **National Curriculum → Religious & Moral**, select Elementary (Grade 6),
+Junior High (Grades 7–9) or Senior High (Grades 10–12), then the periods to include.
+Keep **Study notes** enabled to include the full lessons. The subject has six
+periods in every grade, with 72 units across Grades 1–12; all **42 units in
+Grades 6–12** now include the full-detail supplement in `data-rm612-full.js`.
+
+| Grade | Period I | Period II | Period III | Period IV | Period V | Period VI |
+|---|---|---|---|---|---|---|
+| 6 | Creation | Commitment | Conflict resolution | Worship and offering | Religious personalities | Death and hereafter |
+| 7 | Reconciliation | Religion and substance abuse | Individual and society | Worship and offering | STIs | Peace |
+| 8 | Substance abuse | Conflict resolution | Moral teaching on sexual conduct | Reconciliation | Stewardship | Religious practices and moral implications |
+| 9 | Religious personalities and moral teachings | Commitment to God | Festivals and values | Religion and health | Religious leaders' ministries | Chastity and immorality |
+| 10 | Nature of God | Sources of religious authority | Worship and devotion | Marriage and family | Wealth, poverty and honest gain | Work and vocation |
+| 11 | Conscience and moral decisions | Justice, dignity and religious freedom | Leadership and governance | Sickness, suffering and care | Death and life after death | Science, technology and faith |
+| 12 | Comparative religion and dialogue | Peacebuilding | Environment | Discernment | Youth and nation-building | Meaning of life and commitment |
+
+Each expanded unit adds:
+
+- Two further learning goals, detailed explanations, a comparison table,
+  a step-by-step practical process and a contextual example.
+- Three defined vocabulary terms with example sentences, four recall questions
+  with answers, and two true/false checks with explanations.
+- Two application questions and two worked moral-reasoning cases with steps
+  and suggested conclusions, plus two guided classroom enquiry activities.
+- A six-question extended review in the study notes, before the original
+  assignment. The added vocabulary and questions also enter the existing
+  worksheets, period tests, semester exams and teacher-key pools.
+
+The expansion adds **126 glossary entries, 168 recall questions, 84 true/false
+checks, 84 application questions, 84 worked cases and 84 enquiry activities**.
+It uses the shared renderer and Word exporter, so screen, print and `.docx`
+workbooks receive the same material and remain fully offline. Lesson-plan
+builders can use the extended objectives, study headings and question pools.
+Grades 1–5 and the number and order of periods are unchanged.
+
+**Source status:** Grades 6–9 retain the uploaded Liberian guides' topic
+sequence; the expanded prose, cases and activities are original teaching
+supplements. Grades 10–12 are original multi-religious resources, **not an
+official Senior High RME syllabus or a WASSCE paper**. Christian, Islamic and
+African Traditional perspectives are attributed and compared, with internal
+variation acknowledged. The advanced comparative unit also introduces other
+traditions and non-religious perspectives without ranking people's worth.
+
+**Sensitive topics:** use fictional cases and voluntary, non-devotional
+participation. Do not require pupils to reveal personal beliefs, health,
+relationships, grief or family history. Health explanations distinguish
+infection from moral judgement, and qualified care from spiritual support.
+Safety and accountability are not cancelled by forgiveness or religious
+authority. Mark accurate knowledge and reasoned decisions, not devotion.
+
+Checks: `node tests/rme-curriculum.js`, `node tests/notes-verbatim.js`,
+`node tests/docx-inline.js` and `python3 tests/rme.py` (Playwright/Chromium).
+Rebuild the distributable after editing any data file: `bash build.sh`.
 
 ### Civics — Grades 7–12
 

@@ -12,6 +12,9 @@
    are asked to compare them. Scripture references cited in the source guide are
    retained as text references only.
 
+   Health explanations distinguish medical facts from religious moral categories;
+   safeguarding alternatives allow non-devotional and fictional classroom work.
+
    The source guide lists no external web links, so none are stripped.
 */
 
@@ -416,22 +419,22 @@ var RM_CURRICULUM_79 = [
   grade:7, period:"V", sem:"Two", icon:"🩺",
   title:"Sexually Transmitted Infections",
   subtitle:"Types, modes of transmission, prevention, and the duty of care towards those affected",
-  outcomes:["Learners know that sexually transmitted infection results from unsafe sex, have learned preventive methods, and care for others so as to avoid marginalising those suffering from sexually transmitted infections."],
+  outcomes:["Learners understand the different transmission routes of sexually transmitted infections, learn accurate preventive methods, and support affected people without marginalisation or assumptions about their private lives."],
   objectives:["Define and name sexually transmitted infections","Identify some common sexually transmitted infections in Liberia","Name the modes of transmission of the various infections","Explain the prevention of sexually transmitted infections","Discuss the impact of STIs on the individual, family and community"],
-  note:"A <b>sexually transmitted infection (STI)</b> is an infection passed mainly through sexual contact. The surest prevention for young people is <b>abstinence</b>, which both the Holy Bible and the Holy Qur'an enjoin. Equally important is the moral duty <b>not to marginalise</b> those who are infected: they need care, treatment and compassion, not rejection.",
+  note:"A <b>sexually transmitted infection (STI)</b> is an infection passed mainly through sexual contact. Choosing <b>abstinence</b> avoids sexual exposure, but infections such as HIV and hepatitis B also have other transmission routes. Prevention requires accurate health information and qualified guidance. Equally important is the moral duty <b>not to marginalise</b> those who are infected: they need care, treatment and compassion, not rejection.",
   study:[
     /* ---- course text: Semester Two, Period V — Sexually Transmitted Infections (pages 9-10) ---- */
     {k:"h3", t:"What Are Sexually Transmitted Infections?"},
-    {k:"p", t:"**Sexually transmitted infections (STIs)** are infections passed from one person to another through **sexual contact**. Learners know that STIs are the result of **unsafe sex**, have learned the preventive methods, and care for others so as to avoid **marginalizing those suffering** from STIs."},
+    {k:"p", t:"**Sexually transmitted infections (STIs)** are infections passed from one person to another through **sexual contact**. Transmission routes differ: some infections can also pass through particular blood exposures or from parent to child. Learners use accurate prevention information and care for others without **marginalizing those suffering** from STIs."},
     {k:"rule"},
     {k:"h3", t:"Types of STIs in Liberia"},
-    {k:"bul", items:["**HIV/AIDS** — the virus that destroys the body's defence system", "**Gonorrhoea** — a bacterial infection passed through sex", "**Syphilis** — a serious infection that can damage the body over time", "**Hepatitis B** — an infection of the liver passed through contact with infected blood or fluids", "**Others** — chlamydia, genital warts and other infections"]},
+    {k:"bul", items:["**HIV/AIDS** — HIV affects the immune system; AIDS is a later stage that effective treatment can help prevent", "**Gonorrhoea** — a bacterial infection passed through sex", "**Syphilis** — a serious infection that can damage the body over time", "**Hepatitis B** — an infection of the liver passed through contact with infected blood or fluids", "**Others** — chlamydia, genital warts and other infections"]},
     {k:"rule"},
     {k:"h3", t:"Mode of Transmission of STIs"},
     {k:"bul", items:["**Unsafe sex** — sexual intercourse without protection", "**Contact with infected blood** — sharing blades, needles or sharp objects", "**From mother to child** — an infected mother can pass the infection to her baby", "**Sharing sharp instruments** — unsterilized needles and blades"]},
     {k:"rule"},
     {k:"h3", t:"Prevention of STIs"},
-    {k:"bul", items:["**Abstinence** — staying pure and avoiding sex until marriage", "**Faithfulness** — one faithful partner in marriage", "**Avoid sharing blades and needles**", "**Know your status** — test and get treatment early", "**Religious and moral teaching** — the body is the temple of God; keep it holy"]},
+    {k:"bul", items:["**Abstinence** — choosing not to have sexual contact avoids that exposure route", "**Health information** — infection status, qualified testing and correct prevention matter; marriage alone does not guarantee protection", "**Avoid sharing blades and needles**", "**Qualified prevention and care** — appropriate testing, vaccination and correct barrier use where relevant; seek age-appropriate professional advice", "**Religious and moral teaching** — the body is the temple of God; keep it holy"]},
     {k:"p", t:"Learners understand the **moral teachings of the Holy Bible and the Holy Qur'an on sexual activities**: Scripture references, the Holy Bible, 2 Corinthians 11:2, Titus 2:5, 1 Peter 3:8 and 1 Thessalonians 4:4-6 — each of you should learn to control your own body in holiness and honour, not in passionate lust."},
     {k:"rule"},
     {k:"h3", t:"Caring for Those with STIs"},
@@ -461,7 +464,7 @@ var RM_CURRICULUM_79 = [
     {q:"What is a sexually transmitted infection?", a:"An infection passed mainly through sexual contact from one person to another."},
     {q:"Name four sexually transmitted infections common in Liberia.", a:"HIV, gonorrhoea, syphilis and hepatitis B (also chlamydia)."},
     {q:"Name the main modes of transmission of STIs.", a:"Unprotected sexual contact; also mother to child in pregnancy, at birth or through breast milk in the case of HIV, and contact with infected blood or shared sharp instruments."},
-    {q:"State four ways of preventing STIs.", a:"Abstinence from sexual activity, faithfulness within marriage, avoiding shared blades and needles, and early screening and treatment."},
+    {q:"State four ways of preventing STIs.", a:"Avoiding sexual exposure, avoiding shared needles or contaminated blades, relevant vaccination, and qualified testing and prevention advice including correct barrier use where relevant."},
     {q:"Why is abstinence taught as the surest prevention for young people?", a:"Because it removes the main route of transmission entirely, and it accords with the moral teaching of both the Holy Bible and the Holy Qur'an."},
     {q:"State three effects of STIs on the family.", a:"Cost and burden of treatment, illness or loss of a breadwinner, and shame and strain within the household."},
     {q:"Why is stigma harmful in the control of STIs?", a:"Fear of shame stops people from testing and seeking treatment, so infections spread further and sufferers are left without care."},
@@ -479,7 +482,7 @@ var RM_CURRICULUM_79 = [
   apply:[
     {q:"A classmate is rumoured to be HIV positive and others refuse to sit near him. What do you do?", a:"Refuse to join the gossip, explain that HIV is not spread by ordinary contact, sit with him myself, and report bullying to a teacher — compassion is a religious duty."},
     {q:"A young person is afraid to go for testing in case people find out. What would you advise?", a:"Explain that testing is confidential, that early treatment protects health and others, and offer to accompany him to a health centre or counsellor."},
-    {q:"How do religious teachings on sexual conduct also protect physical health?", a:"By teaching abstinence before marriage and faithfulness within it, they remove or greatly reduce the routes by which STIs are transmitted."},
+    {q:"How do religious teachings on sexual conduct also protect physical health?", a:"Teachings can encourage responsibility and care, but prevention still requires accurate information about sexual and non-sexual routes, vaccination where available, testing and qualified advice."},
     {q:"Why should barbers and traditional practitioners avoid reusing blades?", a:"Because infected blood on a shared blade can transmit HIV and hepatitis B from one person to another."},
     {q:"Design one respectful message for a school poster about STIs.", a:"For example: 'Know the facts. Abstain, be faithful, get tested. Care for the sick — never shame them.'"}
   ],
@@ -816,20 +819,20 @@ var RM_CURRICULUM_79 = [
   study:[
     /* ---- course text: Semester One, Period III — Moral Teaching on Sexual Conduct / Sexual Sin and its Effects on Society (page 14) ---- */
     {k:"h3", t:"Kinds of Sexual Sin"},
-    {k:"p", t:"Learners abstain from **sexual sin** and are advocates for others to abstain from negative sexual behaviour. The kinds of sexual sin studied are:"},
+    {k:"p", t:"The guide discusses **sexual sin** as a category within religious moral teaching. Learners describe the terms and the teachings attributed to particular traditions rather than label classmates:"},
     {k:"bul", items:["**Fornication** — sexual intercourse between people who are not married", "**Adultery** — sexual unfaithfulness by a married person", "**Homosexuality** — sexual relations between people of the same sex", "**Lesbianism** — sexual relations between women"]},
-    {k:"p", t:"Learners define fornication, adultery, homosexuality and lesbianism, and discuss their negative **medical, moral and spiritual** effects on the family and society."},
+    {k:"p", t:"Learners distinguish religious moral positions from medical facts. Traditions and denominations differ in their teachings; sexual orientation is not a disease and does not itself establish health risk. No identity should be used to justify bullying or denial of dignity."},
     {k:"rule"},
     {k:"h3", t:"Effects of Sexual Sin on Spiritual Life"},
-    {k:"p", t:"Sexual sin **separates a person from God**: it wounds the conscience, hardens the heart, and breaks fellowship with God and with the community of faith. Scripture references: the Holy Bible, Genesis 2:7, Genesis 2:18, Genesis 2:21-24 (marriage and the union of man and woman), Leviticus 21:13, Proverbs 5:18 (rejoice in the wife of your youth) and Proverbs 18:22."},
+    {k:"p", t:"In the religious teachings studied, conduct regarded as **sexual sin** is understood as affecting conscience and relationship with God. This is an attributed moral teaching, not a clinical diagnosis or permission to shame a pupil. Scripture references: the Holy Bible, Genesis 2:7, Genesis 2:18, Genesis 2:21-24 (marriage and the union of man and woman), Leviticus 21:13, Proverbs 5:18 (rejoice in the wife of your youth) and Proverbs 18:22."},
     {k:"rule"},
     {k:"h3", t:"Effects of Sexual Sin on Health"},
-    {k:"p", t:"Sexual sin **destroys health**: it spreads **HIV/AIDS and STIs**, harms the reproductive system, increases poverty in the family, breaks homes, and ruins the future of the young. Learners conduct **peer counseling on the spread and prevention of HIV/AIDS and STIs**."},
-    {k:"bul", items:["**Spiritual damage** — separation from God and loss of peace", "**Health damage** — HIV/AIDS, STIs and other infections", "**Family damage** — broken homes, orphans and poverty", "**Financial damage** — money lost to sickness and debt", "**Social damage** — shame, stigma and loss of respect"]},
+    {k:"p", t:"Health risks arise from particular exposures and circumstances, not from an infection proving sin or from sexual orientation. **HIV/AIDS and STIs** require accurate prevention, qualified testing and care. Coercion and exploitation require safeguarding; a person harmed is not to blame. **Peer counseling on prevention** means supportive information and referral, not diagnosis, interrogation or treatment."},
+    {k:"bul", items:["**Spiritual damage** — separation from God and loss of peace", "**Health concerns** — understand actual STI transmission and seek qualified care without moral blame", "**Family concerns** — broken trust or coercion can cause harm; family structures must not be stigmatised", "**Financial damage** — money lost to sickness and debt", "**Social responsibility** — reject shame and stigma and preserve equal dignity"]},
     {k:"p", t:"The Holy Qur'an likewise commands chastity and forbids all unlawful sexual relations; supplementary texts include literatures on sexually transmitted infections and counseling materials."},
     {k:"rule"},
     {k:"h3", t:"Assignment"},
-    {k:"num", items:["Research and write a two-page essay on the nature and effects of sexual sin on an individual's spiritual life, family life, health and financial resources.", "Role-play the negative effects of sexual sin as a pastor preaches.", "Conduct peer counseling on the spread and prevention of HIV/AIDS and STIs.", "Discuss negative sexual habits and their effects on reproductive health and the increase of poverty in the family."]}
+    {k:"num", items:["Research and write a two-page essay on the nature and effects of sexual sin on an individual's spiritual life, family life, health and financial resources.", "Analyse a fictional relationship dilemma using attributed religious teachings, consent, safety and compassion; no devotional performance or personal disclosure is required.", "Conduct peer counseling on the spread and prevention of HIV/AIDS and STIs.", "Discuss negative sexual habits and their effects on reproductive health and the increase of poverty in the family."]}
   ],
   focus:["The religious teaching on marriage and sexual conduct","Definition of fornication and adultery","Effects on the spiritual life","Effects on family life","Effects on health — HIV/AIDS and STIs","Effects on financial resources","Peer counselling"],
   terms:[
@@ -863,7 +866,7 @@ var RM_CURRICULUM_79 = [
     {s:"Both the Holy Bible and the Holy Qur'an place sexual relations within marriage.", a:"true", why:"Both traditions teach marriage as the proper context for sexual life."},
     {s:"Adultery and fornication mean the same thing.", a:"false", why:"Fornication is between unmarried persons; adultery involves a married person breaking the marriage bond."},
     {s:"Sexual conduct affects only the individual and nobody else.", a:"false", why:"It affects the family, the health of others, the children and the household's resources."},
-    {s:"An unplanned pregnancy commonly ends a girl's schooling.", a:"true", why:"It is one of the leading reasons girls leave school, with lasting effects on income and independence."},
+    {s:"An unplanned pregnancy can disrupt schooling, so continuing education and appropriate support matter.", a:"true", why:"Barriers to attendance can be serious, but disruption is not inevitable and a pregnant pupil retains dignity and educational needs."},
     {s:"Religious teaching offers no way back for someone who has fallen.", a:"false", why:"Both faiths teach that God forgives the truly repentant, who should be restored, not despised."},
     {s:"Peer counselling can help prevent the spread of HIV and STIs.", a:"true", why:"Young people often accept information and challenge from peers more readily than from adults."}
   ],
@@ -1538,7 +1541,7 @@ var RM_CURRICULUM_79 = [
     {k:"rule"},
     {k:"h3", t:"How Religions Help in the Prevention of Health Problems"},
     {k:"p", t:"Learners list **ways religion helps to prevent health problems in society**:"},
-    {k:"bul", items:["**Moral teaching** — chastity and faithfulness prevent STIs, HIV/AIDS and broken homes", "**Prohibition of harmful substances** — no alcohol and drug abuse", "**Cleanliness** — religious teaching on personal and community hygiene", "**Rest and balance** — the Sabbath and the rhythm of worship give rest", "**Counseling and care** — religious leaders counsel the troubled and visit the sick", "**Hope and faith** — trust in God strengthens the heart and the mind", "**Community support** — the church, mosque and community care for their members"]},
+    {k:"bul", items:["**Moral teaching** — responsibility can reduce some risks, but medical prevention depends on actual exposure, vaccination, testing and qualified guidance", "**Prohibition of harmful substances** — no alcohol and drug abuse", "**Cleanliness** — religious teaching on personal and community hygiene", "**Rest and balance** — the Sabbath and the rhythm of worship give rest", "**Counseling and care** — religious leaders counsel the troubled and visit the sick", "**Hope and faith** — trust in God strengthens the heart and the mind", "**Community support** — the church, mosque and community care for their members"]},
     {k:"p", t:"Learners research how **compliance with religious rules** helps in the prevention of health problems in society, and list five possibilities of how religions offer safety in community health."},
     {k:"rule"},
     {k:"h3", t:"Assignment"},
@@ -1547,7 +1550,7 @@ var RM_CURRICULUM_79 = [
   focus:["Positive impact of Christianity on health","Positive impact of Islam on health","Positive impact of traditional religion on health","Religious rules of cleanliness","How religion helps prevent health problems","Faith communities and community health"],
   terms:[
     {t:"hygiene", d:"practices that maintain health and prevent disease", x:"Ritual washing reinforces hygiene."},
-    {t:"ablution", d:"the ritual washing performed before prayer in Islam", x:"Ablution is performed five times daily."},
+    {t:"ablution", d:"the ritual washing performed before prayer in Islam", x:"Ablution is required for prayer when the state of ritual purity needs renewal."},
     {t:"sanitation", d:"arrangements for clean water and waste disposal", x:"Sanitation prevents cholera."},
     {t:"abstinence", d:"refraining from a harmful practice", x:"Abstinence prevents many infections."},
     {t:"sobriety", d:"freedom from intoxication", x:"Sobriety reduces accidents and violence."},
@@ -1555,7 +1558,7 @@ var RM_CURRICULUM_79 = [
     {t:"stress", d:"strain of mind and body under pressure", x:"Prayer and community reduce stress."},
     {t:"bereavement", d:"the loss of a loved one by death", x:"The congregation supports the family in bereavement."},
     {t:"immunisation", d:"protection against disease by vaccine", x:"Religious leaders encouraged immunisation."},
-    {t:"quarantine", d:"the isolation of the infected to stop spread", x:"Faith leaders explained quarantine to the community."},
+    {t:"quarantine", d:"restricting or separating people who may have been exposed to an infection, under qualified public-health guidance", x:"Faith leaders explained quarantine to the community."},
     {t:"health education", d:"teaching people how to protect their health", x:"Mosques and churches carry health education."},
     {t:"compliance", d:"the following of rules or advice given", x:"Compliance with health rules saves lives."},
     {t:"superstition", d:"a belief not founded in evidence that may cause harm", x:"Superstition can obstruct treatment."},
@@ -1563,10 +1566,10 @@ var RM_CURRICULUM_79 = [
   ],
   facts:[
     {q:"State four ways religion positively affects health.", a:"Through rules of cleanliness, through moral teaching that reduces risky behaviour, through community support for the sick and bereaved, and through the mental peace that reduces stress."},
-    {q:"How does Islamic practice reinforce hygiene?", a:"Ablution — ritual washing of hands, face, mouth and feet — is performed before each of the five daily prayers, and cleanliness is required for worship."},
+    {q:"How does Islamic practice reinforce hygiene?", a:"Ablution involves ritual washing and is required when ritual purity needs renewal; it can encourage cleanliness but does not replace qualified hygiene or infection-prevention advice."},
     {q:"How does Christian practice support the sick?", a:"Through visitation of the sick, prayer, practical help to families, and the mission hospitals and clinics run by churches."},
     {q:"How does traditional religion contribute positively to health?", a:"Through knowledge of medicinal plants, communal care of the sick and bereaved, and customs that regulate diet, rest and behaviour."},
-    {q:"List five ways religion helps prevent health problems.", a:"Teaching sobriety, which prevents liver disease and accidents; teaching chastity and faithfulness, which prevents STIs; requiring cleanliness, which prevents infection; supporting the bereaved, which protects mental health; and mobilising communities for immunisation and sanitation."},
+    {q:"List five ways religion helps prevent health problems.", a:"Teaching sobriety, which prevents liver disease and accidents; encouraging responsibility alongside accurate STI prevention and qualified care; requiring cleanliness, which prevents infection; supporting the bereaved, which protects mental health; and mobilising communities for immunisation and sanitation."},
     {q:"How did faith leaders assist during health emergencies in Liberia?", a:"By explaining safe practices in worship, encouraging safe burial and treatment, countering rumour, and using their authority to promote compliance with health rules."},
     {q:"How can religious belief sometimes obstruct health care?", a:"When superstition or fatalism discourages treatment, immunisation or hospital care; sound teaching corrects this by presenting medicine as part of God's provision."},
     {q:"Why is the authority of a religious leader valuable in a health campaign?", a:"Because people trust and heed their leaders, so their endorsement can achieve compliance that official instruction alone cannot."}
@@ -1737,10 +1740,10 @@ var RM_CURRICULUM_79 = [
     {k:"p", t:"**African Traditional Religion** also teaches chastity: the customs of the community require young people to remain pure, respect the elders, and marry according to the traditions of the family. Immorality is regarded as an offence that brings shame to the family and the community."},
     {k:"rule"},
     {k:"h3", t:"Benefits of Living a Chaste Life"},
-    {k:"bul", items:["**Good health** — freedom from STIs and HIV/AIDS", "**A clean conscience** — peace with God and with oneself", "**Strong families** — trust, faithfulness and love in marriage", "**A good reputation** — honour and respect in the community", "**A bright future** — education and opportunities are not ruined", "**The blessing of God** — the pure in heart shall see God"]},
+    {k:"bul", items:["**Health responsibility** — accurate prevention and qualified care; no religious practice guarantees freedom from infection", "**A clean conscience** — peace with God and with oneself", "**Strong families** — trust, faithfulness and love in marriage", "**A good reputation** — honour and respect in the community", "**A supported future** — education and opportunity remain important even after illness, pregnancy or other setbacks", "**The blessing of God** — the pure in heart shall see God"]},
     {k:"rule"},
     {k:"h3", t:"Consequences of Immorality"},
-    {k:"bul", items:["**Disease** — STIs, HIV/AIDS and damage to health", "**Broken homes** — mistrust, quarrels and divorce", "**Pregnancy out of wedlock** — hardship for the child and the family", "**Shame and stigma** — loss of respect in the community", "**Spiritual damage** — separation from God", "**Poverty** — the cost of sickness, children and lost opportunities"]},
+    {k:"bul", items:["**Health concerns** — actual exposure risks require accurate prevention and qualified care, not assumptions about moral worth", "**Broken homes** — mistrust, quarrels and divorce", "**Pregnancy and support** — education, health care and safe support remain important for the young person and child", "**Stigma** — reject humiliation and denial of care; dignity is not lost", "**Spiritual damage** — separation from God", "**Poverty** — the cost of sickness, children and lost opportunities"]},
     {k:"p", t:"Learners read and discuss the **benefits of a chaste life and the punishment of an immoral life**, and conduct research on the consequences of immorality. Primary texts: the Holy Bible and the Holy Qur'an; secondary texts: religious and moral educational textbooks."},
     {k:"rule"},
     {k:"h3", t:"Assignment"},
@@ -1769,8 +1772,8 @@ var RM_CURRICULUM_79 = [
     {q:"State two teachings on chastity in Islam.", a:"Modesty is enjoined on both men and women in dress, look and conduct; and sexual relations belong within marriage, which is honoured and encouraged."},
     {q:"State two teachings on chastity in Christianity.", a:"The body is to be honoured and kept pure; and sexual life belongs within marriage, with faithfulness required of husband and wife alike."},
     {q:"How does African Traditional Religion support chaste living?", a:"Through the instruction given at initiation, family and elder supervision, taboos attaching shame and penalty to breach, and the honouring of marriage as a union of two families."},
-    {q:"State four benefits of living a chaste life.", a:"Protection of health from infection and unplanned pregnancy, self-respect and a clear conscience, a good reputation and family honour, and freedom to complete one's education and plans."},
-    {q:"State four dangers of an immoral lifestyle.", a:"Sexually transmitted infection, unplanned pregnancy and interrupted schooling, damaged relationships and reputation, and the financial burden that follows."},
+    {q:"State four benefits of living a chaste life.", a:"Religious teachings connect chastity with self-respect, faithfulness, thoughtful choices and responsibility. Avoiding sexual exposure reduces that risk, but infection is not proof of moral failure and everyone deserves continuing education and care."},
+    {q:"State four dangers of an immoral lifestyle.", a:"Coercion, deception, broken commitments and disregard for another person's boundaries can harm people and relationships. Health concerns and pregnancy require support and cannot by themselves establish immorality."},
     {q:"Why do all three traditions treat sexual conduct as a community matter and not merely private?", a:"Because its consequences fall on the family and community — children, health, resources and the honour of the household — not on the individual alone."},
     {q:"What do the traditions teach about someone who has failed and repents?", a:"That sincere repentance is met with mercy and the person should be restored, not permanently condemned."}
   ],
@@ -1778,7 +1781,7 @@ var RM_CURRICULUM_79 = [
     {s:"Chastity for a married person means faithfulness to one's spouse.", a:"true", why:"Chastity is defined according to one's state in life — abstinence for the unmarried, faithfulness for the married."},
     {s:"Modesty is enjoined only on women.", a:"false", why:"Islamic and Christian teaching alike enjoin modesty on men and women both."},
     {s:"African Traditional Religion has no teaching on sexual conduct.", a:"false", why:"It regulates conduct through initiation teaching, family supervision, taboo and the honouring of marriage."},
-    {s:"Chastity protects a young person's education and plans.", a:"true", why:"It avoids unplanned pregnancy and infection, which commonly interrupt or end schooling."},
+    {s:"Respectful boundaries and access to qualified support can help a young person protect education and plans.", a:"true", why:"Safe choices and support can reduce risks, while illness or pregnancy must not become a reason to deny education or dignity."},
     {s:"A person who has fallen morally can never be restored.", a:"false", why:"All three traditions provide for repentance and restoration rather than permanent condemnation."},
     {s:"The consequences of sexual conduct fall on the individual alone.", a:"false", why:"They fall on the family and community too — on children, health, resources and household honour."}
   ],
@@ -1792,7 +1795,7 @@ var RM_CURRICULUM_79 = [
   sort:{ title:"Chastity and immorality", groups:[
     {name:"Marks of chastity", items:["Self-mastery","Modesty","Faithfulness","Respect for others"]},
     {name:"Benefits of a chaste life", items:["Protected health","Clear conscience","Good reputation","Education completed"]},
-    {name:"Consequences of immorality", items:["Infection","Unplanned pregnancy","Broken trust","Financial burden"]},
+    {name:"Harmful conduct requiring accountability", items:["Coercion","Deception","Broken commitments","Disregard for boundaries"]},
     {name:"Supports for chaste living", items:["Clear convictions","Good company","Useful occupation","A trusted adult"]}
   ]},
   compare:{ title:"Chastity in the three traditions", caption:"Complete the table of teaching and how each supports it.",

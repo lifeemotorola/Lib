@@ -33,6 +33,7 @@ jobs:
           node tests/health-lesson.js
           node tests/cs-lesson.js
           node tests/civics-teaching.js
+          node tests/rme-curriculum.js
           node tests/usage.js
           node tests/sw.js
           node tests/btt.js
@@ -57,3 +58,5 @@ jobs:
             echo "::error title=history.py failed::$(tr '\n' '|' < /tmp/hist.msg)"
           fi
           exit "$code"
+      - name: Check expanded RME lessons, student/teacher keys and Word exports offline
+        run: python tests/rme.py

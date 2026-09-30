@@ -42,7 +42,7 @@ const RM_CURRICULUM_1012 = [
     "Explain the problem of evil and the responses believers give to it",
     "Compare, with respect, how the three traditions describe the one Creator"
   ],
-  note:"<b>God is one</b> — the Creator, almighty, all-knowing, ever-present, holy, just and merciful. Christianity confesses God as Father, Son and Holy Spirit; Islam teaches the absolute oneness of God (<b>Tawhid</b>); African Traditional Religion honours the <b>Supreme Being</b>, the Creator of all, approached through the ancestors and the spirits He made. The three traditions name God differently, but all teach that He made all things, sees all things, and will judge all things.",
+  note:"<b>God is one</b> — the Creator, almighty, all-knowing, ever-present, holy, just and merciful. Christianity confesses God as Father, Son and Holy Spirit; Islam teaches the absolute oneness of God (<b>Tawhid</b>); Many African Traditional religions honour a <b>Supreme Being</b>, with varied accounts of spirits, ancestors and divine presence. Compare named communities and sources instead of assuming one theology represents every tradition.",
   study:[
     {k:"h3", t:"The Attributes of God"},
     {k:"p", t:"An **attribute** is something true about God's nature. The three traditions of Liberia teach these attributes of the Creator:"},
@@ -97,7 +97,7 @@ const RM_CURRICULUM_1012 = [
     {t:"revelation", d:"God making Himself and His will known", x:"The Scriptures are God's revelation."},
     {t:"Tawhid", d:"the Islamic doctrine of the absolute oneness of God", x:"Tawhid is the heart of Islamic teaching."},
     {t:"Trinity", d:"the Christian teaching of one God in three Persons — Father, Son and Holy Spirit", x:"Christians confess the Trinity."},
-    {t:"Supreme Being", d:"the Creator God above all spirits, as taught in African Traditional Religion", x:"The elders honour the Supreme Being."},
+    {t:"Supreme Being", d:"a supreme divine being described in many African Traditional religions, with community-specific meanings", x:"The elders honour the Supreme Being."},
     {t:"Asma'ul Husna", d:"the ninety-nine beautiful names of God in Islam", x:"Ar-Rahman is first of the Asma'ul Husna."},
     {t:"problem of evil", d:"the question of why a good and all-powerful God permits suffering", x:"Job faced the problem of evil."},
     {t:"free will", d:"the human power to choose, for good or for evil", x:"Free will makes love — and sin — possible."},
@@ -114,7 +114,7 @@ const RM_CURRICULUM_1012 = [
     {q:"Give two answers believers give to the problem of evil.", a:"Human freedom is real and its misuse brings evil; and this life is a test in which God remains with the sufferer and will finally judge and wipe away every tear (Qur'an 2:155; Revelation 21:4)."}
   ],
   tf:[
-    {s:"All three traditions teach that there is one Creator God.", a:"true", why:"The oneness of the Creator is confessed in Deuteronomy 6:4, in the Qur'an's Surah 112, and in the elders' teaching about the Supreme Being."},
+    {s:"Christianity, Islam and many African Traditional religions affirm a Creator or Supreme Being.", a:"true", why:"Christian and Islamic sources affirm divine oneness; many traditional communities speak of a Supreme Being, but their accounts and classifications vary."},
     {s:"God's knowledge is limited to what human beings can see.", a:"false", why:"God is omniscient — He knows all things, seen and unseen (Psalm 139:1-4; Qur'an 2:255)."},
     {s:"Islam teaches that God has a son exactly as Christianity teaches it.", a:"false", why:"Islam teaches the absolute oneness of God and that He begets not, nor is He begotten (Qur'an 112:3); Christianity confesses the Son. The difference must be stated honestly and respectfully."},
     {s:"In African Traditional Religion the Supreme Being is one of many equal spirits.", a:"false", why:"The Supreme Being is the Creator above all spirits; the spirits and ancestors are His servants and are never equal to Him."},
@@ -178,7 +178,7 @@ const RM_CURRICULUM_1012 = [
     {k:"p", t:"**Religious authority** is the right and power to say what is true and what must be done. In each tradition authority flows from God Himself, and it is carried by the sources He has given: holy books, holy persons and the voice He placed within the human heart. Where the sources disagree with a person's wishes, the believer submits to the sources — that is what makes the authority real."},
     {k:"rule"},
     {k:"h3", t:"The Holy Bible"},
-    {k:"p", t:"The Holy Bible is the Christian scriptures: **sixty-six books**, written by many authors over many centuries, gathered into two testaments. The **Old Testament** (39 books) holds the Law, the histories, the Psalms and wisdom, and the Prophets. The **New Testament** (27 books) holds the four Gospels, the Acts of the Apostles, the Epistles and the Revelation. Christians believe the scriptures are \"God-breathed and profitable for teaching, for reproof, for correction and for training in righteousness\" (2 Timothy 3:16-17), and call the word \"a lamp to my feet and a light to my path\" (Psalm 119:105)."},
+    {k:"p", t:"The Holy Bible is the Christian scriptures, gathered into two testaments. Protestant Bibles normally have **sixty-six books**; Catholic Bibles normally have 73, and Orthodox canons vary. In the Protestant canon, the **Old Testament** (39 books) holds the Law, the histories, the Psalms and wisdom, and the Prophets. The **New Testament** (27 books) holds the four Gospels, the Acts of the Apostles, the Epistles and the Revelation. Christians believe the scriptures are \"God-breathed and profitable for teaching, for reproof, for correction and for training in righteousness\" (2 Timothy 3:16-17), and call the word \"a lamp to my feet and a light to my path\" (Psalm 119:105)."},
     {k:"bul", items:["The Bible is read in whole churches together, not only in private — the community guards the meaning","It is handled with respect: not placed on the floor, not used for oaths lightly","Its chief characters and teachings are learned by heart from childhood"]},
     {k:"rule"},
     {k:"h3", t:"The Holy Qur'an and the Hadith"},
@@ -202,7 +202,7 @@ const RM_CURRICULUM_1012 = [
     {k:"rule"},
     {k:"h3", t:"Assignment"},
     {k:"num", items:[
-      "Name the two testaments of the Bible and the number of books in each.",
+      "Name the two testaments and give the book count for an identified Christian canon, noting variation.",
       "Explain the difference between the Qur'an and the Hadith.",
       "Who are the custodians of the oral tradition, and why are they compared to a library?",
       "Describe the five steps of making a moral decision, and apply them to a case of found money."
@@ -224,7 +224,7 @@ const RM_CURRICULUM_1012 = [
     {t:"proverb", d:"a short traditional saying that states a truth", x:"A proverb says much in few words."}
   ],
   facts:[
-    {q:"How many books are in the Holy Bible, and how are they divided?", a:"Sixty-six books: thirty-nine in the Old Testament and twenty-seven in the New Testament."},
+    {q:"How many books are in the Holy Bible, and how are they divided?", a:"In the usual Protestant canon, 66 books: 39 in the Old Testament and 27 in the New Testament. Catholic Bibles normally have 73 books, and Orthodox canons vary."},
     {q:"What is the Hadith and why is it needed?", a:"The collected sayings and deeds of the Prophet Muhammad; it is needed because it shows how the commands of the Qur'an are put into practice."},
     {q:"How was the Qur'an given, according to Islam?", a:"God revealed it through the Angel Jibril to the Prophet Muhammad over about twenty-three years; it is preserved in Arabic."},
     {q:"Who keeps the authority of African Traditional Religion?", a:"The elders, the traditional priests and the heads of the religious societies — custodians of the oral tradition of myths, proverbs, songs, taboos and rites."},
@@ -256,7 +256,7 @@ const RM_CURRICULUM_1012 = [
   ]},
   compare:{ title:"The three sources compared", caption:"Complete the table comparing the Bible, the Qur'an with Hadith, and the oral tradition.",
     items:[
-      {p:"Form", f:"The Bible: sixty-six gathered books; the Qur'an: one book of 114 surahs with the Hadith collections; the oral tradition: memory carried by persons."},
+      {p:"Form", f:"The Bible: a collection whose canon varies by Christian community; the Qur'an: 114 surahs, distinguished from hadith collections; oral traditions: community-specific teaching and memory."},
       {p:"Origin", f:"Christians believe the Bible is God-breathed through human authors; Muslims believe the Qur'an is God's word recited by the Prophet; tradition holds its teaching comes from the Creator through the ancestors."},
       {p:"Language", f:"The Bible is translated into nearly every language; the Qur'an is recited in its Arabic and translated for study; the oral tradition lives in each people's mother tongue."},
       {p:"Custodians", f:"The church and its teachers; the imams and scholars; the elders and traditional priests."},

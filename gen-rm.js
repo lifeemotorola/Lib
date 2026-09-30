@@ -447,7 +447,7 @@
       sub: "Pupil Workbook & Assessment Pack",
       line: (opts.bandName || (opts.grade >= 10 ? "Senior High" : (opts.grade >= 7 ? "Junior High" : "Elementary"))) +
             " " + (opts.subjectLine || "Religious & Moral Education") +
-            " · Liberian National Curriculum"
+            (opts.grade >= 10 ? " · Original Supplementary Course" : " · Liberian National Curriculum")
     }));
     doc.push({ k: "h3", t: "Contents" });
     topics.forEach(function (t, i) { toc.push("Period " + periodNo(t.period) + ": " + t.title); });
@@ -464,6 +464,18 @@
       "For enquiry projects, be polite to everyone you interview, whatever their faith, and thank them.",
       "Never mock any faith, any Holy Book, any place of worship or any pupil's belief."
     ] });
+    if (opts.grade >= 6) {
+      doc.push({ k: "p", t: opts.grade >= 10
+        ? "Source status: these Senior High lessons are original multi-religious teaching resources, not an official Senior High RME syllabus or a WASSCE paper."
+        : "Source status: the grade and period topics follow the uploaded Liberian RME guides; the expanded explanations, cases and review activities are original teaching supplements.", i: true });
+      doc.push({ k: "bul", items: [
+        "Study religious beliefs and practices accurately; you are not required to adopt a belief, perform worship or give money.",
+        "Use fictional cases when a topic is sensitive. You may keep your beliefs, health, relationships and family experiences private.",
+        "Respect diversity within as well as between religions, including people without religious affiliation.",
+        "Assess knowledge, accurate comparison and reasoned decisions — never a pupil's faith or private life.",
+        "For harm, threats or a serious health concern, seek a trusted safeguarding adult and qualified help; do not investigate or treat it yourself."
+      ] });
+    }
     doc.push({ k: "p", t: "A learner-centered approach is emphasised. Inclusive and differentiated learning is used throughout: work individually or in small mixed groups according to gender, learning abilities and styles.", i: true });
     doc.push({ k: "pagebreak" });
 
