@@ -11,10 +11,13 @@ plugins {
     id "com.android.application"
 }
 
-def keystorePath = System.getenv("ANDROID_KEYSTORE_PATH")
-def keystorePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
-def keyAlias = System.getenv("ANDROID_KEY_ALIAS")
-def keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+// Distinct names: a local called `keyAlias` shadows the signing-config property
+// of the same name, and Groovy then reads `keyAlias keyAlias` as a method call.
+def signKeystore = System.getenv("ANDROID_KEYSTORE_PATH")
+def signStorePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+def signKeyAlias = System.getenv("ANDROID_KEY_ALIAS")
+def signKeyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+def hasSigning = signKeystore && signStorePassword && signKeyAlias && signKeyPassword
 
 android {
     namespace "com.easyschool.liberia"
@@ -34,11 +37,11 @@ android {
 
     signingConfigs {
         release {
-            if (keystorePath && keystorePassword && keyAlias && keyPassword) {
-                storeFile file(keystorePath)
-                storePassword keystorePassword
-                keyAlias keyAlias
-                keyPassword keyPassword
+            if (hasSigning) {
+                storeFile file(signKeystore)
+                storePassword signStorePassword
+                keyAlias signKeyAlias
+                keyPassword signKeyPassword
             }
         }
     }
@@ -48,7 +51,7 @@ android {
             minifyEnabled false          /* nothing to obfuscate: one WebView */
             shrinkResources false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            if (keystorePath && keystorePassword && keyAlias && keyPassword) {
+            if (hasSigning) {
                 signingConfig signingConfigs.release
             }
         }
