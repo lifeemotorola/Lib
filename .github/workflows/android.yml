@@ -21,6 +21,9 @@ name: Build Android APK
 on:
   push:
     branches: [main]
+    # Tag pushes are not filtered by `paths`, so `git push origin v1.0.0`
+    # still builds and publishes even though it changes no file.
+    tags: ["v*"]
     paths:
       - "android/**"
       - "index.html"
