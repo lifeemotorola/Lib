@@ -1,0 +1,86 @@
+/*
+ * Easy School Liberia — the app module.
+ *
+ * There are no dependencies on purpose: no AndroidX, no Kotlin, no libraries.
+ * The whole product is the platform's HTML/JS (copied into src/main/assets/www
+ * by ../build.sh) inside one WebView plus the four native primitives in
+ * src/main/java. That keeps the APK small, the build fast and offline, and the
+ * app readable by whoever maintains it next.
+ */
+plugins {
+    id "com.android.application"
+}
+
+// Distinct names: a local called `keyAlias` shadows the signing-config property
+// of the same name, and Groovy then reads `keyAlias keyAlias` as a method call.
+def signKeystore = System.getenv("ANDROID_KEYSTORE_PATH")
+def signStorePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+def signKeyAlias = System.getenv("ANDROID_KEY_ALIAS")
+def signKeyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+def hasSigning = signKeystore && signStorePassword && signKeyAlias && signKeyPassword
+
+android {
+    namespace "com.easyschool.liberia"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.easyschool.liberia"
+        minSdk 24
+        /* 34 keeps the app out of Android 15's forced edge-to-edge, which would
+           draw the platform's A4 preview under the status bar. Raise it
+           together with inset handling in MainActivity, not on its own. */
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+        resourceConfigurations += ["en"]
+    }
+
+    signingConfigs {
+        release {
+            if (hasSigning) {
+                storeFile file(signKeystore)
+                storePassword signStorePassword
+                keyAlias signKeyAlias
+                keyPassword signKeyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false          /* nothing to obfuscate: one WebView */
+            shrinkResources false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            if (hasSigning) {
+                signingConfig signingConfigs.release
+            }
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    androidResources {
+        /* The platform is one large HTML file plus a few images. Compressing
+           the images again gains nothing and slows the first paint; leaving
+           them stored lets the WebView map them straight out of the APK. */
+        noCompress += ["png", "jpg", "jpeg", "webp", "woff", "woff2"]
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    packagingOptions {
+        resources {
+            excludes += ["META-INF/*"]
+        }
+    }
+}

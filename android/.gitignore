@@ -1,0 +1,9 @@
+# Build output and generated web assets — never committed.
+# app/src/main/assets/www is staged by android/build.sh from the repo root.
+app/src/main/assets/www/
+build/
+keystore/
+.gradle/
+local.properties
+*.iml
+.idea/

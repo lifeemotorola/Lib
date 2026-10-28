@@ -132,6 +132,32 @@ so the whole thing stays self-contained.
 - **Installable on Android and PC** as a Progressive Web App, with the Liberia
   flag-map favicon and offline app icon
 
+## Android app
+
+The platform also ships as an **installable Android APK** (`android/`), for the
+school tablets and phones this curriculum is actually taught from. It contains
+the same `index.html` the website serves — the same 19 subjects, the same
+printable packs, the same teaching library — with nothing to download on first
+run and no server behind it.
+
+What the app adds on top of the page: **printing** goes through Android's print
+dialog (with Save as PDF), an exported `.docx` lands in
+**Downloads/Easy School Liberia/**, the **voice reader** speaks through the
+device's own text-to-speech engine (offline voices and African English accents
+included), the **Back button** closes an open dialog before it leaves the app,
+and the settings/library survive updates. It needs Android 7.0 or newer and
+asks for no permission beyond internet (the optional AI tutor) — the app itself
+never calls home.
+
+```bash
+bash android/build.sh        # stage the platform and build the APK
+```
+
+GitHub Actions builds and signs it on every change (`.github/workflows/android.yml`);
+push a `v*` tag to attach the APK to a Release. See **`android/README.md`** for
+installation, signing (keep one key — Android refuses updates signed by a
+different one), white-labelling and the offline build that needs no Android SDK.
+
 ## Teaching workspace: library, editing and assessment
 
 Use the **Your teaching workspace** toolbar above the document preview. All

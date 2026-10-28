@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 27: the white navigation bar needs dark buttons. -->
+    <style name="AppThemeV27" parent="AppThemeBase">
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style name="AppTheme" parent="AppThemeV27" />
+</resources>

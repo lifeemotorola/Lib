@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The platform's own palette (see styles.css): navy, gold and the pale
+         page background the printable sheets sit on. -->
+    <color name="brand">#0B3B8C</color>
+    <color name="brand_dark">#082B67</color>
+    <color name="page">#E9EEF7</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gold">#E0A526</color>
+
+    <!-- The launcher artwork's own blue, so the adaptive icon's background
+         meets the book mark without a visible seam. -->
+    <color name="ic_launcher_background">#083A85</color>
+</resources>
