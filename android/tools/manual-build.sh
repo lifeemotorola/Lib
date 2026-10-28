@@ -10,9 +10,9 @@
 #   bash android/tools/manual-build.sh
 #
 # It produces the same APK content: the web app in assets/www, the manifest and
-# resources compiled by aapt2, the Java sources compiled by ecj, dexed by d8 and
-# signed by apksigner. It does not zipalign (Gradle does); Android installs the
-# result happily.
+# resources compiled by aapt2, the Java sources compiled by ecj, dexed by d8,
+# aligned by tools/zipalign.py (Android 11+ requires resources.arsc to be stored
+# uncompressed and 4-byte aligned) and signed by apksigner.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -40,10 +40,10 @@ if [ ! -d app/src/main/assets/www ]; then
   exit 1
 fi
 
-echo "== 1/6 aapt2 compile =="
+echo "== 1/7 aapt2 compile =="
 "$ATOOLS/aapt2" compile --dir app/src/main/res -o "$BUILD/res/resources.zip"
 
-echo "== 2/6 aapt2 link =="
+echo "== 2/7 aapt2 link =="
 "$ATOOLS/aapt2" link \
   -o "$BUILD/base.apk" \
   -I "$ATOOLS/android.jar" \
@@ -58,7 +58,7 @@ echo "== 2/6 aapt2 link =="
   --version-name "$VERSION_NAME" \
   --auto-add-overlay
 
-echo "== 3/6 compile Java =="
+echo "== 3/7 compile Java =="
 find app/src/main/java -name '*.java' > "$BUILD/sources.txt"
 find "$BUILD/gen" -name '*.java' >> "$BUILD/sources.txt"
 "$JAVA" -jar "$JAVAC_JAR" \
@@ -68,7 +68,7 @@ find "$BUILD/gen" -name '*.java' >> "$BUILD/sources.txt"
   -d "$BUILD/classes" \
   @"$BUILD/sources.txt"
 
-echo "== 4/6 dex =="
+echo "== 4/7 dex =="
 find "$BUILD/classes" -name '*.class' > "$BUILD/classes.txt"
 "$JAVA" -cp "$ATOOLS/d8.jar" com.android.tools.r8.D8 \
   --release --min-api 24 \
@@ -78,7 +78,31 @@ find "$BUILD/classes" -name '*.class' > "$BUILD/classes.txt"
 cp "$BUILD/base.apk" "$BUILD/unsigned.apk"
 ( cd "$BUILD/dex" && zip -q -X "$HERE/$BUILD/unsigned.apk" classes.dex )
 
-echo "== 5/6 sign =="
+echo "== 5/7 zipalign =="
+# Android 11+ will not install an APK whose resources.arsc is not stored
+# uncompressed and 4-byte aligned, and the SDK's zipalign is exactly what
+# Gradle runs. tools/zipalign.py does the same job here (python3 only).
+python3 tools/zipalign.py "$BUILD/unsigned.apk" "$BUILD/aligned.apk"
+python3 - "$BUILD/aligned.apk" <<'CHECK'
+import sys, zipfile
+apk = zipfile.ZipFile(sys.argv[1])
+assert apk.testzip() is None, "the archive is corrupt"
+bad = []
+for info in apk.infolist():
+    if info.compress_type != 0:
+        continue
+    offset = info.header_offset + 30 + len(info.filename.encode()) + len(info.extra)
+    if offset % 4:
+        bad.append(info.filename)
+assert not bad, "stored entries are not 4-byte aligned: %s" % ", ".join(bad[:5])
+arsc = apk.getinfo("resources.arsc")
+assert arsc.compress_type == 0, "resources.arsc must be stored, not compressed"
+offset = arsc.header_offset + 30 + len(arsc.filename.encode()) + len(arsc.extra)
+assert offset % 4 == 0, "resources.arsc is not aligned (Android 11+ would refuse the install)"
+print("   resources.arsc stored and aligned at %d; every stored entry is aligned" % offset)
+CHECK
+
+echo "== 6/7 sign =="
 KEYSTORE="${ANDROID_KEYSTORE_PATH:-keystore/release.jks}"
 STORE_PASS="${ANDROID_KEYSTORE_PASSWORD:-easy-school-liberia}"
 KEY_ALIAS="${ANDROID_KEY_ALIAS:-easy-school}"
@@ -98,9 +122,9 @@ fi
   --ks-key-alias "$KEY_ALIAS" --key-pass "pass:$KEY_PASS" \
   --min-sdk-version 24 \
   --out "$BUILD/outputs/Easy-School-Liberia-${VERSION_NAME}.apk" \
-  "$BUILD/unsigned.apk" 2>&1 | grep -v '^WARNING' || true
+  "$BUILD/aligned.apk" 2>&1 | grep -v '^WARNING' || true
 
-echo "== 6/6 verify =="
+echo "== 7/7 verify =="
 "$JAVA" -jar "$ATOOLS/apksigner.jar" verify --min-sdk-version 24 \
   "$BUILD/outputs/Easy-School-Liberia-${VERSION_NAME}.apk" 2>&1 | grep -v '^WARNING' || true
 "$ATOOLS/aapt2" dump badging "$BUILD/outputs/Easy-School-Liberia-${VERSION_NAME}.apk" \

@@ -131,10 +131,9 @@ jobs:
           echo "APK: $APK ($(du -h "$APK" | cut -f1))"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/aapt2" dump badging "$APK" | head -8
-          unzip -l "$APK" | grep -q "assets/www/index.html" \
-            || { echo "::error::the built APK does not contain the platform"; exit 1; }
-          unzip -p "$APK" assets/www/index.html | grep -q "easy-school-android-shell" \
-            || { echo "::error::the Android bridge is missing from the packaged page"; exit 1; }
+          # Structure: the platform and the bridge inside, resources.arsc
+          # stored and aligned (Android 11+ refuses the install otherwise).
+          python3 android/tools/verify-apk.py "$APK"
           echo "sha256: $(sha256sum "$APK" | cut -d' ' -f1)" > android/build/outputs/SHA256.txt
 
       - uses: actions/upload-artifact@v4

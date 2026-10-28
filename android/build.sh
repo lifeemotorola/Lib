@@ -85,5 +85,8 @@ mkdir -p "$(dirname "$FINAL")"
 if [ "$(cd "$(dirname "$APK")" && pwd)/$(basename "$APK")" != "$(cd "$(dirname "$FINAL")" && pwd)/$(basename "$FINAL")" ]; then
   cp "$APK" "$FINAL"
 fi
+echo "== verifying the APK =="
+python3 tools/verify-apk.py "$FINAL"
+
 echo
 echo "APK: $FINAL ($(du -h "$FINAL" | cut -f1))"

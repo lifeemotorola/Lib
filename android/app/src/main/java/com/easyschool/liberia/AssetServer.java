@@ -47,6 +47,18 @@ final class AssetServer {
         String path = pathOf(url);
         if (path == null) return notFound();
 
+        /* The tutor falls back to a same-origin "/api/chat" when no proxy URL
+           was baked into the page at build time. A request arriving here means
+           exactly that, so answer with the platform's own "not connected in
+           this copy" state instead of a 404 the tutor would read as a fault. */
+        if (path.equals("/api/chat")) {
+            byte[] body = ("{\"error\":{\"code\":\"no_proxy\",\"message\":"
+                    + "\"This copy of the app has no tutor server. Everything else works offline.\"}}")
+                    .getBytes();
+            return new WebResourceResponse("application/json", "utf-8", 503, "Not Configured",
+                    headers, new ByteArrayInputStream(body));
+        }
+
         String mime = mimeOf(path);
         InputStream in = stream(ROOT + path);
         if (in == null && path.endsWith("/")) in = stream(ROOT + path + "index.html");

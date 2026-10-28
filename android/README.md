@@ -56,8 +56,10 @@ export JAVA_HOME=/path/to/jdk
 bash android/build.sh --manual
 ```
 
-It produces the same app. Gradle additionally zipaligns the result; Android
-installs the manual build regardless.
+It produces the same app: the result is aligned by `tools/zipalign.py` (which
+does what the SDK's zipalign does — Android 11+ refuses to install an APK whose
+`resources.arsc` is not stored uncompressed and 4-byte aligned) and signed by
+`apksigner`. It needs `python3` as well as the JDK.
 
 Both paths write `android/build/outputs/Easy-School-Liberia-<version>.apk`.
 
