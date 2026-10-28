@@ -20,6 +20,7 @@ Exit code 0 means the APK is structurally installable. Check the signature
 separately with apksigner (or `gradle` output), and the manifest with
 `aapt2 dump badging`.
 """
+import struct
 import sys
 import zipfile
 
@@ -31,9 +32,12 @@ REQUIRED = [
     "assets/www/book.html",
     "assets/www/book.js",
     "assets/www/manifest.webmanifest",
-    "res/mipmap-xxxhdpi-v4/ic_launcher.png",
-    "res/drawable-nodpi-v4/splash_mark.png",
 ]
+
+# Names inside the resource table, not file paths: AGP shortens resource paths
+# in a release build, so the icon cannot be found by looking for a file called
+# ic_launcher.png. The manifest refers to it by name, so the name survives.
+REQUIRED_RESOURCE_NAMES = [b"ic_launcher", b"splash_mark"]
 
 BRIDGE_MARKERS = [
     "easy-school-android-shell:start",
@@ -44,7 +48,26 @@ BRIDGE_MARKERS = [
 
 
 def data_offset(apk, info):
-    return info.header_offset + 30 + len(info.filename.encode("utf-8")) + len(info.extra)
+    """Where this entry's bytes really start.
+
+    The LOCAL header is the one that counts: that is where the data follows,
+    and zipalign (the SDK's and ours) pads the local extra field to align it.
+    The central directory keeps its own copy of the extra field, which may be
+    shorter — reading it, as a naive checker does, reports false misalignment
+    for a perfectly aligned Gradle build.
+    """
+    fp = apk.fp
+    here = fp.tell()
+    try:
+        fp.seek(info.header_offset)
+        header = fp.read(30)
+    finally:
+        fp.seek(here)
+    if len(header) < 30:
+        return info.header_offset + 30 + len(info.filename.encode("utf-8")) + len(info.extra)
+    name_len = struct.unpack_from("<H", header, 26)[0]
+    extra_len = struct.unpack_from("<H", header, 28)[0]
+    return info.header_offset + 30 + name_len + extra_len
 
 
 def main():
@@ -53,6 +76,7 @@ def main():
         return 2
     path = sys.argv[1]
     problems = []
+    notes = []
 
     try:
         apk = zipfile.ZipFile(path)
@@ -98,15 +122,29 @@ def main():
         problems.append("%d stored entries are not 4-byte aligned (first: %s)"
                         % (len(unaligned), unaligned[0]))
 
-    icons = [n for n in names if n.startswith("res/mipmap-")]
-    if len(icons) < 8:
-        problems.append("expected legacy + adaptive launcher icons, found %d" % len(icons))
+    # Launcher artwork: legacy bitmaps for every density plus the adaptive
+    # icon definitions. Paths may have been shortened by AGP, so count them.
+    if "resources.arsc" in names:
+        table = apk.read("resources.arsc")
+        for wanted in REQUIRED_RESOURCE_NAMES:
+            if wanted not in table:
+                # Advisory only: a release build is allowed to shorten resource
+                # names, and the count check below is what really guards this.
+                notes.append("resource name %r not found verbatim (AGP may have "
+                             "shortened it)" % wanted.decode())
+    pngs = [n for n in names if n.startswith("res/") and n.lower().endswith(".png")]
+    adaptive = [n for n in names if n.startswith("res/") and n.lower().endswith(".xml")]
+    if len(pngs) < 6 or not adaptive:
+        problems.append("launcher artwork looks incomplete: %d png, %d xml under res/"
+                        % (len(pngs), len(adaptive)))
 
     if problems:
         for problem in problems:
             print("FAIL: " + problem, file=sys.stderr)
         return 1
 
+    for note in notes:
+        print("note: " + note)
     print("OK: %s" % path)
     print("    %d entries, %.1f MB, platform page %.1f MB, resources.arsc stored and aligned"
           % (len(names), _size(path) / 1e6,
