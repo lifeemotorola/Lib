@@ -112,7 +112,17 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ steps.signing.outputs.store_password }}
           ANDROID_KEY_ALIAS: ${{ steps.signing.outputs.alias }}
           ANDROID_KEY_PASSWORD: ${{ steps.signing.outputs.key_password }}
-        run: bash android/build.sh --gradle
+        run: |
+          set +e
+          bash android/build.sh --gradle 2>&1 | tee /tmp/build.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" -ne 0 ]; then
+            # Mirror the tail of the build log as a check annotation: the raw
+            # log endpoint is not always reachable, annotations always are.
+            tail -n 30 /tmp/build.log | tr -d '\r' | sed 's/%/%25/g' > /tmp/build.msg
+            echo "::error title=android build failed::$(tr '\n' '|' < /tmp/build.msg)"
+          fi
+          exit "$code"
 
       - name: Verify the APK
         run: |
