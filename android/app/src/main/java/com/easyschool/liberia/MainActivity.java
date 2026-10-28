@@ -416,15 +416,23 @@ public class MainActivity extends Activity {
 
     private void registerBackCallback() {
         if (Build.VERSION.SDK_INT < 33) return;
-        try {
-            android.window.OnBackInvokedDispatcher dispatcher = getOnBackInvokedDispatcher();
-            dispatcher.registerOnBackInvokedCallback(
-                    android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
-                    new android.window.OnBackInvokedCallback() {
-                        @Override public void onBackInvoked() { handleBack(); }
-                    });
-        } catch (Throwable t) {
-            Log.w(TAG, "predictive back unavailable", t);
+        /* The API 33 types live in their own class so that a device running
+           Android 7-12 never has to resolve them while loading this one. */
+        BackCompat.register(this);
+    }
+
+    /** Android 13+ predictive back; only ever loaded on API 33 and newer. */
+    private static final class BackCompat {
+        static void register(final MainActivity activity) {
+            try {
+                activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                        android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                        new android.window.OnBackInvokedCallback() {
+                            @Override public void onBackInvoked() { activity.handleBack(); }
+                        });
+            } catch (Throwable t) {
+                Log.w(TAG, "predictive back unavailable", t);
+            }
         }
     }
 
