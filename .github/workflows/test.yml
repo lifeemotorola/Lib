@@ -39,6 +39,7 @@ jobs:
           node tests/btt.js
           node tests/fold-book.js
           node tests/author-cover.js
+          node tests/android-shell.js
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'

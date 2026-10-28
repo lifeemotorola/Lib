@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 29: the platform is a light, printed-document interface; the
+         system's force-dark would repaint the A4 preview grey. -->
+    <style name="AppThemeV29" parent="AppThemeV27">
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+
+    <style name="AppTheme" parent="AppThemeV29" />
+</resources>

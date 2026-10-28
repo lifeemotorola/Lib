@@ -1,0 +1,147 @@
+name: Build Android APK
+
+# Builds the installable app from the same platform the website serves.
+#
+# Every run uploads the APK as a workflow artifact (Actions → this run →
+# Artifacts). Pushing a tag that starts with "v" also attaches it to a GitHub
+# Release, which gives teachers a plain download link:
+#
+#     git tag v1.0.0 && git push origin v1.0.0
+#
+# Signing: set these repository secrets to keep one identity across releases
+# (Android refuses to install an update signed by a different key):
+#
+#     ANDROID_KEYSTORE_BASE64   base64 of your .jks
+#     ANDROID_KEYSTORE_PASSWORD
+#     ANDROID_KEY_ALIAS
+#     ANDROID_KEY_PASSWORD
+#
+# With none of them set the build still succeeds, signed by a throwaway key.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "android/**"
+      - "index.html"
+      - "book.html"
+      - "book.js"
+      - "manifest.webmanifest"
+      - "assets/**"
+      - "build.sh"
+      - ".github/workflows/android.yml"
+  pull_request:
+    paths:
+      - "android/**"
+      - ".github/workflows/android.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platforms;android-35 build-tools;35.0.0"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Build index.html (same file the site deploys)
+        env:
+          AI_PROXY_URL: ${{ vars.AI_PROXY_URL }}
+          TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+        run: bash build.sh
+
+      - name: Prepare the signing key
+        id: signing
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/signing"
+          KEYSTORE="$RUNNER_TEMP/signing/release.jks"
+          if [ -n "${KEYSTORE_BASE64:-}" ]; then
+            echo "Signing with the repository's release key."
+            printf '%s' "$KEYSTORE_BASE64" | base64 -d > "$KEYSTORE"
+            ALIAS="${KEY_ALIAS:-easy-school}"
+            PASSWORD="${KEYSTORE_PASSWORD:?ANDROID_KEYSTORE_PASSWORD must be set with the keystore}"
+            KEYPASS="${KEY_PASSWORD:-$PASSWORD}"
+          else
+            echo "::warning::No ANDROID_KEYSTORE_BASE64 secret — signing with a throwaway key for this run. Devices will not accept later updates over this install; see android/README.md."
+            ALIAS="easy-school"
+            PASSWORD="$(openssl rand -base64 24)"
+            KEYPASS="$PASSWORD"
+            keytool -genkeypair -keystore "$KEYSTORE" -alias "$ALIAS" \
+              -keyalg RSA -keysize 2048 -validity 10950 \
+              -storepass "$PASSWORD" -keypass "$KEYPASS" \
+              -dname "CN=Easy School Liberia, O=Easy School Liberia, C=LR" >/dev/null 2>&1
+          fi
+          {
+            echo "keystore=$KEYSTORE"
+            echo "alias=$ALIAS"
+            echo "::add-mask::$PASSWORD"
+            echo "::add-mask::$KEYPASS"
+            echo "store_password=$PASSWORD"
+            echo "key_password=$KEYPASS"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Stage the platform and build the APK
+        env:
+          ANDROID_KEYSTORE_PATH: ${{ steps.signing.outputs.keystore }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ steps.signing.outputs.store_password }}
+          ANDROID_KEY_ALIAS: ${{ steps.signing.outputs.alias }}
+          ANDROID_KEY_PASSWORD: ${{ steps.signing.outputs.key_password }}
+        run: bash android/build.sh --gradle
+
+      - name: Verify the APK
+        run: |
+          set -euo pipefail
+          APK="$(ls -t android/build/outputs/*.apk | head -1)"
+          echo "APK: $APK ($(du -h "$APK" | cut -f1))"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt2" dump badging "$APK" | head -8
+          unzip -l "$APK" | grep -q "assets/www/index.html" \
+            || { echo "::error::the built APK does not contain the platform"; exit 1; }
+          unzip -p "$APK" assets/www/index.html | grep -q "easy-school-android-shell" \
+            || { echo "::error::the Android bridge is missing from the packaged page"; exit 1; }
+          echo "sha256: $(sha256sum "$APK" | cut -d' ' -f1)" > android/build/outputs/SHA256.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: easy-school-liberia-apk
+          path: |
+            android/build/outputs/*.apk
+            android/build/outputs/SHA256.txt
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Attach the APK to a release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          APK="$(ls -t android/build/outputs/*.apk | head -1)"
+          NOTES="Easy School Liberia for Android. The same offline platform as the website: 19 national curriculum subjects, Grades 1–12, printable packs and teacher answer keys, with the packs exportable to Word straight into the phone's Downloads folder."
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || \
+            gh release create "$GITHUB_REF_NAME" --title "Easy School Liberia $GITHUB_REF_NAME" --notes "$NOTES"
+          gh release upload "$GITHUB_REF_NAME" "$APK" --clobber

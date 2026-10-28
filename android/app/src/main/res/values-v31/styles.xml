@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 31: Android 12 draws its own launch screen; give it the brand
+         colour and the book mark instead of a plain white flash. -->
+    <style name="AppThemeV31" parent="AppThemeV29">
+        <item name="android:windowSplashScreenBackground">@color/brand</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_mark</item>
+    </style>
+
+    <style name="AppTheme" parent="AppThemeV31" />
+</resources>

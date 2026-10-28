@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Easy School Liberia — Android app.
+
+  The whole platform (the same index.html the website and the USB copies use)
+  ships inside the APK and is served to the WebView from assets under
+  https://appassets.androidplatform.net/ , which gives the page a normal
+  secure origin, so localStorage, IndexedDB (the teaching library) and the
+  saved settings all keep working exactly as they do on the web.
+
+  Nothing here needs a server, an account or the internet. INTERNET is only
+  used by the optional AI tutor, which talks to the Cloudflare Worker proxy
+  when the device happens to be online.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.easyschool.liberia"
+    android:versionCode="1"
+    android:versionName="1.0.0">
+
+    <!-- Android 7.0 (API 24) and newer. The platform's own scripts are ES5,
+         so an older system WebView still runs them. -->
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="34" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Saving a Word pack into the public Downloads folder on Android 7-9.
+         Android 10+ writes through MediaStore and needs no permission. -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <application
+        android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|uiMode|density|fontScale"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

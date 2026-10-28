@@ -10,6 +10,10 @@ icon sprite, the 17 subject cover images as data URIs, the tutor portrait and
 all 40+ scripts, inlined by `build.sh`. It opens from `file://`, from a USB
 stick, from any static host, with no server and no internet.
 
+The same file, with one bridge script injected, is packaged into the Android
+app (`android/`, see §7). Nothing in the platform is forked for Android: a
+change to `index.html` reaches the website, the USB copies and the APK.
+
 ```bash
 bash build.sh        # rebuild index.html from the source parts; commit the result
 ```
@@ -38,6 +42,7 @@ offline-ready. `tests/sw.js` guards all of this.
 | Presentation | `app.js` | Subject registry, settings UI, block renderer, A4 pagination, `.docx` packager, cover builder, persistence, WASSCE track. The largest file (3.3k lines) and the one to read last. |
 | Teaching tools | `teaching.js`, `lesson.js` | Teaching workspace: IndexedDB library, question editor, assessment builder; daily and weekly lesson/unit plan builders. |
 | Extras | `ai.js` (tutor), `voice.js` (speech), `humancheck.js` (Turnstile), `book.js` (duplex print), `toc.js` (contents page numbers), `cover-text.js` (cover wording), `btt.js` (back to top) | Independent features; each degrades quietly if unavailable. |
+| Android | `android/` | The APK: the same `index.html` in a WebView, plus `android/web/shell/shell.js` for printing, file saves, text-to-speech and the Back button. See §8. |
 | Build & tests | `build.sh`, `tests/` | See below. |
 
 ## 3. The block model — the one idea worth understanding first
@@ -129,7 +134,36 @@ connection does — `tests/ai.js` guards this too.
 **At handover:** the buyer must create their own Groq account and set their own
 secret. The seller should revoke the old key.
 
-## 8. Tests
+## 8. The Android app
+
+`android/` packages the same `index.html` for Android 7.0+ as
+`com.easyschool.liberia`. Two things make it work:
+
+**The origin.** The page is loaded from
+`https://appassets.androidplatform.net/index.html`, answered by
+`AssetServer.java` out of `assets/www` — never the network. A `file://` page
+has an opaque origin, which switches off `localStorage` and IndexedDB; over
+that https origin the platform's settings and teaching library behave exactly
+as they do on the web, and the origin never leaves the device.
+
+**The bridge.** `android/web/shell/shell.js` is injected at the top of the
+built page *inside the APK only* (between the markers
+`easy-school-android-shell:start/end`, by `tools/inject-shell.py`). It is ES5
+because school tablets run old WebViews. It covers exactly the four things a
+WebView cannot do:
+
+| Page | App |
+|---|---|
+| `window.print()` | `MainActivity.printDocument` → Android's print dialog (Save as PDF included) |
+| `<a download>` of a Blob | `DownloadStore`: blob streamed in base64 chunks to a private temp file, then published atomically to `Downloads/Easy School Liberia/` through MediaStore (API 29+) or the public folder (API < 29) |
+| `window.speechSynthesis` | `TtsSpeaker`: the shim maps voices, rates, pitches and start/end/error events onto the device engine, using the surface `voice.js` actually calls (guarded by `tests/android-shell.js`) |
+| Back button | `window.__androidBack()` closes the teaching dialog, book sequence, tutor, voice reader or settings drawer, in that order, before the app leaves |
+
+Nothing else is Android-specific: the Java side has no dependencies, no
+AndroidX, no Kotlin. `tests/android-shell.js` (zero-dependency, in CI) checks
+the bridge; `.github/workflows/android.yml` builds and signs the APK.
+
+## 9. Tests
 
 Dependency-free Node tests (run in CI on every push):
 
@@ -169,7 +203,7 @@ python tests/teaching.py  # library save/reopen, import/export, question editing
 `jsdom` (`npm i jsdom`) and drive the built `index.html` end to end; they are
 not in CI today.
 
-## 9. Adding a subject or content
+## 10. Adding a subject or content
 
 1. Add units to (or create) a `data-*.js` file following the existing shape.
 2. Register the subject in `SUBJECTS` in `app.js` (label, accent, curriculum,
@@ -178,9 +212,10 @@ not in CI today.
 4. Run the Node tests; add the subject to `tests/notes-verbatim.js` if it gains
    `study[]` blocks.
 
-## 10. Known constraints to tell a buyer honestly
+## 11. Known constraints to tell a buyer honestly
 
-- The AI tutor needs internet; the rest does not.
+- The AI tutor needs internet; the rest does not. The Android app is the same
+  deal: only the tutor uses the network.
 - Printing is the real cost of using the platform, not the software.
 - 15 subjects' notes are transcriptions of MoE curriculum guides; Civics and
   Senior High History are original content aligned to a supplied guide, and

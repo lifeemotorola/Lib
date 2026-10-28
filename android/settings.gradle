@@ -1,0 +1,20 @@
+// Easy School Liberia — Android app.
+// The platform itself is plain JavaScript in ../ (see android/README.md).
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "EasySchoolLiberia"
+include ":app"

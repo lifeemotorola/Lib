@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Easy School Liberia</string>
+    <string name="splash_tagline">Liberian National Curriculum · works offline</string>
+
+    <string name="saving_title">Saving…</string>
+    <string name="saved_to">Saved to %1$s</string>
+    <string name="save_failed">Could not save the file: %1$s</string>
+    <string name="print_unavailable">Printing is not available on this device. Use Export Word and print from there.</string>
+    <string name="press_back_again">Press back again to close Easy School Liberia</string>
+    <string name="choose_file">Choose a file</string>
+    <string name="no_file_picker">No file picker is available on this device.</string>
+    <string name="no_browser">No browser is available to open this link.</string>
+
+    <string name="load_error_title">The app could not open</string>
+    <string name="load_error_body">Close Easy School Liberia and open it again. If it keeps happening, reinstall the app — the platform is stored inside the app itself.</string>
+    <string name="reload">Try again</string>
+</resources>
