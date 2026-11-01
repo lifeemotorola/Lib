@@ -800,6 +800,19 @@ for (const subj of SUBJECTS) {
     if (!blocks.length) { console.error("FAIL: empty notes for", subj.name, u.grade, u.period); bad++; continue; }
     const html = blocks.map(b => chk.blockHtml(b)).join("\n");
 
+    /* General Science now carries a classroom-ready investigation prompt in
+       every elementary period; check both the source and rendered Study Notes. */
+    if (subj.name === "General Science" && u.grade >= 1 && u.grade <= 6) {
+      const investigation = u.study.find(b => b && b.k === "h3" && /^Investigation: /.test(b.t));
+      if (!investigation) {
+        console.error("FAIL: missing elementary investigation:", "Grade", u.grade, "Period", u.period);
+        bad++;
+      } else if (!html.includes("<h3>" + investigation.t + "</h3>")) {
+        console.error("FAIL: elementary investigation heading did not render:", "Grade", u.grade, "Period", u.period);
+        bad++;
+      }
+    }
+
     /* every study block must be rendered (verbatim) */
     for (const b of u.study) {
       if (b.k === "h3" && !html.includes("<h3>" + b.t.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</h3>")) {
